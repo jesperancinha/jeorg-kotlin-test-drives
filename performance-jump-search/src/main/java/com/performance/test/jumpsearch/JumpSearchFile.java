@@ -6,6 +6,7 @@ package com.performance.test.jumpsearch;
  * Tries to calculate first generic step jump in order to search
  * Unlike the binary search model, it assumes that is better to jump a step and then perform the already known binary search
  * As for this implementation it is being created without consideration on performance using an IJW (It just works) model
+ * This is File0 for comparisons in performance evaluations for alternative implementations
  */
 public class JumpSearchFile {
 
