@@ -8,6 +8,23 @@ package com.performance.test.jumpsearch;
  * As for this implementation it is being created without consideration on performance using an IJW (It just works) model
  * This is File0 for comparisons in performance evaluations for alternative implementations
  */
-public class JumpSearchFile {
+public class JumpSearchFileSameStepMethod0 {
 
+	public static int getNumberIndexFromArray(int number, int[] completeList) {
+		final int length = completeList.length;
+		final int step = (int) Math.sqrt(length);
+		int currentStep = 0;
+		while (currentStep + step < length && completeList[currentStep + step] < number) {
+			currentStep += step;
+		}
+
+		while (completeList[currentStep] < number && currentStep <= length) {
+			currentStep++;
+		}
+
+		if (completeList[currentStep] == number) {
+			return currentStep;
+		}
+		return -1;
+	}
 }
