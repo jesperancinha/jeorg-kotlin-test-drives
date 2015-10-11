@@ -9,5 +9,6 @@
 	<dependencies>
 	<dependency org="args4j" name="args4j" rev="2.32"/>
 	<dependency org="junit" name="junit" rev="4.12"/>
+	<dependency org="com.jolira" name="onejar-maven-plugin" rev="1.4.4"/>
 	</dependencies>
 </ivy-module>

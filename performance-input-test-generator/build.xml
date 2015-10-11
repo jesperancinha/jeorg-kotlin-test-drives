@@ -7,22 +7,47 @@
                    
      JOAO                                                                
      ====================================================================== -->
-<project name="project" default="default">
-    <description>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="project" default="default">
+	<property name="one-jar.dist.dir" value="/one-jar-ant" />
+	<import file="${one-jar.dist.dir}/one-jar-ant-task.xml" optional="true" />
+	<description>
             description
     </description>
 
-    <!-- ================================= 
+	
+    <target name="resolve">
+        <ivy:configure file="../ivysettings.xml" />
+        
+        <ivy:resolve file="ivy.xml" conf="default, myconf" />
+        
+    </target>
+	<!-- ================================= 
           target: default              
          ================================= -->
-    <target name="default" depends="depends" description="description">
-       
-    </target>
+	<target name="default" depends="depends" description="description">
 
-    <!-- - - - - - - - - - - - - - - - - - 
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
           target: depends                      
          - - - - - - - - - - - - - - - - - -->
-    <target name="depends">
-    </target>
+	<target name="depends" depends="resolve">   
+        <!-- Build classes for main.jar -->
+		<mkdir dir="build"/>
+        <javac destdir="build">
+            <src path="src" />
+        </javac>
+        <!-- Construct the One-JAR file -->  
+		<one-jar destfile="build/one-performance-input-test-generator.jar" manifest="manifest.mf">
+				<main>
+					<!-- Construct main.jar from classes and source code -->
+					<fileset dir="src" />
+			
+				</main>	
+		        <manifest>
+		             <attribute name="Main-Class" value="com.performance.inputgenerator.InputGenerator"/>
+		         </manifest>
+			</one-jar>
+	</target>
 
 </project>
