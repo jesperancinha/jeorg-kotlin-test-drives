@@ -12,33 +12,27 @@ import org.junit.Test;
  * As for this implementation it is being created without consideration on performance using an IJW (It just works) model
  */
 public class JumpSearchFileSameStepMethod0Test {
-
 	@Test
 	public void testGetNumberIndexFromArray() throws Exception {
-		int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(20, completeList);
+		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
+		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(20, completeList);
 
 		assertEquals(4, result);
 	}
 
 	@Test
 	public void testGetNumberIndexFromArray_limit() throws Exception {
-		int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(90, completeList);
+		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
+		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(90, completeList);
 
 		assertEquals(8, result);
 	}
 
 	@Test
 	public void testGetNumberIndexFromArray_begining() throws Exception {
-		int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(1, completeList);
+		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
+		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(1, completeList);
 
 		assertEquals(0, result);
-	}
-
-	@Test
-	public void testBenchmarking01() throws Exception {
-
 	}
 }
