@@ -35,9 +35,9 @@ public class InputGenerator {
 		try (BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(file))) {
 
 			int currentNumber = getNextNumber(0, maxIncrements);
-			bo.write(getFormattedNumber(currentNumber));
+			bo.write(toBytes("" + currentNumber));
 
-			for (int i = numberOfElements - 1; i > 1; i--) {
+			for (int i = numberOfElements; i > 1; i--) {
 				currentNumber = getNextNumber(currentNumber, maxIncrements);
 				bo.write(getFormattedNumber(currentNumber));
 			}
@@ -47,7 +47,11 @@ public class InputGenerator {
 	}
 
 	private static byte[] getFormattedNumber(int currentNumber) {
-		return (", " + currentNumber).getBytes(Charset.defaultCharset());
+		return toBytes(", " + currentNumber);
+	}
+
+	private static byte[] toBytes(String string) {
+		return string.getBytes(Charset.defaultCharset());
 	}
 
 	private static int getNextNumber(int current, int increments) {

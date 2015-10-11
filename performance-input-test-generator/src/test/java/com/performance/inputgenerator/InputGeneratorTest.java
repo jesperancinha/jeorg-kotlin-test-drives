@@ -24,7 +24,12 @@ public class InputGeneratorTest {
 		final File f = new File("/tmp", testFilename);
 		try (BufferedReader bf = new BufferedReader(new FileReader(f))) {
 			final String test = bf.readLine();
-			final int resultTestNumber = test.split(",").length;
+			final String[] splitTable = test.split(",");
+			// Tests if the first element is an integer
+			Integer.parseInt(splitTable[0].trim());
+			// Tests if the last element is an integer
+			Integer.parseInt(splitTable[splitTable.length - 1].trim());
+			final int resultTestNumber = splitTable.length;
 			assertEquals(100, resultTestNumber);
 		}
 	}
