@@ -1,16 +1,22 @@
 package com.performance.test.jumpsearch;
 
-/*
- * This jump algorithm as described in:
- * http://www.stoimen.com/blog/2011/12/12/computer-algorithms-jump-search/
- * Tries to calculate first generic step jump in order to search
- * Unlike the binary search model, it assumes that is better to jump a step and then perform the already known binary search
- * As for this implementation it is being created without consideration on performance using an IJW (It just works) model
- * This is File0 for comparisons in performance evaluations for alternative implementations
- */
-public class JumpSearchFileSameStepMethod0 {
+import com.performance.test.jumpsearch.interfaces.JumpSearchFile;
 
-	public static int getNumberIndexFromArray(int number, int[] completeList) {
+/**
+ * This jump algorithm as described in:
+ * http://www.stoimen.com/blog/2011/12/12/computer-algorithms-jump-search/ Tries
+ * to calculate first generic step jump in order to search Unlike the binary
+ * search model, it assumes that is better to jump a step and then perform the
+ * already known binary search As for this implementation it is being created
+ * without consideration on performance using an IJW (It just works) model This
+ * is File0 for comparisons in performance evaluations for alternative
+ * implementations
+ * 
+ * @author JOAO
+ *
+ */
+public class JumpSearchFileSameStepMethod0 implements JumpSearchFile {
+	public int getNumberIndexFromArray(int number, int[] completeList) {
 		final int length = completeList.length;
 		final int step = (int) Math.sqrt(length);
 		int currentStep = 0;

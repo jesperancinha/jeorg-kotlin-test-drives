@@ -59,7 +59,7 @@ public class JumpSearchFileSameStepMethod0BenchmarkingTest {
 		final int[] completeList = Arrays.asList(fullText.split(", ")).stream().mapToInt(Integer::parseInt).toArray();
 
 		final Date timeStart = new Date();
-		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(value, completeList);
+		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(value, completeList);
 		final Date timeEnd = new Date();
 		assertEquals(value, completeList[result]);
 		assertEquals(expectedIndex, result);
