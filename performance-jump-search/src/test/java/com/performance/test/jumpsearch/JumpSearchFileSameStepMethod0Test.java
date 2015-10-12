@@ -15,7 +15,7 @@ public class JumpSearchFileSameStepMethod0Test {
 	@Test
 	public void testGetNumberIndexFromArray() throws Exception {
 		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(20, completeList);
+		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(20, completeList);
 
 		assertEquals(4, result);
 	}
@@ -23,7 +23,7 @@ public class JumpSearchFileSameStepMethod0Test {
 	@Test
 	public void testGetNumberIndexFromArray_limit() throws Exception {
 		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(90, completeList);
+		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(90, completeList);
 
 		assertEquals(8, result);
 	}
@@ -31,7 +31,7 @@ public class JumpSearchFileSameStepMethod0Test {
 	@Test
 	public void testGetNumberIndexFromArray_begining() throws Exception {
 		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		final int result = JumpSearchFileSameStepMethod0.getNumberIndexFromArray(1, completeList);
+		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(1, completeList);
 
 		assertEquals(0, result);
 	}
