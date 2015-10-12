@@ -1,6 +1,10 @@
 package com.performance.test.jumpsearch;
 
-import com.performance.test.jumpsearch.interfaces.JumpSearchFile;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
+import com.performance.test.jumpsearch.interfaces.JumpSearchFileStreams;
 
 /**
  * For this implementation I decided to try a stream approach. All files have
@@ -13,12 +17,44 @@ import com.performance.test.jumpsearch.interfaces.JumpSearchFile;
  * 
  * @author JOAO
  */
-public class JumpSearchFileSameStepMethodStreams0 implements JumpSearchFile {
+public class JumpSearchFileSameStepMethodStreams0 implements JumpSearchFileStreams {
 
 	@Override
-	public int getNumberIndexFromArray(int number, int[] completeList) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getNumberIndexFromArray(int number, InputStream completeList) {
+		completeList.mark(Integer.MAX_VALUE);
+		try (Scanner scannerCounter = new Scanner(completeList)) {
+			scannerCounter.useDelimiter("\\,\\ ");
+			int length = 0;
+			while (scannerCounter.hasNextLine()) {
+				scannerCounter.nextInt();
+				length++;
+			}
+			completeList.reset();
+			try (Scanner scanner = new Scanner(completeList)) {
+				scanner.useDelimiter("\\,\\ ");
+				final int step = (int) Math.sqrt(length);
+				int currentStep = 0;
+				while (scanner.hasNextLine()) {
+					int[] segment = new int[step];
+					for (int i = 0; i < step && scanner.hasNextLine(); i++) {
+						segment[i] = scanner.nextInt();
+						currentStep++;
+					}
+					if (segment[step - 1] >= number) {
+						currentStep -= step;
+						for (int i = 0; i < step; i++) {
+							if (segment[i] == number) {
+								return currentStep;
+							}
+							currentStep++;
+						}
+					}
+				}
+			}
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		return -1;
 	}
 
 }
