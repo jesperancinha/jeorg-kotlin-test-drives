@@ -1,4 +1,4 @@
-package com.performance.test.jumpsearch;
+package com.performance.test.jumpsearch.benchmarking;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,6 +13,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import com.performance.test.jumpsearch.JumpSearchFileSameStepMethod0;
 import com.sun.istack.internal.logging.Logger;
 
 /*
@@ -34,21 +35,21 @@ public class JumpSearchFileSameStepMethod0BenchmarkingTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testBenchmarking01_10000() throws Exception {
-		testBenchmarking01_helper("sample10000.txt", 20153, 9994);
+	public void testBenchmarking00_10000() throws Exception {
+		testBenchmarking00_helper("sample10000.txt", 20153, 9994);
 	}
 
 	@Test
-	public void testBenchmarking01_100000() throws Exception {
-		testBenchmarking01_helper("sample100000.txt", 200111, 99998);
+	public void testBenchmarking00_100000() throws Exception {
+		testBenchmarking00_helper("sample100000.txt", 200111, 99998);
 	}
 
 	@Test
-	public void testBenchmarking01_1000000() throws Exception {
-		testBenchmarking01_helper("sample1000000.txt", 1999358, 999998);
+	public void testBenchmarking00_1000000() throws Exception {
+		testBenchmarking00_helper("sample1000000.txt", 1999358, 999998);
 	}
 
-	private void testBenchmarking01_helper(String sampleFile, int value, int expectedIndex)
+	private void testBenchmarking00_helper(String sampleFile, int value, int expectedIndex)
 			throws URISyntaxException, IOException, FileNotFoundException {
 		final File f = new File(getClass().getResource(sampleFile).toURI());
 		String fullText;
