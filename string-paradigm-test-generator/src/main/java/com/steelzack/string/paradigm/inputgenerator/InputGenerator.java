@@ -29,6 +29,7 @@ public class InputGenerator {
 				list.add(testRead);
 				testRead = br.readLine();
 			}
+			br.close();
 		}
 		return list;
 	}

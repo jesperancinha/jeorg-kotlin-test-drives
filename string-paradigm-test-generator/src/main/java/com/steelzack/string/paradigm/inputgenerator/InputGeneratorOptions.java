@@ -3,7 +3,10 @@ package com.steelzack.string.paradigm.inputgenerator;
 import org.kohsuke.args4j.Option;
 
 public class InputGeneratorOptions {
-	@Option(name = "-n", aliases = "--number-of-elements", required = true)
+	@Option(name = "-p", aliases = "--number-of-parents", required = true)
+	private int numberOfParents;
+
+	@Option(name = "-n", aliases = "--number-of-elements-per-node", required = true)
 	private int numberOfElements;
 
 	@Option(name = "-d", aliases = "--directory", required = false)
@@ -132,5 +135,9 @@ public class InputGeneratorOptions {
 
 	public String getMovieYearFile() {
 		return movieYearFile;
+	}
+
+	public int getNumberOfParents() {
+		return numberOfParents;
 	}
 }
