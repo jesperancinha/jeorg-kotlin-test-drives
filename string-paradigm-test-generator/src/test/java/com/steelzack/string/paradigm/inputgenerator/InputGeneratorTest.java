@@ -16,8 +16,24 @@ public class InputGeneratorTest {
 	public void testInputGenerator() throws IOException, InterruptedException {
 		final String testFilename = "testInputGenerator.txt";
 		final Runtime rt = Runtime.getRuntime();
-		final Process pr = rt.exec("java -jar build/one-string-paradigm-input-test-generator.jar  -p 100 -n 10 -f \""
-				+ testFilename + "\"");
+		final Process pr = rt.exec( //
+				"java -jar build/one-string-paradigm-input-test-generator.jar  " + //
+						"-p 100 " + //
+						"-n 10 " + //
+						"-f \"" + testFilename + "\"" + //
+						"-mid \"sptg_id.txt\"" + //
+						"-m \"sptg_movie.txt\"" + //
+						"-my \"sptg_year.txt\"" + //
+						"-ml \"sptg_location.txt\"" + //
+						"-mg \"sptg_genre.txt\"" + //
+						"-md \"sptg_director.txt\"" + //
+						"-mp \"sptg_producer.txt\"" + //
+						"-mar \"sptg_actor.txt\"" + //
+						"-mas \"sptg_actress.txt\"" + //
+						"-msman \"sptg_stunt_man.txt\"" + //
+						"-mswoman \"sptg_stunt_woman.txt\"" + //
+						"-msong \"sptg_song.txt\"" + //
+						"");
 		final int retVal = pr.waitFor();
 
 		assertEquals(0, retVal);
