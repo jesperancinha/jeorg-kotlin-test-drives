@@ -2,7 +2,7 @@
 <ivy-module version="2.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
-	<info organisation="steelzack" module="performance-input-test-generator"
+	<info organisation="steelzack" module="string-paradigm-test-generator"
 		status="integration">
 	</info>
 	<configurations>

@@ -15,7 +15,7 @@ public class InputGeneratorOptions {
 	/**
 	 * A plain text file with the film year data
 	 */
-	@Option(name = "-my", aliases = "--movie-id", required = false)
+	@Option(name = "-mid", aliases = "--movie-id", required = false)
 	private String movieIdFile = "sptg_movie.txt";
 
 	/**
@@ -57,7 +57,7 @@ public class InputGeneratorOptions {
 	/**
 	 * A plain text file with the actress data
 	 */
-	@Option(name = "-mas", aliases = "--movie-actress", required = true)
+	@Option(name = "-mas", aliases = "--movie-actress", required = false)
 	private String movieActressFile = "sptg_actress.txt";
 
 	/**
