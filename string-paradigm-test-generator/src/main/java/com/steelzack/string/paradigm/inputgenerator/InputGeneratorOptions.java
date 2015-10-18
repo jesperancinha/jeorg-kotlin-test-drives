@@ -15,71 +15,68 @@ public class InputGeneratorOptions {
 	/**
 	 * A plain text file with the film year data
 	 */
-	@Option(name = "-my", aliases = "--movie-id", required = true)
-	private String movieIdFile;
+	@Option(name = "-my", aliases = "--movie-id", required = false)
+	private String movieIdFile = "sptg_movie.txt";
 
 	/**
 	 * A plain text file with the film year data
 	 */
-	@Option(name = "-my", aliases = "--movie-year", required = true)
-	private String movieYearFile;
+	@Option(name = "-my", aliases = "--movie-year", required = false)
+	private String movieYearFile = "sptg_year.txt";
 
 	/**
 	 * A plain text file with the film location data
 	 */
-	@Option(name = "-ml", aliases = "--movie-location", required = true)
-	private String movieLocationFile;
+	@Option(name = "-ml", aliases = "--movie-location", required = false)
+	private String movieLocationFile = "sptg_location.txt";
 
 	/**
 	 * A plain text file with the film location data
 	 */
-	@Option(name = "-mg", aliases = "--movie-genre", required = true)
-	private String movieGenreFile;
+	@Option(name = "-mg", aliases = "--movie-genre", required = false)
+	private String movieGenreFile = "sptg_genre.txt";
 
 	/**
 	 * A plain text file with the film director data
 	 */
-	@Option(name = "-md", aliases = "--movie-director", required = true)
-	private String movieDirectorFile;
+	@Option(name = "-md", aliases = "--movie-director", required = false)
+	private String movieDirectorFile = "sptg_director.txt";
 
 	/**
 	 * A plain text file with the film producer data
 	 */
-	@Option(name = "-mp", aliases = "--movie-producer", required = true)
-	private String movieProducerFile;
+	@Option(name = "-mp", aliases = "--movie-producer", required = false)
+	private String movieProducerFile = "sptg_producer.txt";
 
 	/**
 	 * A plain text file with the actor data
 	 */
-	@Option(name = "-mar", aliases = "--movie-actor", required = true)
-	private String movieActorFile;
+	@Option(name = "-mar", aliases = "--movie-actor", required = false)
+	private String movieActorFile = "sptg_actor.txt";
 
 	/**
 	 * A plain text file with the actress data
 	 */
 	@Option(name = "-mas", aliases = "--movie-actress", required = true)
-	private String movieActressFile;
+	private String movieActressFile = "sptg_actress.txt";
 
 	/**
 	 * A plain text file with the stuntman data
 	 */
-	@Option(name = "-msman", aliases = "--movie-stunt-man", required = true)
-	private String movieStuntManFile;
-
-	/**
-	 * A plain text file with the stuntman data
-	 */
-	@Option(name = "-msong", aliases = "--movie-song", required = true)
-	private String movieSongFile;
+	@Option(name = "-msman", aliases = "--movie-stunt-man", required = false)
+	private String movieStuntManFile = "sptg_stunt_man.txt";
 
 	/**
 	 * A plain text file with the stuntwoman data
 	 */
-	@Option(name = "-mswoman", aliases = "--movie-stunt-woman", required = true)
-	private String movieStuntWomanFile;
+	@Option(name = "-mswoman", aliases = "--movie-stunt-woman", required = false)
+	private String movieStuntWomanFile = "sptg_stunt_woman.txt";
 
-	@Option(name = "-i", aliases = "--increments", required = false)
-	private int increments = 5;
+	/**
+	 * A plain text file with the song data
+	 */
+	@Option(name = "-msong", aliases = "--movie-song", required = false)
+	private String movieSongFile = "sptg_song.txt";
 
 	public int getNumberOfElements() {
 		return numberOfElements;
@@ -93,7 +90,47 @@ public class InputGeneratorOptions {
 		return filename;
 	}
 
-	public int getIncrements() {
-		return increments;
+	public String getMovieActorFile() {
+		return movieActorFile;
+	}
+
+	public String getMovieActressFile() {
+		return movieActressFile;
+	}
+
+	public String getMovieIdFile() {
+		return movieIdFile;
+	}
+
+	public String getMovieDirectorFile() {
+		return movieDirectorFile;
+	}
+
+	public String getMovieGenreFile() {
+		return movieGenreFile;
+	}
+
+	public String getMovieLocationFile() {
+		return movieLocationFile;
+	}
+
+	public String getMovieProducerFile() {
+		return movieProducerFile;
+	}
+
+	public String getMovieSongFile() {
+		return movieSongFile;
+	}
+
+	public String getMovieStuntManFile() {
+		return movieStuntManFile;
+	}
+
+	public String getMovieStuntWomanFile() {
+		return movieStuntWomanFile;
+	}
+
+	public String getMovieYearFile() {
+		return movieYearFile;
 	}
 }
