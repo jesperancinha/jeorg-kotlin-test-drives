@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.AbstractAction;
@@ -142,6 +143,12 @@ public class ParadigmDependency2View extends JPanel {
 
 	private void loadCombinations(File file) throws IOException {
 		this.dependencies = readLines(file);
+		dependencies.sort(new Comparator<StringWrapper>() {
+			@Override
+			public int compare(StringWrapper o1, StringWrapper o2) {
+				return o1.toString().compareTo(o2.toString());
+			}
+		});
 		loadTableData(dependencies);
 		loadTreeData(dependencies);
 		this.dependencies.clear();

@@ -59,10 +59,10 @@ public class ParadigmDependency2TreeModel extends DefaultTreeModel implements Se
 	public DefaultMutableTreeNode addCombinationNode(DefaultMutableTreeNode parent, Dependency dependency,
 			int codeIndex) {
 
-		String code = dependency.getSubDependencyElement(codeIndex).intern();
-		DefaultMutableTreeNode child = findChild(parent, code);
+		String subDependency = dependency.getSubDependencyElement(codeIndex).intern();
+		DefaultMutableTreeNode child = findChild(parent, subDependency);
 		if (child == null) {
-			child = new DefaultMutableTreeNode(code);
+			child = new DefaultMutableTreeNode(subDependency);
 			child.setAllowsChildren(true);
 			insertNodeInto(child, parent, getChildCount(parent));
 		}
@@ -73,10 +73,10 @@ public class ParadigmDependency2TreeModel extends DefaultTreeModel implements Se
 	}
 
 	@Override
-	public DefaultMutableTreeNode findChild(DefaultMutableTreeNode parent, String code) {
+	public DefaultMutableTreeNode findChild(DefaultMutableTreeNode parent, String subDependency) {
 		for (int i = 0; i < getChildCount(parent); i++) {
 			DefaultMutableTreeNode child = getChild(parent, i);
-			if (child.getUserObject().equals(code)) {
+			if (child.getUserObject().equals(subDependency)) {
 				return child;
 			}
 		}
