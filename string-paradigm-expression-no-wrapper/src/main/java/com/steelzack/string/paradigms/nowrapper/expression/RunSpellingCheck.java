@@ -12,7 +12,7 @@ import java.util.Set;
 public class RunSpellingCheck {
 	public static void main(String[] args) {
 		String[] regions = { "Algarve", "minho", " Ribatejo" };
-		String[] assignedNumbers = { "5'", "6'", ",2","3'", "7'", ",1" };
+		String[] assignedNumbers = { "5'", "6'", ",2", "3'", "7'", ",1" };
 		List<RegionImpl> components = new ArrayList<RegionImpl>();
 		for (String type : regions) {
 			for (String size : assignedNumbers) {
@@ -62,13 +62,21 @@ public class RunSpellingCheck {
 		return setToReturn;
 	}
 
-	public static Set<RegionImpl> similarElementsIteration(Collection<? extends RegionImpl> componentsA,
-			Collection<? extends RegionImpl> componentsB, Set<RegionImpl> setToReturn) {
-		Iterator<? extends RegionImpl> iA = componentsA.iterator();
+	/**
+	 * 
+	 * @param regionA
+	 * @param regionB
+	 * @param setToReturn
+	 *            The similarities between region A and region B
+	 * @return
+	 */
+	public static Set<RegionImpl> similarElementsIteration(Collection<? extends RegionImpl> regionA,
+			Collection<? extends RegionImpl> regionB, Set<RegionImpl> setToReturn) {
+		Iterator<? extends RegionImpl> iA = regionA.iterator();
 
 		while (iA.hasNext()) {
 			RegionImpl compareRoot = iA.next();
-			Iterator<? extends RegionImpl> iB = componentsB.iterator();
+			Iterator<? extends RegionImpl> iB = regionB.iterator();
 			Field[] rootFields = compareRoot.getClass().getDeclaredFields();
 			while (iB.hasNext()) {
 				RegionImpl compareRootTo = iB.next();
