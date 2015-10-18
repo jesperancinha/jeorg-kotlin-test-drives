@@ -12,12 +12,12 @@ public class OriginalDependeyImpl extends Dependency {
 	}
 
 	public int getDependencyCount() {
-		return dependencies.toString().split(".").length;
+		return dependencies.toString().split(";").length;
 	}
 
 	public String getSubDependencyElement(int index) {
-		final String[] splittedValues = dependencies.toString().split(".");
-		if (index < splittedValues.length - 1) {
+		final String[] splittedValues = dependencies.toString().split(";");
+		if (index < splittedValues.length) {
 			return splittedValues[index];
 		} else {
 			return null;

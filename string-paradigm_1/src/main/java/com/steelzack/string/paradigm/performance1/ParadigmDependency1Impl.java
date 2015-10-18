@@ -13,11 +13,11 @@ public class ParadigmDependency1Impl extends Dependency {
     }
     
     public int getDependencyCount() {
-        return dependencies.toString().split(".").length;
+        return dependencies.toString().split(";").length;
     }
 
     public String getSubDependencyElement(int index) {
-       final String[] splittedValues = dependencies.toString().split(".");
+       final String[] splittedValues = dependencies.toString().split(";");
        if(index < splittedValues.length-1)
        {
     	   return splittedValues[index];

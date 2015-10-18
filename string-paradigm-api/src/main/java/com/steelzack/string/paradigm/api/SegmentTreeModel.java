@@ -6,7 +6,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
 public interface SegmentTreeModel {
-	DefaultMutableTreeNode findChild(DefaultMutableTreeNode parent, String code);
+	DefaultMutableTreeNode findChild(DefaultMutableTreeNode parent, String subDependency);
 
 	DefaultMutableTreeNode addCombinationNode(DefaultMutableTreeNode parent, Dependency dependency, int codeIndex);
 
