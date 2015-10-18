@@ -15,6 +15,12 @@ public class InputGeneratorOptions {
 	/**
 	 * A plain text file with the film year data
 	 */
+	@Option(name = "-my", aliases = "--movie-id", required = true)
+	private String movieIdFile;
+
+	/**
+	 * A plain text file with the film year data
+	 */
 	@Option(name = "-my", aliases = "--movie-year", required = true)
 	private String movieYearFile;
 
@@ -35,6 +41,42 @@ public class InputGeneratorOptions {
 	 */
 	@Option(name = "-md", aliases = "--movie-director", required = true)
 	private String movieDirectorFile;
+
+	/**
+	 * A plain text file with the film producer data
+	 */
+	@Option(name = "-mp", aliases = "--movie-producer", required = true)
+	private String movieProducerFile;
+
+	/**
+	 * A plain text file with the actor data
+	 */
+	@Option(name = "-mar", aliases = "--movie-actor", required = true)
+	private String movieActorFile;
+
+	/**
+	 * A plain text file with the actress data
+	 */
+	@Option(name = "-mas", aliases = "--movie-actress", required = true)
+	private String movieActressFile;
+
+	/**
+	 * A plain text file with the stuntman data
+	 */
+	@Option(name = "-msman", aliases = "--movie-stunt-man", required = true)
+	private String movieStuntManFile;
+
+	/**
+	 * A plain text file with the stuntman data
+	 */
+	@Option(name = "-msong", aliases = "--movie-song", required = true)
+	private String movieSongFile;
+
+	/**
+	 * A plain text file with the stuntwoman data
+	 */
+	@Option(name = "-mswoman", aliases = "--movie-stunt-woman", required = true)
+	private String movieStuntWomanFile;
 
 	@Option(name = "-i", aliases = "--increments", required = false)
 	private int increments = 5;
