@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:books bs:xmlns="http://www.bookshelexample.com">
+	<bs:book name="The Hobbit">
+		<bs:pages>123</bs:pages>
+		<bs:genre>Action</bs:genre>
+		<bs:director>J.R.R. Tolkien 1</bs:director>
+	</bs:book>
+	<bs:book name="The Hobbit 1">
+		<bs:pages>456</bs:pages>
+		<bs:genre>Comedy</bs:genre>
+		<bs:director>J.R.R. Tolkien 2</bs:director>
+	</bs:book>
+	<bs:book name="The Hobbit 2">
+		<bs:pages>789</bs:pages>
+		<bs:genre>War</bs:genre>
+		<bs:director>J.R.R. Tolkien 3</bs:director>
+	</bs:book>
+	<bs:book name="The Hobbit 3">
+		<bs:pages>101112</bs:pages>
+		<bs:genre>Drama</bs:genre>
+		<bs:director>J.R.R. Tolkien 4</bs:director>
+	</bs:book>
+</b:books>
