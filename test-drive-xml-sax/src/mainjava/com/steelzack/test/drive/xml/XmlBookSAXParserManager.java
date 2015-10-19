@@ -1,6 +1,13 @@
 package com.steelzack.test.drive.xml;
 
-public class XmlBookSAXParserManager implements XmlBookParserManager {
+import java.io.InputStream;
+
+public class XmlBookSAXParserManager extends XmlBookParserBuilder implements XmlBookParserManager {
+
+	XmlBookSAXParserManager(InputStream ioStream) {
+		super(ioStream);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public String getBookTitle(int bookNumber) {
