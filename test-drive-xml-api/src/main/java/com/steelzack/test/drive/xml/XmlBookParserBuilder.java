@@ -12,4 +12,6 @@ public abstract class XmlBookParserBuilder {
 	InputStream getIoStream() {
 		return ioStream;
 	}
+
+	abstract void loadConfiguration() throws Exception;
 }

@@ -39,4 +39,10 @@ public class XmlBookJAXBParserManager extends XmlBookParserBuilder implements Xm
 		return 0;
 	}
 
+	@Override
+	void loadConfiguration() throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
 }
