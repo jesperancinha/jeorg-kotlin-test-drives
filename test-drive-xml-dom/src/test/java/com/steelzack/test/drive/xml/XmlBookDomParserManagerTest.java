@@ -48,6 +48,15 @@ public class XmlBookDomParserManagerTest {
 		final XmlBookParserManager pm = new XmlBookDomParserManager(inputStream);
 		pm.init();
 
+		final String bookGenre0 = pm.getGenre(0);
+		final String bookGenre1 = pm.getGenre(1);
+		final String bookGenre2 = pm.getGenre(2);
+		final String bookGenre3 = pm.getGenre(3);
+
+		assertEquals("Action", bookGenre0);
+		assertEquals("Comedy", bookGenre1);
+		assertEquals("War", bookGenre2);
+		assertEquals("Drama", bookGenre3);
 	}
 
 	@Test
@@ -56,6 +65,15 @@ public class XmlBookDomParserManagerTest {
 		final XmlBookParserManager pm = new XmlBookDomParserManager(inputStream);
 		pm.init();
 
+		final String bookAuthor0 = pm.getAuthor(0);
+		final String bookAuthor1 = pm.getAuthor(1);
+		final String bookAuthor2 = pm.getAuthor(2);
+		final String bookAuthor3 = pm.getAuthor(3);
+
+		assertEquals("J.R.R. Tolkien 1", bookAuthor0);
+		assertEquals("J.R.R. Tolkien 2", bookAuthor1);
+		assertEquals("J.R.R. Tolkien 3", bookAuthor2);
+		assertEquals("J.R.R. Tolkien 4", bookAuthor3);
 	}
 
 	@Test
@@ -64,5 +82,8 @@ public class XmlBookDomParserManagerTest {
 		final XmlBookParserManager pm = new XmlBookDomParserManager(inputStream);
 		pm.init();
 
+		final int nPages = pm.getNumberOfBooks();
+
+		assertEquals(4, nPages);
 	}
 }
