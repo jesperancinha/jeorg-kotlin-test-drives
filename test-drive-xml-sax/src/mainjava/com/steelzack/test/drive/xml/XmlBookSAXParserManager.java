@@ -16,9 +16,9 @@ public class XmlBookSAXParserManager extends XmlBookParserBuilder implements Xml
 	}
 
 	@Override
-	public String getNumberOfPages(int bookNumber) {
+	public int getNumberOfPages(int bookNumber) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class XmlBookSAXParserManager extends XmlBookParserBuilder implements Xml
 	}
 
 	@Override
-	void loadConfiguration() throws Exception {
+	public void init() throws Exception {
 		// TODO Auto-generated method stub
 
 	}

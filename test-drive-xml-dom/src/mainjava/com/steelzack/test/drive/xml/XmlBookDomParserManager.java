@@ -24,9 +24,9 @@ public class XmlBookDomParserManager extends XmlBookParserBuilder implements Xml
 	}
 
 	@Override
-	public String getNumberOfPages(int bookNumber) {
+	public int getNumberOfPages(int bookNumber) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class XmlBookDomParserManager extends XmlBookParserBuilder implements Xml
 	}
 
 	@Override
-	void loadConfiguration() throws SAXException, IOException, ParserConfigurationException {
+	public void init() throws SAXException, IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		document = db.parse(getIoStream());
