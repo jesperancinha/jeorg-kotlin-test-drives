@@ -51,7 +51,7 @@ public class XmlBookDomParserManagerTest {
 	}
 
 	@Test
-	public void testGetDirector() throws Exception {
+	public void testGetAuthor() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFileForDom.xml");
 		final XmlBookParserManager pm = new XmlBookDomParserManager(inputStream);
 		pm.init();

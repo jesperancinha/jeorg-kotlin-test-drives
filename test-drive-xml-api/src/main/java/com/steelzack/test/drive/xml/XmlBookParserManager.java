@@ -7,7 +7,7 @@ public interface XmlBookParserManager {
 
 	String getGenre(int bookNumber);
 
-	String getDirector(int bookNumber);
+	String getAuthor(int bookNumber);
 
 	int getNumberOfBooks();
 

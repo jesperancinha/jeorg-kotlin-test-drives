@@ -36,7 +36,7 @@ public class XmlBookDomParserManager extends XmlBookParserBuilder implements Xml
 	}
 
 	@Override
-	public String getDirector(int bookNumber) {
+	public String getAuthor(int bookNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}

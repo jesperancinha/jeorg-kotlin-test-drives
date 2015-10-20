@@ -28,7 +28,7 @@ public class XmlBookJAXBParserManager extends XmlBookParserBuilder implements Xm
 	}
 
 	@Override
-	public String getDirector(int bookNumber) {
+	public String getAuthor(int bookNumber) {
 		// TODO Auto-generated method stub
 		return null;
 	}
