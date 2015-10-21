@@ -24,7 +24,7 @@
         module="test-drive-xml-dom"
         status="integration">
 	</info>
-	<dependencies>\
+	<dependencies>
 	<dependency org="junit" name="junit" rev="4.12"/>	
 	</dependencies>
 </ivy-module>

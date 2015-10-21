@@ -16,7 +16,7 @@
           target: default              
          ================================= -->
 	<target name="default" depends="depends" description="description">
-
+		 <ivy:retrieve />
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
