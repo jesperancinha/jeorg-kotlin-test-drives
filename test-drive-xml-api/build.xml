@@ -7,22 +7,22 @@
                    
      joao                                                                
      ====================================================================== -->
-<project name="project" default="default">
-    <description>
+<project name="project" xmlns:ivy="antlib:org.apache.ivy.ant" default="default">
+	<description>
             description
     </description>
 
-    <!-- ================================= 
+	<!-- ================================= 
           target: default              
          ================================= -->
-    <target name="default" depends="depends" description="description">
-        
-    </target>
+	<target name="default" depends="depends" description="description">
 
-    <!-- - - - - - - - - - - - - - - - - - 
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
           target: depends                      
          - - - - - - - - - - - - - - - - - -->
-    <target name="depends">
-    </target>
+	<target name="depends">
+	</target>
 
 </project>
