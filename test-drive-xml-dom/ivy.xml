@@ -25,6 +25,7 @@
         status="integration">
 	</info>
 	<dependencies>
-	<dependency org="junit" name="junit" rev="4.12"/>	
+	<dependency org="junit" name="junit" rev="4.12"/>
+	<!--<dependency org="com.steelzack" name="test-drive-xml-api" rev="latest.integration"/>-->
 	</dependencies>
 </ivy-module>

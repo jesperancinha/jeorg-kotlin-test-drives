@@ -2,3 +2,5 @@
 **/build-by-eclipse
 **/bin
 **/lib
+ivy-cache
+repository
