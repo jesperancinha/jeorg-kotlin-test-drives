@@ -9,7 +9,7 @@ import org.junit.Test;
 public class XmlBookJAXBParserManagerTest {
 	@Test
 	public void testGetBookTitle() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFileForDom.xml");
+		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
 		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
@@ -26,7 +26,7 @@ public class XmlBookJAXBParserManagerTest {
 
 	@Test
 	public void testGetNumberOfPages() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFileForDom.xml");
+		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
 		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
@@ -43,7 +43,7 @@ public class XmlBookJAXBParserManagerTest {
 
 	@Test
 	public void testGetGenre() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFileForDom.xml");
+		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
 		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
@@ -60,7 +60,7 @@ public class XmlBookJAXBParserManagerTest {
 
 	@Test
 	public void testGetAuthor() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFileForDom.xml");
+		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
 		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
@@ -77,7 +77,7 @@ public class XmlBookJAXBParserManagerTest {
 
 	@Test
 	public void testGetNumberOfBooks() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFileForDom.xml");
+		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
 		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
