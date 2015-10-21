@@ -2,47 +2,48 @@ package com.steelzack.test.drive.xml;
 
 import java.io.InputStream;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+
+import com.steelzack.test.drive.books.xml.Books;
+
 public class XmlBookJAXBParserManager extends XmlBookParserBuilder implements XmlBookParserManager {
+	private Books books;
 
 	XmlBookJAXBParserManager(InputStream ioStream) {
 		super(ioStream);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String getBookTitle(int bookNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		return books.getBooks().get(bookNumber).getTitle();
 	}
 
 	@Override
 	public int getNumberOfPages(int bookNumber) {
-		// TODO Auto-generated method stub
-		return 0;
+		return books.getBooks().get(bookNumber).getPages();
 	}
 
 	@Override
 	public String getGenre(int bookNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		return books.getBooks().get(bookNumber).getGenre();
 	}
 
 	@Override
 	public String getAuthor(int bookNumber) {
-		// TODO Auto-generated method stub
-		return null;
+		return books.getBooks().get(bookNumber).getAuthor();
 	}
 
 	@Override
 	public int getNumberOfBooks() {
-		// TODO Auto-generated method stub
-		return 0;
+		return books.getBooks().size();
 	}
 
 	@Override
 	public void init() throws Exception {
-		// TODO Auto-generated method stub
-
+		final JAXBContext context = JAXBContext.newInstance(Books.class);
+		Unmarshaller u = context.createUnmarshaller();
+		books = (Books) u.unmarshal(getIoStream());
 	}
 
 }

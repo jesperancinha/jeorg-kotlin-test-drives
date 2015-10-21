@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<books bs:xmlns="http://www.bookshelexample.com">
-	<bs:book name="The Hobbit">
+<books xmlns:bs="http://www.bookshelexample.com">
+	<bs:book name="The Hobbit 0">
 		<bs:pages>123</bs:pages>
 		<bs:genre>Action</bs:genre>
 		<bs:author>J.R.R. Tolkien 1</bs:author>
