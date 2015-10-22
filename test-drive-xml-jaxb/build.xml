@@ -1,28 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- ====================================================================== 
-     Oct 21, 2015 4:42:09 PM                                                        
-
-     project    
-     description
-                   
-     joao                                                                
-     ====================================================================== -->
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="project" default="default">
-	<description>
-            description
-    </description>
-
-	<!-- ================================= 
-          target: default              
-         ================================= -->
-	<target name="default" depends="depends" description="description">
-		 <ivy:retrieve />
-	</target>
-
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: depends                      
-         - - - - - - - - - - - - - - - - - -->
-	<target name="depends">
-	</target>
-
+<project name="test-drive-xml-jaxb" default="compile">
+	<property file="build.properties"/>
+	
+	<import file="../common/common.xml"/>
 </project>

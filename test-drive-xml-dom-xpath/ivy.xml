@@ -21,10 +21,18 @@
        xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
     <info
         organisation="com.steelzack"
-        module="test-drive-xml-dom"
+        module="test-drive-xml-dom-path"
         status="integration">
 	</info>
+	<configurations>
+      <conf name="core"/>
+      <conf name="standalone" extends="core"/>
+    </configurations>
+    <publications>
+      <artifact name="test-drive-xml-dom-xpath" type="jar" conf="core" />
+    </publications>
 	<dependencies>
-	<dependency org="junit" name="junit" rev="4.12"/>	
+		<dependency org="junit" name="junit" rev="4.12"/>
+		<dependency org="com.steelzack" name="test-drive-xml-api" rev="1.0-dev-b10" conf="core->default"/>	
 	</dependencies>
 </ivy-module>

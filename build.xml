@@ -28,8 +28,12 @@
   <target name="buildlist" depends="load-ivy"> 
     <ivy:buildlist reference="build-path">
 	    <fileset dir=".">
-		<include name="test-drive-xml-api/build.xml" />
-		<include name="test-drive-xml-dom/build.xml" />
+			<include name="test-drive-xml-api/build.xml" />
+			<include name="test-drive-xml-dom/build.xml" />
+			<include name="test-drive-xml-dom-xpath/build.xml" />
+			<include name="test-drive-xml-sax/build.xml" />
+			<include name="test-drive-xml-jaxb/build.xml" />
+			<include name="test-drive-xml-main-runner/build.xml" />
 	    </fileset>
     </ivy:buildlist>
   </target>
