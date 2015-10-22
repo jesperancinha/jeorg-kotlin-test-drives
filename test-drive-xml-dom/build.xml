@@ -1,29 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- ====================================================================== 
-     Oct 21, 2015 4:41:15 PM                                                        
-
-     project    
-     description
-                   
-     joao                                                                
-     ====================================================================== -->
-<project name="project" xmlns:ivy="antlib:org.apache.ivy.ant" default="default">
-	<description>
-            description
-    </description>
-
-	<!-- ================================= 
-          target: default              
-         ================================= -->
-	<target name="default" depends="depends" description="description">
-		 <ivy:retrieve />
-	</target>
-
+<project name="test-drive-xml-dom" default="compile">
+	<property file="build.properties"/>
 	
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: depends                      
-         - - - - - - - - - - - - - - - - - -->
-	<target name="depends">
-	</target>
-
+	<import file="../common/common.xml"/>
 </project>
