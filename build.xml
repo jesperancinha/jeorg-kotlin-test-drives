@@ -1,6 +1,7 @@
 <project name="performance-xml-csv-json" 
          xmlns:ivy="antlib:org.apache.ivy.ant">
-         
+
+	<property environment="env"/>
 	<property name="ivy.jar.dir" value="${user.home}/.ivy2/jars" />
 	<property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
 
