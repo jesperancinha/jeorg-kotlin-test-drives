@@ -13,7 +13,7 @@
 		<artifact name="test-drive-xml-dom" type="jar" conf="core" />
 	</publications>
 	<dependencies>
-		<dependency org="junit" name="junit" rev="4.12" />
+		<dependency org="junit" name="junit" rev="${version.performance.parsers.junit}" />
 		<dependency org="com.steelzack" name="test-drive-xml-api"
 			rev="${version.performance.parsers.api}" conf="standalone" />
 	</dependencies>
