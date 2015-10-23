@@ -7,10 +7,10 @@
         status="integration">
 	</info>
 	<configurations>
-      <conf name="core"/>
-      <conf name="standalone" extends="core"/>
+      <conf name="core" visibility="public"/>
+      <conf name="standalone" extends="core" visibility="public"/>
     </configurations>
     <publications>
-      <artifact name="test-drive-xml-api" type="jar" conf="core" />
+      <artifact name="test-drive-xml-api" type="jar" conf="standalone" />
     </publications>
 </ivy-module>

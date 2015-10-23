@@ -14,6 +14,6 @@
     </publications>
 	<dependencies>
 			<dependency org="junit" name="junit" rev="4.12"/>
-			<dependency org="com.steelzack" name="test-drive-xml-api" rev="${version.performance.parsers.api}" conf="core->default"/>	
+			<dependency org="com.steelzack" name="test-drive-xml-api" rev="${version.performance.parsers.api}" conf="standalone"/>	
 	</dependencies>
 </ivy-module>

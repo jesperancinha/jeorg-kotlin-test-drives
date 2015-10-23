@@ -50,8 +50,8 @@
 
     
 	<!-- setup ivy default configuration with some custom info -->
-	<property name="ivy.local.default.root" value="${user.home}/.ivy-local"/>
-	<property name="ivy.shared.default.root" value="${user.home}/.ivy-shared"/>
+	<property name="ivy.local.default.root" value="${user.home}/.ivy2/local"/>
+	<property name="ivy.shared.default.root" value="${user.home}/.ivy2/cache"/>
 
    	<!-- here is how we would have configured ivy if we had our own ivysettings file
     <ivy:settings file="${common.dir}/ivysettings.xml" />
