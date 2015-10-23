@@ -7,6 +7,8 @@
 
     <property name="build.dir" value="build" />
     <property name="src.dir" value="src" />
+	
+   	<property file="build.properties"/>
     
 	<!-- ================================= 
           target: load-ivy         

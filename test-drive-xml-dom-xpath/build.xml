@@ -1,5 +1,5 @@
 <project name="test-drive-xml-dom-xpath" default="compile">
-	<property file="build.properties"/>
+	<property file="../build.properties"/>
 	
 	<import file="../common/common.xml"/>
 </project>
