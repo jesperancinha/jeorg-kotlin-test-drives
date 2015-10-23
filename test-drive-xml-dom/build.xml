@@ -1,0 +1,5 @@
+<project name="test-drive-xml-dom" default="compile">
+	<property file="../build.properties"/>
+	
+	<import file="../common/common.xml"/>
+</project>

@@ -1,0 +1,5 @@
+<project name="test-drive-xml-main-runner" default="compile">
+	<property file="../build.properties"/>
+	
+	<import file="../common/common.xml"/>
+</project>
