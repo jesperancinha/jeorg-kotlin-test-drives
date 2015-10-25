@@ -8,12 +8,12 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import com.steelzack.test.drive.books.xml.SAXBooksParser;
+import com.steelzack.test.drive.sax.books.SAXBooksParser;
 
-public class XmlBookSAXParserManager extends XmlBookParserBuilder implements XmlBookParserManager {
+public class XmlBookSAXParserManager extends XmlBookParserBuilder {
 	private SAXBooksParser handler = null;
 
-	XmlBookSAXParserManager(InputStream ioStream) {
+	public XmlBookSAXParserManager(InputStream ioStream) {
 		super(ioStream);
 	}
 

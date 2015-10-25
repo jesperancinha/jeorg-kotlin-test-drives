@@ -12,4 +12,6 @@ public interface XmlBookParserManager {
 	int getNumberOfBooks();
 
 	void init() throws Exception;
+
+	void closeStream();
 }

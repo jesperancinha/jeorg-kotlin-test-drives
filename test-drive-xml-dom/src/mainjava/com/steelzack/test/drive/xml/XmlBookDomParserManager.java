@@ -12,7 +12,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XmlBookDomParserManager extends XmlBookParserBuilder implements XmlBookParserManager {
+public class XmlBookDomParserManager extends XmlBookParserBuilder {
 	private static final String AUTHOR = "author";
 	private static final String GENRE = "genre";
 	private static final String PAGES = "pages";
@@ -21,7 +21,7 @@ public class XmlBookDomParserManager extends XmlBookParserBuilder implements Xml
 	private Document document = null;
 	private NodeList bookList = null;
 
-	XmlBookDomParserManager(InputStream ioStream) {
+	public XmlBookDomParserManager(InputStream ioStream) {
 		super(ioStream);
 	}
 

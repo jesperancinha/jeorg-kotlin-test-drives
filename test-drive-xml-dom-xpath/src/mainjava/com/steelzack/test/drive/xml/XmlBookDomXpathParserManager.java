@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class XmlBookDomXpathParserManager extends XmlBookParserBuilder implements XmlBookParserManager {
+public class XmlBookDomXpathParserManager extends XmlBookParserBuilder {
 	private static final String NAME = "@name";
 	private static final String BOOKS = "/books/";
 	private static final String BS = "bs:";
@@ -30,7 +30,7 @@ public class XmlBookDomXpathParserManager extends XmlBookParserBuilder implement
 	private NodeList bookList = null;
 	private XPath xpath = null;
 
-	XmlBookDomXpathParserManager(InputStream ioStream) {
+	public XmlBookDomXpathParserManager(InputStream ioStream) {
 		super(ioStream);
 	}
 

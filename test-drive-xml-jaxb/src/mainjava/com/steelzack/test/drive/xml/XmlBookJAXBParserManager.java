@@ -5,12 +5,12 @@ import java.io.InputStream;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import com.steelzack.test.drive.books.xml.Books;
+import com.steelzack.test.drive.jaxb.books.xml.Books;
 
-public class XmlBookJAXBParserManager extends XmlBookParserBuilder implements XmlBookParserManager {
+public class XmlBookJAXBParserManager extends XmlBookParserBuilder {
 	private Books books;
 
-	XmlBookJAXBParserManager(InputStream ioStream) {
+	public XmlBookJAXBParserManager(InputStream ioStream) {
 		super(ioStream);
 	}
 
