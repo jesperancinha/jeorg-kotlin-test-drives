@@ -1,4 +1,4 @@
-package com.steelzack.test.drive.books.xml;
+package com.steelzack.test.drive.sax.books;
 
 public class Book {
 	private String title;

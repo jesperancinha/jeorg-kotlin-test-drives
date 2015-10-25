@@ -11,10 +11,12 @@ public class XmlTestRunner {
 
 	/**
 	 * @param args
+	 * @throws Exception
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void main(String[] args) throws Exception {
+		final XmlTestRunnerWorker worker = new XmlTestRunnerWorker(args);
+		if (!worker.isNoop()) {
+			worker.runTests();
+		}
 	}
-
 }
