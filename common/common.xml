@@ -1,5 +1,14 @@
 <project name="common" 
          xmlns:ivy="antlib:org.apache.ivy.ant">
+	<property name="one-jar.dist.dir" value="/usr/share/java/lib/one-jar-ant" />
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+	  <classpath>
+	    <pathelement location="/usr/share/java/lib/ant-contrib.jar"/>
+	  </classpath>
+	</taskdef>
+	<import file="${one-jar.dist.dir}/one-jar-ant-task.xml" optional="true" />
+	
+
 	<!-- a sample common ant build file, used for ivy multi-project tutorial
 	     feel free to copy and adapt it to your own needs
 	     Note that the only targets specific to ivy are:
@@ -67,6 +76,7 @@
     	<!-- the call to resolve is not mandatory, retrieve makes an implicit call if we don't -->
     	<ivy:resolve file="${ivy.file}"/>
     	<ivy:retrieve pattern="${lib.dir}/[artifact]-[type]-[revision].[ext]" />
+		<ivy:cachepath pathid="ivy.build.path" conf="standalone" />
     </target>
     
     <!-- ================================= 
@@ -140,6 +150,18 @@
     			           pubrevision="${version}" 
     			           status="release"
     	/>
+    	<condition property="project.set" else="false">
+    	      <isset property="project.main"/>
+    	    </condition>
+    	<if>
+    	 <equals arg1="${project.set}" arg2="false" />
+    	 <then>
+    	 	<echo>One jar not needed...</echo>
+    	 </then>
+    	 <else>
+    	 	<antcall target="one-jar-build" />
+    	 </else>
+    	</if>
         <echo message="project ${ant.project.name} released with version ${version}" />
     </target>
 
@@ -154,6 +176,18 @@
     			        status="integration"
     					forcedeliver="true"
     	/>
+    	<condition property="project.set" else="false">
+    		<isset property="project.main"/>
+     	</condition>
+    	<if>
+    		<equals arg1="${project.set}" arg2="false" />
+    		<then>
+        	 	<echo>One jar not needed...</echo>
+    		</then>
+    		<else>
+    			<antcall target="one-jar-build" />
+    		</else>
+    	</if>
         <echo message="project ${ant.project.name} published locally with version ${version}" />
     </target>
 
@@ -184,4 +218,30 @@
           target: clean              
          ================================= -->
     <target name="clean" depends="clean-build, clean-lib" description="--> clean the project" />
+	
+	 <!-- ================================= 
+          target: one-jar-build              
+         ================================= -->
+	<target name="one-jar-build" depends="resolve" description="description">
+		<mkdir dir="build" />
+		<!-- Build classes for main.jar -->
+		<javac destdir="${build.dir}" includeantruntime="true" classpathref="ivy.build.path">
+			<src path="src/main/java" />
+		</javac>
+		<!-- Construct the One-JAR file -->
+		<one-jar destfile="${build.dir}/one-${artifact.name}">
+			<lib>
+				<fileset dir="lib" id="ivy.build.path" excludes="html">
+					<exclude name="*.html" />
+				</fileset>
+			</lib>
+			<main>
+				<!-- Construct main.jar from classes and source code -->
+				<fileset dir="${build.dir}" />
+			</main>
+			<manifest>
+				<attribute name="One-Jar-Main-Class" value="${project.main}" />
+			</manifest>
+		</one-jar>
+	</target>
 </project>

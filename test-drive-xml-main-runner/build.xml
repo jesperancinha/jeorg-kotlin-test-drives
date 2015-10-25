@@ -2,4 +2,6 @@
 	<property file="../build.properties"/>
 	
 	<import file="../common/common.xml"/>
+	<property name="project.main" value="com.steelzack.test.drive.books.XmlTestRunner"></property>
+	<property name="artifact.name" value="test-drive-xml-main-runner.jar"></property>
 </project>
