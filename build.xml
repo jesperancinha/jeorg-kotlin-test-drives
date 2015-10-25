@@ -46,6 +46,11 @@
     <subant target="publish" buildpathref="build-path" />
   </target>
 
+  <target name="publish-local" depends="buildlist" 
+  			description="compile, jar and publish all projects in the right order">
+    <subant target="publish-local" buildpathref="build-path" />
+  </target>
+
   <target name="clean-all" depends="buildlist" description="clean all projects">
     <subant target="clean" buildpathref="build-path" />
   </target>
