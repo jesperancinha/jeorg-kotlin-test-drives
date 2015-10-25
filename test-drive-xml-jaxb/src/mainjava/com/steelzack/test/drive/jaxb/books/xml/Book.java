@@ -1,4 +1,4 @@
-package com.steelzack.test.drive.books.xml;
+package com.steelzack.test.drive.jaxb.books.xml;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;

@@ -4,7 +4,7 @@
     xmlns = {
     		@XmlNs(prefix = "bs", namespaceURI="http://www.bookshelexample.com")
     })
-package com.steelzack.test.drive.books.xml;
+package com.steelzack.test.drive.jaxb.books.xml;
 
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
 

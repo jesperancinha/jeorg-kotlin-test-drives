@@ -1,4 +1,4 @@
-package com.steelzack.test.drive.books.xml;
+package com.steelzack.test.drive.jaxb.books.xml;
 
 import java.util.List;
 
