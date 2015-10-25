@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -16,6 +18,7 @@ import com.steelzack.test.drive.xml.XmlBookParserManager;
 import com.steelzack.test.drive.xml.XmlBookSAXParserManager;
 
 public class XmlTestRunnerWorker {
+	private Logger LOG = Logger.getLogger(XmlTestRunner.class.getName());
 
 	private String xmlFile;
 	private Integer nIterations;
@@ -52,7 +55,8 @@ public class XmlTestRunnerWorker {
 	}
 
 	private void callParseIterations(Integer nIterations, XmlBookManagerType type) throws Exception {
-
+		LOG.log(Level.INFO, "Start of test for {0} with {1} iterations", new Object[] { type, nIterations });
+		final Long timeStampNow = System.nanoTime();
 		for (int i = 0; i < nIterations; i++) {
 			try {
 				final InputStream ioStream = getInputStreamFromFile();
@@ -62,6 +66,8 @@ public class XmlTestRunnerWorker {
 				throw new RuntimeException(String.format("Test failed on iteration: %d", i), e);
 			}
 		}
+		LOG.log(Level.INFO, "End of test for {0} with {1} iterations. Took {2} ms",
+				new Object[] { type, nIterations, (System.nanoTime() - timeStampNow) / 1000000 });
 	}
 
 	private XmlBookParserBuilder getManagerFor(final InputStream ioStream, XmlBookManagerType type) {

@@ -44,4 +44,20 @@ public class XmlTestRunnerWorkerTest {
 		};
 		runner.runTests();
 	}
+
+	@Test
+	public void testRunTests_10000_Iter() throws Exception {
+		final XmlTestRunnerWorker runner = new XmlTestRunnerWorker() {
+			@Override
+			InputStream getInputStreamFromFile() throws FileNotFoundException {
+				return getClass().getResourceAsStream("testXmlFile.xml");
+			}
+
+			@Override
+			public Integer getnIterations() {
+				return 10000;
+			}
+		};
+		runner.runTests();
+	}
 }
