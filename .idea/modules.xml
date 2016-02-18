@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/xml_toevoeger.iml" filepath="$PROJECT_DIR$/xml_toevoeger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xml_adder.iml" filepath="$PROJECT_DIR$/xml_adder.iml" />
     </modules>
   </component>
 </project>
