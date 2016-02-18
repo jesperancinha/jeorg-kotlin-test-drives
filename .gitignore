@@ -14,3 +14,7 @@ hs_err_pid*
 # external files
 
 **/.DS_Store
+
+# idea files
+
+.idea/workspace.xml
