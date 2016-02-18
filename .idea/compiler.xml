@@ -22,12 +22,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="xml_adder" />
         <module name="xml_toevoeger" />
+      </profile>
+      <profile default="false" name="Annotation profile for xml_adder" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="xml_adder" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="xml_adder" target="1.5" />
+      <module name="xml_adder" target="1.8" />
       <module name="xml_toevoeger" target="1.5" />
     </bytecodeTargetLevel>
   </component>

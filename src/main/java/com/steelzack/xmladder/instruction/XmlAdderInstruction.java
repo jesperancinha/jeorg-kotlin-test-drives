@@ -1,4 +1,4 @@
-package com.steelzack.xmladder;
+package com.steelzack.xmladder.instruction;
 
 import java.util.Map;
 
@@ -6,8 +6,6 @@ import java.util.Map;
  * Created by joaofilipesabinoesperancinha on 16-02-16.
  */
 public class XmlAdderInstruction {
-
-    private final String xPath;
 
     private final Map<String, String> attributesToAdd;
 
@@ -22,7 +20,6 @@ public class XmlAdderInstruction {
 
     /**
      * Only attributesToAdd attribute will be available on version Zero
-     * @param xPath
      * @param attributeValueToReplace
      * @param attributesToAdd
      * @param attributeKeyValueToReplaceOrAdd
@@ -30,18 +27,25 @@ public class XmlAdderInstruction {
      * @param siblingToAddValues
      */
     public XmlAdderInstruction( //
-                                String xPath, //
                                 String attributeValueToReplace, //
                                 Map<String, String> attributesToAdd, //
                                 Map<String, String> attributeKeyValueToReplaceOrAdd, //
                                 Map<String, Map<String, String>> siblingsToAdd, //
                                 Map<String, String> siblingToAddValues //
     ) {
-        this.xPath = xPath;
         this.attributesToAdd = attributesToAdd;
         this.attributeValueToReplace = attributeValueToReplace;
         this.attributeKeyValueToReplaceOrAdd = attributeKeyValueToReplaceOrAdd;
         this.siblingsToAdd = siblingsToAdd;
         this.siblingToAddValues = siblingToAddValues;
+    }
+
+    public void addAttribute(String name, String value)
+    {
+        attributesToAdd.put(name,value);
+    }
+
+    public Map<String, String> getAttributesToAdd() {
+        return attributesToAdd;
     }
 }
