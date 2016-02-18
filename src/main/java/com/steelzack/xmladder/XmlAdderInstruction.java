@@ -20,6 +20,15 @@ public class XmlAdderInstruction {
     private final Map<String, String> siblingToAddValues;
 
 
+    /**
+     * Only attributesToAdd attribute will be available on version Zero
+     * @param xPath
+     * @param attributeValueToReplace
+     * @param attributesToAdd
+     * @param attributeKeyValueToReplaceOrAdd
+     * @param siblingsToAdd
+     * @param siblingToAddValues
+     */
     public XmlAdderInstruction( //
                                 String xPath, //
                                 String attributeValueToReplace, //

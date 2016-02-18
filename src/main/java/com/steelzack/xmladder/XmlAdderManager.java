@@ -9,12 +9,12 @@ import java.util.List;
  */
 public class XmlAdderManager {
 
-    private List<String> xpathArrayList = new ArrayList<String>();
+    private List<XmlAdderInstruction> xpathArrayList = new ArrayList<XmlAdderInstruction>();
 
     public XmlAdderManager() {
     }
 
-    public void addXpathMatch(String xpathMatch) {
+    public void addXpathMatch(XmlAdderInstruction xpathMatch) {
         xpathArrayList.add(xpathMatch);
     }
 }
