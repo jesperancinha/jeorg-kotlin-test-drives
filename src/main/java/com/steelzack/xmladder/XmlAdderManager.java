@@ -1,4 +1,4 @@
-package com.steelzack.xmltoevoeger;
+package com.steelzack.xmladder;
 
 
 import java.util.ArrayList;
@@ -14,8 +14,7 @@ public class XmlAdderManager {
     public XmlAdderManager() {
     }
 
-    public void addXpathMatch(String xpathMatch)
-    {
+    public void addXpathMatch(String xpathMatch) {
         xpathArrayList.add(xpathMatch);
     }
 }

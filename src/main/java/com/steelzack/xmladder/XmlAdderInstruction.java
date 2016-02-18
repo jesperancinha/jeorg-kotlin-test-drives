@@ -1,4 +1,4 @@
-package com.steelzack.xmltoevoeger;
+package com.steelzack.xmladder;
 
 import java.util.Map;
 
