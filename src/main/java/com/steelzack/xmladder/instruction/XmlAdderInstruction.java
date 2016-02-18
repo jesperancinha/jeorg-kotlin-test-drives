@@ -44,4 +44,8 @@ public class XmlAdderInstruction {
     {
         attributesToAdd.put(name,value);
     }
+
+    public Map<String, String> getAttributesToAdd() {
+        return attributesToAdd;
+    }
 }

@@ -6,9 +6,9 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import com.steelzack.xmladder.csv.AttributeBean;
 import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -17,30 +17,32 @@ import java.util.List;
 public class XmlAdderManager {
 
     private XmlAdderAddAttributeManager addAttributeManager = new XmlAdderAddAttributeManager();
-    private File fileSourceDirectory;
-    private File fileDestinationDirectory;
+    private InputStream fileSourceDirectory;
+    private InputStream fileDestinationDirectory;
 
     public XmlAdderManager( //
-                            File fileSourceDirectory,
-                            File fileDestinationDirectory, //
-                            File fileAddAttributes //
+                            InputStream fileSourceDirectory,
+                            InputStream fileDestinationDirectory, //
+                            InputStream fileAddAttributes //
     ) throws IOException {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
 
-
         readAllAddAttributes(fileAddAttributes);
     }
 
-    private void readAllAddAttributes(File fileAddAttributes) throws IOException {
-        final FileReader fr = new FileReader(fileAddAttributes); //
+    protected void readAllAddAttributes(InputStream fileAddAttributes) throws IOException {
         final HeaderColumnNameMappingStrategy<AttributeBean> strategy = new HeaderColumnNameMappingStrategy<>();
         strategy.setType(AttributeBean.class);
         final CsvToBean<AttributeBean> csvToBean = new CsvToBean<>();
-        final List<AttributeBean> beanList = csvToBean.parse(strategy, fr);
+        final List<AttributeBean> beanList = csvToBean.parse(strategy, new InputStreamReader(fileAddAttributes));
 
         for (AttributeBean attBean : beanList) {
             addAttributeManager.addAttribute(attBean.getName(), attBean.getValue(), attBean.getXpath());
         }
+    }
+
+    public XmlAdderAddAttributeManager getAddAttributeManager() {
+        return addAttributeManager;
     }
 }
