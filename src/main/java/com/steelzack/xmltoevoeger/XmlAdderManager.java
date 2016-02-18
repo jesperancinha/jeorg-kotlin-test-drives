@@ -7,11 +7,11 @@ import java.util.List;
 /**
  * Created by joaofilipesabinoesperancinha on 16-02-16.
  */
-public class XmlToevoegerManager {
+public class XmlAdderManager {
 
     private List<String> xpathArrayList = new ArrayList<String>();
 
-    public XmlToevoegerManager() {
+    public XmlAdderManager() {
     }
 
     public void addXpathMatch(String xpathMatch)

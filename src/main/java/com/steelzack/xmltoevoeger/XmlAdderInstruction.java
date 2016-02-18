@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Created by joaofilipesabinoesperancinha on 16-02-16.
  */
-public class XmlToevoegerInstruction {
+public class XmlAdderInstruction {
 
     private final String xPath;
 
@@ -20,13 +20,13 @@ public class XmlToevoegerInstruction {
     private final Map<String, String> siblingToAddValues;
 
 
-    public XmlToevoegerInstruction( //
-                                    String xPath, //
-                                    Map<String, String> attributesToAdd, //
-                                    String attributeValueToReplace, //
-                                    Map<String, String> attributeKeyValueToReplaceOrAdd, //
-                                    Map<String, Map<String, String>> siblingsToAdd, //
-                                    Map<String, String> siblingToAddValues //
+    public XmlAdderInstruction( //
+                                String xPath, //
+                                String attributeValueToReplace, //
+                                Map<String, String> attributesToAdd, //
+                                Map<String, String> attributeKeyValueToReplaceOrAdd, //
+                                Map<String, Map<String, String>> siblingsToAdd, //
+                                Map<String, String> siblingToAddValues //
     ) {
         this.xPath = xPath;
         this.attributesToAdd = attributesToAdd;
