@@ -12,16 +12,17 @@ public class XmlAdderMain {
         final String sourceDirectory = args[0];
         final String destinationDirectory = args[1];
         final String addAttributesFile = args[2];
+        final String rule = args[3];
 
         final File fileSourceDirectory = new File(sourceDirectory);
         final File fileDestinationDirectory = new File(destinationDirectory);
         final InputStream fileAddAtributesFile = new FileInputStream(new File(addAttributesFile));
+        final InputStream fileRule = new FileInputStream(new File(rule));
 
         final XmlAdderManager manager = new XmlAdderManager( //
                 fileSourceDirectory, //
                 fileDestinationDirectory, //
-                fileAddAtributesFile //
-        );
-
+                fileAddAtributesFile, //
+                fileRule);
     }
 }

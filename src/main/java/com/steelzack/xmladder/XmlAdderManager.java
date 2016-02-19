@@ -6,6 +6,7 @@ import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import com.steelzack.xmladder.csv.AttributeBean;
 import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager;
 import com.steelzack.xmladder.instruction.XmlAdderInstruction;
+import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,6 +21,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by joaofilipesabinoesperancinha on 16-02-16.
@@ -29,10 +31,10 @@ public class XmlAdderManager {
     // Document parsing setup instances
     private final DocumentBuilderFactory factory =
             DocumentBuilderFactory.newInstance();
+    private final InputStream fileRule;
     private DocumentBuilder builder = null;
     private final XPathFactory xPathfactory = XPathFactory.newInstance();
     private final XPath xpath = xPathfactory.newXPath();
-
 
     private XmlAdderAddAttributeManager addAttributeManager = new XmlAdderAddAttributeManager();
 
@@ -42,10 +44,11 @@ public class XmlAdderManager {
     public XmlAdderManager( //
                             File fileSourceDirectory,
                             File fileDestinationDirectory, //
-                            InputStream fileAddAttributes //
-    ) throws IOException, ParserConfigurationException {
+                            InputStream fileAddAttributes, //
+                            InputStream fileRule) throws IOException, ParserConfigurationException {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
+        this.fileRule = fileRule;
 
         factory.setNamespaceAware(false);
         builder = factory.newDocumentBuilder();
@@ -97,7 +100,12 @@ public class XmlAdderManager {
                     final Map<String, String> attributesToAdd = instruction.getAttributesToAdd();
                     for (String attName : attributesToAdd.keySet()) {
                         if (node.getNodeType() == Node.ELEMENT_NODE) {
-                            ((Element) node).setAttribute(attName, attributesToAdd.get(attName));
+                            final String value = attributesToAdd.get(attName);
+                            if (value.isEmpty()) {
+                                ((Element) node).setAttribute(attName, getRule());
+                            } else {
+                                ((Element) node).setAttribute(attName, value);
+                            }
                         }
                     }
                 }
@@ -107,9 +115,18 @@ public class XmlAdderManager {
 
     protected Document getDocument(File f) throws IOException, SAXException {
         final FileInputStream is = new FileInputStream(f);
-        Document doc = builder.parse(is);
+        final Document doc = builder.parse(is);
         is.close();
         return doc;
     }
 
+    protected String getRule() throws IOException {
+        final String rule = IOUtils.toString(fileRule);
+        return rule //
+                .replace("\\\\", "\\") //
+                .replace("\\GUID", "\\GTRANSIT") //
+                .replace("+GUID", UUID.randomUUID().toString().toUpperCase()) //
+                .replace("GUID",UUID.randomUUID().toString()) //
+                .replace("\\GTRANSIT","GUID"); //
+    }
 }

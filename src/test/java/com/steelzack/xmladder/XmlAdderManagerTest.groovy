@@ -6,15 +6,20 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
 class XmlAdderManagerTest {
+    private static
+    final String guidMatch = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}";
 
     @Test
     void testReadAllAddAttributes() {
         final InputStream is = getClass().getResourceAsStream("testReadAttributeBean.csv");
-        final XmlAdderManager manager = new XmlAdderManager(null, null, is)
+        final XmlAdderManager manager = new XmlAdderManager(null, null, is, fileRule)
 
         final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
         final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
@@ -47,6 +52,41 @@ class XmlAdderManagerTest {
         Assert.assertEquals("file22.xml", resultFilesToChange.get(5).getName());
     }
 
+    @Test
+    void testGetRule() {
+        testGetRule("testRule0.txt", "I am a", true, false);
+        testGetRule("testRule0.1.txt", "I am a", true, false);
+        testGetRule("testRule1.txt", "I am not a GUID", false, false);
+        testGetRule("testRule2.txt", "I am a slash behind a GUID", false, false);
+    }
+
+    void testGetRule(String testRule, String testRuleMatch, boolean testGUID, boolean testUpperCase) {
+        final XmlAdderManager manager = new XmlAdderManager( //
+                null, //
+                null, //
+                null, //
+                getClass().getResourceAsStream(testRule) //
+        ) {
+            @Override
+            protected void readAllAddAttributes(InputStream fileAddAttributes) throws IOException {
+            }
+        };
+
+        final String resultRule = manager.getRule();
+
+        if (testGUID) {
+            final Pattern pattern = Pattern.compile(guidMatch)
+            final Matcher matcher = pattern.matcher(resultRule);
+            Assert.assertTrue(matcher.find());
+            final String resultMatch = resultRule.replace(matcher.group(0), "").trim();
+            if (testUpperCase) {
+                resultMatch = resultMatch.toUpperCase();
+            }
+            Assert.assertEquals(testRuleMatch, resultMatch);
+        } else {
+            Assert.assertEquals(testRuleMatch, resultRule);
+        }
+    }
 
     private File getTestFolder(boolean addFiles) {
         final TemporaryFolder folder = new TemporaryFolder();
@@ -71,8 +111,7 @@ class XmlAdderManagerTest {
         folder22.deleteOnExit();
         folder22.mkdir();
 
-        if(addFiles)
-        {
+        if (addFiles) {
             createFile(folder1, "file1");
             createFile(folder11, "file11");
             createFile(folder12, "file12");
