@@ -16,6 +16,9 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -31,11 +34,10 @@ public class XmlAdderManager {
     // Document parsing setup instances
     private final DocumentBuilderFactory factory =
             DocumentBuilderFactory.newInstance();
-    private final InputStream fileRule;
     private DocumentBuilder builder = null;
     private final XPathFactory xPathfactory = XPathFactory.newInstance();
     private final XPath xpath = xPathfactory.newXPath();
-
+    final String rule;
     private XmlAdderAddAttributeManager addAttributeManager = new XmlAdderAddAttributeManager();
 
     private final File fileSourceDirectory;
@@ -48,8 +50,7 @@ public class XmlAdderManager {
                             InputStream fileRule) throws IOException, ParserConfigurationException {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
-        this.fileRule = fileRule;
-
+        rule = IOUtils.toString(fileRule);
         factory.setNamespaceAware(false);
         builder = factory.newDocumentBuilder();
         readAllAddAttributes(fileAddAttributes);
@@ -70,9 +71,9 @@ public class XmlAdderManager {
         return addAttributeManager;
     }
 
-    protected static List<File> listAllFilesToChange(final File sourceDrectory) {
+    protected static List<File> listAllFilesToChange(final File sourceDirectory) {
         final List<File> allXmlsToChahge = new ArrayList<>();
-        final File[] fileList = sourceDrectory.listFiles();
+        final File[] fileList = sourceDirectory.listFiles();
         for (final File f : fileList) {
             if (f.isDirectory()) {
                 allXmlsToChahge.addAll(listAllFilesToChange(f));
@@ -85,10 +86,8 @@ public class XmlAdderManager {
         return allXmlsToChahge;
     }
 
-    protected void runConversion() throws IOException, SAXException, XPathExpressionException {
+    protected void runConversion() throws IOException, SAXException, XPathExpressionException, TransformerException {
         final List<File> allXmlFilesToChange = listAllFilesToChange(fileSourceDirectory);
-
-
         for (final File file : allXmlFilesToChange) {
             final Document doc = getDocument(file);
             for (String xpathString : addAttributeManager.getXmlAdderInstructionArrayMap().keySet()) {
@@ -101,7 +100,7 @@ public class XmlAdderManager {
                     for (String attName : attributesToAdd.keySet()) {
                         if (node.getNodeType() == Node.ELEMENT_NODE) {
                             final String value = attributesToAdd.get(attName);
-                            if (value.isEmpty()) {
+                            if (value == null || value.isEmpty()) {
                                 ((Element) node).setAttribute(attName, getRule());
                             } else {
                                 ((Element) node).setAttribute(attName, value);
@@ -110,7 +109,25 @@ public class XmlAdderManager {
                     }
                 }
             }
+            saveFile(file, doc);
         }
+    }
+
+    protected void saveFile(final File file, final Document doc) throws TransformerException {
+        final String absolutePath = file.getAbsolutePath();
+        final String rootSourceFolder = fileSourceDirectory.getAbsolutePath();
+        final String rootDestinationFolder = fileDestinationDirectory //
+                .getAbsolutePath() //
+                .concat(absolutePath.replace(rootSourceFolder, ""));
+
+        final File destinationFile = new File(rootDestinationFolder);
+        new File(destinationFile.getParent()).mkdirs();
+
+        final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        final Result output = new StreamResult(destinationFile);
+        final Source input = new DOMSource(doc);
+
+        transformer.transform(input, output);
     }
 
     protected Document getDocument(File f) throws IOException, SAXException {
@@ -121,7 +138,6 @@ public class XmlAdderManager {
     }
 
     protected String getRule() throws IOException {
-        final String rule = IOUtils.toString(fileRule);
         return rule //
                 .replace("\\\\", "\\") //
                 .replace("\\GUID", "\\GTRANSIT") //

@@ -19,7 +19,7 @@ class XmlAdderManagerTest {
     @Test
     void testReadAllAddAttributes() {
         final InputStream is = getClass().getResourceAsStream("testReadAttributeBean.csv");
-        final XmlAdderManager manager = new XmlAdderManager(null, null, is, fileRule)
+        final XmlAdderManager manager = new XmlAdderManager(null, null, is, null)
 
         final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
         final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
@@ -30,6 +30,26 @@ class XmlAdderManagerTest {
             Assert.assertEquals("testnode1/testnode2", key);
             Assert.assertEquals("attribute1value", result.get(key).getAttributesToAdd().get("attribute1name"));
         }
+    }
+
+
+    @Test
+    void testCompleteProcess() {
+        final InputStream inputStreamRule = getClass().getResourceAsStream("testDesc.txt")
+        final InputStream inputStreamAttributeBean = getClass().getResourceAsStream("testDescBean.csv");
+        final File testFolder = getTestFolder(true)
+        final XmlAdderManager manager = new XmlAdderManager(testFolder, new File("/tmp"), inputStreamAttributeBean, inputStreamRule)
+
+        final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
+        final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
+        final resultSet = result.keySet()
+
+        Assert.assertEquals(1, resultSet.size());
+        for (String key : resultSet) {
+            Assert.assertEquals("testnode1/testnode2", key);
+            Assert.assertEquals(null, result.get(key).getAttributesToAdd().get("attribute1name"));
+        }
+        manager.runConversion();
     }
 
     @Test
@@ -112,20 +132,25 @@ class XmlAdderManagerTest {
         folder22.mkdir();
 
         if (addFiles) {
-            createFile(folder1, "file1");
-            createFile(folder11, "file11");
-            createFile(folder12, "file12");
-            createFile(folder2, "file2");
-            createFile(folder21, "file21");
-            createFile(folder22, "file22");
+            createFile(folder1, "file1", "<testnode1><testnode2></testnode2></testnode1>");
+            createFile(folder11, "file11", "<testnode1><testnode3></testnode3></testnode1>");
+            createFile(folder12, "file12", "<testnode1><testnode4></testnode4></testnode1>");
+            createFile(folder2, "file2", "<testnode1><testnode5></testnode5></testnode1>");
+            createFile(folder21, "file21", "<testnode1><testnode6></testnode6></testnode1>");
+            createFile(folder22, "file22", "<testnode1><testnode2></testnode2></testnode1>");
 
         }
         return structure;
     }
 
-    private void createFile(File folder, String fileName) {
-        final File file1 = new File(folder, fileName + ".xml");
-        file1.deleteOnExit();
-        file1.createNewFile();
+    private void createFile(File folder, String fileName, String content) {
+        final File fileElement = new File(folder, fileName + ".xml");
+        fileElement.deleteOnExit();
+        fileElement.createNewFile();
+        final FileWriter fw = new FileWriter(fileElement);
+        fw.write(content)
+        fw.flush();
+        fw.close();
+
     }
 }
