@@ -18,6 +18,7 @@ hs_err_pid*
 # idea files
 
 .idea/workspace.xml
+.idea/libraries
 
 # build folders
 

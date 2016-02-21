@@ -31,6 +31,9 @@ import java.util.UUID;
  */
 public class XmlAdderManager {
 
+    // Constants
+    public static final String GUID = "GUID";
+    public static final String GUID_PLUS = "+GUID";
     // Document parsing setup instances
     private final DocumentBuilderFactory factory =
             DocumentBuilderFactory.newInstance();
@@ -50,10 +53,14 @@ public class XmlAdderManager {
                             InputStream fileRule) throws IOException, ParserConfigurationException {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
-        rule = IOUtils.toString(fileRule);
-        factory.setNamespaceAware(false);
-        builder = factory.newDocumentBuilder();
+        this.rule = getRuleFromIO(fileRule);
+        this.factory.setNamespaceAware(false);
+        this.builder = factory.newDocumentBuilder();
         readAllAddAttributes(fileAddAttributes);
+    }
+
+    protected String getRuleFromIO(InputStream fileRule) throws IOException {
+        return IOUtils.toString(fileRule);
     }
 
     protected void readAllAddAttributes(InputStream fileAddAttributes) throws IOException {
@@ -138,11 +145,35 @@ public class XmlAdderManager {
     }
 
     protected String getRule() throws IOException {
-        return rule //
-                .replace("\\\\", "\\") //
-                .replace("\\GUID", "\\GTRANSIT") //
-                .replace("+GUID", UUID.randomUUID().toString().toUpperCase()) //
-                .replace("GUID",UUID.randomUUID().toString()) //
-                .replace("\\GTRANSIT","GUID"); //
+        final String[] slashPiece = rule.split("\\\\");
+        final int slashLength = slashPiece.length;
+
+        int slashCounter = 0;
+
+        final StringBuffer buffer = new StringBuffer();
+
+        for (int i = 0; i < slashLength; i++) {
+            final String currentSlash = slashPiece[i];
+            if (currentSlash.equals("")) {
+                slashCounter++;
+                if (slashCounter == 2) {
+                    buffer.append("\\");
+                    slashCounter = 0;
+                }
+            } else if (currentSlash.startsWith(GUID) && slashCounter == 1) {
+                buffer.append(currentSlash);
+            } else {
+                slashCounter = 1;
+                if (currentSlash.contains(GUID_PLUS)) {
+                    buffer.append(currentSlash.replace(GUID_PLUS, UUID.randomUUID().toString().toUpperCase()));
+                } else if (currentSlash.contains(GUID)) {
+                    buffer.append(currentSlash.replace(GUID, UUID.randomUUID().toString()));
+                } else {
+                    buffer.append(currentSlash);
+                }
+            }
+        }
+
+        return buffer.toString();
     }
 }

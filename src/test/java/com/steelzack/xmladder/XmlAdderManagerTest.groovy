@@ -2,24 +2,38 @@ package com.steelzack.xmladder
 
 import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager
 import com.steelzack.xmladder.instruction.XmlAdderInstruction
+import org.jmock.Mockery
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import org.jmock.lib.legacy.ClassImposteriser;
 
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
 class XmlAdderManagerTest {
-    private static
-    final String guidMatch = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}";
+    private static final String guidMatch = "([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})";
+    private static final Mockery context = new Mockery();
+
+    @Before
+    public void setupMocks() {
+        context.setImposteriser(ClassImposteriser.INSTANCE);
+    }
 
     @Test
     void testReadAllAddAttributes() {
         final InputStream is = getClass().getResourceAsStream("testReadAttributeBean.csv");
-        final XmlAdderManager manager = new XmlAdderManager(null, null, is, null)
+        final InputStream ruleStream = context.mock(FileInputStream.class);
+        final XmlAdderManager manager = new XmlAdderManager(null, null, is, ruleStream) {
+            @Override
+            protected String getRuleFromIO(InputStream fileRule) throws IOException {
+                return null;
+            }
+        }
 
         final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
         final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
@@ -77,7 +91,9 @@ class XmlAdderManagerTest {
         testGetRule("testRule0.txt", "I am a", true, false);
         testGetRule("testRule0.1.txt", "I am a", true, false);
         testGetRule("testRule1.txt", "I am not a GUID", false, false);
-        testGetRule("testRule2.txt", "I am a slash behind a GUID", false, false);
+        testGetRule("testRule2.txt", "I am a slash behind a \\",true, false);
+        testGetRule("testRule3.txt", "I am two slashes \\\\", true, false);
+        testGetRule("testRule4.txt", "I am two slashes and not a \\\\GUID", false, false);
     }
 
     void testGetRule(String testRule, String testRuleMatch, boolean testGUID, boolean testUpperCase) {
@@ -97,7 +113,12 @@ class XmlAdderManagerTest {
         if (testGUID) {
             final Pattern pattern = Pattern.compile(guidMatch)
             final Matcher matcher = pattern.matcher(resultRule);
-            Assert.assertTrue(matcher.find());
+            try {
+                Assert.assertTrue(matcher.find());
+            }
+            catch (Error e) {
+                throw new RuntimeException("Match GUUID not found! Got: " + resultRule, e)
+            }
             final String resultMatch = resultRule.replace(matcher.group(0), "").trim();
             if (testUpperCase) {
                 resultMatch = resultMatch.toUpperCase();
