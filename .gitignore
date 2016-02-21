@@ -14,7 +14,7 @@ hs_err_pid*
 # Idea
 
 .idea/libraries
-
+.idea/workspace.xml
 # Maven
 
 target
