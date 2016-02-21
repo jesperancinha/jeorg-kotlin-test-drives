@@ -14,3 +14,7 @@ hs_err_pid*
 # Idea
 
 .idea/libraries
+
+# Maven
+
+target

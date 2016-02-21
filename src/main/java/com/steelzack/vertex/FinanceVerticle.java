@@ -6,7 +6,7 @@ import io.vertx.core.Future;
 /**
  * Created by joao on 21-2-16.
  */
-public class FinanceVertical extends AbstractVerticle {
+public class FinanceVerticle extends AbstractVerticle {
 
     @Override
     public void start(Future<Void> startFuture) throws Exception {

@@ -13,14 +13,14 @@ import org.junit.runner.RunWith;
  * Created by joao on 21-2-16.
  */
 @RunWith(VertxUnitRunner.class)
-public class FinanceVerticalTest {
+public class FinanceVerticleTest {
 
     private Vertx vertx;
 
     @Before
     public void setUp(TestContext context){
         vertx = Vertx.vertx();
-        vertx.deployVerticle(FinanceVertical.class.getName(), context.asyncAssertSuccess());
+        vertx.deployVerticle(FinanceVerticle.class.getName(), context.asyncAssertSuccess());
     }
 
     @After
