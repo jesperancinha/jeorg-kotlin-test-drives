@@ -125,6 +125,8 @@ public class XmlAdderManager {
         final String rootSourceFolder = fileSourceDirectory.getAbsolutePath();
         final String rootDestinationFolder = fileDestinationDirectory //
                 .getAbsolutePath() //
+                .concat("/")
+                .concat(fileSourceDirectory.getName())
                 .concat(absolutePath.replace(rootSourceFolder, ""));
 
         final File destinationFile = new File(rootDestinationFolder);
