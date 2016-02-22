@@ -54,7 +54,7 @@ public class XmlAdderManager {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
         this.rule = getRuleFromIO(fileRule);
-        this.factory.setNamespaceAware(false);
+        this.factory.setNamespaceAware(true);
         this.builder = factory.newDocumentBuilder();
         readAllAddAttributes(fileAddAttributes);
     }
@@ -97,6 +97,7 @@ public class XmlAdderManager {
         final List<File> allXmlFilesToChange = listAllFilesToChange(fileSourceDirectory);
         for (final File file : allXmlFilesToChange) {
             final Document doc = getDocument(file);
+            boolean saveFile = false;
             for (String xpathString : addAttributeManager.getXmlAdderInstructionArrayMap().keySet()) {
                 final XmlAdderInstruction instruction = addAttributeManager.getXmlAdderInstructionArrayMap().get(xpathString);
                 final XPathExpression expr = xpath.compile(xpathString);
@@ -112,11 +113,14 @@ public class XmlAdderManager {
                             } else {
                                 ((Element) node).setAttribute(attName, value);
                             }
+                            saveFile = true;
                         }
                     }
                 }
             }
-            saveFile(file, doc);
+            if (saveFile) {
+                saveFile(file, doc);
+            }
         }
     }
 
@@ -125,12 +129,17 @@ public class XmlAdderManager {
         final String rootSourceFolder = fileSourceDirectory.getAbsolutePath();
         final String rootDestinationFolder = fileDestinationDirectory //
                 .getAbsolutePath() //
+                .concat("/")
+                .concat(fileSourceDirectory.getName())
                 .concat(absolutePath.replace(rootSourceFolder, ""));
 
         final File destinationFile = new File(rootDestinationFolder);
         new File(destinationFile.getParent()).mkdirs();
 
         final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+
         final Result output = new StreamResult(destinationFile);
         final Source input = new DOMSource(doc);
 
