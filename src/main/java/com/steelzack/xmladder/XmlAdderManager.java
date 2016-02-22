@@ -137,6 +137,9 @@ public class XmlAdderManager {
         new File(destinationFile.getParent()).mkdirs();
 
         final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+
         final Result output = new StreamResult(destinationFile);
         final Source input = new DOMSource(doc);
 
