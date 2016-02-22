@@ -97,6 +97,7 @@ public class XmlAdderManager {
         final List<File> allXmlFilesToChange = listAllFilesToChange(fileSourceDirectory);
         for (final File file : allXmlFilesToChange) {
             final Document doc = getDocument(file);
+            boolean saveFile = false;
             for (String xpathString : addAttributeManager.getXmlAdderInstructionArrayMap().keySet()) {
                 final XmlAdderInstruction instruction = addAttributeManager.getXmlAdderInstructionArrayMap().get(xpathString);
                 final XPathExpression expr = xpath.compile(xpathString);
@@ -112,11 +113,14 @@ public class XmlAdderManager {
                             } else {
                                 ((Element) node).setAttribute(attName, value);
                             }
+                            saveFile = true;
                         }
                     }
                 }
             }
-            saveFile(file, doc);
+            if (saveFile) {
+                saveFile(file, doc);
+            }
         }
     }
 
