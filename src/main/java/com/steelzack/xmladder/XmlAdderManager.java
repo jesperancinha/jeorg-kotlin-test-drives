@@ -54,7 +54,7 @@ public class XmlAdderManager {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
         this.rule = getRuleFromIO(fileRule);
-        this.factory.setNamespaceAware(false);
+        this.factory.setNamespaceAware(true);
         this.builder = factory.newDocumentBuilder();
         readAllAddAttributes(fileAddAttributes);
     }
