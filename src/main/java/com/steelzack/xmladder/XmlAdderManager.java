@@ -3,7 +3,8 @@ package com.steelzack.xmladder;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
-import com.steelzack.xmladder.csv.AttributeBean;
+import com.steelzack.xmladder.csv.AttributeAddBean;
+import com.steelzack.xmladder.csv.AttributeDeleteBean;
 import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager;
 import com.steelzack.xmladder.instruction.XmlAdderInstruction;
 import org.apache.commons.io.IOUtils;
@@ -21,10 +22,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.xpath.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by joaofilipesabinoesperancinha on 16-02-16.
@@ -50,13 +48,32 @@ public class XmlAdderManager {
                             File fileSourceDirectory,
                             File fileDestinationDirectory, //
                             InputStream fileAddAttributes, //
-                            InputStream fileRule) throws IOException, ParserConfigurationException {
+                            InputStream fileDeleteAttributes, //
+                            InputStream fileRule //
+    ) //
+            throws IOException, ParserConfigurationException {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
         this.rule = getRuleFromIO(fileRule);
         this.factory.setNamespaceAware(true);
         this.builder = factory.newDocumentBuilder();
-        readAllAddAttributes(fileAddAttributes);
+        if (fileAddAttributes != null) {
+            readAllAddAttributes(fileAddAttributes);
+        }
+        if (fileDeleteAttributes != null) {
+            readAllDeleteAttributes(fileDeleteAttributes);
+        }
+    }
+
+    private void readAllDeleteAttributes(InputStream fileDeleteAttributes) {
+        final HeaderColumnNameMappingStrategy<AttributeDeleteBean> strategy = new HeaderColumnNameMappingStrategy<>();
+        strategy.setType(AttributeDeleteBean.class);
+        final CsvToBean<AttributeDeleteBean> csvToBean = new CsvToBean<>();
+        final List<AttributeDeleteBean> beanList = csvToBean.parse(strategy, new InputStreamReader(fileDeleteAttributes));
+
+        for (AttributeDeleteBean attBean : beanList) {
+            addAttributeManager.addRemoveAttribute(attBean.getName(), attBean.getXpath());
+        }
     }
 
     protected String getRuleFromIO(InputStream fileRule) throws IOException {
@@ -64,13 +81,13 @@ public class XmlAdderManager {
     }
 
     protected void readAllAddAttributes(InputStream fileAddAttributes) throws IOException {
-        final HeaderColumnNameMappingStrategy<AttributeBean> strategy = new HeaderColumnNameMappingStrategy<>();
-        strategy.setType(AttributeBean.class);
-        final CsvToBean<AttributeBean> csvToBean = new CsvToBean<>();
-        final List<AttributeBean> beanList = csvToBean.parse(strategy, new InputStreamReader(fileAddAttributes));
+        final HeaderColumnNameMappingStrategy<AttributeAddBean> strategy = new HeaderColumnNameMappingStrategy<>();
+        strategy.setType(AttributeAddBean.class);
+        final CsvToBean<AttributeAddBean> csvToBean = new CsvToBean<>();
+        final List<AttributeAddBean> beanList = csvToBean.parse(strategy, new InputStreamReader(fileAddAttributes));
 
-        for (AttributeBean attBean : beanList) {
-            addAttributeManager.addAttribute(attBean.getName(), attBean.getValue(), attBean.getXpath());
+        for (AttributeAddBean attBean : beanList) {
+            addAttributeManager.addAddAttribute(attBean.getName(), attBean.getValue(), attBean.getXpath());
         }
     }
 
@@ -105,8 +122,8 @@ public class XmlAdderManager {
                 for (int i = 0; i < nl.getLength(); i++) {
                     final Node node = nl.item(i);
                     final Map<String, String> attributesToAdd = instruction.getAttributesToAdd();
-                    for (String attName : attributesToAdd.keySet()) {
-                        if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    if (node.getNodeType() == Node.ELEMENT_NODE) {
+                        for (String attName : attributesToAdd.keySet()) {
                             final String value = attributesToAdd.get(attName);
                             if (value == null || value.isEmpty()) {
                                 ((Element) node).setAttribute(attName, getRule());
@@ -114,6 +131,18 @@ public class XmlAdderManager {
                                 ((Element) node).setAttribute(attName, value);
                             }
                             saveFile = true;
+                        }
+
+                        final Set<String> attributesToDelete = instruction.getAttributeKeysToDelete();
+                        for (String attName : attributesToDelete) {
+                            if (attName != null && //
+                                    ((Element) node).getAttribute(attName) != null && //
+                                    !((Element) node).getAttribute(attName).isEmpty() //
+                                    ) //
+                            {
+                                ((Element) node).removeAttribute(attName);
+                                saveFile = true;
+                            }
                         }
                     }
                 }
@@ -129,8 +158,8 @@ public class XmlAdderManager {
         final String rootSourceFolder = fileSourceDirectory.getAbsolutePath();
         final String rootDestinationFolder = fileDestinationDirectory //
                 .getAbsolutePath() //
-                .concat("/")
-                .concat(fileSourceDirectory.getName())
+                .concat("/") //
+                .concat(fileSourceDirectory.getName()) //
                 .concat(absolutePath.replace(rootSourceFolder, ""));
 
         final File destinationFile = new File(rootDestinationFolder);
