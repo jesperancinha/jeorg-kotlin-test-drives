@@ -52,7 +52,7 @@ class XmlAdderManagerTest {
         final InputStream inputStreamRule = getClass().getResourceAsStream("testDesc.txt")
         final InputStream inputStreamAttributeBean = getClass().getResourceAsStream("testDescBean.csv");
         final File testFolder = getTestFolder(true)
-        final XmlAdderManager manager = new XmlAdderManager(testFolder, new File("/tmp"), inputStreamAttributeBean, inputStreamRule)
+        final XmlAdderManager manager = new XmlAdderManager(testFolder, new File("/tmp"), inputStreamAttributeBean, null, inputStreamRule)
 
         final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
         final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
