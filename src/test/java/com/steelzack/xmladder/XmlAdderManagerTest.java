@@ -1,21 +1,29 @@
-package com.steelzack.xmladder
+package com.steelzack.xmladder;
 
-import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager
-import com.steelzack.xmladder.instruction.XmlAdderInstruction
-import org.jmock.Mockery
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
-import org.junit.rules.TemporaryFolder
-
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager;
+import com.steelzack.xmladder.instruction.XmlAdderInstruction;
+import org.jmock.Mockery;
 import org.jmock.lib.legacy.ClassImposteriser;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathExpressionException;
+import java.io.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
-class XmlAdderManagerTest {
+public class XmlAdderManagerTest {
     private static final String guidMatch = "([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})";
     private static final Mockery context = new Mockery();
 
@@ -25,19 +33,19 @@ class XmlAdderManagerTest {
     }
 
     @Test
-    void testReadAllAddAttributes() {
+    public void testReadAllAddAttributes() throws IOException, ParserConfigurationException {
         final InputStream is = getClass().getResourceAsStream("testReadAttributeBean.csv");
         final InputStream ruleStream = context.mock(FileInputStream.class);
-        final XmlAdderManager manager = new XmlAdderManager(null, null, is, ruleStream) {
+        final XmlAdderManager manager = new XmlAdderManager(null, null, is, null, ruleStream) {
             @Override
             protected String getRuleFromIO(InputStream fileRule) throws IOException {
                 return null;
             }
-        }
+        };
 
         final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
         final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
-        final resultSet = result.keySet()
+        final Set<String> resultSet = result.keySet();
 
         Assert.assertEquals(1, resultSet.size());
         for (String key : resultSet) {
@@ -48,15 +56,20 @@ class XmlAdderManagerTest {
 
 
     @Test
-    void testCompleteProcess() {
-        final InputStream inputStreamRule = getClass().getResourceAsStream("testDesc.txt")
+    public void testCompleteProcess() throws SAXException, TransformerException, XPathExpressionException, IOException, ParserConfigurationException {
+        final InputStream inputStreamRule = getClass().getResourceAsStream("testDesc.txt");
         final InputStream inputStreamAttributeBean = getClass().getResourceAsStream("testDescBean.csv");
-        final File testFolder = getTestFolder(true)
-        final XmlAdderManager manager = new XmlAdderManager(testFolder, new File("/tmp"), inputStreamAttributeBean, null, inputStreamRule)
+        final File testFolder = getTestFolder(true);
+        final XmlAdderManager manager = new XmlAdderManager( //
+                testFolder, //
+                new File("/tmp"), //
+                inputStreamAttributeBean, //
+                null, inputStreamRule //
+        );
 
         final XmlAdderAddAttributeManager attributeManager = manager.getAddAttributeManager();
         final Map<String, XmlAdderInstruction> result = attributeManager.getXmlAdderInstructionArrayMap();
-        final resultSet = result.keySet()
+        final Set<String> resultSet = result.keySet();
 
         Assert.assertEquals(1, resultSet.size());
         for (String key : resultSet) {
@@ -67,15 +80,15 @@ class XmlAdderManagerTest {
     }
 
     @Test
-    void testlistAllFilesToChange_empty() {
+    public void testlistAllFilesToChange_empty() throws IOException {
         final List<File> resultFilesToChange = XmlAdderManager.listAllFilesToChange(getTestFolder(false));
 
         Assert.assertEquals(0, resultFilesToChange.size());
     }
 
     @Test
-    void testlistAllFilesToChange_oneXmlInEachFolder() {
-        final List<File> resultFilesToChange = XmlAdderManager.listAllFilesToChange(getTestFolder(true));
+    public void testlistAllFilesToChange_oneXmlInEachFolder() throws IOException {
+        final java.util.List<File> resultFilesToChange = XmlAdderManager.listAllFilesToChange(getTestFolder(true));
 
         Assert.assertEquals(6, resultFilesToChange.size());
         Assert.assertEquals("file1.xml", resultFilesToChange.get(0).getName());
@@ -87,7 +100,7 @@ class XmlAdderManagerTest {
     }
 
     @Test
-    void testGetRule() {
+    public void testGetRule() throws IOException, ParserConfigurationException {
         testGetRule("testRule0.txt", "I am a", true, false);
         testGetRule("testRule0.1.txt", "I am a", true, false);
         testGetRule("testRule1.txt", "I am not a GUID", false, false);
@@ -96,8 +109,9 @@ class XmlAdderManagerTest {
         testGetRule("testRule4.txt", "I am two slashes and not a \\\\GUID", false, false);
     }
 
-    void testGetRule(String testRule, String testRuleMatch, boolean testGUID, boolean testUpperCase) {
+    public void testGetRule(String testRule, String testRuleMatch, boolean testGUID, boolean testUpperCase) throws IOException, ParserConfigurationException {
         final XmlAdderManager manager = new XmlAdderManager( //
+                null, //
                 null, //
                 null, //
                 null, //
@@ -111,15 +125,15 @@ class XmlAdderManagerTest {
         final String resultRule = manager.getRule();
 
         if (testGUID) {
-            final Pattern pattern = Pattern.compile(guidMatch)
+            final Pattern pattern = Pattern.compile(guidMatch);
             final Matcher matcher = pattern.matcher(resultRule);
             try {
                 Assert.assertTrue(matcher.find());
             }
             catch (Error e) {
-                throw new RuntimeException("Match GUUID not found! Got: " + resultRule, e)
+                throw new RuntimeException("Match GUUID not found! Got: " + resultRule, e);
             }
-            final String resultMatch = resultRule.replace(matcher.group(0), "").trim();
+            String resultMatch = resultRule.replace(matcher.group(0), "").trim();
             if (testUpperCase) {
                 resultMatch = resultMatch.toUpperCase();
             }
@@ -129,7 +143,7 @@ class XmlAdderManagerTest {
         }
     }
 
-    private File getTestFolder(boolean addFiles) {
+    private File getTestFolder(boolean addFiles) throws IOException {
         final TemporaryFolder folder = new TemporaryFolder();
         folder.create();
         final File structure = folder.newFolder("structure");
@@ -164,12 +178,12 @@ class XmlAdderManagerTest {
         return structure;
     }
 
-    private void createFile(File folder, String fileName, String content) {
+    private void createFile(File folder, String fileName, String content) throws IOException {
         final File fileElement = new File(folder, fileName + ".xml");
         fileElement.deleteOnExit();
         fileElement.createNewFile();
         final FileWriter fw = new FileWriter(fileElement);
-        fw.write(content)
+        fw.write(content);
         fw.flush();
         fw.close();
 

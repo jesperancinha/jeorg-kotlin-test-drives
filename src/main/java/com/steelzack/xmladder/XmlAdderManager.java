@@ -57,8 +57,12 @@ public class XmlAdderManager {
         this.rule = getRuleFromIO(fileRule);
         this.factory.setNamespaceAware(true);
         this.builder = factory.newDocumentBuilder();
-        readAllAddAttributes(fileAddAttributes);
-        readAllDeleteAttributes(fileDeleteAttributes);
+        if (fileAddAttributes != null) {
+            readAllAddAttributes(fileAddAttributes);
+        }
+        if (fileDeleteAttributes != null) {
+            readAllDeleteAttributes(fileDeleteAttributes);
+        }
     }
 
     private void readAllDeleteAttributes(InputStream fileDeleteAttributes) {

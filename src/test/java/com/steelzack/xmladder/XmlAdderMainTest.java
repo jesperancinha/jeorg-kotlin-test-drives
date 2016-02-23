@@ -1,7 +1,7 @@
-package com.steelzack.xmladder
+package com.steelzack.xmladder;
 
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
-class XmlAdderMainTest {
+public class XmlAdderMainTest {
 }
