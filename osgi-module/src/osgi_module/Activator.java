@@ -1,24 +1,25 @@
 package osgi_module;
 
+import org.eclipse.osgi.framework.console.CommandProvider;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+public class Activator implements BundleActivator, CommandProvider {
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext)
-	 */
-	public void start(BundleContext context) throws Exception {
-		System.out.println("Hello World!!");
+	@Override
+	public void start(BundleContext arg0) throws Exception {
+		System.out.println("Command activator started!");
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 * @see org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
-	 */
-	public void stop(BundleContext context) throws Exception {
-		System.out.println("Goodbye World!!");
+
+	@Override
+	public void stop(BundleContext arg0) throws Exception {
+		System.out.println("Command activator stopped!");
+	}
+
+	@Override
+	public String getHelp() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
