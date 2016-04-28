@@ -1,0 +1,5 @@
+com/steelzack/coffee/system/enums/Coffee.class
+com/steelzack/coffee/system/enums/Payment.class
+com/steelzack/coffee/system/objecs/CoffeeStats.class
+com/steelzack/coffee/system/ProgrammerProcessor.class
+com/steelzack/coffee/system/objecs/Programmer.class

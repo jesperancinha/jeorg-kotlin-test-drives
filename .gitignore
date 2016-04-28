@@ -1,3 +1,7 @@
+# Idea
+.idea/**
+
+# Eclipse settings
 .metadata/
 RemoteSystemsTempFiles/
 **/build

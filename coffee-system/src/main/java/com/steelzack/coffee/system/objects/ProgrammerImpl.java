@@ -1,6 +1,10 @@
 package com.steelzack.coffee.system.objects;
 
-public class Programmer {
+import com.steelzack.coffee.system.enums.Coffee;
+import com.steelzack.coffee.system.enums.Payment;
+import com.steelzack.coffee.system.objecs.Programmer;
+
+public class ProgrammerImpl implements Programmer {
 	private static int GATHER_INFORMATION = 500;
 
 	private static int FIND_A_CUP = 250;
@@ -19,40 +23,47 @@ public class Programmer {
 	
 	private int currentTimeStamp = 0;
 
-	public Programmer(Coffee coffee, Payment payment) {
+	public ProgrammerImpl(Coffee coffee, Payment payment) {
 		this.coffee = coffee;
 		this.payment = payment;
 	}
 
+	@Override
 	public void addOffset(int offset) {
 		this.offset += offset;
 	}
 
+	@Override
 	public void addTimeStamp(int timeStamp)
 	{
 		this.currentTimeStamp += timeStamp;
 	}
-	
+
+	@Override
 	public boolean isDonePick()
 	{
 		return currentTimeStamp == GATHER_INFORMATION;
 	}
-	
+
+	@Override
 	public boolean isDonePay()
 	{
 		return currentTimeStamp == 	payment.getTimeToPay()+ GATHER_INFORMATION;
 	}
-	
+
+	@Override
 	public boolean isDoneGet()
 	{
 		return currentTimeStamp == getCompleteCoffeGet();
 	}
-	
+
+	@Override
 	public int getCompleteTime() {
 		return GATHER_INFORMATION + //
 				payment.getTimeToPay() + //
 				getCompleteCoffeGet();
 	}
+
 
 	private int getCompleteCoffeGet() {
 		return FIND_A_CUP + //
@@ -62,11 +73,14 @@ public class Programmer {
 				coffee.getFillupTime() + //
 				TAKE_CUP_AND_LEAVE;
 	}
-	
+
+
+	@Override
 	public Coffee getCoffee() {
 		return coffee;
 	}
-	
+
+	@Override
 	public Payment getPayment() {
 		return payment;
 	}

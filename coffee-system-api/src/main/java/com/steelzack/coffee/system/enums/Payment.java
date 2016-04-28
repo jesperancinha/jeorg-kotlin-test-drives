@@ -1,4 +1,4 @@
-package com.steelzack.coffee.system.objects;
+package com.steelzack.coffee.system.enums;
 
 public enum Payment {
 	CREDITCARD(250), //
