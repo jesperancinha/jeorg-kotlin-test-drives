@@ -7,12 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.steelzack.coffee.system.enums.Coffee.Cappuccino;
-import static com.steelzack.coffee.system.enums.Coffee.Expresso;
-import static com.steelzack.coffee.system.enums.Coffee.LatteMachiatto;
-import static com.steelzack.coffee.system.enums.Payment.CASH;
-import static com.steelzack.coffee.system.enums.Payment.CREDITCARD;
-
 public class ProgrammerProcessorImpl implements ProgrammerProcessor {
 
 	private static Random random = new Random();
