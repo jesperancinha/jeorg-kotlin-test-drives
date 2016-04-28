@@ -1,12 +1,17 @@
 package com.steelzack.coffee.system;
 
+import com.steelzack.coffee.system.objecs.Programmer;
+import com.steelzack.coffee.system.objects.CoffeeStatsImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.steelzack.coffee.system.ProgrammerProcessor;
-import com.steelzack.coffee.system.objects.CoffeeStats;
-import com.steelzack.coffee.system.objects.Programmer;
+import static com.steelzack.coffee.system.enums.Coffee.Cappuccino;
+import static com.steelzack.coffee.system.enums.Coffee.Expresso;
+import static com.steelzack.coffee.system.enums.Coffee.LatteMachiatto;
+import static com.steelzack.coffee.system.enums.Payment.CASH;
+import static com.steelzack.coffee.system.enums.Payment.CREDITCARD;
 
 public class ProgrammerProcessorImpl implements ProgrammerProcessor {
 
@@ -14,7 +19,7 @@ public class ProgrammerProcessorImpl implements ProgrammerProcessor {
 	private static int UNIT_OF_TIME = 250;
 
 	@Override
-	public CoffeeStats processProgrammers(List<Programmer> programmers) {
+	public CoffeeStatsImpl processProgrammers(List<Programmer> programmers) {
 		List<Programmer> subListCoffeePick = getRandomAndRemoveFrom(
 				programmers, 10);
 		List<Programmer> subListCoffeePay = new ArrayList<Programmer>();
@@ -122,7 +127,7 @@ public class ProgrammerProcessorImpl implements ProgrammerProcessor {
 		}
 
 		averageCoffee = averageCoffee / completeAll.size();
-		CoffeeStats stats = new CoffeeStats(coffeSoldCash, //
+		CoffeeStatsImpl stats = new CoffeeStatsImpl(coffeSoldCash, //
 				coffeSoldCard, //
 				coffeExpresso, //
 				coffeeMachiatto, //

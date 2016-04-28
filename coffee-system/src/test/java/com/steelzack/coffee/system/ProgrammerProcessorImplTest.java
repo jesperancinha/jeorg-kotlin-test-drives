@@ -1,19 +1,18 @@
 package com.steelzack.coffee.system;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import com.steelzack.coffee.system.enums.Coffee;
+import com.steelzack.coffee.system.enums.Payment;
+import com.steelzack.coffee.system.objecs.Programmer;
+import com.steelzack.coffee.system.objects.CoffeeStatsImpl;
+import com.steelzack.coffee.system.objects.ProgrammerImpl;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import org.junit.Test;
-
-import com.steelzack.coffee.system.ProgrammerProcessorImpl;
-import com.steelzack.coffee.system.objects.Coffee;
-import com.steelzack.coffee.system.objects.CoffeeStats;
-import com.steelzack.coffee.system.objects.Payment;
-import com.steelzack.coffee.system.objects.Programmer;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 public class ProgrammerProcessorImplTest {
 
@@ -22,10 +21,10 @@ public class ProgrammerProcessorImplTest {
 	@Test
 	public void testProcessProgrammers_One() throws Exception {
 		List<Programmer> programmers = new ArrayList<>();
-		Programmer programmer = new Programmer(Coffee.Cappuccino, Payment.CASH);
+		Programmer programmer = new ProgrammerImpl(Coffee.Cappuccino, Payment.CASH);
 		programmers.add(programmer);
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(2750d, result.getAverageCoffee());
 		assertEquals(2750, result.getFastestProgrammerTime());
 		assertEquals(2750, result.getSlowesProgrammerTime());
@@ -37,25 +36,25 @@ public class ProgrammerProcessorImplTest {
 	@Test
 	public void testProcessProgrammers_Ten() throws Exception {
 		final List<Programmer> programmers = new ArrayList<>();
-		final Programmer programmer1 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer1 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer2 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer2 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CREDITCARD);
-		final Programmer programmer3 = new Programmer(Coffee.Expresso,
+		final Programmer programmer3 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CASH);
-		final Programmer programmer4 = new Programmer(Coffee.Expresso,
+		final Programmer programmer4 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer5 = new Programmer(Coffee.LatteMachiatto,
+		final Programmer programmer5 = new ProgrammerImpl(Coffee.LatteMachiatto,
 				Payment.CASH);
-		final Programmer programmer6 = new Programmer(Coffee.LatteMachiatto,
+		final Programmer programmer6 = new ProgrammerImpl(Coffee.LatteMachiatto,
 				Payment.CREDITCARD);
-		final Programmer programmer7 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer7 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer8 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer8 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CREDITCARD);
-		final Programmer programmer9 = new Programmer(Coffee.Expresso,
+		final Programmer programmer9 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CASH);
-		final Programmer programmer10 = new Programmer(Coffee.Expresso,
+		final Programmer programmer10 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
 		programmers.add(programmer1);
 		programmers.add(programmer2);
@@ -68,7 +67,7 @@ public class ProgrammerProcessorImplTest {
 		programmers.add(programmer9);
 		programmers.add(programmer10);
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(4, result.getCoffeCappuccino());
 		assertEquals(2, result.getCoffeeMachiatto());
 		assertEquals(4, result.getCoffeExpresso());
@@ -78,25 +77,25 @@ public class ProgrammerProcessorImplTest {
 	@Test
 	public void testProcessProgrammers_TenSameFastest() throws Exception {
 		final List<Programmer> programmers = new ArrayList<>();
-		final Programmer programmer1 = new Programmer(Coffee.Expresso,
+		final Programmer programmer1 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer2 = new Programmer(Coffee.Expresso,
+		final Programmer programmer2 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer3 = new Programmer(Coffee.Expresso,
+		final Programmer programmer3 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer4 = new Programmer(Coffee.Expresso,
+		final Programmer programmer4 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer5 = new Programmer(Coffee.Expresso,
+		final Programmer programmer5 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer6 = new Programmer(Coffee.Expresso,
+		final Programmer programmer6 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer7 = new Programmer(Coffee.Expresso,
+		final Programmer programmer7 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer8 = new Programmer(Coffee.Expresso,
+		final Programmer programmer8 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer9 = new Programmer(Coffee.Expresso,
+		final Programmer programmer9 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
-		final Programmer programmer10 = new Programmer(Coffee.Expresso,
+		final Programmer programmer10 = new ProgrammerImpl(Coffee.Expresso,
 				Payment.CREDITCARD);
 		programmers.add(programmer1);
 		programmers.add(programmer2);
@@ -109,7 +108,7 @@ public class ProgrammerProcessorImplTest {
 		programmers.add(programmer9);
 		programmers.add(programmer10);
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(0, result.getCoffeCappuccino());
 		assertEquals(0, result.getCoffeeMachiatto());
 		assertEquals(10, result.getCoffeExpresso());
@@ -121,25 +120,25 @@ public class ProgrammerProcessorImplTest {
 	@Test
 	public void testProcessProgrammers_TenSameSlowest() throws Exception {
 		final List<Programmer> programmers = new ArrayList<>();
-		final Programmer programmer1 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer1 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer2 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer2 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer3 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer3 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer4 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer4 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer5 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer5 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer6 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer6 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer7 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer7 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer8 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer8 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer9 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer9 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
-		final Programmer programmer10 = new Programmer(Coffee.Cappuccino,
+		final Programmer programmer10 = new ProgrammerImpl(Coffee.Cappuccino,
 				Payment.CASH);
 		programmers.add(programmer1);
 		programmers.add(programmer2);
@@ -152,7 +151,7 @@ public class ProgrammerProcessorImplTest {
 		programmers.add(programmer9);
 		programmers.add(programmer10);
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(10, result.getCoffeCappuccino());
 		assertEquals(0, result.getCoffeeMachiatto());
 		assertEquals(0, result.getCoffeExpresso());
@@ -169,12 +168,12 @@ public class ProgrammerProcessorImplTest {
 		for (int i = 0; i < 200; i++) {
 			int iCoffee = random.nextInt(3);
 			int iPayment = random.nextInt(2);
-			Programmer programmer = new Programmer(coffeeValues[iCoffee],
+			Programmer programmer = new ProgrammerImpl(coffeeValues[iCoffee],
 					paymentValues[iPayment]);
 			programmers.add(programmer);
 		}
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(200, //
 				result.getCoffeCappuccino() + //
 						result.getCoffeeMachiatto() + //
@@ -194,12 +193,12 @@ public class ProgrammerProcessorImplTest {
 		for (int i = 0; i < 500; i++) {
 			int iCoffee = random.nextInt(3);
 			int iPayment = random.nextInt(2);
-			Programmer programmer = new Programmer(coffeeValues[iCoffee],
+			Programmer programmer = new ProgrammerImpl(coffeeValues[iCoffee],
 					paymentValues[iPayment]);
 			programmers.add(programmer);
 		}
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(500, //
 				result.getCoffeCappuccino() + //
 						result.getCoffeeMachiatto() + //
@@ -219,12 +218,12 @@ public class ProgrammerProcessorImplTest {
 		for (int i = 0; i < 1000; i++) {
 			int iCoffee = random.nextInt(3);
 			int iPayment = random.nextInt(2);
-			Programmer programmer = new Programmer(coffeeValues[iCoffee],
+			Programmer programmer = new ProgrammerImpl(coffeeValues[iCoffee],
 					paymentValues[iPayment]);
 			programmers.add(programmer);
 		}
 		ProgrammerProcessorImpl processor = new ProgrammerProcessorImpl();
-		CoffeeStats result = processor.processProgrammers(programmers);
+		CoffeeStatsImpl result = processor.processProgrammers(programmers);
 		assertEquals(1000, //
 				result.getCoffeCappuccino() + //
 						result.getCoffeeMachiatto() + //
