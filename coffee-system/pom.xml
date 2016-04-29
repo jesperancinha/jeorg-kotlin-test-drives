@@ -15,6 +15,7 @@
         <java.version>1.8</java.version>
         <maven.compiler>3.5.1</maven.compiler>
         <junit>4.12</junit>
+        <lombok.project>1.16.8.0</lombok.project>
     </properties>
 
     <build>
@@ -43,5 +44,11 @@
             <version>${junit}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-maven-plugin</artifactId>
+            <version>${lombok.project}</version>
+        </dependency>
+
     </dependencies>
 </project>

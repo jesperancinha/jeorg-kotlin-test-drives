@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.steelzack.coffee.system.ProgrammerProcessorImplTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.693 sec - in com.steelzack.coffee.system.ProgrammerProcessorImplTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.993 sec - in com.steelzack.coffee.system.ProgrammerProcessorImplTest

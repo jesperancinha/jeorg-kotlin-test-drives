@@ -1,7 +1,9 @@
 package com.steelzack.coffee.system.objects;
 
 import com.steelzack.coffee.system.objecs.CoffeeStats;
+import lombok.Getter;
 
+@Getter
 public class CoffeeStatsImpl implements CoffeeStats {
     private double averageCoffee;
 
@@ -34,38 +36,6 @@ public class CoffeeStatsImpl implements CoffeeStats {
         this.slowesProgrammerTime = slowesProgrammerTime;
     }
 
-    public int getCoffeSoldCash() {
-        return coffeSoldCash;
-    }
-
-    public int getCoffeSoldCard() {
-        return coffeSoldCard;
-    }
-
-    public int getCoffeExpresso() {
-        return coffeExpresso;
-    }
-
-    public int getCoffeeMachiatto() {
-        return coffeeMachiatto;
-    }
-
-    public int getCoffeCappuccino() {
-        return coffeCappuccino;
-    }
-
-    public double getAverageCoffee() {
-        return averageCoffee;
-    }
-
-    public int getFastestProgrammerTime() {
-        return fastestProgrammerTime;
-    }
-
-    public int getSlowesProgrammerTime() {
-        return slowesProgrammerTime;
-    }
-
     @Override
     public String toString() {
         return "Totalcoffee sold: " + (coffeSoldCard + coffeSoldCash) + //
@@ -76,7 +46,7 @@ public class CoffeeStatsImpl implements CoffeeStats {
                 "\nmachiatto: " + coffeeMachiatto + //
                 "\nexpresso: " + coffeExpresso + //
                 "\nAverage time spent: " + averageCoffee + //
-                "\nSlowest ProgrammerImpl: " + slowesProgrammerTime + //
-                "\nFastest ProgrammerImpl: " + fastestProgrammerTime;
+                "\nSlowest EmployeeImpl: " + slowesProgrammerTime + //
+                "\nFastest EmployeeImpl: " + fastestProgrammerTime;
     }
 }
