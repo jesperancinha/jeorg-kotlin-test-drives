@@ -1,0 +1,41 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Employee">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Name"/>
+                            <xs:element name="Cup">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="CupSize"/>
+                                        <xs:element name="TimesToFill">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="FillTime" maxOccurs="unbounded" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:byte">
+                                                                    <xs:attribute type="xs:string" name="description" use="optional"/>
+                                                                    <xs:attribute type="xs:byte" name="index" use="optional"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:byte" name="findCupTime"/>
+                        <xs:attribute type="xs:byte" name="putUnderOutletTime"/>
+                        <xs:attribute type="xs:byte" name="takeCupAndLeaveTime"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

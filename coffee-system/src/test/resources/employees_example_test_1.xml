@@ -1,5 +1,5 @@
 <Employees>
-    <Employee findCupTime="1" putUnderOutletTime="2" takeCupAndLeaveTime="3">\
+    <Employee findCupTime="1" putUnderOutletTime="2" takeCupAndLeaveTime="3">
         <Name>Joao</Name>
         <Cup>
             <CupSize>Big</CupSize>
