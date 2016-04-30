@@ -13,16 +13,17 @@ import java.io.InputStream;
  */
 interface GeneralProcessor {
     void startSimulationProcess() //
-    throws FileNotFoundException, //
+            throws FileNotFoundException, //
             JAXBException, //
             SAXException; //
 
     void startSimulationProcess(InputStream coffeesFile, InputStream employeesFile) //
-    throws FileNotFoundException, //
+            throws FileNotFoundException, //
             JAXBException, //
             SAXException; //
 
-     CoffeeMachines getCoffeeMachines();
+    CoffeeMachines getCoffeeMachines();
+
     Employees getEmployees();
 
 }
