@@ -12,9 +12,6 @@ public class CoffeParadigmsOptions {
     @Option(name = "-it", usage = "Define the number of iterations you want to make", aliases = "--iterations", required = false)
     private Integer nIterations = 1;
 
-    @Option(name = "-nu", usage = "Define the number of persons using the coffee machines", aliases = "--users", required = false)
-    private Integer nUsers = 1;
-
     @Option(name = "-ud", usage = "Defines where the user definition file is", aliases = "--userdefinitions", required = false)
     private String userDefinitionFile;
 

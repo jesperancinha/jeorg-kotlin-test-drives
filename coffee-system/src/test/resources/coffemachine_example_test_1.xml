@@ -1,7 +1,7 @@
 <CoffeeMachines>
-    <CoffeMachine name="NessyExpresso">
+    <CoffeMachine name="nessyExpresso1">
         <Coffees>
-            <Coffee name="LatteMachiatto">
+            <Coffee name="latteMachiatto">
                 <TimesToFill>
                     <FillTime description="heating" index="0">10</FillTime>
                     <FillTime description="grinding coffee" index="0">20</FillTime>
@@ -10,10 +10,60 @@
                     <FillTime description="pouring coffee" index="3">40</FillTime>
                 </TimesToFill>
             </Coffee>
+            <Coffee name="latteMachiattoMild">
+                <TimesToFill>
+                    <FillTime description="heating" index="0">10</FillTime>
+                    <FillTime description="grinding coffee" index="0">20</FillTime>
+                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="switch time" index="2">30</FillTime>
+                    <FillTime description="pouring coffee" index="3">10</FillTime>
+                </TimesToFill>
+            </Coffee>
         </Coffees>
         <PaymentTypes>
-            <Payment>
-
+            <Payment name="noPayment"/>
+            <Payment name="whileCoffeePouringPayment">
+                <PaymentTime index="0">10</PaymentTime>
+            </Payment>
+            <Payment name="afterCoffeePayment">
+                <PaymentTime>10</PaymentTime>
+            </Payment>
+            <Payment name="beforeCoffeePayment">
+                <PaymentTime>20</PaymentTime>
+            </Payment>
+        </PaymentTypes>
+    </CoffeMachine>
+    <CoffeMachine name="nessyExpresso2">
+        <Coffees>
+            <Coffee name="latteMachiatto">
+                <TimesToFill>
+                    <FillTime description="heating" index="0">10</FillTime>
+                    <FillTime description="grinding coffee" index="0">20</FillTime>
+                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="switch time" index="2">30</FillTime>
+                    <FillTime description="pouring coffee" index="3">40</FillTime>
+                </TimesToFill>
+            </Coffee>
+            <Coffee name="latteMachiattoMild">
+                <TimesToFill>
+                    <FillTime description="heating" index="0">10</FillTime>
+                    <FillTime description="grinding coffee" index="0">20</FillTime>
+                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="switch time" index="2">30</FillTime>
+                    <FillTime description="pouring coffee" index="3">10</FillTime>
+                </TimesToFill>
+            </Coffee>
+        </Coffees>
+        <PaymentTypes>
+            <Payment name="noPayment"/>
+            <Payment name="whileCoffeePouringPayment">
+                <PaymentTime index="0">10</PaymentTime>
+            </Payment>
+            <Payment name="afterCoffeePayment">
+                <PaymentTime>10</PaymentTime>
+            </Payment>
+            <Payment name="beforeCoffeePayment">
+                <PaymentTime>20</PaymentTime>
             </Payment>
         </PaymentTypes>
     </CoffeMachine>

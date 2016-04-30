@@ -2,6 +2,10 @@
 .idea/**
 **/*.iml
 
+# Maven
+
+**/target
+
 # Eclipse settings
 .metadata/
 RemoteSystemsTempFiles/
