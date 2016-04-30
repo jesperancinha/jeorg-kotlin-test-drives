@@ -16,15 +16,15 @@ import static org.junit.Assert.assertThat;
  */
 public class GeneralProcessorImplTest {
 
-    public static final String POURING_COFFEE = "pouring coffee";
-    public static final String SWITCH_TIME = "switch time";
-    public static final String POURING_MILK = "pouring milk";
-    public static final String GRINDING_COFFEE = "grinding coffee";
-    public static final String HEATING = "heating";
-    public static final String LATTE_MACHIATTO_MILD = "latteMachiattoMild";
-    public static final String LATTE_MACHIATTO = "latteMachiatto";
-    public static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
-    public static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
+    private static final String POURING_COFFEE = "pouring coffee";
+    private static final String SWITCH_TIME = "switch time";
+    private static final String POURING_MILK = "pouring milk";
+    private static final String GRINDING_COFFEE = "grinding coffee";
+    private static final String HEATING = "heating";
+    private static final String LATTE_MACHIATTO_MILD = "latteMachiattoMild";
+    private static final String LATTE_MACHIATTO = "latteMachiatto";
+    private static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
+    private static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
 
     @Test
     public void startSimulationProcess() throws Exception {
