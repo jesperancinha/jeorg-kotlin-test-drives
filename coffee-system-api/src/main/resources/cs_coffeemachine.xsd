@@ -2,7 +2,7 @@
     <xs:element name="CoffeeMachines">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="CoffeMachine">
+                <xs:element name="CoffeMachine" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="Coffees">
@@ -57,7 +57,7 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute type="xs:string" name="name"/>
+                        <xs:attribute type="xs:string" name="name" use="optional"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>

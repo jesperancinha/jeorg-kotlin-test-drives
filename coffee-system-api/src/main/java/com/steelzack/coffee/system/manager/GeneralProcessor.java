@@ -1,5 +1,7 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.Employees;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBException;
@@ -19,4 +21,8 @@ interface GeneralProcessor {
     throws FileNotFoundException, //
             JAXBException, //
             SAXException; //
+
+     CoffeeMachines getCoffeeMachines();
+    Employees getEmployees();
+
 }

@@ -6,13 +6,9 @@ import lombok.Builder;
 import lombok.Getter;
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -28,8 +24,8 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     final String sourceXmlMachinesFile;
     final String sourceXmlEmployeesFile;
 
-    private CoffeeMachines coffeMachines;
-    private Employees employes;
+    private CoffeeMachines coffeeMachines;
+    private Employees employees;
 
     /**
      * Creates the coffee machines from the XML file
@@ -102,7 +98,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
             JAXBException, //
             SAXException //
     {
-        this.coffeMachines = createCoffeeMachines(coffeesFile);
-        this.employes = createEmployees(employeesFile);
+        this.coffeeMachines = createCoffeeMachines(coffeesFile);
+        this.employees = createEmployees(employeesFile);
     }
+
+
 }
