@@ -1,5 +1,6 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,4 +10,5 @@ import lombok.Getter;
 @Builder
 @Getter
 public class PaymentProcessorImpl implements PaymentProcessor {
+    private final Payment payment;
 }
