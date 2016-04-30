@@ -32,7 +32,7 @@ You will be able to:
 >
 > Each cafeteria is equipped with a specified **number** of coffee machines.
 >
-> Each coffee machine provides **different types** of coffees:
+> Each coffee machine provides **different types** of coffees (examples):
 >
 > * Mocha
 >
@@ -42,7 +42,10 @@ You will be able to:
 >
 > * Double Expresso
 >
-> There are multiple **types of payment** machines:
+>> These types of coffee can be specified by task and by **concurrency**
+>
+>
+> There are multiple **types of payment** machines (examples):
 >
 > * You pay before you get your coffee.
 >
@@ -51,6 +54,8 @@ You will be able to:
 > * You don't pay anything at all
 >
 > * You pay after you get your coffee
+>
+>> You will be able to specify diferent types of payment. The solution provided is to be as generic as possible.
 
 For this simulator, socializing times are not considered because they may vary a lot, from non-existent to very lasting.
 
