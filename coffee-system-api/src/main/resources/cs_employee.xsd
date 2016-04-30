@@ -2,7 +2,7 @@
     <xs:element name="Employees">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Employee">
+                <xs:element name="Employee" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element type="xs:string" name="Name"/>
@@ -30,9 +30,9 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute type="xs:byte" name="findCupTime"/>
-                        <xs:attribute type="xs:byte" name="putUnderOutletTime"/>
-                        <xs:attribute type="xs:byte" name="takeCupAndLeaveTime"/>
+                        <xs:attribute type="xs:byte" name="findCupTime" use="optional"/>
+                        <xs:attribute type="xs:byte" name="putUnderOutletTime" use="optional"/>
+                        <xs:attribute type="xs:byte" name="takeCupAndLeaveTime" use="optional"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
