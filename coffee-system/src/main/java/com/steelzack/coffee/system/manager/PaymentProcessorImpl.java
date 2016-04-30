@@ -9,5 +9,4 @@ import lombok.Getter;
 @Builder
 @Getter
 public class PaymentProcessorImpl implements PaymentProcessor {
-Payment
 }
