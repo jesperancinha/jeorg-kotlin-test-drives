@@ -9,6 +9,7 @@
         <artifactId>coffee-paradigms</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <artifactId>coffee-system</artifactId>
 
     <properties>
