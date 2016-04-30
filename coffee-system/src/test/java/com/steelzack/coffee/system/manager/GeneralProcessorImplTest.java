@@ -16,6 +16,16 @@ import static org.junit.Assert.assertThat;
  */
 public class GeneralProcessorImplTest {
 
+    private static final String POURING_COFFEE = "pouring coffee";
+    private static final String SWITCH_TIME = "switch time";
+    private static final String POURING_MILK = "pouring milk";
+    private static final String GRINDING_COFFEE = "grinding coffee";
+    private static final String HEATING = "heating";
+    private static final String LATTE_MACHIATTO_MILD = "latteMachiattoMild";
+    private static final String LATTE_MACHIATTO = "latteMachiatto";
+    private static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
+    private static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
+
     @Test
     public void startSimulationProcess() throws Exception {
         final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
@@ -30,36 +40,36 @@ public class GeneralProcessorImplTest {
         final List<CoffeeMachines.CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
 
         final Stack<String> expectedDescriptions = new Stack<>();
-        expectedDescriptions.push("pouring coffee");
-        expectedDescriptions.push("switch time");
-        expectedDescriptions.push("pouring milk");
-        expectedDescriptions.push("grinding coffee");
-        expectedDescriptions.push("heating");
-        expectedDescriptions.push("pouring coffee");
-        expectedDescriptions.push("switch time");
-        expectedDescriptions.push("pouring milk");
-        expectedDescriptions.push("grinding coffee");
-        expectedDescriptions.push("heating");
-        expectedDescriptions.push("pouring coffee");
-        expectedDescriptions.push("switch time");
-        expectedDescriptions.push("pouring milk");
-        expectedDescriptions.push("grinding coffee");
-        expectedDescriptions.push("heating");
-        expectedDescriptions.push("pouring coffee");
-        expectedDescriptions.push("switch time");
-        expectedDescriptions.push("pouring milk");
-        expectedDescriptions.push("grinding coffee");
-        expectedDescriptions.push("heating");
+        expectedDescriptions.push(POURING_COFFEE);
+        expectedDescriptions.push(SWITCH_TIME);
+        expectedDescriptions.push(POURING_MILK);
+        expectedDescriptions.push(GRINDING_COFFEE);
+        expectedDescriptions.push(HEATING);
+        expectedDescriptions.push(POURING_COFFEE);
+        expectedDescriptions.push(SWITCH_TIME);
+        expectedDescriptions.push(POURING_MILK);
+        expectedDescriptions.push(GRINDING_COFFEE);
+        expectedDescriptions.push(HEATING);
+        expectedDescriptions.push(POURING_COFFEE);
+        expectedDescriptions.push(SWITCH_TIME);
+        expectedDescriptions.push(POURING_MILK);
+        expectedDescriptions.push(GRINDING_COFFEE);
+        expectedDescriptions.push(HEATING);
+        expectedDescriptions.push(POURING_COFFEE);
+        expectedDescriptions.push(SWITCH_TIME);
+        expectedDescriptions.push(POURING_MILK);
+        expectedDescriptions.push(GRINDING_COFFEE);
+        expectedDescriptions.push(HEATING);
 
         final Stack<String> expectedCoffeeNames = new Stack<>();
-        expectedCoffeeNames.push("latteMachiattoMild");
-        expectedCoffeeNames.push("latteMachiatto");
-        expectedCoffeeNames.push("latteMachiattoMild");
-        expectedCoffeeNames.push("latteMachiatto");
+        expectedCoffeeNames.push(LATTE_MACHIATTO_MILD);
+        expectedCoffeeNames.push(LATTE_MACHIATTO);
+        expectedCoffeeNames.push(LATTE_MACHIATTO_MILD);
+        expectedCoffeeNames.push(LATTE_MACHIATTO);
 
         final Stack<String> expectedCoffeeMachineNames = new Stack<>();
-        expectedCoffeeMachineNames.push("nessyExpresso2");
-        expectedCoffeeMachineNames.push("nessyExpresso1");
+        expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2);
+        expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1);
 
         assertThat(coffeMachines.size(), is(2));
         coffeMachines.stream().forEach( //
