@@ -1,6 +1,5 @@
-package com.steelzack.coffee.system.objects;
+package com.steelzack.coffee.system.stats;
 
-import com.steelzack.coffee.system.objecs.CoffeeStats;
 import lombok.Getter;
 
 @Getter
@@ -46,7 +45,7 @@ public class CoffeeStatsImpl implements CoffeeStats {
                 "\nmachiatto: " + coffeeMachiatto + //
                 "\nexpresso: " + coffeExpresso + //
                 "\nAverage time spent: " + averageCoffee + //
-                "\nSlowest EmployeeImpl: " + slowesProgrammerTime + //
-                "\nFastest EmployeeImpl: " + fastestProgrammerTime;
+                "\nSlowest EmployeeCallableImpl: " + slowesProgrammerTime + //
+                "\nFastest EmployeeCallableImpl: " + fastestProgrammerTime;
     }
 }

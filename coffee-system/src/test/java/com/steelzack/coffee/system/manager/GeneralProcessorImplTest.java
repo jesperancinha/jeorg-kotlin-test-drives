@@ -1,12 +1,11 @@
 package com.steelzack.coffee.system.manager;
 
-import com.steelzack.coffee.system.input.CoffeeMachines;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.steelzack.coffee.system.input.Employees;
 import com.steelzack.coffee.system.input.Employees.Employee;
-import com.steelzack.coffee.system.input.Employees.Employee.Actions.Action;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PreAction;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -132,21 +131,29 @@ public class GeneralProcessorImplTest {
         expectedCupSizes.push("Small");
         expectedCupSizes.push("Big");
 
-        final Stack<String> expectedActionDescriptions = new Stack<>();
-        expectedActionDescriptions.push("take cup and leave");
-        expectedActionDescriptions.push("put cup in outlet");
-        expectedActionDescriptions.push("choose a cup");
-        expectedActionDescriptions.push("take cup and leave");
-        expectedActionDescriptions.push("put cup in outlet");
-        expectedActionDescriptions.push("choose a cup");
+        final Stack<String> expectedPreActionDescriptions = new Stack<>();
+        expectedPreActionDescriptions.push("put cup in outlet");
+        expectedPreActionDescriptions.push("choose a cup");
+        expectedPreActionDescriptions.push("put cup in outlet");
+        expectedPreActionDescriptions.push("choose a cup");
 
-        final Stack<Byte> expectedActionTimes = new Stack<>();
-        expectedActionTimes.push((byte) 5);
-        expectedActionTimes.push((byte) 20);
-        expectedActionTimes.push((byte) 10);
-        expectedActionTimes.push((byte) 5);
-        expectedActionTimes.push((byte) 20);
-        expectedActionTimes.push((byte) 10);
+        final Stack<Byte> expectedPreActionTimes = new Stack<>();
+        expectedPreActionTimes.push((byte) 20);
+        expectedPreActionTimes.push((byte) 10);
+        expectedPreActionTimes.push((byte) 20);
+        expectedPreActionTimes.push((byte) 10);
+
+        final Stack<String> expectedPostActionDescriptions = new Stack<>();
+        expectedPostActionDescriptions.push("dummy");
+        expectedPostActionDescriptions.push("take cup and leave");
+        expectedPostActionDescriptions.push("dummy");
+        expectedPostActionDescriptions.push("take cup and leave");
+
+        final Stack<Byte> expectedPostActionTimes = new Stack<>();
+        expectedPostActionTimes.push((byte) 55);
+        expectedPostActionTimes.push((byte) 5);
+        expectedPostActionTimes.push((byte) 55);
+        expectedPostActionTimes.push((byte) 5);
 
         assertThat(coffeMachines.size(), is(2));
         assertThat(employees.size(), is(2));
@@ -177,13 +184,20 @@ public class GeneralProcessorImplTest {
         );
         employees.stream().forEach(
                 employee -> {
-                    final List<Action> actions = employee.getActions().getAction();
+                    final List<PreAction> preActions = employee.getActions().getPreAction();
+                    final List<PostAction> postActions = employee.getActions().getPostAction();
                     assertThat(employee.getName(), equalTo(expectedEmployeeNames.pop()));
                     assertThat(employee.getCup().getSize(), equalTo(expectedCupSizes.pop()));
-                    actions.stream().forEach(
+                    preActions.stream().forEach(
                             action -> {
-                                assertThat(action.getDescription(), equalTo(expectedActionDescriptions.pop()));
-                                assertThat(action.getTime(), equalTo(expectedActionTimes.pop()));
+                                assertThat(action.getDescription(), equalTo(expectedPreActionDescriptions.pop()));
+                                assertThat(action.getTime(), equalTo(expectedPreActionTimes.pop()));
+                            }
+                    );
+                    postActions.stream().forEach(
+                            postAction -> {
+                                assertThat(postAction.getDescription(), equalTo(expectedPostActionDescriptions.pop()));
+                                assertThat(postAction.getTime(), equalTo(expectedPostActionTimes.pop()));
                             }
                     );
                 }
