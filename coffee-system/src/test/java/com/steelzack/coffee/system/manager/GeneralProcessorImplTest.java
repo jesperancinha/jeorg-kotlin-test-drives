@@ -6,6 +6,7 @@ import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Cof
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees;
 import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.Action;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -123,13 +124,21 @@ public class GeneralProcessorImplTest {
         expectedTimes.push((byte) 5);
         expectedTimes.push(null);
 
-        Stack<String> expectedEmployeeNames = new Stack<>();
+        final Stack<String> expectedEmployeeNames = new Stack<>();
         expectedEmployeeNames.push("Marco");
         expectedEmployeeNames.push("Joao");
 
-        Stack<String> expectedCupSizes = new Stack<>();
+        final Stack<String> expectedCupSizes = new Stack<>();
         expectedCupSizes.push("Small");
         expectedCupSizes.push("Big");
+
+        final Stack<String> expectedActionDescriptions = new Stack<>();
+        expectedActionDescriptions.push("take cup and leave");
+        expectedActionDescriptions.push("put cup in outlet");
+        expectedActionDescriptions.push("choose a cup");
+        expectedActionDescriptions.push("take cup and leave");
+        expectedActionDescriptions.push("put cup in outlet");
+        expectedActionDescriptions.push("choose a cup");
 
         assertThat(coffeMachines.size(), is(2));
         assertThat(employees.size(), is(2));
@@ -160,8 +169,14 @@ public class GeneralProcessorImplTest {
         );
         employees.stream().forEach(
                 employee -> {
+                    final List<Action> actions = employee.getActions().getAction();
                     assertThat(employee.getName(), equalTo(expectedEmployeeNames.pop()));
                     assertThat(employee.getCup().getSize(), equalTo(expectedCupSizes.pop()));
+                    actions.stream().forEach(
+                            action -> {
+                                assertThat(action.getDescription(), equalTo(expectedActionDescriptions.pop()));
+                            }
+                    );
                 }
         );
     }
