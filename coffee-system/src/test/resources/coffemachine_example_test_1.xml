@@ -3,20 +3,20 @@
         <Coffees>
             <Coffee name="latteMachiatto">
                 <TimesToFill>
-                    <FillTime description="heating" index="0">10</FillTime>
-                    <FillTime description="grinding coffee" index="0">20</FillTime>
-                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="heating" index="0">5</FillTime>
+                    <FillTime description="grinding coffee" index="0">10</FillTime>
+                    <FillTime description="pouring milk" index="1">20</FillTime>
                     <FillTime description="switch time" index="2">30</FillTime>
                     <FillTime description="pouring coffee" index="3">40</FillTime>
                 </TimesToFill>
             </Coffee>
             <Coffee name="latteMachiattoMild">
                 <TimesToFill>
-                    <FillTime description="heating" index="0">10</FillTime>
-                    <FillTime description="grinding coffee" index="0">20</FillTime>
-                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="heating" index="0">5</FillTime>
+                    <FillTime description="grinding coffee" index="0">10</FillTime>
+                    <FillTime description="pouring milk" index="1">20</FillTime>
                     <FillTime description="switch time" index="2">30</FillTime>
-                    <FillTime description="pouring coffee" index="3">10</FillTime>
+                    <FillTime description="pouring coffee" index="3">40</FillTime>
                 </TimesToFill>
             </Coffee>
         </Coffees>
@@ -31,20 +31,20 @@
         <Coffees>
             <Coffee name="latteMachiatto">
                 <TimesToFill>
-                    <FillTime description="heating" index="0">10</FillTime>
-                    <FillTime description="grinding coffee" index="0">20</FillTime>
-                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="heating" index="0">5</FillTime>
+                    <FillTime description="grinding coffee" index="0">10</FillTime>
+                    <FillTime description="pouring milk" index="1">20</FillTime>
                     <FillTime description="switch time" index="2">30</FillTime>
                     <FillTime description="pouring coffee" index="3">40</FillTime>
                 </TimesToFill>
             </Coffee>
             <Coffee name="latteMachiattoMild">
                 <TimesToFill>
-                    <FillTime description="heating" index="0">10</FillTime>
-                    <FillTime description="grinding coffee" index="0">20</FillTime>
-                    <FillTime description="pouring milk" index="1">30</FillTime>
+                    <FillTime description="heating" index="0">5</FillTime>
+                    <FillTime description="grinding coffee" index="0">10</FillTime>
+                    <FillTime description="pouring milk" index="1">20</FillTime>
                     <FillTime description="switch time" index="2">30</FillTime>
-                    <FillTime description="pouring coffee" index="3">10</FillTime>
+                    <FillTime description="pouring coffee" index="3">40</FillTime>
                 </TimesToFill>
             </Coffee>
         </Coffees>

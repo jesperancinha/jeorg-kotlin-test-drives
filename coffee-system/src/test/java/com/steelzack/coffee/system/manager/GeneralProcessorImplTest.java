@@ -77,6 +77,28 @@ public class GeneralProcessorImplTest {
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2);
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1);
 
+        final Stack<Byte> expectedTimesForCoffe = new Stack<>();
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+
         final Stack<String> expectedPaymentTypes = new Stack<>();
         expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
         expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
@@ -86,6 +108,16 @@ public class GeneralProcessorImplTest {
         expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
         expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
         expectedPaymentTypes.push(NO_PAYMENT);
+
+        final Stack<Byte> expectedTimes = new Stack<>();
+        expectedTimes.push((byte) 20);
+        expectedTimes.push((byte) 10);
+        expectedTimes.push((byte) 5);
+        expectedTimes.push(null);
+        expectedTimes.push((byte) 20);
+        expectedTimes.push((byte) 10);
+        expectedTimes.push((byte) 5);
+        expectedTimes.push(null);
 
         assertThat(coffeMachines.size(), is(2));
         coffeMachines.stream().forEach( //
@@ -100,6 +132,7 @@ public class GeneralProcessorImplTest {
                                 coffee.getTimesToFill().getFillTime().stream().forEach( //
                                         fillTime -> { //
                                             assertThat(fillTime.getDescription(), equalTo(expectedDescriptions.pop())); //
+                                            assertThat(fillTime.getValue(), equalTo(expectedTimesForCoffe.pop()));
                                         }
                                 );
                             }
@@ -107,6 +140,7 @@ public class GeneralProcessorImplTest {
                     paymentTypes.stream().forEach(
                             payment -> {
                                 assertThat(payment.getName(), equalTo(expectedPaymentTypes.pop()));
+                                assertThat(payment.getTime(), equalTo(expectedTimes.pop()));
                             }
                     );
                 }
