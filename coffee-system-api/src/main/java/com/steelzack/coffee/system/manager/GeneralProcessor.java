@@ -11,13 +11,13 @@ import java.io.InputStream;
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
-interface GeneralProcessor {
-    void startSimulationProcess() //
+public interface GeneralProcessor {
+    void initSimulationProcess() //
             throws FileNotFoundException, //
             JAXBException, //
             SAXException; //
 
-    void startSimulationProcess(InputStream coffeesFile, InputStream employeesFile) //
+    void initSimulationProcess(InputStream coffeesFile, InputStream employeesFile) //
             throws FileNotFoundException, //
             JAXBException, //
             SAXException; //
