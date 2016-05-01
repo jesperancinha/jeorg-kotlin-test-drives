@@ -127,6 +127,10 @@ public class GeneralProcessorImplTest {
         expectedEmployeeNames.push("Marco");
         expectedEmployeeNames.push("Joao");
 
+        Stack<String> expectedCupSizes = new Stack<>();
+        expectedCupSizes.push("Small");
+        expectedCupSizes.push("Big");
+
         assertThat(coffeMachines.size(), is(2));
         assertThat(employees.size(), is(2));
         coffeMachines.stream().forEach( //
@@ -157,6 +161,7 @@ public class GeneralProcessorImplTest {
         employees.stream().forEach(
                 employee -> {
                     assertThat(employee.getName(), equalTo(expectedEmployeeNames.pop()));
+                    assertThat(employee.getCup().getSize(), equalTo(expectedCupSizes.pop()));
                 }
         );
     }
