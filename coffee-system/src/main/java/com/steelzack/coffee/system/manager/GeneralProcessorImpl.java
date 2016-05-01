@@ -64,12 +64,12 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      * Starts the simulation
      */
     @Override
-    public void startSimulationProcess()
+    public void initSimulationProcess()
             throws FileNotFoundException, //
             JAXBException, //
             SAXException //
     { //
-        startSimulationProcess( //
+        initSimulationProcess( //
                 new FileInputStream( //
                         this.sourceXmlMachinesFile //
                 ), //
@@ -89,9 +89,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      * @throws SAXException
      */
     @Override
-    public void startSimulationProcess( //
-                                        InputStream coffeesFile, //
-                                        InputStream employeesFile //
+    public void initSimulationProcess( //
+                                       InputStream coffeesFile, //
+                                       InputStream employeesFile //
     ) //
             throws //
             FileNotFoundException, //

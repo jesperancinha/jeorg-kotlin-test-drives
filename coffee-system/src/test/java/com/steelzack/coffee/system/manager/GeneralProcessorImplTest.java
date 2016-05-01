@@ -41,7 +41,7 @@ public class GeneralProcessorImplTest {
         final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
         final GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).build();
 
-        generalProcessor.startSimulationProcess(
+        generalProcessor.initSimulationProcess(
                 testMachinesFile, //
                 testEmployeesFile
         ); //
