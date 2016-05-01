@@ -1,8 +1,11 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -27,10 +30,10 @@ public class GeneralProcessorImplTest {
     private static final String LATTE_MACHIATTO = "latteMachiatto";
     private static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
     private static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
-    public static final String BEFORE_COFFEE_PAYMENT = "beforeCoffeePayment";
-    public static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
-    public static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
-    public static final String NO_PAYMENT = "noPayment";
+    private static final String BEFORE_COFFEE_PAYMENT = "beforeCoffeePayment";
+    private static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
+    private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
+    private static final String NO_PAYMENT = "noPayment";
 
     @Test
     public void startSimulationProcess() throws Exception {
@@ -43,7 +46,8 @@ public class GeneralProcessorImplTest {
                 testEmployeesFile
         ); //
 
-        final List<CoffeeMachines.CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
+        final List<CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
+        final List<Employee> employees = generalProcessor.getEmployees().getEmployee();
 
         final Stack<String> expectedDescriptions = new Stack<>();
         expectedDescriptions.push(POURING_COFFEE);
@@ -119,7 +123,12 @@ public class GeneralProcessorImplTest {
         expectedTimes.push((byte) 5);
         expectedTimes.push(null);
 
+        Stack<String> expectedEmployeeNames = new Stack<>();
+        expectedEmployeeNames.push("Marco");
+        expectedEmployeeNames.push("Joao");
+
         assertThat(coffeMachines.size(), is(2));
+        assertThat(employees.size(), is(2));
         coffeMachines.stream().forEach( //
                 coffeeMachine -> { //
                     final List<Coffee> coffees = coffeeMachine.getCoffees().getCoffee(); //
@@ -143,6 +152,11 @@ public class GeneralProcessorImplTest {
                                 assertThat(payment.getTime(), equalTo(expectedTimes.pop()));
                             }
                     );
+                }
+        );
+        employees.stream().forEach(
+                employee -> {
+                    assertThat(employee.getName(), equalTo(expectedEmployeeNames.pop()));
                 }
         );
     }
