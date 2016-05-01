@@ -22,15 +22,9 @@
         </Coffees>
         <PaymentTypes>
             <Payment name="noPayment"/>
-            <Payment name="whileCoffeePouringPayment">
-                <PaymentTime index="0">10</PaymentTime>
-            </Payment>
-            <Payment name="afterCoffeePayment">
-                <PaymentTime>10</PaymentTime>
-            </Payment>
-            <Payment name="beforeCoffeePayment">
-                <PaymentTime>20</PaymentTime>
-            </Payment>
+            <Payment name="whileCoffeePouringPayment" time="5"/>
+            <Payment name="afterCoffeePayment" time="10"/>
+            <Payment name="beforeCoffeePayment" time="20"/>
         </PaymentTypes>
     </CoffeMachine>
     <CoffeMachine name="nessyExpresso2">
@@ -56,15 +50,9 @@
         </Coffees>
         <PaymentTypes>
             <Payment name="noPayment"/>
-            <Payment name="whileCoffeePouringPayment">
-                <PaymentTime index="0">10</PaymentTime>
-            </Payment>
-            <Payment name="afterCoffeePayment">
-                <PaymentTime>10</PaymentTime>
-            </Payment>
-            <Payment name="beforeCoffeePayment">
-                <PaymentTime>20</PaymentTime>
-            </Payment>
+            <Payment name="whileCoffeePouringPayment" time="5"/>
+            <Payment name="afterCoffeePayment" time="10"/>
+            <Payment name="beforeCoffeePayment" time="20"/>
         </PaymentTypes>
     </CoffeMachine>
 </CoffeeMachines>

@@ -1,6 +1,8 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -25,6 +27,10 @@ public class GeneralProcessorImplTest {
     private static final String LATTE_MACHIATTO = "latteMachiatto";
     private static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
     private static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
+    public static final String BEFORE_COFFEE_PAYMENT = "beforeCoffeePayment";
+    public static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
+    public static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
+    public static final String NO_PAYMENT = "noPayment";
 
     @Test
     public void startSimulationProcess() throws Exception {
@@ -71,10 +77,21 @@ public class GeneralProcessorImplTest {
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2);
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1);
 
+        final Stack<String> expectedPaymentTypes = new Stack<>();
+        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
+        expectedPaymentTypes.push(NO_PAYMENT);
+        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
+        expectedPaymentTypes.push(NO_PAYMENT);
+
         assertThat(coffeMachines.size(), is(2));
         coffeMachines.stream().forEach( //
                 coffeeMachine -> { //
-                    List<CoffeeMachines.CoffeMachine.Coffees.Coffee> coffees = coffeeMachine.getCoffees().getCoffee(); //
+                    final List<Coffee> coffees = coffeeMachine.getCoffees().getCoffee(); //
+                    final List<Payment> paymentTypes = coffeeMachine.getPaymentTypes().getPayment();
                     assertThat(coffeeMachine.getName(), equalTo(expectedCoffeeMachineNames.pop())); //
                     assertThat(coffees.size(), is(2)); //
                     coffees.stream().forEach( //
@@ -85,6 +102,11 @@ public class GeneralProcessorImplTest {
                                             assertThat(fillTime.getDescription(), equalTo(expectedDescriptions.pop())); //
                                         }
                                 );
+                            }
+                    );
+                    paymentTypes.stream().forEach(
+                            payment -> {
+                                assertThat(payment.getName(), equalTo(expectedPaymentTypes.pop()));
                             }
                     );
                 }
