@@ -1,28 +1,20 @@
 <Employees>
     <Employee findCupTime="1" putUnderOutletTime="2" takeCupAndLeaveTime="3">
         <Name>Joao</Name>
-        <Cup>
-            <CupSize>Big</CupSize>
-            <TimesToFill>
-                <FillTime description="heating" index="0">10</FillTime>
-                <FillTime description="grinding coffee" index="0">20</FillTime>
-                <FillTime description="pouring milk" index="1">30</FillTime>
-                <FillTime description="switch time" index="2">30</FillTime>
-                <FillTime description="pouring coffee" index="3">40</FillTime>
-            </TimesToFill>
-        </Cup>
+        <Cup size="Big"/>
+        <Actions>
+            <Action description="choose a cup" time="10"/>
+            <Action description="put cup in outlet" time="20"/>
+            <Action description="take cup and leave" time="5"/>
+        </Actions>
     </Employee>
     <Employee findCupTime="1" putUnderOutletTime="2" takeCupAndLeaveTime="3">
         <Name>Marco</Name>
-        <Cup>
-            <CupSize>Big</CupSize>
-            <TimesToFill>
-                <FillTime description="heating" index="0">10</FillTime>
-                <FillTime description="grinding coffee" index="0">20</FillTime>
-                <FillTime description="pouring milk" index="1">30</FillTime>
-                <FillTime description="switch time" index="2">30</FillTime>
-                <FillTime description="pouring coffee" index="3">40</FillTime>
-            </TimesToFill>
-        </Cup>
+        <Cup size="Small"/>
+        <Actions>
+            <Action description="choose a cup" time="10"/>
+            <Action description="put cup in outlet" time="20"/>
+            <Action description="take cup and leave" time="5"/>
+        </Actions>
     </Employee>
 </Employees>

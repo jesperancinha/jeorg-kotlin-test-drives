@@ -1,6 +1,12 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.Action;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -25,6 +31,10 @@ public class GeneralProcessorImplTest {
     private static final String LATTE_MACHIATTO = "latteMachiatto";
     private static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
     private static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
+    private static final String BEFORE_COFFEE_PAYMENT = "beforeCoffeePayment";
+    private static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
+    private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
+    private static final String NO_PAYMENT = "noPayment";
 
     @Test
     public void startSimulationProcess() throws Exception {
@@ -37,7 +47,8 @@ public class GeneralProcessorImplTest {
                 testEmployeesFile
         ); //
 
-        final List<CoffeeMachines.CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
+        final List<CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
+        final List<Employee> employees = generalProcessor.getEmployees().getEmployee();
 
         final Stack<String> expectedDescriptions = new Stack<>();
         expectedDescriptions.push(POURING_COFFEE);
@@ -71,10 +82,78 @@ public class GeneralProcessorImplTest {
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2);
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1);
 
+        final Stack<Byte> expectedTimesForCoffe = new Stack<>();
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+        expectedTimesForCoffe.push((byte) 40);
+        expectedTimesForCoffe.push((byte) 30);
+        expectedTimesForCoffe.push((byte) 20);
+        expectedTimesForCoffe.push((byte) 10);
+        expectedTimesForCoffe.push((byte) 5);
+
+        final Stack<String> expectedPaymentTypes = new Stack<>();
+        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
+        expectedPaymentTypes.push(NO_PAYMENT);
+        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
+        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
+        expectedPaymentTypes.push(NO_PAYMENT);
+
+        final Stack<Byte> expectedTimes = new Stack<>();
+        expectedTimes.push((byte) 20);
+        expectedTimes.push((byte) 10);
+        expectedTimes.push((byte) 5);
+        expectedTimes.push(null);
+        expectedTimes.push((byte) 20);
+        expectedTimes.push((byte) 10);
+        expectedTimes.push((byte) 5);
+        expectedTimes.push(null);
+
+        final Stack<String> expectedEmployeeNames = new Stack<>();
+        expectedEmployeeNames.push("Marco");
+        expectedEmployeeNames.push("Joao");
+
+        final Stack<String> expectedCupSizes = new Stack<>();
+        expectedCupSizes.push("Small");
+        expectedCupSizes.push("Big");
+
+        final Stack<String> expectedActionDescriptions = new Stack<>();
+        expectedActionDescriptions.push("take cup and leave");
+        expectedActionDescriptions.push("put cup in outlet");
+        expectedActionDescriptions.push("choose a cup");
+        expectedActionDescriptions.push("take cup and leave");
+        expectedActionDescriptions.push("put cup in outlet");
+        expectedActionDescriptions.push("choose a cup");
+
+        final Stack<Byte> expectedActionTimes = new Stack<>();
+        expectedActionTimes.push((byte) 5);
+        expectedActionTimes.push((byte) 20);
+        expectedActionTimes.push((byte) 10);
+        expectedActionTimes.push((byte) 5);
+        expectedActionTimes.push((byte) 20);
+        expectedActionTimes.push((byte) 10);
+
         assertThat(coffeMachines.size(), is(2));
+        assertThat(employees.size(), is(2));
         coffeMachines.stream().forEach( //
                 coffeeMachine -> { //
-                    List<CoffeeMachines.CoffeMachine.Coffees.Coffee> coffees = coffeeMachine.getCoffees().getCoffee(); //
+                    final List<Coffee> coffees = coffeeMachine.getCoffees().getCoffee(); //
+                    final List<Payment> paymentTypes = coffeeMachine.getPaymentTypes().getPayment();
                     assertThat(coffeeMachine.getName(), equalTo(expectedCoffeeMachineNames.pop())); //
                     assertThat(coffees.size(), is(2)); //
                     coffees.stream().forEach( //
@@ -83,8 +162,28 @@ public class GeneralProcessorImplTest {
                                 coffee.getTimesToFill().getFillTime().stream().forEach( //
                                         fillTime -> { //
                                             assertThat(fillTime.getDescription(), equalTo(expectedDescriptions.pop())); //
+                                            assertThat(fillTime.getValue(), equalTo(expectedTimesForCoffe.pop()));
                                         }
                                 );
+                            }
+                    );
+                    paymentTypes.stream().forEach(
+                            payment -> {
+                                assertThat(payment.getName(), equalTo(expectedPaymentTypes.pop()));
+                                assertThat(payment.getTime(), equalTo(expectedTimes.pop()));
+                            }
+                    );
+                }
+        );
+        employees.stream().forEach(
+                employee -> {
+                    final List<Action> actions = employee.getActions().getAction();
+                    assertThat(employee.getName(), equalTo(expectedEmployeeNames.pop()));
+                    assertThat(employee.getCup().getSize(), equalTo(expectedCupSizes.pop()));
+                    actions.stream().forEach(
+                            action -> {
+                                assertThat(action.getDescription(), equalTo(expectedActionDescriptions.pop()));
+                                assertThat(action.getTime(), equalTo(expectedActionTimes.pop()));
                             }
                     );
                 }
