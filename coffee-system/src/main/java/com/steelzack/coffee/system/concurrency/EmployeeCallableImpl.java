@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @Builder
 @Getter
 public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
+    public static final String SCHEDULED_TASK_FAILD_TO_EXECUTE = "scheduled task faild to execute!";
     private final Logger logger = Logger.getLogger(EmployeeCallableImpl.class);
 
     private final Actions actions;
@@ -37,7 +38,14 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
     }
 
     private void callPayCoffee() {
-
+        final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        try {
+            if (!executorService.submit(new PaymentCallableImpl(chosenPayment)).get()) {
+                logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            logger.error(e.getMessage(), e);
+        }
     }
 
     private void callMakeCoffee() throws InterruptedException {
@@ -71,30 +79,29 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
                         try {
                             if (!booleanFuture.get().booleanValue()) ;
                             {
-                                logger.error("scheduled task faild to execute!");
+                                logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
                             }
-                        } catch (InterruptedException e) {
-                            logger.error(e.getMessage(), e);
-                        } catch (ExecutionException e) {
+                        } catch (InterruptedException | ExecutionException e) {
                             logger.error(e.getMessage(), e);
                         }
                     }
             );
         }
 
-
-//                .forEach( //
-//                fillTime -> { //
-//
-//                }
-//        );
     }
 
     private void callPostActions() {
         final List<Actions.PostAction> postActions = this.actions.getPostAction();
         postActions.stream().forEach( //
                 postAction -> { //
-
+                    final ExecutorService executorService = Executors.newFixedThreadPool(1);
+                    try {
+                        if (!executorService.submit(new ActionCallableImpl(postAction)).get()) {
+                            logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
+                        }
+                    } catch (InterruptedException | ExecutionException e) {
+                        logger.error(e.getMessage(), e);
+                    }
                 } //
         ); //
     }
@@ -103,7 +110,14 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
         final List<Actions.PreAction> preActions = this.actions.getPreAction();
         preActions.stream().forEach( //
                 preAction -> { //
-
+                    final ExecutorService executorService = Executors.newFixedThreadPool(1);
+                    try {
+                        if (!executorService.submit(new ActionCallableImpl(preAction)).get()) {
+                            logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
+                        }
+                    } catch (InterruptedException | ExecutionException e) {
+                        logger.error(e.getMessage(), e);
+                    }
                 } //
         ); //
     }
