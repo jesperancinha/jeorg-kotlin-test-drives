@@ -1,6 +1,5 @@
 package com.steelzack.coffee.system.manager;
 
-import com.steelzack.coffee.system.input.CoffeeMachines;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import lombok.Builder;
 import lombok.Getter;
