@@ -1,4 +1,4 @@
-package com.steelzack.coffee.system.objecs;
+package com.steelzack.coffee.system.concurrency;
 
 /**
  * Created by joao on 28-4-16.
