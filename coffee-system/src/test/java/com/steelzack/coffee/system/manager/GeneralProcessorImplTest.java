@@ -140,6 +140,14 @@ public class GeneralProcessorImplTest {
         expectedActionDescriptions.push("put cup in outlet");
         expectedActionDescriptions.push("choose a cup");
 
+        final Stack<Byte> expectedActionTimes = new Stack<>();
+        expectedActionTimes.push((byte) 5);
+        expectedActionTimes.push((byte) 20);
+        expectedActionTimes.push((byte) 10);
+        expectedActionTimes.push((byte) 5);
+        expectedActionTimes.push((byte) 20);
+        expectedActionTimes.push((byte) 10);
+
         assertThat(coffeMachines.size(), is(2));
         assertThat(employees.size(), is(2));
         coffeMachines.stream().forEach( //
@@ -175,6 +183,7 @@ public class GeneralProcessorImplTest {
                     actions.stream().forEach(
                             action -> {
                                 assertThat(action.getDescription(), equalTo(expectedActionDescriptions.pop()));
+                                assertThat(action.getTime(), equalTo(expectedActionTimes.pop()));
                             }
                     );
                 }
