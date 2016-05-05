@@ -25,6 +25,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Stack;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -34,7 +35,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
@@ -320,10 +320,15 @@ public class GeneralProcessorImplTest {
 
         generalProcessor.start();
 
-        verify(queuePreActivity, times(4)).getExecutor(any(String.class));
-        verify(queuePostActivity, times(4)).getExecutor(any(String.class));
-        verify(queueCofee, atMost(10)).getExecutor(any(String.class));
-        verify(queuePayment, atMost(2)).getExecutor(any(String.class));
+        verify(managerExecutorServicePreActivity, times(4)).submit(any(Callable.class));
+        verify(managerExecutorServiceCoffee, times(10)).submit(any(Callable.class));
+        verify(managerExecutorServicePayment, times(2)).submit(any(Callable.class));
+        verify(managerExecutorServicePostActivity, times(4)).submit(any(Callable.class));
+
+        verify(queuePreActivity, times(2)).getExecutor(any(String.class));
+        verify(queueCofee, times(2)).getExecutor(any(String.class));
+        verify(queuePayment, times(2)).getExecutor(any(String.class));
+        verify(queuePostActivity, times(2)).getExecutor(any(String.class));
 
         order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE);
         order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
