@@ -39,7 +39,7 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
     }
 
     @Override
-    public void callMakeCoffee() {
+    public void callMakeCoffee(String name) {
         final List<Coffee.TimesToFill.FillTime> tasks = chosenCoffee.getTimesToFill().getFillTime();
         final Set<Integer> allIndexes = new HashSet<>();
         final Set<Future<Boolean>> allResults = new HashSet<>();
@@ -60,7 +60,7 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
                     fillTime -> //
                     {
                         final CoffeeCallableImpl coffeeCallable = new CoffeeCallableImpl(fillTime);
-                        final Future<Boolean> future = queueCofee.getManagedExecutorService().submit(coffeeCallable);
+                        final Future<Boolean> future = queueCofee.getExecutor(name).submit(coffeeCallable);
                         allResults.add(future);
                     }
             );
@@ -82,5 +82,15 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
     @Override
     QueueAbstract getExecutorService() {
         return queueCofee;
+    }
+
+    @Override
+    public void addQueueSize(int queueSize, String name) {
+        queueCofee.setQueueSize(queueSize, name);
+    }
+
+    @Override
+    public void initExecutors() {
+        queueCofee.initExecutors();
     }
 }

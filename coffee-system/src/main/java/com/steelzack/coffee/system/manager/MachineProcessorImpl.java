@@ -23,22 +23,30 @@ public class MachineProcessorImpl implements MachineProcessor {
     private PaymentProcessor paymentProcessor;
 
     @Override
-    public void callPreActions() {
-        employeeProcessor.callPreActions();
+    public void callPreActions(String name) {
+        employeeProcessor.callPreActions(name);
     }
 
     @Override
-    public void callMakeCoffee() {
-        coffeeProcessor.callMakeCoffee();
+    public void callMakeCoffee(String name) {
+        coffeeProcessor.callMakeCoffee(name);
     }
 
     @Override
-    public void callPayCoffee() {
-        paymentProcessor.callPayCoffee();
+    public void callPayCoffee(String name) {
+        paymentProcessor.callPayCoffee(name);
     }
 
     @Override
-    public void callPostActions() {
-        employeeProcessor.callPostActions();
+    public void callPostActions(String name) {
+        employeeProcessor.callPostActions(name);
+    }
+
+    @Override
+    public void initAll()
+    {
+        employeeProcessor.initExecutors();
+        coffeeProcessor.initExecutors();
+        paymentProcessor.initExecutors();
     }
 }

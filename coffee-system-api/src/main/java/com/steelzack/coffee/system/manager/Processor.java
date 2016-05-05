@@ -4,5 +4,7 @@ package com.steelzack.coffee.system.manager;
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 public interface Processor {
-    void setQueueSize(int queueSize);
+    void addQueueSize(int queueSize, String name);
+
+    void initExecutors();
 }

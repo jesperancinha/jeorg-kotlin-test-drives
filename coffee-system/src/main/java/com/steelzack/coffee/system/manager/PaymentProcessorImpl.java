@@ -35,9 +35,9 @@ public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProces
     }
 
     @Override
-    public void callPayCoffee() {
+    public void callPayCoffee(String name) {
         try {
-            if (!queuePayment.getManagedExecutorService().submit(new PaymentCallableImpl(chosenPayment)).get()) {
+            if (!queuePayment.getExecutor(name).submit(new PaymentCallableImpl(chosenPayment)).get()) {
                 logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
             }
         } catch (InterruptedException | ExecutionException e) {
@@ -48,5 +48,15 @@ public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProces
     @Override
     public QueueAbstract getExecutorService() {
         return queuePayment;
+    }
+
+    @Override
+    public void addQueueSize(int queueSize, String name) {
+        queuePayment.setQueueSize(queueSize, name);
+    }
+
+    @Override
+    public void initExecutors() {
+        queuePayment.initExecutors();
     }
 }

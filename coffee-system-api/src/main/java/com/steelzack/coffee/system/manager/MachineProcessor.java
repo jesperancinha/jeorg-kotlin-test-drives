@@ -10,11 +10,13 @@ public interface MachineProcessor {
 
     PaymentProcessor getPaymentProcessor();
 
-    void callPreActions();
+    void callPreActions(String name);
 
-    void callMakeCoffee();
+    void callMakeCoffee(String name);
 
-    void callPayCoffee();
+    void callPayCoffee(String name);
 
-    void callPostActions();
+    void callPostActions(String name);
+
+    void initAll();
 }
