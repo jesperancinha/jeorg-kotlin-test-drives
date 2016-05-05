@@ -2,10 +2,12 @@ package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import lombok.Builder;
+import com.steelzack.coffee.system.queues.QueueAbstract;
+import com.steelzack.coffee.system.queues.QueueCofeeImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -21,13 +23,15 @@ import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHED
  * Created by joao on 29-4-16.
  */
 @Accessors(chain = true)
-@Builder
 @Getter
 @Service
 public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcessor{
     private static final Logger logger = Logger.getLogger(CoffeeProcessorImpl.class);
 
     private  Coffee chosenCoffee;
+
+    @Autowired
+    private QueueCofeeImpl queueCofee;
 
     @Override
     public void setChosenCoffee(Coffee chosenCoffee) {
@@ -56,7 +60,7 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
                     fillTime -> //
                     {
                         final CoffeeCallableImpl coffeeCallable = new CoffeeCallableImpl(fillTime);
-                        final Future<Boolean> future = managedExecutorService.submit(coffeeCallable);
+                        final Future<Boolean> future = queueCofee.getManagedExecutorService().submit(coffeeCallable);
                         allResults.add(future);
                     }
             );
@@ -75,4 +79,8 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
         }
     }
 
+    @Override
+    QueueAbstract getExecutorService() {
+        return queueCofee;
+    }
 }

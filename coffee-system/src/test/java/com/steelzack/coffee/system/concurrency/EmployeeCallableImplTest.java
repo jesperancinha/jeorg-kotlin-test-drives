@@ -90,17 +90,6 @@ public class EmployeeCallableImplTest {
                     return future;
                 });
         ((Callable<Boolean>) employee).call();
-
-//        verify(managedExecutorService, times(2)).submit(isA(PreActionCallableImpl.class));
-//        verify(managedExecutorService, times(2)).submit(isA(PostActionCallableImpl.class));
-//        verify(managedExecutorService, times(5)).submit(isA(CoffeeCallableImpl.class));
-//        verify(managedExecutorService, times(1)).submit(isA(PaymentCallableImpl.class));
-//
-//        InOrder inOrder = inOrder(managedExecutorService);
-//        inOrder.verify(managedExecutorService, times(2)).submit(isA(PreActionCallableImpl.class));
-//        inOrder.verify(managedExecutorService, times(5)).submit(isA(CoffeeCallableImpl.class));
-//        inOrder.verify(managedExecutorService, times(1)).submit(isA(PaymentCallableImpl.class));
-//        inOrder.verify(managedExecutorService, times(2)).submit(isA(PostActionCallableImpl.class));
     }
 
     public EmployeeCallableImplTest() throws FileNotFoundException, JAXBException, SAXException {
@@ -118,9 +107,7 @@ public class EmployeeCallableImplTest {
         GeneralProcessorImpl build = GeneralProcessorImpl.builder().nIterations(1).build();
         build.initSimulationProcess(
                 testMachinesFile, //
-                testEmployeesFile, //
-                10, //
-                1 //
+                testEmployeesFile //
         ); //
         return build;
     }
