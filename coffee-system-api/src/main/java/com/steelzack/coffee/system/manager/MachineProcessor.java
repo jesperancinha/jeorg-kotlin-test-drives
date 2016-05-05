@@ -10,4 +10,11 @@ public interface MachineProcessor {
 
     PaymentProcessor getPaymentProcessor();
 
+    void callPreActions();
+
+    void callMakeCoffee();
+
+    void callPayCoffee();
+
+    void callPostActions();
 }

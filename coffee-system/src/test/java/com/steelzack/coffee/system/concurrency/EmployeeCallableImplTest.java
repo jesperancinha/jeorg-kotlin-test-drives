@@ -86,10 +86,8 @@ public class EmployeeCallableImplTest {
     @Test
     public void call() throws Exception {
         when(managedExecutorService.submit(any(Callable.class))) //
-                .then((Answer<Future>) invocationOnMock -> {
-                    return future;
-                });
-        ((Callable<Boolean>) employee).call();
+                .then((Answer<Future>) invocationOnMock -> future);
+        employee.call();
     }
 
     public EmployeeCallableImplTest() throws FileNotFoundException, JAXBException, SAXException {

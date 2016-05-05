@@ -21,4 +21,24 @@ public class MachineProcessorImpl implements MachineProcessor {
 
     @Autowired
     private PaymentProcessor paymentProcessor;
+
+    @Override
+    public void callPreActions() {
+        employeeProcessor.callPreActions();
+    }
+
+    @Override
+    public void callMakeCoffee() {
+        coffeeProcessor.callMakeCoffee();
+    }
+
+    @Override
+    public void callPayCoffee() {
+        paymentProcessor.callPayCoffee();
+    }
+
+    @Override
+    public void callPostActions() {
+        employeeProcessor.callPostActions();
+    }
 }
