@@ -18,15 +18,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 @Accessors(chain = true)
 @Getter
 @Service
-
 public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
     public static final String SCHEDULED_TASK_FAILD_TO_EXECUTE = "scheduled task faild to execute!";
     private final Logger logger = Logger.getLogger(EmployeeCallableImpl.class);
@@ -60,9 +57,8 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
     }
 
     private void callPayCoffee() {
-        final ExecutorService executorService = Executors.newFixedThreadPool(1);
         try {
-            if (!executorService.submit(new PaymentCallableImpl(chosenPayment)).get()) {
+            if (!managedExecutorService.submit(new PaymentCallableImpl(chosenPayment)).get()) {
                 logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
             }
         } catch (InterruptedException | ExecutionException e) {
@@ -106,6 +102,7 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
                         }
                     }
             );
+            allResults.clear();
         }
     }
 
@@ -114,7 +111,7 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
         postActions.stream().forEach( //
                 postAction -> { //
                     try {
-                        if (!managedExecutorService.submit(new ActionCallableImpl(postAction)).get()) {
+                        if (!managedExecutorService.submit(new PostActionCallableImpl(postAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
@@ -129,7 +126,7 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
         preActions.stream().forEach( //
                 preAction -> { //
                     try {
-                        if (!managedExecutorService.submit(new ActionCallableImpl(preAction)).get()) {
+                        if (!managedExecutorService.submit(new PreActionCallableImpl(preAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILD_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {

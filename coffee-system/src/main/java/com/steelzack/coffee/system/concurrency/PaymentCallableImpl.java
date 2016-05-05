@@ -24,6 +24,6 @@ public class PaymentCallableImpl implements Payment, Callable<Boolean> {
     public Boolean call() throws Exception {
         logger.info(StringFormatter.format("Payment with {0}", chosenPayment.getName()));
         TimeUnit.MILLISECONDS.wait(chosenPayment.getTime());
-        return null;
+        return true;
     }
 }
