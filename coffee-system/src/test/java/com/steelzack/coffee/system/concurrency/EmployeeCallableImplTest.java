@@ -20,10 +20,9 @@ import java.io.InputStream;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
@@ -33,34 +32,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeCallableImplTest {
 
-    private static Future<Boolean> future = new Future<Boolean>() {
-
-        @Override
-        public boolean cancel(boolean mayInterruptIfRunning) {
-            return false;
-        }
-
-        @Override
-        public boolean isCancelled() {
-            return false;
-        }
-
-        @Override
-        public boolean isDone() {
-            return true;
-        }
-
-        @Override
-        public Boolean get() throws InterruptedException, ExecutionException {
-            return true;
-        }
-
-        @Override
-        public Boolean get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-            return true;
-        }
-
-    };
+    private static Future future;
 
     private static GeneralProcessor generalProcessor;
 
@@ -69,12 +41,14 @@ public class EmployeeCallableImplTest {
     private static CoffeMachine coffeeMachineChosen;
 
     @BeforeClass
-    public static void setUp() throws FileNotFoundException, JAXBException, SAXException {
+    public static void setUp() throws FileNotFoundException, JAXBException, SAXException, ExecutionException, InterruptedException {
         final InputStream testMachinesFile = EmployeeCallableImplTest.class.getResourceAsStream("/coffemachine_example_test_1.xml");
         final InputStream testEmployeesFile = EmployeeCallableImplTest.class.getResourceAsStream("/employees_example_test_1.xml");
         generalProcessor = getBuild(testMachinesFile, testEmployeesFile);
         employeeChosen = generalProcessor.getEmployees().getEmployee().get(0);
         coffeeMachineChosen = generalProcessor.getCoffeeMachines().getCoffeMachine().get(0);
+        future = mock(Future.class);
+        when(future.get()).thenReturn(true);
     }
 
     @InjectMocks

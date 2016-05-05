@@ -14,6 +14,7 @@ import com.steelzack.coffee.system.queues.QueueCofeeImpl;
 import com.steelzack.coffee.system.queues.QueuePaymentImpl;
 import com.steelzack.coffee.system.queues.QueuePostActivityImpl;
 import com.steelzack.coffee.system.queues.QueuePreActivityImpl;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -27,8 +28,6 @@ import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -88,34 +87,13 @@ public class GeneralProcessorImplTest {
     @Mock
     private QueuePreActivityImpl queuePreActivity;
 
-    private static Future<Boolean> future = new Future<Boolean>() {
+    private Future future;
 
-        @Override
-        public boolean cancel(boolean mayInterruptIfRunning) {
-            return false;
-        }
-
-        @Override
-        public boolean isCancelled() {
-            return false;
-        }
-
-        @Override
-        public boolean isDone() {
-            return true;
-        }
-
-        @Override
-        public Boolean get() throws InterruptedException, ExecutionException {
-            return true;
-        }
-
-        @Override
-        public Boolean get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-            return true;
-        }
-
-    };
+    @Before
+    public void setUp() throws ExecutionException, InterruptedException {
+        future = mock(Future.class);
+        when(future.get()).thenReturn(true);
+    }
 
     @Test
     public void startSimulationProcess() throws Exception {
@@ -348,9 +326,6 @@ public class GeneralProcessorImplTest {
         order.verify(machineProcessor, times(1)).callMakeCoffee();
         order.verify(machineProcessor, times(1)).callPayCoffee();
         order.verify(machineProcessor, times(1)).callPostActions();
-
-
-
     }
 
 }
