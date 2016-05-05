@@ -146,10 +146,10 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                             .get(nChosenPayment)
                     );
 
-                    employeeProcessor.callPreActions();
-                    coffeeProcessor.callMakeCoffee();
-                    paymentProcessor.callPayCoffee();
-                    employeeProcessor.callPostActions();
+                    machineProcessor.callPreActions();
+                    machineProcessor.callMakeCoffee();
+                    machineProcessor.callPayCoffee();
+                    machineProcessor.callPostActions();
                 }
         );
     }

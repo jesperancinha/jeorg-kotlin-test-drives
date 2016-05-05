@@ -16,6 +16,7 @@ import com.steelzack.coffee.system.queues.QueuePostActivityImpl;
 import com.steelzack.coffee.system.queues.QueuePreActivityImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -33,6 +34,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -59,7 +62,7 @@ public class GeneralProcessorImplTest {
     private static final String NO_PAYMENT = "noPayment";
 
     @InjectMocks
-    private GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2).postRowSize(1).build();
+    private GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2).postRowSize(2).build();
 
     @Mock
     private MachineProcessor machineProcessor = new MachineProcessorImpl();
@@ -300,6 +303,24 @@ public class GeneralProcessorImplTest {
         when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
         when(machineProcessor.getEmployeeProcessor()).thenReturn(employeeProcessor);
 
+        doAnswer(invocationOnMock -> { //
+            employeeProcessor.callPreActions(); //
+            return null; //
+        }).when(machineProcessor).callPreActions();
+        doAnswer(invocationOnMock -> { //
+            coffeeProcessor.callMakeCoffee(); //
+            return null; //
+        }).when(machineProcessor).callMakeCoffee();
+        doAnswer(invocationOnMock -> { //
+            paymentProcessor.callPayCoffee(); //
+            return null; //
+        }).when(machineProcessor).callPayCoffee();
+        doAnswer(invocationOnMock -> { //
+            employeeProcessor.callPostActions(); //
+            return null; //
+        }).when(machineProcessor).callPostActions();
+
+
         when(queuePreActivity.getManagedExecutorService()).thenReturn(managerExecutorServicePreActivity);
         when(queueCofee.getManagedExecutorService()).thenReturn(managerExecutorServiceCoffee);
         when(queuePayment.getManagedExecutorService()).thenReturn(managerExecutorServicePayment);
@@ -310,12 +331,26 @@ public class GeneralProcessorImplTest {
         when(managerExecutorServicePayment.submit(any(PaymentCallableImpl.class))).thenReturn(future);
         when(managerExecutorServicePostActivity.submit(any(PostActionCallableImpl.class))).thenReturn(future);
 
+        InOrder order = inOrder(machineProcessor);
+
         generalProcessor.start();
 
         verify(queuePreActivity, times(4)).getManagedExecutorService();
         verify(queuePostActivity, times(4)).getManagedExecutorService();
         verify(queueCofee, times(10)).getManagedExecutorService();
         verify(queuePayment, times(2)).getManagedExecutorService();
+
+        order.verify(machineProcessor, times(1)).callPreActions();
+        order.verify(machineProcessor, times(1)).callMakeCoffee();
+        order.verify(machineProcessor, times(1)).callPayCoffee();
+        order.verify(machineProcessor, times(1)).callPostActions();
+        order.verify(machineProcessor, times(1)).callPreActions();
+        order.verify(machineProcessor, times(1)).callMakeCoffee();
+        order.verify(machineProcessor, times(1)).callPayCoffee();
+        order.verify(machineProcessor, times(1)).callPostActions();
+
+
+
     }
 
 }
