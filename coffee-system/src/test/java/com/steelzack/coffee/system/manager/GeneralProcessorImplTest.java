@@ -35,7 +35,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
@@ -327,8 +326,8 @@ public class GeneralProcessorImplTest {
         verify(managerExecutorServicePostActivity, times(4)).submit(any(Callable.class));
 
         verify(queuePreActivity, times(2)).getExecutor(any(String.class));
-        verify(queueCofee, atMost(10)).getExecutor(any(String.class));
-        verify(queuePayment, atMost(2)).getExecutor(any(String.class));
+        verify(queueCofee, times(2)).getExecutor(any(String.class));
+        verify(queuePayment, times(2)).getExecutor(any(String.class));
         verify(queuePostActivity, times(2)).getExecutor(any(String.class));
 
         order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE);
