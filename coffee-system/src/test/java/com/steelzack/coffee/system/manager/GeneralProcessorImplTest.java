@@ -1,11 +1,19 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
+import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
+import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
+import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PreAction;
+import com.steelzack.coffee.system.queues.QueueCofeeImpl;
+import com.steelzack.coffee.system.queues.QueuePaymentImpl;
+import com.steelzack.coffee.system.queues.QueuePostActivityImpl;
+import com.steelzack.coffee.system.queues.QueuePreActivityImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,10 +23,19 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Stack;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -47,14 +64,55 @@ public class GeneralProcessorImplTest {
     @Mock
     private MachineProcessor machineProcessor = new MachineProcessorImpl();
 
-    @Mock
-    private CoffeeProcessor coffeeProcessor;
+    @InjectMocks
+    private CoffeeProcessor coffeeProcessor = new CoffeeProcessorImpl();
+
+    @InjectMocks
+    private EmployeeProcessor employeeProcessor = new EmployeeProcessorImpl();
+
+    @InjectMocks
+    private PaymentProcessor paymentProcessor = new PaymentProcessorImpl();
 
     @Mock
-    private EmployeeProcessor employeeProcessor;
+    private QueueCofeeImpl queueCofee;
 
     @Mock
-    private PaymentProcessor paymentProcessor;
+    private QueuePaymentImpl queuePayment;
+
+    @Mock
+    private QueuePostActivityImpl queuePostActivity;
+
+    @Mock
+    private QueuePreActivityImpl queuePreActivity;
+
+    private static Future<Boolean> future = new Future<Boolean>() {
+
+        @Override
+        public boolean cancel(boolean mayInterruptIfRunning) {
+            return false;
+        }
+
+        @Override
+        public boolean isCancelled() {
+            return false;
+        }
+
+        @Override
+        public boolean isDone() {
+            return true;
+        }
+
+        @Override
+        public Boolean get() throws InterruptedException, ExecutionException {
+            return true;
+        }
+
+        @Override
+        public Boolean get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+            return true;
+        }
+
+    };
 
     @Test
     public void startSimulationProcess() throws Exception {
@@ -227,6 +285,11 @@ public class GeneralProcessorImplTest {
 
     @Test
     public void start() throws Exception {
+        final ExecutorService managerExecutorServicePreActivity = mock(ExecutorService.class);
+        final ExecutorService managerExecutorServicePostActivity = mock(ExecutorService.class);
+        final ExecutorService managerExecutorServiceCoffee = mock(ExecutorService.class);
+        final ExecutorService managerExecutorServicePayment = mock(ExecutorService.class);
+
         final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
         final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
         generalProcessor.initSimulationProcess(
@@ -236,8 +299,23 @@ public class GeneralProcessorImplTest {
         when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
         when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
         when(machineProcessor.getEmployeeProcessor()).thenReturn(employeeProcessor);
-        
+
+        when(queuePreActivity.getManagedExecutorService()).thenReturn(managerExecutorServicePreActivity);
+        when(queueCofee.getManagedExecutorService()).thenReturn(managerExecutorServiceCoffee);
+        when(queuePayment.getManagedExecutorService()).thenReturn(managerExecutorServicePayment);
+        when(queuePostActivity.getManagedExecutorService()).thenReturn(managerExecutorServicePostActivity);
+
+        when(managerExecutorServicePreActivity.submit(any(PreActionCallableImpl.class))).thenReturn(future);
+        when(managerExecutorServiceCoffee.submit(any(CoffeeCallableImpl.class))).thenReturn(future);
+        when(managerExecutorServicePayment.submit(any(PaymentCallableImpl.class))).thenReturn(future);
+        when(managerExecutorServicePostActivity.submit(any(PostActionCallableImpl.class))).thenReturn(future);
+
         generalProcessor.start();
+
+        verify(queuePreActivity, times(4)).getManagedExecutorService();
+        verify(queuePostActivity, times(4)).getManagedExecutorService();
+        verify(queueCofee, times(10)).getManagedExecutorService();
+        verify(queuePayment, times(2)).getManagedExecutorService();
     }
 
 }

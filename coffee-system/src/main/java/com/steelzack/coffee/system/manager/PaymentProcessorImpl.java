@@ -2,10 +2,12 @@ package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import lombok.Builder;
+import com.steelzack.coffee.system.queues.QueueAbstract;
+import com.steelzack.coffee.system.queues.QueuePaymentImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
@@ -16,12 +18,15 @@ import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHED
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
 @Accessors(chain = true)
-@Builder
 @Getter
 @Service
 public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProcessor {
 
     private static final Logger logger = Logger.getLogger(PaymentProcessorImpl.class);
+
+    @Autowired
+    private QueuePaymentImpl queuePayment;
+
     private Payment chosenPayment;
 
     @Override
@@ -32,7 +37,7 @@ public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProces
     @Override
     public void callPayCoffee() {
         try {
-            if (!managedExecutorService.submit(new PaymentCallableImpl(chosenPayment)).get()) {
+            if (!queuePayment.getManagedExecutorService().submit(new PaymentCallableImpl(chosenPayment)).get()) {
                 logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
             }
         } catch (InterruptedException | ExecutionException e) {
@@ -40,4 +45,8 @@ public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProces
         }
     }
 
+    @Override
+    public QueueAbstract getExecutorService() {
+        return queuePayment;
+    }
 }

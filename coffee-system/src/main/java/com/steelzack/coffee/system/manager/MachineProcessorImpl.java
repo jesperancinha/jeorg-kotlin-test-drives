@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Accessors(chain = true)
 @Getter
 @Service
-public class MachineProcessorImpl  extends ProcessorImpl implements MachineProcessor {
+public class MachineProcessorImpl implements MachineProcessor {
 
     @Autowired
     private EmployeeProcessor employeeProcessor;

@@ -3,22 +3,21 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions;
-import com.steelzack.coffee.system.utils.ExecutorServiceHelper;
-import lombok.Builder;
+import com.steelzack.coffee.system.queues.QueueAbstract;
+import com.steelzack.coffee.system.queues.QueuePostActivityImpl;
+import com.steelzack.coffee.system.queues.QueuePreActivityImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
 @Accessors(chain = true)
-@Builder
 @Getter
 @Service
 public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProcessor {
@@ -27,7 +26,12 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
 
     private Actions actions;
     private int queueSize;
-    private ExecutorService postManagedExecutorService;
+
+    @Autowired
+    private QueuePreActivityImpl queuePreActivity;
+
+    @Autowired
+    private QueuePostActivityImpl queuePostActivity;
 
     @Override
     public void setActions(Actions actions) {
@@ -40,7 +44,7 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
         preActions.stream().forEach( //
                 preAction -> { //
                     try {
-                        if (!managedExecutorService.submit(new PreActionCallableImpl(preAction)).get()) {
+                        if (!queuePreActivity.getManagedExecutorService().submit(new PreActionCallableImpl(preAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
@@ -56,7 +60,7 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
         postActions.stream().forEach( //
                 postAction -> { //
                     try {
-                        if (!postManagedExecutorService.submit(new PostActionCallableImpl(postAction)).get()) {
+                        if (!queuePostActivity.getManagedExecutorService().submit(new PostActionCallableImpl(postAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
@@ -68,8 +72,11 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
 
     @Override
     public void setPostQueueSize(int queueSize) {
-        ExecutorServiceHelper.shutDownExecutorService(postManagedExecutorService);
-        postManagedExecutorService = Executors.newFixedThreadPool(queueSize);
+        queuePostActivity.setQueueSize(queueSize);
     }
 
+    @Override
+    QueueAbstract getExecutorService() {
+        return queuePreActivity;
+    }
 }
