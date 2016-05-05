@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 
 import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
@@ -36,8 +37,9 @@ public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProces
 
     @Override
     public void callPayCoffee(String name) {
+        final ExecutorService executor = queuePayment.getExecutor(name);
         try {
-            if (!queuePayment.getExecutor(name).submit(new PaymentCallableImpl(chosenPayment)).get()) {
+            if (!executor.submit(new PaymentCallableImpl(chosenPayment)).get()) {
                 logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
             }
         } catch (InterruptedException | ExecutionException e) {

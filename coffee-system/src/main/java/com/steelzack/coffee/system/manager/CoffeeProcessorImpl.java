@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
@@ -25,10 +26,10 @@ import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHED
 @Accessors(chain = true)
 @Getter
 @Service
-public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcessor{
+public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcessor {
     private static final Logger logger = Logger.getLogger(CoffeeProcessorImpl.class);
 
-    private  Coffee chosenCoffee;
+    private Coffee chosenCoffee;
 
     @Autowired
     private QueueCofeeImpl queueCofee;
@@ -51,6 +52,8 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
                 index -> allIndexes.add(index.intValue()) //
         );
 
+        final ExecutorService executor = queueCofee.getExecutor(name);
+
         for (Integer index : allIndexes) { //
             final List<Coffee.TimesToFill.FillTime> allTasksForIndex = tasks.stream().filter( //
                     fillTime -> fillTime.getIndex().intValue() == index //
@@ -60,7 +63,7 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
                     fillTime -> //
                     {
                         final CoffeeCallableImpl coffeeCallable = new CoffeeCallableImpl(fillTime);
-                        final Future<Boolean> future = queueCofee.getExecutor(name).submit(coffeeCallable);
+                        final Future<Boolean> future = executor.submit(coffeeCallable);
                         allResults.add(future);
                     }
             );

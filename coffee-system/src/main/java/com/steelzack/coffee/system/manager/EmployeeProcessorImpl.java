@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 
 import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
@@ -41,10 +42,11 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     @Override
     public void callPreActions(final String name) {
         final List<Actions.PreAction> preActions = this.actions.getPreAction();
+        final ExecutorService executor = queuePreActivity.getExecutor(name);
         preActions.stream().forEach( //
                 preAction -> { //
                     try {
-                        if (!queuePreActivity.getExecutor(name).submit(new PreActionCallableImpl(preAction)).get()) {
+                        if (!executor.submit(new PreActionCallableImpl(preAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
@@ -57,10 +59,11 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     @Override
     public void callPostActions(final String name) {
         final List<Actions.PostAction> postActions = this.actions.getPostAction();
+        final ExecutorService executor = queuePostActivity.getExecutor(name);
         postActions.stream().forEach( //
                 postAction -> { //
                     try {
-                        if (!queuePostActivity.getExecutor(name).submit(new PostActionCallableImpl(postAction)).get()) {
+                        if (!executor.submit(new PostActionCallableImpl(postAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
