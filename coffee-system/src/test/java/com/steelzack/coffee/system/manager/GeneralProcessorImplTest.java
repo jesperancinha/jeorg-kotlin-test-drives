@@ -29,10 +29,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
+import static com.steelzack.coffee.system.manager.GeneralProcessorImpl.MAIN_QUEUE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
@@ -59,6 +61,7 @@ public class GeneralProcessorImplTest {
     private static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
     private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
     private static final String NO_PAYMENT = "noPayment";
+    public static final String TEST = "TEST";
 
     @InjectMocks
     private GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2).postRowSize(2).build();
@@ -99,7 +102,9 @@ public class GeneralProcessorImplTest {
     public void startSimulationProcess() throws Exception {
         final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
         final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
-        final GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).build();
+
+        when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
+        when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
 
         generalProcessor.initSimulationProcess(
                 testMachinesFile, //
@@ -273,36 +278,38 @@ public class GeneralProcessorImplTest {
 
         final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
         final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
-        generalProcessor.initSimulationProcess(
-                testMachinesFile, //
-                testEmployeesFile //
-        ); //
+
         when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
         when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
         when(machineProcessor.getEmployeeProcessor()).thenReturn(employeeProcessor);
 
+        generalProcessor.initSimulationProcess(
+                testMachinesFile, //
+                testEmployeesFile //
+        ); //
+
         doAnswer(invocationOnMock -> { //
-            employeeProcessor.callPreActions(); //
+            employeeProcessor.callPreActions(MAIN_QUEUE); //
             return null; //
-        }).when(machineProcessor).callPreActions();
+        }).when(machineProcessor).callPreActions(MAIN_QUEUE);
         doAnswer(invocationOnMock -> { //
-            coffeeProcessor.callMakeCoffee(); //
+            coffeeProcessor.callMakeCoffee(TEST); //
             return null; //
-        }).when(machineProcessor).callMakeCoffee();
+        }).when(machineProcessor).callMakeCoffee(any(String.class));
         doAnswer(invocationOnMock -> { //
-            paymentProcessor.callPayCoffee(); //
+            paymentProcessor.callPayCoffee(TEST); //
             return null; //
-        }).when(machineProcessor).callPayCoffee();
+        }).when(machineProcessor).callPayCoffee(any(String.class));
         doAnswer(invocationOnMock -> { //
-            employeeProcessor.callPostActions(); //
+            employeeProcessor.callPostActions(MAIN_QUEUE); //
             return null; //
-        }).when(machineProcessor).callPostActions();
+        }).when(machineProcessor).callPostActions(MAIN_QUEUE);
 
 
-        when(queuePreActivity.getManagedExecutorService()).thenReturn(managerExecutorServicePreActivity);
-        when(queueCofee.getManagedExecutorService()).thenReturn(managerExecutorServiceCoffee);
-        when(queuePayment.getManagedExecutorService()).thenReturn(managerExecutorServicePayment);
-        when(queuePostActivity.getManagedExecutorService()).thenReturn(managerExecutorServicePostActivity);
+        when(queuePreActivity.getExecutor(any(String.class))).thenReturn(managerExecutorServicePreActivity);
+        when(queueCofee.getExecutor(any(String.class))).thenReturn(managerExecutorServiceCoffee);
+        when(queuePayment.getExecutor(any(String.class))).thenReturn(managerExecutorServicePayment);
+        when(queuePostActivity.getExecutor(any(String.class))).thenReturn(managerExecutorServicePostActivity);
 
         when(managerExecutorServicePreActivity.submit(any(PreActionCallableImpl.class))).thenReturn(future);
         when(managerExecutorServiceCoffee.submit(any(CoffeeCallableImpl.class))).thenReturn(future);
@@ -313,19 +320,19 @@ public class GeneralProcessorImplTest {
 
         generalProcessor.start();
 
-        verify(queuePreActivity, times(4)).getManagedExecutorService();
-        verify(queuePostActivity, times(4)).getManagedExecutorService();
-        verify(queueCofee, times(10)).getManagedExecutorService();
-        verify(queuePayment, times(2)).getManagedExecutorService();
+        verify(queuePreActivity, times(4)).getExecutor(any(String.class));
+        verify(queuePostActivity, times(4)).getExecutor(any(String.class));
+        verify(queueCofee, atMost(10)).getExecutor(any(String.class));
+        verify(queuePayment, atMost(2)).getExecutor(any(String.class));
 
-        order.verify(machineProcessor, times(1)).callPreActions();
-        order.verify(machineProcessor, times(1)).callMakeCoffee();
-        order.verify(machineProcessor, times(1)).callPayCoffee();
-        order.verify(machineProcessor, times(1)).callPostActions();
-        order.verify(machineProcessor, times(1)).callPreActions();
-        order.verify(machineProcessor, times(1)).callMakeCoffee();
-        order.verify(machineProcessor, times(1)).callPayCoffee();
-        order.verify(machineProcessor, times(1)).callPostActions();
+        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE);
+        order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
+        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
+        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE);
+        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE);
+        order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
+        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
+        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE);
     }
 
 }

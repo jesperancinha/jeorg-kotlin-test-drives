@@ -1,7 +1,11 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.objects.EmployeeLayer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -15,6 +19,9 @@ import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
@@ -25,6 +32,7 @@ import java.io.InputStream;
 @Service
 public class GeneralProcessorImpl implements GeneralProcessor {
 
+    public static final String MAIN_QUEUE = "MAIN_QUEUE";
     final int nIterations;
     final String sourceXmlMachinesFile;
     final String sourceXmlEmployeesFile;
@@ -33,6 +41,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     private CoffeeMachines coffeeMachines;
     private Employees employees;
+
+    private CoffeeProcessor coffeeProcessor;
+    private PaymentProcessor paymentProcessor;
 
     @Autowired
     private MachineProcessor machineProcessor;
@@ -110,49 +121,68 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     {
         this.coffeeMachines = createCoffeeMachines(coffeesFile);
         this.employees = createEmployees(employeesFile);
+        this.coffeeProcessor = machineProcessor.getCoffeeProcessor();
+        this.paymentProcessor = machineProcessor.getPaymentProcessor();
     }
 
     @Override
     public void start() throws InterruptedException {
         final EmployeeProcessor employeeProcessor = machineProcessor.getEmployeeProcessor();
-        employeeProcessor.setQueueSize(preRowSize);
-        employeeProcessor.setPostQueueSize(postRowSize);
+        employeeProcessor.addQueueSize(preRowSize, MAIN_QUEUE);
+        employeeProcessor.setPostQueueSize(postRowSize, MAIN_QUEUE);
         final int nMachines = coffeeMachines.getCoffeMachine().size();
-        final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        coffeeProcessor.setQueueSize(nMachines);
-        final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
-        paymentProcessor.setQueueSize(nMachines);
+        final List<EmployeeLayer> employeeLayerList = new ArrayList<>();
+        final Random random = new Random();
 
+        fillEmployeeLayerList(nMachines, employeeLayerList, random);
+        startCoffeeMeeting(employeeProcessor, employeeLayerList);
+    }
+
+    private void fillEmployeeLayerList(int nMachines, List<EmployeeLayer> employeeLayerList, Random random) {
         this.employees.getEmployee().stream().forEach(
                 employee -> {
-                    employeeProcessor.setActions(employee.getActions());
-                    int iChosenCoffeeMachine = 0;
-                    int iChosenCoffee = 0;
-                    int nChosenPayment = 0;
-                    final CoffeeMachines.CoffeMachine coffeMachine = this.coffeeMachines //
-                            .getCoffeMachine() //
-                            .get(iChosenCoffeeMachine);
+                    final int iChosenCoffeeMachine = random.nextInt(nMachines);
+                    final CoffeeMachines.CoffeMachine coffeMachine = coffeeMachines.getCoffeMachine().get(iChosenCoffeeMachine);
+                    final int nCoffees = coffeMachine.getCoffees().getCoffee().size();
+                    final int iCoffee = random.nextInt(nCoffees);
+                    final int nPayments = coffeMachine.getPaymentTypes().getPayment().size();
+                    final int iPayment = random.nextInt(nPayments);
+                    final Coffee chosenCoffee = coffeMachine.getCoffees().getCoffee().get(iCoffee);
+                    final Payment chosenPayment = coffeMachine.getPaymentTypes().getPayment().get(iPayment);
 
-                    coffeeProcessor.setChosenCoffee(
-                            coffeMachine //
-                                    .getCoffees() //
-                                    .getCoffee() //
-                                    .get(iChosenCoffee) //
-                    );
-                    paymentProcessor.setChosenPayment(
-                            coffeMachine
-                            .getPaymentTypes()
-                            .getPayment()
-                            .get(nChosenPayment)
-                    );
+                    coffeeProcessor.addQueueSize(1, chosenCoffee.getName());
+                    paymentProcessor.addQueueSize(1, chosenPayment.getName());
 
-                    machineProcessor.callPreActions();
-                    machineProcessor.callMakeCoffee();
-                    machineProcessor.callPayCoffee();
-                    machineProcessor.callPostActions();
+                    final EmployeeLayer employeeLayer = EmployeeLayer //
+                            .builder() //
+                            .employee(employee) //
+                            .coffee(chosenCoffee) //
+                            .payment(chosenPayment) //
+                            .build(); //
+                    employeeLayerList.add(employeeLayer);
                 }
         );
     }
 
+    private void startCoffeeMeeting(EmployeeProcessor employeeProcessor, List<EmployeeLayer> employeeLayerList) {
+        employeeLayerList.stream().forEach(
+                employeeLayer -> {
+                    final Employee employee = employeeLayer.getEmployee();
+                    employeeProcessor.setActions(employee.getActions());
+                    final Coffee chosenCoffee = employeeLayer.getCoffee();
+                    coffeeProcessor.setChosenCoffee(
+                            chosenCoffee //
+                    );
+                    final Payment chosenPayment = employeeLayer.getPayment();
+                    paymentProcessor.setChosenPayment(
+                            chosenPayment //
+                    );
+                    machineProcessor.callPreActions(MAIN_QUEUE);
+                    machineProcessor.callMakeCoffee(chosenCoffee.getName());
+                    machineProcessor.callPayCoffee(chosenPayment.getName());
+                    machineProcessor.callPostActions(MAIN_QUEUE);
+                }
+        );
+    }
 
 }

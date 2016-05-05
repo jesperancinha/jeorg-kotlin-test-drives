@@ -39,12 +39,12 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     }
 
     @Override
-    public void callPreActions() {
+    public void callPreActions(final String name) {
         final List<Actions.PreAction> preActions = this.actions.getPreAction();
         preActions.stream().forEach( //
                 preAction -> { //
                     try {
-                        if (!queuePreActivity.getManagedExecutorService().submit(new PreActionCallableImpl(preAction)).get()) {
+                        if (!queuePreActivity.getExecutor(name).submit(new PreActionCallableImpl(preAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
@@ -55,12 +55,12 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     }
 
     @Override
-    public void callPostActions() {
+    public void callPostActions(final String name) {
         final List<Actions.PostAction> postActions = this.actions.getPostAction();
         postActions.stream().forEach( //
                 postAction -> { //
                     try {
-                        if (!queuePostActivity.getManagedExecutorService().submit(new PostActionCallableImpl(postAction)).get()) {
+                        if (!queuePostActivity.getExecutor(name).submit(new PostActionCallableImpl(postAction)).get()) {
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
                     } catch (InterruptedException | ExecutionException e) {
@@ -71,12 +71,23 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     }
 
     @Override
-    public void setPostQueueSize(int queueSize) {
-        queuePostActivity.setQueueSize(queueSize);
+    public void setPostQueueSize(int queueSize, String name) {
+        queuePostActivity.setQueueSize(queueSize, name);
     }
 
     @Override
     QueueAbstract getExecutorService() {
         return queuePreActivity;
+    }
+
+    @Override
+    public void addQueueSize(int queueSize, String name) {
+        queuePreActivity.setQueueSize(queueSize, name);
+    }
+
+    @Override
+    public void initExecutors() {
+        queuePreActivity.initExecutors();
+        queuePostActivity.initExecutors();
     }
 }
