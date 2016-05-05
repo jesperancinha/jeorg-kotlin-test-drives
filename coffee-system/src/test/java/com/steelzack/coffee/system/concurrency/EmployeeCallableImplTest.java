@@ -118,9 +118,7 @@ public class EmployeeCallableImplTest {
         GeneralProcessorImpl build = GeneralProcessorImpl.builder().nIterations(1).build();
         build.initSimulationProcess(
                 testMachinesFile, //
-                testEmployeesFile, //
-                10, //
-                1 //
+                testEmployeesFile //
         ); //
         return build;
     }

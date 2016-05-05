@@ -24,9 +24,7 @@ public interface GeneralProcessor {
 
     void initSimulationProcess( //
                                 InputStream coffeesFile, //
-                                InputStream employeesFile,
-                                int preRowSize,
-                                int postRowSize//
+                                InputStream employeesFile //
     ) //
             throws //
             FileNotFoundException, //

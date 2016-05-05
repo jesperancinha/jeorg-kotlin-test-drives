@@ -7,6 +7,10 @@ import com.steelzack.coffee.system.input.Employees.Employee;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PreAction;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.InputStream;
 import java.util.List;
@@ -15,10 +19,12 @@ import java.util.Stack;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class GeneralProcessorImplTest {
 
     private static final String POURING_COFFEE = "pouring coffee";
@@ -35,6 +41,21 @@ public class GeneralProcessorImplTest {
     private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
     private static final String NO_PAYMENT = "noPayment";
 
+    @InjectMocks
+    private GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2).postRowSize(1).build();
+
+    @Mock
+    private MachineProcessor machineProcessor = new MachineProcessorImpl();
+
+    @Mock
+    private CoffeeProcessor coffeeProcessor;
+
+    @Mock
+    private EmployeeProcessor employeeProcessor;
+
+    @Mock
+    private PaymentProcessor paymentProcessor;
+
     @Test
     public void startSimulationProcess() throws Exception {
         final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
@@ -43,9 +64,7 @@ public class GeneralProcessorImplTest {
 
         generalProcessor.initSimulationProcess(
                 testMachinesFile, //
-                testEmployeesFile, //
-                2, //
-                1 //
+                testEmployeesFile //
         ); //
 
         final List<CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
@@ -204,6 +223,21 @@ public class GeneralProcessorImplTest {
                     );
                 }
         );
+    }
+
+    @Test
+    public void start() throws Exception {
+        final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
+        final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
+        generalProcessor.initSimulationProcess(
+                testMachinesFile, //
+                testEmployeesFile //
+        ); //
+        when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
+        when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
+        when(machineProcessor.getEmployeeProcessor()).thenReturn(employeeProcessor);
+        
+        generalProcessor.start();
     }
 
 }
