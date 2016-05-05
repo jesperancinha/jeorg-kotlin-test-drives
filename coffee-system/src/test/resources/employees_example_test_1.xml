@@ -1,5 +1,5 @@
 <Employees>
-    <Employee findCupTime="1" putUnderOutletTime="2" takeCupAndLeaveTime="3">
+    <Employee findCupTime="1">
         <Name>Joao</Name>
         <Cup size="Big"/>
         <Actions>
@@ -9,7 +9,7 @@
             <PostAction description="dummy" time="55"/>
         </Actions>
     </Employee>
-    <Employee findCupTime="1" putUnderOutletTime="2" takeCupAndLeaveTime="3">
+    <Employee findCupTime="1">
         <Name>Marco</Name>
         <Cup size="Small"/>
         <Actions>

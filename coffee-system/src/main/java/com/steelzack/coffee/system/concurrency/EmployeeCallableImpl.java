@@ -36,12 +36,13 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
     @Autowired
     private ManagedExecutorService managedExecutorService;
 
-    public EmployeeCallableImpl() {
-    }
-
-    public EmployeeCallableImpl(Actions actions, Employees.Employee employee, Coffee chosenCoffee, Payment chosenPayment) {
-        this.actions = actions;
+    public EmployeeCallableImpl( //
+                                 Employees.Employee employee, //
+                                 Coffee chosenCoffee, //
+                                 Payment chosenPayment //
+    ) {
         this.employee = employee;
+        this.actions = employee.getActions();
         this.chosenCoffee = chosenCoffee;
         this.chosenPayment = chosenPayment;
     }

@@ -115,7 +115,7 @@ public class EmployeeCallableImplTest {
         final CoffeMachine.Coffees.Coffee chosenCoffee = coffeeMachineChosen.getCoffees().getCoffee().get(0);
         final CoffeMachine.PaymentTypes.Payment chosenPayment = coffeeMachineChosen.getPaymentTypes().getPayment().get(0);
         return new EmployeeCallableImpl( //
-                employeeChosen.getActions(), //
+                //
                 employeeChosen, //
                 chosenCoffee, //
                 chosenPayment //
