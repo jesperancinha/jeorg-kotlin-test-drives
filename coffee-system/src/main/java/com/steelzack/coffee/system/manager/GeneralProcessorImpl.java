@@ -1,7 +1,11 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.objects.EmployeeLayer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -15,6 +19,9 @@ import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
@@ -122,30 +129,46 @@ public class GeneralProcessorImpl implements GeneralProcessor {
         coffeeProcessor.setQueueSize(nMachines);
         final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
         paymentProcessor.setQueueSize(nMachines);
+        final List<EmployeeLayer> employeeLayerList = new ArrayList<>();
+        final Random random = new Random();
 
+        fillEmployeeLayerList(nMachines, employeeLayerList, random);
+        startCoffeeMeeting(employeeProcessor, coffeeProcessor, paymentProcessor, employeeLayerList);
+    }
+    private void fillEmployeeLayerList(int nMachines, List<EmployeeLayer> employeeLayerList, Random random) {
         this.employees.getEmployee().stream().forEach(
                 employee -> {
-                    employeeProcessor.setActions(employee.getActions());
-                    int iChosenCoffeeMachine = 0;
-                    int iChosenCoffee = 0;
-                    int nChosenPayment = 0;
-                    final CoffeeMachines.CoffeMachine coffeMachine = this.coffeeMachines //
-                            .getCoffeMachine() //
-                            .get(iChosenCoffeeMachine);
+                    final int iChosenCoffeeMachine = random.nextInt(nMachines);
+                    final CoffeeMachines.CoffeMachine coffeMachine = coffeeMachines.getCoffeMachine().get(iChosenCoffeeMachine);
+                    final int nCoffees = coffeMachine.getCoffees().getCoffee().size();
+                    final int iCoffee = random.nextInt(nCoffees);
+                    final int nPayments = coffeMachine.getPaymentTypes().getPayment().size();
+                    final int iPayment = random.nextInt(nPayments);
+                    final Coffee chosenCoffee = coffeMachine.getCoffees().getCoffee().get(iCoffee);
+                    final Payment chosenPayment = coffeMachine.getPaymentTypes().getPayment().get(iPayment);
 
+                    final EmployeeLayer employeeLayer = EmployeeLayer //
+                            .builder() //
+                            .employee(employee) //
+                            .coffee(chosenCoffee) //
+                            .payment(chosenPayment) //
+                            .build(); //
+                    employeeLayerList.add(employeeLayer);
+                }
+        );
+    }
+
+    private void startCoffeeMeeting(EmployeeProcessor employeeProcessor, CoffeeProcessor coffeeProcessor, PaymentProcessor paymentProcessor, List<EmployeeLayer> employeeLayerList) {
+        employeeLayerList.stream().forEach(
+                employeeLayer -> {
+                    final Employee employee = employeeLayer.getEmployee();
+                    employeeProcessor.setActions(employee.getActions());
                     coffeeProcessor.setChosenCoffee(
-                            coffeMachine //
-                                    .getCoffees() //
-                                    .getCoffee() //
-                                    .get(iChosenCoffee) //
+                            employeeLayer.getCoffee() //
                     );
                     paymentProcessor.setChosenPayment(
-                            coffeMachine
-                            .getPaymentTypes()
-                            .getPayment()
-                            .get(nChosenPayment)
+                            employeeLayer.getPayment() //
                     );
-
                     machineProcessor.callPreActions();
                     machineProcessor.callMakeCoffee();
                     machineProcessor.callPayCoffee();
@@ -153,6 +176,5 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                 }
         );
     }
-
 
 }
