@@ -1,18 +1,26 @@
 package com.steelzack.coffee.system.manager;
 
-import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.experimental.Accessors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
+@Accessors(chain = true)
 @Builder
 @Getter
-public class MachineProcessorImpl implements MachineProcessor {
-    private final CoffeeProcessor coffeeProcessor;
+@Service
+public class MachineProcessorImpl  extends ProcessorImpl implements MachineProcessor {
 
-    private final PaymentProcessor paymentProcessor;
+    @Autowired
+    private EmployeeProcessor employeeProcessor;
 
-    private final CoffeMachine coffeMachine;
+    @Autowired
+    private CoffeeProcessor coffeeProcessor;
+
+    @Autowired
+    private PaymentProcessor paymentProcessor;
 }

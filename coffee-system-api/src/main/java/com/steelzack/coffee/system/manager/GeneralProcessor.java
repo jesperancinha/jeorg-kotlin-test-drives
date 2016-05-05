@@ -12,18 +12,27 @@ import java.io.InputStream;
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
 public interface GeneralProcessor {
-    void initSimulationProcess() //
-            throws FileNotFoundException, //
-            JAXBException, //
-            SAXException; //
-
-    void initSimulationProcess(InputStream coffeesFile, InputStream employeesFile) //
-            throws FileNotFoundException, //
-            JAXBException, //
-            SAXException; //
-
     CoffeeMachines getCoffeeMachines();
 
     Employees getEmployees();
 
+    void initSimulationProcess()
+            throws FileNotFoundException, //
+            JAXBException, //
+            SAXException //
+    ;
+
+    void initSimulationProcess( //
+                                InputStream coffeesFile, //
+                                InputStream employeesFile,
+                                int preRowSize,
+                                int postRowSize//
+    ) //
+            throws //
+            FileNotFoundException, //
+            JAXBException, //
+            SAXException //
+    ;
+
+    void start() throws InterruptedException;
 }
