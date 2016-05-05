@@ -6,13 +6,13 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
-public abstract class ActionCallableImpl implements Callable<Boolean>, Action {
+public abstract class ActionCallable implements Callable<Boolean>, Action {
 
     final String description;
 
     final Byte time;
 
-    ActionCallableImpl(String description, Byte time) {
+    ActionCallable(String description, Byte time) {
         this.description = description;
         this.time = time;
     }

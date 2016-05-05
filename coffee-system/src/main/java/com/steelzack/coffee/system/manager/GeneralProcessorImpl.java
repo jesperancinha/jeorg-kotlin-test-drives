@@ -4,6 +4,7 @@ import com.steelzack.coffee.system.input.CoffeeMachines;
 import com.steelzack.coffee.system.input.Employees;
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.SAXException;
 
 import javax.xml.bind.JAXBContext;
@@ -23,9 +24,14 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     final int nIterations;
     final String sourceXmlMachinesFile;
     final String sourceXmlEmployeesFile;
+    final int preRowSize;
+    final int postRowSize;
 
     private CoffeeMachines coffeeMachines;
     private Employees employees;
+
+    @Autowired
+    private MachineProcessor machineProcessor;
 
     /**
      * Creates the coffee machines from the XML file
@@ -75,7 +81,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                 ), //
                 new FileInputStream( //
                         this.sourceXmlEmployeesFile //
-                ) //
+                ), //
+                this.preRowSize,
+                this.postRowSize
         ); //
     }
 
@@ -91,7 +99,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     @Override
     public void initSimulationProcess( //
                                        InputStream coffeesFile, //
-                                       InputStream employeesFile //
+                                       InputStream employeesFile,
+                                       int preRowSize,
+                                       int postRowSize//
     ) //
             throws //
             FileNotFoundException, //
@@ -100,6 +110,48 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     {
         this.coffeeMachines = createCoffeeMachines(coffeesFile);
         this.employees = createEmployees(employeesFile);
+    }
+
+    @Override
+    public void start() throws InterruptedException {
+        final EmployeeProcessor employeeProcessor = machineProcessor.getEmployeeProcessor();
+        employeeProcessor.setQueueSize(preRowSize);
+        employeeProcessor.setPostQueueSize(postRowSize);
+        final int nMachines = coffeeMachines.getCoffeMachine().size();
+        final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
+        coffeeProcessor.setQueueSize(nMachines);
+        final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
+        paymentProcessor.setQueueSize(nMachines);
+
+        this.employees.getEmployee().stream().forEach(
+                employee -> {
+                    employeeProcessor.setActions(employee.getActions());
+                    int iChosenCoffeeMachine = 0;
+                    int iChosenCoffee = 0;
+                    int nChosenPayment = 0;
+                    final CoffeeMachines.CoffeMachine coffeMachine = this.coffeeMachines //
+                            .getCoffeMachine() //
+                            .get(iChosenCoffeeMachine);
+
+                    coffeeProcessor.setChosenCoffee(
+                            coffeMachine //
+                                    .getCoffees() //
+                                    .getCoffee() //
+                                    .get(iChosenCoffee) //
+                    );
+                    paymentProcessor.setChosenPayment(
+                            coffeMachine
+                            .getPaymentTypes()
+                            .getPayment()
+                            .get(nChosenPayment)
+                    );
+
+                    employeeProcessor.callPreActions();
+                    coffeeProcessor.callMakeCoffee();
+                    paymentProcessor.callPayCoffee();
+                    employeeProcessor.callPostActions();
+                }
+        );
     }
 
 

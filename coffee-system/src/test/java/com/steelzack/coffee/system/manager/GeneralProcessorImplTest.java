@@ -43,7 +43,9 @@ public class GeneralProcessorImplTest {
 
         generalProcessor.initSimulationProcess(
                 testMachinesFile, //
-                testEmployeesFile
+                testEmployeesFile, //
+                2, //
+                1 //
         ); //
 
         final List<CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
