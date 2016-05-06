@@ -6,8 +6,11 @@ import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentType
 import com.steelzack.coffee.system.input.Employees;
 import com.steelzack.coffee.system.input.Employees.Employee;
 import com.steelzack.coffee.system.objects.EmployeeLayer;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,16 +31,19 @@ import java.util.Random;
  */
 @Accessors(chain = true)
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Setter
 @Service
 public class GeneralProcessorImpl implements GeneralProcessor {
 
     public static final String MAIN_QUEUE = "MAIN_QUEUE";
-    final int nIterations;
-    final String sourceXmlMachinesFile;
-    final String sourceXmlEmployeesFile;
-    final int preRowSize;
-    final int postRowSize;
+    int nIterations;
+    String sourceXmlMachinesFile;
+    String sourceXmlEmployeesFile;
+    int preRowSize;
+    int postRowSize;
 
     private CoffeeMachines coffeeMachines;
     private Employees employees;
