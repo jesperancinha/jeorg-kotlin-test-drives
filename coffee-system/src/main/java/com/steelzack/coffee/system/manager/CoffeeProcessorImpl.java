@@ -96,4 +96,9 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
     public void initExecutors() {
         queueCofee.initExecutors();
     }
+
+    @Override
+    public void stopExectutors() {
+        queueCofee.stopExecutors();
+    }
 }

@@ -42,4 +42,10 @@ public class QueueAbstract {
                 }
         );
     }
+
+    public void stopExecutors() {
+        executorServiceMap.values().stream().forEach(
+                ExecutorServiceHelper::shutDownExecutorService
+        );
+    }
 }

@@ -29,6 +29,12 @@
             <configuration>
               <transformers>
                 <transformer>
+                  <resource>META-INF/spring.handlers</resource>
+                </transformer>
+                <transformer>
+                  <resource>META-INF/spring.schemas</resource>
+                </transformer>
+                <transformer>
                   <mainClass>com.steelzack.coffee.system.launcher.CoffeeParadigmsMain</mainClass>
                 </transformer>
               </transformers>

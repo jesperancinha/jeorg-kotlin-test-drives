@@ -74,7 +74,7 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     }
 
     @Override
-    public void setPostQueueSize(int queueSize, String name) {
+    public void addPostQueueSize(int queueSize, String name) {
         queuePostActivity.setQueueSize(queueSize, name);
     }
 
@@ -92,5 +92,11 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     public void initExecutors() {
         queuePreActivity.initExecutors();
         queuePostActivity.initExecutors();
+    }
+
+    @Override
+    public void stopExectutors() {
+        queuePreActivity.stopExecutors();
+        queuePostActivity.stopExecutors();
     }
 }

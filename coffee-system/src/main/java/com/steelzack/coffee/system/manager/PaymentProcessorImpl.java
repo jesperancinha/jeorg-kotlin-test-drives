@@ -61,4 +61,9 @@ public class PaymentProcessorImpl extends ProcessorImpl implements PaymentProces
     public void initExecutors() {
         queuePayment.initExecutors();
     }
+
+    @Override
+    public void stopExectutors() {
+        queuePayment.stopExecutors();
+    }
 }

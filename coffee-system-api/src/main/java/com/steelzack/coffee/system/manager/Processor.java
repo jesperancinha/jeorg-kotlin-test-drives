@@ -7,4 +7,6 @@ public interface Processor {
     void addQueueSize(int queueSize, String name);
 
     void initExecutors();
+
+    void stopExectutors();
 }

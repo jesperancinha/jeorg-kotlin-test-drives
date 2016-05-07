@@ -135,13 +135,15 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     public void start() throws InterruptedException {
         final EmployeeProcessor employeeProcessor = machineProcessor.getEmployeeProcessor();
         employeeProcessor.addQueueSize(preRowSize, MAIN_QUEUE);
-        employeeProcessor.setPostQueueSize(postRowSize, MAIN_QUEUE);
+        employeeProcessor.addPostQueueSize(postRowSize, MAIN_QUEUE);
+        employeeProcessor.initExecutors();
         final int nMachines = coffeeMachines.getCoffeMachine().size();
         final List<EmployeeLayer> employeeLayerList = new ArrayList<>();
         final Random random = new Random();
 
         fillEmployeeLayerList(nMachines, employeeLayerList, random);
         startCoffeeMeeting(employeeProcessor, employeeLayerList);
+        stopAllProcessors();
     }
 
     private void fillEmployeeLayerList(int nMachines, List<EmployeeLayer> employeeLayerList, Random random) {
@@ -168,6 +170,8 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                     employeeLayerList.add(employeeLayer);
                 }
         );
+        coffeeProcessor.initExecutors();
+        paymentProcessor.initExecutors();
     }
 
     private void startCoffeeMeeting(EmployeeProcessor employeeProcessor, List<EmployeeLayer> employeeLayerList) {
@@ -191,4 +195,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
         );
     }
 
+    public void stopAllProcessors() {
+        machineProcessor.getCoffeeProcessor().stopExectutors();
+        machineProcessor.getEmployeeProcessor().stopExectutors();
+        machineProcessor.getPaymentProcessor().stopExectutors();
+    }
 }
