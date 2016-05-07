@@ -1,10 +1,10 @@
 package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime;
-import com.sun.javafx.binding.StringFormatter;
 import lombok.Getter;
 import org.apache.log4j.Logger;
 
+import java.text.MessageFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
@@ -25,12 +25,12 @@ public class CoffeeCallableImpl implements Coffe, Callable<Boolean> {
 
     @Override
     public Boolean call() throws Exception {
-        logger.info(StringFormatter.format( //
+        logger.info(MessageFormat.format( //
                 "{0} - Starting tast {1} to make coffee", //
                 fillTime.getIndex(), //
                 fillTime.getDescription() //
         ));
-        TimeUnit.MILLISECONDS.wait(fillTime.getValue());
+        TimeUnit.MILLISECONDS.sleep(fillTime.getValue());
         return true;
     }
 

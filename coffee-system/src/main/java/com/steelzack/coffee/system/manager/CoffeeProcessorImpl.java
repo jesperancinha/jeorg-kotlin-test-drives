@@ -26,7 +26,7 @@ import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHED
 @Accessors(chain = true)
 @Getter
 @Service
-public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcessor {
+public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProcessor {
     private static final Logger logger = Logger.getLogger(CoffeeProcessorImpl.class);
 
     private Coffee chosenCoffee;
@@ -95,5 +95,10 @@ public class CoffeeProcessorImpl extends ProcessorImpl implements CoffeeProcesso
     @Override
     public void initExecutors() {
         queueCofee.initExecutors();
+    }
+
+    @Override
+    public void stopExectutors() {
+        queueCofee.stopExecutors();
     }
 }

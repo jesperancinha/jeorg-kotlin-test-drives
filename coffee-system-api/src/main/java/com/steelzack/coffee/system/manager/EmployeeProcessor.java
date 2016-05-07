@@ -10,5 +10,5 @@ public interface EmployeeProcessor extends Processor{
 
     void callPostActions(String name);
 
-    void setPostQueueSize(int queueSize, String name);
+    void addPostQueueSize(int queueSize, String name);
 }

@@ -13,10 +13,11 @@ import java.util.concurrent.ThreadPoolExecutor;
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Getter
-public class QueueAbstract {
+public class QueueAbstract implements CPQueue{
     private Map<String, ThreadPoolExecutor> executorServiceMap = new HashMap<>();
     private Map<String, Integer> numberToCreateMap = new HashMap<>();
 
+    @Override
     public void setQueueSize(int queueSize, String name) {
         Integer currentSize = numberToCreateMap.get(name);
         if (currentSize == null) {
@@ -25,10 +26,12 @@ public class QueueAbstract {
         numberToCreateMap.put(name, currentSize + queueSize);
     }
 
+    @Override
     public ExecutorService getExecutor(String name) {
         return executorServiceMap.get(name);
     }
 
+    @Override
     public void initExecutors() {
         numberToCreateMap.keySet().stream().forEach(
                 name -> {
@@ -40,6 +43,13 @@ public class QueueAbstract {
                             (ThreadPoolExecutor) Executors.newFixedThreadPool(numberToCreateMap.get(name));
                     executorServiceMap.put(name, managedExecutorService);
                 }
+        );
+    }
+
+    @Override
+    public void stopExecutors() {
+        executorServiceMap.values().stream().forEach(
+                ExecutorServiceHelper::shutDownExecutorService
         );
     }
 }

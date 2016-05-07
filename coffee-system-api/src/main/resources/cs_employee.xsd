@@ -23,7 +23,7 @@
                                                 <xs:simpleContent>
                                                     <xs:extension base="xs:string">
                                                         <xs:attribute type="xs:string" name="description" use="optional"/>
-                                                        <xs:attribute type="xs:byte" name="time" use="optional"/>
+                                                        <xs:attribute type="xs:int" name="time" use="optional"/>
                                                     </xs:extension>
                                                 </xs:simpleContent>
                                             </xs:complexType>
@@ -33,7 +33,7 @@
                                                 <xs:simpleContent>
                                                     <xs:extension base="xs:string">
                                                         <xs:attribute type="xs:string" name="description" use="optional"/>
-                                                        <xs:attribute type="xs:byte" name="time" use="optional"/>
+                                                        <xs:attribute type="xs:int" name="time" use="optional"/>
                                                     </xs:extension>
                                                 </xs:simpleContent>
                                             </xs:complexType>
@@ -42,9 +42,9 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute type="xs:byte" name="findCupTime" use="optional"/>
-                        <xs:attribute type="xs:byte" name="putUnderOutletTime" use="optional"/>
-                        <xs:attribute type="xs:byte" name="takeCupAndLeaveTime" use="optional"/>
+                        <xs:attribute type="xs:int" name="findCupTime" use="optional"/>
+                        <xs:attribute type="xs:int" name="putUnderOutletTime" use="optional"/>
+                        <xs:attribute type="xs:int" name="takeCupAndLeaveTime" use="optional"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>

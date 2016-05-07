@@ -21,12 +21,11 @@ import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHED
 @Accessors(chain = true)
 @Getter
 @Service
-public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProcessor {
+public class EmployeeProcessorImpl extends ProcessorAbstract implements EmployeeProcessor {
 
     private static final Logger logger = Logger.getLogger(EmployeeProcessorImpl.class);
 
     private Actions actions;
-    private int queueSize;
 
     @Autowired
     private QueuePreActivityImpl queuePreActivity;
@@ -43,6 +42,7 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     public void callPreActions(final String name) {
         final List<Actions.PreAction> preActions = this.actions.getPreAction();
         final ExecutorService executor = queuePreActivity.getExecutor(name);
+
         preActions.stream().forEach( //
                 preAction -> { //
                     try {
@@ -74,7 +74,7 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     }
 
     @Override
-    public void setPostQueueSize(int queueSize, String name) {
+    public void addPostQueueSize(int queueSize, String name) {
         queuePostActivity.setQueueSize(queueSize, name);
     }
 
@@ -92,5 +92,11 @@ public class EmployeeProcessorImpl extends ProcessorImpl implements EmployeeProc
     public void initExecutors() {
         queuePreActivity.initExecutors();
         queuePostActivity.initExecutors();
+    }
+
+    @Override
+    public void stopExectutors() {
+        queuePreActivity.stopExecutors();
+        queuePostActivity.stopExecutors();
     }
 }

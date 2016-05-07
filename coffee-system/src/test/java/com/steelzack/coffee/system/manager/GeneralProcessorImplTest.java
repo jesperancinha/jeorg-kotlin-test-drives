@@ -146,27 +146,27 @@ public class GeneralProcessorImplTest {
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2);
         expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1);
 
-        final Stack<Byte> expectedTimesForCoffe = new Stack<>();
-        expectedTimesForCoffe.push((byte) 40);
-        expectedTimesForCoffe.push((byte) 30);
-        expectedTimesForCoffe.push((byte) 20);
-        expectedTimesForCoffe.push((byte) 10);
-        expectedTimesForCoffe.push((byte) 5);
-        expectedTimesForCoffe.push((byte) 40);
-        expectedTimesForCoffe.push((byte) 30);
-        expectedTimesForCoffe.push((byte) 20);
-        expectedTimesForCoffe.push((byte) 10);
-        expectedTimesForCoffe.push((byte) 5);
-        expectedTimesForCoffe.push((byte) 40);
-        expectedTimesForCoffe.push((byte) 30);
-        expectedTimesForCoffe.push((byte) 20);
-        expectedTimesForCoffe.push((byte) 10);
-        expectedTimesForCoffe.push((byte) 5);
-        expectedTimesForCoffe.push((byte) 40);
-        expectedTimesForCoffe.push((byte) 30);
-        expectedTimesForCoffe.push((byte) 20);
-        expectedTimesForCoffe.push((byte) 10);
-        expectedTimesForCoffe.push((byte) 5);
+        final Stack<Integer> expectedTimesForCoffe = new Stack<>();
+        expectedTimesForCoffe.push(40);
+        expectedTimesForCoffe.push(30);
+        expectedTimesForCoffe.push(20);
+        expectedTimesForCoffe.push(10);
+        expectedTimesForCoffe.push(5);
+        expectedTimesForCoffe.push(40);
+        expectedTimesForCoffe.push(30);
+        expectedTimesForCoffe.push(20);
+        expectedTimesForCoffe.push(10);
+        expectedTimesForCoffe.push(5);
+        expectedTimesForCoffe.push(40);
+        expectedTimesForCoffe.push(30);
+        expectedTimesForCoffe.push(20);
+        expectedTimesForCoffe.push(10);
+        expectedTimesForCoffe.push(5);
+        expectedTimesForCoffe.push(40);
+        expectedTimesForCoffe.push(30);
+        expectedTimesForCoffe.push(20);
+        expectedTimesForCoffe.push(10);
+        expectedTimesForCoffe.push(5);
 
         final Stack<String> expectedPaymentTypes = new Stack<>();
         expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
@@ -178,14 +178,14 @@ public class GeneralProcessorImplTest {
         expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
         expectedPaymentTypes.push(NO_PAYMENT);
 
-        final Stack<Byte> expectedTimes = new Stack<>();
-        expectedTimes.push((byte) 20);
-        expectedTimes.push((byte) 10);
-        expectedTimes.push((byte) 5);
+        final Stack<Integer> expectedTimes = new Stack<>();
+        expectedTimes.push(20);
+        expectedTimes.push(10);
+        expectedTimes.push(5);
         expectedTimes.push(null);
-        expectedTimes.push((byte) 20);
-        expectedTimes.push((byte) 10);
-        expectedTimes.push((byte) 5);
+        expectedTimes.push(20);
+        expectedTimes.push(10);
+        expectedTimes.push(5);
         expectedTimes.push(null);
 
         final Stack<String> expectedEmployeeNames = new Stack<>();
@@ -202,11 +202,11 @@ public class GeneralProcessorImplTest {
         expectedPreActionDescriptions.push("put cup in outlet");
         expectedPreActionDescriptions.push("choose a cup");
 
-        final Stack<Byte> expectedPreActionTimes = new Stack<>();
-        expectedPreActionTimes.push((byte) 20);
-        expectedPreActionTimes.push((byte) 10);
-        expectedPreActionTimes.push((byte) 20);
-        expectedPreActionTimes.push((byte) 10);
+        final Stack<Integer> expectedPreActionTimes = new Stack<>();
+        expectedPreActionTimes.push(20);
+        expectedPreActionTimes.push(10);
+        expectedPreActionTimes.push(20);
+        expectedPreActionTimes.push(10);
 
         final Stack<String> expectedPostActionDescriptions = new Stack<>();
         expectedPostActionDescriptions.push("dummy");
@@ -214,11 +214,11 @@ public class GeneralProcessorImplTest {
         expectedPostActionDescriptions.push("dummy");
         expectedPostActionDescriptions.push("take cup and leave");
 
-        final Stack<Byte> expectedPostActionTimes = new Stack<>();
-        expectedPostActionTimes.push((byte) 55);
-        expectedPostActionTimes.push((byte) 5);
-        expectedPostActionTimes.push((byte) 55);
-        expectedPostActionTimes.push((byte) 5);
+        final Stack<Integer> expectedPostActionTimes = new Stack<>();
+        expectedPostActionTimes.push(55);
+        expectedPostActionTimes.push(5);
+        expectedPostActionTimes.push(55);
+        expectedPostActionTimes.push(5);
 
         assertThat(coffeMachines.size(), is(2));
         assertThat(employees.size(), is(2));
