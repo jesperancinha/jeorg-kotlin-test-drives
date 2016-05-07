@@ -61,7 +61,7 @@ public class GeneralProcessorImplTest {
     private static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
     private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
     private static final String NO_PAYMENT = "noPayment";
-    public static final String TEST = "TEST";
+    private static final String TEST = "TEST";
 
     @InjectMocks
     private GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2).postRowSize(2).build();

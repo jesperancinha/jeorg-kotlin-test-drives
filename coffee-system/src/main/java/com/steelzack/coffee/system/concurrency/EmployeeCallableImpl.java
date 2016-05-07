@@ -1,12 +1,12 @@
 package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.Employees;
-import com.sun.javafx.binding.StringFormatter;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import java.text.MessageFormat;
 import java.util.concurrent.Callable;
 
 @Accessors(chain = true)
@@ -26,7 +26,7 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
 
     @Override
     public Boolean call() throws Exception {
-        logger.info(StringFormatter.format("Employee {0} is waiting in line", employee.getName()));
+        logger.info(MessageFormat.format("Employee {0} is waiting in line", employee.getName()));
         return true;
     }
 
