@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 
 @Accessors(chain = true)
 @Getter
@@ -40,11 +39,9 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     @Override
     public void callPreActions(final String name) {
         final List<Actions.PreAction> preActions = this.actions.getPreAction();
-        final ExecutorService executor = queuePreActivity.getExecutor(name);
-
         preActions.stream().forEach( //
                 preAction -> { //
-                    allResults.add(executor.submit(new PreActionCallableImpl(preAction, name)));
+                    allCallables.add(new PreActionCallableImpl(preAction, name));
                 } //
         ); //
     }
@@ -52,10 +49,9 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     @Override
     public void callPostActions(final String name) {
         final List<Actions.PostAction> postActions = this.actions.getPostAction();
-        final ExecutorService executor = queuePostActivity.getExecutor(name);
         postActions.stream().forEach( //
                 postAction -> { //
-                    allResults.add(executor.submit(new PostActionCallableImpl(postAction, name)));
+                    allCallables.add(new PostActionCallableImpl(postAction, name));
                 } //
         ); //
     }
@@ -66,7 +62,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     }
 
     @Override
-    public QueueAbstract getExecutorService() {
+    public QueueAbstract getExecutorServiceQueue() {
         return queuePreActivity;
     }
 

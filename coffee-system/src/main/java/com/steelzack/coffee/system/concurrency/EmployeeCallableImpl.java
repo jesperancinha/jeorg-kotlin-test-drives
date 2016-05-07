@@ -9,12 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
-import java.util.concurrent.Callable;
 
 @Accessors(chain = true)
 @Getter
 @Service
-public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
+public class EmployeeCallableImpl implements EmployeeCallable {
     private static final Logger logger = Logger.getLogger(EmployeeCallableImpl.class);
     public static final String SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!";
 
@@ -31,7 +30,7 @@ public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
 
     @Override
     public Boolean call() throws Exception {
-        logger.info(MessageFormat.format("Employee {0} is waiting in line", employee.getName()));
+        logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.getName()));
         return true;
     }
 

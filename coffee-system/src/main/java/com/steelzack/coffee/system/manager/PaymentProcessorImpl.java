@@ -35,12 +35,11 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
 
     @Override
     public void callPayCoffee(String name) {
-        final ExecutorService executor = queuePayment.getExecutor(name);
-        allResults.add(executor.submit(new PaymentCallableImpl(chosenPayment, name)));
+        allCallables.add(new PaymentCallableImpl(chosenPayment, name));
     }
 
     @Override
-    public QueueAbstract getExecutorService() {
+    public QueueAbstract getExecutorServiceQueue() {
         return queuePayment;
     }
 

@@ -3,11 +3,13 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import org.apache.log4j.Logger;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
@@ -18,11 +20,11 @@ public abstract class ProcessorAbstract {
 
     private static final Logger logger = Logger.getLogger(ProcessorAbstract.class);
 
-    final Set<Future<Boolean>> allResults = new HashSet<>();
+    private final List<Future<Boolean>> allResults = new ArrayList<>();
 
-    final Set<Callable<Boolean>> allCallables = new HashSet<>();
+    final List<Callable<Boolean>> allCallables = new ArrayList<>();
 
-    public abstract QueueAbstract getExecutorService();
+    public abstract QueueAbstract getExecutorServiceQueue();
 
     public void waitForAllCalls() {
         allResults.stream().forEach( //
@@ -42,7 +44,12 @@ public abstract class ProcessorAbstract {
 
     public void runAllCalls() {
         allCallables.stream().forEach(
-                booleanCallable -> getExecutorService().getExecutorServiceMap().get(getExecutorName(booleanCallable)).submit(booleanCallable) //
+                booleanCallable -> {
+                    final Map<String, ThreadPoolExecutor> executorServiceMap = getExecutorServiceQueue().getExecutorServiceMap();
+                    final String executorName = getExecutorName(booleanCallable);
+                    final ThreadPoolExecutor threadPoolExecutor = executorServiceMap.get(executorName);
+                    allResults.add(threadPoolExecutor.submit(booleanCallable));
+                } //
         );
     }
 }

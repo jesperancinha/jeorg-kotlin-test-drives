@@ -14,8 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 /**
@@ -49,8 +47,6 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
                 index -> allIndexes.add(index.intValue()) //
         );
 
-        final ExecutorService executor = queueCofee.getExecutor(name);
-
         for (Integer index : allIndexes) { //
             final List<Coffee.TimesToFill.FillTime> allTasksForIndex = tasks.stream().filter( //
                     fillTime -> fillTime.getIndex().intValue() == index //
@@ -58,16 +54,13 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
 
             allTasksForIndex.stream().forEach( //
                     fillTime -> //
-                    {
-                        final Future<Boolean> future = executor.submit(new CoffeeCallableImpl(fillTime, name));
-                        allResults.add(future);
-                    }
+                            allCallables.add(new CoffeeCallableImpl(fillTime, name))
             );
         }
     }
 
     @Override
-    public QueueAbstract getExecutorService() {
+    public QueueAbstract getExecutorServiceQueue() {
         return queueCofee;
     }
 

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
-import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Getter
 @Service
-public class CoffeeCallableImpl implements Coffe, Callable<Boolean> {
+public class CoffeeCallableImpl implements CoffeCallable {
 
     @Autowired
     private MachineProcessor machineProcessor;

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
-import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Getter
-public class PaymentCallableImpl implements Payment, Callable<Boolean> {
+public class PaymentCallableImpl implements PaymentCallable {
 
     private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
 
@@ -35,7 +34,7 @@ public class PaymentCallableImpl implements Payment, Callable<Boolean> {
 
     @Override
     public Boolean call() throws Exception {
-        logger.info(MessageFormat.format("Payment with {0}", chosenPayment.getName()));
+        logger.info(MessageFormat.format("PaymentCallable with {0}", chosenPayment.getName()));
         Integer time = chosenPayment.getTime();
         if(time != null) {
             TimeUnit.MILLISECONDS.sleep(time);

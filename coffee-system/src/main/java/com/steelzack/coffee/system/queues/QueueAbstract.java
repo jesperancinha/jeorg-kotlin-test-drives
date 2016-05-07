@@ -5,7 +5,6 @@ import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -13,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Getter
-public class QueueAbstract implements CPQueue{
+public class QueueAbstract implements CPQueue {
     private Map<String, ThreadPoolExecutor> executorServiceMap = new HashMap<>();
     private Map<String, Integer> numberToCreateMap = new HashMap<>();
 
@@ -27,7 +26,7 @@ public class QueueAbstract implements CPQueue{
     }
 
     @Override
-    public ExecutorService getExecutor(String name) {
+    public ThreadPoolExecutor getExecutor(String name) {
         return executorServiceMap.get(name);
     }
 
@@ -35,7 +34,7 @@ public class QueueAbstract implements CPQueue{
     public void initExecutors() {
         numberToCreateMap.keySet().stream().forEach(
                 name -> {
-                    final ThreadPoolExecutor currentExecutor = executorServiceMap.get(name);
+                    final ThreadPoolExecutor currentExecutor = getExecutor(name);
                     if (currentExecutor != null) {
                         ExecutorServiceHelper.shutDownExecutorService(currentExecutor);
                     }

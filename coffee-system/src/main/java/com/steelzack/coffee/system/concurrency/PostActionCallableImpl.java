@@ -1,6 +1,6 @@
 package com.steelzack.coffee.system.concurrency;
 
-import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.manager.MachineProcessor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
@@ -22,7 +22,7 @@ public class PostActionCallableImpl extends ActionCallable {
 
     final static Logger logger = Logger.getLogger(PreActionCallableImpl.class);
 
-    public PostActionCallableImpl(Employees.Employee.Actions.PostAction postAction, String name) {
+    public PostActionCallableImpl(PostAction postAction, String name) {
         super(postAction.getDescription(), postAction.getTime(), name);
 
     }
