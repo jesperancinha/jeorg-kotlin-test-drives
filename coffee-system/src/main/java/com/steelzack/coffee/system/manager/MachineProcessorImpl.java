@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class MachineProcessorImpl implements MachineProcessor {
 
     @Autowired
-    private EmployeeProcessor employeeProcessor;
+    private PreProcessor preProcessor;
 
     @Autowired
     private CoffeeProcessor coffeeProcessor;
@@ -22,9 +22,12 @@ public class MachineProcessorImpl implements MachineProcessor {
     @Autowired
     private PaymentProcessor paymentProcessor;
 
+    @Autowired
+    private PostProcessor postProcessor;
+
     @Override
     public void callPreActions(String name) {
-        employeeProcessor.callPreActions(name);
+        preProcessor.callPreActions(name);
     }
 
     @Override
@@ -39,14 +42,15 @@ public class MachineProcessorImpl implements MachineProcessor {
 
     @Override
     public void callPostActions(String name) {
-        employeeProcessor.callPostActions(name);
+        postProcessor.callPostActions(name);
     }
 
     @Override
     public void initAll()
     {
-        employeeProcessor.initExecutors();
+        preProcessor.initExecutors();
         coffeeProcessor.initExecutors();
         paymentProcessor.initExecutors();
+        postProcessor.initExecutors();
     }
 }

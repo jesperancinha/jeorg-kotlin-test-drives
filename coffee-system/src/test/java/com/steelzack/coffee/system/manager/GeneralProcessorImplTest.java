@@ -76,13 +76,16 @@ public class GeneralProcessorImplTest {
     private MachineProcessor machineProcessor = new MachineProcessorImpl();
 
     @InjectMocks
+    private PreProcessor preProcessor = new PreProcessorImpl();
+
+    @InjectMocks
     private CoffeeProcessor coffeeProcessor = new CoffeeProcessorImpl();
 
     @InjectMocks
-    private EmployeeProcessor employeeProcessor = new EmployeeProcessorImpl();
+    private PaymentProcessor paymentProcessor = new PaymentProcessorImpl();
 
     @InjectMocks
-    private PaymentProcessor paymentProcessor = new PaymentProcessorImpl();
+    private PostProcessor postProcessor = new PostProcessorImpl();
 
     @Mock
     private QueueCofeeImpl queueCofee;
@@ -289,7 +292,7 @@ public class GeneralProcessorImplTest {
 
         when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
         when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
-        when(machineProcessor.getEmployeeProcessor()).thenReturn(employeeProcessor);
+        when(machineProcessor.getPreProcessor()).thenReturn(preProcessor);
 
         generalProcessor.initSimulationProcess(
                 testMachinesFile, //
@@ -297,7 +300,7 @@ public class GeneralProcessorImplTest {
         ); //
 
         doAnswer(invocationOnMock -> { //
-            employeeProcessor.callPreActions(MAIN_QUEUE_PRE); //
+            preProcessor.callPreActions(MAIN_QUEUE_PRE); //
             return null; //
         }).when(machineProcessor).callPreActions(MAIN_QUEUE_PRE);
         doAnswer(invocationOnMock -> { //
@@ -309,7 +312,7 @@ public class GeneralProcessorImplTest {
             return null; //
         }).when(machineProcessor).callPayCoffee(any(String.class));
         doAnswer(invocationOnMock -> { //
-            employeeProcessor.callPostActions(MAIN_QUEUE_POST); //
+            postProcessor.callPostActions(MAIN_QUEUE_POST); //
             return null; //
         }).when(machineProcessor).callPostActions(MAIN_QUEUE_POST);
 

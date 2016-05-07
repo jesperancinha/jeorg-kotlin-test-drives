@@ -4,11 +4,14 @@ package com.steelzack.coffee.system.manager;
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
 public interface MachineProcessor {
+
+    PreProcessor getPreProcessor();
+    
     CoffeeProcessor getCoffeeProcessor();
 
-    EmployeeProcessor getEmployeeProcessor();
-
     PaymentProcessor getPaymentProcessor();
+
+    PostProcessor getPostProcessor();
 
     void callPreActions(String name);
 
@@ -19,4 +22,5 @@ public interface MachineProcessor {
     void callPostActions(String name);
 
     void initAll();
+
 }

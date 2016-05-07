@@ -136,16 +136,20 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     @Override
     public void start() throws InterruptedException {
-        final EmployeeProcessor employeeProcessor = machineProcessor.getEmployeeProcessor();
-        employeeProcessor.addQueueSize(preRowSize, MAIN_QUEUE_PRE);
-        employeeProcessor.addPostQueueSize(postRowSize, MAIN_QUEUE_PRE);
-        employeeProcessor.initExecutors();
+        final PreProcessor preProcessor = machineProcessor.getPreProcessor();
+        preProcessor.addQueueSize(preRowSize, MAIN_QUEUE_PRE);
+        preProcessor.initExecutors();
+
+        final PostProcessor postProcessor = machineProcessor.getPostProcessor();
+        postProcessor.addQueueSize(postRowSize, MAIN_QUEUE_POST);
+        postProcessor.initExecutors();
+
         final int nMachines = coffeeMachines.getCoffeMachine().size();
         final List<EmployeeLayer> employeeLayerList = new ArrayList<>();
         final Random random = new Random();
 
         fillEmployeeLayerList(nMachines, employeeLayerList, random);
-        startCoffeeMeeting(employeeProcessor, employeeLayerList);
+        startCoffeeMeeting(preProcessor, postProcessor, employeeLayerList);
 
         runaAllProcessors();
         waitForAllProcessors();
@@ -180,11 +184,12 @@ public class GeneralProcessorImpl implements GeneralProcessor {
         paymentProcessor.initExecutors();
     }
 
-    private void startCoffeeMeeting(EmployeeProcessor employeeProcessor, List<EmployeeLayer> employeeLayerList) {
+    private void startCoffeeMeeting(PreProcessor preProcessor, PostProcessor postProcessor, List<EmployeeLayer> employeeLayerList) {
         employeeLayerList.stream().forEach(
                 employeeLayer -> {
                     final Employee employee = employeeLayer.getEmployee();
-                    employeeProcessor.setActions(employee.getActions());
+                    preProcessor.setActions(employee.getActions().getPreAction());
+                    postProcessor.setActions(employee.getActions().getPostAction());
                     final Coffee chosenCoffee = employeeLayer.getCoffee();
                     coffeeProcessor.setChosenCoffee(
                             chosenCoffee //
@@ -203,21 +208,24 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     private void runaAllProcessors()
     {
-        machineProcessor.getEmployeeProcessor().runAllCalls();
+        machineProcessor.getPreProcessor().runAllCalls();
         machineProcessor.getCoffeeProcessor().runAllCalls();
         machineProcessor.getPaymentProcessor().runAllCalls();
+        machineProcessor.getPostProcessor().runAllCalls();
     }
 
     private void waitForAllProcessors()
     {
+        machineProcessor.getPreProcessor().waitForAllCalls();
         machineProcessor.getCoffeeProcessor().waitForAllCalls();
-        machineProcessor.getEmployeeProcessor().waitForAllCalls();
         machineProcessor.getPaymentProcessor().waitForAllCalls();
+        machineProcessor.getPostProcessor().waitForAllCalls();
     }
 
     private void stopAllProcessors() {
+        machineProcessor.getPreProcessor().stopExectutors();
         machineProcessor.getCoffeeProcessor().stopExectutors();
-        machineProcessor.getEmployeeProcessor().stopExectutors();
         machineProcessor.getPaymentProcessor().stopExectutors();
+        machineProcessor.getPostProcessor().stopExectutors();
     }
 }
