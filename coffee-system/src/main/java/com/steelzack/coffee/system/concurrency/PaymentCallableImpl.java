@@ -1,9 +1,9 @@
 package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
-import com.sun.javafx.binding.StringFormatter;
 import org.apache.log4j.Logger;
 
+import java.text.MessageFormat;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
@@ -22,8 +22,8 @@ public class PaymentCallableImpl implements Payment, Callable<Boolean> {
 
     @Override
     public Boolean call() throws Exception {
-        logger.info(StringFormatter.format("Payment with {0}", chosenPayment.getName()));
-        TimeUnit.MILLISECONDS.wait(chosenPayment.getTime());
+        logger.info(MessageFormat.format("Payment with {0}", chosenPayment.getName()));
+        TimeUnit.MILLISECONDS.sleep(chosenPayment.getTime());
         return true;
     }
 }

@@ -1,26 +1,19 @@
 package com.steelzack.coffee.system.concurrency;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
-public abstract class ActionCallable implements Callable<Boolean>, Action {
+public abstract class ActionCallable implements Callable<Boolean> {
 
     final String description;
 
-    final Byte time;
+    final Integer time;
 
-    ActionCallable(String description, Byte time) {
+    ActionCallable(String description, Integer time) {
         this.description = description;
         this.time = time;
-    }
-
-    @Override
-    public Boolean call() throws Exception {
-        TimeUnit.MILLISECONDS.wait(time.longValue());
-        return true;
     }
 
 }
