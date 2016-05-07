@@ -45,13 +45,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
 
         preActions.stream().forEach( //
                 preAction -> { //
-                    try {
-                        if (!executor.submit(new PreActionCallableImpl(preAction)).get()) {
-                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
-                        }
-                    } catch (InterruptedException | ExecutionException e) {
-                        logger.error(e.getMessage(), e);
-                    }
+                     allResults.add(executor.submit(new PreActionCallableImpl(preAction)));
                 } //
         ); //
     }
@@ -79,7 +73,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     }
 
     @Override
-    QueueAbstract getExecutorService() {
+    public QueueAbstract getExecutorService() {
         return queuePreActivity;
     }
 

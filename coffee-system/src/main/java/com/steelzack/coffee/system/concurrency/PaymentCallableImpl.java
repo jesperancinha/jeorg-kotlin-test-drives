@@ -1,7 +1,10 @@
 package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.manager.MachineProcessor;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
 import java.util.concurrent.Callable;
@@ -10,7 +13,11 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
+@Service
 public class PaymentCallableImpl implements Payment, Callable<Boolean> {
+
+    @Autowired
+    private MachineProcessor machineProcessor;
 
     private final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
     private CoffeeMachines.CoffeMachine.PaymentTypes.Payment chosenPayment;

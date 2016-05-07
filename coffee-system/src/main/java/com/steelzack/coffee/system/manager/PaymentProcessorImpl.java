@@ -10,10 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-
-import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
@@ -38,13 +35,7 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     @Override
     public void callPayCoffee(String name) {
         final ExecutorService executor = queuePayment.getExecutor(name);
-        try {
-            if (!executor.submit(new PaymentCallableImpl(chosenPayment)).get()) {
-                logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            logger.error(e.getMessage(), e);
-        }
+        allResults.add(executor.submit(new PaymentCallableImpl(chosenPayment)));
     }
 
     @Override

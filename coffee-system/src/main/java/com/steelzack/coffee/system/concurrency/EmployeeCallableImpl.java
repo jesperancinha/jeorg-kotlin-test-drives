@@ -1,9 +1,11 @@
 package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.manager.MachineProcessor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
@@ -15,6 +17,9 @@ import java.util.concurrent.Callable;
 public class EmployeeCallableImpl implements Employee, Callable<Boolean> {
     private static final Logger logger = Logger.getLogger(EmployeeCallableImpl.class);
     public static final String SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!";
+
+    @Autowired
+    private MachineProcessor machineProcessor;
 
     private Employees.Employee employee;
 

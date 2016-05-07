@@ -9,4 +9,6 @@ public interface Processor {
     void initExecutors();
 
     void stopExectutors();
+
+    void waitForAllCalls();
 }

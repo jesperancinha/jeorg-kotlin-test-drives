@@ -143,6 +143,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
         fillEmployeeLayerList(nMachines, employeeLayerList, random);
         startCoffeeMeeting(employeeProcessor, employeeLayerList);
+        waitForAllProcessors();
         stopAllProcessors();
     }
 
@@ -195,7 +196,14 @@ public class GeneralProcessorImpl implements GeneralProcessor {
         );
     }
 
-    public void stopAllProcessors() {
+    private void waitForAllProcessors()
+    {
+        machineProcessor.getCoffeeProcessor().waitForAllCalls();
+        machineProcessor.getEmployeeProcessor().waitForAllCalls();
+        machineProcessor.getPaymentProcessor().waitForAllCalls();
+    }
+
+    private void stopAllProcessors() {
         machineProcessor.getCoffeeProcessor().stopExectutors();
         machineProcessor.getEmployeeProcessor().stopExectutors();
         machineProcessor.getPaymentProcessor().stopExectutors();

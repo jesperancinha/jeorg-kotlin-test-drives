@@ -1,10 +1,37 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.queues.QueueAbstract;
+import org.apache.log4j.Logger;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
+import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 public abstract class ProcessorAbstract {
-    abstract QueueAbstract getExecutorService();
+
+    private static final Logger logger = Logger.getLogger(ProcessorAbstract.class);
+
+    final Set<Future<Boolean>> allResults = new HashSet<>();
+
+    public abstract QueueAbstract getExecutorService();
+
+    public void waitForAllCalls() {
+        allResults.stream().forEach( //
+                booleanFuture -> { //
+                    try { //
+                        if (!booleanFuture.get()) { //
+                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE); //
+                        }
+                    } catch (InterruptedException | ExecutionException e) { //
+                        logger.error(e.getMessage(), e); //
+                    }
+                }
+        );
+    }
 }
