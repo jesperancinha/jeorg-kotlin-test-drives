@@ -1,5 +1,6 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.ActionCallable;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions;
@@ -13,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-
-import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
+import java.util.concurrent.Callable;
 
 @Accessors(chain = true)
 @Getter
@@ -41,17 +39,9 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     @Override
     public void callPreActions(final String name) {
         final List<Actions.PreAction> preActions = this.actions.getPreAction();
-        final ExecutorService executor = queuePreActivity.getExecutor(name);
-
         preActions.stream().forEach( //
                 preAction -> { //
-                    try {
-                        if (!executor.submit(new PreActionCallableImpl(preAction)).get()) {
-                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
-                        }
-                    } catch (InterruptedException | ExecutionException e) {
-                        logger.error(e.getMessage(), e);
-                    }
+                    allCallables.add(new PreActionCallableImpl(preAction, name));
                 } //
         ); //
     }
@@ -59,16 +49,9 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     @Override
     public void callPostActions(final String name) {
         final List<Actions.PostAction> postActions = this.actions.getPostAction();
-        final ExecutorService executor = queuePostActivity.getExecutor(name);
         postActions.stream().forEach( //
                 postAction -> { //
-                    try {
-                        if (!executor.submit(new PostActionCallableImpl(postAction)).get()) {
-                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
-                        }
-                    } catch (InterruptedException | ExecutionException e) {
-                        logger.error(e.getMessage(), e);
-                    }
+                    allCallables.add(new PostActionCallableImpl(postAction, name));
                 } //
         ); //
     }
@@ -79,8 +62,13 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     }
 
     @Override
-    QueueAbstract getExecutorService() {
+    public QueueAbstract getExecutorServiceQueue() {
         return queuePreActivity;
+    }
+
+    @Override
+    public String getExecutorName(Callable<Boolean> callable) {
+        return ((ActionCallable)callable).getName();
     }
 
     @Override

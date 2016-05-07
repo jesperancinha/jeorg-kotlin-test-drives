@@ -13,12 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
-
-import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
 /**
  * Created by joao on 29-4-16.
@@ -43,7 +39,6 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     public void callMakeCoffee(String name) {
         final List<Coffee.TimesToFill.FillTime> tasks = chosenCoffee.getTimesToFill().getFillTime();
         final Set<Integer> allIndexes = new HashSet<>();
-        final Set<Future<Boolean>> allResults = new HashSet<>();
         tasks.stream().sorted( //
                 (fillTime1, fillTime2) -> fillTime1.getIndex().compareTo(fillTime2.getIndex()) //
         ).map(
@@ -52,8 +47,6 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
                 index -> allIndexes.add(index.intValue()) //
         );
 
-        final ExecutorService executor = queueCofee.getExecutor(name);
-
         for (Integer index : allIndexes) { //
             final List<Coffee.TimesToFill.FillTime> allTasksForIndex = tasks.stream().filter( //
                     fillTime -> fillTime.getIndex().intValue() == index //
@@ -61,30 +54,19 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
 
             allTasksForIndex.stream().forEach( //
                     fillTime -> //
-                    {
-                        final CoffeeCallableImpl coffeeCallable = new CoffeeCallableImpl(fillTime);
-                        final Future<Boolean> future = executor.submit(coffeeCallable);
-                        allResults.add(future);
-                    }
+                            allCallables.add(new CoffeeCallableImpl(fillTime, name))
             );
-            allResults.stream().forEach( //
-                    booleanFuture -> { //
-                        try { //
-                            if (!booleanFuture.get()) { //
-                                logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE); //
-                            }
-                        } catch (InterruptedException | ExecutionException e) { //
-                            logger.error(e.getMessage(), e); //
-                        }
-                    }
-            );
-            allResults.clear();
         }
     }
 
     @Override
-    QueueAbstract getExecutorService() {
+    public QueueAbstract getExecutorServiceQueue() {
         return queueCofee;
+    }
+
+    @Override
+    public String getExecutorName(Callable<Boolean> callable) {
+        return ((CoffeeCallableImpl) callable).getName();
     }
 
     @Override

@@ -1,6 +1,9 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.ActionCallable;
+import com.steelzack.coffee.system.concurrency.CoffeCallable;
 import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
+import com.steelzack.coffee.system.concurrency.PaymentCallable;
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
@@ -20,17 +23,20 @@ import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 
-import static com.steelzack.coffee.system.manager.GeneralProcessorImpl.MAIN_QUEUE;
+import static com.steelzack.coffee.system.manager.GeneralProcessorImpl.MAIN_QUEUE_POST;
+import static com.steelzack.coffee.system.manager.GeneralProcessorImpl.MAIN_QUEUE_PRE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
@@ -61,7 +67,7 @@ public class GeneralProcessorImplTest {
     private static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
     private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
     private static final String NO_PAYMENT = "noPayment";
-    public static final String TEST = "TEST";
+    private static final String TEST = "TEST";
 
     @InjectMocks
     private GeneralProcessor generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2).postRowSize(2).build();
@@ -90,10 +96,12 @@ public class GeneralProcessorImplTest {
     @Mock
     private QueuePreActivityImpl queuePreActivity;
 
-    private Future future;
+    private Future<Boolean> future;
 
     @Before
+    @SuppressWarnings("unchecked")
     public void setUp() throws ExecutionException, InterruptedException {
+        MockitoAnnotations.initMocks(this);
         future = mock(Future.class);
         when(future.get()).thenReturn(true);
     }
@@ -271,10 +279,10 @@ public class GeneralProcessorImplTest {
 
     @Test
     public void start() throws Exception {
-        final ExecutorService managerExecutorServicePreActivity = mock(ExecutorService.class);
-        final ExecutorService managerExecutorServicePostActivity = mock(ExecutorService.class);
-        final ExecutorService managerExecutorServiceCoffee = mock(ExecutorService.class);
-        final ExecutorService managerExecutorServicePayment = mock(ExecutorService.class);
+        final ThreadPoolExecutor threadPoolExecutorPreActivity = mock(ThreadPoolExecutor.class);
+        final ThreadPoolExecutor threadPoolExecutorPostActivity = mock(ThreadPoolExecutor.class);
+        final ThreadPoolExecutor threadPoolExecutorCoffee = mock(ThreadPoolExecutor.class);
+        final ThreadPoolExecutor threadPoolExecutorPayment = mock(ThreadPoolExecutor.class);
 
         final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
         final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
@@ -289,9 +297,9 @@ public class GeneralProcessorImplTest {
         ); //
 
         doAnswer(invocationOnMock -> { //
-            employeeProcessor.callPreActions(MAIN_QUEUE); //
+            employeeProcessor.callPreActions(MAIN_QUEUE_PRE); //
             return null; //
-        }).when(machineProcessor).callPreActions(MAIN_QUEUE);
+        }).when(machineProcessor).callPreActions(MAIN_QUEUE_PRE);
         doAnswer(invocationOnMock -> { //
             coffeeProcessor.callMakeCoffee(TEST); //
             return null; //
@@ -301,43 +309,63 @@ public class GeneralProcessorImplTest {
             return null; //
         }).when(machineProcessor).callPayCoffee(any(String.class));
         doAnswer(invocationOnMock -> { //
-            employeeProcessor.callPostActions(MAIN_QUEUE); //
+            employeeProcessor.callPostActions(MAIN_QUEUE_POST); //
             return null; //
-        }).when(machineProcessor).callPostActions(MAIN_QUEUE);
+        }).when(machineProcessor).callPostActions(MAIN_QUEUE_POST);
 
+        when(queuePreActivity.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPreActivity);
+        when(queueCofee.getExecutor(any(String.class))).thenReturn(threadPoolExecutorCoffee);
+        when(queuePayment.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPayment);
+        when(queuePostActivity.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPostActivity);
 
-        when(queuePreActivity.getExecutor(any(String.class))).thenReturn(managerExecutorServicePreActivity);
-        when(queueCofee.getExecutor(any(String.class))).thenReturn(managerExecutorServiceCoffee);
-        when(queuePayment.getExecutor(any(String.class))).thenReturn(managerExecutorServicePayment);
-        when(queuePostActivity.getExecutor(any(String.class))).thenReturn(managerExecutorServicePostActivity);
+        final HashMap<String, ThreadPoolExecutor> preActivityExecutorMap = new HashMap<>();
+        preActivityExecutorMap.put(MAIN_QUEUE_PRE, threadPoolExecutorPreActivity);
+        preActivityExecutorMap.put(MAIN_QUEUE_POST, threadPoolExecutorPostActivity);
+        final HashMap<String, ThreadPoolExecutor> coffeExecutorMap = new HashMap<>();
+        coffeExecutorMap.put(TEST, threadPoolExecutorCoffee);
+        final HashMap<String, ThreadPoolExecutor> paymentExecutorMap = new HashMap<>();
+        paymentExecutorMap.put(TEST, threadPoolExecutorPayment);
+        final HashMap<String, ThreadPoolExecutor> postActivityExecutorMap = new HashMap<>();
+        postActivityExecutorMap.put(MAIN_QUEUE_PRE, threadPoolExecutorPreActivity);
+        postActivityExecutorMap.put(MAIN_QUEUE_POST, threadPoolExecutorPostActivity);
 
-        when(managerExecutorServicePreActivity.submit(any(PreActionCallableImpl.class))).thenReturn(future);
-        when(managerExecutorServiceCoffee.submit(any(CoffeeCallableImpl.class))).thenReturn(future);
-        when(managerExecutorServicePayment.submit(any(PaymentCallableImpl.class))).thenReturn(future);
-        when(managerExecutorServicePostActivity.submit(any(PostActionCallableImpl.class))).thenReturn(future);
+        when(threadPoolExecutorPreActivity.submit(any(ActionCallable.class))).thenReturn(future);
+        when(threadPoolExecutorCoffee.submit(any(CoffeCallable.class))).thenReturn(future);
+        when(threadPoolExecutorPayment.submit(any(PaymentCallable.class))).thenReturn(future);
+        when(threadPoolExecutorPostActivity.submit(any(ActionCallable.class))).thenReturn(future);
 
-        InOrder order = inOrder(machineProcessor);
+        when(queuePreActivity.getExecutorServiceMap()).thenReturn(preActivityExecutorMap);
+        when(queueCofee.getExecutorServiceMap()).thenReturn(coffeExecutorMap);
+        when(queuePayment.getExecutorServiceMap()).thenReturn(paymentExecutorMap);
+        when(queuePostActivity.getExecutorServiceMap()).thenReturn(postActivityExecutorMap);
+
+        when(threadPoolExecutorPreActivity.submit(any(PreActionCallableImpl.class))).thenReturn(future);
+        when(threadPoolExecutorCoffee.submit(any(CoffeeCallableImpl.class))).thenReturn(future);
+        when(threadPoolExecutorPayment.submit(any(PaymentCallableImpl.class))).thenReturn(future);
+        when(threadPoolExecutorPostActivity.submit(any(PostActionCallableImpl.class))).thenReturn(future);
+
+        final InOrder order = inOrder(machineProcessor);
 
         generalProcessor.start();
 
-        verify(managerExecutorServicePreActivity, times(4)).submit(any(Callable.class));
-        verify(managerExecutorServiceCoffee, times(10)).submit(any(Callable.class));
-        verify(managerExecutorServicePayment, times(2)).submit(any(Callable.class));
-        verify(managerExecutorServicePostActivity, times(4)).submit(any(Callable.class));
+        verify(threadPoolExecutorPreActivity, times(4)).submit(any(Callable.class));
+        verify(threadPoolExecutorCoffee, times(10)).submit(any(Callable.class));
+        verify(threadPoolExecutorPayment, times(2)).submit(any(Callable.class));
+        verify(threadPoolExecutorPostActivity, times(4)).submit(any(Callable.class));
 
-        verify(queuePreActivity, times(2)).getExecutor(any(String.class));
-        verify(queueCofee, times(2)).getExecutor(any(String.class));
-        verify(queuePayment, times(2)).getExecutor(any(String.class));
-        verify(queuePostActivity, times(2)).getExecutor(any(String.class));
+        verify(queuePreActivity, times(1)).initExecutors();
+        verify(queueCofee, times(1)).initExecutors();
+        verify(queuePayment, times(1)).initExecutors();
+        verify(queuePostActivity, times(1)).initExecutors();
 
-        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE);
+        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE_PRE);
         order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
         order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
-        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE);
-        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE);
+        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST);
+        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE_PRE);
         order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
         order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
-        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE);
+        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST);
     }
 
 }

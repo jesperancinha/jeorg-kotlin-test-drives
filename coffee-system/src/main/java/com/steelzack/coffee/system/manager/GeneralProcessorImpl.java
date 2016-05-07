@@ -38,7 +38,10 @@ import java.util.Random;
 @Service
 public class GeneralProcessorImpl implements GeneralProcessor {
 
-    public static final String MAIN_QUEUE = "MAIN_QUEUE";
+    public static final String MAIN_QUEUE_PRE = "MAIN_QUEUE_PRE";
+
+    public static final String MAIN_QUEUE_POST= "MAIN_QUEUE_POST";
+
     int nIterations;
     String sourceXmlMachinesFile;
     String sourceXmlEmployeesFile;
@@ -134,8 +137,8 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     @Override
     public void start() throws InterruptedException {
         final EmployeeProcessor employeeProcessor = machineProcessor.getEmployeeProcessor();
-        employeeProcessor.addQueueSize(preRowSize, MAIN_QUEUE);
-        employeeProcessor.addPostQueueSize(postRowSize, MAIN_QUEUE);
+        employeeProcessor.addQueueSize(preRowSize, MAIN_QUEUE_PRE);
+        employeeProcessor.addPostQueueSize(postRowSize, MAIN_QUEUE_PRE);
         employeeProcessor.initExecutors();
         final int nMachines = coffeeMachines.getCoffeMachine().size();
         final List<EmployeeLayer> employeeLayerList = new ArrayList<>();
@@ -143,6 +146,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
         fillEmployeeLayerList(nMachines, employeeLayerList, random);
         startCoffeeMeeting(employeeProcessor, employeeLayerList);
+
+        runaAllProcessors();
+        waitForAllProcessors();
         stopAllProcessors();
     }
 
@@ -187,15 +193,29 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                     paymentProcessor.setChosenPayment(
                             chosenPayment //
                     );
-                    machineProcessor.callPreActions(MAIN_QUEUE);
+                    machineProcessor.callPreActions(MAIN_QUEUE_PRE);
                     machineProcessor.callMakeCoffee(chosenCoffee.getName());
                     machineProcessor.callPayCoffee(chosenPayment.getName());
-                    machineProcessor.callPostActions(MAIN_QUEUE);
+                    machineProcessor.callPostActions(MAIN_QUEUE_POST);
                 }
         );
     }
 
-    public void stopAllProcessors() {
+    private void runaAllProcessors()
+    {
+        machineProcessor.getEmployeeProcessor().runAllCalls();
+        machineProcessor.getCoffeeProcessor().runAllCalls();
+        machineProcessor.getPaymentProcessor().runAllCalls();
+    }
+
+    private void waitForAllProcessors()
+    {
+        machineProcessor.getCoffeeProcessor().waitForAllCalls();
+        machineProcessor.getEmployeeProcessor().waitForAllCalls();
+        machineProcessor.getPaymentProcessor().waitForAllCalls();
+    }
+
+    private void stopAllProcessors() {
         machineProcessor.getCoffeeProcessor().stopExectutors();
         machineProcessor.getEmployeeProcessor().stopExectutors();
         machineProcessor.getPaymentProcessor().stopExectutors();
