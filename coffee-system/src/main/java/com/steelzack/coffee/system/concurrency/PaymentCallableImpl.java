@@ -2,6 +2,7 @@ package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes;
 import com.steelzack.coffee.system.manager.MachineProcessor;
+import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
 @Service
+@Getter
 public class PaymentCallableImpl implements Payment, Callable<Boolean> {
 
     private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
@@ -22,11 +24,13 @@ public class PaymentCallableImpl implements Payment, Callable<Boolean> {
     private MachineProcessor machineProcessor;
 
     private final PaymentTypes.Payment chosenPayment;
+    private String name;
 
-    public PaymentCallableImpl(PaymentTypes.Payment chosenPayment)
+    public PaymentCallableImpl(PaymentTypes.Payment chosenPayment, String name)
     {
         super();
         this.chosenPayment = chosenPayment;
+        this.name = name;
     }
 
     @Override

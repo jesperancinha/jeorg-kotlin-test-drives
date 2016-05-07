@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.stream.Collectors;
@@ -58,7 +59,7 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
             allTasksForIndex.stream().forEach( //
                     fillTime -> //
                     {
-                        final Future<Boolean> future = executor.submit(new CoffeeCallableImpl(fillTime));
+                        final Future<Boolean> future = executor.submit(new CoffeeCallableImpl(fillTime, name));
                         allResults.add(future);
                     }
             );
@@ -68,6 +69,11 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     @Override
     public QueueAbstract getExecutorService() {
         return queueCofee;
+    }
+
+    @Override
+    public String getExecutorName(Callable<Boolean> callable) {
+        return ((CoffeeCallableImpl) callable).getName();
     }
 
     @Override

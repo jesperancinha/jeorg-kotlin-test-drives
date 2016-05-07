@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -35,12 +36,17 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     @Override
     public void callPayCoffee(String name) {
         final ExecutorService executor = queuePayment.getExecutor(name);
-        allResults.add(executor.submit(new PaymentCallableImpl(chosenPayment)));
+        allResults.add(executor.submit(new PaymentCallableImpl(chosenPayment, name)));
     }
 
     @Override
     public QueueAbstract getExecutorService() {
         return queuePayment;
+    }
+
+    @Override
+    public String getExecutorName(Callable<Boolean> callable) {
+        return ((PaymentCallableImpl)callable).getName();
     }
 
     @Override

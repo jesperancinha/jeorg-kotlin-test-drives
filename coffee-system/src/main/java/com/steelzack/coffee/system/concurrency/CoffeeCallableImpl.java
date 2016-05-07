@@ -24,10 +24,12 @@ public class CoffeeCallableImpl implements Coffe, Callable<Boolean> {
     final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
 
     private FillTime fillTime;
+    private String name;
 
-    public CoffeeCallableImpl(FillTime fillTime)
+    public CoffeeCallableImpl(FillTime fillTime, String name)
     {
         this.fillTime = fillTime;
+        this.name = name;
     }
 
     @Override

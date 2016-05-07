@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -19,19 +20,29 @@ public abstract class ProcessorAbstract {
 
     final Set<Future<Boolean>> allResults = new HashSet<>();
 
+    final Set<Callable<Boolean>> allCallables = new HashSet<>();
+
     public abstract QueueAbstract getExecutorService();
 
     public void waitForAllCalls() {
         allResults.stream().forEach( //
                 booleanFuture -> { //
                     try { //
-                        if (booleanFuture.get() != null &&  !booleanFuture.get()) { //
+                        if (booleanFuture.get() != null && !booleanFuture.get()) { //
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE); //
                         }
                     } catch (NullPointerException | InterruptedException | ExecutionException e) { //
                         logger.error(e.getMessage(), e); //
                     }
                 }
+        );
+    }
+
+    public abstract String getExecutorName(Callable<Boolean> callable);
+
+    public void runAllCalls() {
+        allCallables.stream().forEach(
+                booleanCallable -> getExecutorService().getExecutorServiceMap().get(getExecutorName(booleanCallable)).submit(booleanCallable) //
         );
     }
 }

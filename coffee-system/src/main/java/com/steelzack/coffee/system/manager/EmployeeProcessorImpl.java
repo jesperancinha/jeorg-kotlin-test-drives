@@ -1,5 +1,6 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.ActionCallable;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 @Accessors(chain = true)
@@ -42,7 +44,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
 
         preActions.stream().forEach( //
                 preAction -> { //
-                    allResults.add(executor.submit(new PreActionCallableImpl(preAction)));
+                    allResults.add(executor.submit(new PreActionCallableImpl(preAction, name)));
                 } //
         ); //
     }
@@ -53,7 +55,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
         final ExecutorService executor = queuePostActivity.getExecutor(name);
         postActions.stream().forEach( //
                 postAction -> { //
-                    allResults.add(executor.submit(new PostActionCallableImpl(postAction)));
+                    allResults.add(executor.submit(new PostActionCallableImpl(postAction, name)));
                 } //
         ); //
     }
@@ -66,6 +68,11 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
     @Override
     public QueueAbstract getExecutorService() {
         return queuePreActivity;
+    }
+
+    @Override
+    public String getExecutorName(Callable<Boolean> callable) {
+        return ((ActionCallable)callable).getName();
     }
 
     @Override

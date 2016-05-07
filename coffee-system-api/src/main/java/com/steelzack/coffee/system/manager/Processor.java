@@ -11,4 +11,6 @@ public interface Processor {
     void stopExectutors();
 
     void waitForAllCalls();
+
+    void runAllCalls();
 }

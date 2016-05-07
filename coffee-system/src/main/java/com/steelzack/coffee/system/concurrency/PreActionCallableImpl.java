@@ -20,8 +20,8 @@ public class PreActionCallableImpl extends ActionCallable {
     private MachineProcessor machineProcessor;
 
 
-    public PreActionCallableImpl(PreAction preAction) {
-        super(preAction.getDescription(), preAction.getTime());
+    public PreActionCallableImpl(PreAction preAction, String name) {
+        super(preAction.getDescription(), preAction.getTime(), name);
     }
 
     @Override
