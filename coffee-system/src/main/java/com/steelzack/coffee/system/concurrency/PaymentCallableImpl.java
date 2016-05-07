@@ -1,6 +1,6 @@
 package com.steelzack.coffee.system.concurrency;
 
-import com.steelzack.coffee.system.input.CoffeeMachines;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes;
 import com.steelzack.coffee.system.manager.MachineProcessor;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +16,26 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class PaymentCallableImpl implements Payment, Callable<Boolean> {
 
+    private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
+
     @Autowired
     private MachineProcessor machineProcessor;
 
-    private final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
-    private CoffeeMachines.CoffeMachine.PaymentTypes.Payment chosenPayment;
+    private final PaymentTypes.Payment chosenPayment;
 
-    public PaymentCallableImpl(CoffeeMachines.CoffeMachine.PaymentTypes.Payment chosenPayment)
+    public PaymentCallableImpl(PaymentTypes.Payment chosenPayment)
     {
+        super();
         this.chosenPayment = chosenPayment;
     }
 
     @Override
     public Boolean call() throws Exception {
         logger.info(MessageFormat.format("Payment with {0}", chosenPayment.getName()));
-        TimeUnit.MILLISECONDS.sleep(chosenPayment.getTime());
+        Integer time = chosenPayment.getTime();
+        if(time != null) {
+            TimeUnit.MILLISECONDS.sleep(time);
+        }
         return true;
     }
 }

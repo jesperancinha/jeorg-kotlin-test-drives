@@ -18,4 +18,5 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 
 ## References
 
-* http://winterbe.com/posts/2015/04/07/java8-concurrency-tutorial-thread-executor-examples/
+* http://winterbe.com/posts/2015/04/07/java8-concurrency-tutorial-thread-e-it 1 -ud "/tmp/employees_example_test_1.xml" -md "/tmp/coffemachine_example_test_1.xml" -pre 2 -post 3
+xecutor-examples/

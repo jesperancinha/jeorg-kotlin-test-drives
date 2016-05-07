@@ -24,7 +24,7 @@ public class PostActionCallableImpl extends ActionCallable {
 
     public Boolean call() throws Exception {
         logger.info(MessageFormat.format("Ending with {0}", description));
-        TimeUnit.MILLISECONDS.sleep(time.longValue());
+        TimeUnit.MILLISECONDS.sleep(time);
         return true;
     }
 }

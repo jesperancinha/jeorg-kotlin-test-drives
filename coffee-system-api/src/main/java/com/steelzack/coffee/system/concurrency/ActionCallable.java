@@ -9,7 +9,7 @@ public abstract class ActionCallable implements Callable<Boolean> {
 
     final String description;
 
-    final Integer time;
+    final int time;
 
     ActionCallable(String description, Integer time) {
         this.description = description;

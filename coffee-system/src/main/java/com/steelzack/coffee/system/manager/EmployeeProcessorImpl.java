@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-
-import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
 
 @Accessors(chain = true)
 @Getter
@@ -45,7 +42,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
 
         preActions.stream().forEach( //
                 preAction -> { //
-                     allResults.add(executor.submit(new PreActionCallableImpl(preAction)));
+                    allResults.add(executor.submit(new PreActionCallableImpl(preAction)));
                 } //
         ); //
     }
@@ -56,13 +53,7 @@ public class EmployeeProcessorImpl extends ProcessorAbstract implements Employee
         final ExecutorService executor = queuePostActivity.getExecutor(name);
         postActions.stream().forEach( //
                 postAction -> { //
-                    try {
-                        if (!executor.submit(new PostActionCallableImpl(postAction)).get()) {
-                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
-                        }
-                    } catch (InterruptedException | ExecutionException e) {
-                        logger.error(e.getMessage(), e);
-                    }
+                    allResults.add(executor.submit(new PostActionCallableImpl(postAction)));
                 } //
         ); //
     }

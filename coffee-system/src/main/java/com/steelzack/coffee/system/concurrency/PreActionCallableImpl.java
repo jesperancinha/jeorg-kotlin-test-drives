@@ -14,11 +14,11 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class PreActionCallableImpl extends ActionCallable {
+    private final static Logger logger = Logger.getLogger(PreActionCallableImpl.class);
 
     @Autowired
     private MachineProcessor machineProcessor;
 
-    final static Logger logger = Logger.getLogger(PreActionCallableImpl.class);
 
     public PreActionCallableImpl(PreAction preAction) {
         super(preAction.getDescription(), preAction.getTime());
@@ -27,7 +27,7 @@ public class PreActionCallableImpl extends ActionCallable {
     @Override
     public Boolean call() throws InterruptedException {
         logger.info(MessageFormat.format("Starting with {0}", description));
-        TimeUnit.MILLISECONDS.sleep(time.longValue());
+        TimeUnit.MILLISECONDS.sleep(time);
         return true;
     }
 }

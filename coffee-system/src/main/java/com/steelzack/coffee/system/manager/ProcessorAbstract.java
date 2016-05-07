@@ -25,10 +25,10 @@ public abstract class ProcessorAbstract {
         allResults.stream().forEach( //
                 booleanFuture -> { //
                     try { //
-                        if (!booleanFuture.get()) { //
+                        if (booleanFuture.get() != null &&  !booleanFuture.get()) { //
                             logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE); //
                         }
-                    } catch (InterruptedException | ExecutionException e) { //
+                    } catch (NullPointerException | InterruptedException | ExecutionException e) { //
                         logger.error(e.getMessage(), e); //
                     }
                 }
