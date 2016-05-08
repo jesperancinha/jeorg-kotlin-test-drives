@@ -2,6 +2,7 @@ package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees.Employee;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PreAction;
 import com.steelzack.coffee.system.manager.CoffeeProcessor;
@@ -29,9 +30,16 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
     private Coffee coffee;
     private Payment payment;
     private List<PostAction> postActions;
+    private Employee employee;
 
     @Override
-    public PreActionCallableImpl setElements(String name, Coffee coffee, Payment payment, List<PostAction> postActions) {
+    public PreActionCallableImpl setElements(
+            Employee employee,
+            String name,
+            Coffee coffee,
+            Payment payment,
+            List<PostAction> postActions) {
+        this.employee = employee;
         this.name = name;
         this.coffee = coffee;
         this.payment = payment;
@@ -51,6 +59,7 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
 
     @Override
     public Boolean call() {
+        logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.getName()));
         this.actionDescriptorList.stream().forEach(
                 actionDescriptor -> {
                     logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.getDescription()));
@@ -63,16 +72,10 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
         );
 
         final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        coffeeProcessor.setChosenCoffee(coffee, payment, postActions);
-        machineProcessor.callMakeCoffee(coffee.getName());
+        machineProcessor.callMakeCoffee(employee,coffee.getName(),coffee, payment, postActions);
         coffeeProcessor.runAllCalls();
         coffeeProcessor.waitForAllCalls();
         coffeeProcessor.stopExectutors();
-//        paymentProcessor.setChosenPayment(payment, postActions);
-//        postProcessor.setActions(postActions);
-//                    machineProcessor.callPayCoffee(payment.getName());
-//                    machineProcessor.callPostActions(MAIN_QUEUE_POST);
-
         return true;
     }
 }

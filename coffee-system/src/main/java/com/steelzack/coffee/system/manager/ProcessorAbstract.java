@@ -11,12 +11,12 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import static com.steelzack.coffee.system.concurrency.EmployeeCallableImpl.SCHEDULED_TASK_FAILED_TO_EXECUTE;
-
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 public abstract class ProcessorAbstract {
+
+    public static final String SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!";
 
     private static final Logger logger = Logger.getLogger(ProcessorAbstract.class);
 

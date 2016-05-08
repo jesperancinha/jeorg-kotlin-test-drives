@@ -28,6 +28,7 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
@@ -296,19 +297,22 @@ public class GeneralProcessorImplTest {
         when(machineProcessor.getPreProcessor()).thenReturn(preProcessor);
         when(machineProcessor.getPostProcessor()).thenReturn(postProcessor);
 
+        final List<PreAction> preActions = new ArrayList<>();
+        final List<PostAction> postActions = new ArrayList<>();
+
         generalProcessor.initSimulationProcess(
                 testMachinesFile, //
                 testEmployeesFile //
         ); //
 
         doAnswer(invocationOnMock -> { //
-            preProcessor.callPreActions(MAIN_QUEUE_PRE); //
+            preProcessor.callPreActions(null, MAIN_QUEUE_PRE, null, null, null, null); //
             return null; //
-        }).when(machineProcessor).callPreActions(MAIN_QUEUE_PRE);
+        }).when(machineProcessor).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
         doAnswer(invocationOnMock -> { //
-            coffeeProcessor.callMakeCoffee(TEST); //
+            coffeeProcessor.callMakeCoffee(null, TEST, null, null, null); //
             return null; //
-        }).when(machineProcessor).callMakeCoffee(any(String.class));
+        }).when(machineProcessor).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions);
         doAnswer(invocationOnMock -> { //
             paymentProcessor.callPayCoffee(TEST); //
             return null; //
@@ -363,12 +367,12 @@ public class GeneralProcessorImplTest {
         verify(queuePayment, times(1)).initExecutors();
         verify(queuePostActivity, times(1)).initExecutors();
 
-        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE_PRE);
-        order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
+        order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
+        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions);
         order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
         order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST);
-        order.verify(machineProcessor, times(1)).callPreActions(MAIN_QUEUE_PRE);
-        order.verify(machineProcessor, times(1)).callMakeCoffee(any(String.class));
+        order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
+        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions);
         order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
         order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST);
     }

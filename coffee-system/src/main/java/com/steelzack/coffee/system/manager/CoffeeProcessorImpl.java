@@ -3,7 +3,8 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueueCofeeImpl;
 import lombok.Getter;
@@ -27,9 +28,6 @@ import java.util.stream.Collectors;
 public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProcessor {
     private static final Logger logger = Logger.getLogger(CoffeeProcessorImpl.class);
 
-    private Coffee chosenCoffee;
-    private Payment payment;
-
     @Autowired
     private QueueCofeeImpl queueCofee;
 
@@ -37,13 +35,13 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     private MachineProcessor machineProcessor;
 
     @Override
-    public void setChosenCoffee(Coffee chosenCoffee, Payment payment, List<Employees.Employee.Actions.PostAction> postActions) {
-        this.chosenCoffee = chosenCoffee;
-        this.payment = payment;
-    }
-
-    @Override
-    public void callMakeCoffee(String name) {
+    public void callMakeCoffee( //
+            Employee employee, //
+            String name, //
+            Coffee chosenCoffee, //
+            Payment payment, //
+            List<PostAction> postActions //
+    ) {
         final List<Coffee.TimesToFill.FillTime> tasks = chosenCoffee.getTimesToFill().getFillTime();
         final Set<Integer> allIndexes = new HashSet<>();
         tasks.stream().sorted( //
