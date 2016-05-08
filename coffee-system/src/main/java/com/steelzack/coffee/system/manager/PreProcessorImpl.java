@@ -35,15 +35,21 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
 
     @Override
     public void callPreActions( //
-            final Employee employee, //
-            final String name, //
-            final List<PreAction> actions, //
-            final Coffee coffee, Payment payment, //
-            final List<PostAction> postActions //
+                                final Employee employee, //
+                                final String name, //
+                                final List<PreAction> actions, //
+                                final Coffee coffee, Payment payment, //
+                                final List<PostAction> postActions //
     ) {
-        final PreActionCallable preActionCallable = new PreActionCallableImpl();
-        preActionCallable.setElements(employee, name, coffee, payment, postActions).setMachineProcessor(machineProcessor);
-        allCallables.add(preActionCallable);
+        final PreActionCallable preActionCallable = new PreActionCallableImpl( //
+                employee, //
+                name, //
+                coffee, //
+                payment, //
+                postActions, //
+                machineProcessor //
+        );
+        addCallable(preActionCallable);
         actions.forEach( //
                 preActionCallable::addPreAction //
         ); //

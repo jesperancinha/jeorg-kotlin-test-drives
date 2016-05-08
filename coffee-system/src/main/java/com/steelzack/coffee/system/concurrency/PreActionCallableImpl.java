@@ -32,23 +32,19 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
     private List<PostAction> postActions;
     private Employee employee;
 
-    @Override
-    public PreActionCallableImpl setElements(
+    public PreActionCallableImpl(
             Employee employee,
             String name,
             Coffee coffee,
             Payment payment,
-            List<PostAction> postActions) {
+            List<PostAction> postActions,
+            MachineProcessor machineProcessor
+    ) {
         this.employee = employee;
         this.name = name;
         this.coffee = coffee;
         this.payment = payment;
         this.postActions = postActions;
-        return this;
-    }
-
-    @Override
-    public void setMachineProcessor(MachineProcessor machineProcessor) {
         this.machineProcessor = machineProcessor;
     }
 
@@ -72,7 +68,7 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
         );
 
         final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        machineProcessor.callMakeCoffee(employee,coffee.getName(),coffee, payment, postActions);
+        machineProcessor.callMakeCoffee(employee, coffee.getName(), coffee, payment, postActions);
         coffeeProcessor.runAllCalls();
         coffeeProcessor.waitForAllCalls();
         coffeeProcessor.stopExectutors();

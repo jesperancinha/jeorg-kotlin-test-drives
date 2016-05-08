@@ -4,7 +4,6 @@ import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Cof
 import com.steelzack.coffee.system.manager.MachineProcessor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
@@ -17,16 +16,14 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class CoffeeCallableImpl implements CoffeCallable {
 
-    @Autowired
     private MachineProcessor machineProcessor;
 
-    final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
+    private static final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
 
     private FillTime fillTime;
     private String name;
 
-    public CoffeeCallableImpl(FillTime fillTime, String name)
-    {
+    public CoffeeCallableImpl(FillTime fillTime, String name) {
         this.fillTime = fillTime;
         this.name = name;
     }

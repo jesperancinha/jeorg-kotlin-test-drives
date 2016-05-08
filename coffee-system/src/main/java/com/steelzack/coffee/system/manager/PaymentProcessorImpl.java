@@ -42,7 +42,7 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
 
     @Override
     public void callPayCoffee(String name) {
-        allCallables.add(new PaymentCallableImpl(chosenPayment, name));
+        addCallable(new PaymentCallableImpl(chosenPayment, name));
     }
 
     @Override

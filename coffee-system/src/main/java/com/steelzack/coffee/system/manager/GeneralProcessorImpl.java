@@ -190,7 +190,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                     final Coffee coffee = employeeLayer.getCoffee();
                     final Payment payment = employeeLayer.getPayment();
                     final List<Employee.Actions.PostAction> postActions = employee.getActions().getPostAction();
-                    machineProcessor.callPreActions(employee, MAIN_QUEUE_PRE,preActions, coffee, payment, postActions);
+                    machineProcessor.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions);
 
                 }
         );

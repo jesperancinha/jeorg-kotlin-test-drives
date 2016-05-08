@@ -1,6 +1,7 @@
 package com.steelzack.coffee.system.manager;
 
-import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
+import com.steelzack.coffee.system.concurrency.CoffeeMainCallable;
+import com.steelzack.coffee.system.concurrency.CoffeeMainCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee;
@@ -13,11 +14,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
 
 /**
  * Created by joao on 29-4-16.
@@ -38,30 +36,12 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     public void callMakeCoffee( //
             Employee employee, //
             String name, //
-            Coffee chosenCoffee, //
+            Coffee coffee, //
             Payment payment, //
             List<PostAction> postActions //
     ) {
-        final List<Coffee.TimesToFill.FillTime> tasks = chosenCoffee.getTimesToFill().getFillTime();
-        final Set<Integer> allIndexes = new HashSet<>();
-        tasks.stream().sorted( //
-                (fillTime1, fillTime2) -> fillTime1.getIndex().compareTo(fillTime2.getIndex()) //
-        ).map(
-                Coffee.TimesToFill.FillTime::getIndex //
-        ).forEach(
-                index -> allIndexes.add(index.intValue()) //
-        );
-
-        for (Integer index : allIndexes) { //
-            final List<Coffee.TimesToFill.FillTime> allTasksForIndex = tasks.stream().filter( //
-                    fillTime -> fillTime.getIndex().intValue() == index //
-            ).collect(Collectors.toList()); //
-
-            allTasksForIndex.stream().forEach( //
-                    fillTime -> //
-                            allCallables.add(new CoffeeCallableImpl(fillTime, name))
-            );
-        }
+        final CoffeeMainCallable coffeCallable = new CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor);
+        addCallable(coffeCallable);
     }
 
     @Override
@@ -71,7 +51,7 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
 
     @Override
     public String getExecutorName(Callable<Boolean> callable) {
-        return ((CoffeeCallableImpl) callable).getName();
+        return ((CoffeeMainCallable) callable).getName();
     }
 
     @Override

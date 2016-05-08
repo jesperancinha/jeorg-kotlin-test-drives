@@ -34,7 +34,7 @@ public class PostProcessorImpl extends ProcessorAbstract implements PostProcesso
     @Override
     public void callPostActions(final String name) {
         PostActionCallableImpl postActionCallable = new PostActionCallableImpl(name);
-        allCallables.add(postActionCallable);
+        addCallable(postActionCallable);
         actions.stream().forEach( //
                 postActionCallable::addPostAction //
         ); //
