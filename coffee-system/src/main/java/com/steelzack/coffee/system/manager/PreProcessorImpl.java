@@ -1,6 +1,7 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.ActionCallable;
+import com.steelzack.coffee.system.concurrency.PreActionCallable;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions;
@@ -36,10 +37,10 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
 
     @Override
     public void callPreActions(final String name) {
+        final PreActionCallable preActionCallable = new PreActionCallableImpl(name);
+        allCallables.add(preActionCallable);
         actions.forEach( //
-                preAction -> { //
-                    allCallables.add(new PreActionCallableImpl(preAction, name));
-                } //
+                preActionCallable::addPreAction //
         ); //
     }
 
@@ -50,7 +51,7 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
 
     @Override
     public String getExecutorName(Callable<Boolean> callable) {
-        return ((ActionCallable)callable).getName();
+        return ((ActionCallable) callable).getName();
     }
 
     @Override

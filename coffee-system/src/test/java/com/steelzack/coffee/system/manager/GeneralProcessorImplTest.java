@@ -1,11 +1,12 @@
 package com.steelzack.coffee.system.manager;
 
-import com.steelzack.coffee.system.concurrency.ActionCallable;
 import com.steelzack.coffee.system.concurrency.CoffeCallable;
 import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
 import com.steelzack.coffee.system.concurrency.PaymentCallable;
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
+import com.steelzack.coffee.system.concurrency.PostActionCallable;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
+import com.steelzack.coffee.system.concurrency.PreActionCallable;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
@@ -333,10 +334,10 @@ public class GeneralProcessorImplTest {
         postActivityExecutorMap.put(MAIN_QUEUE_PRE, threadPoolExecutorPreActivity);
         postActivityExecutorMap.put(MAIN_QUEUE_POST, threadPoolExecutorPostActivity);
 
-        when(threadPoolExecutorPreActivity.submit(any(ActionCallable.class))).thenReturn(future);
+        when(threadPoolExecutorPreActivity.submit(any(PreActionCallable.class))).thenReturn(future);
         when(threadPoolExecutorCoffee.submit(any(CoffeCallable.class))).thenReturn(future);
         when(threadPoolExecutorPayment.submit(any(PaymentCallable.class))).thenReturn(future);
-        when(threadPoolExecutorPostActivity.submit(any(ActionCallable.class))).thenReturn(future);
+        when(threadPoolExecutorPostActivity.submit(any(PostActionCallable.class))).thenReturn(future);
 
         when(queuePreActivity.getExecutorServiceMap()).thenReturn(preActivityExecutorMap);
         when(queueCofee.getExecutorServiceMap()).thenReturn(coffeExecutorMap);
@@ -352,10 +353,10 @@ public class GeneralProcessorImplTest {
 
         generalProcessor.start();
 
-        verify(threadPoolExecutorPreActivity, times(4)).submit(any(Callable.class));
+        verify(threadPoolExecutorPreActivity, times(2)).submit(any(Callable.class));
         verify(threadPoolExecutorCoffee, times(10)).submit(any(Callable.class));
         verify(threadPoolExecutorPayment, times(2)).submit(any(Callable.class));
-        verify(threadPoolExecutorPostActivity, times(4)).submit(any(Callable.class));
+        verify(threadPoolExecutorPostActivity, times(2)).submit(any(Callable.class));
 
         verify(queuePreActivity, times(1)).initExecutors();
         verify(queueCofee, times(1)).initExecutors();

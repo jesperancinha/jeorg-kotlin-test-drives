@@ -31,7 +31,7 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     private List<PostAction> postActions;
 
     @Override
-    public void setChosenPayment(Payment chosenPayment, List<PostAction> postActixons) {
+    public void setChosenPayment(Payment chosenPayment, List<PostAction> postActions) {
         this.chosenPayment = chosenPayment;
         this.postActions = postActions;
     }

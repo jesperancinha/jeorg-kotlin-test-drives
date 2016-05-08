@@ -198,31 +198,31 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                     paymentProcessor.setChosenPayment(payment, postActions);
                     postProcessor.setActions(postActions);
                     machineProcessor.callPreActions(MAIN_QUEUE_PRE);
-                    machineProcessor.callMakeCoffee(coffee.getName());
-                    machineProcessor.callPayCoffee(payment.getName());
-                    machineProcessor.callPostActions(MAIN_QUEUE_POST);
+//                    machineProcessor.callMakeCoffee(coffee.getName());
+//                    machineProcessor.callPayCoffee(payment.getName());
+//                    machineProcessor.callPostActions(MAIN_QUEUE_POST);
                 }
         );
     }
 
     private void runaAllProcessors() {
         machineProcessor.getPreProcessor().runAllCalls();
-        machineProcessor.getCoffeeProcessor().runAllCalls();
-        machineProcessor.getPaymentProcessor().runAllCalls();
-        machineProcessor.getPostProcessor().runAllCalls();
+//        machineProcessor.getCoffeeProcessor().runAllCalls();
+//        machineProcessor.getPaymentProcessor().runAllCalls();
+//        machineProcessor.getPostProcessor().runAllCalls();
     }
 
     private void waitForAllProcessors() {
         machineProcessor.getPreProcessor().waitForAllCalls();
-        machineProcessor.getCoffeeProcessor().waitForAllCalls();
-        machineProcessor.getPaymentProcessor().waitForAllCalls();
-        machineProcessor.getPostProcessor().waitForAllCalls();
+//        machineProcessor.getCoffeeProcessor().waitForAllCalls();
+//        machineProcessor.getPaymentProcessor().waitForAllCalls();
+//        machineProcessor.getPostProcessor().waitForAllCalls();
     }
 
     private void stopAllProcessors() {
         machineProcessor.getPreProcessor().stopExectutors();
-        machineProcessor.getCoffeeProcessor().stopExectutors();
-        machineProcessor.getPaymentProcessor().stopExectutors();
-        machineProcessor.getPostProcessor().stopExectutors();
+//        machineProcessor.getCoffeeProcessor().stopExectutors();
+//        machineProcessor.getPaymentProcessor().stopExectutors();
+//        machineProcessor.getPostProcessor().stopExectutors();
     }
 }
