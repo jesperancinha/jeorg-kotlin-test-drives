@@ -60,7 +60,6 @@ public class PaymentCallableImpl extends QueueCallableAbstract implements Paymen
         machineProcessor.callPostActions(employee, MAIN_QUEUE_POST, postActions, this);
         postProcessor.runAllCalls(this);
         postProcessor.waitForAllCalls(this);
-        postProcessor.stopExectutors();
         return true;
     }
 

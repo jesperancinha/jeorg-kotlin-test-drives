@@ -212,8 +212,8 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     private void stopAllProcessors() {
         machineProcessor.getPreProcessor().stopExectutors();
-//        machineProcessor.getCoffeeProcessor().stopExectutors();
-//        machineProcessor.getPaymentProcessor().stopExectutors();
-//        machineProcessor.getPostProcessor().stopExectutors();
+        machineProcessor.getCoffeeProcessor().stopExectutors();
+        machineProcessor.getPaymentProcessor().stopExectutors();
+        machineProcessor.getPostProcessor().stopExectutors();
     }
 }

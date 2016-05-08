@@ -93,7 +93,6 @@ public class CoffeeMainCallableImpl extends QueueCallableAbstract implements Cof
         machineProcessor.callPayCoffee(employee, payment.getName(), payment, postActions, this);
         paymentProcessor.runAllCalls(this);
         paymentProcessor.waitForAllCalls(this);
-        paymentProcessor.stopExectutors();
         return true;
     }
 
