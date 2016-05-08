@@ -26,7 +26,7 @@ public interface MachineProcessor {
 
     void callMakeCoffee(Employee employee, String name, Coffee coffee, Payment payment, List<PostAction> postActions, QueueCallable parentCallable);
 
-    void callPayCoffee(String name, QueueCallable parentCallable);
+    void callPayCoffee(Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable);
 
     void callPostActions(String name, QueueCallable parentCallable);
 

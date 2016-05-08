@@ -1,6 +1,8 @@
 package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes;
+import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.manager.MachineProcessor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -22,14 +25,18 @@ public class PaymentCallableImpl extends QueueCallableAbstract implements Paymen
     @Autowired
     private MachineProcessor machineProcessor;
 
+    private Employees.Employee employee;
     private final PaymentTypes.Payment chosenPayment;
     private String name;
+    private List<PostAction> postActions;
 
-    public PaymentCallableImpl(PaymentTypes.Payment chosenPayment, String name)
-    {
+
+    public PaymentCallableImpl(Employees.Employee employee, String name, PaymentTypes.Payment payment, List<PostAction> postActions, MachineProcessor machineProcessor) {
         super();
-        this.chosenPayment = chosenPayment;
+        this.employee = employee;
+        this.chosenPayment = payment;
         this.name = name;
+        this.postActions = postActions;
     }
 
     @Override

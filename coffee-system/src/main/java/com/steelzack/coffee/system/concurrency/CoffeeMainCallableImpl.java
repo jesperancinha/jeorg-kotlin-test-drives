@@ -6,6 +6,7 @@ import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentType
 import com.steelzack.coffee.system.input.Employees.Employee;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.manager.MachineProcessor;
+import com.steelzack.coffee.system.manager.PaymentProcessor;
 import com.steelzack.coffee.system.utils.ExecutorServiceHelper;
 import lombok.Getter;
 import org.apache.log4j.Logger;
@@ -88,6 +89,11 @@ public class CoffeeMainCallableImpl extends QueueCallableAbstract implements Cof
 
         );
 
+        final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
+        machineProcessor.callPayCoffee(employee, payment.getName(), payment, postActions, this);
+        paymentProcessor.runAllCalls(this);
+        paymentProcessor.waitForAllCalls(this);
+        paymentProcessor.stopExectutors();
         return true;
     }
 

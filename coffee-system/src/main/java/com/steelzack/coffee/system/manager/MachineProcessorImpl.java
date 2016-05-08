@@ -44,8 +44,8 @@ public class MachineProcessorImpl implements MachineProcessor {
     }
 
     @Override
-    public void callPayCoffee(String name, QueueCallable parentCallable) {
-        paymentProcessor.callPayCoffee(name, parentCallable);
+    public void callPayCoffee(Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
+        paymentProcessor.callPayCoffee(employee, name, payment, postActions, parentCallable);
     }
 
     @Override

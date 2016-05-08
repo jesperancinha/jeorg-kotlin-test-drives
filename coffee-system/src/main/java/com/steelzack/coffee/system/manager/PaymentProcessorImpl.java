@@ -3,6 +3,7 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
 import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueuePaymentImpl;
@@ -31,19 +32,16 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     @Autowired
     private MachineProcessor machineProcessor;
 
-
-    private Payment chosenPayment;
-    private List<PostAction> postActions;
-
     @Override
-    public void setChosenPayment(Payment chosenPayment, List<PostAction> postActions) {
-        this.chosenPayment = chosenPayment;
-        this.postActions = postActions;
-    }
-
-    @Override
-    public void callPayCoffee(String name, QueueCallable parentCallable) {
-        parentCallable.getAllCallables().add(new PaymentCallableImpl(chosenPayment, name));
+    public void callPayCoffee(Employees.Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
+        final PaymentCallableImpl paymentCallable = new PaymentCallableImpl( //
+                employee, //
+                name, //
+                payment, //
+                postActions, //
+                machineProcessor //
+        );
+        parentCallable.getAllCallables().add(paymentCallable);
     }
 
     @Override
@@ -53,7 +51,7 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
 
     @Override
     public String getExecutorName(Callable<Boolean> callable) {
-        return ((PaymentCallableImpl)callable).getName();
+        return ((PaymentCallableImpl) callable).getName();
     }
 
     @Override

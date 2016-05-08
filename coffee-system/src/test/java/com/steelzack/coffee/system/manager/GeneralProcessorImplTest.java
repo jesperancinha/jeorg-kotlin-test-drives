@@ -315,9 +315,9 @@ public class GeneralProcessorImplTest {
             return null; //
         }).when(machineProcessor).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
         doAnswer(invocationOnMock -> { //
-            paymentProcessor.callPayCoffee(TEST, null); //
+            paymentProcessor.callPayCoffee(null, TEST, null, null, null); //
             return null; //
-        }).when(machineProcessor).callPayCoffee(any(String.class), any(QueueCallable.class));
+        }).when(machineProcessor).callPayCoffee(any(Employee.class), any(String.class), any(Payment.class), postActions, any(QueueCallable.class));
         doAnswer(invocationOnMock -> { //
             postProcessor.callPostActions(MAIN_QUEUE_POST, null); //
             return null; //
@@ -370,11 +370,11 @@ public class GeneralProcessorImplTest {
 
         order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
         order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
-        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class), any(QueueCallable.class));
+        order.verify(machineProcessor, times(1)).callPayCoffee(any(Employee.class), any(String.class), any(Payment.class), postActions, any(QueueCallable.class));
         order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST, any(QueueCallable.class));
         order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
         order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
-        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class), any(QueueCallable.class));
+        order.verify(machineProcessor, times(1)).callPayCoffee(any(Employee.class), any(String.class), any(Payment.class), postActions, any(QueueCallable.class));
         order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST, any(QueueCallable.class));
     }
 
