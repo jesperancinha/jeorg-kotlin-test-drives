@@ -2,6 +2,7 @@ package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueuePaymentImpl;
 import lombok.Getter;
@@ -10,8 +11,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
@@ -27,10 +28,12 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     private QueuePaymentImpl queuePayment;
 
     private Payment chosenPayment;
+    private List<PostAction> postActions;
 
     @Override
-    public void setChosenPayment(Payment chosenPayment) {
+    public void setChosenPayment(Payment chosenPayment, List<PostAction> postActixons) {
         this.chosenPayment = chosenPayment;
+        this.postActions = postActions;
     }
 
     @Override

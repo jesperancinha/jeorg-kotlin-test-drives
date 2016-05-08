@@ -40,7 +40,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     public static final String MAIN_QUEUE_PRE = "MAIN_QUEUE_PRE";
 
-    public static final String MAIN_QUEUE_POST= "MAIN_QUEUE_POST";
+    public static final String MAIN_QUEUE_POST = "MAIN_QUEUE_POST";
 
     int nIterations;
     String sourceXmlMachinesFile;
@@ -50,9 +50,6 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     private CoffeeMachines coffeeMachines;
     private Employees employees;
-
-    private CoffeeProcessor coffeeProcessor;
-    private PaymentProcessor paymentProcessor;
 
     @Autowired
     private MachineProcessor machineProcessor;
@@ -130,8 +127,6 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     {
         this.coffeeMachines = createCoffeeMachines(coffeesFile);
         this.employees = createEmployees(employeesFile);
-        this.coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        this.paymentProcessor = machineProcessor.getPaymentProcessor();
     }
 
     @Override
@@ -149,7 +144,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
         final Random random = new Random();
 
         fillEmployeeLayerList(nMachines, employeeLayerList, random);
-        startCoffeeMeeting(preProcessor, postProcessor, employeeLayerList);
+        startCoffeeMeeting(employeeLayerList);
 
         runaAllProcessors();
         waitForAllProcessors();
@@ -157,6 +152,8 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     }
 
     private void fillEmployeeLayerList(int nMachines, List<EmployeeLayer> employeeLayerList, Random random) {
+        final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
+        final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
         this.employees.getEmployee().stream().forEach(
                 employee -> {
                     final int iChosenCoffeeMachine = random.nextInt(nMachines);
@@ -184,38 +181,38 @@ public class GeneralProcessorImpl implements GeneralProcessor {
         paymentProcessor.initExecutors();
     }
 
-    private void startCoffeeMeeting(PreProcessor preProcessor, PostProcessor postProcessor, List<EmployeeLayer> employeeLayerList) {
+    private void startCoffeeMeeting(List<EmployeeLayer> employeeLayerList) {
+        final PreProcessor preProcessor = machineProcessor.getPreProcessor();
+        final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
+        final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
+        final PostProcessor postProcessor = machineProcessor.getPostProcessor();
         employeeLayerList.stream().forEach(
                 employeeLayer -> {
                     final Employee employee = employeeLayer.getEmployee();
-                    preProcessor.setActions(employee.getActions().getPreAction());
-                    postProcessor.setActions(employee.getActions().getPostAction());
-                    final Coffee chosenCoffee = employeeLayer.getCoffee();
-                    coffeeProcessor.setChosenCoffee(
-                            chosenCoffee //
-                    );
-                    final Payment chosenPayment = employeeLayer.getPayment();
-                    paymentProcessor.setChosenPayment(
-                            chosenPayment //
-                    );
+                    final List<Employee.Actions.PreAction> preActions = employee.getActions().getPreAction();
+                    final Coffee coffee = employeeLayer.getCoffee();
+                    final Payment payment = employeeLayer.getPayment();
+                    final List<Employee.Actions.PostAction> postActions = employee.getActions().getPostAction();
+                    preProcessor.setActions(preActions, coffee);
+                    coffeeProcessor.setChosenCoffee(coffee, payment);
+                    paymentProcessor.setChosenPayment(payment, postActions);
+                    postProcessor.setActions(postActions);
                     machineProcessor.callPreActions(MAIN_QUEUE_PRE);
-                    machineProcessor.callMakeCoffee(chosenCoffee.getName());
-                    machineProcessor.callPayCoffee(chosenPayment.getName());
+                    machineProcessor.callMakeCoffee(coffee.getName());
+                    machineProcessor.callPayCoffee(payment.getName());
                     machineProcessor.callPostActions(MAIN_QUEUE_POST);
                 }
         );
     }
 
-    private void runaAllProcessors()
-    {
+    private void runaAllProcessors() {
         machineProcessor.getPreProcessor().runAllCalls();
         machineProcessor.getCoffeeProcessor().runAllCalls();
         machineProcessor.getPaymentProcessor().runAllCalls();
         machineProcessor.getPostProcessor().runAllCalls();
     }
 
-    private void waitForAllProcessors()
-    {
+    private void waitForAllProcessors() {
         machineProcessor.getPreProcessor().waitForAllCalls();
         machineProcessor.getCoffeeProcessor().waitForAllCalls();
         machineProcessor.getPaymentProcessor().waitForAllCalls();

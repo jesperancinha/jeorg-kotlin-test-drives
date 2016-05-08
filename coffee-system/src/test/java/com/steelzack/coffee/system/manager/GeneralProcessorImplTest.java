@@ -293,6 +293,7 @@ public class GeneralProcessorImplTest {
         when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
         when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
         when(machineProcessor.getPreProcessor()).thenReturn(preProcessor);
+        when(machineProcessor.getPostProcessor()).thenReturn(postProcessor);
 
         generalProcessor.initSimulationProcess(
                 testMachinesFile, //
