@@ -61,6 +61,26 @@ For this simulator, socializing times are not considered because they may vary a
 
 Essentially you will get an average, mode and standard deviation for the amount you times you decide to run this specific simulation.
 
+
+## Usage
+
+* Go to target in the coffe-system folder and pick the jar generated file. Then try the following example (or with your own files):
+
+```
+$ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_example_test_1.xml" -md "test-classes/coffemachine_example_test_1.xml" -pre 2 -post 3
+```
+
+## Input files format
+
+
+* Employees:
+
+[cs_employee.xsd](https://github.com/jesperancinha/coffee-paradigms/blob/master/coffee-system-api/src/main/resources/cs_employee.xsd)
+
+* Coffee Machines:
+
+[cs_employee.xsd](https://github.com/jesperancinha/coffee-paradigms/blob/master/coffee-system-api/src/main/resources/cs_employee.xsd)
+
 ## License
 
 ```
@@ -80,4 +100,36 @@ limitations under the License.
 ```
 
 ## Status
+
+* As of 9th of May of 2016, the first functional version became available.
+
+> Example Output:
+```
+2016-05-08 18:06:34.417 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@69222c14: startup date [Sun May 08 18:06:34 CEST 2016]; root of context hierarchy
+2016-05-08 18:06:34.443 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [META-INF/config.xml]
+2016-05-08 18:06:34.808 INFO  PreActionCallableImpl:58 - EmployeeCallable Marco is waiting in line
+2016-05-08 18:06:34.808 INFO  PreActionCallableImpl:58 - EmployeeCallable Joao is waiting in line
+2016-05-08 18:06:34.809 INFO  PreActionCallableImpl:61 - Starting with choose a cup
+2016-05-08 18:06:34.809 INFO  PreActionCallableImpl:61 - Starting with choose a cup
+2016-05-08 18:06:34.819 INFO  PreActionCallableImpl:61 - Starting with put cup in outlet
+2016-05-08 18:06:34.819 INFO  PreActionCallableImpl:61 - Starting with put cup in outlet
+2016-05-08 18:06:34.848 INFO  CoffeeCallableImpl:34 - 0 - Starting task heating to make coffee
+2016-05-08 18:06:34.848 INFO  CoffeeCallableImpl:34 - 0 - Starting task grinding coffee to make coffee
+2016-05-08 18:06:34.848 INFO  CoffeeCallableImpl:34 - 0 - Starting task heating to make coffee
+2016-05-08 18:06:34.853 INFO  CoffeeCallableImpl:34 - 0 - Starting task grinding coffee to make coffee
+2016-05-08 18:06:34.868 INFO  CoffeeCallableImpl:34 - 1 - Starting task pouring milk to make coffee
+2016-05-08 18:06:34.868 INFO  CoffeeCallableImpl:34 - 1 - Starting task pouring milk to make coffee
+2016-05-08 18:06:34.889 INFO  CoffeeCallableImpl:34 - 2 - Starting task switch time to make coffee
+2016-05-08 18:06:34.889 INFO  CoffeeCallableImpl:34 - 2 - Starting task switch time to make coffee
+2016-05-08 18:06:34.920 INFO  CoffeeCallableImpl:34 - 3 - Starting task pouring coffee to make coffee
+2016-05-08 18:06:34.921 INFO  CoffeeCallableImpl:34 - 3 - Starting task pouring coffee to make coffee
+2016-05-08 18:06:34.962 INFO  PaymentCallableImpl:54 - PaymentCallable with noPayment
+2016-05-08 18:06:34.962 INFO  PaymentCallableImpl:54 - PaymentCallable with noPayment
+2016-05-08 18:06:34.964 INFO  PreActionCallableImpl:40 - Ending with take cup and leave
+2016-05-08 18:06:34.964 INFO  PreActionCallableImpl:40 - Ending with take cup and leave
+2016-05-08 18:06:34.969 INFO  PreActionCallableImpl:40 - Ending with dummy
+2016-05-08 18:06:34.969 INFO  PreActionCallableImpl:40 - Ending with dummy
+
+```
+
 *Under development*

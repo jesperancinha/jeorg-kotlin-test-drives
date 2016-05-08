@@ -16,6 +16,11 @@ public class QueueAbstract implements CPQueue {
     private Map<String, ThreadPoolExecutor> executorServiceMap = new HashMap<>();
     private Map<String, Integer> numberToCreateMap = new HashMap<>();
 
+    /**
+     * Number of machines of the same name
+     * @param queueSize
+     * @param name
+     */
     @Override
     public void setQueueSize(int queueSize, String name) {
         Integer currentSize = numberToCreateMap.get(name);

@@ -1,7 +1,10 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueuePaymentImpl;
 import lombok.Getter;
@@ -10,8 +13,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
@@ -26,16 +29,19 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     @Autowired
     private QueuePaymentImpl queuePayment;
 
-    private Payment chosenPayment;
+    @Autowired
+    private MachineProcessor machineProcessor;
 
     @Override
-    public void setChosenPayment(Payment chosenPayment) {
-        this.chosenPayment = chosenPayment;
-    }
-
-    @Override
-    public void callPayCoffee(String name) {
-        allCallables.add(new PaymentCallableImpl(chosenPayment, name));
+    public void callPayCoffee(Employees.Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
+        final PaymentCallableImpl paymentCallable = new PaymentCallableImpl( //
+                employee, //
+                name, //
+                payment, //
+                postActions, //
+                machineProcessor //
+        );
+        parentCallable.getAllCallables().add(paymentCallable);
     }
 
     @Override
@@ -45,7 +51,7 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
 
     @Override
     public String getExecutorName(Callable<Boolean> callable) {
-        return ((PaymentCallableImpl)callable).getName();
+        return ((PaymentCallableImpl) callable).getName();
     }
 
     @Override

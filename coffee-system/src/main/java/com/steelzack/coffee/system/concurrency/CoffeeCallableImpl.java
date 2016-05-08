@@ -4,10 +4,10 @@ import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Cof
 import com.steelzack.coffee.system.manager.MachineProcessor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,30 +15,32 @@ import java.util.concurrent.TimeUnit;
  */
 @Getter
 @Service
-public class CoffeeCallableImpl implements CoffeCallable {
+public class CoffeeCallableImpl extends QueueCallableAbstract implements CoffeCallable {
 
-    @Autowired
     private MachineProcessor machineProcessor;
 
-    final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
+    private static final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
 
     private FillTime fillTime;
     private String name;
 
-    public CoffeeCallableImpl(FillTime fillTime, String name)
-    {
+    public CoffeeCallableImpl(FillTime fillTime, String name) {
         this.fillTime = fillTime;
         this.name = name;
     }
 
     @Override
-    public Boolean call() throws Exception {
+    public Boolean call() {
         logger.info(MessageFormat.format( //
-                "{0} - Starting tast {1} to make coffee", //
+                "{0} - Starting task {1} to make coffee", //
                 fillTime.getIndex(), //
                 fillTime.getDescription() //
         ));
-        TimeUnit.MILLISECONDS.sleep(fillTime.getValue());
+        try {
+            TimeUnit.MILLISECONDS.sleep(fillTime.getValue());
+        } catch (InterruptedException e) {
+            logger.error(e);
+        }
         return true;
     }
 

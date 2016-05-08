@@ -1,35 +1,52 @@
 package com.steelzack.coffee.system.concurrency;
 
-import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.manager.MachineProcessor;
+import com.steelzack.coffee.system.manager.PostProcessor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static com.steelzack.coffee.system.manager.GeneralProcessorImpl.MAIN_QUEUE_POST;
 
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
 @Service
 @Getter
-public class PaymentCallableImpl implements PaymentCallable {
+public class PaymentCallableImpl extends QueueCallableAbstract implements PaymentCallable {
 
     private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
 
     @Autowired
     private MachineProcessor machineProcessor;
 
-    private final PaymentTypes.Payment chosenPayment;
+    private Employee employee;
+    private final Payment chosenPayment;
     private String name;
+    private List<PostAction> postActions;
 
-    public PaymentCallableImpl(PaymentTypes.Payment chosenPayment, String name)
-    {
+
+    public PaymentCallableImpl( //
+            Employee employee, //
+            String name, //
+            Payment payment, //
+            List<PostAction> postActions, //
+            MachineProcessor machineProcessor //
+    ) {
         super();
-        this.chosenPayment = chosenPayment;
+        this.employee = employee;
+        this.chosenPayment = payment;
         this.name = name;
+        this.postActions = postActions;
+        this.machineProcessor = machineProcessor;
     }
 
     @Override
@@ -39,6 +56,11 @@ public class PaymentCallableImpl implements PaymentCallable {
         if(time != null) {
             TimeUnit.MILLISECONDS.sleep(time);
         }
+        final PostProcessor postProcessor = machineProcessor.getPostProcessor();
+        machineProcessor.callPostActions(employee, MAIN_QUEUE_POST, postActions, this);
+        postProcessor.runAllCalls(this);
+        postProcessor.waitForAllCalls(this);
         return true;
     }
+
 }

@@ -1,5 +1,7 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.QueueCallable;
+
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
@@ -10,7 +12,7 @@ public interface Processor {
 
     void stopExectutors();
 
-    void waitForAllCalls();
+    void waitForAllCalls(QueueCallable queueCallable);
 
-    void runAllCalls();
+    void runAllCalls(QueueCallable queueCallable);
 }

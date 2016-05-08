@@ -2,6 +2,7 @@ package com.steelzack.coffee.system.concurrency;
 
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.manager.MachineProcessor;
+import com.steelzack.coffee.system.objects.ActionDescriptor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +16,36 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Getter
-public class PostActionCallableImpl extends ActionCallable {
+public class PostActionCallableImpl extends ActionCallable implements PostActionCallable {
 
     @Autowired
     private MachineProcessor machineProcessor;
 
     final static Logger logger = Logger.getLogger(PreActionCallableImpl.class);
 
-    public PostActionCallableImpl(PostAction postAction, String name) {
-        super(postAction.getDescription(), postAction.getTime(), name);
+    public PostActionCallableImpl(String name) {
+        super(name);
 
     }
+
+    @Override
+    public void addPostAction(PostAction postAction) {
+        this.actionDescriptorList.add(ActionDescriptor.builder().description(postAction.getDescription()).time(postAction.getTime()).build());
+    }
+
 
     public Boolean call() throws Exception {
-        logger.info(MessageFormat.format("Ending with {0}", description));
-        TimeUnit.MILLISECONDS.sleep(time);
+        this.actionDescriptorList.stream().forEach(
+                actionDescriptor -> {
+                    logger.info(MessageFormat.format("Ending with {0}", actionDescriptor.getDescription()));
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
+                    } catch (InterruptedException e) {
+                        logger.error(e);
+                    }
+                }
+        );
         return true;
     }
+
 }
