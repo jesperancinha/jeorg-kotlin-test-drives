@@ -3,6 +3,8 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.concurrency.ActionCallable;
 import com.steelzack.coffee.system.concurrency.PreActionCallable;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
+import com.steelzack.coffee.system.concurrency.StartupCallable;
+import com.steelzack.coffee.system.concurrency.StartupCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee;
@@ -33,6 +35,14 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
     @Autowired
     private MachineProcessor machineProcessor;
 
+    private final StartupCallable startupCallable;
+
+    PreProcessorImpl() {
+        super();
+        startupCallable = new StartupCallableImpl();
+
+    }
+
     @Override
     public void callPreActions( //
                                 final Employee employee, //
@@ -41,6 +51,7 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
                                 final Coffee coffee, Payment payment, //
                                 final List<PostAction> postActions //
     ) {
+
         final PreActionCallable preActionCallable = new PreActionCallableImpl( //
                 employee, //
                 name, //
@@ -49,10 +60,20 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
                 postActions, //
                 machineProcessor //
         );
-        addCallable(preActionCallable);
         actions.forEach( //
                 preActionCallable::addPreAction //
         ); //
+        startupCallable.getAllCallables().add(preActionCallable);
+    }
+
+    @Override
+    public void runAllCalls() {
+        runAllCalls(startupCallable);
+    }
+
+    @Override
+    public void waitForAllCalls() {
+        waitForAllCalls(startupCallable);
     }
 
     @Override

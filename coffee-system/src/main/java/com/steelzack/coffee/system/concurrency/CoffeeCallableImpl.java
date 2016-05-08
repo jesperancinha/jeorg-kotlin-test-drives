@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Getter
 @Service
-public class CoffeeCallableImpl implements CoffeCallable {
+public class CoffeeCallableImpl extends QueueCallableAbstract implements CoffeCallable {
 
     private MachineProcessor machineProcessor;
 

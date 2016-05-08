@@ -1,5 +1,6 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee;
@@ -38,18 +39,18 @@ public class MachineProcessorImpl implements MachineProcessor {
     }
 
     @Override
-    public void callMakeCoffee(Employee employee, String name, Coffee coffee, Payment payment, List<PostAction> postActions) {
-        coffeeProcessor.callMakeCoffee(employee, name, coffee, payment, postActions);
+    public void callMakeCoffee(Employee employee, String name, Coffee coffee, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
+        coffeeProcessor.callMakeCoffee(employee, name, coffee, payment, postActions, parentCallable);
     }
 
     @Override
-    public void callPayCoffee(String name) {
-        paymentProcessor.callPayCoffee(name);
+    public void callPayCoffee(String name, QueueCallable parentCallable) {
+        paymentProcessor.callPayCoffee(name, parentCallable);
     }
 
     @Override
-    public void callPostActions(String name) {
-        postProcessor.callPostActions(name);
+    public void callPostActions(String name, QueueCallable parentCallable) {
+        postProcessor.callPostActions(name, parentCallable);
     }
 
     @Override

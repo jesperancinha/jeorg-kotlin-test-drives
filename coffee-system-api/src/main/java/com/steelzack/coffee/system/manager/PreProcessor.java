@@ -16,4 +16,9 @@ public interface PreProcessor extends Processor {
             Coffee coffee, CoffeeMachines.CoffeMachine.PaymentTypes.Payment payment,
             List<Actions.PostAction> postActions
     );
+
+
+    void runAllCalls();
+
+    void waitForAllCalls();
 }

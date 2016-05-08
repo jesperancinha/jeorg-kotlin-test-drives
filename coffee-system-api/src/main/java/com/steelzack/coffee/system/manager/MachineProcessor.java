@@ -1,5 +1,6 @@
 package com.steelzack.coffee.system.manager;
 
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee;
@@ -23,11 +24,11 @@ public interface MachineProcessor {
 
     void callPreActions(Employee employee, String name, List<PreAction> preActions, Coffee coffee, Payment payment, List<PostAction> postActions);
 
-    void callMakeCoffee(Employee employee, String name, Coffee coffee, Payment payment, List<PostAction> postActions);
+    void callMakeCoffee(Employee employee, String name, Coffee coffee, Payment payment, List<PostAction> postActions, QueueCallable parentCallable);
 
-    void callPayCoffee(String name);
+    void callPayCoffee(String name, QueueCallable parentCallable);
 
-    void callPostActions(String name);
+    void callPostActions(String name, QueueCallable parentCallable);
 
     void initAll();
 

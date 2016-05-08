@@ -26,7 +26,7 @@ import static com.steelzack.coffee.system.manager.ProcessorAbstract.SCHEDULED_TA
  * Created by joao on 7-5-16.
  */
 @Getter
-public class CoffeeMainCallableImpl implements CoffeeMainCallable {
+public class CoffeeMainCallableImpl extends QueueCallableAbstract implements CoffeeMainCallable {
     private static final Logger logger = Logger.getLogger(CoffeeMainCallableImpl.class);
 
     private Employee employee;

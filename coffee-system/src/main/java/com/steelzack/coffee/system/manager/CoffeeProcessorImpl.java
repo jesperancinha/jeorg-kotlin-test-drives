@@ -2,6 +2,7 @@ package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.CoffeeMainCallable;
 import com.steelzack.coffee.system.concurrency.CoffeeMainCallableImpl;
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee;
@@ -34,14 +35,15 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
 
     @Override
     public void callMakeCoffee( //
-            Employee employee, //
-            String name, //
-            Coffee coffee, //
-            Payment payment, //
-            List<PostAction> postActions //
+                                Employee employee, //
+                                String name, //
+                                Coffee coffee, //
+                                Payment payment, //
+                                List<PostAction> postActions, //
+                                QueueCallable parentCallable
     ) {
         final CoffeeMainCallable coffeCallable = new CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor);
-        addCallable(coffeCallable);
+        parentCallable.getAllCallables().add(coffeCallable);
     }
 
     @Override

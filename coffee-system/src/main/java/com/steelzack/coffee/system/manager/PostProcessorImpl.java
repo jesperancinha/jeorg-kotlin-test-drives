@@ -2,6 +2,7 @@ package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.ActionCallable;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueuePostActivityImpl;
@@ -32,9 +33,9 @@ public class PostProcessorImpl extends ProcessorAbstract implements PostProcesso
     }
 
     @Override
-    public void callPostActions(final String name) {
+    public void callPostActions(final String name, final QueueCallable parentCallable) {
         PostActionCallableImpl postActionCallable = new PostActionCallableImpl(name);
-        addCallable(postActionCallable);
+        parentCallable.getAllCallables().add(postActionCallable);
         actions.stream().forEach( //
                 postActionCallable::addPostAction //
         ); //

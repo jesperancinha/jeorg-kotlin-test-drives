@@ -68,10 +68,11 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
         );
 
         final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        machineProcessor.callMakeCoffee(employee, coffee.getName(), coffee, payment, postActions);
-        coffeeProcessor.runAllCalls();
-        coffeeProcessor.waitForAllCalls();
+        machineProcessor.callMakeCoffee(employee, coffee.getName(), coffee, payment, postActions, this);
+        coffeeProcessor.runAllCalls(this);
+        coffeeProcessor.waitForAllCalls(this);
         coffeeProcessor.stopExectutors();
         return true;
     }
+
 }

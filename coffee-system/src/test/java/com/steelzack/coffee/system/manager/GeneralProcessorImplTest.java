@@ -8,6 +8,7 @@ import com.steelzack.coffee.system.concurrency.PostActionCallable;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
 import com.steelzack.coffee.system.concurrency.PreActionCallable;
 import com.steelzack.coffee.system.concurrency.PreActionCallableImpl;
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
@@ -310,17 +311,17 @@ public class GeneralProcessorImplTest {
             return null; //
         }).when(machineProcessor).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
         doAnswer(invocationOnMock -> { //
-            coffeeProcessor.callMakeCoffee(null, TEST, null, null, null); //
+            coffeeProcessor.callMakeCoffee(null, TEST, null, null, null, null); //
             return null; //
-        }).when(machineProcessor).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions);
+        }).when(machineProcessor).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
         doAnswer(invocationOnMock -> { //
-            paymentProcessor.callPayCoffee(TEST); //
+            paymentProcessor.callPayCoffee(TEST, null); //
             return null; //
-        }).when(machineProcessor).callPayCoffee(any(String.class));
+        }).when(machineProcessor).callPayCoffee(any(String.class), any(QueueCallable.class));
         doAnswer(invocationOnMock -> { //
-            postProcessor.callPostActions(MAIN_QUEUE_POST); //
+            postProcessor.callPostActions(MAIN_QUEUE_POST, null); //
             return null; //
-        }).when(machineProcessor).callPostActions(MAIN_QUEUE_POST);
+        }).when(machineProcessor).callPostActions(MAIN_QUEUE_POST, any(QueueCallable.class));
 
         when(queuePreActivity.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPreActivity);
         when(queueCofee.getExecutor(any(String.class))).thenReturn(threadPoolExecutorCoffee);
@@ -368,13 +369,13 @@ public class GeneralProcessorImplTest {
         verify(queuePostActivity, times(1)).initExecutors();
 
         order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
-        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions);
-        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
-        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST);
+        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
+        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class), any(QueueCallable.class));
+        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST, any(QueueCallable.class));
         order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), MAIN_QUEUE_PRE, preActions, any(Coffee.class), any(Payment.class), postActions);
-        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions);
-        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class));
-        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST);
+        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
+        order.verify(machineProcessor, times(1)).callPayCoffee(any(String.class), any(QueueCallable.class));
+        order.verify(machineProcessor, times(1)).callPostActions(MAIN_QUEUE_POST, any(QueueCallable.class));
     }
 
 }

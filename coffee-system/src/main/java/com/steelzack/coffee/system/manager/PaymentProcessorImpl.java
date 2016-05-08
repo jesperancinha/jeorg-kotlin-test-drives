@@ -1,6 +1,7 @@
 package com.steelzack.coffee.system.manager;
 
 import com.steelzack.coffee.system.concurrency.PaymentCallableImpl;
+import com.steelzack.coffee.system.concurrency.QueueCallable;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.queues.QueueAbstract;
@@ -41,8 +42,8 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     }
 
     @Override
-    public void callPayCoffee(String name) {
-        addCallable(new PaymentCallableImpl(chosenPayment, name));
+    public void callPayCoffee(String name, QueueCallable parentCallable) {
+        parentCallable.getAllCallables().add(new PaymentCallableImpl(chosenPayment, name));
     }
 
     @Override

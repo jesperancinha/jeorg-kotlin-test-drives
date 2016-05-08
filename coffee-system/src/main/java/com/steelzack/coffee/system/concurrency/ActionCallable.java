@@ -3,6 +3,7 @@ package com.steelzack.coffee.system.concurrency;
 import com.steelzack.coffee.system.objects.ActionDescriptor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,9 @@ import java.util.List;
  */
 @Getter
 @NoArgsConstructor
-public abstract class ActionCallable {
+public abstract class ActionCallable extends QueueCallableAbstract{
+
+   private static final Logger logger = Logger.getLogger(ActionCallable.class);
 
     String name;
 

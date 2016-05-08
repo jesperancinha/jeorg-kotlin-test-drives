@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Getter
-public class PaymentCallableImpl implements PaymentCallable {
+public class PaymentCallableImpl extends QueueCallableAbstract implements PaymentCallable {
 
     private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
 
@@ -41,4 +41,5 @@ public class PaymentCallableImpl implements PaymentCallable {
         }
         return true;
     }
+
 }
