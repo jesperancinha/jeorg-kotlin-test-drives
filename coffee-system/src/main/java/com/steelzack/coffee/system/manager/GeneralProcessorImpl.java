@@ -183,9 +183,6 @@ public class GeneralProcessorImpl implements GeneralProcessor {
 
     private void startCoffeeMeeting(List<EmployeeLayer> employeeLayerList) {
         final PreProcessor preProcessor = machineProcessor.getPreProcessor();
-        final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        final PaymentProcessor paymentProcessor = machineProcessor.getPaymentProcessor();
-        final PostProcessor postProcessor = machineProcessor.getPostProcessor();
         employeeLayerList.stream().forEach(
                 employeeLayer -> {
                     final Employee employee = employeeLayer.getEmployee();
@@ -193,14 +190,9 @@ public class GeneralProcessorImpl implements GeneralProcessor {
                     final Coffee coffee = employeeLayer.getCoffee();
                     final Payment payment = employeeLayer.getPayment();
                     final List<Employee.Actions.PostAction> postActions = employee.getActions().getPostAction();
-                    preProcessor.setActions(preActions, coffee);
-                    coffeeProcessor.setChosenCoffee(coffee, payment);
-                    paymentProcessor.setChosenPayment(payment, postActions);
-                    postProcessor.setActions(postActions);
+                    preProcessor.setActions(preActions, coffee, payment, postActions);
                     machineProcessor.callPreActions(MAIN_QUEUE_PRE);
-//                    machineProcessor.callMakeCoffee(coffee.getName());
-//                    machineProcessor.callPayCoffee(payment.getName());
-//                    machineProcessor.callPostActions(MAIN_QUEUE_POST);
+
                 }
         );
     }

@@ -3,10 +3,10 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -20,9 +20,9 @@ public abstract class ProcessorAbstract {
 
     private static final Logger logger = Logger.getLogger(ProcessorAbstract.class);
 
-    private final List<Future<Boolean>> allResults = new ArrayList<>();
+    private final List<Future<Boolean>> allResults = new CopyOnWriteArrayList<>();
 
-    final List<Callable<Boolean>> allCallables = new ArrayList<>();
+    final List<Callable<Boolean>> allCallables = new CopyOnWriteArrayList<>();
 
     public abstract QueueAbstract getExecutorServiceQueue();
 

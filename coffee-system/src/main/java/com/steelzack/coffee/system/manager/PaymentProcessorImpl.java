@@ -27,6 +27,10 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
     @Autowired
     private QueuePaymentImpl queuePayment;
 
+    @Autowired
+    private MachineProcessor machineProcessor;
+
+
     private Payment chosenPayment;
     private List<PostAction> postActions;
 

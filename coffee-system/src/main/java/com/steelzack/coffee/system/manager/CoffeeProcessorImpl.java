@@ -3,6 +3,7 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.concurrency.CoffeeCallableImpl;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueueCofeeImpl;
 import lombok.Getter;
@@ -32,8 +33,11 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     @Autowired
     private QueueCofeeImpl queueCofee;
 
+    @Autowired
+    private MachineProcessor machineProcessor;
+
     @Override
-    public void setChosenCoffee(Coffee chosenCoffee, Payment payment) {
+    public void setChosenCoffee(Coffee chosenCoffee, Payment payment, List<Employees.Employee.Actions.PostAction> postActions) {
         this.chosenCoffee = chosenCoffee;
         this.payment = payment;
     }

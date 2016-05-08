@@ -1,28 +1,47 @@
 package com.steelzack.coffee.system.concurrency;
 
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import com.steelzack.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.input.Employees.Employee.Actions.PreAction;
+import com.steelzack.coffee.system.manager.CoffeeProcessor;
 import com.steelzack.coffee.system.manager.MachineProcessor;
 import com.steelzack.coffee.system.objects.ActionDescriptor;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Service
-public class PreActionCallableImpl extends ActionCallable implements PreActionCallable{
+@Accessors(chain = true)
+@NoArgsConstructor
+public class PreActionCallableImpl extends ActionCallable implements PreActionCallable {
     private final static Logger logger = Logger.getLogger(PreActionCallableImpl.class);
 
-    @Autowired
     private MachineProcessor machineProcessor;
+    private Coffee coffee;
+    private Payment payment;
+    private List<PostAction> postActions;
 
+    @Override
+    public PreActionCallableImpl setElements(String name, Coffee coffee, Payment payment, List<PostAction> postActions) {
+        this.name = name;
+        this.coffee = coffee;
+        this.payment = payment;
+        this.postActions = postActions;
+        return this;
+    }
 
-    public PreActionCallableImpl(String name) {
-        super(name);
+    @Override
+    public void setMachineProcessor(MachineProcessor machineProcessor) {
+        this.machineProcessor = machineProcessor;
     }
 
     @Override
@@ -31,7 +50,7 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
     }
 
     @Override
-    public Boolean call() throws InterruptedException {
+    public Boolean call() {
         this.actionDescriptorList.stream().forEach(
                 actionDescriptor -> {
                     logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.getDescription()));
@@ -42,6 +61,18 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
                     }
                 }
         );
+
+        final CoffeeProcessor coffeeProcessor = machineProcessor.getCoffeeProcessor();
+        coffeeProcessor.setChosenCoffee(coffee, payment, postActions);
+        machineProcessor.callMakeCoffee(coffee.getName());
+        coffeeProcessor.runAllCalls();
+        coffeeProcessor.waitForAllCalls();
+        coffeeProcessor.stopExectutors();
+//        paymentProcessor.setChosenPayment(payment, postActions);
+//        postProcessor.setActions(postActions);
+//                    machineProcessor.callPayCoffee(payment.getName());
+//                    machineProcessor.callPostActions(MAIN_QUEUE_POST);
+
         return true;
     }
 }

@@ -32,13 +32,17 @@ public class CoffeeCallableImpl implements CoffeCallable {
     }
 
     @Override
-    public Boolean call() throws Exception {
+    public Boolean call() {
         logger.info(MessageFormat.format( //
-                "{0} - Starting tast {1} to make coffee", //
+                "{0} - Starting task {1} to make coffee", //
                 fillTime.getIndex(), //
                 fillTime.getDescription() //
         ));
-        TimeUnit.MILLISECONDS.sleep(fillTime.getValue());
+        try {
+            TimeUnit.MILLISECONDS.sleep(fillTime.getValue());
+        } catch (InterruptedException e) {
+            logger.error(e);
+        }
         return true;
     }
 
