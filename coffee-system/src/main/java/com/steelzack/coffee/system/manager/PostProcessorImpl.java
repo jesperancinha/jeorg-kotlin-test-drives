@@ -3,7 +3,8 @@ package com.steelzack.coffee.system.manager;
 import com.steelzack.coffee.system.concurrency.ActionCallable;
 import com.steelzack.coffee.system.concurrency.PostActionCallableImpl;
 import com.steelzack.coffee.system.concurrency.QueueCallable;
-import com.steelzack.coffee.system.input.Employees.Employee.Actions;
+import com.steelzack.coffee.system.input.Employees.Employee;
+import com.steelzack.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.steelzack.coffee.system.queues.QueueAbstract;
 import com.steelzack.coffee.system.queues.QueuePostActivityImpl;
 import lombok.Getter;
@@ -22,21 +23,19 @@ public class PostProcessorImpl extends ProcessorAbstract implements PostProcesso
 
     private static final Logger logger = Logger.getLogger(PostProcessorImpl.class);
 
-    private List<Actions.PostAction> actions;
-
     @Autowired
     private QueuePostActivityImpl queuePostActivity;
 
     @Override
-    public void setActions(List<Actions.PostAction> actions) {
-        this.actions = actions;
-    }
-
-    @Override
-    public void callPostActions(final String name, final QueueCallable parentCallable) {
+    public void callPostActions( //
+            Employee employee, //
+            final String name, //
+            List<PostAction> postActions, //
+            final QueueCallable parentCallable //
+    ) {
         PostActionCallableImpl postActionCallable = new PostActionCallableImpl(name);
         parentCallable.getAllCallables().add(postActionCallable);
-        actions.stream().forEach( //
+        postActions.stream().forEach( //
                 postActionCallable::addPostAction //
         ); //
     }

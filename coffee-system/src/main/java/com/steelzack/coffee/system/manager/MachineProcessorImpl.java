@@ -49,8 +49,8 @@ public class MachineProcessorImpl implements MachineProcessor {
     }
 
     @Override
-    public void callPostActions(String name, QueueCallable parentCallable) {
-        postProcessor.callPostActions(name, parentCallable);
+    public void callPostActions(Employee employee, String name, List<PostAction> postActions, QueueCallable parentCallable) {
+        postProcessor.callPostActions(employee, name, postActions, parentCallable);
     }
 
     @Override
