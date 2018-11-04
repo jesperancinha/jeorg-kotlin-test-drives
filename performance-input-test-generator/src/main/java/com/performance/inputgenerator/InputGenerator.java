@@ -12,7 +12,7 @@ import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
 public class InputGenerator {
-	private static final Logger LOG = Logger.getLogger(InputGenerator.class.getName());
+	private static final Logger logger = Logger.getLogger(InputGenerator.class.getName());
 
 	private static final Random random = new Random();
 
@@ -30,6 +30,8 @@ public class InputGenerator {
 		final File directory = new File(folder);
 		directory.mkdirs();
 		final File file = new File(directory, fileName);
+		logger.info("Directory:" + directory);
+		logger.info("Filename:" + fileName);
 		file.createNewFile();
 
 		try (BufferedOutputStream bo = new BufferedOutputStream(new FileOutputStream(file))) {
@@ -42,7 +44,7 @@ public class InputGenerator {
 				bo.write(getFormattedNumber(currentNumber));
 			}
 		}
-		LOG.info(String.format("Completed successfully the generation of %s test element file in %s/%s",
+		logger.info(String.format("Completed successfully the generation of %s test element file in %s/%s",
 				numberOfElements, folder, fileName));
 	}
 

@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 
 import com.performance.test.jumpsearch.JumpSearchFileSameStepMethod0;
-import com.sun.istack.internal.logging.Logger;
 
 /*
  * This jump algorithm as described in:
@@ -24,7 +24,7 @@ import com.sun.istack.internal.logging.Logger;
  * As for this implementation it is being created without consideration on performance using an IJW (It just works) model
  */
 public class JumpSearchFileSameStepMethod0BenchmarkingTest {
-	public static final Logger LOG = Logger.getLogger(JumpSearchFileSameStepMethod0BenchmarkingTest.class);
+	private static final Logger logger = Logger.getLogger(JumpSearchFileSameStepMethod0BenchmarkingTest.class.getName());
 
 	/**
 	 * This test provides the first benchmarking of this module It puts all the
@@ -66,7 +66,7 @@ public class JumpSearchFileSameStepMethod0BenchmarkingTest {
 		assertEquals(expectedIndex, result);
 
 		final long miliseconds = timeEnd.getTime() - timeStart.getTime();
-		LOG.info(String.format(
+		logger.info(String.format(
 				"Search completed in %d miliseconds for file %s with %d elements. Index found is %d for item %d",
 				miliseconds, sampleFile, completeList.length, result, value));
 	}

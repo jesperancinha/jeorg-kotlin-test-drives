@@ -1,3 +1,19 @@
+### Intellij
+*.iml
+*.ipr
+*.iws
+
+### Eclipse
+.classpath
+.settings
+.project
 **/build/
 **/bin/
 **/build-by-eclipse/
+
+## Gradle
+.gradle
+gradle
+gradlew
+gradlew.bat
+out
