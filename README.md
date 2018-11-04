@@ -13,6 +13,21 @@ Currently supporting Java 1.8.
 * [performance-input-test-generator](performance-input-test-generator)
 * [performance-jump-search](performance-jump-search)
 
+
+### Java Migration
+
+* Please Install SDK Man:
+
+https://sdkman.io/install
+
+* Select Java 11
+
+```bash
+
+sdk use java 11.0.1-open
+
+```
+
 ### Running these tests:
 
 * Make sure that Intellij or Eclipse have interpreted this code correctly
