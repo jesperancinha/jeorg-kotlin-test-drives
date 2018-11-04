@@ -16,27 +16,6 @@ public class NanoStabilityCheckerTest {
 
 	private static final Logger logger = Logger.getLogger(NanoStabilityChecker.class.getName());
 
-	/**
-	 * In this test I tried to find how nanoseconds method would work for
-	 * testing. For a high performance machine I still hope it's useful. For my
-	 * current desktop, It's just probably way too small of a unit to consider
-	 * for testing. Each one of these calls run from
-	 * 
-	 * An example is:
-	 * 
-	 * oct 18, 2015 11:09:11 PM
-	 * com.steelzack.test.objects.bufferedreader.NanoStabilityCheckerTest
-	 * getStats INFO: Time for average check is 9338 oct 18, 2015 11:09:11 PM
-	 * com.steelzack.test.objects.bufferedreader.NanoStabilityCheckerTest
-	 * getStats INFO: Time for minimum check is 2916 oct 18, 2015 11:09:11 PM
-	 * com.steelzack.test.objects.bufferedreader.NanoStabilityCheckerTest
-	 * getStats INFO: Time for maximum check is 132645396
-	 * 
-	 * In the last case the maximum check falls in 132 ms. Which suggests that
-	 * only from higher scales than ms it's possible to make reliable
-	 * measurements with reliable results
-	 *
-	 */
 	@Test
 	public void testPrintElementTo_100000_elements() {
 		final NanoStabilityChecker checker = new NanoStabilityChecker();

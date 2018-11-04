@@ -1,6 +1,8 @@
 apply plugin: 'idea'
 apply plugin: 'java'
 
+
+
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
 
@@ -16,5 +18,8 @@ dependencies {
     compile 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
     compile 'com.google.guava:guava:27.0-jre'
     compile 'commons-io:commons-io:2.6'
+    compile project(':performance-input-test-generator')
+    compile project(':performance-buffered-reader')
+    compile project(':performance-jump-search')
 }
 
