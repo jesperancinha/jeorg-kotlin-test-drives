@@ -7,6 +7,11 @@ The main goal is to understand new changes made to the Java platform.
 
 Currently supporting Java 1.8.
 
+### Contents
+
+* [performance-buffered-reader](performance-buffered-reader)
+* [performance-input-test-generator](performance-input-test-generator)
+* [performance-jump-search](performance-jump-search)
 
 ### Running these tests:
 

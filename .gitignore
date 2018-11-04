@@ -11,9 +11,12 @@
 **/bin/
 **/build-by-eclipse/
 
-## Gradle
+### Gradle
 .gradle
 gradle
 gradlew
 gradlew.bat
 out
+
+### IDE
+target
