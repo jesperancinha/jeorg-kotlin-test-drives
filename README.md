@@ -37,7 +37,7 @@ gradle test
 
 ### Location:
 
-[GitHub location](https://github.com/jesperancinha/performance-projects)
+[GitHub location](https://github.com/jesperancinha/xml-adder)
 
 * Twitter [@jofisaes](https://twitter.com/jofisaes)
 * GitHub [jesperancinha](https://github.com/jesperancinha)
