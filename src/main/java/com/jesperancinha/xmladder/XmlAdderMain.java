@@ -1,4 +1,4 @@
-package com.steelzack.xmladder;
+package com.jesperancinha.xmladder;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;

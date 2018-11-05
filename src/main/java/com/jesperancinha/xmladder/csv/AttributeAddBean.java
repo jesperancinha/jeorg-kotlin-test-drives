@@ -1,4 +1,4 @@
-package com.steelzack.xmladder.csv;
+package com.jesperancinha.xmladder.csv;
 
 import com.opencsv.bean.CsvBind;
 

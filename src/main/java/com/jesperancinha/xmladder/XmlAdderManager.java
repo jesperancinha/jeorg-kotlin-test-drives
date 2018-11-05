@@ -1,12 +1,12 @@
-package com.steelzack.xmladder;
+package com.jesperancinha.xmladder;
 
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
-import com.steelzack.xmladder.csv.AttributeAddBean;
-import com.steelzack.xmladder.csv.AttributeDeleteBean;
-import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager;
-import com.steelzack.xmladder.instruction.XmlAdderInstruction;
+import com.jesperancinha.xmladder.csv.AttributeAddBean;
+import com.jesperancinha.xmladder.csv.AttributeDeleteBean;
+import com.jesperancinha.xmladder.instruction.XmlAdderAddAttributeManager;
+import com.jesperancinha.xmladder.instruction.XmlAdderInstruction;
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
