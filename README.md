@@ -1,5 +1,9 @@
 # performance-projects
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/98bb1264a9ee4986bb6700b2b1bb9273)](https://www.codacy.com/app/jofisaes/performance-projects?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-projects&amp;utm_campaign=Badge_Grade)
+
+---
+
 ### Intro:
 
 This project is an experimental project made only for performance tests and to explore the developments made by Oracle.
