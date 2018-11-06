@@ -18,12 +18,16 @@ import static com.steelzack.coffee.system.manager.ProcessorAbstract.SCHEDULED_TA
 public  abstract  class QueueCallableAbstract implements QueueCallable {
     private final static Logger logger = Logger.getLogger(QueueCallableAbstract.class);
 
-    final List<Future<Boolean>> allResults = new ArrayList<>();
+    private final List<Future<Boolean>> allResults = new ArrayList<>();
 
-    final List<Callable<Boolean>> allCallables = new ArrayList<>();
+    private final List<Callable<Boolean>> allCallables = new ArrayList<>();
 
     @Override
     public void waitForCalls() {
+        waitForAllFutures(allResults, logger);
+    }
+
+    static void waitForAllFutures(List<Future<Boolean>> allResults, Logger logger) {
         allResults.stream().forEach( //
                 booleanFuture -> { //
                     try { //
