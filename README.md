@@ -1,6 +1,7 @@
 # performance-projects
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/98bb1264a9ee4986bb6700b2b1bb9273)](https://www.codacy.com/app/jofisaes/performance-projects?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-projects&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/777f3fdd-9d28-4edf-add3-7a3df5c573a5)](https://codebeat.co/projects/github-com-jesperancinha-performance-projects-master)
 
 ---
 
