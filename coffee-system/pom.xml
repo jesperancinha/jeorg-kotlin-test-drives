@@ -133,13 +133,14 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Hamcrest -->
+        <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest.version}</version>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+            <version>0.42</version>
             <scope>test</scope>
         </dependency>
+
 
     </dependencies>
 </project>

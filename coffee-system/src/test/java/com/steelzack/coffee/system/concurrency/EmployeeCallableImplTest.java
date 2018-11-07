@@ -11,7 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeCallableImplTest {
     @Test
-    public void call() throws Exception {
+    public void call() {
 
     }
 
