@@ -2,7 +2,8 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/app/jofisaes/coffee-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/coffee-paradigms&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/0d45f066-b81a-4cb8-ae72-d3f6daf5b736)](https://codebeat.co/projects/github-com-jesperancinha-coffee-paradigms-master)
-
+[![CircleCI](https://circleci.com/gh/jesperancinha/coffee-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/coffee-paradigms)
+[![Build Status](https://travis-ci.org/jesperancinha/coffee-paradigms.svg?branch=master)](https://travis-ci.org/jesperancinha/coffee-paradigms)
 ---
 
 ## Description
