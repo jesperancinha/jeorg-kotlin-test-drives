@@ -19,3 +19,4 @@ include ':string-paradigm-no-wrapper'
 include ':string-paradigm-test-generator'
 include ':string-paradigm_1'
 include ':string-paradigm_original'
+enableFeaturePreview('STABLE_PUBLISHING')
