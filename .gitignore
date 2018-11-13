@@ -1,3 +1,7 @@
 **/build
 **/build-by-eclipse
 **/bin
+
+### Gradle files
+.gradle
+gradle

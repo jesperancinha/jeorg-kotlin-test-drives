@@ -1,6 +1,7 @@
 package com.steelzack.string.paradigm.api;
 
-public interface SegmentTableModelVoidReturn {
+public interface
+SegmentTableModelVoidReturn {
 	void addCombination(Dependency dependency);
 
 	void clear();

@@ -1,9 +1,6 @@
 package com.steelzack.string.paradigm.original.expression;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.anyOf;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.startsWith;
+import static com.google.common.truth.Truth.assertThat;
 
 import java.util.List;
 
@@ -15,7 +12,7 @@ public class SpellingCheckImplTest {
 	private static final String _2 = "2'";
 	private static final String _3 = ",3";
 	private static final String ALGARVE = "Algarve";
-	private static final String EXTREMADURA = "trás Os Montes E Alto Douro, , extremadura";
+	private static final String EXTREMADURA = "trï¿½s Os Montes E Alto Douro, , extremadura";
 	private static final String RIBATEJO = "  Ribatejo";
 	private static final String MINHO = "minho";
 
@@ -32,21 +29,20 @@ public class SpellingCheckImplTest {
 		}
 
 		final List<String> resultSpellingBeginCapitalRegions = check.getSpellingBeginCapitalRegions();
-		assertThat(resultSpellingBeginCapitalRegions, hasSize(2));
-		for (String stringResult : resultSpellingBeginCapitalRegions) {
-			assertThat(stringResult, anyOf(startsWith(ALGARVE), startsWith(RIBATEJO)));
-		}
+		assertThat(resultSpellingBeginCapitalRegions).hasSize(2);
+		assertThat(resultSpellingBeginCapitalRegions.get(0)).startsWith(ALGARVE);
+		assertThat(resultSpellingBeginCapitalRegions.get(1)).startsWith(RIBATEJO);
 
 		final List<String> resultSpellingDoubleCommaRegions = check.getSpellingDoubleCommaRegions();
-		assertThat(resultSpellingDoubleCommaRegions, hasSize(1));
+		assertThat(resultSpellingDoubleCommaRegions).hasSize(1);
 		for (String stringResult : resultSpellingDoubleCommaRegions) {
-			assertThat(stringResult, startsWith(EXTREMADURA));
+			assertThat(stringResult).startsWith(EXTREMADURA);
 		}
 
 		final List<String> resultSpellingWhiteSpacesRegions = check.getSpellingWhiteSpacesRegions();
-		assertThat(resultSpellingWhiteSpacesRegions, hasSize(1));
+		assertThat(resultSpellingWhiteSpacesRegions).hasSize(1);
 		for (String stringResult : resultSpellingWhiteSpacesRegions) {
-			assertThat(stringResult, startsWith(RIBATEJO));
+			assertThat(stringResult).startsWith(RIBATEJO);
 		}
 	}
 }

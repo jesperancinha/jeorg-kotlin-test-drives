@@ -1,9 +1,6 @@
 package com.steelzack.string.paradigm.original.expression;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.anyOf;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.startsWith;
+import static com.google.common.truth.Truth.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +16,10 @@ public class RegionSpellingCheckTest {
 	private static final String MINHO = "minho";
 
 	@Test
-	public void testCheckSpelling() throws Exception {
+	public void testCheckSpelling() {
 		String[] regions = { ALGARVE, MINHO, RIBATEJO };
 		String[] assignedNumbers = { _1, _2, _3 };
-		List<RegionImpl> components = new ArrayList<RegionImpl>();
+		List<RegionImpl> components = new ArrayList<>();
 		for (String type : regions) {
 			for (String size : assignedNumbers) {
 				components.add(new RegionImpl(type, size));
@@ -35,21 +32,24 @@ public class RegionSpellingCheckTest {
 		}
 
 		final List<RegionImpl> resultSpellingBeginCapitalRegions = check.getSpellingBeginCapitalRegions();
-		assertThat(resultSpellingBeginCapitalRegions, hasSize(6));
-		for (RegionImpl region : resultSpellingBeginCapitalRegions) {
-			assertThat(region.getRegionName(), anyOf(startsWith(ALGARVE), startsWith(RIBATEJO)));
-		}
+		assertThat(resultSpellingBeginCapitalRegions).hasSize(6);
+		assertThat(resultSpellingBeginCapitalRegions.get(0).getRegionName()).startsWith(ALGARVE);
+		assertThat(resultSpellingBeginCapitalRegions.get(1).getRegionName()).startsWith(ALGARVE);
+		assertThat(resultSpellingBeginCapitalRegions.get(2).getRegionName()).startsWith(ALGARVE);
+		assertThat(resultSpellingBeginCapitalRegions.get(3).getRegionName()).startsWith(RIBATEJO);
+		assertThat(resultSpellingBeginCapitalRegions.get(4).getRegionName()).startsWith(RIBATEJO);
+		assertThat(resultSpellingBeginCapitalRegions.get(5).getRegionName()).startsWith(RIBATEJO);
 
 		final List<RegionImpl> resultSpellingDoubleCommaRegions = check.getSpellingDoubleCommaRegions();
-		assertThat(resultSpellingDoubleCommaRegions, hasSize(3));
+		assertThat(resultSpellingDoubleCommaRegions).hasSize(3);
 		for (RegionImpl region : resultSpellingDoubleCommaRegions) {
-			assertThat(region.getAssignedNumber(), startsWith(_3));
+			assertThat(region.getAssignedNumber()).startsWith(_3);
 		}
 
 		final List<RegionImpl> resultSpellingWhiteSpacesRegions = check.getSpellingWhiteSpacesRegions();
-		assertThat(resultSpellingWhiteSpacesRegions, hasSize(3));
+		assertThat(resultSpellingWhiteSpacesRegions).hasSize(3);
 		for (RegionImpl region : resultSpellingWhiteSpacesRegions) {
-			assertThat(region.getRegionName(), startsWith(RIBATEJO));
+			assertThat(region.getRegionName()).startsWith(RIBATEJO);
 		}
 	}
 }

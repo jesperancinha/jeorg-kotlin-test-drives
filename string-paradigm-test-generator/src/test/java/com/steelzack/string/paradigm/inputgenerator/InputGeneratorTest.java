@@ -1,7 +1,6 @@
 package com.steelzack.string.paradigm.inputgenerator;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
+import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
@@ -15,33 +14,6 @@ import org.junit.Test;
 public class InputGeneratorTest {
 
 	private static final String TEST_FILMS_TXT = "testFilms.txt";
-
-	@Test
-	public void testInputGenerator() throws IOException, InterruptedException {
-		final String testFilename = "testInputGenerator.txt";
-		final Runtime rt = Runtime.getRuntime();
-		final Process pr = rt.exec( //
-				"java -jar build/one-string-paradigm-input-test-generator.jar  " + //
-						"-p 100 " + //
-						"-n 10 " + //
-						"-f \"" + testFilename + "\"" + //
-						"-mid \"sptg_id.txt\"" + //
-						"-m \"sptg_movie.txt\"" + //
-						"-my \"sptg_year.txt\"" + //
-						"-ml \"sptg_location.txt\"" + //
-						"-mg \"sptg_genre.txt\"" + //
-						"-md \"sptg_director.txt\"" + //
-						"-mp \"sptg_producer.txt\"" + //
-						"-mar \"sptg_actor.txt\"" + //
-						"-mas \"sptg_actress.txt\"" + //
-						"-msman \"sptg_stunt_man.txt\"" + //
-						"-mswoman \"sptg_stunt_woman.txt\"" + //
-						"-msong \"sptg_song.txt\"" + //
-						"");
-		final int retVal = pr.waitFor();
-
-		assertEquals(0, retVal);
-	}
 
 	@Test
 	public void testGetFullFileList() throws Exception {
@@ -73,18 +45,18 @@ public class InputGeneratorTest {
 		final List<String> resultStuntWoman = inputGenerator.getFullFileList(streamStuntWoman);
 		final List<String> resultYear = inputGenerator.getFullFileList(streamYear);
 
-		assertThat(resultId, hasSize(5));
-		assertThat(resultActor, hasSize(8));
-		assertThat(resultActress, hasSize(4));
-		assertThat(resultDirector, hasSize(5));
-		assertThat(resultGenre, hasSize(4));
-		assertThat(resultLocation, hasSize(12));
-		assertThat(resultMovie, hasSize(6));
-		assertThat(resultProducer, hasSize(6));
-		assertThat(resultSong, hasSize(7));
-		assertThat(resultStuntMan, hasSize(6));
-		assertThat(resultStuntWoman, hasSize(1));
-		assertThat(resultYear, hasSize(12));
+		assertThat(resultId).hasSize(5);
+		assertThat(resultActor).hasSize(8);
+		assertThat(resultActress).hasSize(4);
+		assertThat(resultDirector).hasSize(5);
+		assertThat(resultGenre).hasSize(4);
+		assertThat(resultLocation).hasSize(12);
+		assertThat(resultMovie).hasSize(6);
+		assertThat(resultProducer).hasSize(6);
+		assertThat(resultSong).hasSize(7);
+		assertThat(resultStuntMan).hasSize(6);
+		assertThat(resultStuntWoman).hasSize(1);
+		assertThat(resultYear).hasSize(12);
 	}
 
 	@Test
