@@ -1,3 +1,2 @@
-install: gradle wrapper --gradle-version 4.10.2
-
+before_script: ./gradlew init
 language: java
