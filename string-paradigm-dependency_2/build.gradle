@@ -11,7 +11,7 @@ apply plugin: 'maven'
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
 
-evaluationDependsOn(":string-array-paradigms")
+evaluationDependsOn(":string-paradigm-api")
 
 repositories {
     mavenCentral()
