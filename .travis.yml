@@ -1,4 +1,3 @@
-before_script: ./gradlew init
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
