@@ -12,6 +12,20 @@
 
 A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll keep looking after it from now on and integrate it into future Java versions
 
+## Running these tests:
+
+```bash
+
+gradle idea 
+
+gradle cleanIdea 
+
+gradle test
+
+./gradlew test
+
+```
+
 ## Location:
 
 [GitHub location](https://github.com/jesperancinha/string-array-paradigms)
