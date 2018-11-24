@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * @author JOAO
  */
 public class NanoStabilityCheckerTest {
-	private static final int NUMBER_OF_TEST_CALLS = 1000000;
+	private static final int NUMBER_OF_TEST_CALLS = 100000;
 
 	private static final Logger logger = LoggerFactory.getLogger(NanoStabilityChecker.class);
 
@@ -22,12 +22,10 @@ public class NanoStabilityCheckerTest {
 
 		final Stats stats = getStats(NUMBER_OF_TEST_CALLS, testStringFirst, checker);
 
-		for (int i = 1; i <= NUMBER_OF_TEST_CALLS; i++) {
-			final String testString = "Test string" + Math.random();
-			final long resultTimeForThisCheck = checker.printElementTo(testString, System.out);
-			logger.info("Time for check {} is {}", i, resultTimeForThisCheck);
-			testInToleranceRange(resultTimeForThisCheck, stats);
-		}
+		final String testString = "Test string" + Math.random();
+		final long resultTimeForThisCheck = checker.printElementTo(testString, System.out);
+		logger.info("Time for check is {}", resultTimeForThisCheck);
+		testInToleranceRange(resultTimeForThisCheck, stats);
 	}
 
 	private void testInToleranceRange(long resultTimeForThisCheck, Stats stats) {
