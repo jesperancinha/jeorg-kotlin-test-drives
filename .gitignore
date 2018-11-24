@@ -1,7 +1,14 @@
-**/build
-**/build-by-eclipse
-**/bin
+build
+build-by-eclipse
+bin
 
-### Gradle files
+# gradle files
 .gradle
 gradle
+
+# gradle build
+out
+
+# intellij
+.idea
+*.iml

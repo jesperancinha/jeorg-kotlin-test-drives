@@ -7,3 +7,14 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/string-array-paradigms?branch=master)](https://bettercodehub.com/)
 
 ---
+
+## Description:
+
+A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll keep looking after it from now on and integrate it into future Java versions
+
+## Location:
+
+[GitHub location](https://github.com/jesperancinha/string-array-paradigms)
+
+* Twitter [@jofisaes](https://twitter.com/jofisaes)
+* GitHub [jesperancinha](https://github.com/jesperancinha)
