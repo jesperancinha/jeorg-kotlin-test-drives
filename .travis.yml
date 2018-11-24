@@ -1,3 +1,8 @@
+install: true
 language: java
+
 jdk:
 - oraclejdk8
+
+script:
+- gradle clean install test
