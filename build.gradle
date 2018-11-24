@@ -22,21 +22,9 @@ buildscript {
     }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
-    compile 'com.google.guava:guava:27.0-jre'
-    compile 'commons-io:commons-io:2.6'
-    compile project(':string-paradigm-api')
-    compile project(':string-paradigm-dependency_2')
-    compile project(':string-paradigm-expression-api')
-    compile project(':string-paradigm-expression-no-wrapper')
-    compile project(':string-paradigm-expression-original')
-    compile project(':string-paradigm-expression_1')
-    compile project(':string-paradigm-expression_2')
-    compile project(':string-paradigm-no-wrapper')
-    compile project(':string-paradigm-test-generator')
-    compile project(':string-paradigm_1')
-    compile project(':string-paradigm_original')
-
+subprojects {
+    apply plugin: "java"
+    repositories {
+        mavenCentral()
+    }
 }
