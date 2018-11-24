@@ -5,8 +5,8 @@ bin
 # gradle files
 .gradle
 gradle
-
-# gradle build
+gradlew
+gradlew.bat
 out
 
 # intellij
