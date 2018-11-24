@@ -4,3 +4,6 @@ jdk:
 #- oraclejdk11
 #- openjdk10
 #- openjdk11
+
+script:
+- gradle clean install test

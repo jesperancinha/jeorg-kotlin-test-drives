@@ -1,5 +1,6 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'maven'
 
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
@@ -7,6 +8,23 @@ version '0.0.0-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.2'
+}
+
 repositories {
     mavenCentral()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+subprojects {
+    apply plugin: "java"
+    repositories {
+        mavenCentral()
+    }
 }
