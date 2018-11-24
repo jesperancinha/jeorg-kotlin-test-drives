@@ -12,3 +12,4 @@ out
 # intellij
 .idea
 *.iml
+*.iws
