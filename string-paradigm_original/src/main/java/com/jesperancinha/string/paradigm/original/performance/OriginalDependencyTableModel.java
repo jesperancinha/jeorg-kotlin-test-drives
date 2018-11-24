@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.steelzack.string.paradigm.api.Dependency;
-import com.steelzack.string.paradigm.api.SegmentTableModelVoidReturn;
+import com.jesperancinha.string.paradigm.api.Dependency;
+import com.jesperancinha.string.paradigm.api.SegmentTableModelVoidReturn;
 
 
 public class OriginalDependencyTableModel extends AbstractTableModel implements SegmentTableModelVoidReturn {

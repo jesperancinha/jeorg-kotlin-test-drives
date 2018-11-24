@@ -2,7 +2,7 @@ package com.jesperancinha.string.paradigm.performance1;
 
 import java.util.List;
 
-import com.steelzack.string.paradigm.api.Dependency;
+import com.jesperancinha.string.paradigm.api.Dependency;
 
 public class ParadigmDependency1Impl extends Dependency {
 	private StringWrapper dependencies;

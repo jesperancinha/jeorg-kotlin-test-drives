@@ -7,8 +7,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
-import com.steelzack.string.paradigm.api.Dependency;
-import com.steelzack.string.paradigm.api.SegmentTreeModel;
+import com.jesperancinha.string.paradigm.api.Dependency;
+import com.jesperancinha.string.paradigm.api.SegmentTreeModel;
 
 public class NoWrapperDependencyTreeModel extends DefaultTreeModel implements SegmentTreeModel {
 

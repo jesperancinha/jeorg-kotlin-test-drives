@@ -28,7 +28,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
-import com.steelzack.string.paradigm.api.Dependency;
+import com.jesperancinha.string.paradigm.api.Dependency;
 
 public class OriginalDependencyView extends JPanel {
 

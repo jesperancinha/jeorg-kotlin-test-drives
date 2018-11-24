@@ -1,6 +1,6 @@
 package com.jesperancinha.string.paradigms.nowrapper.expression;
 
-import com.steelzack.string.paradigm.api.Region;
+import com.jesperancinha.string.paradigm.api.Region;
 
 public class RegionImpl extends Region {
 	public RegionImpl(String type, String size) {

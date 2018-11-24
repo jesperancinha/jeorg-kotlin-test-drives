@@ -45,7 +45,7 @@
 				<fileset dir="build" />
 			</main>
 			<manifest>
-				<attribute name="One-Jar-Main-Class" value="com.steelzack.string.paradigm.inputgenerator.InputGenerator" />
+				<attribute name="One-Jar-Main-Class" value="com.jesperancinha.string.paradigm.inputgenerator.InputGenerator" />
 			</manifest>
 		</one-jar>
 	</target>

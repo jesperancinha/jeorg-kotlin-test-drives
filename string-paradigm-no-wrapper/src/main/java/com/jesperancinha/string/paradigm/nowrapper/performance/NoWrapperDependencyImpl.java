@@ -2,7 +2,7 @@ package com.jesperancinha.string.paradigm.nowrapper.performance;
 
 import java.util.List;
 
-import com.steelzack.string.paradigm.api.Dependency;
+import com.jesperancinha.string.paradigm.api.Dependency;
 
 public class NoWrapperDependencyImpl extends Dependency {
 	private String dependencies;

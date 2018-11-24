@@ -4,7 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.List;
 
-import com.steelzack.string.paradigm.api.Dependency;
+import com.jesperancinha.string.paradigm.api.Dependency;
 
 public class ParadigmDependency2Impl extends Dependency {
 	private StringWrapper dependencies;

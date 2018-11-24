@@ -12,14 +12,15 @@ apply plugin: 'maven'
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
 
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
 buildscript {
     repositories {
         mavenLocal()
     }
-}
-repositories {
-    mavenCentral()
-    mavenLocal()
 }
 
 task fatJar(type: Jar) {
