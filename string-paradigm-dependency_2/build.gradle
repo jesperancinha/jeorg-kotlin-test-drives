@@ -11,7 +11,6 @@ apply plugin: 'maven'
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
 
-evaluationDependsOn(":string-paradigm-api")
 
 repositories {
     mavenCentral()
@@ -30,6 +29,8 @@ buildscript {
         mavenLocal()
     }
 }
+
+evaluationDependsOn(":string-paradigm-api")
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
