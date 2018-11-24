@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 import org.junit.Test;
 
-import com.performance.test.jumpsearch.JumpSearchFileSameStepMethod0;
+import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethod0;
 
 /*
  * This jump algorithm as described in:
@@ -50,7 +50,7 @@ public class JumpSearchFileSameStepMethod0BenchmarkingTest {
 	}
 
 	private void testBenchmarking00_helper(String sampleFile, int value, int expectedIndex)
-			throws URISyntaxException, IOException, FileNotFoundException {
+			throws URISyntaxException, IOException {
 		final File f = new File(getClass().getResource(sampleFile).toURI());
 		String fullText;
 		try (BufferedReader br = new BufferedReader(new FileReader(f))) {

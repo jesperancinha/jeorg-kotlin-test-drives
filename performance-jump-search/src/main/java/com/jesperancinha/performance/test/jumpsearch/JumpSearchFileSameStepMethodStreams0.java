@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
-import com.performance.test.jumpsearch.interfaces.JumpSearchFileStreams;
+import com.jesperancinha.performance.test.jumpsearch.interfaces.JumpSearchFileStreams;
 
 /**
  * For this implementation I decided to try a stream approach. All files have

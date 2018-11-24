@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.performance.test.jumpsearch.JumpSearchFileSameStepMethodStreams0;
+import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethodStreams0;
 
 public class JumpSearchFileSameStepMethodStreams0BenchmarkingTest {
 	Logger LOG = Logger.getLogger(JumpSearchFileSameStepMethodStreams0BenchmarkingTest.class.getName());

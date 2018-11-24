@@ -4,9 +4,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.performance.test.jumpsearch.benchmarking.JumpSearchFileSameStepMethod0BenchmarkingTest;
-import com.performance.test.jumpsearch.benchmarking.JumpSearchFileSameStepMethodStreams0BenchmarkingTest;
-import com.performance.test.jumpsearch.benchmarking.JumpSearchFileSameStepMethodStreams1BenchmarkingTest;
+import com.jesperancinha.performance.test.jumpsearch.benchmarking.JumpSearchFileSameStepMethod0BenchmarkingTest;
+import com.jesperancinha.performance.test.jumpsearch.benchmarking.JumpSearchFileSameStepMethodStreams0BenchmarkingTest;
+import com.jesperancinha.performance.test.jumpsearch.benchmarking.JumpSearchFileSameStepMethodStreams1BenchmarkingTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ //

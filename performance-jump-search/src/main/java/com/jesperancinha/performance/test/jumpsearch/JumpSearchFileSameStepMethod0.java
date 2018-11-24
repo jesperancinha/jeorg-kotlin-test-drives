@@ -1,6 +1,6 @@
 package com.jesperancinha.performance.test.jumpsearch;
 
-import com.performance.test.jumpsearch.interfaces.JumpSearchFile;
+import com.jesperancinha.performance.test.jumpsearch.interfaces.JumpSearchFile;
 
 /**
  * This jump algorithm as described in:
