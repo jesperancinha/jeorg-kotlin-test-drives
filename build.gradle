@@ -10,14 +10,3 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
-    compile 'com.google.guava:guava:27.0-jre'
-    compile 'commons-io:commons-io:2.6'
-    compile project(':performance-input-test-generator')
-    compile project(':performance-buffered-reader')
-    compile project(':performance-jump-search')
-}
-
