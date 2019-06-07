@@ -1,6 +1,6 @@
-# Idea
+# Intellij
 .idea/**
-**/*.iml
+*.iml
 
 # Maven
 

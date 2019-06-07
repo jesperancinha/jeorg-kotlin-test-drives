@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <artifactId>coffee-paradigms</artifactId>
-    <groupId>steelzack</groupId>
+    <groupId>jesperancinha</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -41,7 +41,7 @@
                   <resource>META-INF/spring.schemas</resource>
                 </transformer>
                 <transformer>
-                  <mainClass>com.steelzack.coffee.system.launcher.CoffeeParadigmsMain</mainClass>
+                  <mainClass>com.jesperancinha.coffee.system.launcher.CoffeeParadigmsMain</mainClass>
                 </transformer>
               </transformers>
             </configuration>
