@@ -17,9 +17,6 @@ import java.text.MessageFormat;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by joaofilipesabinoesperancinha on 05-05-16.
- */
 @Service
 @Accessors(chain = true)
 @NoArgsConstructor
@@ -56,7 +53,7 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
     @Override
     public Boolean call() {
         logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.getName()));
-        this.actionDescriptorList.stream().forEach(
+        this.actionDescriptorList.forEach(
                 actionDescriptor -> {
                     logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.getDescription()));
                     try {

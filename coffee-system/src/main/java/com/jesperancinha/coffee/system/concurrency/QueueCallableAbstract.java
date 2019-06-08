@@ -15,30 +15,30 @@ import static com.jesperancinha.coffee.system.manager.ProcessorAbstract.SCHEDULE
  * Created by joao on 8-5-16.
  */
 @Getter
-public  abstract  class QueueCallableAbstract implements QueueCallable {
+public abstract class QueueCallableAbstract implements QueueCallable {
     private final static Logger logger = Logger.getLogger(QueueCallableAbstract.class);
 
     private final List<Future<Boolean>> allResults = new ArrayList<>();
 
     private final List<Callable<Boolean>> allCallables = new ArrayList<>();
 
-    @Override
-    public void waitForCalls() {
-        waitForAllFutures(allResults, logger);
-    }
-
     static void waitForAllFutures(List<Future<Boolean>> allResults, Logger logger) {
-        allResults.stream().forEach( //
-                booleanFuture -> { //
-                    try { //
-                        if (booleanFuture.get() != null && !booleanFuture.get()) { //
-                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE); //
+        allResults.forEach(
+                booleanFuture -> {
+                    try {
+                        if (booleanFuture.get() != null && !booleanFuture.get()) {
+                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
                         }
-                    } catch (NullPointerException | InterruptedException | ExecutionException e) { //
-                        logger.error(e.getMessage(), e); //
+                    } catch (NullPointerException | InterruptedException | ExecutionException e) {
+                        logger.error(e.getMessage(), e);
                     }
                 }
         );
+    }
+
+    @Override
+    public void waitForCalls() {
+        waitForAllFutures(allResults, logger);
     }
 
     @Override
@@ -50,7 +50,6 @@ public  abstract  class QueueCallableAbstract implements QueueCallable {
     public void addSubmitResult(Future<Boolean> submitResult) {
         allResults.add(submitResult);
     }
-
 
 
 }

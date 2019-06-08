@@ -1,7 +1,7 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
 import com.jesperancinha.coffee.system.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.queues.QueueAbstract;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
@@ -16,27 +16,26 @@ public abstract class ProcessorAbstract {
 
     public static final String SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!";
 
-    private static final Logger logger = Logger.getLogger(ProcessorAbstract.class);
-
     public abstract QueueAbstract getExecutorServiceQueue();
 
     public void waitForAllCalls(QueueCallable queueCallable) {
-       queueCallable.waitForCalls();
+        queueCallable.waitForCalls();
     }
 
 
     public abstract String getExecutorName(Callable<Boolean> callable);
 
     public void runAllCalls(QueueCallable queueCallable) {
-        queueCallable.getAllCallables().stream().forEach(
+        queueCallable.getAllCallables().forEach(
                 booleanCallable -> {
                     final Map<String, ThreadPoolExecutor> executorServiceMap = getExecutorServiceQueue().getExecutorServiceMap();
                     final String executorName = getExecutorName(booleanCallable);
                     final ThreadPoolExecutor threadPoolExecutor = executorServiceMap.get(executorName);
                     final Future<Boolean> submitResult = threadPoolExecutor.submit(booleanCallable);
                     addSubmitResult(submitResult, queueCallable);
-                } //
-        );    }
+                }
+        );
+    }
 
     private void addSubmitResult(Future<Boolean> submitResult, QueueCallable queueCallable) {
         queueCallable.addSubmitResult(submitResult);

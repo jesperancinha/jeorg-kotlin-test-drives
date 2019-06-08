@@ -34,12 +34,12 @@ public class PaymentProcessorImpl extends ProcessorAbstract implements PaymentPr
 
     @Override
     public void callPayCoffee(Employees.Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
-        final PaymentCallableImpl paymentCallable = new PaymentCallableImpl( //
-                employee, //
-                name, //
-                payment, //
-                postActions, //
-                machineProcessor //
+        final PaymentCallableImpl paymentCallable = new PaymentCallableImpl(
+                employee,
+                name,
+                payment,
+                postActions,
+                machineProcessor
         );
         parentCallable.getAllCallables().add(paymentCallable);
     }

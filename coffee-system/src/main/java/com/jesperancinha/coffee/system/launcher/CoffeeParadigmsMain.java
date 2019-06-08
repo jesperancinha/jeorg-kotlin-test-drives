@@ -12,10 +12,10 @@ import java.io.FileNotFoundException;
  */
 public class CoffeeParadigmsMain {
     public static void main(String[] args) throws
-            CmdLineException, //
-            InterruptedException, //
-            FileNotFoundException, //
-            SAXException, //
+            CmdLineException,
+            InterruptedException,
+            FileNotFoundException,
+            SAXException,
             JAXBException {
         final CoffeParadigmsOptions options = new CoffeParadigmsOptions();
         final CmdLineParser parser = new CmdLineParser(options);

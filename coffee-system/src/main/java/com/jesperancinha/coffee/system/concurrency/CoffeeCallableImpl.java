@@ -16,14 +16,11 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class CoffeeCallableImpl extends QueueCallableAbstract implements CoffeCallable {
 
-    private MachineProcessor machineProcessor;
-
     private static final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
-
     private FillTime fillTime;
     private String name;
 
-    public CoffeeCallableImpl(FillTime fillTime, String name) {
+    CoffeeCallableImpl(FillTime fillTime, String name) {
         this.fillTime = fillTime;
         this.name = name;
     }

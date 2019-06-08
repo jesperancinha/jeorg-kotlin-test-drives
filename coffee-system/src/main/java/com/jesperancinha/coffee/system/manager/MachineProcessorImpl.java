@@ -13,9 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by joaofilipesabinoesperancinha on 30-04-16.
- */
 @Accessors(chain = true)
 @Getter
 @Service

@@ -1,9 +1,9 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import com.jesperancinha.coffee.system.manager.GeneralProcessorImpl;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.jesperancinha.coffee.system.manager.GeneralProcessorImpl;
 import com.jesperancinha.coffee.system.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.manager.PostProcessor;
 import lombok.Getter;
@@ -23,22 +23,20 @@ import java.util.concurrent.TimeUnit;
 public class PaymentCallableImpl extends QueueCallableAbstract implements PaymentCallable {
 
     private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
-
+    private final Payment chosenPayment;
     @Autowired
     private MachineProcessor machineProcessor;
-
     private Employee employee;
-    private final Payment chosenPayment;
     private String name;
     private List<PostAction> postActions;
 
 
-    public PaymentCallableImpl( //
-            Employee employee, //
-            String name, //
-            Payment payment, //
-            List<PostAction> postActions, //
-            MachineProcessor machineProcessor //
+    public PaymentCallableImpl(
+                                Employee employee,
+                                String name,
+                                Payment payment,
+                                List<PostAction> postActions,
+                                MachineProcessor machineProcessor
     ) {
         super();
         this.employee = employee;
@@ -52,7 +50,7 @@ public class PaymentCallableImpl extends QueueCallableAbstract implements Paymen
     public Boolean call() throws Exception {
         logger.info(MessageFormat.format("PaymentCallable with {0}", chosenPayment.getName()));
         Integer time = chosenPayment.getTime();
-        if(time != null) {
+        if (time != null) {
             TimeUnit.MILLISECONDS.sleep(time);
         }
         final PostProcessor postProcessor = machineProcessor.getPostProcessor();

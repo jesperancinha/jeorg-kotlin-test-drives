@@ -1,16 +1,15 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import java.text.MessageFormat;
-import java.util.concurrent.TimeUnit;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.objects.ActionDescriptor;
 import lombok.Getter;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.text.MessageFormat;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
@@ -19,35 +18,34 @@ import org.apache.log4j.Logger;
 @Getter
 public class PostActionCallableImpl extends ActionCallable implements PostActionCallable {
 
-	@Autowired
-	private MachineProcessor machineProcessor;
+    private static final Logger logger = Logger.getLogger(PreActionCallableImpl.class);
+    @Autowired
+    private MachineProcessor machineProcessor;
 
-	private static final Logger logger = Logger.getLogger(PreActionCallableImpl.class);
+    public PostActionCallableImpl(String name) {
+        super(name);
 
-	public PostActionCallableImpl(String name) {
-		super(name);
+    }
 
-	}
+    @Override
+    public void addPostAction(PostAction postAction) {
+        this.actionDescriptorList
+                .add(ActionDescriptor.builder().description(postAction.getDescription()).time(postAction.getTime())
+                        .build());
+    }
 
-	@Override
-	public void addPostAction(PostAction postAction) {
-		this.actionDescriptorList
-				.add(ActionDescriptor.builder().description(postAction.getDescription()).time(postAction.getTime())
-						.build());
-	}
-
-	public Boolean call() {
-		this.actionDescriptorList.stream().forEach(
-				actionDescriptor -> {
-					logger.info(MessageFormat.format("Ending with {0}", actionDescriptor.getDescription()));
-					try {
-						TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
-					} catch (InterruptedException e) {
-						logger.error(e);
-					}
-				}
-		);
-		return true;
-	}
+    public Boolean call() {
+        this.actionDescriptorList.forEach(
+                actionDescriptor -> {
+                    logger.info(MessageFormat.format("Ending with {0}", actionDescriptor.getDescription()));
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
+                    } catch (InterruptedException e) {
+                        logger.error(e);
+                    }
+                }
+        );
+        return true;
+    }
 
 }

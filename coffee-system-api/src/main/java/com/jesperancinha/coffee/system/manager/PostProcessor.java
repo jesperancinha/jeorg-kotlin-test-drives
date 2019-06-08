@@ -6,7 +6,7 @@ import com.jesperancinha.coffee.system.input.Employees.Employee.Actions;
 
 import java.util.List;
 
-public interface PostProcessor extends Processor{
+public interface PostProcessor extends Processor {
 
     void callPostActions(Employees.Employee employee, String name, List<Actions.PostAction> postActions, QueueCallable parentCallable);
 }

@@ -31,7 +31,7 @@ public class CoffeParadigmsOptions {
     @Option(name = "-post", usage = "Defines how many can stand on the post-actions queue", aliases = "--post-actions-size", required = true)
     private Integer nPostActions;
 
-    public void run() throws FileNotFoundException, JAXBException, SAXException, InterruptedException {
+    void run() throws FileNotFoundException, JAXBException, SAXException {
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("META-INF/config.xml");
         GeneralProcessorImpl generalProcessor = context.getBean(GeneralProcessorImpl.class);

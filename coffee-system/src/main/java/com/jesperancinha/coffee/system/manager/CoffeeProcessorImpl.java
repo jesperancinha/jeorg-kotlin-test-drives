@@ -1,14 +1,14 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl;
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
-import com.jesperancinha.coffee.system.queues.QueueCofeeImpl;
 import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallable;
+import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl;
 import com.jesperancinha.coffee.system.concurrency.QueueCallable;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.jesperancinha.coffee.system.queues.QueueAbstract;
+import com.jesperancinha.coffee.system.queues.QueueCofeeImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
@@ -18,9 +18,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-/**
- * Created by joao on 29-4-16.
- */
 @Accessors(chain = true)
 @Getter
 @Service
@@ -34,13 +31,13 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     private MachineProcessor machineProcessor;
 
     @Override
-    public void callMakeCoffee( //
-                                Employee employee, //
-                                String name, //
-                                Coffee coffee, //
-                                Payment payment, //
-                                List<PostAction> postActions, //
-                                QueueCallable parentCallable
+    public void callMakeCoffee(
+            Employee employee,
+            String name,
+            Coffee coffee,
+            Payment payment,
+            List<PostAction> postActions,
+            QueueCallable parentCallable
     ) {
         final CoffeeMainCallable coffeCallable = new CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor);
         parentCallable.getAllCallables().add(coffeCallable);

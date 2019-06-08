@@ -2,11 +2,11 @@ package com.jesperancinha.coffee.system.manager;
 
 import com.jesperancinha.coffee.system.concurrency.ActionCallable;
 import com.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
-import com.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
 import com.jesperancinha.coffee.system.concurrency.QueueCallable;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.jesperancinha.coffee.system.queues.QueueAbstract;
+import com.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.apache.log4j.Logger;
@@ -27,17 +27,15 @@ public class PostProcessorImpl extends ProcessorAbstract implements PostProcesso
     private QueuePostActivityImpl queuePostActivity;
 
     @Override
-    public void callPostActions( //
-            Employee employee, //
-            final String name, //
-            List<PostAction> postActions, //
-            final QueueCallable parentCallable //
+    public void callPostActions(
+            Employee employee,
+            final String name,
+            List<PostAction> postActions,
+            final QueueCallable parentCallable
     ) {
         PostActionCallableImpl postActionCallable = new PostActionCallableImpl(name);
         parentCallable.getAllCallables().add(postActionCallable);
-        postActions.stream().forEach( //
-                postActionCallable::addPostAction //
-        ); //
+        postActions.forEach(postActionCallable::addPostAction);
     }
 
     @Override
@@ -47,7 +45,7 @@ public class PostProcessorImpl extends ProcessorAbstract implements PostProcesso
 
     @Override
     public String getExecutorName(Callable<Boolean> callable) {
-        return ((ActionCallable)callable).getName();
+        return ((ActionCallable) callable).getName();
     }
 
     @Override

@@ -1,4 +1,5 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
     <xs:element name="CoffeeMachines">
         <xs:complexType>
             <xs:sequence>
@@ -14,12 +15,16 @@
                                                     <xs:element name="TimesToFill">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="FillTime" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:element name="FillTime" maxOccurs="unbounded"
+                                                                            minOccurs="0">
                                                                     <xs:complexType>
                                                                         <xs:simpleContent>
                                                                             <xs:extension base="xs:int">
-                                                                                <xs:attribute type="xs:string" name="description" use="optional"/>
-                                                                                <xs:attribute type="xs:int" name="index" use="optional"/>
+                                                                                <xs:attribute type="xs:string"
+                                                                                              name="description"
+                                                                                              use="optional"/>
+                                                                                <xs:attribute type="xs:int" name="index"
+                                                                                              use="optional"/>
                                                                             </xs:extension>
                                                                         </xs:simpleContent>
                                                                     </xs:complexType>

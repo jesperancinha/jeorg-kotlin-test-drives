@@ -18,6 +18,7 @@ public class QueueAbstract implements CPQueue {
 
     /**
      * Number of machines of the same name
+     *
      * @param queueSize
      * @param name
      */

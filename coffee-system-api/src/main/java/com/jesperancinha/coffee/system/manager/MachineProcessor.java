@@ -15,7 +15,7 @@ import java.util.List;
 public interface MachineProcessor {
 
     PreProcessor getPreProcessor();
-    
+
     CoffeeProcessor getCoffeeProcessor();
 
     PaymentProcessor getPaymentProcessor();

@@ -8,8 +8,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExecutorServiceHelper {
     public static void shutDownExecutorService(ExecutorService executorService) {
-        if(executorService!= null)
-        {
+        if (executorService != null) {
             executorService.shutdown();
             try {
                 executorService.awaitTermination(60, TimeUnit.SECONDS);
