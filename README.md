@@ -91,8 +91,12 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 *Under development*
 
 ## Change logs
+20190609:
+
+-   Project migrated to Java 11
 
 201605<>:   
+
 -   As of 9th of May of 2016, the first functional version became available.
 
 > Example Output:
@@ -123,6 +127,9 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 2016-05-08 18:06:34.969 INFO  PreActionCallableImpl:40 - Ending with dummy
 
 ```
+## References
+
+-   [Generating classes from XSD under Java 11 – the right way](https://artofcode.wordpress.com/2019/02/28/generating-classes-from-xsd-under-java-11-the-right-way/)
 
 ## About me
 

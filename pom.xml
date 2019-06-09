@@ -10,11 +10,13 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler>3.5.1</maven.compiler>
-        <jaxb2.version>2.2</jaxb2.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler>3.8.0</maven.compiler>
         <build.helper.plugin>1.10</build.helper.plugin>
-        <lombok.project>1.16.8.0</lombok.project>
+        <lombok.project>1.18.8</lombok.project>
         <args4j>2.33</args4j>
         <junit.version>4.12</junit.version>
         <log4j>1.2.17</log4j>
@@ -22,6 +24,12 @@
         <javax.ejb.version>3.0</javax.ejb.version>
         <mockito.version>1.10.19</mockito.version>
         <maven.shade.version>2.4.3</maven.shade.version>
+        <jaxb-api.version>2.3.0</jaxb-api.version>
+        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+        <jakarta.activation.version>1.2.1</jakarta.activation.version>
+        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+        <cxf-xjc-plugin.version>3.3.0</cxf-xjc-plugin.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
     </properties>
 
     <modules>
@@ -29,4 +37,23 @@
         <module>coffee-system-api</module>
     </modules>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxb-runtime.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.sun.activation</groupId>
+                <artifactId>jakarta.activation</artifactId>
+                <version>${jakarta.activation.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

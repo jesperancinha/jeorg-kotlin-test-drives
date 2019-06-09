@@ -54,7 +54,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      * @return CoffeeMachines list
      */
     private CoffeeMachines createCoffeeMachines(final InputStream sourceXmlCoffeeMachineFile) throws JAXBException {
-        final JAXBContext jaxbContext = JAXBContext.newInstance("com.jesperancinha.coffee.system.input");
+        final JAXBContext jaxbContext = JAXBContext.newInstance(CoffeeMachines.class);
         final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         return (CoffeeMachines) unmarshaller.unmarshal(sourceXmlCoffeeMachineFile);
     }
@@ -67,7 +67,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      */
     private Employees createEmployees(final InputStream sourceXmlEmployeesFile)
             throws JAXBException {
-        final JAXBContext jaxbContext = JAXBContext.newInstance("com.jesperancinha.coffee.system.input");
+        final JAXBContext jaxbContext = JAXBContext.newInstance(Employees.class);
         final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         return (Employees) unmarshaller.unmarshal(sourceXmlEmployeesFile);
 
