@@ -1,17 +1,20 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallable;
+import com.jesperancinha.coffee.api.concurrency.CoffeeMainCallable;
+import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl;
-import com.jesperancinha.coffee.system.concurrency.QueueCallable;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
+import com.jesperancinha.coffee.system.queues.Queue;
 import com.jesperancinha.coffee.system.queues.QueueCofeeImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +25,7 @@ import java.util.concurrent.Callable;
 @Getter
 @Service
 public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProcessor {
-    private static final Logger logger = Logger.getLogger(CoffeeProcessorImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CoffeeProcessorImpl.class);
 
     @Autowired
     private QueueCofeeImpl queueCofee;
@@ -44,7 +47,7 @@ public class CoffeeProcessorImpl extends ProcessorAbstract implements CoffeeProc
     }
 
     @Override
-    public QueueAbstract getExecutorServiceQueue() {
+    public Queue getExecutorServiceQueue() {
         return queueCofee;
     }
 

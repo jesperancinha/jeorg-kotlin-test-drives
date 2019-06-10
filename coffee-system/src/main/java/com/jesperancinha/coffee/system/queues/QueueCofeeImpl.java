@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
  */
 @Accessors(chain = true)
 @Service
-public class QueueCofeeImpl extends QueueAbstract {
+public class QueueCofeeImpl extends Queue {
 }

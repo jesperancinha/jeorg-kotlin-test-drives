@@ -1,6 +1,11 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.system.concurrency.*;
+import com.jesperancinha.coffee.api.concurrency.*;
+import com.jesperancinha.coffee.api.manager.*;
+import com.jesperancinha.coffee.system.concurrency.CoffeeCallableImpl;
+import com.jesperancinha.coffee.system.concurrency.PaymentCallableImpl;
+import com.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
+import com.jesperancinha.coffee.system.concurrency.PreActionCallableImpl;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;

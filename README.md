@@ -91,11 +91,16 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 *Under development*
 
 ## Change logs
-20190609:
+
+2019-06-10:
+
+-   Modularization with Java 11
+
+2019-06-09:
 
 -   Project migrated to Java 11
 
-201605<>:   
+2016-05-<>:   
 
 -   As of 9th of May of 2016, the first functional version became available.
 

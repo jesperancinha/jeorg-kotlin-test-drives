@@ -1,10 +1,12 @@
 package com.jesperancinha.coffee.system.concurrency;
 
+import com.jesperancinha.coffee.api.concurrency.PostActionCallable;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.objects.ActionDescriptor;
 import lombok.Getter;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Getter
 public class PostActionCallableImpl extends ActionCallable implements PostActionCallable {
 
-    private static final Logger logger = Logger.getLogger(PreActionCallableImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PreActionCallableImpl.class);
     @Autowired
     private MachineProcessor machineProcessor;
 
@@ -41,7 +43,7 @@ public class PostActionCallableImpl extends ActionCallable implements PostAction
                     try {
                         TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
                     } catch (InterruptedException e) {
-                        logger.error(e);
+                        logger.error(e.getMessage(), e);
                     }
                 }
         );

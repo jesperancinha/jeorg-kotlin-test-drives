@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 public class CoffeeParadigmsMain {
     public static void main(String[] args) throws
             CmdLineException,
-            InterruptedException,
             FileNotFoundException,
             SAXException,
             JAXBException {

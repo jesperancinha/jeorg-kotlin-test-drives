@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.system.manager;
+package com.jesperancinha.coffee.api.manager;
 
 import com.jesperancinha.coffee.system.input.CoffeeMachines;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;

@@ -1,9 +1,10 @@
 package com.jesperancinha.coffee.system.concurrency;
 
+import com.jesperancinha.coffee.api.concurrency.CoffeCallable;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime;
-import com.jesperancinha.coffee.system.manager.MachineProcessor;
 import lombok.Getter;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class CoffeeCallableImpl extends QueueCallableAbstract implements CoffeCallable {
 
-    private static final Logger logger = Logger.getLogger(CoffeeCallableImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CoffeeCallableImpl.class);
     private FillTime fillTime;
     private String name;
 
@@ -35,7 +36,7 @@ public class CoffeeCallableImpl extends QueueCallableAbstract implements CoffeCa
         try {
             TimeUnit.MILLISECONDS.sleep(fillTime.getValue());
         } catch (InterruptedException e) {
-            logger.error(e);
+            logger.error(e.getMessage(), e);
         }
         return true;
     }

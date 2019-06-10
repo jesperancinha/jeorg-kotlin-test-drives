@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.system.concurrency;
+package com.jesperancinha.coffee.api.concurrency;
 
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.

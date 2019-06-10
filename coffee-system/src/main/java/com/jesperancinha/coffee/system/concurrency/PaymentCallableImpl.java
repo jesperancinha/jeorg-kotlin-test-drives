@@ -1,13 +1,15 @@
 package com.jesperancinha.coffee.system.concurrency;
 
+import com.jesperancinha.coffee.api.concurrency.PaymentCallable;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.api.manager.PostProcessor;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.manager.GeneralProcessorImpl;
-import com.jesperancinha.coffee.system.manager.MachineProcessor;
-import com.jesperancinha.coffee.system.manager.PostProcessor;
 import lombok.Getter;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @Getter
 public class PaymentCallableImpl extends QueueCallableAbstract implements PaymentCallable {
 
-    private static final Logger logger = Logger.getLogger(PaymentCallableImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PaymentCallableImpl.class);
     private final Payment chosenPayment;
     @Autowired
     private MachineProcessor machineProcessor;
@@ -32,11 +34,11 @@ public class PaymentCallableImpl extends QueueCallableAbstract implements Paymen
 
 
     public PaymentCallableImpl(
-                                Employee employee,
-                                String name,
-                                Payment payment,
-                                List<PostAction> postActions,
-                                MachineProcessor machineProcessor
+            Employee employee,
+            String name,
+            Payment payment,
+            List<PostAction> postActions,
+            MachineProcessor machineProcessor
     ) {
         super();
         this.employee = employee;

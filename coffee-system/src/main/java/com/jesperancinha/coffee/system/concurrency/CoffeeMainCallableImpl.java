@@ -1,15 +1,17 @@
 package com.jesperancinha.coffee.system.concurrency;
 
+import com.jesperancinha.coffee.api.concurrency.CoffeeMainCallable;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.api.manager.PaymentProcessor;
+import com.jesperancinha.coffee.api.utils.ExecutorServiceHelper;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.manager.MachineProcessor;
-import com.jesperancinha.coffee.system.manager.PaymentProcessor;
-import com.jesperancinha.coffee.system.utils.ExecutorServiceHelper;
 import lombok.Getter;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Getter
 public class CoffeeMainCallableImpl extends QueueCallableAbstract implements CoffeeMainCallable {
-    private static final Logger logger = Logger.getLogger(CoffeeMainCallableImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CoffeeMainCallableImpl.class);
 
     private Employee employee;
     private String name;

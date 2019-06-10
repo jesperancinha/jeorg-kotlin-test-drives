@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.system.concurrency;
+package com.jesperancinha.coffee.api.concurrency;
 
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
 

@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.system.concurrency;
+package com.jesperancinha.coffee.api.concurrency;
 
 import java.util.List;
 import java.util.concurrent.Callable;

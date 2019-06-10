@@ -1,16 +1,17 @@
 package com.jesperancinha.coffee.system.concurrency;
 
+import com.jesperancinha.coffee.api.concurrency.PreActionCallable;
+import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
-import com.jesperancinha.coffee.system.manager.CoffeeProcessor;
-import com.jesperancinha.coffee.system.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.objects.ActionDescriptor;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
@@ -19,9 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 @Accessors(chain = true)
-@NoArgsConstructor
 public class PreActionCallableImpl extends ActionCallable implements PreActionCallable {
-    private final static Logger logger = Logger.getLogger(PreActionCallableImpl.class);
+    private final static Logger logger = LoggerFactory.getLogger(PreActionCallableImpl.class);
 
     private MachineProcessor machineProcessor;
     private Coffee coffee;
@@ -37,6 +37,7 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
             List<PostAction> postActions,
             MachineProcessor machineProcessor
     ) {
+        super(name);
         this.employee = employee;
         this.name = name;
         this.coffee = coffee;
@@ -59,7 +60,7 @@ public class PreActionCallableImpl extends ActionCallable implements PreActionCa
                     try {
                         TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
                     } catch (InterruptedException e) {
-                        logger.error(e);
+                        logger.error(e.getMessage(), e);
                     }
                 }
         );

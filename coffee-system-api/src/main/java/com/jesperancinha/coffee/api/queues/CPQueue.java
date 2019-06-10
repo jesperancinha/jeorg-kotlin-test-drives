@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.system.queues;
+package com.jesperancinha.coffee.api.queues;
 
 import java.util.concurrent.ExecutorService;
 
@@ -15,6 +15,4 @@ public interface CPQueue {
     void stopExecutors();
 
     java.util.Map<String, java.util.concurrent.ThreadPoolExecutor> getExecutorServiceMap();
-
-    java.util.Map<String, Integer> getNumberToCreateMap();
 }

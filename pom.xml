@@ -16,29 +16,37 @@
         <java.version>11</java.version>
         <maven.compiler>3.8.0</maven.compiler>
         <build.helper.plugin>1.10</build.helper.plugin>
-        <lombok.project>1.18.8</lombok.project>
         <args4j>2.33</args4j>
         <junit.version>4.12</junit.version>
         <log4j>1.2.17</log4j>
         <javax.concurrency.version>1.0</javax.concurrency.version>
-        <javax.ejb.version>3.0</javax.ejb.version>
+        <javax.ejb.version>3.2.2</javax.ejb.version>
         <mockito.version>1.10.19</mockito.version>
         <maven.shade.version>2.4.3</maven.shade.version>
-        <jaxb-api.version>2.3.0</jaxb-api.version>
-        <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
-        <jakarta.activation.version>1.2.1</jakarta.activation.version>
+        <sun.xml.bind.version>2.3.0</sun.xml.bind.version>
+        <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <cxf-xjc-plugin.version>3.3.0</cxf-xjc-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+        <lombok.version>1.18.8</lombok.version>
+        <javax.activation.version>1.2.0</javax.activation.version>
+        <log4j-core.version>2.11.2</log4j-core.version>
+        <slf4j-api.version>1.7.26</slf4j-api.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
     <modules>
-        <module>coffee-system</module>
         <module>coffee-system-api</module>
+        <module>coffee-system</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>args4j</groupId>
+                <artifactId>args4j</artifactId>
+                <version>${args4j}</version>
+            </dependency>
             <dependency>
                 <groupId>javax.xml.bind</groupId>
                 <artifactId>jaxb-api</artifactId>
@@ -51,9 +59,30 @@
             </dependency>
             <dependency>
                 <groupId>com.sun.activation</groupId>
-                <artifactId>jakarta.activation</artifactId>
-                <version>${jakarta.activation.version}</version>
+                <artifactId>javax.activation</artifactId>
+                <version>${javax.activation.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j-core.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

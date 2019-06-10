@@ -3,8 +3,8 @@
 *.iml
 
 # Maven
-
 **/target
+dependency-reduced-pom.xml
 
 # Eclipse settings
 .metadata/

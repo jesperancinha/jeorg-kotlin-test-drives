@@ -1,6 +1,7 @@
 package com.jesperancinha.coffee.system.queues;
 
-import com.jesperancinha.coffee.system.utils.ExecutorServiceHelper;
+import com.jesperancinha.coffee.api.queues.CPQueue;
+import com.jesperancinha.coffee.api.utils.ExecutorServiceHelper;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -12,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Getter
-public class QueueAbstract implements CPQueue {
+public abstract class Queue implements CPQueue {
     private Map<String, ThreadPoolExecutor> executorServiceMap = new HashMap<>();
     private Map<String, Integer> numberToCreateMap = new HashMap<>();
 
@@ -38,7 +39,7 @@ public class QueueAbstract implements CPQueue {
 
     @Override
     public void initExecutors() {
-        numberToCreateMap.keySet().stream().forEach(
+        numberToCreateMap.keySet().forEach(
                 name -> {
                     final ThreadPoolExecutor currentExecutor = getExecutor(name);
                     if (currentExecutor != null) {
@@ -53,7 +54,7 @@ public class QueueAbstract implements CPQueue {
 
     @Override
     public void stopExecutors() {
-        executorServiceMap.values().stream().forEach(
+        executorServiceMap.values().forEach(
                 ExecutorServiceHelper::shutDownExecutorService
         );
     }

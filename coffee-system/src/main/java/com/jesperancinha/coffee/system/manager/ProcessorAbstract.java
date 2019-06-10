@@ -1,8 +1,7 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.system.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
-import org.apache.log4j.Logger;
+import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.queues.Queue;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -16,7 +15,7 @@ public abstract class ProcessorAbstract {
 
     public static final String SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!";
 
-    public abstract QueueAbstract getExecutorServiceQueue();
+    public abstract Queue getExecutorServiceQueue();
 
     public void waitForAllCalls(QueueCallable queueCallable) {
         queueCallable.waitForCalls();

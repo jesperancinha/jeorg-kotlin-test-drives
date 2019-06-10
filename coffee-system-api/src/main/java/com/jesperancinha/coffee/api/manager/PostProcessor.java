@@ -1,6 +1,6 @@
-package com.jesperancinha.coffee.system.manager;
+package com.jesperancinha.coffee.api.manager;
 
-import com.jesperancinha.coffee.system.concurrency.QueueCallable;
+import com.jesperancinha.coffee.api.concurrency.QueueCallable;
 import com.jesperancinha.coffee.system.input.Employees;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions;
 

@@ -1,16 +1,23 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.system.concurrency.*;
+import com.jesperancinha.coffee.api.concurrency.PreActionCallable;
+import com.jesperancinha.coffee.api.concurrency.StartupCallable;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.api.manager.PreProcessor;
+import com.jesperancinha.coffee.system.concurrency.ActionCallable;
+import com.jesperancinha.coffee.system.concurrency.PreActionCallableImpl;
+import com.jesperancinha.coffee.system.concurrency.StartupCallableImpl;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
+import com.jesperancinha.coffee.system.queues.Queue;
 import com.jesperancinha.coffee.system.queues.QueuePreActivityImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +29,7 @@ import java.util.concurrent.Callable;
 @Service
 public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor {
 
-    private static final Logger logger = Logger.getLogger(PreProcessorImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PreProcessorImpl.class);
     private final StartupCallable startupCallable;
     @Autowired
     private QueuePreActivityImpl queuePreActivity;
@@ -68,7 +75,7 @@ public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor 
     }
 
     @Override
-    public QueueAbstract getExecutorServiceQueue() {
+    public Queue getExecutorServiceQueue() {
         return queuePreActivity;
     }
 

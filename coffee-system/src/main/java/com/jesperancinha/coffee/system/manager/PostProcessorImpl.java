@@ -1,15 +1,17 @@
 package com.jesperancinha.coffee.system.manager;
 
+import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.api.manager.PostProcessor;
 import com.jesperancinha.coffee.system.concurrency.ActionCallable;
 import com.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
-import com.jesperancinha.coffee.system.concurrency.QueueCallable;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.queues.QueueAbstract;
+import com.jesperancinha.coffee.system.queues.Queue;
 import com.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,7 @@ import java.util.concurrent.Callable;
 @Service
 public class PostProcessorImpl extends ProcessorAbstract implements PostProcessor {
 
-    private static final Logger logger = Logger.getLogger(PostProcessorImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(PostProcessorImpl.class);
 
     @Autowired
     private QueuePostActivityImpl queuePostActivity;
@@ -39,7 +41,7 @@ public class PostProcessorImpl extends ProcessorAbstract implements PostProcesso
     }
 
     @Override
-    public QueueAbstract getExecutorServiceQueue() {
+    public Queue getExecutorServiceQueue() {
         return queuePostActivity;
     }
 

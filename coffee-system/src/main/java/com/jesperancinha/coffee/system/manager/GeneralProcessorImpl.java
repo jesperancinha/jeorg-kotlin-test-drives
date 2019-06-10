@@ -1,5 +1,6 @@
 package com.jesperancinha.coffee.system.manager;
 
+import com.jesperancinha.coffee.api.manager.*;
 import com.jesperancinha.coffee.system.input.CoffeeMachines;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
@@ -8,6 +9,8 @@ import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.objects.EmployeeLayer;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -30,6 +33,8 @@ import java.util.Random;
 @Setter
 @Service
 public class GeneralProcessorImpl implements GeneralProcessor {
+
+    private static final Logger logger = LoggerFactory.getLogger(GeneralProcessorImpl.class);
 
     public static final String MAIN_QUEUE_PRE = "MAIN_QUEUE_PRE";
 
@@ -80,6 +85,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     public void initSimulationProcess()
             throws FileNotFoundException,
             JAXBException {
+        logger.info("Starting coffee simulation process...");
         initSimulationProcess(
                 new FileInputStream(
                         this.sourceXmlMachinesFile
@@ -101,6 +107,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      */
     @Override
     public void initSimulationProcess(InputStream coffeesFile, InputStream employeesFile) throws JAXBException {
+        logger.info("Starting simulation process...");
         this.coffeeMachines = createCoffeeMachines(coffeesFile);
         this.employees = createEmployees(employeesFile);
     }

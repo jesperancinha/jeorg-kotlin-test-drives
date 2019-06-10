@@ -1,5 +1,6 @@
 package com.jesperancinha.coffee.system.stats;
 
+import com.jesperancinha.coffee.api.stats.CoffeeStats;
 import lombok.Getter;
 
 @Getter
