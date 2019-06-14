@@ -142,6 +142,8 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 -   GitHub [jesperancinha](https://github.com/jesperancinha)
 -   Free Code Camp [jofisaes](https://www.freecodecamp.org/jofisaes)
 -   Hackerrank [jofisaes](https://www.hackerrank.com/jofisaes)
+-   Acclaim Badges [joao-esperancinha](https://www.youracclaim.com/users/joao-esperancinha/badges)
+-   Home Page [joaofilipesabinoesperancinha](http://joaofilipesabinoesperancinha.nl)
 
 ## License
 
