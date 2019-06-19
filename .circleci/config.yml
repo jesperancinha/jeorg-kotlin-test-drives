@@ -31,6 +31,12 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run: wget https://services.gradle.org/distributions/gradle-5.4.1-bin.zip -P /tmp
+      - run: sudo unzip -d /opt/gradle /tmp/gradle-5.4.1-bin.zip
+      - run: export GRADLE_HOME=/opt/gradle/radle-5.4.1
+      - run: export PATH=${GRADLE_HOME}/bin:${PATH}
+      - run: radle -v
+
       - run: gradle install
       - run: gradle dependencies
 
