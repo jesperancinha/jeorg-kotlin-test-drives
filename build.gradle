@@ -8,8 +8,8 @@ version '0.0.0-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
+wrapper {
+    gradleVersion = '5.0'
 }
 
 repositories {

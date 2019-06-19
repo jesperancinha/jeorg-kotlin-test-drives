@@ -1,4 +1,4 @@
-# string-array-paradigms 
+# String Array Paradigms
 ---
 [![CircleCI](https://circleci.com/gh/jesperancinha/string-array-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/string-array-paradigms)
 [![Build Status](https://travis-ci.org/jesperancinha/string-array-paradigms.svg?branch=master)](https://travis-ci.org/jesperancinha/string-array-paradigms)
@@ -11,6 +11,18 @@
 ## Description:
 
 A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll keep looking after it from now on and integrate it into future Java versions
+
+## Install gradle
+
+Your gradle location should be: /usr/local/Cellar/gradle/5.4.1/libexec.
+
+If not, please run:
+
+```bash
+
+$ brew install gradle
+
+```
 
 ## Running these tests:
 
