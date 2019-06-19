@@ -9,7 +9,7 @@ sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 wrapper {
-    gradleVersion = '4.0'
+    gradleVersion = '5.0'
 }
 
 repositories {
