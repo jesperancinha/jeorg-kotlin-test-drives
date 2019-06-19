@@ -5,4 +5,4 @@ jdk:
 - oraclejdk11
 
 script:
-- gradle clean install test
+- gradle clean install test --warning-mode all
