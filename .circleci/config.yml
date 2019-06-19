@@ -33,12 +33,10 @@ jobs:
 
       - run: wget https://services.gradle.org/distributions/gradle-5.4.1-bin.zip -P /tmp
       - run: sudo unzip -d /opt/gradle /tmp/gradle-5.4.1-bin.zip
-      - run: export GRADLE_HOME=/opt/gradle/gradle-5.4.1
-      - run: export PATH=${GRADLE_HOME}/bin:${PATH}
-      - run: gradle -v
+      - run: /opt/gradle/gradle-5.4.1/bin/gradle -v
 
-      - run: gradle install
-      - run: gradle dependencies
+      - run: /opt/gradle/gradle-5.4.1/bin/gradle install
+      - run: /opt/gradle/gradle-5.4.1/bin/gradle dependencies
 
       - save_cache:
           paths:
@@ -46,7 +44,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
         
       # run tests!
-      - run: gradle test
+      - run: /opt/gradle/gradle-5.4.1/bin/gradle test
 
 
 
