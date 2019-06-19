@@ -24,7 +24,7 @@ public class RunSpellingCheck {
 		for (String size : assignedNumbers) {
 			check.checkSpelling(size);
 		}
-		List<String> incorrect = new ArrayList<String>();
+		List<String> incorrect = new ArrayList<>();
 		incorrect.addAll(check.getSpellingDoubleCommaRegions());
 		incorrect.addAll(check.getSpellingBeginCapitalRegions());
 		incorrect.addAll(check.getSpellingWhiteSpacesRegions());

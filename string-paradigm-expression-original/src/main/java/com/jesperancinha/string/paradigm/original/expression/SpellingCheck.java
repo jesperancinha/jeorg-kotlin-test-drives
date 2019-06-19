@@ -9,9 +9,9 @@ public class SpellingCheck {
     private static final Pattern DOUBLE_COMMAS = Pattern.compile(".*,\\s*,.*");
     private static final Pattern WHITE_SPACES = Pattern.compile(".*\\s\\s+.*");
 
-    private final List<String> spellingDoubleCommaRegions = new ArrayList<String>();
-	private final List<String> spellingWhiteSpacesRegions = new ArrayList<String>();
-	private final List<String> spellingBeginCapitalRegions = new ArrayList<String>();
+    private final List<String> spellingDoubleCommaRegions = new ArrayList<>();
+	private final List<String> spellingWhiteSpacesRegions = new ArrayList<>();
+	private final List<String> spellingBeginCapitalRegions = new ArrayList<>();
 
     public void checkSpelling(String text) {
     	if (DOUBLE_COMMAS.matcher(text).matches()) {

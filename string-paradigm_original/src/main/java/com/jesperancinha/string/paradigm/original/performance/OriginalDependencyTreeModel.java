@@ -43,7 +43,7 @@ public class OriginalDependencyTreeModel extends DefaultTreeModel implements Seg
 	public List<String> getDependencies(TreePath path) {
 		DefaultMutableTreeNode last = (DefaultMutableTreeNode) path.getLastPathComponent();
 		Object[] objects = last.getUserObjectPath();
-		List<String> subDependencyElement = new ArrayList<String>();
+		List<String> subDependencyElement = new ArrayList<>();
 		for (int i = 1; i < objects.length; i++) {
 			subDependencyElement.add((String) objects[i]);
 		}

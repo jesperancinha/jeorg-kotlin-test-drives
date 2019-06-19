@@ -3,8 +3,8 @@ package com.jesperancinha.string.paradigm.original.expression;
 import java.util.regex.Pattern;
 
 public abstract class SpellingCheck {
-	static final Pattern DOUBLE_COMMAS = Pattern.compile(".*,\\s*,.*");
-	static final Pattern WHITE_SPACES = Pattern.compile(".*\\s\\s+.*");
+	private static final Pattern DOUBLE_COMMAS = Pattern.compile(".*,\\s*,.*");
+	private static final Pattern WHITE_SPACES = Pattern.compile(".*\\s\\s+.*");
 
 	protected boolean checkDoubleCommas(String element) {
 		return DOUBLE_COMMAS.matcher(element).matches();

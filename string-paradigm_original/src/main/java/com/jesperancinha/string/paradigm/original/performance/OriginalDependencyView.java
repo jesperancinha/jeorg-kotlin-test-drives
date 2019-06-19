@@ -112,7 +112,7 @@ public class OriginalDependencyView extends JPanel {
     }
 
     private void showCombinations(TreePath[] paths) {
-        List<String> filtered = new ArrayList<String>();
+        List<String> filtered = new ArrayList<>();
 
         if(paths != null) {
             for(TreePath path : paths) {
@@ -173,7 +173,7 @@ public class OriginalDependencyView extends JPanel {
     }
     
     private List<String> readLines(File file) throws IOException {
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
         try {
             String line;

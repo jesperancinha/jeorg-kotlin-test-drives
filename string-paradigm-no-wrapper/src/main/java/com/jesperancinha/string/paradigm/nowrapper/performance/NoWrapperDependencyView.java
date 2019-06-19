@@ -110,7 +110,7 @@ public class NoWrapperDependencyView extends JPanel {
     }
 
     private void showCombinations(TreePath[] paths) {
-        List<String> filtered = new ArrayList<String>();
+        List<String> filtered = new ArrayList<>();
 
         if(paths != null) {
             for(TreePath path : paths) {
@@ -178,7 +178,7 @@ public class NoWrapperDependencyView extends JPanel {
     }
     
     private List<String> readLines(File file) throws IOException {
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
         FileReader fileReader = new FileReader(file);
         BufferedReader reader = new BufferedReader(fileReader);
         try {
