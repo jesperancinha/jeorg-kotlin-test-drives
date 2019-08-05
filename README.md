@@ -54,6 +54,7 @@ limitations under the License.
 
 ## About me
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/80f8291a9f4d4653852d5ba8ca5a2875)](https://app.codacy.com/app/jofisaes/xml-adder?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/xml-adder&utm_campaign=Badge_Grade_Dashboard)
 -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=joaofilipesabinoesperancinha&color=informational)](http://joaofilipesabinoesperancinha.nl)
 
 -   [![Twitter Follow](https://img.shields.io/twitter/follow/jofisaes.svg?label=%40jofisaes&style=social)](https://twitter.com/intent/follow?screen_name=jofisaes)
