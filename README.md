@@ -34,6 +34,7 @@ gradle test
 ./gradlew test
 
 ```
+
 ## License
 
 ```text
@@ -54,7 +55,6 @@ limitations under the License.
 
 ## About me
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/80f8291a9f4d4653852d5ba8ca5a2875)](https://app.codacy.com/app/jofisaes/xml-adder?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/xml-adder&utm_campaign=Badge_Grade_Dashboard)
 -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=joaofilipesabinoesperancinha&color=informational)](http://joaofilipesabinoesperancinha.nl)
 
 -   [![Twitter Follow](https://img.shields.io/twitter/follow/jofisaes.svg?label=%40jofisaes&style=social)](https://twitter.com/intent/follow?screen_name=jofisaes)
@@ -67,12 +67,17 @@ limitations under the License.
 
 -   Acclaim Badges [joao-esperancinha](https://www.youracclaim.com/users/joao-esperancinha/badges)
 
--   Personal Projects:
+-   Projects:
 
     -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=Time%20Disruption%20Studios&color=informational)](http://tds.joaofilipesabinoesperancinha.nl/)
     -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=Image%20Train%20Filters&color=informational)](http://itf.joaofilipesabinoesperancinha.nl/)
     -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Homepage&message=MancalaJE&color=informational)](http://mancalaje.joaofilipesabinoesperancinha.nl/)
-    -   Google play apps: [Joao+Filipe+Sabino+Esperancinha](https://play.google.com/store/apps/developer?id=Joao+Filipe+Sabino+Esperancinha)
-
-
-
+    -   [![Generic badge](https://img.shields.io/static/v1.svg?label=Google%20Apps&message=Joao+Filipe+Sabino+Esperancinha&color=informational)](https://play.google.com/store/apps/developer?id=Joao+Filipe+Sabino+Esperancinha)
+-   Releases:
+    -   itf-chartizate-android:   
+        [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate-android)](https://search.maven.org/search?q=a:itf-chartizate-android) 
+        [![Download](https://api.bintray.com/packages/jesperancinha/maven/itf-chartizate-android/images/download.svg)](https://bintray.com/jesperancinha/maven/itf-chartizate-android/_latestVersion)
+    -   itf-chartizate-java:   
+        [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate)](https://search.maven.org/search?q=a:itf-chartizate)
+    -   itf-chartizate-api:  
+        [![Maven Central](https://img.shields.io/maven-central/v/org.jesperancinha.itf/itf-chartizate-api)](https://search.maven.org/search?q=a:itf-chartizate-api)
