@@ -30,7 +30,7 @@
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <lombok.version>1.18.8</lombok.version>
         <javax.activation.version>1.2.0</javax.activation.version>
-        <log4j-core.version>2.11.2</log4j-core.version>
+        <log4j-core.version>2.13.2</log4j-core.version>
         <slf4j-api.version>1.7.26</slf4j-api.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
