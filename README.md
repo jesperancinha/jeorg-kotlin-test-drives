@@ -21,8 +21,6 @@ sdk use java 11.0.1-open
 ### Running these tests:
 
 * Make sure that Intellij or Eclipse have interpreted this code correctly
-
-
 ```bash
 
 gradle idea 
