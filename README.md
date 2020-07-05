@@ -70,8 +70,6 @@ You will be able to:
 For this simulator, socializing times are not considered because they may vary a lot, from non-existent to very lasting.
 
 Essentially you will get an average, mode and standard deviation for the amount you times you decide to run this specific simulation.
-
-
 ## Usage
 
 * Go to target in the coffe-system folder and pick the jar generated file. Then try the following example (or with your own files):
@@ -81,8 +79,6 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 ```
 
 ## Input files format
-
-
 * Employees:
 
 [cs_employee.xsd](https://github.com/jesperancinha/coffee-paradigms/blob/master/coffee-system-api/src/main/resources/cs_employee.xsd)
