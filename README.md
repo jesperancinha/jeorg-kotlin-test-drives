@@ -17,6 +17,8 @@ Kotlin Language study project.
 
 ## Contents
 
+- [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
+
 ## Build
 
 Note that if you want to build this project from the root, you need to use one of the JDK 11 or upper versions.
