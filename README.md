@@ -15,9 +15,20 @@
 
 Kotlin Language study project.
 
-## Contents:
+## Contents
 
 ## Build
+
+Note that if you want to build this project from the root, you need to use one of the JDK 11 or upper versions.
+
+<i>See [Hints&Tricks](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/Hints%26Tricks.md) document for more details</i>
+
+## Install JDK 11 using [SDK-MAN](https://sdkman.io/)
+
+```bash
+sdk install java 11.0.9.hs-adpt
+sdk use java 11.0.9.hs-adpt
+```
 
 ## References:
 
