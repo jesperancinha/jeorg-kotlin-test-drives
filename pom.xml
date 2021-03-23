@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jesperancinha.ktd</groupId>
-    <artifactId>kotlin-test-drives</artifactId>
+    <artifactId>jeorg-kotlin-4-test-drives</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

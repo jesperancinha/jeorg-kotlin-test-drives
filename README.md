@@ -32,13 +32,48 @@ sdk install java 11.0.9.hs-adpt
 sdk use java 11.0.9.hs-adpt
 ```
 
-## References:
+## Sequence Diagram
 
-### Online
+```mermaid
+
+sequenceDiagram
+    participant USER
+    participant KOTLIN
+    participant Kotlin Professional
+    
+    rect rgb(1,130,25)
+    
+        rect rgb(1,240,100)
+        USER->>KOTLIN: User studies kotlin
+        end
+    
+        rect rgb(1,240,100)
+            KOTLIN->>Kotlin Professional: User becomes
+            
+            loop Keep updated
+                 rect rgb(240,240,100)
+                 Kotlin Professional->>KOTLIN: User studies again
+                 end
+            end
+        end
+    
+        rect rgb(1,240,100)
+        USER->>KOTLIN: User studies again
+    end
+end
+```
+
+<i>Note: You need a Mermaid plugin extension</i> i.e. [mermaid-plugin](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil/related)
+
+
+## References:
 
 ### Books
 
 - Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
+- Griffiths, D. Griffiths, D. (February 2019). <i>Head First A Brain-Friendly Guide</i>. (First Edition). O'Reilly
+- Skeen, J. Greenhalgh, D. (July 2018). <i>Kotlin Programming - The Big Nerd Ranch Guide</i>. (First Edition). Big Nerd Ranch
+- Jemerov, D. Isakova, S. (2017). <i>Kotlin in Action</i>. (First Edition). Manning Publications
 
 ## About me 👨🏽‍💻🚀
 
