@@ -24,7 +24,7 @@
         <mockito.version>1.10.19</mockito.version>
         <maven.shade.version>2.4.3</maven.shade.version>
         <sun.xml.bind.version>2.3.0</sun.xml.bind.version>
-        <jaxb-runtime.version>2.3.1</jaxb-runtime.version>
+        <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <cxf-xjc-plugin.version>3.3.0</cxf-xjc-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
