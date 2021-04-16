@@ -1,4 +1,6 @@
 # Coffee paradigms simulator
+
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/coffee-paradigms)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Coffee%20Paradigms&color=informational)](https://github.com/jesperancinha/coffee-paradigms)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/app/jofisaes/coffee-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/coffee-paradigms&amp;utm_campaign=Badge_Grade)
@@ -70,6 +72,7 @@ You will be able to:
 For this simulator, socializing times are not considered because they may vary a lot, from non-existent to very lasting.
 
 Essentially you will get an average, mode and standard deviation for the amount you times you decide to run this specific simulation.
+
 ## Usage
 
 * Go to target in the coffe-system folder and pick the jar generated file. Then try the following example (or with your own files):
@@ -79,6 +82,7 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 ```
 
 ## Input files format
+
 * Employees:
 
 [cs_employee.xsd](https://github.com/jesperancinha/coffee-paradigms/blob/master/coffee-system-api/src/main/resources/cs_employee.xsd)
@@ -95,17 +99,18 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 
 2019-06-10:
 
--   Modularization with Java 11
+- Modularization with Java 11
 
 2019-06-09:
 
--   Project migrated to Java 11
+- Project migrated to Java 11
 
-2016-05-<>:   
+2016-05-<>:
 
--   As of 9th of May of 2016, the first functional version became available.
+- As of 9th of May of 2016, the first functional version became available.
 
 > Example Output:
+
 ```text
 2016-05-08 18:06:34.417 INFO  ClassPathXmlApplicationContext:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@69222c14: startup date [Sun May 08 18:06:34 CEST 2016]; root of context hierarchy
 2016-05-08 18:06:34.443 INFO  XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [META-INF/config.xml]
@@ -133,9 +138,10 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 2016-05-08 18:06:34.969 INFO  PreActionCallableImpl:40 - Ending with dummy
 
 ```
+
 ## References
 
--   [Generating classes from XSD under Java 11 – the right way](https://artofcode.wordpress.com/2019/02/28/generating-classes-from-xsd-under-java-11-the-right-way/)
+- [Generating classes from XSD under Java 11 – the right way](https://artofcode.wordpress.com/2019/02/28/generating-classes-from-xsd-under-java-11-the-right-way/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

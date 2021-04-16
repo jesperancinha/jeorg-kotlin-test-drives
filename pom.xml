@@ -11,9 +11,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
         <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler>3.8.0</maven.compiler>
         <build.helper.plugin>1.10</build.helper.plugin>
         <args4j>2.33</args4j>
@@ -26,13 +27,17 @@
         <sun.xml.bind.version>2.3.0</sun.xml.bind.version>
         <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-        <cxf-xjc-plugin.version>3.3.0</cxf-xjc-plugin.version>
+        <cxf-xjc-plugin.version>3.3.1</cxf-xjc-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <lombok.version>1.18.8</lombok.version>
         <javax.activation.version>1.2.0</javax.activation.version>
         <log4j-core.version>2.13.2</log4j-core.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
+        <truth.version>0.42</truth.version>
+        <spring.version>5.3.5</spring.version>
+        <activation.version>1.1.1</activation.version>
+        <slf4j-jdk14.version>1.7.30</slf4j-jdk14.version>
     </properties>
 
     <modules>
@@ -42,6 +47,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>javax.activation</groupId>
+                <artifactId>activation</artifactId>
+                <version>${activation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jdk14</artifactId>
+                <version>${slf4j-jdk14.version}</version>
+            </dependency>
             <dependency>
                 <groupId>args4j</groupId>
                 <artifactId>args4j</artifactId>
@@ -62,27 +77,41 @@
                 <artifactId>javax.activation</artifactId>
                 <version>${javax.activation.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j-core.version}</version>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j-api.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.google.truth</groupId>
+                <artifactId>truth</artifactId>
+                <version>${truth.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

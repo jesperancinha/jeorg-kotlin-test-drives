@@ -7,8 +7,7 @@ module jesperancinha.system {
     requires java.xml.bind;
     requires lombok;
     requires jesperancinha.api;
-    requires slf4j.api;
-    requires slf4j.jdk14;
     requires spring.context;
     requires spring.beans;
+    requires org.slf4j;
 }
