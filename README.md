@@ -4,6 +4,10 @@
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Kotlin%20Test%20Drives&color=informational)](https://github.com/jesperancinha/kotlin-test-drives)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/kotlin-test-drives.svg)](#)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/03eb6acb5bf34d1d8c82c5cf65268e60)](https://www.codacy.com/gh/jesperancinha/jeorg-kotlin-4-test-drives/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/jeorg-kotlin-4-test-drives&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/0250d204-8979-4e20-be16-209ec6b20456)](https://codebeat.co/projects/github-com-jesperancinha-jeorg-kotlin-4-test-drives-main)
+
+
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/kotlin-test-drives.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/kotlin-test-drives.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/kotlin-test-drives.svg)](#)
@@ -17,7 +21,7 @@ Kotlin Language study project.
 
 ## Contents
 
-- [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
+-   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
 
 ## Build
 
@@ -64,14 +68,14 @@ end
 ```
 
 <i>Note: You need a Mermaid plugin extension</i> i.e. [mermaid-plugin](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil/related)
-## References:
+## References
 
 ### Books
 
-- Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
-- Griffiths, D. Griffiths, D. (February 2019). <i>Head First A Brain-Friendly Guide</i>. (First Edition). O'Reilly
-- Skeen, J. Greenhalgh, D. (July 2018). <i>Kotlin Programming - The Big Nerd Ranch Guide</i>. (First Edition). Big Nerd Ranch
-- Jemerov, D. Isakova, S. (2017). <i>Kotlin in Action</i>. (First Edition). Manning Publications
+-   Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
+-   Griffiths, D. Griffiths, D. (February 2019). <i>Head First A Brain-Friendly Guide</i>. (First Edition). O'Reilly
+-   Skeen, J. Greenhalgh, D. (July 2018). <i>Kotlin Programming - The Big Nerd Ranch Guide</i>. (First Edition). Big Nerd Ranch
+-   Jemerov, D. Isakova, S. (2017). <i>Kotlin in Action</i>. (First Edition). Manning Publications
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
