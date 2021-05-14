@@ -1,6 +1,6 @@
 # xml-adder
 
-### Intro:
+### Intro
 
 This software is designed to apply modifications to xml files.
 
@@ -18,7 +18,7 @@ sdk use java 11.0.1-open
 
 ```
 
-### Running these tests:
+### Running these tests
 
 * Make sure that Intellij or Eclipse have interpreted this code correctly
 ```bash
