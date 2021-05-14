@@ -6,7 +6,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/app/jofisaes/coffee-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/coffee-paradigms&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/0d45f066-b81a-4cb8-ae72-d3f6daf5b736)](https://codebeat.co/projects/github-com-jesperancinha-coffee-paradigms-master)
 [![CircleCI](https://circleci.com/gh/jesperancinha/coffee-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/coffee-paradigms)
-[![Build Status](https://travis-ci.org/jesperancinha/coffee-paradigms.svg?branch=master)](https://travis-ci.org/jesperancinha/coffee-paradigms)
+[![Build Status](https://travis-ci.com/jesperancinha/coffee-paradigms.svg?branch=master)](https://travis-ci.com/jesperancinha/coffee-paradigms)
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/coffee-paradigms?branch=master)](https://bettercodehub.com/)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/coffee-paradigms.svg)](#)
@@ -99,15 +99,15 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 
 2019-06-10:
 
-- Modularization with Java 11
+-   Modularization with Java 11
 
 2019-06-09:
 
-- Project migrated to Java 11
+-   Project migrated to Java 11
 
 2016-05-<>:
 
-- As of 9th of May of 2016, the first functional version became available.
+-   As of 9th of May of 2016, the first functional version became available.
 
 > Example Output:
 
@@ -141,7 +141,7 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 
 ## References
 
-- [Generating classes from XSD under Java 11 – the right way](https://artofcode.wordpress.com/2019/02/28/generating-classes-from-xsd-under-java-11-the-right-way/)
+-   [Generating classes from XSD under Java 11 – the right way](https://artofcode.wordpress.com/2019/02/28/generating-classes-from-xsd-under-java-11-the-right-way/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 

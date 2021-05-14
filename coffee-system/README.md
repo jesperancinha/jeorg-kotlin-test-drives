@@ -2,7 +2,7 @@
 
 This is the implementation of the multithreaded system which provides the simulation.
 
-## Running the command line:
+## Running the command line
 
 * Go to target and try the following example:
 

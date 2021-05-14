@@ -1,10 +1,10 @@
 # Coffee system API
 
-## Description:
+## Description
 
 The API provides the interfaces, object definitions and validations.
 
-## References:
+## References
 
 * http://www.freeformatter.com/xsd-generator.html
 
