@@ -7,8 +7,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/03eb6acb5bf34d1d8c82c5cf65268e60)](https://www.codacy.com/gh/jesperancinha/jeorg-kotlin-4-test-drives/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/jeorg-kotlin-4-test-drives&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/0250d204-8979-4e20-be16-209ec6b20456)](https://codebeat.co/projects/github-com-jesperancinha-jeorg-kotlin-4-test-drives-main)
 [![CircleCI](https://circleci.com/gh/jesperancinha/jeorg-kotlin-4-test-drives.svg?style=svg)](https://circleci.com/gh/jesperancinha/jeorg-kotlin-4-test-drives)
-[![Build Status](https://travis-ci.com/jesperancinha/jeorg-kotlin-4-test-drives.svg?branch=master)](https://travis-ci.com/jesperancinha/jeorg-kotlin-4-test-drives)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/jeorg-kotlin-4-test-drives?branch=master)](https://bettercodehub.com/results/jesperancinha/jeorg-kotlin-4-test-drives)
+[![Build Status](https://travis-ci.com/jesperancinha/jeorg-kotlin-4-test-drives.svg?branch=main)](https://travis-ci.com/jesperancinha/jeorg-kotlin-4-test-drives)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/jeorg-kotlin-4-test-drives?branch=main)](https://bettercodehub.com/results/jesperancinha/jeorg-kotlin-4-test-drives)
 [![Known Vulnerabilities](https://snyk.io/test/github/jesperancinha/jeorg-kotlin-4-test-drives/badge.svg)](https://snyk.io/test/github/jesperancinha/jeorg-kotlin-4-test-drives)
 
 
