@@ -12,7 +12,7 @@
     <artifactId>jeorg-kotlin-utilities</artifactId>
 
     <modules>
-        <module>jeorg-kotlin-decoder-1</module>
+        <module>jeorg-kotlin-codec-1</module>
     </modules>
 
     <packaging>pom</packaging>
