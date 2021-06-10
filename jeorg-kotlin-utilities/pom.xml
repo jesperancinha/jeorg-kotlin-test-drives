@@ -13,6 +13,7 @@
 
     <modules>
         <module>jeorg-kotlin-codec-1</module>
+        <module>jeorg-kotlin-codec-2</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.util1.decoder
+package org.jesperancinha.ktd.util1.codec
 
 import java.util.stream.Collectors
 
