@@ -14,6 +14,7 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/jeorg-kotlin-4-test-drives?branch=main)](https://bettercodehub.com/results/jesperancinha/jeorg-kotlin-4-test-drives)
 [![Known Vulnerabilities](https://snyk.io/test/github/jesperancinha/jeorg-kotlin-4-test-drives/badge.svg)](https://snyk.io/test/github/jesperancinha/jeorg-kotlin-4-test-drives)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/03eb6acb5bf34d1d8c82c5cf65268e60)](https://www.codacy.com/gh/jesperancinha/jeorg-kotlin-4-test-drives/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/jeorg-kotlin-4-test-drives&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/jeorg-kotlin-4-test-drives/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/jeorg-kotlin-4-test-drives?branch=main)
 [![codecov](https://codecov.io/gh/jesperancinha/jeorg-kotlin-4-test-drives/branch/main/graph/badge.svg?token=BQlLANwSUb)](https://codecov.io/gh/jesperancinha/jeorg-kotlin-4-test-drives)
 
