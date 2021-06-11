@@ -14,6 +14,7 @@
     <modules>
         <module>jeorg-kotlin-codec-1</module>
         <module>jeorg-kotlin-codec-2</module>
+        <module>jeorg-kotlin-codec-3</module>
     </modules>
 
     <packaging>pom</packaging>

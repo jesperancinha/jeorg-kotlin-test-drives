@@ -1,26 +1,34 @@
-package org.jesperancinha.ktd.util2.codec
+package org.jesperancinha.ktd.util3.codec
 
 import java.util.stream.Collectors
 
 /**
- * Created by jofisaes on 10/06/2021
+ * Created by jofisaes on 11/06/2021
  */
-class CodecShiftKey {
+class CodecVigenere {
 
     companion object {
 
         private const val ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 
-        fun encode(string: String, shift: Int): String {
-            return string.chars().mapToObj {
-                encodeIntChar(it, shift)
-            }.map { it.toString() }.collect(Collectors.joining(""))
+        fun encode(string: String, key: String): String {
+            return string.chars().mapToObj { it }.collect(Collectors.toList())
+                .mapIndexed { index: Int, c: Int ->
+                    val newIndex = index - (index / key.length) * key.length
+                    encodeIntChar(c, ALPHABET.indexOf(key[newIndex])).toString()
+                }
+                .stream().collect(Collectors.joining())
+
         }
 
-        fun decode(encoded: String, shift: Int): String {
-            return encoded.chars().mapToObj {
-                decodeIntChar(it, shift)
-            }.map { it.toString() }.collect(Collectors.joining(""))        }
+
+        fun decode(string: String, key: String): String {
+            return string.chars().mapToObj { it }.collect(Collectors.toList())
+                .mapIndexed { index: Int, c: Int ->
+                    val newIndex = index - (index / key.length) * key.length
+                    decodeIntChar(c, ALPHABET.indexOf(key[newIndex])).toString()
+                }
+                .stream().collect(Collectors.joining())        }
 
         private fun decodeIntChar(it: Int, shift: Int): Char {
             val iChar = ALPHABET.indexOf(it.toChar())

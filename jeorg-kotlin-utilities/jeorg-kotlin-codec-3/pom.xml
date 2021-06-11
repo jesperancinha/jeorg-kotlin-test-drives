@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>jeorg-kotlin-4-test-drives</artifactId>
+        <artifactId>jeorg-kotlin-utilities</artifactId>
         <groupId>org.jesperancinha.ktd</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jeorg-kotlin-codec-2</artifactId>
+    <artifactId>jeorg-kotlin-codec-3</artifactId>
 
     <dependencies>
         <dependency>
