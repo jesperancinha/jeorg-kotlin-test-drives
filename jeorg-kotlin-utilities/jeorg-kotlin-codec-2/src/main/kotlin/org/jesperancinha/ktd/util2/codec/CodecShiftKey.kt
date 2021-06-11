@@ -27,7 +27,17 @@ class CodecShiftKey {
         }
 
         fun decode(encoded: String, shift: Int): String {
-            TODO()
-        }
+            return encoded.chars().mapToObj {
+                val iChar = ALPHABET.indexOf(it.toChar())
+                var newShift: Int = shift
+                if (shift > ALPHABET.length) {
+                    newShift -= (shift / ALPHABET.length) * shift
+                }
+                var newI = iChar - shift
+                if (newI < 0) {
+                    newI += ALPHABET.length
+                }
+                ALPHABET[newI]
+            }.map { it.toString() }.collect(Collectors.joining(""))        }
     }
 }

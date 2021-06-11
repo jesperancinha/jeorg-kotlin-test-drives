@@ -1,7 +1,6 @@
 package org.jesperancinha.ktd.util2.codec
 
 import kotlin.test.Test
-import kotlin.test.Ignore
 import kotlin.test.assertEquals
 
 internal class CodecShiftKeyTest {
@@ -13,7 +12,6 @@ internal class CodecShiftKeyTest {
     }
 
     @Test
-    @Ignore
     fun testDecode() {
         val encoded = CodecShiftKey.decode("zmzbnmcz", 25)
         assertEquals("anaconda", encoded)
