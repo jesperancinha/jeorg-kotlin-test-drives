@@ -1,0 +1,25 @@
+package org.jesperancinha.ktd.crum9
+
+import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
+
+/**
+ * Created by jofisaes on 15/06/2021
+ */
+class CrumNine {
+    companion object {
+
+        val magicDice: Int
+            get() = (10 * Math.random()).toInt()
+
+        @JvmStatic
+        fun main() {
+            ConsolerizerComposer.outSpace()
+                .cyan(ConsolerizerComposer.title("Crum 9 - Inconstant variable"))
+                .green(magicDice)
+                .green(magicDice)
+                .green(magicDice)
+                .green(magicDice)
+                .reset()
+        }
+    }
+}
