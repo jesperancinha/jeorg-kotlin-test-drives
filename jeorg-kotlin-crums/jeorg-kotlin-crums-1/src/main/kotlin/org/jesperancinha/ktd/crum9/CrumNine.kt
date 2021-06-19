@@ -7,9 +7,8 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
  */
 class CrumNine {
     companion object {
-
-        val magicDice: Int
-            get() = (10 * Math.random()).toInt()
+        private val magicDice: Int
+            get() = (6 * Math.random()).toInt()
 
         @JvmStatic
         fun main() {

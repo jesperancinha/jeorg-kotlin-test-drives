@@ -1,6 +1,7 @@
 package org.jesperancinha.ktd
 
 import org.jesperancinha.ktd.crum1.CrumOne
+import org.jesperancinha.ktd.crum10.CrumTen
 import org.jesperancinha.ktd.crum2.CrumTwo
 import org.jesperancinha.ktd.crum3.CrumThree
 import org.jesperancinha.ktd.crum4.CrumFour
@@ -20,21 +21,22 @@ fun main(args: Array<String>) {
     CrumSeven.main()
     CrumEight.main()
     CrumNine.main()
+    CrumTen.main()
 }
 
 fun String?.isPlant(): Boolean {
     return this != null && this.contains("plant")
 }
 
-fun List<Int>.allNonZero() = all { it > 0 }
-fun List<Int>.allNonZero1() = none { it == 0 }
-fun List<Int>.allNonZero2() = !any { it == 0 }
+fun List<Int>.allEven() = all { it % 2 == 0 }
+fun List<Int>.noneOdd() = none { it % 2 != 0 }
+fun List<Int>.notOneOdd() = !any { it % 2 != 0 }
 
-fun List<Int>.containsZero() = any { it == 0 }
-fun List<Int>.containsZero1() = !all { it > 0 }
-fun List<Int>.containsZero2() = !none { it == 0 }
+fun List<Int>.containsEven() = any { it % 2 == 0 }
+fun List<Int>.notAllOdd() = !all { it % 2 != 0 }
+fun List<Int>.notNoneEven() = !none { it % 2 == 0 }
 
-infix fun <T> T.eq(other: T) {
-    if (this == other) println("OK")
-    else println("Error: $this != $other")
+infix fun <T> T.eq(other: T): Boolean {
+    if (this == other) return true
+    else throw AssertionError()
 }
