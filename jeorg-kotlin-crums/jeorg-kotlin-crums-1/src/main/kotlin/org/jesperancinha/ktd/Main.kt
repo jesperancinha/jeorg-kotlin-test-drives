@@ -31,7 +31,6 @@ fun String?.isPlant(): Boolean {
 fun List<Int>.allEven() = all { it % 2 == 0 }
 fun List<Int>.noneOdd() = none { it % 2 != 0 }
 fun List<Int>.notOneOdd() = !any { it % 2 != 0 }
-
 fun List<Int>.containsEven() = any { it % 2 == 0 }
 fun List<Int>.notAllOdd() = !all { it % 2 != 0 }
 fun List<Int>.notNoneEven() = !none { it % 2 == 0 }
