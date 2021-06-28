@@ -1,9 +1,32 @@
 # performance-projects
 
+---
+
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/performance-projects)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Performance%20Objects%20&color=informational)](https://github.com/jesperancinha/performance-projects)
+[![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/performance-projects.svg)](#)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+
 [![CircleCI](https://circleci.com/gh/jesperancinha/performance-projects.svg?style=svg)](https://circleci.com/gh/jesperancinha/performance-projects)
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/98bb1264a9ee4986bb6700b2b1bb9273)](https://www.codacy.com/app/jofisaes/performance-projects?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-projects&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/777f3fdd-9d28-4edf-add3-7a3df5c573a5)](https://codebeat.co/projects/github-com-jesperancinha-performance-projects-master)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/performance-projects.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/performance-projects.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/performance-projects.svg)](#)
+
 ---
+
+## Technologies used
+
+---
+
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/java-50.png "Java")](https://www.oracle.com/nl/java/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/lombok-50.png "Lombok")](https://projectlombok.org/)
+
+---
+
 
 ### Intro
 
