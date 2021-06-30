@@ -23,3 +23,9 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Coverage with Coveralls
+      run: mvn clean install package coveralls:report -Dconsolerizer.show=false -DrepoToken=${COVERALLS_REPO_TOKEN}
+    - name: Coverage with Codecov
+      run: bash <(curl -s https://codecov.io/bash)
+    - name: Coverage with Codacy
+      run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')
