@@ -1,5 +1,12 @@
 package org.jesperancinha.ktd
 
-class HelloTest {
+import kotlin.test.Test
+
+class CrumsTest {
+
+    @Test
+    fun testAll(){
+        main(arrayOf())
+    }
 
 }

@@ -26,6 +26,7 @@
     <modules>
         <module>jeorg-kotlin-crums</module>
         <module>jeorg-kotlin-utilities</module>
+        <module>jeorg-kotlin-masters</module>
     </modules>
 
     <packaging>pom</packaging>
