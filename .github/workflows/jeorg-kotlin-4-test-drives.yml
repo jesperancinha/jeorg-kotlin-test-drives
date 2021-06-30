@@ -24,7 +24,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
     - name: Coverage with Coveralls
-      run: mvn clean install package coveralls:report -Dconsolerizer.show=false -DrepoToken=${COVERALLS_REPO_TOKEN}]
+      run: mvn clean install package coveralls:report -DrepoToken=${COVERALLS_REPO_TOKEN}]
       env:
          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     - name: Coverage with Codecov
