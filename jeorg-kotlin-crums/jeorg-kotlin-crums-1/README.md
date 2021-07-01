@@ -15,6 +15,8 @@ Kotlin Language study project.
 
 ### Online
 
+-   [Kotlin Advanced Programming](https://medium.com/android-dev-hacks/kotlin-advanced-programming-89aef9b2ecb8)
+
 ### Books
 
 -   Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
