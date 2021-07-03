@@ -1,6 +1,10 @@
 package org.jesperancinha.ktd.crum13
 
+import org.jesperancinha.console.consolerizer.common.ConsolerizerColor
+import org.jesperancinha.console.consolerizer.console.Consolerizer
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
+import org.jesperancinha.console.consolerizer.console.ConsolerizerConsoleWriter
+import java.lang.RuntimeException
 
 /**
  * Created by jofisaes on 03/07/2021
@@ -56,6 +60,7 @@ class CrumThirteen {
 
             try {
                 assert(lyric != null)
+                ConsolerizerColor.RED.printThrowableAndExit(RuntimeException("Please make you run this program with the -ea VM option. Otherwise, the assertions will not work"))
             } catch (e: AssertionError) {
                 ConsolerizerComposer.outSpace()
                     .magenta("in case of an assertion we throw a throwable error.")
