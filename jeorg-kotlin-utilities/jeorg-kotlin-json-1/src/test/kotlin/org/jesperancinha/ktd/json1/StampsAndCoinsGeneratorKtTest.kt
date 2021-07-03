@@ -2,6 +2,7 @@ package org.jesperancinha.ktd.json1
 
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.collections.shouldBeIn
+import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeInRange
 import io.kotest.matchers.longs.shouldBeLessThanOrEqual
@@ -39,6 +40,17 @@ class StampsAndCoinsGeneratorKtTest : WordSpec() {
         "getRandomNameWithChars" should {
             getRandomNameWithChars(100) shouldHaveLength 100
             getRandomNameWithChars(100) shouldMatch "[a-z0-9\\ ]*"
+        }
+
+        "list generation" should {
+            "generate list of 10 stamps" {
+                val listOfStamps = createListOfStamps(10)
+                listOfStamps shouldHaveSize 10
+            }
+            "generate list of 10 coins" {
+                val listOfCoins = createListOfCoins(10)
+                listOfCoins shouldHaveSize 10
+            }
         }
 
     }

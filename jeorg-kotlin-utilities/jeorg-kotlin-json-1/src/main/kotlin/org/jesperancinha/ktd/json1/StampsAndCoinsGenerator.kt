@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
         .reset()
 }
 
-private fun createListOfCoins(n: Int): List<Coin> {
+fun createListOfCoins(n: Int): List<Coin> {
     return (1..n).map {
         Coin(
             id = it.toLong(),
@@ -42,7 +42,7 @@ private fun createListOfCoins(n: Int): List<Coin> {
     }
 }
 
-private fun createListOfStamps(n: Int): List<Stamp> {
+fun createListOfStamps(n: Int): List<Stamp> {
     return (1..n).map {
         Stamp(
             id = it.toLong(),
