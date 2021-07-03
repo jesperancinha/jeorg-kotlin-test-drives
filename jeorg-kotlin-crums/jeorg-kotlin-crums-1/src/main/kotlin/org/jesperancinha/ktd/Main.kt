@@ -4,6 +4,7 @@ import org.jesperancinha.ktd.crum1.CrumOne
 import org.jesperancinha.ktd.crum10.CrumTen
 import org.jesperancinha.ktd.crum11.CrumEleven
 import org.jesperancinha.ktd.crum12.CrumTwelve
+import org.jesperancinha.ktd.crum13.CrumThirteen
 import org.jesperancinha.ktd.crum2.CrumTwo
 import org.jesperancinha.ktd.crum3.CrumThree
 import org.jesperancinha.ktd.crum4.CrumFour
@@ -26,6 +27,8 @@ fun main(args: Array<String>) {
     CrumTen()
     CrumEleven()
     CrumTwelve()
+    CrumThirteen()
+
     CrumOne.main(args)
     CrumTwo.main(args)
     CrumThree.main()
@@ -38,6 +41,7 @@ fun main(args: Array<String>) {
     CrumTen.main()
     CrumEleven.main(args)
     CrumTwelve.main(args)
+    CrumThirteen.main(args)
 }
 
 fun String?.isPlant(): Boolean {
