@@ -1,9 +1,9 @@
-package org.jesperancinha.ktd.mastery2
+package org.jesperancinha.ktd.json1
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.ktd.mastery2.model.Coin
-import org.jesperancinha.ktd.mastery2.model.Currency
-import org.jesperancinha.ktd.mastery2.model.Stamp
+import org.jesperancinha.ktd.json1.model.Coin
+import org.jesperancinha.ktd.json1.model.Currency
+import org.jesperancinha.ktd.json1.model.Stamp
 import java.time.LocalDate
 
 
