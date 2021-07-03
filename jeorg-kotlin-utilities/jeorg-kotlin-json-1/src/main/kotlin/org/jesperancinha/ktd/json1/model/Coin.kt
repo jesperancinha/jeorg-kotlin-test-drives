@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.mastery2.model
+package org.jesperancinha.ktd.json1.model
 
 data class Coin(
     val id: Long,

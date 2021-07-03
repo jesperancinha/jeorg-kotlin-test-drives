@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.mastery2
+package org.jesperancinha.ktd.json1
 
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.collections.shouldBeIn
@@ -7,7 +7,7 @@ import io.kotest.matchers.longs.shouldBeInRange
 import io.kotest.matchers.longs.shouldBeLessThanOrEqual
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.string.shouldMatch
-import org.jesperancinha.ktd.mastery2.model.Currency
+import org.jesperancinha.ktd.json1.model.Currency
 import java.time.LocalDate
 
 class StampsAndCoinsGeneratorKtTest : WordSpec() {

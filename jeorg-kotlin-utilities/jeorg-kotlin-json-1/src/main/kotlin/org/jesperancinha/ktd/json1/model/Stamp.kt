@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.mastery2.model
+package org.jesperancinha.ktd.json1.model
 
 /**
  * Created by jofisaes on 03/07/2021
