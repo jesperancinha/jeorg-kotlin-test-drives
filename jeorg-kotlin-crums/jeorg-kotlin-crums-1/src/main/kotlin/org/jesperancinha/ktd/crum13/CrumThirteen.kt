@@ -1,10 +1,7 @@
 package org.jesperancinha.ktd.crum13
 
 import org.jesperancinha.console.consolerizer.common.ConsolerizerColor
-import org.jesperancinha.console.consolerizer.console.Consolerizer
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.console.consolerizer.console.ConsolerizerConsoleWriter
-import java.lang.RuntimeException
 
 /**
  * Created by jofisaes on 03/07/2021

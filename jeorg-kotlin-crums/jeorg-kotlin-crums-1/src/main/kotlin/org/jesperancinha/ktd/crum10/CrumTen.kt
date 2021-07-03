@@ -1,7 +1,6 @@
 package org.jesperancinha.ktd.crum10
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.ktd.eq
 
 /**
  * Created by jofisaes on 19/06/2021
@@ -28,4 +27,9 @@ class CrumTen {
             }
         }
     }
+}
+
+infix fun <T> T.eq(other: T): Boolean {
+    if (this == other) return true
+    else throw AssertionError()
 }

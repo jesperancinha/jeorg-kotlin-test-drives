@@ -1,7 +1,6 @@
 package org.jesperancinha.ktd.crum5
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.ktd.isPlant
 
 /**
  * Created by jofisaes on 14/06/2021
@@ -29,3 +28,6 @@ class CrumFive {
     }
 }
 
+fun String?.isPlant(): Boolean {
+    return this != null && this.contains("plant")
+}
