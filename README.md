@@ -7,6 +7,7 @@
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/kotlin-test-drives.svg)](#)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/jeorg-kotlin-4-test-drives.svg?style=svg)](https://circleci.com/gh/jesperancinha/jeorg-kotlin-4-test-drives)
+[![Build status](https://ci.appveyor.com/api/projects/status/6c6akbt8gal7w0rr?svg=true)](https://ci.appveyor.com/project/jesperancinha/jeorg-kotlin-4-test-drives)
 [![jeorg-kotlin-4-test-drives](https://github.com/jesperancinha/jeorg-kotlin-4-test-drives/actions/workflows/jeorg-kotlin-4-test-drives.yml/badge.svg)](https://github.com/jesperancinha/jeorg-kotlin-4-test-drives/actions/workflows/jeorg-kotlin-4-test-drives.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/03eb6acb5bf34d1d8c82c5cf65268e60)](https://www.codacy.com/gh/jesperancinha/jeorg-kotlin-4-test-drives/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/jeorg-kotlin-4-test-drives&amp;utm_campaign=Badge_Grade)
