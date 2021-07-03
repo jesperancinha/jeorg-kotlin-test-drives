@@ -22,6 +22,7 @@ class CrumFifteen {
             ConsolerizerComposer.outSpace()
                 .blue("We can also fold to achieve and use results from the previous element")
                 .orange(sequence2.take(10).toList())
+                .orange("Last element is 0 because ${8192} * ${2097152} is: ${(8192) * (2097152)} in Int")
                 .orange("Last element is 0 because ${8192} * ${2097152} is: ${(8192).toDouble() * (2097152).toDouble()} in Double")
                 .orange("And that is too big for Int")
                 .reset()
