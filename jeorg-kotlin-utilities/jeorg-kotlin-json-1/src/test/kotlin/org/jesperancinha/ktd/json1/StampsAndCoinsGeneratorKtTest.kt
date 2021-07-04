@@ -18,6 +18,12 @@ import java.time.LocalDate
 class StampsAndCoinsGeneratorKtTest : WordSpec() {
 
     init {
+        "main call" should {
+            "run smoothly" {
+                main(arrayOf())
+            }
+        }
+
         "getRandomDimMM" should {
             "Get dim between considered range" {
                 getRandomDimMM(1, 10) shouldBeInRange (LongRange(1, 10))
