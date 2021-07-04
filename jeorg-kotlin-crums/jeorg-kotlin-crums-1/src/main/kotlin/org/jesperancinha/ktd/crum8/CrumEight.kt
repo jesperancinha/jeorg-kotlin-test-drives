@@ -8,7 +8,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 class CrumEight {
     companion object {
         @JvmStatic
-        fun main() {
+        fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 8 - Kotlin basic types using javaClass"))
                 .reset()

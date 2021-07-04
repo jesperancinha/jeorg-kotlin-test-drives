@@ -8,7 +8,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 class CrumFive {
     companion object {
         @JvmStatic
-        fun main() {
+        fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 5 - String Extension Function"))
                 .reset()

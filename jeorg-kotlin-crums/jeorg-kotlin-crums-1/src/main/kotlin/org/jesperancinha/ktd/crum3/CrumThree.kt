@@ -4,7 +4,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
 class CrumThree {
     companion object {
-        fun main() {
+        fun main(args: Array<String>) {
 
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 3 - Data Classes, equals, hash code and toString"))

@@ -8,7 +8,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 class CrumSix {
     companion object {
         @JvmStatic
-        fun main() {
+        fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 6 - List Extension Function"))
                 .reset()

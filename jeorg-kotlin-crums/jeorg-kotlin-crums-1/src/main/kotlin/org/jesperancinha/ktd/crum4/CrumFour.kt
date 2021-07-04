@@ -20,7 +20,7 @@ class CrumFour {
             return false
         }
 
-        fun main() {
+        fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 4 - Basic String comparison and range operations"))
                 .blue("We check the artifactId's")

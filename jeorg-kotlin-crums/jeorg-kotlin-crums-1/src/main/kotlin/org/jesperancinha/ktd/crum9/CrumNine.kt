@@ -11,7 +11,7 @@ class CrumNine {
             get() = (6 * Math.random()).toInt()
 
         @JvmStatic
-        fun main() {
+        fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 9 - Inconstant variable"))
                 .green(magicDice)
