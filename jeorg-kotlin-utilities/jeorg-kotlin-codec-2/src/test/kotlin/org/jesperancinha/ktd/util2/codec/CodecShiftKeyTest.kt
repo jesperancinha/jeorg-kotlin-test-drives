@@ -1,19 +1,23 @@
 package org.jesperancinha.ktd.util2.codec
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import io.kotest.core.spec.style.WordSpec
+import io.kotest.matchers.shouldBe
 
-internal class CodecShiftKeyTest {
+class CodecShiftKeyTest : WordSpec() {
 
-    @Test
-    fun testEncode() {
-        val encoded = CodecShiftKey.encode("anaconda", 25)
-        assertEquals("zmzbnmcz", encoded)
-    }
+    init {
+        "main" should {
+            main(arrayListOf())
+        }
 
-    @Test
-    fun testDecode() {
-        val encoded = CodecShiftKey.decode("zmzbnmcz", 25)
-        assertEquals("anaconda", encoded)
+        "testEncode" should {
+            val encoded = CodecShiftKey.encode("anaconda", 25)
+            encoded shouldBe "zmzbnmcz"
+        }
+
+        "testDecode" should {
+            val encoded = CodecShiftKey.decode("zmzbnmcz", 25)
+            encoded shouldBe "anaconda"
+        }
     }
 }
