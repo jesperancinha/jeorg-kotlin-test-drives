@@ -15,6 +15,9 @@ Kotlin Language study project.
 
 ### Online
 
+-   [Kotlin Delegation by Inception](https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Kotlin%20Delegation%20by%20Inception)
+-   [Kotlin is Dope And So Are Its Custom Property Delegates](https://thoughtbot.com/blog/kotlin-is-dope-and-so-are-its-custom-property-delegates)
+-   [Make your code beautiful with Kotlin Property Delegates](https://dev.to/mreichelt/make-your-code-beautiful-with-kotlin-property-degelates-1ld5)
 -   [Kotlin Advanced Programming](https://medium.com/android-dev-hacks/kotlin-advanced-programming-89aef9b2ecb8)
 
 ### Books
