@@ -32,7 +32,6 @@ class Lifestyle() {
     constructor(lifestyle: String) : this() {
         this.lifestyle = lifestyle
     }
-
 }
 
 class LifestyleDelegate : ReadWriteProperty<Lifestyle, String> {
