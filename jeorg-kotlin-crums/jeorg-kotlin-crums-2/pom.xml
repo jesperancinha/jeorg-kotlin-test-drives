@@ -10,12 +10,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jeorg-kotlin-crums-1</artifactId>
+    <artifactId>jeorg-kotlin-crums-2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <packaging>jar</packaging>
 
-    <name>jeorg-kotlin-crums-1</name>
+    <name>jeorg-kotlin-crums-2</name>
 
     <dependencies>
         <dependency>
@@ -45,6 +45,9 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

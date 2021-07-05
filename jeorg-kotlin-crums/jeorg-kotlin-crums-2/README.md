@@ -15,7 +15,6 @@ Kotlin Language study project.
 
 ### Online
 
--   [How do you compile Java+Kotlin project using Maven?](https://stackoverflow.com/questions/29330311/how-do-you-compile-javakotlin-project-using-maven)
 -   [Scope functions](https://kotlinlang.org/docs/scope-functions.html#function-selection)
 -   [Kotlin Delegation by Inception](https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Kotlin%20Delegation%20by%20Inception)
 -   [Kotlin is Dope And So Are Its Custom Property Delegates](https://thoughtbot.com/blog/kotlin-is-dope-and-so-are-its-custom-property-delegates)
