@@ -35,10 +35,6 @@
             <artifactId>kotlinx-coroutines-jdk8</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>kotlinx-coroutines-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
             <scope>test</scope>
@@ -61,6 +57,8 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -95,36 +93,22 @@
                 <version>${kotlin.version}</version>
                 <configuration>
                     <experimentalCoroutines>enable</experimentalCoroutines>
-                    <jvmTarget>${java.version}</jvmTarget>
+                    <jvmTarget>1.8</jvmTarget>
                 </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <phase>process-sources</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <source>src/main/java</source>
-                                <source>src/main/kotlin</source>
-                                <source>src/main/resources</source>
-                            </sourceDirs>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>test-compile</id>
-                        <phase>process-test-sources</phase>
+                        <phase>test-compile</phase>
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <source>src/test/java</source>
-                                <source>src/test/kotlin</source>
-                                <source>src/test/resources</source>
-                            </sourceDirs>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

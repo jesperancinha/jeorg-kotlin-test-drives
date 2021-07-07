@@ -7,9 +7,10 @@
 
 Kotlin Language study project.
 
-## Contents
+## Learning Cloud
 
--   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
+`mapNotNull`, `filter`, `count`, `getOrPut`, `mutableMapOf`, `listOf`, `groupBy`, `mutableLisOf`, `asSequence`, `mapValues`, `groupingBy`, `eachCount`
+`?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`
 
 ## References
 

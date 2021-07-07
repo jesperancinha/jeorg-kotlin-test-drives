@@ -18,7 +18,8 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -38,19 +39,16 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${junit-jupiter-api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter-api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -66,7 +64,7 @@
                 <version>${kotlin.version}</version>
                 <configuration>
                     <experimentalCoroutines>enable</experimentalCoroutines>
-                    <jvmTarget>${java.version}</jvmTarget>
+                    <jvmTarget>1.8</jvmTarget>
                 </configuration>
                 <executions>
                     <execution>
@@ -75,12 +73,6 @@
                         <goals>
                             <goal>compile</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
-                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                            </sourceDirs>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>test-compile</id>
@@ -88,12 +80,6 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
-                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-                            </sourceDirs>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

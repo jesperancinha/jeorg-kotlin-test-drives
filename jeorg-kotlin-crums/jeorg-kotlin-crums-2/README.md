@@ -7,14 +7,18 @@
 
 Kotlin Language study project.
 
-## Contents
+## Learning Cloud
 
--   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
+`mapNotNull`, `filter`, `count`, `getOrPut`, `mutableMapOf`, `listOf`, `groupBy`, `mutableLisOf`, `asSequence`, `mapValues`, `groupingBy`, `eachCount`
+`?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`, `suspendCoroutine`, `continuation`, `apply`, `let`, `run`, `with`, `also`, `takeIf`, `takeUnless`
+`xor`, `and`, `toBinaryString`
 
 ## References
 
 ### Online
 
+-   [Kotlin coroutines: interacting with external libraries and existing code](https://medium.com/@andrea.bresolin/kotlin-coroutines-interacting-with-external-libraries-and-existing-code-70001a835c30)
+-   [suspendCoroutine](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/suspend-coroutine.html)
 -   [Scope functions](https://kotlinlang.org/docs/scope-functions.html#function-selection)
 -   [Kotlin Delegation by Inception](https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Kotlin%20Delegation%20by%20Inception)
 -   [Kotlin is Dope And So Are Its Custom Property Delegates](https://thoughtbot.com/blog/kotlin-is-dope-and-so-are-its-custom-property-delegates)
