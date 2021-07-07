@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd
+package org.jesperancinha.ktd.crums2
 
 import org.jesperancinha.ktd.crums2.crum1.CrumOne
 
