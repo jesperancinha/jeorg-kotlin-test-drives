@@ -41,6 +41,8 @@ Kotlin Language study project.
 ## Contents
 
 -   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
+-   [Kotlin Utilities](./jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
+-   [Kotlin Masters](./jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
 
 ## Build
 
@@ -53,6 +55,12 @@ Note that if you want to build this project from the root, you need to use one o
 ```bash
 sdk install java 11.0.9.hs-adpt
 sdk use java 11.0.9.hs-adpt
+```
+
+Or just run:
+
+```bash
+. ./setup.sh
 ```
 
 ## Sequence Diagram

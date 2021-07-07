@@ -9,5 +9,4 @@ class MainTest {
     fun testAll(){
         main(arrayOf())
     }
-
 }

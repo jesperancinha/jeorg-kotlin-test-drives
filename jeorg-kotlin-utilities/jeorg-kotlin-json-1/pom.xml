@@ -33,7 +33,6 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-runner-junit5-jvm</artifactId>
-            <version>${kotest-runner-junit5-jvm.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
