@@ -21,7 +21,7 @@ class CrumTwo {
             exploreTakeIf()
             exploreTakeUnless()
 
-            ConsolerizerComposer.outSpace().none()
+            ConsolerizerComposer.outSpace()
                 .black()
                 .green("apply -> this -> receiver")
                 .green("run -> this -> result")
