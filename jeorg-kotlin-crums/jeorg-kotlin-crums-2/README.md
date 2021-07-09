@@ -17,6 +17,9 @@ Kotlin Language study project.
 
 ### Online
 
+-   [inline, noinline, crossinline — What do they mean?](https://medium.com/android-news/inline-noinline-crossinline-what-do-they-mean-b13f48e113c2)
+-   [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
+-   [Type-safe builders](https://kotlinlang.org/docs/type-safe-builders.html)
 -   [Kotlin coroutines: interacting with external libraries and existing code](https://medium.com/@andrea.bresolin/kotlin-coroutines-interacting-with-external-libraries-and-existing-code-70001a835c30)
 -   [suspendCoroutine](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/suspend-coroutine.html)
 -   [Scope functions](https://kotlinlang.org/docs/scope-functions.html#function-selection)
