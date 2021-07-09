@@ -50,7 +50,7 @@ class CrumEight {
             }
 
             ConsolerizerComposer.outSpace()
-                .magenta("A few things to note on this exercis")
+                .magenta("A few things to note on this exercise")
                 .magenta("1. We can access the main scope using referenced scopes in Kotlin")
                 .magenta("2. Because of this, we may want to limit the range of the scopes")
                 .magenta("3. The reason for inline, noinline and crossinline is precisely because of this")
