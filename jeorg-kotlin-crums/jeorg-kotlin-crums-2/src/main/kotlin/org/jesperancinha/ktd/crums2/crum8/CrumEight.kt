@@ -18,7 +18,6 @@ class CrumEight {
                 .cyan(ConsolerizerComposer.title("Crum 8 - inline, noinline, crossinline"))
                 .reset()
 
-
             nothingToInline {
                 ConsolerizerComposer.out().magenta("Without inline, the javabyte code will be built as usual")
                 return@nothingToInline

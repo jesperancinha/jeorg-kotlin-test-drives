@@ -6,8 +6,8 @@ Using JSON to generate masked files to use in projects
 
 Topics
 
-1. `io.kotest`
-2. `map`, `joinToString`
+1.  `io.kotest`
+2.  `map`, `joinToString`
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
