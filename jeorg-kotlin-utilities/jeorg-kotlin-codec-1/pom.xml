@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jeorg-kotlin-decoder-1</artifactId>
+    <artifactId>jeorg-kotlin-codec-1</artifactId>
 
     <dependencies>
         <dependency>
