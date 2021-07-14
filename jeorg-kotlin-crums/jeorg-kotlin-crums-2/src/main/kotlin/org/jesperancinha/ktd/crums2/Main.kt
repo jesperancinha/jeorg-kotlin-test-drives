@@ -2,6 +2,7 @@ package org.jesperancinha.ktd.crums2
 
 import kotlinx.coroutines.runBlocking
 import org.jesperancinha.ktd.crums2.crum1.CrumOne
+import org.jesperancinha.ktd.crums2.crum10.CrumTen
 import org.jesperancinha.ktd.crums2.crum2.CrumTwo
 import org.jesperancinha.ktd.crums2.crum3.CrumThree
 import org.jesperancinha.ktd.crums2.crum5.CrumFive
@@ -21,16 +22,19 @@ fun main(args: Array<String>) {
     CrumSeven()
     CrumEight()
     CrumNine()
+    CrumTen()
 
     CrumOne.main(args)
     CrumTwo.main(args)
     CrumThree.main(args)
     CrumFour.main(args)
+    CrumFive.main(args)
     runBlocking {
         CrumSix.main(args)
     }
     CrumSeven.main(args)
     CrumEight.main(args)
     CrumNine.main(args)
+    CrumTen.main(args)
 }
 

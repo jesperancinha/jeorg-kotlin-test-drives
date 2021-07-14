@@ -22,7 +22,7 @@ class CrumSix {
                 GlobalScope.launch {
                     val innerTiming = measureTimeMillis {
                         val something = getSomething()
-                        val something2 = getSomething()
+                        val something2 = getSomething2()
                         ConsolerizerComposer.outSpace()
                             .yellow("The end result is ${something + something2}")
                     }
