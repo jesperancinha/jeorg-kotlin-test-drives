@@ -4,6 +4,7 @@ import kotlinx.coroutines.runBlocking
 import org.jesperancinha.ktd.crums2.crum1.CrumOne
 import org.jesperancinha.ktd.crums2.crum10.CrumTen
 import org.jesperancinha.ktd.crums2.crum11.CrumEleven
+import org.jesperancinha.ktd.crums2.crum12.CrumTwelve
 import org.jesperancinha.ktd.crums2.crum2.CrumTwo
 import org.jesperancinha.ktd.crums2.crum3.CrumThree
 import org.jesperancinha.ktd.crums2.crum5.CrumFive
@@ -25,6 +26,7 @@ fun main(args: Array<String>) {
     CrumNine()
     CrumTen()
     CrumEleven()
+    CrumTwelve()
 
     CrumOne.main(args)
     CrumTwo.main(args)
@@ -39,5 +41,6 @@ fun main(args: Array<String>) {
     CrumNine.main(args)
     CrumTen.main(args)
     CrumEleven.main(args)
+    CrumTwelve.main(args)
 }
 
