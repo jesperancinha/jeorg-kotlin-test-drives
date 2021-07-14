@@ -22,6 +22,13 @@ class CrumEleven {
                 ConsolerizerComposer.outSpace().magenta("One beat")
                     .reset()
                 counter++
+                if (counter == 3) {
+                    ConsolerizerComposer.outSpace()
+                        .black()
+                        .bgGreen("We've broken the loop!")
+                        .reset()
+                    break
+                }
                 sleep(1)
             }
 
