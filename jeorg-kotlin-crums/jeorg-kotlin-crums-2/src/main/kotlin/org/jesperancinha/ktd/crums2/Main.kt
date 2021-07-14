@@ -9,6 +9,7 @@ import org.jesperancinha.ktd.crums2.crum13.CrumThirteen
 import org.jesperancinha.ktd.crums2.crum14.CrumFourteen
 import org.jesperancinha.ktd.crums2.crum15.CrumFifteen
 import org.jesperancinha.ktd.crums2.crum16.CrumSixteen
+import org.jesperancinha.ktd.crums2.crum17.CrumSeventeen
 import org.jesperancinha.ktd.crums2.crum2.CrumTwo
 import org.jesperancinha.ktd.crums2.crum3.CrumThree
 import org.jesperancinha.ktd.crums2.crum5.CrumFive
@@ -35,6 +36,7 @@ fun main(args: Array<String>) {
     CrumFourteen()
     CrumFifteen()
     CrumSixteen()
+    CrumSeventeen()
 
     CrumOne.main(args)
     CrumTwo.main(args)
@@ -54,5 +56,6 @@ fun main(args: Array<String>) {
     CrumFourteen.main(args)
     CrumFifteen.main(args)
     CrumSixteen.main(args)
+    CrumSeventeen.main(args)
 }
 
