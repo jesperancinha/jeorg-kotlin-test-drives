@@ -6,7 +6,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
  * Created by jofisaes on 14/07/2021
  */
 class CrumFourteen {
-    companion object{
+    companion object {
         @JvmStatic
         fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()
@@ -29,12 +29,12 @@ class CrumFourteen {
                 .yellow(pages)
                 .reset()
 
-             pages.forEach { (key, value) ->
-                 ConsolerizerComposer.outSpace().none()
-                     .magenta("The book").blue(key).magenta("has").blue(value).magenta("pages")
-                     .newLine()
-                     .reset()
-             }
+            pages.forEach { (key, value) ->
+                ConsolerizerComposer.outSpace().none()
+                    .magenta("The book").blue(key).magenta("has").blue(value).magenta("pages")
+                    .newLine()
+                    .reset()
+            }
 
             ConsolerizerComposer.outSpace()
                 .green("We can also create a map using Pair")
@@ -55,7 +55,7 @@ class CrumFourteen {
 
 
             ConsolerizerComposer.outSpace()
-                .green("If we   try to add an existing key")
+                .green("If we try to add an existing key")
                 .reset()
 
             pagesPair as MutableMap += "Matisse" to 1234
