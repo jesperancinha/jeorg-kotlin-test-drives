@@ -91,7 +91,6 @@ class CrumFifteen {
 
             filmCollection.clear()
 
-
             ConsolerizerComposer.outSpace()
                 .yellow("Our elements are gone!")
                 .yellow(filmCollection)
