@@ -1,17 +1,11 @@
-# jeorg-kotlin-crums-2
+# jeorg-kotlin-crums-3
 
 ---
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
 
 ## Description
 
-Kotlin Language study project.
-
 ## Learning Cloud
-
-`mapNotNull`, `filter`, `count`, `getOrPut`, `mutableMapOf`, `listOf`, `groupBy`, `mutableLisOf`, `asSequence`, `mapValues`, `groupingBy`, `eachCount`
-`?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`, `suspendCoroutine`, `continuation`, `apply`, `let`, `run`, `with`, `also`, `takeIf`, `takeUnless`
-`xor`, `and`, `toBinaryString`
 
 ## References
 

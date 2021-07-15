@@ -1,7 +1,7 @@
 package org.jesperancinha.ktd.crums2
 
 import kotlinx.coroutines.runBlocking
-import org.jesperancinha.ktd.crums2.crum1.CrumOne
+import org.jesperancinha.ktd.crums3.crum1.CrumOne
 import org.jesperancinha.ktd.crums2.crum10.CrumTen
 import org.jesperancinha.ktd.crums2.crum11.CrumEleven
 import org.jesperancinha.ktd.crums2.crum12.CrumTwelve
