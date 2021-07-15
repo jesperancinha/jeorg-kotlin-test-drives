@@ -13,7 +13,6 @@ class CrumEighteen {
                 .cyan(ConsolerizerComposer.title("Crum 18 - Creating and initializing"))
                 .reset()
 
-
             val lamp1 = Lamp("StarWars")
 
             ConsolerizerComposer.outSpace()
