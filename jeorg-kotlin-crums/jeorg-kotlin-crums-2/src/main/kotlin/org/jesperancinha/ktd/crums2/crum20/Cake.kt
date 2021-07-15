@@ -1,8 +1,8 @@
 package org.jesperancinha.ktd.crums2.crum20
 
-class Cake {
+abstract class Cake {
 
-    open fun symbol() {
-        return
+    open fun symbol(): String {
+        return "🧁"
     }
 }
