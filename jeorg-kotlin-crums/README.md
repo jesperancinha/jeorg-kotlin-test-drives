@@ -16,6 +16,7 @@ Kotlin Language study project.
 
 -   [Kotlin Crums 1](./jeorg-kotlin-crums-1) - Fast Track Crum modules 1
 -   [Kotlin Crums 2](./jeorg-kotlin-crums-2) - Fast Track Crum modules 2
+-   [Kotlin Crums 3](./jeorg-kotlin-crums-2) - Fast Track Crum modules 3
 
 ## References
 
