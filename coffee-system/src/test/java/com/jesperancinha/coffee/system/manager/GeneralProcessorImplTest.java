@@ -1,7 +1,16 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.concurrency.*;
-import com.jesperancinha.coffee.api.manager.*;
+import com.jesperancinha.coffee.api.concurrency.CoffeCallable;
+import com.jesperancinha.coffee.api.concurrency.PaymentCallable;
+import com.jesperancinha.coffee.api.concurrency.PostActionCallable;
+import com.jesperancinha.coffee.api.concurrency.PreActionCallable;
+import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.api.manager.GeneralProcessor;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.api.manager.PaymentProcessor;
+import com.jesperancinha.coffee.api.manager.PostProcessor;
+import com.jesperancinha.coffee.api.manager.PreProcessor;
 import com.jesperancinha.coffee.system.concurrency.CoffeeCallableImpl;
 import com.jesperancinha.coffee.system.concurrency.PaymentCallableImpl;
 import com.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
@@ -38,7 +47,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.

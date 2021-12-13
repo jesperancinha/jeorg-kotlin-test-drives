@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>jesperancinha</groupId>
+        <groupId>org.jesperancinha</groupId>
         <artifactId>coffee-paradigms</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -13,13 +13,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.sun.activation</groupId>
-            <artifactId>jakarta.activation</artifactId>
-            <version>2.0.1</version>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>args4j</groupId>
@@ -36,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler}</version>
+                <version>${maven.compiler.version}</version>
                 <configuration>
                     <target>${maven.compiler.target}</target>
                     <source>${maven.compiler.source}</source>
@@ -51,27 +55,34 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-xjc-plugin</artifactId>
-                <version>${cxf-xjc-plugin.version}</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.5.0</version>
                 <executions>
                     <execution>
-                        <id>xjc</id>
-                        <phase>generate-sources</phase>
+                        <id>schema-cs-coffemachine-xjc</id>
                         <goals>
-                            <goal>xsdtojava</goal>
+                            <goal>xjc</goal>
                         </goals>
                         <configuration>
-                            <xsdOptions>
-                                <xsdOption>
-                                    <xsd>${basedir}/src/main/resources/cs_coffeemachine.xsd</xsd>
-                                    <packagename>com.jesperancinha.coffee.system.input</packagename>
-                                </xsdOption>
-                                <xsdOption>
-                                    <xsd>${basedir}/src/main/resources/cs_employee.xsd</xsd>
-                                    <packagename>com.jesperancinha.coffee.system.input</packagename>
-                                </xsdOption>
-                            </xsdOptions>
+                            <sources>
+                                <source>${project.basedir}/src/main/resources/xsd/cs_coffeemachine.xsd</source>
+                            </sources>
+                            <packageName>com.jesperancinha.coffee.system.input</packageName>
+                            <clearOutputDir>false</clearOutputDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>schema-cs-employee-xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/src/main/resources/xsd/cs_employee.xsd</source>
+                            </sources>
+                            <packageName>com.jesperancinha.coffee.system.input</packageName>
+                            <clearOutputDir>false</clearOutputDir>
                         </configuration>
                     </execution>
                 </executions>

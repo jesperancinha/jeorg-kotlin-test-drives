@@ -1,9 +1,9 @@
 package com.jesperancinha.coffee.system.concurrency;
 
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-
 
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.

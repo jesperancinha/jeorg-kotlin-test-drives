@@ -1,6 +1,7 @@
 package com.jesperancinha.coffee.system.launcher;
 
 import com.jesperancinha.coffee.system.manager.GeneralProcessorImpl;
+import lombok.NoArgsConstructor;
 import org.kohsuke.args4j.Option;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,24 +17,42 @@ import java.io.FileNotFoundException;
 @Component
 public class CoffeParadigmsOptions {
 
-    @Option(name = "-it", usage = "Define the number of iterations you want to make", aliases = "--iterations", required = true)
+    public CoffeParadigmsOptions(){
+
+    }
+
+    @Option(name = "-it",
+            usage = "Define the number of iterations you want to make",
+            aliases = "--iterations",
+            required = true)
     private Integer nIterations = 1;
 
-    @Option(name = "-ud", usage = "Defines where the user definition file is", aliases = "--userdefinitions", required = true)
+    @Option(name = "-ud",
+            usage = "Defines where the user definition file is",
+            aliases = "--userdefinitions",
+            required = true)
     private String userDefinitionFile;
 
-    @Option(name = "-md", usage = "Defines where the machine definition file is", aliases = "--machinedefinitions", required = true)
+    @Option(name = "-md",
+            usage = "Defines where the machine definition file is",
+            aliases = "--machinedefinitions",
+            required = true)
     private String machineDefinitionFile;
 
-    @Option(name = "-pre", usage = "Defines how many can stand on the pre-actions queue", aliases = "--pre-actions-size", required = true)
+    @Option(name = "-pre",
+            usage = "Defines how many can stand on the pre-actions queue",
+            aliases = "--pre-actions-size",
+            required = true)
     private Integer nPreActions;
 
-    @Option(name = "-post", usage = "Defines how many can stand on the post-actions queue", aliases = "--post-actions-size", required = true)
+    @Option(name = "-post",
+            usage = "Defines how many can stand on the post-actions queue",
+            aliases = "--post-actions-size",
+            required = true)
     private Integer nPostActions;
 
     void run() throws FileNotFoundException, JAXBException, SAXException {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("META-INF/config.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/config.xml");
         GeneralProcessorImpl generalProcessor = context.getBean(GeneralProcessorImpl.class);
         generalProcessor.setNIterations(nIterations);
         generalProcessor.setSourceXmlEmployeesFile(userDefinitionFile);

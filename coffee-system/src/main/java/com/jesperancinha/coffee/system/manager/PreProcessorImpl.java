@@ -16,8 +16,6 @@ import com.jesperancinha.coffee.system.queues.Queue;
 import com.jesperancinha.coffee.system.queues.QueuePreActivityImpl;
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +27,6 @@ import java.util.concurrent.Callable;
 @Service
 public class PreProcessorImpl extends ProcessorAbstract implements PreProcessor {
 
-    private static final Logger logger = LoggerFactory.getLogger(PreProcessorImpl.class);
     private final StartupCallable startupCallable;
     @Autowired
     private QueuePreActivityImpl queuePreActivity;

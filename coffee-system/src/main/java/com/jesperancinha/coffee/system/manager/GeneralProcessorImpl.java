@@ -1,16 +1,24 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.manager.*;
+import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.api.manager.GeneralProcessor;
+import com.jesperancinha.coffee.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.api.manager.PaymentProcessor;
+import com.jesperancinha.coffee.api.manager.PostProcessor;
+import com.jesperancinha.coffee.api.manager.PreProcessor;
 import com.jesperancinha.coffee.system.input.CoffeeMachines;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
 import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
 import com.jesperancinha.coffee.system.input.Employees;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.objects.EmployeeLayer;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
@@ -32,9 +40,8 @@ import java.util.Random;
 @Getter
 @Setter
 @Service
+@Slf4j
 public class GeneralProcessorImpl implements GeneralProcessor {
-
-    private static final Logger logger = LoggerFactory.getLogger(GeneralProcessorImpl.class);
 
     public static final String MAIN_QUEUE_PRE = "MAIN_QUEUE_PRE";
 
@@ -85,7 +92,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
     public void initSimulationProcess()
             throws FileNotFoundException,
             JAXBException {
-        logger.info("Starting coffee simulation process...");
+        log.info("Starting coffee simulation process...");
         initSimulationProcess(
                 new FileInputStream(
                         this.sourceXmlMachinesFile
@@ -107,7 +114,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      */
     @Override
     public void initSimulationProcess(InputStream coffeesFile, InputStream employeesFile) throws JAXBException {
-        logger.info("Starting simulation process...");
+        log.info("Starting simulation process...");
         this.coffeeMachines = createCoffeeMachines(coffeesFile);
         this.employees = createEmployees(employeesFile);
     }

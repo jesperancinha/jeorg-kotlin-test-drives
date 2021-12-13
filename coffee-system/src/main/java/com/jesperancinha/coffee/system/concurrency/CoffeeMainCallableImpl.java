@@ -10,25 +10,27 @@ import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Payment
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import lombok.Getter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 @Getter
+@Slf4j
 public class CoffeeMainCallableImpl extends QueueCallableAbstract implements CoffeeMainCallable {
-    private static final Logger logger = LoggerFactory.getLogger(CoffeeMainCallableImpl.class);
 
-    private Employee employee;
-    private String name;
-    private Coffee coffee;
-    private Payment payment;
-    private List<PostAction> postActions;
-    private MachineProcessor machineProcessor;
+    private final Employee employee;
+    private final String name;
+    private final Coffee coffee;
+    private final Payment payment;
+    private final List<PostAction> postActions;
+    private final MachineProcessor machineProcessor;
 
     public CoffeeMainCallableImpl(Employee employee, String name, Coffee coffee, Payment payment,
                                   List<PostAction> postActions, MachineProcessor machineProcessor) {
@@ -52,7 +54,7 @@ public class CoffeeMainCallableImpl extends QueueCallableAbstract implements Cof
                     final List<Future<Boolean>> allCoffeeCallables = new ArrayList<>();
                     final List<FillTime> allTasksForIndex = tasks.stream().filter(
                             fillTime -> fillTime.getIndex().intValue() == index
-                    ).collect(Collectors.toList());
+                    ).toList();
 
                     final ExecutorService executor = Executors.newFixedThreadPool(allTasksForIndex.size());
                     allTasksForIndex.forEach(
@@ -60,7 +62,7 @@ public class CoffeeMainCallableImpl extends QueueCallableAbstract implements Cof
                                     allCoffeeCallables.add(executor.submit(new CoffeeCallableImpl(fillTime, name)))
                     );
 
-                    waitForAllFutures(allCoffeeCallables, logger);
+                    waitForAllFutures(allCoffeeCallables, log);
 
                     ExecutorServiceHelper.shutDownExecutorService(executor);
                 }

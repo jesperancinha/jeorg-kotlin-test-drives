@@ -4,18 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>jesperancinha</groupId>
+    <groupId>org.jesperancinha</groupId>
     <artifactId>coffee-paradigms</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
-        <maven.compiler>3.8.0</maven.compiler>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
         <build.helper.plugin>1.10</build.helper.plugin>
         <args4j>2.33</args4j>
         <junit.version>4.12</junit.version>
@@ -29,15 +29,14 @@
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
         <cxf-xjc-plugin.version>3.3.1</cxf-xjc-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-        <lombok.version>1.18.8</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <javax.activation.version>1.2.0</javax.activation.version>
         <log4j-core.version>2.15.0</log4j-core.version>
         <slf4j-api.version>1.7.32</slf4j-api.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <truth.version>0.42</truth.version>
-        <spring.version>5.3.13</spring.version>
         <activation.version>1.1.1</activation.version>
-        <slf4j-jdk14.version>1.7.32</slf4j-jdk14.version>
+        <spring-boot.version>2.6.1</spring-boot.version>
     </properties>
 
     <modules>
@@ -48,14 +47,21 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jesperancinha</groupId>
+                <artifactId>coffee-system-api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
                 <groupId>javax.activation</groupId>
                 <artifactId>activation</artifactId>
                 <version>${activation.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-jdk14</artifactId>
-                <version>${slf4j-jdk14.version}</version>
             </dependency>
             <dependency>
                 <groupId>args4j</groupId>
@@ -96,21 +102,6 @@
                 <groupId>com.google.truth</groupId>
                 <artifactId>truth</artifactId>
                 <version>${truth.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>${mockito.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
