@@ -6,8 +6,6 @@ name: jeorg-kotlin-4-test-drives
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
