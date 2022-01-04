@@ -34,7 +34,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.1</version>
+            <version>${jackson-databind.version}</version>
         </dependency>
 
         <dependency>
@@ -67,6 +67,7 @@
     <properties>
         <jackson-module-kotlin.version>2.13.1</jackson-module-kotlin.version>
         <jackson-dataformat-xml.version>2.13.1</jackson-dataformat-xml.version>
+        <jackson-databind.version>2.13.1</jackson-databind.version>
     </properties>
 
     <build>

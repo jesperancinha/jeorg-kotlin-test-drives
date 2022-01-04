@@ -1,3 +1,5 @@
 <Stamp description="government">
     <Id>123</Id>
+    <Material>Gold</Material>
+    <Material>Silver</Material>
 </Stamp>

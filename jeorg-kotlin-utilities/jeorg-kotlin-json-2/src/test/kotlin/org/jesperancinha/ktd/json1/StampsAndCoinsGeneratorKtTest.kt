@@ -1,6 +1,7 @@
 package org.jesperancinha.ktd.json1
 
 import io.kotest.core.spec.style.WordSpec
+import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import org.jesperancinha.ktd.json2.model.Stamp
@@ -19,6 +20,8 @@ class ReadStampKtTest : WordSpec() {
             stamp.shouldNotBeNull()
             stamp.id shouldBe 123
             stamp.description shouldBe "government"
+            stamp.materials.shouldNotBeNull()
+            stamp.materials?.shouldHaveSize(2)
         }
 
     }

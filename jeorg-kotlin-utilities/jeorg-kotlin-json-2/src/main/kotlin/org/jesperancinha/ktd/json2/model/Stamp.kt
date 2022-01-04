@@ -1,6 +1,11 @@
 package org.jesperancinha.ktd.json2.model
 
+import com.fasterxml.jackson.annotation.JacksonInject
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonManagedReference
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement
 
@@ -14,4 +19,7 @@ data class Stamp(
     val value: Long? = null,
     val heightMM: Long? = null,
     val widthMM: Long? = null,
+
+    @JsonProperty("Material")
+    val materials: List<String>? = null,
 )
