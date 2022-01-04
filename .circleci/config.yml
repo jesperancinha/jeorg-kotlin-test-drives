@@ -6,10 +6,7 @@ jobs:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
-      - run: mvn -B -DskipTests clean package
-      - run: mvn clean install package coveralls:report -Dconsolerizer.show=false -DrepoToken=${COVERALLS_REPO_TOKEN}
-      - run: bash <(curl -s https://codecov.io/bash)
-      - run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')
+      - run: mvn clean install jacoco:prepare-agent package jacoco:report
 
 workflows:
   sample:
