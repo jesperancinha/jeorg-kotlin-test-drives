@@ -1,6 +1,7 @@
 package com.jesperancinha.coffee.system.launcher;
 
 import com.jesperancinha.coffee.system.manager.GeneralProcessorImpl;
+import jakarta.xml.bind.JAXBException;
 import lombok.NoArgsConstructor;
 import org.kohsuke.args4j.Option;
 import org.springframework.context.ApplicationContext;
@@ -8,7 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 
 /**
@@ -51,7 +51,7 @@ public class CoffeParadigmsOptions {
             required = true)
     private Integer nPostActions;
 
-    void run() throws FileNotFoundException, JAXBException, SAXException {
+    void run() throws FileNotFoundException, JAXBException {
         ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/config.xml");
         GeneralProcessorImpl generalProcessor = context.getBean(GeneralProcessorImpl.class);
         generalProcessor.setNIterations(nIterations);

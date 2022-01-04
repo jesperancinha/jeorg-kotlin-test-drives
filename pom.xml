@@ -19,9 +19,9 @@
         <build.helper.plugin>1.10</build.helper.plugin>
         <args4j>2.33</args4j>
         <junit.version>4.12</junit.version>
-        <log4j>1.2.17</log4j>
         <javax.concurrency.version>1.0</javax.concurrency.version>
         <javax.ejb.version>3.2.2</javax.ejb.version>
+        <javax.activation.version>1.2.0</javax.activation.version>
         <mockito.version>1.10.19</mockito.version>
         <maven.shade.version>2.4.3</maven.shade.version>
         <sun.xml.bind.version>2.3.0</sun.xml.bind.version>
@@ -30,13 +30,23 @@
         <cxf-xjc-plugin.version>3.3.1</cxf-xjc-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <lombok.version>1.18.22</lombok.version>
-        <javax.activation.version>1.2.0</javax.activation.version>
-        <log4j-core.version>2.17.1</log4j-core.version>
         <slf4j-api.version>1.7.32</slf4j-api.version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <slf4j-simple.version>2.0.0-alpha4</slf4j-simple.version>
         <truth.version>0.42</truth.version>
         <activation.version>1.1.1</activation.version>
         <spring-boot.version>2.6.1</spring-boot.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.0.4</omni-coveragereporter-maven-plugin.version>
+        <log4j>1.2.17</log4j>
+        <log4j-core.version>2.17.1</log4j-core.version>
+        <log4j2.version>2.17.0</log4j2.version>
+        <log4j-slf4j-impl.version>2.17.1</log4j-slf4j-impl.version>
+        <log4j-to-slf4j.version>2.14.1</log4j-to-slf4j.version>
+        <asm.version>7.0</asm.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
+        <jakarta.xml.bind-api.version>3.0.1</jakarta.xml.bind-api.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
     </properties>
 
     <modules>
@@ -56,7 +66,7 @@
             <dependency>
                 <groupId>org.jesperancinha</groupId>
                 <artifactId>coffee-system-api</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.activation</groupId>
@@ -103,6 +113,71 @@
                 <artifactId>truth</artifactId>
                 <version>${truth.version}</version>
             </dependency>
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>${jakarta.xml.bind-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j-simple.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j-slf4j-impl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
+                <version>${log4j-to-slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito-all.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jesperancinha.plugins</groupId>
+                <artifactId>omni-coveragereporter-maven-plugin</artifactId>
+                <version>${omni-coveragereporter-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

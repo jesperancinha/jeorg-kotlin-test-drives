@@ -4,7 +4,7 @@ import com.jesperancinha.coffee.system.input.CoffeeMachines;
 import com.jesperancinha.coffee.system.input.Employees;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -15,8 +15,7 @@ public interface GeneralProcessor {
 
     void initSimulationProcess()
             throws FileNotFoundException,
-            JAXBException,
-            SAXException;
+            SAXException, JAXBException;
 
     void initSimulationProcess(
             InputStream coffeesFile,

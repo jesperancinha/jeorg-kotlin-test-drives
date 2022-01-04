@@ -10,7 +10,8 @@ module jesperancinha.system {
     requires lombok;
     requires org.slf4j;
     requires java.xml;
-    requires java.xml.bind;
+    requires jakarta.xml.bind;
+    requires jakarta.activation;
     requires args4j;
     requires org.apache.logging.slf4j;
 }

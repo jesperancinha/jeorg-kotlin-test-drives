@@ -12,6 +12,9 @@ import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Payment
 import com.jesperancinha.coffee.system.input.Employees;
 import com.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.objects.EmployeeLayer;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,9 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -90,8 +90,7 @@ public class GeneralProcessorImpl implements GeneralProcessor {
      */
     @Override
     public void initSimulationProcess()
-            throws FileNotFoundException,
-            JAXBException {
+            throws FileNotFoundException, JAXBException {
         log.info("Starting coffee simulation process...");
         initSimulationProcess(
                 new FileInputStream(
