@@ -54,7 +54,15 @@ class CrumTwo {
             val auditResult1: AuditResult = auditResult(room1, pukeIndexCheck, sympathyIndexCheck)
 
 
-            val room2 = listOf("pdc_bag", "pdc_bin", "grocery_bag", "paper_bin", "toilet","appointment_efficiency","schedule_automation","empathetic_language","reception")
+            val room2 = listOf("pdc_bag",
+                "pdc_bin",
+                "grocery_bag",
+                "paper_bin",
+                "toilet",
+                "appointment_efficiency",
+                "schedule_automation",
+                "empathetic_language",
+                "reception")
             val auditResult2: AuditResult = auditResult(room2, pukeIndexCheck, sympathyIndexCheck)
 
             ConsolerizerComposer.outSpace()
@@ -70,7 +78,7 @@ class CrumTwo {
         private fun auditResult(
             room1: List<String>,
             pukeIndexCheck: Map<String, Long>,
-            sympathyIndexCheck: Map<String, Long>
+            sympathyIndexCheck: Map<String, Long>,
         ): AuditResult {
             val pukeIndex: Long = room1.map {
                 pukeIndexCheck.getOrDefault(it, 0)

@@ -28,7 +28,8 @@ class CodecVigenere {
                     val newIndex = index - (index / key.length) * key.length
                     decodeIntChar(c, ALPHABET.indexOf(key[newIndex])).toString()
                 }
-                .stream().collect(Collectors.joining())        }
+                .stream().collect(Collectors.joining())
+        }
 
         private fun decodeIntChar(it: Int, shift: Int): Char {
             val iChar = ALPHABET.indexOf(it.toChar())

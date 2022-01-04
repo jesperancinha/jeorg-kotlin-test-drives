@@ -4,7 +4,7 @@ package org.jesperancinha.ktd.util3.codec
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-internal class CodecVigenereTest{
+internal class CodecVigenereTest {
 
     @Test
     fun testEncode() {

@@ -13,5 +13,5 @@ data class Coin(
     /**
      * Internal Diameter in millimeters (aka hole in a coin)
      */
-    val internalDiameterMM: Long = 0
+    val internalDiameterMM: Long = 0,
 )

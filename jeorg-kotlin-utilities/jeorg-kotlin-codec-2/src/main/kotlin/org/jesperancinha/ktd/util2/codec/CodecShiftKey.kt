@@ -20,7 +20,8 @@ class CodecShiftKey {
         fun decode(encoded: String, shift: Int): String {
             return encoded.chars().mapToObj {
                 decodeIntChar(it, shift)
-            }.map { it.toString() }.collect(Collectors.joining(""))        }
+            }.map { it.toString() }.collect(Collectors.joining(""))
+        }
 
         private fun decodeIntChar(it: Int, shift: Int): Char {
             val iChar = ALPHABET.indexOf(it.toChar())

@@ -19,6 +19,7 @@ open class Brownie : Cake() {
     fun getPrice(): Int {
         return price
     }
+
     /**
      * We use final to prevent this method to be overridden
      */

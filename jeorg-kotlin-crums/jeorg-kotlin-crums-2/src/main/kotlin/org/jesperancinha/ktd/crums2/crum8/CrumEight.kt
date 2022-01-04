@@ -28,13 +28,13 @@ class CrumEight {
                 return@inlineAllTheThings
                 // return The return is possible, but this would return to main
             }
-            excludingInlineAllTheThings ({
+            excludingInlineAllTheThings({
                 ConsolerizerComposer.out()
                     .magenta("This function is inline and does not get excluded")
                 return@excludingInlineAllTheThings
                 // return The return is possible, but this would return to main
 
-            }){
+            }) {
                 ConsolerizerComposer.out()
                     .magenta("This function is excluded from inline and does get excluded")
                 return@excludingInlineAllTheThings
@@ -74,7 +74,7 @@ class CrumEight {
             function()
         }
 
-        inline fun excludingInlineAllTheThings(function: () -> Unit, noinline niFunction:()->Unit) {
+        inline fun excludingInlineAllTheThings(function: () -> Unit, noinline niFunction: () -> Unit) {
             ConsolerizerComposer.outSpace()
                 .orange("You will find this in line via Java codebytes")
 //                .blue(theThing)
@@ -84,12 +84,12 @@ class CrumEight {
             niFunction()
         }
 
-         inline fun nothingPossibleToReturn(crossinline function: () -> Unit) {
-             ConsolerizerComposer.outSpace()
-                 .orange("This will follow the default compilation algorithm")
-                 .blue(theThingFixed)
-                 .reset()
-             function()
-         }
+        inline fun nothingPossibleToReturn(crossinline function: () -> Unit) {
+            ConsolerizerComposer.outSpace()
+                .orange("This will follow the default compilation algorithm")
+                .blue(theThingFixed)
+                .reset()
+            function()
+        }
     }
 }

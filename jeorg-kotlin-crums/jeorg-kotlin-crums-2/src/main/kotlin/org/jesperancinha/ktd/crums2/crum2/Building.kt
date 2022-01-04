@@ -7,7 +7,7 @@ data class Building(
     val bricks: Long,
     val goal: String,
     val concreteKg: Double,
-    val steelKg: Double
+    val steelKg: Double,
 ) {
     fun buildIt(): String = "The building $goal, is done!"
 

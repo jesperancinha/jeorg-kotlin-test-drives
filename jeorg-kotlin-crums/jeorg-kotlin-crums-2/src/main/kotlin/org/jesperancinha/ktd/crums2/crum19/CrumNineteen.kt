@@ -3,7 +3,7 @@ package org.jesperancinha.ktd.crums2.crum19
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
 class CrumNineteen {
-    companion object{
+    companion object {
         @JvmStatic
         fun main(args: Array<String>) {
             ConsolerizerComposer.outSpace()

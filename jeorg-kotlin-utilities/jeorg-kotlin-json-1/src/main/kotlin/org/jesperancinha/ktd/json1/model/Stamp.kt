@@ -16,5 +16,5 @@ data class Stamp(
     /**
      * Width in millimeters
      */
-    val widthMM: Long
+    val widthMM: Long,
 )

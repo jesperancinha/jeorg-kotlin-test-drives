@@ -5,7 +5,7 @@ import kotlin.test.Test
 class MainTest {
 
     @Test
-    fun testAll(){
+    fun testAll() {
         main(arrayOf())
     }
 

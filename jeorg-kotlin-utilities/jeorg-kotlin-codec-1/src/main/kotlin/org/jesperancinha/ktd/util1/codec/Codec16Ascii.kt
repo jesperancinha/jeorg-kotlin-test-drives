@@ -17,11 +17,13 @@ class Codec16Ascii {
         }
 
         fun decode(encodedString: String): String {
-            return String(encodedString.split(" ").stream().map { decode(it.toInt()) }.collect(Collectors.toList()).toCharArray())
+            return String(encodedString.split(" ").stream().map { decode(it.toInt()) }.collect(Collectors.toList())
+                .toCharArray())
         }
 
         fun encode(string: String): String {
-           return string.chars().map { encode(it.toChar()) }.mapToObj { it.toString() }.collect(Collectors.joining(" "))
+            return string.chars().map { encode(it.toChar()) }.mapToObj { it.toString() }
+                .collect(Collectors.joining(" "))
         }
     }
 

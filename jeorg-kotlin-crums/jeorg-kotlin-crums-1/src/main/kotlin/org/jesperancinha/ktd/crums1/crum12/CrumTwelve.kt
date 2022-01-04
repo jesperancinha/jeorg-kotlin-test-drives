@@ -29,7 +29,7 @@ class CrumTwelve {
 
         private fun getDrink(vararg ingredients: String?): List<String> {
             ConsolerizerComposer.outSpace().blue("Do you see that we cannot make varag null: %s ?", ingredients)
-            return ingredients.map { "Here is ${it ?: "water"}"}
+            return ingredients.map { "Here is ${it ?: "water"}" }
         }
     }
 }

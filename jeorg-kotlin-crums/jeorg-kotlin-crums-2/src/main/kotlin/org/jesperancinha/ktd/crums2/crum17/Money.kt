@@ -7,7 +7,8 @@ data class Money(
     /**
      * Receives the value in EUROS
      */
-    val value: Double) {
+    val value: Double,
+) {
 
     /**
      * Converts the value to another coin type
@@ -18,5 +19,5 @@ data class Money(
     var coin: Coin = Coin.EUR
 
     private val factor: Double
-        get()= coin.value
+        get() = coin.value
 }
