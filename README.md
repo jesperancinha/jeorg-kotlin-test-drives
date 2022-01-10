@@ -6,7 +6,7 @@
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/image-sizer.svg)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[![CircleCI](https://circleci.com/gh/jesperancinha/image-sizer.svg?style=svg)](https://circleci.com/gh/jesperancinha/image-sizer)
+[![CircleCI](https://circleci.com/gh/jesperancinha/image-sizer/tree/master.svg?style=svg)](https://circleci.com/gh/jesperancinha/image-sizer/tree/master)
 [![Build status](https://ci.appveyor.com/api/projects/status/eka55ffpbjkxq55p?svg=true)](https://ci.appveyor.com/project/jesperancinha/image-sizer)
 [![image-sizer](https://github.com/jesperancinha/image-sizer/actions/workflows/image-sizer.yml/badge.svg)](https://github.com/jesperancinha/image-sizer/actions/workflows/image-sizer.yml)
 
