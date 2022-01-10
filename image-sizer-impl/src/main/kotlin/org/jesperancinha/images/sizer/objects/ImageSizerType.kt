@@ -1,27 +1,19 @@
-package com.steelzack.image.sizer.objects;
+package org.jesperancinha.images.sizer.objects
 
-import java.text.MessageFormat;
+enum class ImageSizerType {
+    BMP, PNG, TIFF, JPG;
 
-public enum ImageSizerType { //
-	BMP, //
-	PNG, //
-	TIFF, //
-	JPG //
-	;
-
-	public static ImageSizerType getImageSizerType(String type) {
-		switch (type) {
-		case "bmp":
-			return ImageSizerType.BMP;
-		case "png":
-			return ImageSizerType.PNG;
-		case "tiff":
-			return ImageSizerType.TIFF;
-		case "jpg":
-			return ImageSizerType.JPG;
-		default:
-			break;
-		}
-		throw new IllegalArgumentException(MessageFormat.format("Type {0} is invalid!", type));
-	}
+    companion object {
+        @JvmStatic
+        fun getImageSizerType(type: String?): ImageSizerType {
+            when (type) {
+                "bmp" -> return BMP
+                "png" -> return PNG
+                "tiff" -> return TIFF
+                "jpg" -> return JPG
+                else -> {}
+            }
+            throw IllegalArgumentException("Type $type is invalid!")
+        }
+    }
 }

@@ -1,2 +1,9 @@
 **/build-by-eclipse
 **/build
+
+# Intellij JetBrains Idea
+.idea
+*.iml
+target
+build
+bin
