@@ -3,4 +3,5 @@ module jesperancinha.system {
     requires kotlin.stdlib.jdk7;
     requires args4j.tools;
     requires java.compiler;
+    requires jdk.compiler;
 }
