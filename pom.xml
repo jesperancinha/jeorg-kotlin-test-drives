@@ -18,6 +18,8 @@
         <omni-coveragereporter-maven-plugin.version>0.0.10</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <thumbnailator.version>0.4.11</thumbnailator.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
     </properties>
 
     <dependencyManagement>
@@ -37,7 +39,18 @@
                 <artifactId>args4j-maven-plugin</artifactId>
                 <version>${args4j-maven-plugin.version}</version>
             </dependency>
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
+            </dependency>
 
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-test</artifactId>

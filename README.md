@@ -23,6 +23,14 @@
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/image-sizer.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/image-sizer.svg)](#)
 
+
+## References
+
+- [Marvin](https://github.com/downgoon/marvin)
+- [Thumbnailator](https://github.com/coobird/thumbnailator)
+- [Imgscalr](https://github.com/rkalla/imgscalr)
+- [AWT](https://en.wikipedia.org/wiki/Abstract_Window_Toolkit)
+
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)

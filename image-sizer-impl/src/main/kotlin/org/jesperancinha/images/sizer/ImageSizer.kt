@@ -1,6 +1,5 @@
 package org.jesperancinha.images.sizer
 
-import javafx.application.Platform
 import org.jesperancinha.images.sizer.objects.ImageSizerType
 import org.kohsuke.args4j.CmdLineParser
 
@@ -27,9 +26,7 @@ object ImageSizer {
             ),
             desiredFormat = null
         )
-        Platform.startup {
-            worker.processImage()
-        }
+        worker.processImage()
     }
 
     private fun parseArguments(args: Array<String>, options: ImageSizerOptions?) {
