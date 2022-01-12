@@ -20,6 +20,7 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <thumbnailator.version>0.4.11</thumbnailator.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <javafx.version>18-ea+9</javafx.version>
     </properties>
 
     <dependencyManagement>
@@ -40,9 +41,14 @@
                 <version>${args4j-maven-plugin.version}</version>
             </dependency>
             <dependency>
-                <groupId>net.coobird</groupId>
-                <artifactId>thumbnailator</artifactId>
-                <version>${thumbnailator.version}</version>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-graphics</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-swing</artifactId>
+                <version>${javafx.version}</version>
             </dependency>
 
             <dependency>
@@ -89,6 +95,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+    </dependencies>
 
     <packaging>pom</packaging>
 

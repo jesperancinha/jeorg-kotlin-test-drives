@@ -4,7 +4,6 @@ module jesperancinha.system {
     requires args4j.tools;
     requires java.compiler;
     requires jdk.compiler;
-    requires thumbnailator;
-    requires kotlin.stdlib;
-    requires jdk.jartool;
+    requires javafx.graphics;
+    requires javafx.swing;
 }

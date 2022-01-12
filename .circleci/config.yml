@@ -27,12 +27,19 @@ jobs:
          name: Preparing tools.jar
          command: sudo cp ~/java-se-8u41-ri/lib/tools.jar /usr/local/openjdk-17/../lib/
 
-      - run: mvn clean install
+      - run:
+         name: Build and Test
+         command: mvn clean install jacoco:prepare-agent package jacoco:report
+
+      - run:
+         name: Coverage reports
+         command: mvn omni-coveragereporter:report
 
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      # run tests!
-      - run: mvn integration-test
+      - run:
+         name: Integration tests
+         command: mvn integration-test

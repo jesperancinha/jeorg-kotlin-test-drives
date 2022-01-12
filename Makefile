@@ -14,3 +14,10 @@ no-test:
 docker:
 	docker-compose rm -svf
 	docker-compose up -d --build --remove-orphans
+prune-all:
+	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
+	docker ps -a --format '{{.ID}}' | xargs -I {}  docker rm {}
+	docker network prune
+	docker system prune --all
+	docker builder prune
+	docker system prune --all --volumes
