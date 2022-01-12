@@ -5,10 +5,10 @@
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: string-array-paradigms
+name: string-array-paradigms_pull_request
 
 on:
-  push:
+  pull_request:
     branches: [ master ]
 
 jobs:
@@ -23,15 +23,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-
     - name: Build with Gradle
       uses: gradle/gradle-build-action@4137be6a8bf7d7133955359dbd952c0ca73b1021
       with:
         arguments: build
-
-    - name: Build and Test
-      run: cd string-paradigm-api && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-      run: cd string-paradigm-expression-api && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-      run: cd string-paradigm-expression-no-wrapper && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-      run: gradle clean build test publishToMavenLocal
-      run: gradle dependencies
