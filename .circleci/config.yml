@@ -19,7 +19,7 @@ jobs:
       - checkout
 
       - run:
-          - name: Prepare environment
+            name: Prepare environment
             command: apt update
             command: apt-get install wget -y
 
