@@ -18,9 +18,10 @@ jobs:
     steps:
       - checkout
 
-      - name: Prepare environment
-        command: apt update
-        command: apt-get install wget -y
+      - run:
+          - name: Prepare environment
+            command: apt update
+            command: apt-get install wget -y
 
       - run: mvn clean install
 
