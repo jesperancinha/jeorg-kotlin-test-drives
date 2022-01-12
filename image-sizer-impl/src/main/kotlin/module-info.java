@@ -5,4 +5,5 @@ module jesperancinha.system {
     requires java.compiler;
     requires jdk.compiler;
     requires thumbnailator;
+    requires kotlin.stdlib;
 }
