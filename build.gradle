@@ -1,15 +1,15 @@
 apply plugin: 'idea'
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
-group 'jesperancinha'
+group 'org.jesperancinha'
 version '0.0.0-SNAPSHOT'
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
 wrapper {
-    gradleVersion = '5.4.1'
+    gradleVersion = '8.0.0'
 }
 
 repositories {

@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:11-ea-28-jdk
+      - image: gradle:7.3.3-jdk11
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -31,12 +31,10 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: wget https://services.gradle.org/distributions/gradle-5.4.1-bin.zip -P /tmp
-      - run: sudo unzip -d /opt/gradle /tmp/gradle-5.4.1-bin.zip
-      - run: /opt/gradle/gradle-5.4.1/bin/gradle -v
+      - run: gradle -v
 
-      - run: /opt/gradle/gradle-5.4.1/bin/gradle install
-      - run: /opt/gradle/gradle-5.4.1/bin/gradle dependencies
+      - run: gradle install
+      - run: gradle dependencies
 
       - save_cache:
           paths:
@@ -44,7 +42,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
         
       # run tests!
-      - run: /opt/gradle/gradle-5.4.1/bin/gradle test
+      - run: gradle test
 
 
 

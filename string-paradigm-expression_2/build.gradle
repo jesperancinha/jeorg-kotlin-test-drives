@@ -6,9 +6,9 @@
  */
 apply plugin: 'idea'
 apply plugin: 'java'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
-group 'jesperancinha'
+group 'org.jesperancinha'
 version '0.0.0-SNAPSHOT'
 
 sourceCompatibility = JavaVersion.VERSION_11
@@ -26,7 +26,7 @@ repositories {
 }
 
 task fatJar(type: Jar) {
-    baseName = project.name + '-all'
+    archiveBaseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
@@ -34,9 +34,9 @@ task fatJar(type: Jar) {
 evaluationDependsOn(':string-paradigm-api')
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'com.google.truth', name: 'truth', version: '0.42'
-    compile group: 'jesperancinha', name: 'string-paradigm-api', version: '0.0.0-SNAPSHOT'
-    compile group: 'jesperancinha', name: 'string-paradigm-expression-api', version: '0.0.0-SNAPSHOT'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'com.google.truth', name: 'truth', version: '0.42'
+    implementation group: 'org.jesperancinha', name: 'string-paradigm-api', version: '0.0.0-SNAPSHOT'
+    implementation group: 'org.jesperancinha', name: 'string-paradigm-expression-api', version: '0.0.0-SNAPSHOT'
 }
 
