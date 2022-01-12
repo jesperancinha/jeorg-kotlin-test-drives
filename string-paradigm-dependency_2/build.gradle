@@ -34,7 +34,7 @@ evaluationDependsOn(":string-paradigm-api")
 
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.12'
-    implementation group: 'com.google.guava', name: 'guava', version: '27.0-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
     implementation group: 'org.jesperancinha', name: 'string-paradigm-api', version: '0.0.0-SNAPSHOT'
 }
 
