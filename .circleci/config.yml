@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:17-buster
+      - image: openjdk:17-slim-buster
 
     working_directory: ~/repo
 
@@ -17,6 +17,10 @@ jobs:
 
     steps:
       - checkout
+
+      - name: Prepare environment
+        command: apt update
+        command: apt-get install wget -y
 
       - run: mvn clean install
 

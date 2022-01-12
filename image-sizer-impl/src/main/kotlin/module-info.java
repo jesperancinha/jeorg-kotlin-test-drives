@@ -6,4 +6,5 @@ module jesperancinha.system {
     requires jdk.compiler;
     requires thumbnailator;
     requires kotlin.stdlib;
+    requires jdk.jartool;
 }
