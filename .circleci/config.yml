@@ -23,6 +23,10 @@ jobs:
          command: wget https://download.java.net/openjdk/jdk8u41/ri/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -P /tmp &&
             tar xf /tmp/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -C ~/
 
+      - run:
+         name: Preparing tools.jar
+         command: cp ~/java-se-8u41-ri/lib/tools.jar /usr/local/openjdk-17/../lib/
+
       - run: mvn clean install
 
       - save_cache:
