@@ -34,8 +34,8 @@ task fatJar(type: Jar) {
 evaluationDependsOn(':string-paradigm-api')
 
 dependencies {
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
-    testImplementation group: 'com.google.truth', name: 'truth', version: '0.42'
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+    testImplementation group: 'com.google.truth', name: 'truth', version: '1.1.3'
     implementation group: 'org.jesperancinha', name: 'string-paradigm-api', version: '0.0.0-SNAPSHOT'
     implementation group: 'org.jesperancinha', name: 'string-paradigm-expression-api', version: '0.0.0-SNAPSHOT'
 }
