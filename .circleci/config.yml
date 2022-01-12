@@ -20,11 +20,7 @@ jobs:
 
       - run:
          name: Prepare environment
-         command: apt update
-
-      - run:
-         name: Installing wget
-         command: apt-get install wget -y
+         command: wget https://download.java.net/openjdk/jdk8u41/ri/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -P /tmp
 
       - run: mvn clean install
 
