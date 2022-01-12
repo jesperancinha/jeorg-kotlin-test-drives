@@ -2,6 +2,7 @@
 
 ---
 
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/image-sizer)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=image-sizer&color=informational)](https://github.com/jesperancinha/image-sizer)
 [![GitHub release](https://img.shields.io/github/release-pre/jesperancinha/image-sizer.svg)](#)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -9,13 +10,14 @@
 [![CircleCI](https://circleci.com/gh/jesperancinha/image-sizer/tree/master.svg?style=svg)](https://circleci.com/gh/jesperancinha/image-sizer/tree/master)
 [![Build status](https://ci.appveyor.com/api/projects/status/md6llic9p0sbtx85?svg=true)](https://ci.appveyor.com/project/jesperancinha/image-sizer)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0ddf4a0b338e4644b416824298e33127)](https://www.codacy.com/manual/jofisaes/image-sizer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/image-sizer&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/c36571eb-ca0f-4abe-9af2-c66ffc3a4002)](https://codebeat.co/projects/github-com-jesperancinha-image-sizer-master)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/image-sizer?branch=master)](https://bettercodehub.com/results/jesperancinha/image-sizer?branch=master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c43a3f155b9c4ecab4cfd18e4db314be)](https://www.codacy.com/gh/jesperancinha/image-sizer/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/image-sizer&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/21fdbda4-1395-48ee-a828-619d9197b4a9)](https://codebeat.co/projects/github-com-jesperancinha-image-sizer-master)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/image-sizer?branch=master)](https://bettercodehub.com/results/jesperancinha/image-sizer)
 [![Known Vulnerabilities](https://snyk.io/test/github/jesperancinha/image-sizer/badge.svg)](https://snyk.io/test/github/jesperancinha/image-sizer)
 
 [![codecov](https://codecov.io/gh/jesperancinha/image-sizer/branch/master/graph/badge.svg?token=b0HBEAqDMQ)](https://codecov.io/gh/jesperancinha/image-sizer)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/image-sizer/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/image-sizer?branch=master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/c43a3f155b9c4ecab4cfd18e4db314be)](https://www.codacy.com/gh/jesperancinha/image-sizer/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/image-sizer&utm_campaign=Badge_Coverage)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/image-sizer.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/image-sizer.svg)](#)
