@@ -4,6 +4,7 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
+apply plugin: 'jacoco'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven-publish'
@@ -37,6 +38,18 @@ publishing {
     }
     repositories {
         mavenLocal()
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = true
     }
 }
 
