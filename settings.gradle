@@ -1,3 +1,11 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'string-array-paradigms'
 include ':string-paradigm-api'
 include ':string-paradigm-expression-api'
@@ -11,4 +19,3 @@ include ':string-paradigm-test-generator'
 include ':string-paradigm_1'
 include ':string-paradigm_original'
 include 'test'
-

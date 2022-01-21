@@ -1,7 +1,15 @@
-apply plugin: 'jacoco'
-apply plugin: 'idea'
-apply plugin: 'java'
-apply plugin: 'maven-publish'
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+plugins {
+    id("java-gradle-plugin")
+    id("maven-publish")
+    id( "org.jesperancinha.plugins.omni") version "0.0.0"
+    id("jacoco")
+}
 
 group 'org.jesperancinha'
 version '0.0.0-SNAPSHOT'
@@ -15,12 +23,6 @@ wrapper {
 
 repositories {
     mavenCentral()
-}
-
-buildscript {
-    repositories {
-        mavenLocal()
-    }
 }
 
 test {

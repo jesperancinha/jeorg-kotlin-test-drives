@@ -8,7 +8,6 @@ apply plugin: 'jacoco'
 apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven-publish'
-apply plugin: 'maven-publish'
 
 group 'org.jesperancinha'
 version '0.0.0-SNAPSHOT'
