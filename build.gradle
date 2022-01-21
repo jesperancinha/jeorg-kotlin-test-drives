@@ -7,7 +7,7 @@ buildscript {
 plugins {
     id("java-gradle-plugin")
     id("maven-publish")
-    id( "org.jesperancinha.plugins.omni") version "0.0.0"
+    id( "org.jesperancinha.plugins.omni") version "0.0.1"
     id("jacoco")
 }
 

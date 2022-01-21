@@ -1,13 +1,19 @@
 # String Array Paradigms
+
 ---
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=String%20Array%20Paradigms&color=informational)](https://github.com/jesperancinha/string-array-paradigms)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/string-array-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/string-array-paradigms)
 [![string-array-paradigms](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/gradle.yml/badge.svg)](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/gradle.yml)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/app/jofisaes/string-array-paradigms?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/string-array-paradigms&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/gh/jesperancinha/string-array-paradigms/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/string-array-paradigms&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/65fed66c-ff4a-46f1-9b12-bc486a422ee6)](https://codebeat.co/projects/github-com-jesperancinha-string-array-paradigms-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/string-array-paradigms?branch=master)](https://bettercodehub.com/)
+
+
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/string-array-paradigms/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/string-array-paradigms?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/string-array-paradigms/branch/master/graph/badge.svg?token=7DkwDmhB17)](https://codecov.io/gh/jesperancinha/string-array-paradigms)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/string-array-paradigms.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/string-array-paradigms.svg)](#)
