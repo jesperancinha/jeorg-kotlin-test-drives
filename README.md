@@ -11,7 +11,7 @@
 [![codebeat badge](https://codebeat.co/badges/65fed66c-ff4a-46f1-9b12-bc486a422ee6)](https://codebeat.co/projects/github-com-jesperancinha-string-array-paradigms-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/string-array-paradigms?branch=master)](https://bettercodehub.com/)
 
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/gh/jesperancinha/string-array-paradigms/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/string-array-paradigms&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/string-array-paradigms/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/string-array-paradigms?branch=master)
 [![codecov](https://codecov.io/gh/jesperancinha/string-array-paradigms/branch/master/graph/badge.svg?token=7DkwDmhB17)](https://codecov.io/gh/jesperancinha/string-array-paradigms)
 
