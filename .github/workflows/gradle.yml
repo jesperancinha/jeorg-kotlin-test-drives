@@ -38,3 +38,7 @@ jobs:
 
     - name: Build Complete
       run: gradle clean build test publishToMavenLocal && gradle dependencies
+      env:
+         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
