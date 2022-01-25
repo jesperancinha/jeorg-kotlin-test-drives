@@ -29,17 +29,17 @@ test {
     finalizedBy jacocoTestReport
 }
 
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.required = true
-        csv.required = true
-    }
-}
-
 subprojects {
     apply plugin: "java"
     repositories {
         mavenCentral()
+    }
+}
+
+jacocoTestReport {
+    dependsOn test, subprojects.test
+    reports {
+        xml.required = true
+        csv.required = true
     }
 }
