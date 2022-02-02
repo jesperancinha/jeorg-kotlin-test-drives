@@ -10,7 +10,7 @@ buildscript {
 plugins {
     id("jacoco")
     id("java")
-    id("org.jesperancinha.plugins.omni") version "0.1.1"
+    id("org.jesperancinha.plugins.omni") version "0.1.2"
 }
 
 group 'jesperancinha'
