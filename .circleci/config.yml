@@ -11,18 +11,18 @@ jobs:
       TERM: dumb
 
     steps:
-    - checkout
+        - checkout
 
-    - restore_cache:
-        keys:
-        - v1-dependencies-{{ checksum "build.gradle" }}
-        - v1-dependencies-
+        - restore_cache:
+            keys:
+            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-
 
-    - run: Test Build Report
-        command: ./gradlew clean build test jacocoTestReport -i && ./gradlew -i
+        - run: Test Build Report
+          command: ./gradlew clean build test jacocoTestReport -i && ./gradlew -i
 
-    - save_cache:
-        paths:
-        - ~/.gradle
-        key: v1-dependencies-{{ checksum "build.gradle" }}
+        - save_cache:
+            paths:
+            - ~/.gradle
+            key: v1-dependencies-{{ checksum "build.gradle" }}
 
