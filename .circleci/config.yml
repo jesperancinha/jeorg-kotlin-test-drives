@@ -19,10 +19,9 @@ jobs:
            - v1-dependencies-
 
       - run: Test Build Report
-          command: ./gradlew clean build test jacocoTestReport -i && ./gradlew -i
+          command: './gradlew clean build test jacocoTestReport -i && ./gradlew -i'
 
       - save_cache:
           paths:
            - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-
