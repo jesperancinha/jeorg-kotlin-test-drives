@@ -23,7 +23,7 @@ jobs:
     - name: Build Test
       run: 	./gradlew clean build test jacocoTestReport -i
 
-    - name: Build Test
+    - name: Reports
       run: ./gradlew -i
       env:
          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
