@@ -21,6 +21,13 @@
 
 ---
 
+## Tech stack
+
+---
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/gradle-50.png "Gradle")](https://gradle.org/)
+
+---
+
 ## Description
 
 A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll keep looking after it from now on and integrate it into future Java versions
