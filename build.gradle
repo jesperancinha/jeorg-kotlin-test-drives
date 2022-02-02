@@ -2,21 +2,20 @@ buildscript {
     repositories {
         mavenLocal()
     }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-stdlib-common:1.6.10'
+    }
 }
 
 plugins {
-    id("java-gradle-plugin")
-    id("maven-publish")
-    id("org.jesperancinha.plugins.omni") version "0.1.1"
-    id("idea")
     id("jacoco")
+    id("java")
+    id("org.jesperancinha.plugins.omni") version "0.1.1"
 }
 
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
 
-sourceCompatibility = 11
-targetCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -29,13 +28,21 @@ subprojects {
     }
 }
 
-test {
-    finalizedBy jacocoTestReport
-}
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 jacocoTestReport {
     dependsOn test, subprojects.test
     reports {
         xml.enabled(true)
     }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+
+dependencies {
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.6.10'
 }

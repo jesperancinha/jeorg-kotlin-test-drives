@@ -17,8 +17,6 @@ task fatJar(type: Jar) {
         attributes 'Main-Class': 'com.performance.inputgenerator.InputGenerator'
     }
     baseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
 }
 
 defaultTasks 'fatJar'
