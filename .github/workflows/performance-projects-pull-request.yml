@@ -20,5 +20,5 @@ jobs:
     - name: Setup Gradle
       uses: gradle/gradle-build-action@v2
 
-    - name: Build Complete
-      run: gradle clean build test publishToMavenLocal && gradle dependencies
+    - name: Build Test Report
+      run: 	./gradlew clean build test -i
