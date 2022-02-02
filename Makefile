@@ -1,7 +1,7 @@
 wrapper:
 	gradle wrapper
 buildw:
-	gradle clean build test publishToMavenLocal
+	./gradlew clean build test jacocoTestReport -i && ./gradlew -i
 upgrade:
 	gradle wrapper --gradle-version 7.3.3
 upgrade-mac-os:
