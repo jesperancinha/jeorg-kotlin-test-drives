@@ -14,6 +14,7 @@
 
 
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/performance-projects/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/performance-projects?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/performance-projects/branch/master/graph/badge.svg?token=IyBAUw18Z1)](https://codecov.io/gh/jesperancinha/performance-projects)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/performance-projects.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/performance-projects.svg)](#)
