@@ -1,6 +1,16 @@
-apply plugin: 'idea'
-apply plugin: 'java'
-apply plugin: 'maven'
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+plugins {
+    id("java-gradle-plugin")
+    id("maven-publish")
+    id( "org.jesperancinha.plugins.omni") version "0.1.1"
+    id("idea")
+    id("jacoco")
+}
 
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
@@ -10,12 +20,6 @@ targetCompatibility = 11
 
 repositories {
     mavenCentral()
-}
-
-buildscript {
-    repositories {
-        mavenLocal()
-    }
 }
 
 subprojects {

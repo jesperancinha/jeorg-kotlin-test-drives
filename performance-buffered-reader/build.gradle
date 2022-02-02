@@ -12,11 +12,11 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 dependencies {
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.3.1'
-    testCompile group: 'com.google.truth', name: 'truth', version: '0.42'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.8.0-beta2'
-    compile 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
-    compile 'com.google.guava:guava:27.0-jre'
-    compile 'commons-io:commons-io:2.6'
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
+    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'commons-io:commons-io:2.11.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'com.google.truth:truth:1.1.3'
 
 }

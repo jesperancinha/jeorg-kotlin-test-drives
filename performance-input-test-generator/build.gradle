@@ -23,9 +23,9 @@ task fatJar(type: Jar) {
 defaultTasks 'fatJar'
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    compile 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
-    compile 'com.google.guava:guava:27.0-jre'
-    compile 'commons-io:commons-io:2.6'
+    implementation 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
+    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'commons-io:commons-io:2.11.0'
+    testImplementation 'junit:junit:4.12'
 
 }

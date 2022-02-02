@@ -34,9 +34,7 @@ public class JumpSearchFileSameStepMethodStreams1 implements JumpSearchFileStrea
 			try (Scanner scanner = new Scanner(completeList)) {
 				final StringBuilder sb = new StringBuilder();
 				final int step = (int) Math.sqrt(length);
-				for (int i = 0; i < step - 1; i++) {
-					sb.append("[0-9]{1,}\\,\\ ");
-				}
+				sb.append("[0-9]{1,}\\,\\ ".repeat(Math.max(0, step - 1)));
 				sb.append("[0-9]{1,}");
 				final String pattern = sb.toString();
 
@@ -46,7 +44,7 @@ public class JumpSearchFileSameStepMethodStreams1 implements JumpSearchFileStrea
 					if (values == null) {
 						values = scanner.nextLine();
 					}
-					final int[] segment = Arrays.asList(values.split(", ")).stream().mapToInt(Integer::parseInt)
+					final int[] segment = Arrays.stream(values.split(", ")).mapToInt(Integer::parseInt)
 							.toArray();
 					currentStep += segment.length;
 					if (segment[segment.length - 1] >= number) {
