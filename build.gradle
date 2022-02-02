@@ -7,7 +7,7 @@ buildscript {
 plugins {
     id("java-gradle-plugin")
     id("maven-publish")
-    id( "org.jesperancinha.plugins.omni") version "0.1.1"
+    id("org.jesperancinha.plugins.omni") version "0.1.1"
     id("idea")
     id("jacoco")
 }
@@ -26,5 +26,16 @@ subprojects {
     apply plugin: "java"
     repositories {
         mavenCentral()
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test, subprojects.test
+    reports {
+        xml.enabled(true)
     }
 }

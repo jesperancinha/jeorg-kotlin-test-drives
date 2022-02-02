@@ -1,5 +1,6 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
@@ -10,6 +11,14 @@ repositories {
 
 sourceCompatibility = 11
 targetCompatibility = 11
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
 
 dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha6'

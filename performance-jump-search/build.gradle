@@ -1,8 +1,10 @@
 apply plugin: 'idea'
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 group 'jesperancinha'
 version '0.0.0-SNAPSHOT'
+
 
 repositories {
     mavenCentral()
@@ -15,6 +17,14 @@ task fatJar(type: Jar) {
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
 }
 
 dependencies {
