@@ -18,3 +18,12 @@ out
 
 ### IDE
 target
+
+# Coverage
+coverage
+*.zip
+index.html
+doc
+test
+jacoco
+*.jar
