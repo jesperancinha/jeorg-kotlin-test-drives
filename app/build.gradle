@@ -42,3 +42,15 @@ dependencies {
     testImplementation "org.jmock:jmock-junit4:2.8.2"
     testImplementation "org.jmock:jmock-legacy:2.5.1"
 }
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = true
+    }
+}
