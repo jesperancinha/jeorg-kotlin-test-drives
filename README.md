@@ -7,6 +7,10 @@
 
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/03d617aa092f442481c1713c63d9b898)](https://www.codacy.com/gh/jesperancinha/xml-adder/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/xml-adder&amp;utm_campaign=Badge_Grade)
+
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/xml-adder/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/xml-adder?branch=master)
+
 ---
 
 ### Intro
