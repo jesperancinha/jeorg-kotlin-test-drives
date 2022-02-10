@@ -10,3 +10,4 @@ target
 *.jar
 *.iml
 out
+!gradle/wrapper/gradle-wrapper.jar

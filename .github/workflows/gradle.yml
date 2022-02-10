@@ -27,9 +27,6 @@ jobs:
     - name: Creates properties
       run: touch local.properties
 
-    - name: Gradle Lint Test
-      run: ./gradlew lint test
-
     - name: Build
       run: ./gradlew clean build test jacocoTestReport -i
 
