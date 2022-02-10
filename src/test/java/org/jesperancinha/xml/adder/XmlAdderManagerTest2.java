@@ -1,7 +1,7 @@
-package com.steelzack.xmladder;
+package org.jesperancinha.xml.adder;
 
-import com.steelzack.xmladder.instruction.XmlAdderAddAttributeManager;
-import com.steelzack.xmladder.instruction.XmlAdderInstruction;
+import org.jesperancinha.xml.adder.instruction.XmlAdderAddAttributeManager;
+import org.jesperancinha.xml.adder.instruction.XmlAdderInstruction;
 import org.jmock.Mockery;
 import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Assert;
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
-public class XmlAdderManagerTest {
+public class XmlAdderManagerTest2 {
     private static final String guidMatch = "([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})";
     private static final Mockery context = new Mockery();
 

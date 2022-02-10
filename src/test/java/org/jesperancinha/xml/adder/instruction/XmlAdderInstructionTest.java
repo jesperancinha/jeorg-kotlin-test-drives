@@ -1,4 +1,4 @@
-package com.jesperancinha.xmladder.instruction;
+package org.jesperancinha.xml.adder.instruction;
 
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.

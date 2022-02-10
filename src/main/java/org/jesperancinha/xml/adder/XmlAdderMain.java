@@ -1,4 +1,4 @@
-package com.jesperancinha.xmladder;
+package org.jesperancinha.xml.adder;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.jesperancinha.xmladder.instruction;
+package org.jesperancinha.xml.adder.instruction;
 
 import java.util.Map;
 import java.util.Set;

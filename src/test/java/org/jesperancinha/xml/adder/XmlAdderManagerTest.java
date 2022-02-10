@@ -1,4 +1,4 @@
-package com.jesperancinha.xmladder;
+package org.jesperancinha.xml.adder;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
@@ -21,8 +21,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import com.jesperancinha.xmladder.instruction.XmlAdderAddAttributeManager;
-import com.jesperancinha.xmladder.instruction.XmlAdderInstruction;
+import org.jesperancinha.xml.adder.instruction.XmlAdderAddAttributeManager;
+import org.jesperancinha.xml.adder.instruction.XmlAdderInstruction;
 import org.jmock.Mockery;
 import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Assert;
