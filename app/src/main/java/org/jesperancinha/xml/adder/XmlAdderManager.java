@@ -2,13 +2,14 @@ package org.jesperancinha.xml.adder;
 
 
 import com.opencsv.CSVReader;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
+import org.apache.commons.io.IOUtils;
 import org.jesperancinha.xml.adder.csv.AttributeAddBean;
 import org.jesperancinha.xml.adder.csv.AttributeDeleteBean;
 import org.jesperancinha.xml.adder.instruction.XmlAdderAddAttributeManager;
 import org.jesperancinha.xml.adder.instruction.XmlAdderInstruction;
-import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,12 +19,29 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.xpath.*;
-import java.io.*;
-import java.util.*;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Created by joaofilipesabinoesperancinha on 16-02-16.
@@ -46,11 +64,11 @@ public class XmlAdderManager {
     private final File fileDestinationDirectory;
 
     public XmlAdderManager(
-                            File fileSourceDirectory,
-                            File fileDestinationDirectory,
-                            InputStream fileAddAttributes,
-                            InputStream fileDeleteAttributes,
-                            InputStream fileRule
+            File fileSourceDirectory,
+            File fileDestinationDirectory,
+            InputStream fileAddAttributes,
+            InputStream fileDeleteAttributes,
+            InputStream fileRule
     )
             throws IOException, ParserConfigurationException {
         this.fileSourceDirectory = fileSourceDirectory;
@@ -84,12 +102,13 @@ public class XmlAdderManager {
     }
 
     protected void readAllAddAttributes(InputStream fileAddAttributes) throws IOException {
-        final HeaderColumnNameMappingStrategy<AttributeAddBean> strategy = new HeaderColumnNameMappingStrategy<>();
+        final ColumnPositionMappingStrategy<AttributeAddBean> strategy = new ColumnPositionMappingStrategy<>();
         strategy.setType(AttributeAddBean.class);
         final CsvToBean<AttributeAddBean> csvToBean = new CsvToBean<>();
         csvToBean.setMappingStrategy(strategy);
         csvToBean.setCsvReader(new CSVReader(new InputStreamReader(fileAddAttributes)));
-        final List<AttributeAddBean> beanList = csvToBean.parse();
+        List<AttributeAddBean> beanList = csvToBean.parse();
+        beanList = beanList.subList(1, beanList.size());
 
         for (AttributeAddBean attBean : beanList) {
             addAttributeManager.addAddAttribute(attBean.getName(), attBean.getValue(), attBean.getXpath());
@@ -143,8 +162,7 @@ public class XmlAdderManager {
                             if (attName != null &&
                                     ((Element) node).getAttribute(attName) != null &&
                                     !((Element) node).getAttribute(attName).isEmpty()
-                                    )
-                            {
+                            ) {
                                 ((Element) node).removeAttribute(attName);
                                 saveFile = true;
                             }

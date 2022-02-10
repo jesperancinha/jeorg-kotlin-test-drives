@@ -85,7 +85,7 @@ public class XmlAdderManagerTest {
         assertEquals(1, resultSet.size());
         for (String key : resultSet) {
             assertEquals("testnode1/testnode2", key);
-            assertEquals(null, result.get(key).getAttributesToAdd().get("attribute1name"));
+            assertEquals(0, result.get(key).getAttributesToAdd().get("attribute1name").length());
         }
         manager.runConversion();
     }
