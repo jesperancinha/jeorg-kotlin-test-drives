@@ -1,19 +1,21 @@
 package org.jesperancinha.xml.adder.csv;
 
-import com.opencsv.bean.CsvBind;
+
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByNames;
 
 /**
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
 public class AttributeAddBean {
 
-    @CsvBind
+    @CsvBindByName(capture = "name")
     private String name;
 
-    @CsvBind
+    @CsvBindByName(capture = "value")
     private String value;
 
-    @CsvBind
+    @CsvBindByName(capture = "xpath")
     private String xpath;
 
     public String getName() {

@@ -1,6 +1,7 @@
 package org.jesperancinha.xml.adder;
 
 
+import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 import org.jesperancinha.xml.adder.csv.AttributeAddBean;
@@ -69,7 +70,9 @@ public class XmlAdderManager {
         final HeaderColumnNameMappingStrategy<AttributeDeleteBean> strategy = new HeaderColumnNameMappingStrategy<>();
         strategy.setType(AttributeDeleteBean.class);
         final CsvToBean<AttributeDeleteBean> csvToBean = new CsvToBean<>();
-        final List<AttributeDeleteBean> beanList = csvToBean.parse(strategy, new InputStreamReader(fileDeleteAttributes));
+        csvToBean.setMappingStrategy(strategy);
+        csvToBean.setCsvReader(new CSVReader(new InputStreamReader(fileDeleteAttributes)));
+        final List<AttributeDeleteBean> beanList = csvToBean.parse();
 
         for (AttributeDeleteBean attBean : beanList) {
             addAttributeManager.addRemoveAttribute(attBean.getName(), attBean.getXpath());
@@ -84,7 +87,9 @@ public class XmlAdderManager {
         final HeaderColumnNameMappingStrategy<AttributeAddBean> strategy = new HeaderColumnNameMappingStrategy<>();
         strategy.setType(AttributeAddBean.class);
         final CsvToBean<AttributeAddBean> csvToBean = new CsvToBean<>();
-        final List<AttributeAddBean> beanList = csvToBean.parse(strategy, new InputStreamReader(fileAddAttributes));
+        csvToBean.setMappingStrategy(strategy);
+        csvToBean.setCsvReader(new CSVReader(new InputStreamReader(fileAddAttributes)));
+        final List<AttributeAddBean> beanList = csvToBean.parse();
 
         for (AttributeAddBean attBean : beanList) {
             addAttributeManager.addAddAttribute(attBean.getName(), attBean.getValue(), attBean.getXpath());

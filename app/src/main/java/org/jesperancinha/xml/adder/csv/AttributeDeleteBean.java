@@ -1,15 +1,15 @@
 package org.jesperancinha.xml.adder.csv;
 
-import com.opencsv.bean.CsvBind;
+import com.opencsv.bean.CsvBindByName;
 
 /**
  * Created by joaofilipesabinoesperancinha on 23-02-16.
  */
 public class AttributeDeleteBean {
-    @CsvBind
+    @CsvBindByName(column = "name")
     private String name;
 
-    @CsvBind
+    @CsvBindByName(column = "xpath")
     private String xpath;
 
     public String getName() {
