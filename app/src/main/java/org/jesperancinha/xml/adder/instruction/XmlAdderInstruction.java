@@ -30,13 +30,13 @@ public class XmlAdderInstruction {
      * @param siblingsToAdd
      * @param siblingToAddValues
      */
-    public XmlAdderInstruction( //
-                                String attributeValueToReplace, //
-                                Map<String, String> attributesToAdd, //
-                                Map<String, String> attributeKeyValueToReplaceOrAdd, //
-                                Set<String> attributeKeyToDelete, //
-                                Map<String, Map<String, String>> siblingsToAdd, //
-                                Map<String, String> siblingToAddValues //
+    public XmlAdderInstruction(
+                                String attributeValueToReplace,
+                                Map<String, String> attributesToAdd,
+                                Map<String, String> attributeKeyValueToReplaceOrAdd,
+                                Set<String> attributeKeyToDelete,
+                                Map<String, Map<String, String>> siblingsToAdd,
+                                Map<String, String> siblingToAddValues
     ) {
         this.attributesToAdd = attributesToAdd;
         this.attributeValueToReplace = attributeValueToReplace;

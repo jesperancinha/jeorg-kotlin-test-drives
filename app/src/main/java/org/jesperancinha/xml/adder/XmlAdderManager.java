@@ -44,13 +44,13 @@ public class XmlAdderManager {
     private final File fileSourceDirectory;
     private final File fileDestinationDirectory;
 
-    public XmlAdderManager( //
+    public XmlAdderManager(
                             File fileSourceDirectory,
-                            File fileDestinationDirectory, //
-                            InputStream fileAddAttributes, //
-                            InputStream fileDeleteAttributes, //
-                            InputStream fileRule //
-    ) //
+                            File fileDestinationDirectory,
+                            InputStream fileAddAttributes,
+                            InputStream fileDeleteAttributes,
+                            InputStream fileRule
+    )
             throws IOException, ParserConfigurationException {
         this.fileSourceDirectory = fileSourceDirectory;
         this.fileDestinationDirectory = fileDestinationDirectory;
@@ -135,10 +135,10 @@ public class XmlAdderManager {
 
                         final Set<String> attributesToDelete = instruction.getAttributeKeysToDelete();
                         for (String attName : attributesToDelete) {
-                            if (attName != null && //
-                                    ((Element) node).getAttribute(attName) != null && //
-                                    !((Element) node).getAttribute(attName).isEmpty() //
-                                    ) //
+                            if (attName != null &&
+                                    ((Element) node).getAttribute(attName) != null &&
+                                    !((Element) node).getAttribute(attName).isEmpty()
+                                    )
                             {
                                 ((Element) node).removeAttribute(attName);
                                 saveFile = true;
@@ -156,10 +156,10 @@ public class XmlAdderManager {
     protected void saveFile(final File file, final Document doc) throws TransformerException {
         final String absolutePath = file.getAbsolutePath();
         final String rootSourceFolder = fileSourceDirectory.getAbsolutePath();
-        final String rootDestinationFolder = fileDestinationDirectory //
-                .getAbsolutePath() //
-                .concat("/") //
-                .concat(fileSourceDirectory.getName()) //
+        final String rootDestinationFolder = fileDestinationDirectory
+                .getAbsolutePath()
+                .concat("/")
+                .concat(fileSourceDirectory.getName())
                 .concat(absolutePath.replace(rootSourceFolder, ""));
 
         final File destinationFile = new File(rootDestinationFolder);

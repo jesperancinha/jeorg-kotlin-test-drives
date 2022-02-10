@@ -21,11 +21,11 @@ public class XmlAdderMain {
         final InputStream fileDeleteAttributesFile = new FileInputStream(new File(deleteAttributesFile)) ;
         final InputStream fileRule = new FileInputStream(new File(rule));
 
-        final XmlAdderManager manager = new XmlAdderManager( //
-                fileSourceDirectory, //
-                fileDestinationDirectory, //
-                fileAddAtributesFile, //
-                fileDeleteAttributesFile, //
+        final XmlAdderManager manager = new XmlAdderManager(
+                fileSourceDirectory,
+                fileDestinationDirectory,
+                fileAddAtributesFile,
+                fileDeleteAttributesFile,
                 fileRule);
     }
 }

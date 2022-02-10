@@ -1,39 +1,5 @@
-### Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-### Java related build
-*.jar
-*.war
-*.ear
-*.class
-
-### Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-
-### MAC OS
-**/.DS_Store
-
-### Intellij
-*.iml
-*.ipr
-*.iws
-.idea
-
-### Eclipse
-.classpath
-.settings
-.project
-**/build/
-**/bin/
-**/build-by-eclipse/
-
-### Gradle
+# Ignore Gradle project-specific cache directory
 .gradle
-gradle
-gradlew
-gradlew.bat
-out
 
-### IDE
-target
+# Ignore Gradle build output directory
+build

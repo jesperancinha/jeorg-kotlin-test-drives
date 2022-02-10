@@ -15,6 +15,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.*;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class XmlAdderManagerTest2 {
 
     @Test
     public void testReadAllAddAttributes() throws IOException, ParserConfigurationException {
-        final InputStream is = getClass().getResourceAsStream("testReadAttributeBean.csv");
+        final InputStream is = getClass().getResourceAsStream("/testReadAttributeBean.csv");
         final InputStream ruleStream = context.mock(FileInputStream.class);
         final XmlAdderManager manager = new XmlAdderManager(null, null, is, null, ruleStream) {
             @Override
@@ -58,16 +59,16 @@ public class XmlAdderManagerTest2 {
 
     @Test
     public void testCompleteProcess() throws SAXException, TransformerException, XPathExpressionException, IOException, ParserConfigurationException {
-        final InputStream inputStreamRule = getClass().getResourceAsStream("testDesc.txt");
-        final InputStream inputStreamAttributeBean = getClass().getResourceAsStream("testDescAddBean.csv");
-        final InputStream inputStreamAttributeDeleteBean = getClass().getResourceAsStream("testDescDeleteBean.csv");
+        final InputStream inputStreamRule = getClass().getResourceAsStream("/testDesc.txt");
+        final InputStream inputStreamAttributeBean = getClass().getResourceAsStream("/testDescAddBean.csv");
+        final InputStream inputStreamAttributeDeleteBean = getClass().getResourceAsStream("/testDescDeleteBean.csv");
         final File testFolder = getTestFolder(true);
-        final XmlAdderManager manager = new XmlAdderManager( //
-                testFolder, //
-                new File("/tmp"), //
-                inputStreamAttributeBean, //
-                inputStreamAttributeDeleteBean, //
-                inputStreamRule //
+        final XmlAdderManager manager = new XmlAdderManager(
+                testFolder,
+                new File("/tmp"),
+                inputStreamAttributeBean,
+                inputStreamAttributeDeleteBean,
+                inputStreamRule
         ) {
             @Override
             protected void saveFile(File file, Document doc) throws TransformerException {
@@ -107,6 +108,7 @@ public class XmlAdderManagerTest2 {
         final java.util.List<File> resultFilesToChange = XmlAdderManager.listAllFilesToChange(getTestFolder(true));
 
         Assert.assertEquals(6, resultFilesToChange.size());
+        Collections.sort(resultFilesToChange);
         Assert.assertEquals("file1.xml", resultFilesToChange.get(0).getName());
         Assert.assertEquals("file11.xml", resultFilesToChange.get(1).getName());
         Assert.assertEquals("file12.xml", resultFilesToChange.get(2).getName());
@@ -117,21 +119,21 @@ public class XmlAdderManagerTest2 {
 
     @Test
     public void testGetRule() throws IOException, ParserConfigurationException {
-        testGetRule("testRule0.txt", "I am a", true, false);
-        testGetRule("testRule0.1.txt", "I am a", true, false);
-        testGetRule("testRule1.txt", "I am not a GUID", false, false);
-        testGetRule("testRule2.txt", "I am a slash behind a \\", true, false);
-        testGetRule("testRule3.txt", "I am two slashes \\\\", true, false);
-        testGetRule("testRule4.txt", "I am two slashes and not a \\\\GUID", false, false);
+        testGetRule("/testRule0.txt", "I am a", true, false);
+        testGetRule("/testRule0.1.txt", "I am a", true, false);
+        testGetRule("/testRule1.txt", "I am not a GUID", false, false);
+        testGetRule("/testRule2.txt", "I am a slash behind a \\", true, false);
+        testGetRule("/testRule3.txt", "I am two slashes \\\\", true, false);
+        testGetRule("/testRule4.txt", "I am two slashes and not a \\\\GUID", false, false);
     }
 
     public void testGetRule(String testRule, String testRuleMatch, boolean testGUID, boolean testUpperCase) throws IOException, ParserConfigurationException {
-        final XmlAdderManager manager = new XmlAdderManager( //
-                null, //
-                null, //
-                null, //
-                null, //
-                getClass().getResourceAsStream(testRule) //
+        final XmlAdderManager manager = new XmlAdderManager(
+                null,
+                null,
+                null,
+                null,
+                getClass().getResourceAsStream(testRule)
         ) {
             @Override
             protected void readAllAddAttributes(InputStream fileAddAttributes) throws IOException {
