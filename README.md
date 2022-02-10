@@ -7,9 +7,17 @@
 
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![xml-adder](https://github.com/jesperancinha/xml-adder/actions/workflows/gradle.yml/badge.svg)](https://github.com/jesperancinha/xml-adder/actions/workflows/gradle.yml)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/03d617aa092f442481c1713c63d9b898)](https://www.codacy.com/gh/jesperancinha/xml-adder/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/xml-adder&amp;utm_campaign=Badge_Grade)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/03d617aa092f442481c1713c63d9b898)](https://www.codacy.com/gh/jesperancinha/xml-adder/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/xml-adder&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/xml-adder/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/xml-adder?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/xml-adder/branch/master/graph/badge.svg?token=XU7kiGksQt)](https://codecov.io/gh/jesperancinha/xml-adder)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/xml-adder.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/xml-adder.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/xml-adder.svg)](#)
 
 ---
 
