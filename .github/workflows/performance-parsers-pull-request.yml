@@ -20,7 +20,8 @@ jobs:
               tar xf /tmp/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -C ~/
 
         - name: Preparing tools.jar
-          run: sudo cp ~/java-se-8u41-ri/lib/tools.jar /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib/tools.jar
+          run: mkdir -p /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib &&
+               sudo cp ~/java-se-8u41-ri/lib/tools.jar /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib/tools.jar
 
         - name: Build and Test
           run: mvn clean install jacoco:prepare-agent package jacoco:report

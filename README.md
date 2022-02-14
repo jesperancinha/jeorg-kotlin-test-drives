@@ -8,6 +8,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-parsers&amp;utm_campaign=Badge_Grade)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/performance-parsers&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/performance-parsers/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/performance-parsers?branch=master)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/performance-parsers.svg)](#)
