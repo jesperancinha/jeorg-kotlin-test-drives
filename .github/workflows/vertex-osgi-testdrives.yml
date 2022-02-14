@@ -19,7 +19,7 @@ jobs:
           run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
         - name: Coverage Reports
-          run: mvn omni-coveragereporter:report
+          run: mvn omni-coveragereporter:report -X -e
           env:
              COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
              CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
