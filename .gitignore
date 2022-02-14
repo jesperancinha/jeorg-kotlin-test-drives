@@ -4,3 +4,11 @@
 **/lib
 ivy-cache
 repository
+
+# JetBraind
+.idea
+*.iml
+target
+build
+bin
+dist

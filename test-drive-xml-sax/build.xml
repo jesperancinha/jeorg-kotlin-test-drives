@@ -1,5 +1,0 @@
-<project name="test-drive-xml-sax" default="compile">
-	<property file="../build.properties"/>
-	
-	<import file="../common/common.xml"/>
-</project>
