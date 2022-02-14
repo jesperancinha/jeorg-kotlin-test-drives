@@ -10,6 +10,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/performance-parsers&utm_campaign=Badge_Coverage)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/performance-parsers/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/performance-parsers?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/performance-parsers/branch/master/graph/badge.svg?token=sw8f88MIBj)](https://codecov.io/gh/jesperancinha/performance-parsers)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/performance-parsers.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/performance-parsers.svg)](#)
