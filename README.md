@@ -10,6 +10,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/883d17c11a5b44c8907c052394dace14)](https://www.codacy.com/gh/jesperancinha/jeorg-vertex-osgi-testdrives/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/jeorg-vertex-osgi-testdrives&amp;utm_campaign=Badge_Grade)
 
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/jeorg-vertex-osgi-testdrives/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/jeorg-vertex-osgi-testdrives?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/jeorg-vertex-osgi-testdrives/branch/master/graph/badge.svg?token=Hfl6DctO50)](https://codecov.io/gh/jesperancinha/jeorg-vertex-osgi-testdrives)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/jeorg-vertex-osgi-testdrives.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/jeorg-vertex-osgi-testdrives.svg)](#)
