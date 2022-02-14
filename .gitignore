@@ -5,10 +5,11 @@
 ivy-cache
 repository
 
-# JetBraind
+# JetBrains
 .idea
 *.iml
 target
 build
 bin
 dist
+.DS_Store
