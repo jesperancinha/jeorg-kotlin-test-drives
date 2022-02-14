@@ -1,7 +1,7 @@
 package org.jesperancinha.votd;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Future;
+import io.vertx.core.Promise;
 
 /**
  * Created by joao on 21-2-16.
@@ -9,12 +9,12 @@ import io.vertx.core.Future;
 public class FinanceVerticle extends AbstractVerticle {
 
     @Override
-    public void start(Future<Void> startFuture) throws Exception {
+    public void start(Promise<Void> startFuture) throws Exception {
 
-        vertx.createHttpServer().requestHandler(r->{
+        vertx.createHttpServer().requestHandler(r -> {
             r.response().end("<p>This is only the begining of cashing in</p>");
-        }).listen(8080, result->{
-            if(result.succeeded()){
+        }).listen(8080, result -> {
+            if (result.succeeded()) {
                 startFuture.complete();
             } else {
                 startFuture.fail(result.cause());
