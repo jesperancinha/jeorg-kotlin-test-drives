@@ -1,20 +1,21 @@
 package com.steelzack.test.drive.jaxb.books.xml;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "books", namespace = "")
+@XmlRootElement(name = "books",
+        namespace = "")
 public class Books {
 
-	@XmlElement(name = "book")
-	public List<Book> book;
+    @XmlElement(name = "book")
+    public List<Book> book;
 
-	public List<Book> getBooks() {
-		return book;
-	}
+    public List<Book> getBooks() {
+        return book;
+    }
 }
