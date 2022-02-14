@@ -1,4 +1,4 @@
-# perfomance-json-parser
+# json-performance
 
 ## Buy me a coffee
 

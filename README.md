@@ -6,6 +6,8 @@
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=performance-parsers%20🗄&color=informational)](https://github.com/jesperancinha/performance-parsers)
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![performance-parsers](https://github.com/jesperancinha/performance-parsers/actions/workflows/performance-parsers.yml/badge.svg)](https://github.com/jesperancinha/performance-parsers/actions/workflows/performance-parsers.yml)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-parsers&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/performance-parsers&utm_campaign=Badge_Coverage)
