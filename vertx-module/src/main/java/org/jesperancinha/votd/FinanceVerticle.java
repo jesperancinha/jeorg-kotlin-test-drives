@@ -1,4 +1,4 @@
-package com.steelzack.vertex;
+package org.jesperancinha.votd;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;

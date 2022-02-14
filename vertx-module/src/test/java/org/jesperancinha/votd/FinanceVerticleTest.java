@@ -1,4 +1,4 @@
-package com.steelzack.vertex;
+package org.jesperancinha.votd;
 
 import io.vertx.core.Vertx;
 import io.vertx.ext.unit.Async;
