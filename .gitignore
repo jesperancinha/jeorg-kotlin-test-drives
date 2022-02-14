@@ -18,3 +18,7 @@ hs_err_pid*
 # Maven
 
 **/target
+DS_Store
+target
+.idea
+*.iml
