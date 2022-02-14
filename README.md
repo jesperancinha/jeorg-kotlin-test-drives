@@ -1,5 +1,16 @@
 # vertex-osgi-testdrive
 
+---
+
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/jeorg-vertex-osgi-testdrives)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Vertext%20Test%20Drives&color=informational)](https://github.com/jesperancinha/jeorg-vertex-osgi-testdrives)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/jeorg-vertex-osgi-testdrives.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/jeorg-vertex-osgi-testdrives.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/jeorg-vertex-osgi-testdrives.svg)](#)
+
+---
+
 ## Buy me a coffee
 
 I hope you enjoyed this repository. If you did, you can optionally please buy me a coffee, which supports me in constantly improve and make new free content regularly for everyone. Thank you so much!
