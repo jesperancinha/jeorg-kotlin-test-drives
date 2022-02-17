@@ -6,7 +6,7 @@
     <properties>
         <vertx-core.version>4.2.4</vertx-core.version>
         <junit.version>4.13.2</junit.version>
-        <vertx-unit.version>4.2.4</vertx-unit.version>
+        <vertx-unit.version>4.2.5</vertx-unit.version>
     </properties>
 
     <parent>
