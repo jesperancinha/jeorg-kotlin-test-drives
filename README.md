@@ -7,6 +7,8 @@
 
 [![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
+[![vertex-osgi-testdrive](https://github.com/jesperancinha/jeorg-vertex-osgi-testdrives/actions/workflows/vertex-osgi-testdrives.yml/badge.svg)](https://github.com/jesperancinha/jeorg-vertex-osgi-testdrives/actions/workflows/vertex-osgi-testdrives.yml)
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/883d17c11a5b44c8907c052394dace14)](https://www.codacy.com/gh/jesperancinha/jeorg-vertex-osgi-testdrives/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/jeorg-vertex-osgi-testdrives&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/883d17c11a5b44c8907c052394dace14)](https://www.codacy.com/gh/jesperancinha/jeorg-vertex-osgi-testdrives/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/jeorg-vertex-osgi-testdrives&utm_campaign=Badge_Coverage)
