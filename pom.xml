@@ -27,7 +27,7 @@
         <!-- Unit testing -->
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <kotest-runner-junit5-jvm.version>5.1.0</kotest-runner-junit5-jvm.version>
-        <mockk.version>1.12.2</mockk.version>
+        <mockk.version>1.12.3</mockk.version>
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
