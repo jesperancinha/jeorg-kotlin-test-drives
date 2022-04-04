@@ -19,13 +19,13 @@ fun main(args: Array<String>) {
     val listCoins = createListOfCoins(100)
     val listStamps = createListOfStamps(100)
 
-    ConsolerizerComposer.outSpace()
-        .blue()
-        .blue(listCoins.toString())
-        .blue(listStamps.toString())
-        .jsonPrettyPrint(listCoins)
-        .jsonPrettyPrint(listStamps)
-        .reset()
+//    ConsolerizerComposer.outSpace()
+//        .blue()
+//        .blue(listCoins.toString())
+//        .blue(listStamps.toString())
+//        .jsonPrettyPrint(listCoins)
+//        .jsonPrettyPrint(listStamps)
+//        .reset()
 }
 
 fun createListOfCoins(n: Int): List<Coin> {
