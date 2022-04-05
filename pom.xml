@@ -41,7 +41,7 @@
         <log4j-slf4j-impl.version>2.17.2</log4j-slf4j-impl.version>
         <jaxb-maven-plugin.version>3.0.0</jaxb-maven-plugin.version>
         <log4j-to-slf4j.version>2.17.2</log4j-to-slf4j.version>
-        <asm.version>9.2</asm.version>
+        <asm.version>9.3</asm.version>
         <jakarta.activation-api.version>2.1.0</jakarta.activation-api.version>
         <jakarta.xml.bind-api.version>3.0.1</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
