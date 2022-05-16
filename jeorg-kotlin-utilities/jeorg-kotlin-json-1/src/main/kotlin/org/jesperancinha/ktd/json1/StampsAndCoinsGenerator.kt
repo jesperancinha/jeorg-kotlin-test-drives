@@ -19,11 +19,15 @@ fun main(args: Array<String>) {
     val listCoins = createListOfCoins(100)
     val listStamps = createListOfStamps(100)
 
-    ConsolerizerComposer.outSpace()
-        .blue()
-        .blue(listCoins.toString())
-        .blue(listStamps.toString())
-        .reset()
+    val allCoinsToString = listCoins.toString()
+    val allStampsToString = listStamps.toString()
+    if(args.isNotEmpty()) {
+        ConsolerizerComposer.outSpace()
+            .blue()
+            .blue(allCoinsToString)
+            .blue(allStampsToString)
+            .reset()
+    }
 }
 
 fun createListOfCoins(n: Int): List<Coin> {
