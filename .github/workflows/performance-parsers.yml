@@ -23,7 +23,7 @@ jobs:
           run: ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../ | xargs -I {}  mkdir {}/lib
 
         - name: Preparing tools.jar
-          run: ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../ | sudo xargs cp ~/java-se-8u41-ri/lib/tools.jar
+          run: ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../lib | sudo xargs cp ~/java-se-8u41-ri/lib/tools.jar
 
         - name: Build and Test
           run:  mvn clean install jacoco:prepare-agent package jacoco:report
