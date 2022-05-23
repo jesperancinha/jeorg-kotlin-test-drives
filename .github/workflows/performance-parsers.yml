@@ -21,7 +21,7 @@ jobs:
 
         - name: Preparing tools.jar
           run: mkdir -p /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib &&
-               sudo cp ~/java-se-8u41-ri/lib/tools.jar /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib/tools.jar
+               sudo cp ~/java-se-8u41-ri/lib/tools.jar /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../lib/tools.jar
 
         - name: Build and Test
           run:  mvn clean install jacoco:prepare-agent package jacoco:report

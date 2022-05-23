@@ -60,8 +60,8 @@ public class XmlBookSAXParserManagerTest {
 
 	@Test
 	public void testGetAuthor() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookSAXParserManager(inputStream);
+		final var inputStream = getClass().getResourceAsStream("testXmlFile.xml");
+		final var pm = new XmlBookSAXParserManager(inputStream);
 		pm.init();
 
 		final var bookAuthor0 = pm.getAuthor(0);
