@@ -9,14 +9,14 @@ import org.junit.Test;
 public class XmlBookSAXParserManagerTest {
 	@Test
 	public void testGetBookTitle() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookSAXParserManager(inputStream);
+		final var inputStream = getClass().getResourceAsStream("testXmlFile.xml");
+		final var pm = new XmlBookSAXParserManager(inputStream);
 		pm.init();
 
-		final String bookTitle0 = pm.getBookTitle(0);
-		final String bookTitle1 = pm.getBookTitle(1);
-		final String bookTitle2 = pm.getBookTitle(2);
-		final String bookTitle3 = pm.getBookTitle(3);
+		final var bookTitle0 = pm.getBookTitle(0);
+		final var bookTitle1 = pm.getBookTitle(1);
+		final var bookTitle2 = pm.getBookTitle(2);
+		final var bookTitle3 = pm.getBookTitle(3);
 
 		assertEquals("The Hobbit 0", bookTitle0);
 		assertEquals("The Hobbit 1", bookTitle1);
@@ -26,8 +26,8 @@ public class XmlBookSAXParserManagerTest {
 
 	@Test
 	public void testGetNumberOfPages() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookSAXParserManager(inputStream);
+		final var inputStream = getClass().getResourceAsStream("testXmlFile.xml");
+		final var pm = new XmlBookSAXParserManager(inputStream);
 		pm.init();
 
 		final int bookPages0 = pm.getNumberOfPages(0);
@@ -64,10 +64,10 @@ public class XmlBookSAXParserManagerTest {
 		final XmlBookParserManager pm = new XmlBookSAXParserManager(inputStream);
 		pm.init();
 
-		final String bookAuthor0 = pm.getAuthor(0);
-		final String bookAuthor1 = pm.getAuthor(1);
-		final String bookAuthor2 = pm.getAuthor(2);
-		final String bookAuthor3 = pm.getAuthor(3);
+		final var bookAuthor0 = pm.getAuthor(0);
+		final var bookAuthor1 = pm.getAuthor(1);
+		final var bookAuthor2 = pm.getAuthor(2);
+		final var bookAuthor3 = pm.getAuthor(3);
 
 		assertEquals("J.R.R. Tolkien 1", bookAuthor0);
 		assertEquals("J.R.R. Tolkien 2", bookAuthor1);
@@ -77,8 +77,8 @@ public class XmlBookSAXParserManagerTest {
 
 	@Test
 	public void testGetNumberOfBooks() throws Exception {
-		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookSAXParserManager(inputStream);
+		final var inputStream = getClass().getResourceAsStream("testXmlFile.xml");
+		final var pm = new XmlBookSAXParserManager(inputStream);
 		pm.init();
 
 		final int nPages = pm.getNumberOfBooks();
