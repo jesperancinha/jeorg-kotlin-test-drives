@@ -21,6 +21,7 @@
         <thumbnailator.version>0.4.17</thumbnailator.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <javafx.version>18-ea+9</javafx.version>
+        <dependency-check-maven.version>7.1.0</dependency-check-maven.version>
     </properties>
 
     <dependencyManagement>
@@ -194,4 +195,26 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>owasp</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                        <version>${dependency-check-maven.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
