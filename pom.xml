@@ -21,7 +21,7 @@
 
         <!-- External libraries -->
         <kotlin.version>1.7.0</kotlin.version>
-        <kotlin.coroutines.version>1.6.1-native-mt</kotlin.coroutines.version>
+        <kotlin.coroutines.version>1.6.3-native-mt</kotlin.coroutines.version>
         <consolerizer.version>2.0.12</consolerizer.version>
 
         <!-- Unit testing -->
