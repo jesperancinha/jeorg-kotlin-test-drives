@@ -21,7 +21,7 @@ jacocoTestReport {
 }
 
 dependencies {
-    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.7.0'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.7.10'
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha7'
     implementation 'org.kohsuke.args4j:args4j-maven-plugin:2.33'
     implementation 'com.google.guava:guava:31.1-jre'
