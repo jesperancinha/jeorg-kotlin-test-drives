@@ -35,6 +35,9 @@ jobs:
       - name: Coverage NPM
         run: make coverage-npm
 
+      - name: Install Snyk
+        run: npm i -g snyk
+
       - name: Security NPM
         run: make security-npm
 
