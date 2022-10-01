@@ -7,3 +7,29 @@
 target
 build
 bin
+
+## Images
+*.heic
+
+## Coverage
+coverage
+
+# Build
+jeorg*.jpg
+*.tmp
+!jofisaes-image-morpher-js/test/maatlx.heic
+yarn-error.log
+
+# OS
+.DS_Store
+
+# Captures
+test.jar
+
+# Yarn
+yarn.lock
+
+## Node JS Build
+node_modules
+dist
+.angular
