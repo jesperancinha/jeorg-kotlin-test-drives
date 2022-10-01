@@ -12,6 +12,8 @@ test-npm:
 	cd jofisaes-image-morpher-js && npm test
 coverage-npm:
 	cd jofisaes-image-morpher-js && npm run coverage
+security-npm:
+	cd jofisaes-image-morpher-js && npm run snyk
 local: no-test
 	mkdir -p bin
 no-test:

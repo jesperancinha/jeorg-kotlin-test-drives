@@ -35,6 +35,9 @@ jobs:
       - name: Coverage NPM
         run: make coverage-npm
 
+      - name: Security NPM
+        run: make security-npm
+
       - name: Coverage Reports
         run: mvn omni-coveragereporter:report
         env:

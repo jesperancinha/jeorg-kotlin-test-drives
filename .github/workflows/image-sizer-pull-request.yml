@@ -31,3 +31,6 @@ jobs:
 
       - name: Test NPM
         run: make test-npm
+
+      - name: Security NPM
+        run: make security-npm
