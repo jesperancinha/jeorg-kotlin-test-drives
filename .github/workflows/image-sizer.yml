@@ -26,6 +26,15 @@ jobs:
       - name: Build and Test
         run: mvn clean install jacoco:prepare-agent package jacoco:report
 
+      - name: Build NPM
+        run: make build-npm
+
+      - name: Test NPM
+        run: make test-npm
+
+      - name: Coverage NPM
+        run: make coverage-npm
+
       - name: Coverage Reports
         run: mvn omni-coveragereporter:report
         env:

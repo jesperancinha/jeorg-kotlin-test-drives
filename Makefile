@@ -3,10 +3,15 @@ build:
 	mvn clean install
 build-maven:
 	mvn clean install -DskipTests
-test:
-	mvn test
+build-npm:
+	cd jofisaes-image-morpher-js && yarn
+test: test-maven
 test-maven:
 	mvn test
+test-npm:
+	cd jofisaes-image-morpher-js && npm test
+coverage-npm:
+	cd jofisaes-image-morpher-js && npm run coverage
 local: no-test
 	mkdir -p bin
 no-test:
