@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 b: build-maven
 build:
 	mvn clean install
