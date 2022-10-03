@@ -26,6 +26,9 @@ jobs:
       - name: Build and Test Maven
         run: mvn clean install
 
+      - name: Install Snyk
+        run: npm i -g snyk
+
       - name: Build NPM
         run: make build-npm
 
