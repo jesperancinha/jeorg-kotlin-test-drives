@@ -36,4 +36,4 @@ jobs:
         run: make test-npm
 
       - name: Security NPM
-        run: make security-npm
+        run: snyk auth && make security-npm
