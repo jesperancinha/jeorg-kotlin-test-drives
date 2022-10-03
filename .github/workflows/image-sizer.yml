@@ -40,6 +40,8 @@ jobs:
 
       - name: Security NPM
         run: make security-npm
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - name: Coverage Reports
         run: mvn omni-coveragereporter:report
