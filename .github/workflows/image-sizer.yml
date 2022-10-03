@@ -39,7 +39,7 @@ jobs:
         run: npm i -g snyk
 
       - name: Security NPM
-        run: make security-npm
+        run: cd jofisaes-image-morpher-js && snyk auth && npm run snyk
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
