@@ -63,11 +63,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <jackson-module-kotlin.version>2.13.4</jackson-module-kotlin.version>
-        <jackson-dataformat-xml.version>2.13.4</jackson-dataformat-xml.version>
-    </properties>
-
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>

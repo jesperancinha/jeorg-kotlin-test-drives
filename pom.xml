@@ -34,7 +34,9 @@
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-        <jackson-databind.version>2.13.4</jackson-databind.version>
+        <jackson-databind.version>2.13.4.2</jackson-databind.version>
+        <jackson-module-kotlin.version>2.13.4</jackson-module-kotlin.version>
+        <jackson-dataformat-xml.version>2.13.4</jackson-dataformat-xml.version>
     </properties>
 
     <modules>
@@ -80,7 +82,12 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
                 <artifactId>jackson-module-kotlin</artifactId>
-                <version>${jackson-databind.version}</version>
+                <version>${jackson-module-kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson-dataformat-xml.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
