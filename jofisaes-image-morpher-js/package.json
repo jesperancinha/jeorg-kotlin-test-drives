@@ -20,7 +20,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "chai": "^4.3.6",
     "jest": "^29.2.1",
-    "jest-environment-jsdom": "^29.2.1",
+    "jest-environment-jsdom": "^29.2.2",
     "jpeg-js": "^0.4.4",
     "mocha": "^10.1.0",
     "mocka": "^0.0.1",
