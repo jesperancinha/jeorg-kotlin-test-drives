@@ -25,8 +25,8 @@
 
 ## A collection of different image sizer
 
-1. [image-sizer-impl](./image-sizer-impl) - Kotlin project
-2. [jofisaes-image-morpher-js](./jofisaes-image-morpher-js) - NodeJS project with support for HEIC images (under construction)
+1.  [image-sizer-impl](./image-sizer-impl) - Kotlin project
+2.  [jofisaes-image-morpher-js](./jofisaes-image-morpher-js) - NodeJS project with support for HEIC images (under construction)
 
 ## References
 
