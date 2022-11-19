@@ -1,4 +1,18 @@
-# jeorg-kotlin-decoder-3
+# jeorg-kotlin-execs
+
+## LazyRiddle
+
+1. 1570796.3267948967
+2. Nothing
+3. kotlin.UninitializedPropertyAccessException
+4. 0
+
+## LazyRiddle2
+
+1. 515707.9632679489662062831.853071795864
+2. 515707.96326794896662831.853071795864
+3. 0
+4. NullPointerException
 
 ## Introduction
 
