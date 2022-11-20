@@ -1,5 +1,12 @@
 # jeorg-kotlin-execs
 
+## ServerSentEvents
+
+1. Wait
+2. NullPointerException
+3. Print empty string forever
+4. 1000 words 
+
 ## LazyRiddle
 
 1. 1570796.3267948967
