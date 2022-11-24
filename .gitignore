@@ -34,3 +34,6 @@ cookies.txt
 # Logs
 tmlog.lck
 tmlog*.log
+
+# Gradle
+.gradle
