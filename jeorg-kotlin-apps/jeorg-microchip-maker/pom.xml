@@ -10,60 +10,10 @@
     <artifactId>jeorg-microchip-maker</artifactId>
     <name>JEOrg :: KTD :: Apps :: Microchip maker</name>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-
-    <build>
-        <finalName>${artifactId}</finalName>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
-        <plugins>
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.jesperancinha.plugins</groupId>
-                <artifactId>omni-coveragereporter-maven-plugin</artifactId>
-                <version>${omni-coveragereporter-maven-plugin.version}</version>
-            </plugin>
-        </plugins>
-    </build>
+<modules>
+    <module>jeorg-microchip-maker-service</module>
+</modules>
 
 </project>
