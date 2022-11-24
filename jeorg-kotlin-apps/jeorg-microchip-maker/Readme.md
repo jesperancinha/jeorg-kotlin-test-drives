@@ -16,4 +16,5 @@ This exercise is inspired by lots of exercises I did years ago with an EPROM. An
 
 # References
 
+- [EUV for dummies](https://bits-chips.nl/artikel/euv-for-dummies/)
 - [6 crucial steps in semiconductor manufacturing @ ASML](https://www.asml.com/en/news/stories/2021/semiconductor-manufacturing-process-steps)
