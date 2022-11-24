@@ -1,5 +1,8 @@
 # JEsperancinha.Org Microchip Maker
 
+
+--- Under Construction ---
+
 In this exercise we will see how can we use Kto as a backend application to serve a front end that will draw the position of the chips.
 It will then:
 
@@ -9,3 +12,8 @@ It will then:
 4. Select only the chips that are valid and for our exercise, those are all chips with measurements higher than 95%.
 
 This exercise is inspired by lots of exercises I did years ago with an EPROM. Any similarity with anything you've seen before is purely coincidence.
+
+
+# References
+
+- [6 crucial steps in semiconductor manufacturing @ ASML](https://www.asml.com/en/news/stories/2021/semiconductor-manufacturing-process-steps)
