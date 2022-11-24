@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jesperancinha.ktd</groupId>
+        <artifactId>jeorg-kotlin-test-drives</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>jeorg-kotlin-apps</artifactId>
+    <name>JEOrg :: KTD :: Apps</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>jeorg-microchip-maker</module>
+    </modules>
+</project>

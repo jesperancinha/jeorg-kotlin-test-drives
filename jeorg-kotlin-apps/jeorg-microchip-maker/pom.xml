@@ -1,49 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0">
 
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <artifactId>jeorg-kotlin-masters</artifactId>
+        <artifactId>jeorg-kotlin-apps</artifactId>
         <groupId>org.jesperancinha.ktd</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jeorg-kotlin-masters-1</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>jeorg-microchip-maker</artifactId>
+    <name>JEOrg :: KTD :: Apps :: Microchip maker</name>
 
     <packaging>jar</packaging>
 
-    <name>jeorg-kotlin-masters-1</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.jesperancinha.console</groupId>
-            <artifactId>consolerizer</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test-junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mockk</groupId>
-            <artifactId>mockk</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
 
     <build>
         <finalName>${artifactId}</finalName>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
-
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

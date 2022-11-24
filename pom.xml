@@ -43,6 +43,7 @@
         <module>jeorg-kotlin-crums</module>
         <module>jeorg-kotlin-utilities</module>
         <module>jeorg-kotlin-masters</module>
+        <module>jeorg-kotlin-apps</module>
     </modules>
 
     <packaging>pom</packaging>
