@@ -21,7 +21,7 @@ class CrumFive{
             fun info(logText: String) = ConsolerizerComposer.out().red(logText)
 
             fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
-                .yellow(ConsolerizerComposer.title(logText))
+                .brightBlue(ConsolerizerComposer.title(logText))
         }
         @JvmStatic
         fun main(args: Array<String>) {
