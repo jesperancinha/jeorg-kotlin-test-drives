@@ -37,3 +37,6 @@ tmlog*.log
 
 # Gradle
 .gradle
+
+# Others
+.attach*
