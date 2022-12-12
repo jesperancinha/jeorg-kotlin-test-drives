@@ -37,6 +37,8 @@ tmlog*.log
 
 # Gradle
 .gradle
+build
+yarn.lock
 
 # Others
 .attach*
