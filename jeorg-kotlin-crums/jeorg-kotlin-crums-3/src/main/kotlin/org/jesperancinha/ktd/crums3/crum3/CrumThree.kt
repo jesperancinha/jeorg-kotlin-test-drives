@@ -19,7 +19,7 @@ class CrumThree {
 
         @JvmStatic
         fun main(args: Array<String>) {
-            logger.infoTitle("Multicatch statements(Not the official: https://youtrack.jetbrains.com/issue/KT-7128)")
+            logger.infoTitle("Crum 3 - Multicatch statements(Not the official: https://youtrack.jetbrains.com/issue/KT-7128)")
             logger.info(methodCall(1))
             logger.info(methodCall(2))
             logger.info(methodCall(3))
