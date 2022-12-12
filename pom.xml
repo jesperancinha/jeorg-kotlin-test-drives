@@ -101,6 +101,11 @@
                 <version>${arrow-core-jvm.version}</version>
             </dependency>
             <dependency>
+                <groupId>io.arrow-kt</groupId>
+                <artifactId>arrow-optics-jvm</artifactId>
+                <version>${arrow-core-jvm.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-test-junit</artifactId>
                 <version>${kotlin.version}</version>
