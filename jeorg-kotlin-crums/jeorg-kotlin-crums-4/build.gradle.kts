@@ -5,17 +5,20 @@ allprojects {
 }
 
 plugins {
-    id("com.google.devtools.ksp") version "1.6.10-1.0.4"
+    id("com.google.devtools.ksp") version "1.8.0-RC-1.0.8"
     kotlin("jvm") version "1.7.21"
     application
+    idea
 }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
-    jcenter()
+idea {
+    module {
+        sourceDirs = sourceDirs + file("build/generated/ksp/main/kotlin")
+        testSourceDirs = testSourceDirs + file("build/generated/ksp/test/kotlin")
+        generatedSourceDirs =
+            generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
+    }
 }
-
 val arrowVersion = "1.1.4-rc.2"
 
 dependencies {
@@ -25,13 +28,11 @@ dependencies {
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
 }
 
-tasks {
-    withType<Test> {
-        useJUnitPlatform()
+kotlin {
+    sourceSets.main {
+        kotlin.srcDir("build/generated/ksp/main/kotlin")
     }
-
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions.freeCompilerArgs += "-Xuse-experimental=kotlin.Experimental"
-        kotlinOptions.jvmTarget = "17"
+    sourceSets.test {
+        kotlin.srcDir("build/generated/ksp/test/kotlin")
     }
 }
