@@ -17,5 +17,5 @@ jobs:
             java-version: '19'
             distribution: 'adopt'
 
-        - name: Build and test
+        - name: All Build
           run: make b

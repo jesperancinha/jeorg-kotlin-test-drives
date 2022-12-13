@@ -17,8 +17,11 @@ jobs:
             java-version: '19'
             distribution: 'adopt'
 
-        - name: Build and Test
+        - name: All Build
           run:  make b
+
+        - name: Build and Test
+          run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
         - name: Coverage Reports
           run: mvn omni-coveragereporter:report
