@@ -25,6 +25,7 @@ dependencies {
     implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
     implementation("io.arrow-kt:arrow-core")
     implementation("io.arrow-kt:arrow-optics")
+    implementation("org.jesperancinha.console:consolerizer:2.0.12")
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
 }
 
