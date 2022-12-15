@@ -3,10 +3,16 @@ package org.jesperancinha.ktd.crums3.crums3
 import arrow.optics.optics
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
+data class DoorInformation(val n:Int){
+    companion object
+}
 @optics
 sealed class House {
     companion object {}
-    data class Hut(val straws: Int) : House()
+    @optics
+    data class Hut(val straws: Int, val doorInformation: DoorInformation) : House() {
+        companion object
+    }
     data class Villa(val bricks: Int) : House()
     data class Apartment(val bricks: Int) : House()
 }
@@ -30,27 +36,27 @@ class CrumThree {
             val villaPrism = House.villa
             val apartmentPrim = House.apartment
 
-            val hut1 = House.Hut(1000)
+            val hut1 = House.Hut(1000, DoorInformation((1)))
             val villa1 = House.Villa(2000)
             val apartment1 = House.Apartment(3000)
 
             val result1 = hutPrism.modify(hut1) {
-                House.Hut(it.straws * 9)
+                House.Hut(it.straws * 9, it.doorInformation)
             }
             val result12 = hutPrism.lift {
-                House.Hut(it.straws * 8)
+                House.Hut(it.straws * 8, it.doorInformation)
             }
             logger.info(hut1)
             logger.info(result1)
             logger.info(result12(hut1))
-            val orNull = hutPrism.getOrNull(House.Hut(500))
+            val orNull = hutPrism.getOrNull(House.Hut(500, DoorInformation(1)))
             val orNull2 = hutPrism.getOrNull(House.Villa(500))
             val orNull3 = hutPrism.getOrNull(House.Apartment(500))
             logger.info(orNull)
             logger.info(orNull2)
             logger.info(orNull3)
 
-            val reverseGet = hutPrism.reverseGet(House.Hut(111))
+            val reverseGet = hutPrism.reverseGet(House.Hut(111, DoorInformation(1)))
             val reverseGet2 = villaPrism.reverseGet(House.Villa(111))
             val reverseGet3 = apartmentPrim.reverseGet(House.Apartment(111))
 
@@ -75,6 +81,11 @@ class CrumThree {
             logger.info(orNullComposed2)
             logger.info(orNullComposed3)
 
+            logger.comment("This is how optics unfolds and changes our perspective for better code")
+            val doorInformation = House.hut.doorInformation
+            val lift = doorInformation.lift { it.copy(n = 1000) }
+            val newHut = lift(hut1)
+            logger.info(newHut)
 
         }
 
