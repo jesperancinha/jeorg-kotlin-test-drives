@@ -6,8 +6,9 @@ import org.jesperancinha.ktd.crums3.crum3.CrumThree
 import org.jesperancinha.ktd.crums3.crum4.CrumFour
 import org.jesperancinha.ktd.crums3.crum5.CrumFive
 import org.jesperancinha.ktd.crums3.crum6.CrumSix
+import org.jesperancinha.ktd.crums3.crum7.CrumSeven
 
-fun main(args: Array<String>) {
+suspend fun main(args: Array<String>) {
     CrumOne()
 
     CrumOne.main(args)
@@ -16,5 +17,6 @@ fun main(args: Array<String>) {
     CrumFour.main(args)
     CrumFive.main(args)
     CrumSix.main(args)
+    CrumSeven.main(args)
 }
 

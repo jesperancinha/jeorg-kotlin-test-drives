@@ -53,6 +53,10 @@ Kotlin Language study project.
 A lot of concepts of software engineering are explored in [Arrow](https://arrow-kt.io/).
 Because of its importance to the Kotlin community here is a list of sub-modules where we can find the [Arrow](https://arrow-kt.io/) research modules:
 
+##### [Arrow Core](https://arrow-kt.io/docs/core/)
+
+-   [Kotlin Crums 3](./jeorg-kotlin-crums/jeorg-kotlin-crums-3) - Fast Track Crum modules 3 - `Effect`
+
 ##### [Arrow Optics](https://arrow-kt.io/docs/optics/)
 
 

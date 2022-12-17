@@ -1,10 +1,68 @@
 package org.jesperancinha.ktd.crums3.crum7
 
-class CrumSeven {
-    companion object{
-        @JvmStatic
-        fun main(args: Array<String>) {
+import arrow.core.None
+import arrow.core.continuations.Effect
+import arrow.core.continuations.effect
+import arrow.core.continuations.ensureNotNull
+import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
+import java.io.File
+import java.io.FileNotFoundException
 
+
+fun readFile(path: String?): Effect<FileError, Content> = effect {
+    ensureNotNull(path) { EmptyPath }
+    ensure(path.isNotEmpty()) { EmptyPath }
+    try {
+        val lines = File(path).readLines()
+        Content(lines)
+    } catch (e: FileNotFoundException) {
+        shift(FileNotFound(path))
+    } catch (e: SecurityException) {
+        shift(SecurityError(e.message))
+    }
+}
+
+fun readFile2(path: String?): Effect<EmptyPath, Content> = effect {
+    ensureNotNull(path) { EmptyPath }
+    ensure(path.isNotEmpty()) { EmptyPath }
+    Content(listOf("Not errors found and this is why this one is incomplete"))
+}
+
+@JvmInline
+value class Content(val body: List<String>)
+
+sealed interface FileError
+@JvmInline
+value class SecurityError(val msg: String?) : FileError
+@JvmInline
+value class FileNotFound(val path: String) : FileError
+object EmptyPath : FileError {
+    override fun toString() = "EmptyPath"
+}
+
+class CrumSeven {
+    companion object {
+
+        private val logger = object {
+            fun info(logText: Any?) = ConsolerizerComposer.out().cyan(logText)
+            fun info2(logText: Any?) = ConsolerizerComposer.out().blue(logText)
+            fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
+                .yellow(ConsolerizerComposer.title(logText))
+        }
+
+        @JvmStatic
+        suspend fun main(args: Array<String> = emptyArray()) {
+            logger.infoTitle("Crum 7 - Effects in Arrow from https://arrow-kt.io/docs/apidocs/arrow-core/arrow.core.continuations/-effect/")
+            logger.info(readFile("").toEither())
+            logger.info(readFile("knit.properties").toValidated())
+            logger.info(readFile("gradle.properties").toIor())
+            logger.info(readFile("README.MD").toOption { None })
+            logger.info(readFile("build.gradle.kts").fold({ _: FileError -> null }, { it }))
+            logger.info2(readFile2("").toEither())
+            logger.info2(readFile2("knit.properties").toValidated())
+            logger.info2(readFile2("gradle.properties").toIor())
+            logger.info2(readFile2("README.MD").toOption { None })
+            logger.info2(readFile2("build.gradle.kts").fold({ _: FileError -> null }, { it }))
         }
     }
 }
