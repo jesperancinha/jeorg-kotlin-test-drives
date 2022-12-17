@@ -102,7 +102,7 @@
                         <version>${arrow-optics-ksp-plugin.version}</version>
                     </dependency>
                 </dependencies>
-                </plugin>
+            </plugin>
         </plugins>
     </build>
 </project>
