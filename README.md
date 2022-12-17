@@ -1,4 +1,4 @@
-# jeorg-kotlin-test-drives
+# Kotlin test drives
 
 ---
 
@@ -38,11 +38,29 @@
 
 Kotlin Language study project.
 
+---
+
 ## Contents
 
 -   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
 -   [Kotlin Utilities](./jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
 -   [Kotlin Masters](./jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
+
+---
+
+## [Arrow](https://arrow-kt.io/)
+
+A lot of concepts of software engineering are explored in [Arrow](https://arrow-kt.io/).
+Because of its importance to the Kotlin community here is a list of sub-modules where we can find the [Arrow](https://arrow-kt.io/) research modules:
+
+##### [Arrow Optics](https://arrow-kt.io/docs/optics/)
+
+
+-   [Kotlin Crums 3](./jeorg-kotlin-crums/jeorg-kotlin-crums-3) - Fast Track Crum modules 3
+-   [Kotlin Crums 4](./jeorg-kotlin-crums/jeorg-kotlin-crums-4) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 4 (Gradle project with Source code generation)
+-   [Kotlin Arrow Optics Crum 1](./jeorg-kotlin-crumsjeorg-kotlin-optics-crums-1) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 1 (Maven project with Source code generation)
+
+---
 
 ## Build
 
@@ -62,6 +80,8 @@ Or just run:
 ```bash
 . ./setup.sh
 ```
+
+---
 
 ## Sequence Diagram
 
@@ -95,6 +115,8 @@ end
 ```
 
 <i>Note: You need a Mermaid plugin extension</i> i.e. [mermaid-plugin](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil/related)
+
+---
 
 ## References
 
