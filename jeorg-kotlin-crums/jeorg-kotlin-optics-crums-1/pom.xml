@@ -7,7 +7,7 @@
     </parent>
 
     <artifactId>jeorg-kotlin-optics-crums-1</artifactId>
-    <name>JEOrg :: Arrow Optics Crums</name>
+    <name>JEOrg :: Arrow Optics Crums :: Crums 1</name>
 
     <properties>
         <java.version>17</java.version>
