@@ -40,8 +40,10 @@
         <jackson-module-kotlin.version>2.14.1</jackson-module-kotlin.version>
         <jackson-dataformat-xml.version>2.14.1</jackson-dataformat-xml.version>
 
-        <!-- Independent Libraries -->
+        <!-- Project Arrow Libraries -->
         <arrow-core-jvm.version>1.1.4-rc.3</arrow-core-jvm.version>
+        <arrow-optics-ksp-plugin.version>1.1.4-rc.3</arrow-optics-ksp-plugin.version>
+        <kotlin-maven-symbol-processing.version>1.2</kotlin-maven-symbol-processing.version>
     </properties>
 
     <modules>
