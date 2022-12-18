@@ -5,7 +5,7 @@ allprojects {
 }
 
 plugins {
-    kotlin("js") version "1.7.21"
+    kotlin("js") version "1.7.22"
     id("jacoco")
     id("org.jesperancinha.plugins.omni") version "0.3.0"
 }
