@@ -6,7 +6,7 @@ allprojects {
 
 plugins {
     id("com.google.devtools.ksp") version "1.8.0-RC-1.0.8"
-    kotlin("jvm") version "1.7.21"
+    kotlin("jvm") version "1.7.22"
     application
     idea
     id("jacoco")
