@@ -9,6 +9,8 @@ plugins {
     kotlin("jvm") version "1.7.21"
     application
     idea
+    id("jacoco")
+    id("org.jesperancinha.plugins.omni") version "0.3.0"
 }
 
 idea {
@@ -37,3 +39,11 @@ kotlin {
         kotlin.srcDir("build/generated/ksp/test/kotlin")
     }
 }
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+    }
+}
+
+

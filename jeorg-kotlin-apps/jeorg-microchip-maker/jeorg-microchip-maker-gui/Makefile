@@ -1,4 +1,4 @@
-b: build-gradle-report
+b: build-gradle
 build-gradle:
 	./gradlew build test
 build-gradle-report:

@@ -1,5 +1,13 @@
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
     kotlin("js") version "1.7.21"
+    id("jacoco")
+    id("org.jesperancinha.plugins.omni") version "0.3.0"
 }
 
 group = "org.jesperancinha.ktd"
