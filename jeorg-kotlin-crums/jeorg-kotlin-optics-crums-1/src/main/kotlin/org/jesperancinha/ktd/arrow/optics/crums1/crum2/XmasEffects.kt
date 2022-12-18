@@ -1,9 +1,21 @@
 package org.jesperancinha.ktd.arrow.optics.crums1.crum2
 
-import arrow.core.left
+import arrow.core.continuations.Effect
+import arrow.core.continuations.effect
 import arrow.optics.optics
+import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import org.jesperancinha.ktd.arrow.optics.crums1.crum2.Color.*
 import org.jesperancinha.ktd.arrow.optics.crums1.crum2.PendulumType.MIDDLE_AGE
+import java.time.LocalDateTime
+
+private val logger = object {
+    fun info(logText: Any?) = ConsolerizerComposer.out().brightRed(logText)
+    fun info2(logText: Any?) = ConsolerizerComposer.out().brightGreen(logText)
+
+    fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
+        .brightWhite(ConsolerizerComposer.title(logText))
+}
+
 
 internal interface ICost {
     fun isExpensive(): Boolean = false
@@ -45,17 +57,22 @@ sealed class Ball(
     val pendulum: Pendulum = Pendulum()
 ) {
     @optics
-    sealed class BigBall : Ball(radiusCm = 8) {
+    data class AverageBall(val created: LocalDateTime = LocalDateTime.now()) : Ball() {
         companion object
     }
 
     @optics
-    sealed class SilverBall : Ball(color = SILVER){
+    data class BigBall(val created: LocalDateTime = LocalDateTime.now()) : Ball(radiusCm = 8) {
         companion object
     }
 
     @optics
-    sealed class ExpensiveSilverBall : Ball(color = SILVER_METAL){
+    data class SilverBall(val created: LocalDateTime = LocalDateTime.now()) : Ball(color = SILVER) {
+        companion object
+    }
+
+    @optics
+    data class ExpensiveSilverBall(val created: LocalDateTime = LocalDateTime.now()) : Ball(color = SILVER_METAL) {
         companion object
     }
 
@@ -70,12 +87,12 @@ sealed class Garland(
 ) {
 
     @optics
-    sealed class XmasEvolutionGarland : Garland() {
+    data class XmasEvolutionGarland(val created: LocalDateTime = LocalDateTime.now()) : Garland() {
         companion object
     }
 
     @optics
-    sealed class CarnavalGarland :
+    data class CarnavalGarland(val created: LocalDateTime = LocalDateTime.now()) :
         Garland(lengthCm = 20, colors = listOf(GOLD, FUCSHSIA, YELLOW, RED, SILVER), radiusCm = 5) {
         companion object
     }
@@ -85,11 +102,61 @@ sealed class Garland(
 
 @optics
 sealed class XmasTree(
-    val balls: List<Ball> = emptyList(),
-    val garlands: List<Garland> = emptyList()
+    balls: List<Ball> = emptyList(),
 ) {
+
+    val treeConfig: Map<Int, List<Ball>> by lazy {
+        balls.mapIndexed { i, ball ->
+            if (i == 0) 1 to ball else i / 4 to ball
+        }.groupBy { (level, _) -> level }
+            .map { (level, listBallPairs) ->
+                level to listBallPairs
+                    .map { (_, balls) -> balls }
+            }.toMap()
+    }
+
+    @optics
+    data class EasyTree(
+        val balls: List<Ball> = emptyList(),
+        val garlands: List<Garland> = emptyList()
+    ) : XmasTree(balls) {
+        companion object
+    }
+
+    @optics
+    data class BlackFridayTree(
+        val created: LocalDateTime = LocalDateTime.now(),
+        val balls: List<Ball> = listOf(Ball.AverageBall()),
+        val garlands: List<Garland> = listOf(Garland.XmasEvolutionGarland())
+    ) :
+        XmasTree(balls) {
+        companion object
+    }
+
+    @optics
+    data class ExpensiveTree(
+        val created: LocalDateTime = LocalDateTime.now(),
+        val balls: List<Ball> = listOf(Ball.ExpensiveSilverBall()),
+        val garlands: List<Garland> = listOf(Garland.XmasEvolutionGarland())
+    ) :
+        XmasTree(balls) {
+        companion object
+    }
+
     companion object
 }
+
+
+sealed interface XmasError
+
+@JvmInline
+value class ForbiddenMaterialsError(val color: Color) : XmasError
+
+@JvmInline
+value class InvalidTreeError(val size: Int) : XmasError
+
+@JvmInline
+value class TooMuchLevelsError(val levels: Int) : XmasError
 
 /**
  * From top to bottom, a tree has 1 extra ball
@@ -99,29 +166,74 @@ sealed class XmasTree(
  * 1. one floor does not have enough balls, then the tree gets unbalanced and we through InvalidTreeException
  * 2. No tree should be made of expensive materials at this stage. An attempt to do so should throw ForbiddenMaterialsException
  */
-fun createTree(balls: List<Ball>, garlands: List<Garland>) {
-    balls.first { ball: Ball -> ball.color.isExpensive() }.takeIf { it.color.isExpensive() }
-        ?: throw ForbiddenMaterialsException()
-    garlands.flatMap { it.colors }.first { color: Color -> color.isExpensive() }.takeIf { it.isExpensive() }
-        ?: throw ForbiddenMaterialsException()
-    val levels = when {
-        balls.size == 1 -> 1
-        (balls.size - 1) % 4 == 0 -> (balls.size - 1) / 4 + 1
-        else -> throw InvalidTreeException()
+fun createTree(balls: List<Ball>, garlands: List<Garland> = emptyList()): Effect<XmasError, XmasTree> = effect {
+    try {
+        balls.firstOrNull { ball: Ball -> ball.color.isExpensive() }?.takeIf { it.color.isExpensive() }
+            ?.let { throw ForbiddenMaterialsException(it.color) }
+        garlands.flatMap { it.colors }.firstOrNull { color: Color -> color.isExpensive() }?.takeIf { it.isExpensive() }
+            ?.let { throw ForbiddenMaterialsException(it) }
+        val levels = when {
+            balls.size == 1 -> 1
+            (balls.size - 1) % 4 == 0 -> (balls.size - 1) / 4 + 1
+            else -> throw InvalidTreeException(balls.size)
+        }
+        if (levels > 10) throw TooMuchLevelsException(levels)
+        XmasTree.EasyTree(balls, garlands)
+    } catch (ex: ForbiddenMaterialsException) {
+        shift(ForbiddenMaterialsError(ex.color))
+    } catch (ex: InvalidTreeException) {
+        shift(InvalidTreeError(ex.size))
+    } catch (ex: TooMuchLevelsException) {
+        shift(TooMuchLevelsError(ex.levels))
     }
-
-
-
 }
 
-class ForbiddenMaterialsException : Exception()
-class InvalidTreeException : Exception()
-
+class ForbiddenMaterialsException(val color: Color) : Exception()
+class InvalidTreeException(val size: Int) : Exception()
+class TooMuchLevelsException(val levels: Int) : Exception()
 class XmasEffects {
     companion object {
-        @JvmStatic
-        fun main(args: Array<String> = emptyArray()) {
 
+        @JvmStatic
+        suspend fun main(args: Array<String> = emptyArray()) {
+            logger.infoTitle("Crum 2 - Combining Optics and Effects")
+
+            val tree = XmasTree.BlackFridayTree()
+
+            logger.info2("Creating a Black Friday Tree")
+            tree.logLevel(1)
+
+            logger.info2("Creating a one average Ball Tree")
+            createTree(listOf(Ball.AverageBall())).orNull()?.logLevel(1)
+
+            logger.info2("Creating a one expensive Ball Tree")
+            val xmasErrorXmasTreeEffect = createTree(listOf(Ball.ExpensiveSilverBall()))
+            xmasErrorXmasTreeEffect.orNull()?.logLevel(1)
+            logger.info(xmasErrorXmasTreeEffect)
+            logger.info(xmasErrorXmasTreeEffect.toEither())
+
+            logger.info2("Turning an expensive tree into a normal tree")
+            val expensiveTree = XmasTree.ExpensiveTree().also { it.logLevel(1) }
+            val expensiveTreeLens = XmasTree.expensiveTree
+            val expensiveToNormalPrism = expensiveTreeLens.lift { it.copy(balls = listOf(Ball.AverageBall())) }
+            expensiveToNormalPrism(expensiveTree).logLevel(1)
+        }
+
+    }
+}
+
+private fun XmasTree.logLevel(level: Int) {
+    logger.info(this)
+    logger.info(this.treeConfig)
+    for (i in 0 until level) {
+        val treeConfiguration = this.treeConfig[i]
+        logger.info(treeConfiguration)
+        logger.info(treeConfiguration)
+        treeConfiguration?.forEach { singleBall ->
+            logger.info(singleBall)
+            logger.info(singleBall.color)
+            logger.info(singleBall.pendulum)
+            logger.info(singleBall.radiusCm)
         }
     }
 }

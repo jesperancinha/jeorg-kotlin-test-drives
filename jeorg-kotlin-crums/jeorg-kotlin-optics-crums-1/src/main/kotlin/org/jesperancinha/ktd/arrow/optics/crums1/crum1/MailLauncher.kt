@@ -22,7 +22,6 @@ sealed class Mail {
 
 class MailLauncher {
     companion object {
-
         private val logger = object {
             fun info(logText: Any) = ConsolerizerComposer.out().green(logText)
 
