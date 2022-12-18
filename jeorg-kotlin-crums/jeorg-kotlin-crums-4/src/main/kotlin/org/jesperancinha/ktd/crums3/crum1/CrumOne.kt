@@ -12,8 +12,6 @@ class CrumOne {
     companion object{
         private val logger = object {
             fun info(logText: Any) = ConsolerizerComposer.out().red(logText)
-            fun infoComment(logText: Any) = ConsolerizerComposer.out().lightGrey(logText)
-
             fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
                 .yellow(ConsolerizerComposer.title(logText))
         }

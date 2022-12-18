@@ -30,6 +30,7 @@
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotest-50.png "Kotest")](https://kotest.io/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/gradle-50.png "Gradle")](https://gradle.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/apache-maven-50.png "Maven")](https://maven.apache.org/)
 
 ---
@@ -45,13 +46,17 @@ Kotlin Language study project.
 -   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
 -   [Kotlin Utilities](./jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
 -   [Kotlin Masters](./jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
+-   [Kotlin Arrow Crums](./jeorg-kotlin-arrow-crums) - Crums Fast track module dedicated exclusively to [Arrow](https://arrow-kt.io/)
+-   [Kotlin Apps](./jeorg-kotlin-apps) - Apps module where web applications are created as a collective gathering of several topics
 
 ---
 
 ## [Arrow](https://arrow-kt.io/)
 
 A lot of concepts of software engineering are explored in [Arrow](https://arrow-kt.io/).
-Because of its importance to the Kotlin community here is a list of sub-modules where we can find the [Arrow](https://arrow-kt.io/) research modules:
+Because of its importance to the Kotlin community please find below a list of submodules where we can find lots of [Arrow](https://arrow-kt.io/) research modules.
+
+In module [jeorg-kotlin-arrow-crums](./jeorg-kotlin-arrow-crums) we can find exclusively arrow modules fully dedicated to researching [Arrow](https://arrow-kt.io/).
 
 ##### [Arrow Core](https://arrow-kt.io/docs/core/)
 
