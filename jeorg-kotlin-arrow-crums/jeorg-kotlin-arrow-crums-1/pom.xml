@@ -9,6 +9,18 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.jesperancinha.console</groupId>
+            <artifactId>consolerizer</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.arrow-kt</groupId>
+            <artifactId>arrow-core-jvm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.arrow-kt</groupId>
+            <artifactId>arrow-optics-jvm</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
         </dependency>
@@ -48,8 +60,8 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <source>src/main/kotlin</source>
-                                <source>target/generated-sources/ksp</source>
+                                <source>${project.basedir}/src/main/kotlin</source>
+                                <source>${project.basedir}/target/generated-sources/ksp</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
