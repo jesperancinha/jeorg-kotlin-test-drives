@@ -51,7 +51,9 @@ Kotlin Language study project.
 ## [Arrow](https://arrow-kt.io/)
 
 A lot of concepts of software engineering are explored in [Arrow](https://arrow-kt.io/).
-Because of its importance to the Kotlin community here is a list of sub-modules where we can find the [Arrow](https://arrow-kt.io/) research modules:
+Because of its importance to the Kotlin community please find below a list of submodules where we can find lots of [Arrow](https://arrow-kt.io/) research modules.
+
+In module [jeorg-kotlin-arrow-crums](./jeorg-kotlin-arrow-crums) we can find exclusively arrow modules fully dedicated to researching [Arrow](https://arrow-kt.io/).
 
 ##### [Arrow Core](https://arrow-kt.io/docs/core/)
 
