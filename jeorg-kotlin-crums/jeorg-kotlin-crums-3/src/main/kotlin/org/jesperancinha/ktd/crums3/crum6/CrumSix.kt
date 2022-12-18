@@ -42,7 +42,16 @@ class CrumSix {
                         else -> networkResult.left()
                     }
                 },
-                reverseGet = { networkResult -> networkResult } //::identity
+                reverseGet = { networkResult -> networkResult }
+            )
+            val intBasedGenericPrism: Prism<ComputationResult, Success> = Prism(
+                getOrModify = { networkResult ->
+                    when (networkResult) {
+                        is Success -> networkResult.right()
+                        else -> networkResult.left()
+                    }
+                },
+                reverseGet = { networkResult -> networkResult }
             )
             val intBasedPrism: Prism<Success, Int> = Prism(
                 getOption = { success ->
@@ -56,12 +65,16 @@ class CrumSix {
             val modify: ComputationResult = stringBasedPrism.modify(networkResult) { success ->
                 success.copy(content = SECOND_MESSAGE)
             }
-            val modifyInt: ComputationResult = composedPrism.modify(networkResult) { integrity ->
+            val modifyIntWrong: ComputationResult = composedPrism.modify(networkResult) { integrity ->
+                integrity * 1000
+            }
+            val modifyIntRight: ComputationResult = composedPrism.modify(networkResultInt) { integrity ->
                 integrity * 1000
             }
             val lifted: (ComputationResult) -> ComputationResult = stringBasedPrism.lift { success ->
                 success.copy(content = SECOND_MESSAGE)
             }
+
             val result: ComputationResult = lifted(ComputationResult.Failure)
             val result2: ComputationResult = lifted(Success("2"))
             val result3: ComputationResult = lifted(Success(COMPUTATION_ITERATIONS))
@@ -82,13 +95,15 @@ class CrumSix {
             logger.info(composedPrism.getOrNull(networkResultInt) ?: "No Focus Found")
             logger.infoComment("Modify and ModifyInt")
             logger.info(modify)
-            logger.info(modifyInt)
+            logger.info(modifyIntWrong)
             logger.infoComment("Left Right Modify")
-            logger.info(modifyInt.left().getOrNull() ?: "Nothing found!")
-            logger.info(modifyInt.right().getOrNull() ?: "Nothing found!")
+            logger.info(modifyIntWrong.left().getOrNull() ?: "Nothing found!")
+            logger.info(modifyIntWrong.right().getOrNull() ?: "Nothing found!")
             logger.infoComment("Uses Modify")
             logger.info(stringBasedPrism.getOrNull(modify)?.content ?: "No Focus Found")
-            logger.info(stringBasedPrism.getOrNull(modifyInt)?.content ?: "No Focus Found")
+            logger.info(stringBasedPrism.getOrNull(modifyIntWrong)?.content ?: "No Focus Found")
+            logger.info(intBasedGenericPrism.getOrNull(modifyIntWrong)?.content ?: "No Focus Found")
+            logger.info(intBasedGenericPrism.getOrNull(modifyIntRight)?.content ?: "No Focus Found")
             logger.infoComment("Lifted Usage")
             logger.info(lifted)
             logger.info(result)
