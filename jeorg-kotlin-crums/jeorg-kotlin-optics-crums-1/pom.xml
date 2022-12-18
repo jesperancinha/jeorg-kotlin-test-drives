@@ -16,7 +16,7 @@
         <kotlin.version>1.7.22</kotlin.version>
         <arrow-optics-ksp-plugin.version>1.1.4-rc.3</arrow-optics-ksp-plugin.version>
         <kotlin-maven-symbol-processing.version>1.2</kotlin-maven-symbol-processing.version>
-        <arrow.version>1.1.4-alpha.16</arrow.version>
+        <arrow.version>1.1.4-rc.3</arrow.version>
     </properties>
 
     <dependencies>
