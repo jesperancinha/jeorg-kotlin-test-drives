@@ -46,7 +46,7 @@ Kotlin Language study project.
 -   [Kotlin Utilities](./jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
 -   [Kotlin Masters](./jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
 -   [Kotlin Arrow Crums](./jeorg-kotlin-arrow-crums) - Crums Fast track module dedicated exclusively to [Arrow](https://arrow-kt.io/)
--   [Kotlin Arrow Apps](./jeorg-kotlin-apps) - Apps module where web applications are created as a collective gathering of several topics
+-   [Kotlin Apps](./jeorg-kotlin-apps) - Apps module where web applications are created as a collective gathering of several topics
 
 ---
 
