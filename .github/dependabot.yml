@@ -13,6 +13,11 @@ updates:
         versions: ["1.6.0-RC2", "1.6.0-RC3", "1.6.0"]
 
   - package-ecosystem: "gradle"
-    directory: "/"
+    directory: "/jeorg-kotlin-crums/jeorg-kotlin-crums-4"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "/jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui"
     schedule:
       interval: "daily"
