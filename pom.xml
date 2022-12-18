@@ -43,7 +43,7 @@
         <!-- Project Arrow Libraries -->
         <arrow-core-jvm.version>1.1.4-rc.3</arrow-core-jvm.version>
         <arrow-optics-ksp-plugin.version>1.1.4-rc.3</arrow-optics-ksp-plugin.version>
-        <kotlin-maven-symbol-processing.version>1.2</kotlin-maven-symbol-processing.version>
+        <kotlin-maven-symbol-processing.version>1.4</kotlin-maven-symbol-processing.version>
     </properties>
 
     <modules>
