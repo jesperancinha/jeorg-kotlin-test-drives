@@ -1,5 +1,6 @@
 b: build-gradle
 build-gradle:
+	gradle wrapper
 	./gradlew build test
 build-gradle-report:
 	gradle wrapper
