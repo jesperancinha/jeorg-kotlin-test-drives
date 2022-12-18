@@ -72,17 +72,17 @@ Note that if you want to build this project from the root, you need to use one o
 
 <i>See [Hints&Tricks](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/Hints%26Tricks.md) document for more details</i>
 
-## Install JDK 11 using [SDK-MAN](https://sdkman.io/)
+## Install JDK 17 using [SDK-MAN](https://sdkman.io/)
 
 ```bash
-sdk install java 11.0.9.hs-adpt
-sdk use java 11.0.9.hs-adpt
+sdk install java 17-open
+sdk use java 17-open
 ```
 
 Or just run:
 
 ```bash
-. ./setup.sh
+. ./sdk17.sh
 ```
 
 ---
