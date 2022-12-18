@@ -51,6 +51,7 @@
         <module>jeorg-kotlin-utilities</module>
         <module>jeorg-kotlin-masters</module>
         <module>jeorg-kotlin-apps</module>
+        <module>jeorg-kotlin-arrow-crums</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -105,6 +106,11 @@
             <dependency>
                 <groupId>io.arrow-kt</groupId>
                 <artifactId>arrow-optics-jvm</artifactId>
+                <version>${arrow-core-jvm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.arrow-kt</groupId>
+                <artifactId>arrow-optics</artifactId>
                 <version>${arrow-core-jvm.version}</version>
             </dependency>
             <dependency>
