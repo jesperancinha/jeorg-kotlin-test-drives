@@ -31,7 +31,7 @@ class Optics {
         }
 
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             logger.infoTitle("Crum 1 - Basic Optics")
 
             val bytesLens = Box.dataBox.bytes
