@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.crums3.crums3
+package org.jesperancinha.ktd.crums3.crum3
 
 import arrow.optics.optics
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer

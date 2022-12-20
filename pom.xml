@@ -44,6 +44,9 @@
         <arrow.version>1.1.4-rc.3</arrow.version>
         <arrow-optics-ksp-plugin.version>1.1.4-rc.3</arrow-optics-ksp-plugin.version>
         <kotlin-maven-symbol-processing.version>1.4</kotlin-maven-symbol-processing.version>
+        <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
+        <kotest.version>4.0.7</kotest.version>
+        <kotest-assertions.version>5.5.4</kotest-assertions.version>
     </properties>
 
     <modules>
@@ -62,6 +65,11 @@
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>${jakarta.validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.arrow-kt</groupId>
+                <artifactId>arrow-analysis-types-jvm</artifactId>
+                <version>${arrow-analysis-types-jvm.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jesperancinha.console</groupId>
@@ -112,6 +120,26 @@
                 <groupId>io.arrow-kt</groupId>
                 <artifactId>arrow-optics</artifactId>
                 <version>${arrow.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions</artifactId>
+                <version>${kotest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-api-jvm</artifactId>
+                <version>${kotest-assertions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-core-jvm</artifactId>
+                <version>${kotest-assertions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-shared-jvm</artifactId>
+                <version>${kotest-assertions.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
