@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.461-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.462")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.461-compat")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.10.5-pre.461-compat")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.3.0-pre.461")
