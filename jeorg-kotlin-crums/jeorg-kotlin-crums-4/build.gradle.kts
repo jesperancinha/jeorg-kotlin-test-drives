@@ -5,7 +5,7 @@ allprojects {
 }
 
 plugins {
-    id("com.google.devtools.ksp") version "1.8.0-RC2-1.0.8"
+    id("com.google.devtools.ksp") version "1.8.0-1.0.8"
 //    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
     kotlin("jvm") version "1.8.0"
     application
