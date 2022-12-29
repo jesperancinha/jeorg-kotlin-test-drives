@@ -3,7 +3,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'org.jetbrains.kotlin:kotlin-stdlib-common:1.7.22'
+        classpath 'org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0'
     }
 }
 
@@ -44,5 +44,5 @@ test {
 
 
 dependencies {
-    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.7.21'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-common', version: '1.8.0'
 }
