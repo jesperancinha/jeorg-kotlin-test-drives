@@ -5,7 +5,7 @@ allprojects {
 }
 
 plugins {
-    id("com.google.devtools.ksp") version "1.8.0-RC2-1.0.8"
+    id("com.google.devtools.ksp") version "1.8.0-1.0.8"
 //    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
     kotlin("jvm") version "1.8.0"
     application
@@ -22,7 +22,7 @@ idea {
             generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
     }
 }
-val arrowVersion = "1.1.4-rc.3"
+val arrowVersion = "1.1.5-alpha.1"
 
 dependencies {
     implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
