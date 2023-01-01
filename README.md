@@ -37,12 +37,12 @@
 This project is an experimental project made only for performance tests and to explore the developments made by Oracle.
 The main goal is to understand new changes made to the Java platform.
 
-Currently supporting Java 11.
+Currently supporting Java 17.
 
 ## Upgrade
 
 ```shell
-gradle wrapper --gradle-version 7.3.3 
+gradle wrapper --gradle-version 7.6
 ```
 
 ## Contents
