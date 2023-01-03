@@ -8,6 +8,7 @@ import org.jesperancinha.ktd.crums3.crum5.CrumFive
 import org.jesperancinha.ktd.crums3.crum6.CrumSix
 import org.jesperancinha.ktd.crums3.crum7.CrumSeven
 import org.jesperancinha.ktd.crums3.crum8.ClassCatcher
+import org.jesperancinha.ktd.crums3.crum9.InstanceScope
 
 suspend fun main(args: Array<String>) {
     CrumOne()
@@ -20,5 +21,6 @@ suspend fun main(args: Array<String>) {
     CrumSix.main(args)
     CrumSeven.main(args)
     ClassCatcher.main()
+    InstanceScope.main()
 }
 
