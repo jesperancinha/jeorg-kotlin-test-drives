@@ -15,7 +15,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
-        <assertj-core.version>3.23.1</assertj-core.version>
+        <assertj-core.version>3.24.1</assertj-core.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
     </properties>
 
