@@ -17,6 +17,12 @@ repositories {
     mavenLocal()
 }
 
-group "jesperancinha"
-version "0.0.0-SNAPSHOT"
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(19))
+    }
+}
+
+group = "org.jesperancinha"
+version = "0.0.0-SNAPSHOT"
 

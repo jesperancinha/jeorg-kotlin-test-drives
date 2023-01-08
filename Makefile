@@ -3,6 +3,7 @@ wrapper:
 	gradle wrapper
 buildw:
 	gradle clean build test publishToMavenLocal
+test-gradle: buildw
 coverage:
 	./gradlew clean build test jacocoTestReport -i
 	gradle -i
