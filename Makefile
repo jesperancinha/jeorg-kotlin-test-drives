@@ -5,6 +5,9 @@ buildw:
 	./gradlew --stop
 	gradle clean build test publishToMavenLocal
 test-gradle: buildw
+build-report:
+	./gradlew clean build test jacocoTestReport -i
+	gradle -i
 coverage:
 	./gradlew clean build test jacocoTestReport -i
 	gradle -i
