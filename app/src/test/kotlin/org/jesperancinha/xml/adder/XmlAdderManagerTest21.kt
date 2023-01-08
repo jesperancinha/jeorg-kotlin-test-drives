@@ -34,7 +34,7 @@ class XmlAdderManagerTest2 {
         )
         val manager: XmlAdderManager = object : XmlAdderManager(null, null, `is`, null, ruleStream) {
             @Throws(IOException::class)
-            override fun getRuleFromIO(fileRule: InputStream?): String {
+            override fun getRuleFromIO(fileRule: InputStream?): String? {
                 return null
             }
         }

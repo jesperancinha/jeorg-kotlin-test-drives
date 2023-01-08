@@ -28,8 +28,8 @@ import javax.xml.xpath.XPathFactory
  * Created by joaofilipesabinoesperancinha on 16-02-16.
  */
 open class XmlAdderManager(
-    private val fileSourceDirectory: File,
-    private val fileDestinationDirectory: File,
+    private val fileSourceDirectory: File? = null,
+    private val fileDestinationDirectory: File? = null,
     fileAddAttributes: InputStream?,
     fileDeleteAttributes: InputStream?,
     fileRule: InputStream?
@@ -40,6 +40,7 @@ open class XmlAdderManager(
     private val xPathfactory = XPathFactory.newInstance()
     private val xpath = xPathfactory.newXPath()
     val rule: String
+
     @JvmField
     val addAttributeManager = XmlAdderAddAttributeManager()
 
@@ -64,7 +65,7 @@ open class XmlAdderManager(
     }
 
     @Throws(IOException::class)
-    protected open fun getRuleFromIO(fileRule: InputStream?): String {
+    protected open fun getRuleFromIO(fileRule: InputStream?): String? {
         return IOUtils.toString(fileRule)
     }
 
@@ -84,9 +85,11 @@ open class XmlAdderManager(
 
     @Throws(IOException::class, SAXException::class, XPathExpressionException::class, TransformerException::class)
     fun runConversion() {
-        val allXmlFilesToChange = listAllFilesToChange(
-            fileSourceDirectory
-        )
+        val allXmlFilesToChange = fileSourceDirectory?.let {
+            listAllFilesToChange(
+                fileSourceDirectory
+            )
+        } ?: emptyList()
         for (file in allXmlFilesToChange) {
             val doc = getDocument(file)
             var saveFile = false
@@ -128,9 +131,11 @@ open class XmlAdderManager(
     @Throws(TransformerException::class)
     protected open fun saveFile(file: File, doc: Document?) {
         val absolutePath = file.absolutePath
-        val rootSourceFolder = fileSourceDirectory.absolutePath
-        val rootDestinationFolder = fileDestinationDirectory
-            .absolutePath+"/" + fileSourceDirectory.name + absolutePath.replace(rootSourceFolder, "")
+        val rootSourceFolder = fileSourceDirectory?.absolutePath
+        val rootDestinationFolder = rootSourceFolder?.let {
+            fileDestinationDirectory
+                ?.absolutePath + "/" + fileSourceDirectory?.name + absolutePath.replace(rootSourceFolder, "")
+        }
         val destinationFile = File(rootDestinationFolder)
         File(destinationFile.parent).mkdirs()
         val transformer = TransformerFactory.newInstance().newTransformer()
@@ -188,6 +193,7 @@ open class XmlAdderManager(
         // Constants
         const val GUID = "GUID"
         const val GUID_PLUS = "+GUID"
+
         @JvmStatic
         fun listAllFilesToChange(sourceDirectory: File): List<File> {
             val allXmlsToChahge: MutableList<File> = ArrayList()

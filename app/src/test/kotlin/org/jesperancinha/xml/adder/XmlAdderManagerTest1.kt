@@ -35,7 +35,7 @@ class XmlAdderManagerTest {
             FileInputStream::class.java
         )
         val manager: XmlAdderManager = object : XmlAdderManager(null, null, `is`, null, ruleStream) {
-            override fun getRuleFromIO(fileRule: InputStream?): String {
+            override fun getRuleFromIO(fileRule: InputStream?): String? {
                 return null
             }
         }
