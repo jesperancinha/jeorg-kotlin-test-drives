@@ -1,4 +1,4 @@
-# osgi-module
+# vertex-module
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
