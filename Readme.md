@@ -1,4 +1,24 @@
-# test-drive-xml-main-runner
+# performance-parsers
+
+---
+
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/performance-parsers)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=performance-parsers%20🗄&color=informational)](https://github.com/jesperancinha/performance-parsers)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+
+[![performance-parsers](https://github.com/jesperancinha/performance-parsers/actions/workflows/performance-parsers.yml/badge.svg)](https://github.com/jesperancinha/performance-parsers/actions/workflows/performance-parsers.yml)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-parsers&amp;utm_campaign=Badge_Grade)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/7a584130d5414775a063f97ff50e1bd1)](https://www.codacy.com/gh/jesperancinha/performance-parsers/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/performance-parsers&utm_campaign=Badge_Coverage)
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/performance-parsers/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/performance-parsers?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/performance-parsers/branch/master/graph/badge.svg?token=sw8f88MIBj)](https://codecov.io/gh/jesperancinha/performance-parsers)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/performance-parsers.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/performance-parsers.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/performance-parsers.svg)](#)
+
+---
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
