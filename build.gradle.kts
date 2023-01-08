@@ -6,16 +6,17 @@ buildscript {
 }
 
 plugins {
+    kotlin("jvm") version "1.8.0"
     id("java-gradle-plugin")
     id("maven-publish")
-    id( "org.jesperancinha.plugins.omni") version "0.2.0"
-    id("jacoco")
+    jacoco
 }
-
-group 'jesperancinha'
-version '0.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
+
+group "jesperancinha"
+version "0.0.0-SNAPSHOT"
 

@@ -6,5 +6,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'xml-adder'
+rootProject.name = "xml-adder"
 include("app")

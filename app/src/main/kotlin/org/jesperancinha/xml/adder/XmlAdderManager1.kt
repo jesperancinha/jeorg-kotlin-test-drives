@@ -65,7 +65,7 @@ open class XmlAdderManager(
     }
 
     @Throws(IOException::class)
-    protected open fun getRuleFromIO(fileRule: InputStream?): String? {
+    protected open fun getRuleFromIO(fileRule: InputStream?): String {
         return IOUtils.toString(fileRule)
     }
 
@@ -104,7 +104,7 @@ open class XmlAdderManager(
                         for (attName in attributesToAdd.keys) {
                             val value = attributesToAdd[attName]
                             if (value == null || value.isEmpty()) {
-                                (node as Element).setAttribute(attName, getRule())
+                                (node as Element).setAttribute(attName, getGeneralRule())
                             } else {
                                 (node as Element).setAttribute(attName, value)
                             }
@@ -155,7 +155,7 @@ open class XmlAdderManager(
     }
 
     @Throws(IOException::class)
-    fun getRule(): String {
+    fun getGeneralRule(): String {
         val slashPiece = rule.split("\\\\".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         val slashLength = slashPiece.size
         var slashCounter = 0

@@ -1,19 +1,21 @@
 package org.jesperancinha.xml.adder
 
-import org.hamcrest.collection.IsCollectionWithSize
-import org.hamcrest.core.IsCollectionContaining
+import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldBeIn
+import io.kotest.matchers.collections.shouldContainExactly
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.equality.shouldBeEqualToComparingFields
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldBeEmpty
+import org.gradle.internal.impldep.org.junit.rules.TemporaryFolder
 import org.jesperancinha.xml.adder.XmlAdderManager.Companion.listAllFilesToChange
-import org.jmock.Mockery
-import org.jmock.lib.legacy.ClassImposteriser
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
-import org.junit.rules.TemporaryFolder
+import org.junit.jupiter.api.Test
 import org.xml.sax.SAXException
 import java.io.*
 import java.util.*
 import java.util.regex.Pattern
-import java.util.stream.Collectors
 import javax.xml.parsers.ParserConfigurationException
 import javax.xml.transform.TransformerException
 import javax.xml.xpath.XPathExpressionException
@@ -22,30 +24,26 @@ import javax.xml.xpath.XPathExpressionException
  * Created by joaofilipesabinoesperancinha on 18-02-16.
  */
 class XmlAdderManagerTest {
-    @Before
-    fun setupMocks() {
-        context.setImposteriser(ClassImposteriser.INSTANCE)
-    }
 
     @Test
     @Throws(IOException::class, ParserConfigurationException::class)
     fun testReadAllAddAttributes() {
         val `is` = javaClass.getResourceAsStream("/testReadAttributeBean.csv")
-        val ruleStream: InputStream = context.mock(
-            FileInputStream::class.java
-        )
+        val ruleStream: InputStream = FileInputStream(File.createTempFile("test", "xml-adder"))
         val manager: XmlAdderManager = object : XmlAdderManager(null, null, `is`, null, ruleStream) {
-            override fun getRuleFromIO(fileRule: InputStream?): String? {
-                return null
+            override fun getRuleFromIO(fileRule: InputStream?): String {
+                return ""
             }
         }
         val attributeManager = manager.addAttributeManager
         val result = attributeManager.getXmlAdderInstructionArrayMap()
         val resultSet = result.keys
-        Assert.assertEquals(1, resultSet.size.toLong())
+        resultSet.shouldHaveSize(1)
         for (key in resultSet) {
-            Assert.assertEquals("testnode1/testnode2", key)
-            Assert.assertEquals("attribute1value", result[key]!!.getAttributesToAdd()["attribute1name"])
+            key shouldBe "testnode1/testnode2"
+            val xmlAdderInstruction = result[key]
+            xmlAdderInstruction.shouldNotBeNull()
+            xmlAdderInstruction.getAttributesToAdd()["attribute1name"] shouldBe "attribute1value"
         }
     }
 
@@ -70,10 +68,12 @@ class XmlAdderManagerTest {
         val attributeManager = manager.addAttributeManager
         val result = attributeManager.getXmlAdderInstructionArrayMap()
         val resultSet = result.keys
-        Assert.assertEquals(1, resultSet.size.toLong())
+        resultSet.shouldHaveSize(1)
         for (key in resultSet) {
-            Assert.assertEquals("testnode1/testnode2", key)
-            Assert.assertEquals(0, result[key]!!.getAttributesToAdd()["attribute1name"]!!.length.toLong())
+            key shouldBe "testnode1/testnode2"
+            val xmlAdderInstruction = result[key]
+            xmlAdderInstruction.shouldNotBeNull()
+            xmlAdderInstruction.getAttributesToAdd()["attribute1name"].shouldBeEmpty()
         }
         manager.runConversion()
     }
@@ -82,35 +82,37 @@ class XmlAdderManagerTest {
     @Throws(IOException::class)
     fun testlistAllFilesToChange_empty() {
         val resultFilesToChange = listAllFilesToChange(getTestFolder(false))
-        Assert.assertEquals(0, resultFilesToChange.size.toLong())
+        resultFilesToChange.shouldBeEmpty()
     }
 
     @Test
     @Throws(IOException::class)
-    fun testlistAllFilesToChange_oneXmlInEachFolder() {
+    fun `should list all files to change correctly`() {
         val resultFilesToChange = listAllFilesToChange(getTestFolder(true))
-        Assert.assertThat(resultFilesToChange, IsCollectionWithSize.hasSize(6))
-        Assert.assertThat(resultFilesToChange.stream().map { obj: File -> obj.name }
-            .collect(Collectors.toList()),
-            IsCollectionContaining.hasItems(
-                "file1.xml",
-                "file11.xml",
-                "file12.xml",
-                "file2.xml",
-                "file21.xml",
-                "file22.xml"
-            ))
+        resultFilesToChange.shouldHaveSize(6)
+        resultFilesToChange.map { file: File -> file.name }
+            .sorted()
+            .shouldContainExactly(
+                listOf(
+                    "file1.xml",
+                    "file11.xml",
+                    "file12.xml",
+                    "file2.xml",
+                    "file21.xml",
+                    "file22.xml"
+                )
+            )
     }
 
     @Test
     @Throws(IOException::class, ParserConfigurationException::class)
     fun testGetRule() {
-        testGetRule("/testRule0.txt", "I am a", true, false)
-        testGetRule("/testRule0.1.txt", "I am a", true, false)
-        testGetRule("/testRule1.txt", "I am not a GUID", false, false)
-        testGetRule("/testRule2.txt", "I am a slash behind a \\", true, false)
-        testGetRule("/testRule3.txt", "I am two slashes \\\\", true, false)
-        testGetRule("/testRule4.txt", "I am two slashes and not a \\\\GUID", false, false)
+        testGetRule("/testRule0.txt", "I am a", testGUID = true, testUpperCase = false)
+        testGetRule("/testRule0.1.txt", "I am a", testGUID = true, testUpperCase = false)
+        testGetRule("/testRule1.txt", "I am not a GUID", testGUID = false, testUpperCase = false)
+        testGetRule("/testRule2.txt", "I am a slash behind a \\", testGUID = true, testUpperCase = false)
+        testGetRule("/testRule3.txt", "I am two slashes \\\\", testGUID = true, testUpperCase = false)
+        testGetRule("/testRule4.txt", "I am two slashes and not a \\\\GUID", testGUID = false, testUpperCase = false)
     }
 
     @Throws(IOException::class, ParserConfigurationException::class)
@@ -126,12 +128,12 @@ class XmlAdderManagerTest {
             override fun readAllAddAttributes(fileAddAttributes: InputStream?) {
             }
         }
-        val resultRule = manager.getRule()
+        val resultRule = manager.getGeneralRule()
         if (testGUID) {
             val pattern = Pattern.compile(guidMatch)
             val matcher = pattern.matcher(resultRule)
             try {
-                Assert.assertTrue(matcher.find())
+                matcher.find().shouldBeTrue()
             } catch (e: Error) {
                 throw RuntimeException("Match GUUID not found! Got: $resultRule", e)
             }
@@ -139,9 +141,9 @@ class XmlAdderManagerTest {
             if (testUpperCase) {
                 resultMatch = resultMatch.uppercase(Locale.getDefault())
             }
-            Assert.assertEquals(testRuleMatch, resultMatch)
+            resultMatch shouldBe testRuleMatch
         } else {
-            Assert.assertEquals(testRuleMatch, resultRule)
+            resultRule shouldBe testRuleMatch
         }
     }
 
@@ -193,6 +195,5 @@ class XmlAdderManagerTest {
     companion object {
         private const val guidMatch =
             "([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12})"
-        private val context = Mockery()
     }
 }
