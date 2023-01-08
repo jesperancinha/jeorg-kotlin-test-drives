@@ -21,4 +21,4 @@ jobs:
        uses: gradle/gradle-build-action@v2
 
      - name: Build
-       run: sudo make b
+       run: make b
