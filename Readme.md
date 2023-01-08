@@ -1,4 +1,62 @@
-# string-paradigm-expression-api
+# String Array Paradigms
+
+---
+
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=String%20Array%20Paradigms&color=informational)](https://github.com/jesperancinha/string-array-paradigms)
+
+[![CircleCI](https://circleci.com/gh/jesperancinha/string-array-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/string-array-paradigms)
+[![string-array-paradigms](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/gradle.yml/badge.svg)](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/gradle.yml)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/gh/jesperancinha/string-array-paradigms/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/string-array-paradigms&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/65fed66c-ff4a-46f1-9b12-bc486a422ee6)](https://codebeat.co/projects/github-com-jesperancinha-string-array-paradigms-master)
+[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/string-array-paradigms?branch=master)](https://bettercodehub.com/)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/gh/jesperancinha/string-array-paradigms/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/string-array-paradigms&utm_campaign=Badge_Coverage)
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/string-array-paradigms/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/string-array-paradigms?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/string-array-paradigms/branch/master/graph/badge.svg?token=7DkwDmhB17)](https://codecov.io/gh/jesperancinha/string-array-paradigms)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/string-array-paradigms.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/string-array-paradigms.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/string-array-paradigms.svg)](#)
+
+---
+
+## Tech stack
+
+---
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/gradle-50.png "Gradle")](https://gradle.org/)
+
+---
+
+## Description
+
+A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll keep looking after it from now on and integrate it into future Java versions
+
+## Install gradle
+
+Your gradle location should be: /usr/local/Cellar/gradle/5.4.1/libexec.
+
+If not, please run:
+
+```bash
+
+$ brew install gradle
+
+```
+
+## Running these tests
+
+```bash
+
+gradle idea 
+
+gradle cleanIdea 
+
+gradle test
+
+./gradlew test
+
+```
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
