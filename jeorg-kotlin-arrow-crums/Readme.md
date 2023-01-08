@@ -1,4 +1,4 @@
-# JEOrg :: KTD :: Apps
+# jeorg-kotlin-arrow-crums
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
