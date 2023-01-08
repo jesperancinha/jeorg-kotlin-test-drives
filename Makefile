@@ -7,7 +7,6 @@ buildw:
 test-gradle: buildw
 build-report:
 	./gradlew clean build test jacocoTestReport -i
-	cd app && ./gradlew clean build test jacocoTestReport -i
 send-report:
 	./gradlew -i
 coverage: build-report send-report
