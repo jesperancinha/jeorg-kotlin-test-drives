@@ -1,4 +1,84 @@
-# performance-jump-search
+# performance-projects
+
+---
+
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/performance-projects)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Performance%20Objects%20&color=informational)](https://github.com/jesperancinha/performance-projects)
+[![GitHub License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+
+[![CircleCI](https://circleci.com/gh/jesperancinha/performance-projects.svg?style=svg)](https://circleci.com/gh/jesperancinha/performance-projects)
+[![performance-projects](https://github.com/jesperancinha/performance-projects/actions/workflows/performance-projects.yml/badge.svg)](https://github.com/jesperancinha/performance-projects/actions/workflows/performance-projects.yml)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/98bb1264a9ee4986bb6700b2b1bb9273)](https://www.codacy.com/app/jofisaes/performance-projects?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/performance-projects&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/777f3fdd-9d28-4edf-add3-7a3df5c573a5)](https://codebeat.co/projects/github-com-jesperancinha-performance-projects-master)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/98bb1264a9ee4986bb6700b2b1bb9273)](https://www.codacy.com/gh/jesperancinha/performance-projects/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/performance-projects&utm_campaign=Badge_Coverage)
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/performance-projects/badge.svg?branch=master)](https://coveralls.io/github/jesperancinha/performance-projects?branch=master)
+[![codecov](https://codecov.io/gh/jesperancinha/performance-projects/branch/master/graph/badge.svg?token=IyBAUw18Z1)](https://codecov.io/gh/jesperancinha/performance-projects)
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/performance-projects.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/performance-projects.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/performance-projects.svg)](#)
+
+---
+
+## Tech stack
+
+---
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/gradle-50.png "Gradle")](https://gradle.org/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/java-50.png "Java")](https://www.oracle.com/nl/java/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/lombok-50.png "Lombok")](https://projectlombok.org/)
+
+---
+
+
+## Intro
+
+This project is an experimental project made only for performance tests and to explore the developments made by Oracle.
+The main goal is to understand new changes made to the Java platform.
+
+Currently supporting Java 17.
+
+## Upgrade
+
+```shell
+gradle wrapper --gradle-version 7.6
+```
+
+## Contents
+
+* [performance-buffered-reader](performance-buffered-reader)
+* [performance-input-test-generator](performance-input-test-generator)
+* [performance-jump-search](performance-jump-search)
+
+### Java Migration
+
+* Please Install SDK Man:
+
+https://sdkman.io/install
+
+* Select Java 11
+
+```bash
+
+sdk use java 11.0.1-open
+
+```
+
+### Running these tests
+
+* Make sure that Intellij or Eclipse have interpreted this code correctly
+```bash
+
+gradle idea 
+
+gradle cleanIdea 
+
+gradle test
+
+./gradlew test
+
+```
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
