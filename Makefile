@@ -7,10 +7,10 @@ buildw:
 test-gradle: buildw
 build-report:
 	./gradlew clean build test jacocoTestReport -i
+send-report:
 	gradle -i
-coverage:
+coverage: build-report send-report
 	./gradlew clean build test jacocoTestReport -i
-	gradle -i
 upgrade:
 	gradle wrapper --gradle-version 7.3.3
 upgrade-mac-os:

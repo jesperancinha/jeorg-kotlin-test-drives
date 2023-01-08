@@ -27,8 +27,8 @@ jobs:
     - name: Creates properties
       run: touch local.properties
 
-    - name: Build
-      run: ./gradlew clean build test jacocoTestReport -i
+    - name: Build Report
+      run: make build-report
 
     - name: Send Reports
       run: gradle -i
