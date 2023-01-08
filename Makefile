@@ -9,7 +9,7 @@ build-report:
 	./gradlew clean build test jacocoTestReport -i
 	cd app && ./gradlew clean build test jacocoTestReport -i
 send-report:
-	./gradlew -i
+	./gradlew -i --scan --stacktrace --debug
 coverage: build-report send-report
 	./gradlew clean build test jacocoTestReport -i
 upgrade:
