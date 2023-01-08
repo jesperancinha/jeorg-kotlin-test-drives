@@ -20,7 +20,7 @@ object XmlAdderMain {
         val fileAddAtributesFile: InputStream = FileInputStream(File(addAttributesFile))
         val fileDeleteAttributesFile: InputStream = FileInputStream(File(deleteAttributesFile))
         val fileRule: InputStream = FileInputStream(File(rule))
-        val manager = XmlAdderManager(
+        XmlAdderManager(
             fileSourceDirectory,
             fileDestinationDirectory,
             fileAddAtributesFile,

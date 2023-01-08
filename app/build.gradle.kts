@@ -11,7 +11,6 @@ group = "org.jesperancinha"
 
 plugins {
     kotlin("jvm")
-    application // Application plugin. Also see 1️⃣ below the code
     id("java-gradle-plugin")
     id("maven-publish")
     id("org.jesperancinha.plugins.omni") version "0.3.0"
@@ -48,7 +47,10 @@ tasks.jacocoTestReport {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(19))
+        languageVersion.set(JavaLanguageVersion.of(18))
     }
 }
 
+kotlin {
+    jvmToolchain(18)
+}

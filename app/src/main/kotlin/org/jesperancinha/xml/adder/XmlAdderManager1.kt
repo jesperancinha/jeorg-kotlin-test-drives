@@ -111,9 +111,8 @@ open class XmlAdderManager(
                             saveFile = true
                         }
                         val attributesToDelete = instruction.attributeKeysToDelete
-                        for (attName in attributesToDelete!!) {
-                            if (attName != null && (node as Element).getAttribute(attName) != null &&
-                                !node.getAttribute(attName).isEmpty()
+                        for (attName in attributesToDelete) {
+                            if ((node as Element).getAttribute(attName).isNotEmpty()
                             ) {
                                 node.removeAttribute(attName)
                                 saveFile = true

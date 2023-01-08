@@ -122,7 +122,7 @@ class XmlAdderManagerTest {
             null,
             null,
             null,
-            javaClass.getResourceAsStream(testRule)
+            this::class.java.getResourceAsStream(testRule)
         ) {
             @Throws(IOException::class)
             override fun readAllAddAttributes(fileAddAttributes: InputStream?) {

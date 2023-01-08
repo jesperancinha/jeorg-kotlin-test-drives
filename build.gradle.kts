@@ -19,8 +19,12 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(19))
+        languageVersion.set(JavaLanguageVersion.of(18))
     }
+}
+
+kotlin {
+    jvmToolchain(18)
 }
 
 group = "org.jesperancinha"
