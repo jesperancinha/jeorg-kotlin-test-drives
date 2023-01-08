@@ -1,3 +1,4 @@
+rootProject.name = "xml-adder"
 pluginManagement {
     repositories {
         mavenLocal()
@@ -5,6 +6,4 @@ pluginManagement {
         mavenCentral()
     }
 }
-
-rootProject.name = 'xml-adder'
 include("app")
