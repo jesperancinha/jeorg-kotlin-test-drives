@@ -5,16 +5,14 @@ package org.jesperancinha.xml.adder.instruction
  */
 class XmlAdderAddAttributeManager {
     internal val xmlAdderInstructionArrayMap: MutableMap<String, XmlAdderInstruction> = HashMap()
-    fun addAddAttribute(name: String?, value: String?, xpath: String?) {
-        name?.let {
-            var instruction = xmlAdderInstructionArrayMap[xpath]
-            if (instruction == null) {
-                instruction = XmlAdderInstruction(null, HashMap(), null, HashSet(), null, null)
-                instruction.addAddAttribute(name, value)
-                xpath?.let { xmlAdderInstructionArrayMap[xpath] = instruction }
-            } else {
-                instruction.addAddAttribute(name, value)
-            }
+    fun addAddAttribute(name: String?, value: String?, xpath: String?) = name?.let {
+        var instruction = xmlAdderInstructionArrayMap[xpath]
+        if (instruction == null) {
+            instruction = XmlAdderInstruction(null, HashMap(), null, HashSet(), null, null)
+            instruction.addAddAttribute(name, value)
+            xpath?.let { xmlAdderInstructionArrayMap[xpath] = instruction }
+        } else {
+            instruction.addAddAttribute(name, value)
         }
     }
 
