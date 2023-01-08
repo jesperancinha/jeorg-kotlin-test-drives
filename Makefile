@@ -12,6 +12,6 @@ send-report:
 coverage: build-report send-report
 	./gradlew clean build test jacocoTestReport -i
 upgrade:
-	gradle wrapper --gradle-version 7.3.3
+	gradle wrapper --gradle-version 7.6
 upgrade-mac-os:
 	brew upgrade gradle
