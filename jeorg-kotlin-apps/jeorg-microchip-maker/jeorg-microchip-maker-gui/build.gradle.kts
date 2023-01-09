@@ -7,7 +7,7 @@ allprojects {
 plugins {
     kotlin("js") version "1.8.0"
     id("jacoco")
-    id("org.jesperancinha.plugins.omni") version "0.3.0"
+    id("org.jesperancinha.plugins.omni") version "0.3.1"
 }
 
 group = "org.jesperancinha.ktd"
@@ -19,12 +19,12 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.467-compat")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.467-compat")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.10.5-pre.467-compat")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.3.0-pre.467-compat")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.467-compat")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.467-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.472-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.470-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.10.5-pre.472-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.3.0-pre.472-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.472-compat")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.470-compat")
 }
 
 kotlin {
