@@ -45,7 +45,9 @@ dependencies {
     implementation("org.kohsuke.args4j:args4j-maven-plugin:2.33")
     implementation("org.slf4j:slf4j-api:2.0.6")
     implementation("commons-io:commons-io:2.11.0")
+    implementation("info.picocli:picocli:4.7.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+
 }
