@@ -1,7 +1,7 @@
-package com.jesperancinha.performance.test.jumpsearch.interfaces;
+package com.jesperancinha.performance.test.jumpsearch.interfaces
 
-import java.io.InputStream;
+import java.io.InputStream
 
-public interface JumpSearchFileStreams {
-	int getNumberIndexFromArray(int number, InputStream completeList);
+interface JumpSearchFileStreams {
+    fun getNumberIndexFromArray(number: Int, completeList: InputStream): Int
 }

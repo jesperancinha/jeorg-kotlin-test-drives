@@ -1,5 +1,5 @@
-package com.jesperancinha.performance.test.jumpsearch.interfaces;
+package com.jesperancinha.performance.test.jumpsearch.interfaces
 
-public interface JumpSearchFile {
-	int getNumberIndexFromArray(int number, int[] completeList);
+interface JumpSearchFile {
+    fun getNumberIndexFromArray(number: Int, completeList: IntArray): Int
 }

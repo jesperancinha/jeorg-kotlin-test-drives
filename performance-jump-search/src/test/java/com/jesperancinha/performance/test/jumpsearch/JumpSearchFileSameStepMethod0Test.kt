@@ -1,8 +1,7 @@
-package com.jesperancinha.performance.test.jumpsearch;
+package com.jesperancinha.performance.test.jumpsearch
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
 
 /*
  * This jump algorithm as described in:
@@ -11,28 +10,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Unlike the binary search model, it assumes that is better to jump a step and then perform the already known binary search
  * As for this implementation it is being created without consideration on performance using an IJW (It just works) model
  */
-public class JumpSearchFileSameStepMethod0Test {
-	@Test
-	public void testGetNumberIndexFromArray() {
-		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(20, completeList);
+class JumpSearchFileSameStepMethod0Test {
+    @Test
+    fun testGetNumberIndexFromArray() {
+        val completeList = intArrayOf(1, 2, 8, 10, 20, 23, 27, 50, 90)
+        val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(20, completeList)
+        Assertions.assertEquals(4, result)
+    }
 
-		assertEquals(4, result);
-	}
+    @Test
+    fun testGetNumberIndexFromArray_limit() {
+        val completeList = intArrayOf(1, 2, 8, 10, 20, 23, 27, 50, 90)
+        val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(90, completeList)
+        Assertions.assertEquals(8, result)
+    }
 
-	@Test
-	public void testGetNumberIndexFromArray_limit() {
-		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(90, completeList);
-
-		assertEquals(8, result);
-	}
-
-	@Test
-	public void testGetNumberIndexFromArray_begining() {
-		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
-		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(1, completeList);
-
-		assertEquals(0, result);
-	}
+    @Test
+    fun testGetNumberIndexFromArray_begining() {
+        val completeList = intArrayOf(1, 2, 8, 10, 20, 23, 27, 50, 90)
+        val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(1, completeList)
+        Assertions.assertEquals(0, result)
+    }
 }

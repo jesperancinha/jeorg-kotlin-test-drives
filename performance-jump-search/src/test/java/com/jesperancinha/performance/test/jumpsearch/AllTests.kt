@@ -1,10 +1,8 @@
-package com.jesperancinha.performance.test.jumpsearch;
+package com.jesperancinha.performance.test.jumpsearch
 
-import org.junit.platform.suite.api.SelectClasses;
-import org.junit.platform.suite.api.Suite;
+import org.junit.platform.suite.api.SelectClasses
+import org.junit.platform.suite.api.Suite
 
 @Suite
-@SelectClasses({AllBenchmarkingTests.class, AllSingleTests.class})
-public class AllTests {
-
-}
+@SelectClasses(AllBenchmarkingTests::class, AllSingleTests::class)
+class AllTests 
