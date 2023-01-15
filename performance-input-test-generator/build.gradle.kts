@@ -48,5 +48,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.4")
 }

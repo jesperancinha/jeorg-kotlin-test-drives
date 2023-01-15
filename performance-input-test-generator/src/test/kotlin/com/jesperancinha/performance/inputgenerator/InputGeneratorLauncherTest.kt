@@ -1,5 +1,7 @@
 package com.jesperancinha.performance.inputgenerator
 
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.BufferedReader
@@ -7,11 +9,17 @@ import java.io.File
 import java.io.FileReader
 
 class InputGeneratorLauncherTest {
+
     @Test
-    fun testInputGenerator() {
+    fun main() {
+        InputGeneratorLauncher.main(listOf("-n", "100", "-f", "/testInputGenerator.txt").toTypedArray())
+        testInputGenerator()
+    }
+    private fun testInputGenerator() {
         val testFilename = "/testInputGenerator.txt"
         InputGeneratorLauncher.main(arrayOf("-n", "100", "-f", testFilename))
         val f = File("/tmp", testFilename)
+        f.shouldNotBeNull()
         BufferedReader(FileReader(f)).use { bf ->
             val test: String = bf.readLine()
             val splitTable = test.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
@@ -20,12 +28,7 @@ class InputGeneratorLauncherTest {
             // Tests if the last element is an integer
             splitTable[splitTable.size - 1].trim { it <= ' ' }.toInt()
             val resultTestNumber = splitTable.size
-            assertEquals(100, resultTestNumber)
+            resultTestNumber shouldBe 100
         }
-    }
-
-    @Test
-    fun main() {
-        InputGeneratorLauncher.main(listOf("-n", "100", "-f", "/testInputGenerator.txt").toTypedArray())
     }
 }
