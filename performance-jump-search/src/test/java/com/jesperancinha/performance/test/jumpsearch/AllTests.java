@@ -1,11 +1,10 @@
 package com.jesperancinha.performance.test.jumpsearch;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
+import org.junit.platform.suite.api.SelectClasses;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(Suite.class)
-@SuiteClasses({ AllBenchmarkingTests.class, AllSingleTests.class })
+@Suite
+@SelectClasses({AllBenchmarkingTests.class, AllSingleTests.class})
 public class AllTests {
 
 }

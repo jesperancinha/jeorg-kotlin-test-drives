@@ -12,9 +12,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Logger;
 
-import org.junit.Test;
-
 import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethod0;
+import org.junit.jupiter.api.Test;
 
 /*
  * This jump algorithm as described in:
