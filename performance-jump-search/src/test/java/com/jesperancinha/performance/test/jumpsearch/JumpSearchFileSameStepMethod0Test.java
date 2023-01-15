@@ -1,8 +1,8 @@
 package com.jesperancinha.performance.test.jumpsearch;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
  * This jump algorithm as described in:
@@ -13,7 +13,7 @@ import org.junit.Test;
  */
 public class JumpSearchFileSameStepMethod0Test {
 	@Test
-	public void testGetNumberIndexFromArray() throws Exception {
+	public void testGetNumberIndexFromArray() {
 		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
 		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(20, completeList);
 
@@ -21,7 +21,7 @@ public class JumpSearchFileSameStepMethod0Test {
 	}
 
 	@Test
-	public void testGetNumberIndexFromArray_limit() throws Exception {
+	public void testGetNumberIndexFromArray_limit() {
 		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
 		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(90, completeList);
 
@@ -29,7 +29,7 @@ public class JumpSearchFileSameStepMethod0Test {
 	}
 
 	@Test
-	public void testGetNumberIndexFromArray_begining() throws Exception {
+	public void testGetNumberIndexFromArray_begining() {
 		final int[] completeList = new int[] { 1, 2, 8, 10, 20, 23, 27, 50, 90 };
 		final int result = new JumpSearchFileSameStepMethod0().getNumberIndexFromArray(1, completeList);
 
