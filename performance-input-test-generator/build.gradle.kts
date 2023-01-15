@@ -19,8 +19,8 @@ kotlin {
     jvmToolchain(17)
 }
 
-group "jesperancinha"
-version "0.0.0-SNAPSHOT"
+group = "jesperancinha"
+version = "0.0.0-SNAPSHOT"
 
 tasks.jar {
     val dependencies = configurations
