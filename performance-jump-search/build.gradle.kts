@@ -1,8 +1,3 @@
-//apply plugin: 'idea'
-//apply plugin: 'java'
-//apply plugin: 'jacoco'
-
-
 plugins {
     kotlin("jvm") version "1.8.0"
     idea
@@ -23,25 +18,25 @@ tasks.test {
 kotlin {
     jvmToolchain(17)
 }
-//group "jesperancinha"
-//version "0.0.0-SNAPSHOT"
 
-//sourceCompatibility = 17
-//targetCompatibility = 17
+group "jesperancinha"
+version "0.0.0-SNAPSHOT"
 
-//task fatJar(type: Jar) {
-//    baseName = project.name + '-all'
-//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
-//}
-//
-//test {
-//    finalizedBy jacocoTestReport
-//}
+tasks.jar {
+    val dependencies = configurations
+        .runtimeClasspath
+        .get()
+        .map(::zipTree)
+    from(dependencies)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
 
-//jacocoTestReport {
-//    dependsOn test
-//}
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+}
 
 dependencies {
     implementation(kotlin("stdlib"))

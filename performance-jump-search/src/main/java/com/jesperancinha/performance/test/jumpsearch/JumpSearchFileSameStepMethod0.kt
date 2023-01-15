@@ -1,6 +1,7 @@
 package com.jesperancinha.performance.test.jumpsearch
 
 import com.jesperancinha.performance.test.jumpsearch.interfaces.JumpSearchFile
+import kotlin.math.sqrt
 
 /**
  * This jump algorithm as described in:
@@ -17,7 +18,7 @@ import com.jesperancinha.performance.test.jumpsearch.interfaces.JumpSearchFile
 class JumpSearchFileSameStepMethod0 : JumpSearchFile {
     override fun getNumberIndexFromArray(number: Int, completeList: IntArray): Int {
         val length = completeList.size
-        val step = Math.sqrt(length.toDouble()).toInt()
+        val step = sqrt(length.toDouble()).toInt()
         var currentStep = 0
         while (currentStep + step < length && completeList[currentStep + step] < number) {
             currentStep += step
