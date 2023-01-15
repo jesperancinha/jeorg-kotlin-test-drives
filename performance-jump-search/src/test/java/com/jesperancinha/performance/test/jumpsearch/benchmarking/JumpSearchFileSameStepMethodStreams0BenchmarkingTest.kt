@@ -1,7 +1,8 @@
 package com.jesperancinha.performance.test.jumpsearch.benchmarking
 
 import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethodStreams0
-import org.junit.jupiter.api.Assertions
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.util.*
@@ -32,14 +33,14 @@ class JumpSearchFileSameStepMethodStreams0BenchmarkingTest {
     private fun testBenchmarking00_helper(sampleFile: String, value: Int, expectedIndex: Int) {
         val inputStream = javaClass.getResourceAsStream(sampleFile)
         val timeStart = Date()
-        val result = JumpSearchFileSameStepMethodStreams0().getNumberIndexFromArray(value, inputStream)
+        val result = JumpSearchFileSameStepMethodStreams0().getNumberIndexFromArray(value, inputStream.shouldNotBeNull())
         val timeEnd = Date()
-        Assertions.assertEquals(expectedIndex, result)
-        val miliseconds = timeEnd.time - timeStart.time
+        result shouldBe expectedIndex
+        val milliseconds = timeEnd.time - timeStart.time
         LOG.info(
             String.format(
                 "Search completed in %d miliseconds for file %s. Index found is %d for item %d",
-                miliseconds, sampleFile, result, value
+                milliseconds, sampleFile, result, value
             )
         )
     }
