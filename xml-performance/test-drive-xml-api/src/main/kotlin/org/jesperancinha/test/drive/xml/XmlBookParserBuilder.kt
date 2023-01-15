@@ -7,7 +7,7 @@ import java.util.logging.Level
 import java.util.logging.Logger
 
 abstract class XmlBookParserBuilder(
-    @JvmField val ioStream: InputStream
+    val ioStream: InputStream
 ) {
 
     val status by lazy { AtomicBoolean(true) }
