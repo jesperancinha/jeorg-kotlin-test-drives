@@ -55,10 +55,10 @@ class JumpSearchFileSameStepMethod0BenchmarkingTest {
         val timeEnd = Date()
         Assertions.assertEquals(value, completeList[result])
         Assertions.assertEquals(expectedIndex, result)
-        val miliseconds = timeEnd.time - timeStart.time
+        val milliseconds = timeEnd.time - timeStart.time
         logger.info(
             "Search completed in {} miliseconds for file {} with {} elements. Index found is {} for item {}",
-            miliseconds, sampleFile, completeList.size, result, value
+            milliseconds, sampleFile, completeList.size, result, value
         )
     }
 
