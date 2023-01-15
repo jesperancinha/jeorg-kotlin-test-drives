@@ -8,6 +8,7 @@
     </parent>
 
     <packaging>pom</packaging>
+    <name>Perf. Parsers :: JSON Parent</name>
 
     <artifactId>json-performance</artifactId>
 

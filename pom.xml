@@ -6,6 +6,7 @@
 
     <groupId>org.jesperancinha.performance</groupId>
     <artifactId>performance-parsers-parent</artifactId>
+    <name>Perf. Parsers :: Parent</name>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <java.version>17</java.version>
@@ -13,10 +14,15 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
+        <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+
+        <kotlin.version>1.8.0</kotlin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <assertj-core.version>3.24.1</assertj-core.version>
         <omni-coveragereporter-maven-plugin.version>0.3.2</omni-coveragereporter-maven-plugin.version>
+        <kotest-assertions-core-jvm.version>5.5.4</kotest-assertions-core-jvm.version>
+        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -79,6 +85,28 @@
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
                 <version>${assertj-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-reflect</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-core-jvm</artifactId>
+                <version>${kotest-assertions-core-jvm.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${junit-jupiter-engine.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
