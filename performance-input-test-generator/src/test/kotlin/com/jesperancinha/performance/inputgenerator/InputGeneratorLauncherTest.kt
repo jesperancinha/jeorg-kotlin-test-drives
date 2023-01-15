@@ -12,7 +12,7 @@ class InputGeneratorLauncherTest {
     @Test
     fun testInputGenerator() {
         val testFilename = "/testInputGenerator.txt"
-        InputGeneratorLauncher.main(arrayOf("-n", "100", "-f", "/tmp/$testFilename"))
+        InputGeneratorLauncher.main(arrayOf("-n", "100", "-f", testFilename))
         val f = File("/tmp", testFilename)
         f.shouldNotBeNull()
         BufferedReader(FileReader(f)).use { bf ->

@@ -38,7 +38,7 @@ class InputGeneratorOptions : Callable<Int> {
             )
         }
         0
-    } catch (_: Exception) {
+    } catch (ex: Exception) {
         1
     }
 
