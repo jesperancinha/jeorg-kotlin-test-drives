@@ -43,7 +43,6 @@ tasks.jacocoTestReport {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.kohsuke.args4j:args4j-maven-plugin:2.33")
-    implementation("com.google.guava:guava:31.1-jre")
     implementation("commons-io:commons-io:2.11.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.2")

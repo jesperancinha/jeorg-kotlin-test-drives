@@ -1,6 +1,5 @@
 package com.jesperancinha.performance.inputgenerator
 
-import com.google.common.collect.ImmutableList
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.kohsuke.args4j.CmdLineException
@@ -32,7 +31,7 @@ class InputGeneratorTest {
     @Test
     @Throws(IOException::class, CmdLineException::class)
     fun main() {
-        InputGenerator.main(ImmutableList.of("-n", "100", "-f", "/testInputGenerator.txt").toTypedArray())
+        InputGenerator.main(listOf("-n", "100", "-f", "/testInputGenerator.txt").toTypedArray())
     }
 
     companion object {
