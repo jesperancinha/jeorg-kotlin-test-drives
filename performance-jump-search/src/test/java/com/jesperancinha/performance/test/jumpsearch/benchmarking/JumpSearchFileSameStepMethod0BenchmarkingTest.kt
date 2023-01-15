@@ -2,6 +2,7 @@ package com.jesperancinha.performance.test.jumpsearch.benchmarking
 
 import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethod0
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory.*
@@ -53,8 +54,8 @@ class JumpSearchFileSameStepMethod0BenchmarkingTest {
         val timeStart = Date()
         val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(value, completeList)
         val timeEnd = Date()
-        Assertions.assertEquals(value, completeList[result])
-        Assertions.assertEquals(expectedIndex, result)
+        completeList[result] shouldBe value
+        result shouldBe expectedIndex
         val milliseconds = timeEnd.time - timeStart.time
         logger.info(
             "Search completed in {} miliseconds for file {} with {} elements. Index found is {} for item {}",
