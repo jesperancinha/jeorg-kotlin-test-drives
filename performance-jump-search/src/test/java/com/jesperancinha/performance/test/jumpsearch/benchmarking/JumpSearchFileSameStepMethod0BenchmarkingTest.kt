@@ -1,12 +1,13 @@
 package com.jesperancinha.performance.test.jumpsearch.benchmarking
 
 import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethod0
+import io.kotest.matchers.nulls.shouldNotBeNull
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.slf4j.LoggerFactory.*
 import java.io.*
 import java.net.URISyntaxException
 import java.util.*
-import java.util.logging.Logger
 
 /*
  * This jump algorithm as described in:
@@ -44,7 +45,7 @@ class JumpSearchFileSameStepMethod0BenchmarkingTest {
 
     @Throws(URISyntaxException::class, IOException::class)
     private fun testBenchmarking00_helper(sampleFile: String, value: Int, expectedIndex: Int) {
-        val f = File(javaClass.getResource(sampleFile).toURI())
+        val f = File(javaClass.getResource(sampleFile).shouldNotBeNull().toURI())
         var fullText: String
         BufferedReader(FileReader(f)).use { br -> fullText = br.readLine() }
         val completeList = Arrays.stream(fullText.split(", ".toRegex()).dropLastWhile { it.isEmpty() }
@@ -56,16 +57,14 @@ class JumpSearchFileSameStepMethod0BenchmarkingTest {
         Assertions.assertEquals(expectedIndex, result)
         val miliseconds = timeEnd.time - timeStart.time
         logger.info(
-            String.format(
-                "Search completed in %d miliseconds for file %s with %d elements. Index found is %d for item %d",
-                miliseconds, sampleFile, completeList.size, result, value
-            )
+            "Search completed in {} miliseconds for file {} with {} elements. Index found is {} for item {}",
+            miliseconds, sampleFile, completeList.size, result, value
         )
     }
 
     companion object {
-        private val logger = Logger.getLogger(
-            JumpSearchFileSameStepMethod0BenchmarkingTest::class.java.name
+        private val logger = getLogger(
+            JumpSearchFileSameStepMethod0BenchmarkingTest::class.java
         )
     }
 }

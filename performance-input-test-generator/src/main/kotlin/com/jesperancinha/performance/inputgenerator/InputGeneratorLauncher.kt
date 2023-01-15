@@ -1,8 +1,6 @@
 package com.jesperancinha.performance.inputgenerator
 
-import org.slf4j.LoggerFactory
 import picocli.CommandLine
-import java.util.Random
 import kotlin.system.exitProcess
 
 object InputGeneratorLauncher {

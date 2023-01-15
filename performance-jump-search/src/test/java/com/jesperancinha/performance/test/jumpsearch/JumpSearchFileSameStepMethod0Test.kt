@@ -1,6 +1,6 @@
 package com.jesperancinha.performance.test.jumpsearch
 
-import org.junit.jupiter.api.Assertions
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 /*
@@ -15,20 +15,20 @@ class JumpSearchFileSameStepMethod0Test {
     fun testGetNumberIndexFromArray() {
         val completeList = intArrayOf(1, 2, 8, 10, 20, 23, 27, 50, 90)
         val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(20, completeList)
-        Assertions.assertEquals(4, result)
+        result shouldBe 4
     }
 
     @Test
     fun testGetNumberIndexFromArray_limit() {
         val completeList = intArrayOf(1, 2, 8, 10, 20, 23, 27, 50, 90)
         val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(90, completeList)
-        Assertions.assertEquals(8, result)
+        result shouldBe 8
     }
 
     @Test
     fun testGetNumberIndexFromArray_begining() {
         val completeList = intArrayOf(1, 2, 8, 10, 20, 23, 27, 50, 90)
         val result = JumpSearchFileSameStepMethod0().getNumberIndexFromArray(1, completeList)
-        Assertions.assertEquals(0, result)
+        result shouldBe 0
     }
 }
