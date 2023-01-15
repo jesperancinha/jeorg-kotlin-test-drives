@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import java.util.logging.Level
 import java.util.logging.Logger
 
-abstract class XmlBookParserBuilder internal constructor(
+abstract class XmlBookParserBuilder(
     @JvmField val ioStream: InputStream
 ) {
 

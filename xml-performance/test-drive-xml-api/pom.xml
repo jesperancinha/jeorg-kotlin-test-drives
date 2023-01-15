@@ -51,6 +51,9 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
+                        <configuration>
+                            <sourceDirs>src/test/kotlin</sourceDirs>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
