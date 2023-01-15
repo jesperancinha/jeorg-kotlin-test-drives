@@ -1,7 +1,5 @@
 package com.jesperancinha.performance.inputgenerator
 
-import org.kohsuke.args4j.CmdLineException
-import org.kohsuke.args4j.CmdLineParser
 import org.slf4j.LoggerFactory
 import java.io.BufferedOutputStream
 import java.io.File
