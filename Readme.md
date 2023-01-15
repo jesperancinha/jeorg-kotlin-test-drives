@@ -39,6 +39,11 @@ The main goal is to understand new changes made to the Java platform.
 
 Currently supporting Java 17.
 
+#### Stable releases
+
+-   [0.0.0](https://github.com/jesperancinha/performance-projects/tree/0.0.0) - [cb02dcc996c9a36f4fb404c7c2be390688252181](https://github.com/jesperancinha/performance-projects/tree/0.0.0) - JDK 17 / Kohsuke Args 4J / Java
+-   [1.0.0](https://github.com/jesperancinha/performance-projects/tree/1.0.0) - [f277716aee0e663c5ce932c1f08b56e5596bc006](https://github.com/jesperancinha/performance-projects/tree/1.0.0) - JDK 19 / Picocli / Kotlin 1.8.0
+
 ## Upgrade
 
 ```shell
