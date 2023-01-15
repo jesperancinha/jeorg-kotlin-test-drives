@@ -51,15 +51,9 @@ object InputGenerator {
         )
     }
 
-    private fun getFormattedNumber(currentNumber: Int): ByteArray {
-        return toBytes(", $currentNumber")
-    }
+    private fun getFormattedNumber(currentNumber: Int)= toBytes(", $currentNumber")
 
-    private fun toBytes(string: String): ByteArray {
-        return string.toByteArray(Charset.defaultCharset())
-    }
+    private fun toBytes(string: String): ByteArray = string.toByteArray(Charset.defaultCharset())
 
-    private fun getNextNumber(current: Int, increments: Int): Int {
-        return current + random.nextInt(increments)
-    }
+    private fun getNextNumber(current: Int, increments: Int): Int = current + random.nextInt(increments)
 }

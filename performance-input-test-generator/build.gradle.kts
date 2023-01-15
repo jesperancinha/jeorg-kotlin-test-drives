@@ -36,8 +36,10 @@ tasks.test {
 }
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
+    reports{
+        xml.required.set(true)
+    }
 }
-
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.kohsuke.args4j:args4j-maven-plugin:2.33")
