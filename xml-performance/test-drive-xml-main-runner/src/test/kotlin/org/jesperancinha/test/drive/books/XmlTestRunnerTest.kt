@@ -1,6 +1,5 @@
 package org.jesperancinha.test.drive.books
 
-import org.jesperancinha.test.drive.books.XmlTestRunner.main
 import org.junit.jupiter.api.Test
 import java.util.*
 
@@ -10,12 +9,12 @@ class XmlTestRunnerTest {
     fun testMain() {
         val testFile = "testFile" + Math.random()
         val testIteration = "" + random.nextInt()
-        val args = arrayOf( //
-            "-n",  //
-            testIteration,  //
-            "-b",  //
-            testFile,  //
-            "--noop" //
+        val args = arrayOf(
+            "-n", 
+            testIteration, 
+            "-b", 
+            testFile, 
+            "--noop"
         )
         main(args)
     }
@@ -25,12 +24,12 @@ class XmlTestRunnerTest {
     fun testMain_aliases() {
         val testFile = "testFile" + Math.random()
         val testIteration = "" + random.nextInt()
-        val args = arrayOf( //
-            "--number-of-iterations",  //
-            testIteration,  //
-            "--book-test-file",  //
-            testFile,  //
-            "--noop" //
+        val args = arrayOf(
+            "--number-of-iterations", 
+            testIteration, 
+            "--book-test-file", 
+            testFile, 
+            "--noop"
         )
         main(args)
     }

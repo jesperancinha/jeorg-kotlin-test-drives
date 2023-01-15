@@ -44,9 +44,9 @@ class XmlBookDomParserManager(ioStream: InputStream) : XmlBookParserBuilder(ioSt
     private fun getValueFromNode(bookNumber: Int, nodeName: String): String? {
         val bookItem = bookList!!.item(bookNumber)
         var currentNode = bookItem.firstChild
-        while (currentNode != null &&  //
+        while (currentNode != null && 
             (currentNode.nodeType == Node.TEXT_NODE || currentNode.namespaceURI == HTTP_WWW_BOOKSHELFEXAMPLE_COM)
-            &&  //
+            && 
             (//
                     currentNode.localName == null || currentNode.localName != null && currentNode.localName != nodeName)
         ) {

@@ -13,3 +13,6 @@ build
 bin
 dist
 .DS_Store
+
+# Maven
+dependency-reduced-pom.xml
