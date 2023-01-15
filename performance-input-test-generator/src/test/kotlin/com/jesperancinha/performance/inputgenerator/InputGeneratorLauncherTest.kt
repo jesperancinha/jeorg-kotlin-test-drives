@@ -2,7 +2,6 @@ package com.jesperancinha.performance.inputgenerator
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.BufferedReader
 import java.io.File
@@ -11,11 +10,7 @@ import java.io.FileReader
 class InputGeneratorLauncherTest {
 
     @Test
-    fun main() {
-        InputGeneratorLauncher.main(listOf("-n", "100", "-f", "/testInputGenerator.txt").toTypedArray())
-        testInputGenerator()
-    }
-    private fun testInputGenerator() {
+    fun testInputGenerator() {
         val testFilename = "/testInputGenerator.txt"
         InputGeneratorLauncher.main(arrayOf("-n", "100", "-f", "/tmp/$testFilename"))
         val f = File("/tmp", testFilename)

@@ -33,8 +33,8 @@ class InputGeneratorOptions : Callable<Int> {
     override fun call(): Int = try {
         filename?.let {
             createGenerationFile(
-                InputGeneratorOptions().numberOfElements, InputGeneratorOptions().folder, it,
-                InputGeneratorOptions().increments
+                numberOfElements, folder, it,
+                increments
             )
         }
         0
