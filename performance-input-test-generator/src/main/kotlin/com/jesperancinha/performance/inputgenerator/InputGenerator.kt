@@ -2,16 +2,16 @@ package com.jesperancinha.performance.inputgenerator
 
 import org.kohsuke.args4j.CmdLineException
 import org.kohsuke.args4j.CmdLineParser
+import org.slf4j.LoggerFactory
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.nio.charset.Charset
-import java.util.*
-import java.util.logging.Logger
+import java.util.Random
 
 object InputGenerator {
-    private val logger = Logger.getLogger(InputGenerator::class.java.name)
+    private val logger = LoggerFactory.getLogger(InputGenerator::class.java.name)
     private val random = Random()
     @JvmStatic
 	@Throws(CmdLineException::class, IOException::class)
@@ -43,11 +43,8 @@ object InputGenerator {
                 bo.write(getFormattedNumber(currentNumber))
             }
         }
-        logger.info(
-            String.format(
-                "Completed successfully the generation of %s test element file in %s/%s",
+        logger.info("Completed successfully the generation of {} test element file in {}/{}",
                 numberOfElements, folder, fileName
-            )
         )
     }
 
