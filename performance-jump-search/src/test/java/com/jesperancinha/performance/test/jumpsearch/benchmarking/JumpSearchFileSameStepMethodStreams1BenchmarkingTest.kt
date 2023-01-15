@@ -1,7 +1,7 @@
 package com.jesperancinha.performance.test.jumpsearch.benchmarking
 
 import com.jesperancinha.performance.test.jumpsearch.JumpSearchFileSameStepMethodStreams1
-import org.junit.jupiter.api.Assertions
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.util.*
@@ -34,7 +34,7 @@ class JumpSearchFileSameStepMethodStreams1BenchmarkingTest {
         val timeStart = Date()
         val result = JumpSearchFileSameStepMethodStreams1().getNumberIndexFromArray(value, inputStream)
         val timeEnd = Date()
-        Assertions.assertEquals(expectedIndex, result)
+        result shouldBe expectedIndex
         val miliseconds = timeEnd.time - timeStart.time
         LOG.info(
             String.format(
