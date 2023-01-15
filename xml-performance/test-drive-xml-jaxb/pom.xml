@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>test-drive-xml-jaxb</artifactId>
+    <name>Perf. Parsers :: XML JAXB</name>
 
     <dependencies>
         <dependency>
@@ -79,7 +80,6 @@
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
-                        <plugin>spring</plugin>
                         <plugin>jpa</plugin>
                         <plugin>all-open</plugin>
                         <plugin>no-arg</plugin>

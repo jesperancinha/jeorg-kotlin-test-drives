@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>test-drive-xml-dom-xpath</artifactId>
+    <name>Perf. Parsers :: XML XPATH</name>
 
     <dependencies>
         <dependency>
@@ -80,7 +81,6 @@
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
-                        <plugin>spring</plugin>
                         <plugin>jpa</plugin>
                         <plugin>all-open</plugin>
                         <plugin>no-arg</plugin>

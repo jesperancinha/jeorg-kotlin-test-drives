@@ -8,6 +8,7 @@
     </parent>
 
     <artifactId>test-drive-xml-sax</artifactId>
+    <name>Perf. Parsers :: XML SAX</name>
 
     <dependencies>
         <dependency>
@@ -60,7 +61,6 @@
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
-                        <plugin>spring</plugin>
                         <plugin>jpa</plugin>
                         <plugin>all-open</plugin>
                         <plugin>no-arg</plugin>
