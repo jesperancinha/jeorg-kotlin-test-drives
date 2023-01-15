@@ -56,7 +56,7 @@ public class XmlBookDomParserManager extends XmlBookParserBuilder {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		document = db.parse(getIoStream());
+		document = db.parse(ioStream);
 		bookList = document.getElementsByTagNameNS(HTTP_WWW_BOOKSHELFEXAMPLE_COM, BOOK);
 	}
 

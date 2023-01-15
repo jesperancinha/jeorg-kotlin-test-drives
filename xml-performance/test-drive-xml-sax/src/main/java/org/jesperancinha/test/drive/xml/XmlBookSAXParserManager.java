@@ -50,6 +50,6 @@ public class XmlBookSAXParserManager extends XmlBookParserBuilder {
 		XMLReader xmlReader = saxParser.getXMLReader();
 		handler = new SAXBooksParser();
 		xmlReader.setContentHandler(handler);
-		xmlReader.parse(new InputSource(getIoStream()));
+		xmlReader.parse(new InputSource(ioStream));
 	}
 }

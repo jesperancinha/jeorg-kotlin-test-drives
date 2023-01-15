@@ -10,7 +10,7 @@ public class XmlBookJAXBParserManagerTest {
 	@Test
 	public void testGetBookTitle() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
+		final XmlBookParserBuilder pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
 		final String bookTitle0 = pm.getBookTitle(0);
@@ -27,7 +27,7 @@ public class XmlBookJAXBParserManagerTest {
 	@Test
 	public void testGetNumberOfPages() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
+		final XmlBookParserBuilder pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
 		final int bookPages0 = pm.getNumberOfPages(0);
@@ -44,7 +44,7 @@ public class XmlBookJAXBParserManagerTest {
 	@Test
 	public void testGetGenre() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
+		final XmlBookParserBuilder pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
 		final String bookGenre0 = pm.getGenre(0);
@@ -61,7 +61,7 @@ public class XmlBookJAXBParserManagerTest {
 	@Test
 	public void testGetAuthor() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
+		final XmlBookParserBuilder pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
 		final String bookAuthor0 = pm.getAuthor(0);
@@ -78,10 +78,10 @@ public class XmlBookJAXBParserManagerTest {
 	@Test
 	public void testGetNumberOfBooks() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookJAXBParserManager(inputStream);
+		final XmlBookParserBuilder pm = new XmlBookJAXBParserManager(inputStream);
 		pm.init();
 
-		final int nPages = pm.getNumberOfBooks();
+		final int nPages = pm.numberOfBooks;
 
 		assertEquals(4, nPages);
 	}

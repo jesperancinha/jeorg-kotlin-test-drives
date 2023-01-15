@@ -14,7 +14,6 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.jesperancinha.test.drive.xml.XmlBookDomXpathParserManager;
 import org.jesperancinha.test.drive.xml.XmlBookJAXBParserManager;
 import org.jesperancinha.test.drive.xml.XmlBookParserBuilder;
-import org.jesperancinha.test.drive.xml.XmlBookParserManager;
 import org.jesperancinha.test.drive.xml.XmlBookSAXParserManager;
 
 public class XmlTestRunnerWorker {
@@ -60,7 +59,7 @@ public class XmlTestRunnerWorker {
 		for (int i = 0; i < nIterations; i++) {
 			try {
 				final InputStream ioStream = getInputStreamFromFile();
-				final XmlBookParserManager manager = getManagerFor(ioStream, type);
+				final XmlBookParserBuilder manager = getManagerFor(ioStream, type);
 				manager.init();
 			} catch (Exception e) {
 				throw new RuntimeException(String.format("Test failed on iteration: %d", i), e);

@@ -70,7 +70,7 @@ public class XmlBookDomXpathParserManager extends XmlBookParserBuilder {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		document = db.parse(getIoStream());
+		document = db.parse(ioStream);
 		xpath = XPathFactory.newInstance().newXPath();
 		xpath.setNamespaceContext(new NamespaceContext() {
 			@Override

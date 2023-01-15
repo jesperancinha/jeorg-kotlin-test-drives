@@ -42,7 +42,7 @@ public class XmlBookJAXBParserManager extends XmlBookParserBuilder {
     public void init() throws Exception {
         final JAXBContext context = JAXBContext.newInstance(Books.class);
         Unmarshaller u = context.createUnmarshaller();
-        books = (Books) u.unmarshal(getIoStream());
+        books = (Books) u.unmarshal(ioStream);
     }
 
 }

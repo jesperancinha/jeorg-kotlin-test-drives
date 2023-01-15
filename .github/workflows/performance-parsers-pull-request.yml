@@ -9,19 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v3
-        - name: Set up JDK 17
+        - name: Set up JDK 19
           uses: actions/setup-java@v3
           with:
-            java-version: '17'
+            java-version: '19'
             distribution: 'adopt'
 
         - name: Prepare environment
           run: wget https://download.java.net/openjdk/jdk8u41/ri/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -P /tmp &&
               tar xf /tmp/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -C ~/
 
+        - name: Preparing Folder
+          run: ls -d /opt/hostedtoolcache/Java_Adopt_jdk/19.0*/x64/../ | xargs -I {}  mkdir {}/lib
+
         - name: Preparing tools.jar
-          run: mkdir -p /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib &&
-               sudo cp ~/java-se-8u41-ri/lib/tools.jar /opt/hostedtoolcache/Java_Adopt_jdk/17.0.2-8/x64/../lib/tools.jar
+          run: ls -d /opt/hostedtoolcache/Java_Adopt_jdk/19.0*/x64/../lib | sudo xargs cp ~/java-se-8u41-ri/lib/tools.jar
 
         - name: Build and Test
           run: mvn clean install jacoco:prepare-agent package jacoco:report

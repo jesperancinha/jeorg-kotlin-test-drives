@@ -44,7 +44,7 @@ public class XmlBookSAXParserManagerTest {
 	@Test
 	public void testGetGenre() throws Exception {
 		final InputStream inputStream = getClass().getResourceAsStream("testXmlFile.xml");
-		final XmlBookParserManager pm = new XmlBookSAXParserManager(inputStream);
+		final XmlBookParserBuilder pm = new XmlBookSAXParserManager(inputStream);
 		pm.init();
 
 		final String bookGenre0 = pm.getGenre(0);
