@@ -3,6 +3,7 @@ plugins {
     idea
     java
     jacoco
+    `maven-publish`
 }
 
 repositories {
@@ -19,7 +20,7 @@ kotlin {
     jvmToolchain(17)
 }
 
-group = "jesperancinha"
+group = "org.jesperancinha"
 version = "0.0.0-SNAPSHOT"
 
 tasks.jar {
