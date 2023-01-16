@@ -17,10 +17,6 @@ version '0.0.0-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
-wrapper {
-    gradleVersion = '8.0.0'
-}
-
 repositories {
     mavenCentral()
 }
