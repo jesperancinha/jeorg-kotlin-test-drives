@@ -2,11 +2,11 @@ package org.jesperancinha.string.paradigms.nowrapper.expression
 
 import java.util.regex.Pattern
 
-open class SpellingCheckBase {
-    protected val spellingDoubleCommaRegions: MutableList<Any> = ArrayList()
-    protected val spellingWhiteSpacesRegions: MutableList<Any> = ArrayList()
-    protected val spellingBeginCapitalRegions: MutableList<Any> = ArrayList()
-    fun checkSpelling(component: Any) {
+abstract class SpellingCheckBase<T> {
+    open val spellingDoubleCommaRegions: MutableList<T> = ArrayList()
+    open val spellingWhiteSpacesRegions: MutableList<T> = ArrayList()
+    open val spellingBeginCapitalRegions: MutableList<T> = ArrayList()
+    fun checkSpelling(component: T) {
         if (DOUBLE_COMMAS.matcher(component.toString()).matches()) {
             spellingDoubleCommaRegions.add(component)
         }
@@ -16,7 +16,7 @@ open class SpellingCheckBase {
         val elements = component.toString().split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         for (i in elements.indices) {
             val element = elements[i].trim { it <= ' ' }
-            if (element.length > 0 && Character.getType(element[0]) == Character.LOWERCASE_LETTER.toInt()) {
+            if (element.isNotEmpty() && Character.getType(element[0]) == Character.LOWERCASE_LETTER.toInt()) {
                 spellingBeginCapitalRegions.add(component)
             }
         }
@@ -27,3 +27,6 @@ open class SpellingCheckBase {
         private val WHITE_SPACES = Pattern.compile(".*\\s\\s+.*")
     }
 }
+
+class SpellingCheck : SpellingCheckBase<String>()
+class RegionSpellingCheck<T> : SpellingCheckBase<T>()
