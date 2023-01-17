@@ -28,7 +28,7 @@ object RunSpellingCheck {
      * The similarities between region A and region B
      * @return
      */
-    fun similarElementsIteration(
+    private fun similarElementsIteration(
         regionA: Collection<RegionImpl>,
         regionB: Collection<RegionImpl>, setToReturn: MutableSet<RegionImpl?>
     ): MutableSet<RegionImpl?> {
@@ -48,7 +48,7 @@ object RunSpellingCheck {
                             fieldType.isAccessible = true
                             val rootValue = fieldType[compareRoot].toString()
                             val toValue = fieldType[compareRootTo].toString()
-                            if (null == rootValue || null == toValue || rootValue != toValue) {
+                            if (rootValue != toValue) {
                                 valuesOk = false
                             }
                         }
