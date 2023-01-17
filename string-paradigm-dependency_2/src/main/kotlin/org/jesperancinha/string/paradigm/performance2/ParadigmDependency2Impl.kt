@@ -2,20 +2,16 @@ package org.jesperancinha.string.paradigm.performance2
 
 import org.jesperancinha.string.paradigm.api.Dependency
 
-class ParadigmDependency2Impl(data: StringWrapper?) : Dependency() {
-    private val dependencies: StringWrapper
-
-    init {
-        checkNotNull(data)
-        dependencies = data
-    }
+class ParadigmDependency2Impl(
+    private val data: StringWrapper
+) : Dependency() {
 
     override fun dependencyCount(): Int {
-        return dependencies.toString().split(";".toRegex()).dropLastWhile { it.isEmpty() }.size
+        return data.toString().split(";".toRegex()).dropLastWhile { it.isEmpty() }.size
     }
 
     override fun getSubDependencyElement(index: Int): String {
-        val splittedValues = dependencies.toString().split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+        val splittedValues = data.toString().split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
         return if (index < splittedValues.size) {
             splittedValues[index]
         } else {

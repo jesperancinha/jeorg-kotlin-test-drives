@@ -2,7 +2,6 @@ package org.jesperancinha.string.paradigm.performance2
 
 import org.jesperancinha.string.paradigm.api.Dependency
 import org.jesperancinha.string.paradigm.api.SegmentTreeModel
-import java.lang.NullPointerException
 import javax.swing.tree.DefaultMutableTreeNode
 import javax.swing.tree.DefaultTreeModel
 import javax.swing.tree.TreePath
@@ -22,7 +21,7 @@ class ParadigmDependency2TreeModel : DefaultTreeModel(null), SegmentTreeModel {
 
     override fun clear() {
         val root = DefaultMutableTreeNode("Combinations")
-        root.setAllowsChildren(true)
+        root.allowsChildren = true
         setRoot(root)
     }
 
@@ -44,8 +43,16 @@ class ParadigmDependency2TreeModel : DefaultTreeModel(null), SegmentTreeModel {
         parent: DefaultMutableTreeNode, dependency: Dependency,
         codeIndex: Int,
     ): DefaultMutableTreeNode {
-        val subDependency= dependency.getSubDependencyElement(codeIndex)?.intern()
-        var child: DefaultMutableTreeNode? = parent.let { subDependency?.let { it1 -> findChild(it, it1) } }
+        val subDependency = dependency.getSubDependencyElement(codeIndex)?.intern()
+        var child: DefaultMutableTreeNode? = parent.let {
+            subDependency?.let { it1 ->
+                try {
+                    findChild(it, it1)
+                } catch (_: Exception) {
+                    null
+                }
+            }
+        }
         if (child == null) {
             child = DefaultMutableTreeNode(subDependency)
             child.allowsChildren = true

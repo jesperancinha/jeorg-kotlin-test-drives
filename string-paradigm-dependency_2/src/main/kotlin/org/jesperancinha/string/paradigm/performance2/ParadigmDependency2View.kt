@@ -18,10 +18,6 @@ class ParadigmDependency2View : JPanel() {
     init {
         val toolBar = JToolBar()
         toolBar.add(object : AbstractAction("Dependency loader") {
-            /**
-             *
-             */
-            val serialVersionUID = 4671375362382401521L
             override fun actionPerformed(e: ActionEvent) {
                 loadCombinations()
             }
@@ -30,10 +26,6 @@ class ParadigmDependency2View : JPanel() {
         table = JTable(tableModel)
         treeModel = ParadigmDependency2TreeModel()
         tree = object : JTree(treeModel) {
-            /**
-             *
-             */
-            val serialVersionUID = -4442979678621018747L
             override fun getPreferredScrollableViewportSize(): Dimension {
                 return Dimension(300, 400)
             }
@@ -77,13 +69,15 @@ class ParadigmDependency2View : JPanel() {
     }
 
     @Throws(IOException::class)
-    private fun loadCombinations(file: File) {
+    private fun loadCombinations(file: File) = run {
         dependencies = readLines(file)
-        dependencies.sort(java.util.Comparator<StringWrapper> { o1, o2 -> o1.toString().compareTo(o2.toString()) })
-        loadTableData(dependencies)
-        loadTreeData(dependencies)
-        dependencies.clear()
+            .sortedWith { o1, o2 -> o1.toString().compareTo(o2.toString()) }
+            .also {
+                loadTableData(it)
+                loadTreeData(it)
+            }
     }
+
 
     private fun loadTableData(dependencies: List<StringWrapper>) {
         tableModel.clear()
@@ -98,55 +92,29 @@ class ParadigmDependency2View : JPanel() {
 
     private fun loadTreeData(dependencies: List<StringWrapper>) {
         treeModel.clear()
-        val root: Any? = treeModel.root
-        tree.expandPath(TreePath(root))
+        tree.expandPath(TreePath(treeModel.root))
         for (data in dependencies) {
             val dependency = ParadigmDependency2Impl(data)
             val child = treeModel.addCombination(dependency)
-            tree.expandPath(TreePath(arrayOf(root, child)))
+            tree.expandPath(TreePath(arrayOf(treeModel.root, child)))
         }
-        tree.selectionPath = TreePath(root)
+        tree.selectionPath = TreePath(treeModel.root)
     }
 
     @Throws(IOException::class)
-    private fun readLines(file: File): List<StringWrapper> {
-        val lines: MutableList<StringWrapper> = ArrayList()
-        val fileReader = FileReader(file)
-        val reader = BufferedReader(fileReader)
-        return try {
-            var line: String
-            while (reader.readLine().also { line = it } != null) {
-                if (!line.isEmpty()) {
-                    lines.add(StringWrapper(line))
-                }
-            }
-            lines
-        } finally {
-            fileReader.close()
-            reader.close()
-        }
-    }
+    private fun readLines(file: File): List<StringWrapper> = file.readLines().map { StringWrapper(it) }
+}
 
-    companion object {
-        /**
-         *
-         */
-        private const val serialVersionUID = 3864357257617711662L
-        @JvmStatic
-        fun main(args: Array<String>) {
-            EventQueue.invokeLater {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
-                } catch (e: Exception) {
-                    throw RuntimeException(e)
-                }
-                val frame = JFrame("Code Combinations View")
-                frame.defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
-                frame.contentPane.add(ParadigmDependency2View())
-                frame.pack()
-                frame.setLocationRelativeTo(null)
-                frame.isVisible = true
-            }
+fun main() {
+    EventQueue.invokeLater {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
+        JFrame("Code Combinations View").apply {
+            defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
+            contentPane.add(ParadigmDependency2View())
+            pack()
+            setLocationRelativeTo(null)
+            isVisible = true
         }
+
     }
 }
