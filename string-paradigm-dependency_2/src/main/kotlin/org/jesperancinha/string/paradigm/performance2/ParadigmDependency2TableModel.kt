@@ -9,7 +9,7 @@ class ParadigmDependency2TableModel : AbstractTableModel() {
         dependencies.add(dependency)
         val codeCount = dependency.dependencyCount()
         if (codeCount != columnCount) {
-            columnCount = Math.max(columnCount, codeCount)
+            columnCount = columnCount.coerceAtLeast(codeCount)
             //            fireTableStructureChanged();
         }
         //        fireTableRowsInserted(row, row);

@@ -11,7 +11,7 @@ class ParadigmDependency2Impl(data: StringWrapper?) : Dependency() {
     }
 
     override fun dependencyCount(): Int {
-        return dependencies.toString().split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray().size
+        return dependencies.toString().split(";".toRegex()).dropLastWhile { it.isEmpty() }.size
     }
 
     override fun getSubDependencyElement(index: Int): String {
