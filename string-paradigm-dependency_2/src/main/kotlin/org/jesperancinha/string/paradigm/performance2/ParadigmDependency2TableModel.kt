@@ -25,6 +25,7 @@ class ParadigmDependency2TableModel : AbstractTableModel() {
 
     fun clear() {
         val size = dependencies.size
+        columnCount = 0
         if (size > 0) {
             dependencies.clear()
             fireTableRowsDeleted(0, size - 1)
