@@ -128,21 +128,21 @@ class NoWrapperDependencyView : JPanel() {
          *
          */
         private const val serialVersionUID = -8522811069947393404L
-        @JvmStatic
-        fun main(args: Array<String>) {
-            EventQueue.invokeLater {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
-                } catch (e: Exception) {
-                    throw RuntimeException(e)
-                }
-                val frame = JFrame("Code Combinations View")
-                frame.defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
-                frame.contentPane.add(NoWrapperDependencyView())
-                frame.pack()
-                frame.setLocationRelativeTo(null)
-                frame.isVisible = true
-            }
+    }
+}
+
+fun main() {
+    EventQueue.invokeLater {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
+        } catch (e: Exception) {
+            throw RuntimeException(e)
         }
+        val frame = JFrame("Code Combinations View")
+        frame.defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
+        frame.contentPane.add(NoWrapperDependencyView())
+        frame.pack()
+        frame.setLocationRelativeTo(null)
+        frame.isVisible = true
     }
 }
