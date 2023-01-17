@@ -1,12 +1,7 @@
-package org.jesperancinha.string.paradigm.api;
+package org.jesperancinha.string.paradigm.api
 
-public abstract class Region {
-	protected String regionName;
-	protected String assignedNumber;
-
-	public abstract String getRegionName();
-
-	public abstract String getAssignedNumber();
-
-	public abstract String getDescription();
+abstract class Region {
+    open var regionName: String? = null
+    open var assignedNumber: String? = null
+    open var description: String? = null
 }

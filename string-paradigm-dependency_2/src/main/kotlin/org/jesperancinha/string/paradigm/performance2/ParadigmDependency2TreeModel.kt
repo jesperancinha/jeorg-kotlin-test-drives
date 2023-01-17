@@ -73,11 +73,4 @@ class ParadigmDependency2TreeModel : DefaultTreeModel(null), SegmentTreeModel {
         }
         throw NullPointerException()
     }
-
-    companion object {
-        /**
-         *
-         */
-        private const val serialVersionUID = 732646664827267347L
-    }
 }
