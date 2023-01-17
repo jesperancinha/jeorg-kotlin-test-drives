@@ -11,6 +11,17 @@ repositories {
     mavenCentral()
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.jesperancinha"
+            artifactId = "string-paradigm-api"
+            version = "0.0.0-SNAPSHOT"
+            from(components["java"])
+        }
+    }
+}
+
 
 tasks.test {
     useJUnitPlatform()

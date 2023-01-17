@@ -6,6 +6,17 @@ plugins {
     `maven-publish`
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.jesperancinha"
+            artifactId = "string-paradigm-expression-api"
+            version = "0.0.0-SNAPSHOT"
+            from(components["java"])
+        }
+    }
+}
+
 repositories {
     mavenLocal()
     mavenCentral()

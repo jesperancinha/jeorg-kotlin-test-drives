@@ -1,3 +1,15 @@
+allprojects {
+    repositories {
+        mavenLocal()
+    }
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
 plugins {
     kotlin("jvm") version "1.8.0"
     idea

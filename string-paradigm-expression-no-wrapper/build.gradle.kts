@@ -6,6 +6,9 @@ plugins {
     `maven-publish`
 }
 
+publishing {
+
+}
 repositories {
     mavenLocal()
     mavenCentral()
@@ -48,7 +51,7 @@ tasks.jacocoTestReport {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.slf4j:slf4j-api:2.0.6")
-    implementation(project(mapOf("path" to ":string-paradigm-expression-api")))
+    implementation("org.jesperancinha:string-paradigm-expression-api:0.0.0-SNAPSHOT")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.4")
