@@ -1,3 +1,4 @@
+b: buildw
 wrapper:
 	gradle wrapper
 buildw:
@@ -6,6 +7,6 @@ buildw:
 	cd string-paradigm-expression-no-wrapper && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
 	gradle clean build test publishToMavenLocal
 upgrade:
-	gradle wrapper --gradle-version 7.3.3
+	gradle wrapper --gradle-version 7.6
 upgrade-mac-os:
 	brew upgrade gradle

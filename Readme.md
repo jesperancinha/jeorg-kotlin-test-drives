@@ -29,7 +29,31 @@
 
 ## Description
 
-A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll keep looking after it from now on and integrate it into future Java versions
+A test project to run through the paradigms of what a String is. I made this piece of code a while back ago, but I'll
+keep looking after it from now on and integrate it into future Java versions
+
+> NOTE: This project started years ago (around 2014), and I recently converted it to Kotlin. The goal of this project
+> was originally to explore Java and Swing and the interaction with Strings. Currently, it's an ongoing project for the
+> same goal but in a more generic way having Swing eventually being removed.
+
+## Layout
+
+##### Libraries
+
+- [string-paradigm-api](string-paradigm-api)
+- [string-paradigm-expression-api](string-paradigm-expression-api)
+
+##### Applications
+
+- [string-paradigm-expression_1](string-paradigm-expression_1)
+- [string-paradigm-expression_2](string-paradigm-expression_2)
+- [string-paradigm-expression-no-wrapper](string-paradigm-expression-no-wrapper)
+- [string-paradigm-expression-original](string-paradigm-expression-original)
+- [string-paradigm-dependency_2](string-paradigm-dependency_2)
+- [string-paradigm-no-wrapper](string-paradigm-no-wrapper)
+- [string-paradigm-test-generator](string-paradigm-test-generator)
+- [string-paradigm_original](string-paradigm_original)
+- [string-paradigm_1](string-paradigm_1)
 
 ## Install gradle
 
