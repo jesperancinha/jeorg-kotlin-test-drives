@@ -22,7 +22,7 @@ class InputGeneratorTest {
         val streamStuntMan = javaClass.getResourceAsStream("sptg_stunt_man.txt").shouldNotBeNull()
         val streamStuntWoman = javaClass.getResourceAsStream("sptg_stunt_woman.txt").shouldNotBeNull()
         val streamYear = javaClass.getResourceAsStream("sptg_year.txt").shouldNotBeNull()
-        val inputGenerator = InputGenerator()
+        val inputGenerator = InputGeneratorOptions()
         val resultId = inputGenerator.getFullFileList(streamId)
         val resultActor = inputGenerator.getFullFileList(streamActor)
         val resultActress = inputGenerator.getFullFileList(streamActress)
@@ -77,13 +77,18 @@ class InputGeneratorTest {
         stack.push(streamMovie)
         stack.push(streamYear)
         stack.push(streamId)
-        val testOptions: InputGeneratorOptions = object : InputGeneratorOptions() {
+        val inputGenerator: InputGeneratorOptions = object : InputGeneratorOptions() {
+            override val filename: String
+                get() = InputGeneratorTest.TEST_FILMS_TXT
             override val numberOfParents: Int
                 get() = 10
             override val numberOfElements: Int
                 get() = 2
         }
-        val inputGenerator = InputGenerator()
-        inputGenerator.createTestFile(testOptions)
+        inputGenerator.call()
+    }
+
+    companion object {
+        private const val TEST_FILMS_TXT = "testFilms.txt"
     }
 }

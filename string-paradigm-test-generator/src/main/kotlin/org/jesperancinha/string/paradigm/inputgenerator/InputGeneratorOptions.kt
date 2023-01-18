@@ -99,7 +99,6 @@ open class InputGeneratorOptions : Callable<Int> {
     val movieSongFile = SPTG_SONG_TXT
 
     override fun call(): Int {
-
         val directory = File(folder)
         directory.mkdirs()
         val outfile = File(directory, filename)
@@ -226,7 +225,7 @@ open class InputGeneratorOptions : Callable<Int> {
     fun getFullFileList(io: InputStream?): List<String> {
         val list: MutableList<String> = ArrayList()
         BufferedReader(InputStreamReader(io, Charset.defaultCharset())).use { br ->
-            var testRead: String = br.readLine()
+            var testRead: String? = br.readLine()
             while (testRead != null) {
                 list.add(testRead)
                 testRead = br.readLine()
@@ -250,7 +249,7 @@ open class InputGeneratorOptions : Callable<Int> {
         private const val SPTG_STUNT_WOMAN_TXT = "sptg_stunt_woman.txt"
         private const val SPTG_SONG_TXT = "sptg_song.txt"
 
-        private val LOG = Logger.getLogger(InputGenerator::class.java.name)
+        private val LOG = Logger.getLogger(InputGeneratorOptions::class.java.name)
         val RANDOM = Random()
 
         private fun getRandomStringFromArrayPreColon(results: List<String>): String {
