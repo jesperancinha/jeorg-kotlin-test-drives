@@ -36,6 +36,11 @@ keep looking after it from now on and integrate it into future Java versions
 > was originally to explore Java and Swing and the interaction with Strings. Currently, it's an ongoing project for the
 > same goal but in a more generic way having Swing eventually being removed.
 
+#### Stable releases
+
+-   [0.0.0](https://github.com/jesperancinha/string-array-paradigms/tree/0.0.0) - [29e040d28370a03c2373155d1b0ccccca6b9d571](https://github.com/jesperancinha/string-array-paradigms/tree/0.0.0) - JAVA / JDK11 / Gradle
+-   [1.0.0](https://github.com/jesperancinha/string-array-paradigms/tree/1.0.0) - [bec70c6bf6f50469a622ae51cce16f34209a806f](https://github.com/jesperancinha/string-array-paradigms/tree/1.0.0) - Kotlin 1.8.0 / JDK17 / Gradle
+
 ## Layout
 
 ##### Libraries
