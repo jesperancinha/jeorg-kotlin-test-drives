@@ -22,3 +22,6 @@ DS_Store
 target
 .idea
 *.iml
+
+# Maven
+dependency-reduced-pom.xml
