@@ -1,8 +1,8 @@
 package com.jesperancinha.coffee.system.objects;
 
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.api.stats;
+package com.jesperancinha.coffee.system.api.stats;
 
 /**
  * Created by joao on 28-4-16.

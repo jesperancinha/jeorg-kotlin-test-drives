@@ -1,9 +1,9 @@
-package com.jesperancinha.coffee.api.manager;
+package com.jesperancinha.coffee.system.api.manager;
 
-import com.jesperancinha.coffee.system.input.CoffeeMachines;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.Employees;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions;
+import org.jesperancinha.coffee.system.input.CoffeeMachines;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.Employees;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions;
 
 import java.util.List;
 

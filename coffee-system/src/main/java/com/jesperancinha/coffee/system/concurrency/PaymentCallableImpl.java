@@ -1,11 +1,11 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import com.jesperancinha.coffee.api.concurrency.PaymentCallable;
-import com.jesperancinha.coffee.api.manager.MachineProcessor;
-import com.jesperancinha.coffee.api.manager.PostProcessor;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.jesperancinha.coffee.system.api.concurrency.PaymentCallable;
+import com.jesperancinha.coffee.system.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.system.api.manager.PostProcessor;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.manager.GeneralProcessorImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

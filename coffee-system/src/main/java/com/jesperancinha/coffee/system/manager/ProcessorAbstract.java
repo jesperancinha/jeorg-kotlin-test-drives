@@ -1,6 +1,6 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
 import com.jesperancinha.coffee.system.queues.Queue;
 
 import java.util.Map;

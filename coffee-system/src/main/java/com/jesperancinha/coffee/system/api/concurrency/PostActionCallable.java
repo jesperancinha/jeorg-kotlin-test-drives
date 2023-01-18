@@ -1,6 +1,6 @@
-package com.jesperancinha.coffee.api.concurrency;
+package com.jesperancinha.coffee.system.api.concurrency;
 
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 
 /**
  * Created by joao on 8-5-16.

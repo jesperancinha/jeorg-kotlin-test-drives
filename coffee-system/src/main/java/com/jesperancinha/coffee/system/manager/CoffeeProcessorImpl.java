@@ -1,14 +1,14 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.concurrency.CoffeeMainCallable;
-import com.jesperancinha.coffee.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
-import com.jesperancinha.coffee.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.system.api.concurrency.CoffeeMainCallable;
+import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.system.api.manager.MachineProcessor;
 import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.queues.Queue;
 import com.jesperancinha.coffee.system.queues.QueueCofeeImpl;
 import lombok.Getter;

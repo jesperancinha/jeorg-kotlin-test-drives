@@ -1,8 +1,8 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import com.jesperancinha.coffee.api.concurrency.PostActionCallable;
-import com.jesperancinha.coffee.api.manager.MachineProcessor;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.jesperancinha.coffee.system.api.concurrency.PostActionCallable;
+import com.jesperancinha.coffee.system.api.manager.MachineProcessor;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.objects.ActionDescriptor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

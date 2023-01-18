@@ -1,11 +1,11 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.api.manager.PostProcessor;
+import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.api.manager.PostProcessor;
 import com.jesperancinha.coffee.system.concurrency.ActionCallable;
 import com.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import com.jesperancinha.coffee.system.queues.Queue;
 import com.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
 import lombok.Getter;

@@ -1,14 +1,14 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import com.jesperancinha.coffee.api.concurrency.CoffeeMainCallable;
-import com.jesperancinha.coffee.api.manager.MachineProcessor;
-import com.jesperancinha.coffee.api.manager.PaymentProcessor;
-import com.jesperancinha.coffee.api.utils.ExecutorServiceHelper;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import com.jesperancinha.coffee.system.api.concurrency.CoffeeMainCallable;
+import com.jesperancinha.coffee.system.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.system.api.manager.PaymentProcessor;
+import com.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 

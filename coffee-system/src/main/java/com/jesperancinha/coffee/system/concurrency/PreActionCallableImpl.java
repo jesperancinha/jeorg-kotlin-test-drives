@@ -1,13 +1,13 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import com.jesperancinha.coffee.api.concurrency.PreActionCallable;
-import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
-import com.jesperancinha.coffee.api.manager.MachineProcessor;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
+import com.jesperancinha.coffee.system.api.concurrency.PreActionCallable;
+import com.jesperancinha.coffee.system.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.system.api.manager.MachineProcessor;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
 import com.jesperancinha.coffee.system.objects.ActionDescriptor;
 import lombok.experimental.Accessors;
 import org.slf4j.Logger;

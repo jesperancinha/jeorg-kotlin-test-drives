@@ -1,16 +1,16 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.manager.CoffeeProcessor;
-import com.jesperancinha.coffee.api.manager.GeneralProcessor;
-import com.jesperancinha.coffee.api.manager.MachineProcessor;
-import com.jesperancinha.coffee.api.manager.PaymentProcessor;
-import com.jesperancinha.coffee.api.manager.PostProcessor;
-import com.jesperancinha.coffee.api.manager.PreProcessor;
-import com.jesperancinha.coffee.system.input.CoffeeMachines;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
+import com.jesperancinha.coffee.system.api.manager.CoffeeProcessor;
+import com.jesperancinha.coffee.system.api.manager.GeneralProcessor;
+import com.jesperancinha.coffee.system.api.manager.MachineProcessor;
+import com.jesperancinha.coffee.system.api.manager.PaymentProcessor;
+import com.jesperancinha.coffee.system.api.manager.PostProcessor;
+import com.jesperancinha.coffee.system.api.manager.PreProcessor;
+import org.jesperancinha.coffee.system.input.CoffeeMachines;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
 import com.jesperancinha.coffee.system.objects.EmployeeLayer;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;

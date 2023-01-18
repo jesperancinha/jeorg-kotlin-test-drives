@@ -1,6 +1,6 @@
 package com.jesperancinha.coffee.system.concurrency;
 
-import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

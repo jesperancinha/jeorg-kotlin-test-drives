@@ -1,6 +1,6 @@
-package com.jesperancinha.coffee.api.manager;
+package com.jesperancinha.coffee.system.api.manager;
 
-import com.jesperancinha.coffee.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.

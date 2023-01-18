@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.api.queues;
+package com.jesperancinha.coffee.system.api.queues;
 
 import java.util.concurrent.ExecutorService;
 

@@ -1,7 +1,7 @@
 package com.jesperancinha.coffee.system.queues;
 
-import com.jesperancinha.coffee.api.queues.CPQueue;
-import com.jesperancinha.coffee.api.utils.ExecutorServiceHelper;
+import com.jesperancinha.coffee.system.api.queues.CPQueue;
+import com.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper;
 import lombok.Getter;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.api.utils;
+package com.jesperancinha.coffee.system.api.utils;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;

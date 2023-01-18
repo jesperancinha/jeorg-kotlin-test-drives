@@ -1,12 +1,12 @@
 package com.jesperancinha.coffee.system.manager;
 
-import com.jesperancinha.coffee.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.api.manager.*;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import com.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import com.jesperancinha.coffee.system.input.Employees.Employee;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
+import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
+import com.jesperancinha.coffee.system.api.manager.*;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
+import org.jesperancinha.coffee.system.input.Employees.Employee;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
