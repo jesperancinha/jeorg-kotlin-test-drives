@@ -102,7 +102,7 @@ fun main() {
     incorrectRegions.addAll(componentCheck.spellingWhiteSpacesRegions)
     println("Incorrect components:")
     for (component in incorrectRegions) {
-        println(component!!.description)
+        println(component.description)
     }
     val set: MutableSet<RegionImpl> = HashSet()
     set.add(RegionImpl(regions[1], assignedNumbers[0]))

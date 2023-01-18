@@ -43,7 +43,7 @@ object RunSpellingCheck {
                             fieldType.isAccessible = true
                             val rootValue = fieldType[compareRoot].toString()
                             val toValue = fieldType[compareRootTo].toString()
-                            if (null == rootValue || null == toValue || rootValue != toValue) {
+                            if (rootValue != toValue) {
                                 valuesOk = false
                             }
                         }
