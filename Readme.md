@@ -5,7 +5,7 @@
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=String%20Array%20Paradigms&color=informational)](https://github.com/jesperancinha/string-array-paradigms)
 
 [![CircleCI](https://circleci.com/gh/jesperancinha/string-array-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/string-array-paradigms)
-[![string-array-paradigms](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/gradle.yml/badge.svg)](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/gradle.yml)
+[![SAARP Build](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/saarp.yml/badge.svg)](https://github.com/jesperancinha/string-array-paradigms/actions/workflows/saarp.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/0eeb457321184b74922e97dcd563ba19)](https://www.codacy.com/gh/jesperancinha/string-array-paradigms/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/string-array-paradigms&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/65fed66c-ff4a-46f1-9b12-bc486a422ee6)](https://codebeat.co/projects/github-com-jesperancinha-string-array-paradigms-master)
