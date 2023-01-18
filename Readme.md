@@ -60,18 +60,6 @@ keep looking after it from now on and integrate it into future Java versions
 - [string-paradigm_original](string-paradigm_original)
 - [string-paradigm_1](string-paradigm_1)
 
-## Install gradle
-
-Your gradle location should be: /usr/local/Cellar/gradle/5.4.1/libexec.
-
-If not, please run:
-
-```bash
-
-$ brew install gradle
-
-```
-
 ## Running these tests
 
 ```bash
