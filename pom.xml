@@ -48,7 +48,6 @@
     </properties>
 
     <modules>
-        <module>coffee-system-api</module>
         <module>coffee-system</module>
     </modules>
 
