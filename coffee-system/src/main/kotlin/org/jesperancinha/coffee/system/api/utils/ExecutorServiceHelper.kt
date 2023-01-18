@@ -1,19 +1,19 @@
-package com.jesperancinha.coffee.system.api.utils;
+package org.jesperancinha.coffee.system.api.utils
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
-public class ExecutorServiceHelper {
-    public static void shutDownExecutorService(ExecutorService executorService) {
+object ExecutorServiceHelper {
+    fun shutDownExecutorService(executorService: ExecutorService?) {
         if (executorService != null) {
-            executorService.shutdown();
+            executorService.shutdown()
             try {
-                executorService.awaitTermination(60, TimeUnit.SECONDS);
-            } catch (InterruptedException e) {
-                executorService.shutdownNow();
+                executorService.awaitTermination(60, TimeUnit.SECONDS)
+            } catch (e: InterruptedException) {
+                executorService.shutdownNow()
             }
         }
     }

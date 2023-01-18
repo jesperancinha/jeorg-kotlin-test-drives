@@ -1,93 +1,90 @@
-package com.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.concurrency.ActionCallable;
-import com.jesperancinha.coffee.system.concurrency.PreActionCallableImpl;
-import com.jesperancinha.coffee.system.concurrency.StartupCallableImpl;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import org.jesperancinha.coffee.system.input.Employees.Employee;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
-import com.jesperancinha.coffee.system.queues.Queue;
-import com.jesperancinha.coffee.system.queues.QueuePreActivityImpl;
-import lombok.Getter;
-import lombok.experimental.Accessors;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.concurrent.Callable;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.ActionCallable
+import org.jesperancinha.coffee.system.concurrency.PreActionCallableImpl
+import org.jesperancinha.coffee.system.concurrency.StartupCallableImpl
+import com.jesperancinha.coffee.system.queues.*
+import lombok.Getter
+import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.Employees
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.queues.Queue
+import org.jesperancinha.coffee.system.queues.QueuePreActivityImpl
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+import java.util.concurrent.Callable
+import java.util.function.Consumer
 
 @Accessors(chain = true)
 @Getter
 @Service
-public abstract class PreProcessorImpl extends ProcessorAbstract {
+abstract class PreProcessorImpl internal constructor() : ProcessorAbstract() {
+    private val startupCallable: StartupCallableImpl
 
-    private final StartupCallableImpl startupCallable;
     @Autowired
-    private QueuePreActivityImpl queuePreActivity;
-    @Autowired
-    private MachineProcessorImpl machineProcessor;
+    private val queuePreActivity: QueuePreActivityImpl? = null
 
-    PreProcessorImpl() {
-        super();
-        startupCallable = new StartupCallableImpl();
+    @Autowired
+    private val machineProcessor: MachineProcessorImpl? = null
+
+    init {
+        startupCallable = StartupCallableImpl()
     }
 
-    public void callPreActions(
-            final Employee employee,
-            final String name,
-            final List<PreAction> actions,
-            final Coffee coffee, Payment payment,
-            final List<PostAction> postActions
+    fun callPreActions(
+        employee: Employee,
+        name: String?,
+        actions: List<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction?>,
+        coffee: Coffee, payment: Payment,
+        postActions: List<PostAction?>
     ) {
-
-        final PreActionCallableImpl preActionCallable = new PreActionCallableImpl(
-                employee,
-                name,
-                coffee,
-                payment,
-                postActions,
-                machineProcessor
-        );
-        actions.forEach(
-                preActionCallable::addPreAction
-        );
-        startupCallable.getAllCallables().add(preActionCallable);
+        val preActionCallable = PreActionCallableImpl(
+            employee,
+            name,
+            coffee,
+            payment,
+            postActions,
+            machineProcessor
+        )
+        actions.forEach(Consumer<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction> { preAction: org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction ->
+            preActionCallable.addPreAction(
+                preAction
+            )
+        })
+        startupCallable.allCallables.add(preActionCallable)
     }
 
-    public void runAllCalls() {
-        runAllCalls(startupCallable);
+    fun runAllCalls() {
+        runAllCalls(startupCallable)
     }
 
-    public void waitForAllCalls() {
-        waitForAllCalls(startupCallable);
+    fun waitForAllCalls() {
+        waitForAllCalls(startupCallable)
     }
 
-    @Override
-    public Queue getExecutorServiceQueue() {
-        return queuePreActivity;
+    override val executorServiceQueue: Queue?
+        get() = queuePreActivity
+
+    override fun getExecutorName(callable: Callable<Boolean?>): String {
+        return (callable as ActionCallable).name
     }
 
-    @Override
-    public String getExecutorName(Callable<Boolean> callable) {
-        return ((ActionCallable) callable).getName();
+    fun addQueueSize(queueSize: Int, name: String?) {
+        queuePreActivity!!.setQueueSize(queueSize, name!!)
     }
 
-    public void addQueueSize(int queueSize, String name) {
-        queuePreActivity.setQueueSize(queueSize, name);
+    fun initExecutors() {
+        queuePreActivity!!.initExecutors()
     }
 
-    public void initExecutors() {
-        queuePreActivity.initExecutors();
+    fun stopExectutors() {
+        queuePreActivity!!.stopExecutors()
     }
 
-    public void stopExectutors() {
-        queuePreActivity.stopExecutors();
-    }
-
-    public abstract void waitForAllCalls(QueueCallable queueCallable);
-
-    public abstract void runAllCalls(QueueCallable queueCallable);
+    abstract override fun waitForAllCalls(queueCallable: QueueCallable)
+    abstract override fun runAllCalls(queueCallable: QueueCallable)
 }

@@ -1,55 +1,76 @@
-package com.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import org.jesperancinha.coffee.system.input.Employees.Employee;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
-import lombok.Getter;
-import lombok.experimental.Accessors;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import lombok.Getter
+import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.Employees
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
 @Accessors(chain = true)
 @Getter
 @Service
-public class MachineProcessorImpl {
+class MachineProcessorImpl {
+    @Autowired
+    private val preProcessor: PreProcessorImpl? = null
 
     @Autowired
-    private PreProcessorImpl preProcessor;
+    private val coffeeProcessor: CoffeeProcessorImpl? = null
 
     @Autowired
-    private CoffeeProcessorImpl coffeeProcessor;
+    private val paymentProcessor: PaymentProcessorImpl? = null
 
     @Autowired
-    private PaymentProcessorImpl paymentProcessor;
-
-    @Autowired
-    private PostProcessorImpl postProcessor;
-
-    public void callPreActions(Employee employee, String name, List<PreAction> preActions, Coffee coffee, Payment payment, List<PostAction> postActions) {
-        preProcessor.callPreActions(employee, name, preActions, coffee, payment, postActions);
+    private val postProcessor: PostProcessorImpl? = null
+    fun callPreActions(
+        employee: Employee,
+        name: String?,
+        preActions: List<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction?>,
+        coffee: Coffee,
+        payment: Payment,
+        postActions: List<PostAction?>
+    ) {
+        preProcessor!!.callPreActions(employee, name, preActions, coffee, payment, postActions)
     }
 
-    public void callMakeCoffee(Employee employee, String name, Coffee coffee, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
-        coffeeProcessor.callMakeCoffee(employee, name, coffee, payment, postActions, parentCallable);
+    fun callMakeCoffee(
+        employee: Employee?,
+        name: String?,
+        coffee: Coffee,
+        payment: Payment,
+        postActions: List<PostAction?>,
+        parentCallable: QueueCallable
+    ) {
+        coffeeProcessor!!.callMakeCoffee(employee, name, coffee, payment, postActions, parentCallable)
     }
 
-    public void callPayCoffee(Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
-        paymentProcessor.callPayCoffee(employee, name, payment, postActions, parentCallable);
+    fun callPayCoffee(
+        employee: Employee?,
+        name: String?,
+        payment: Payment,
+        postActions: List<PostAction?>,
+        parentCallable: QueueCallable
+    ) {
+        paymentProcessor!!.callPayCoffee(employee, name, payment, postActions, parentCallable)
     }
 
-    public void callPostActions(Employee employee, String name, List<PostAction> postActions, QueueCallable parentCallable) {
-        postProcessor.callPostActions(employee, name, postActions, parentCallable);
+    fun callPostActions(
+        employee: Employee?,
+        name: String?,
+        postActions: List<PostAction?>,
+        parentCallable: QueueCallable
+    ) {
+        postProcessor!!.callPostActions(employee, name, postActions, parentCallable)
     }
 
-    public void initAll() {
-        preProcessor.initExecutors();
-        coffeeProcessor.initExecutors();
-        paymentProcessor.initExecutors();
-        postProcessor.initExecutors();
+    fun initAll() {
+        preProcessor!!.initExecutors()
+        coffeeProcessor!!.initExecutors()
+        paymentProcessor!!.initExecutors()
+        postProcessor!!.initExecutors()
     }
 }

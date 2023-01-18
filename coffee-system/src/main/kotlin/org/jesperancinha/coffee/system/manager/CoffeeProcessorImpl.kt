@@ -1,70 +1,65 @@
-package com.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import org.jesperancinha.coffee.system.input.Employees.Employee;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.queues.Queue;
-import com.jesperancinha.coffee.system.queues.QueueCofeeImpl;
-import lombok.Getter;
-import lombok.experimental.Accessors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.concurrent.Callable;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl
+import com.jesperancinha.coffee.system.queues.*
+import lombok.Getter
+import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.queues.Queue
+import org.jesperancinha.coffee.system.queues.QueueCofeeImpl
+import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+import java.util.concurrent.Callable
 
 @Accessors(chain = true)
 @Getter
 @Service
-public abstract class CoffeeProcessorImpl extends ProcessorAbstract {
-    private static final Logger logger = LoggerFactory.getLogger(CoffeeProcessorImpl.class);
+abstract class CoffeeProcessorImpl : ProcessorAbstract() {
+    @Autowired
+    private val queueCofee: QueueCofeeImpl? = null
 
     @Autowired
-    private QueueCofeeImpl queueCofee;
-
-    @Autowired
-    private MachineProcessorImpl machineProcessor;
-
-    public void callMakeCoffee(
-            Employee employee,
-            String name,
-            Coffee coffee,
-            Payment payment,
-            List<PostAction> postActions,
-            QueueCallable parentCallable
+    private val machineProcessor: MachineProcessorImpl? = null
+    fun callMakeCoffee(
+        employee: Employee?,
+        name: String?,
+        coffee: Coffee,
+        payment: Payment,
+        postActions: List<PostAction?>,
+        parentCallable: QueueCallable
     ) {
-        final CoffeeMainCallableImpl coffeCallable = new CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor);
-        parentCallable.getAllCallables().add(coffeCallable);
+        val coffeCallable = CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor)
+        parentCallable.allCallables.add(coffeCallable)
     }
 
-    @Override
-    public Queue getExecutorServiceQueue() {
-        return queueCofee;
+    override val executorServiceQueue: Queue?
+        get() = queueCofee
+
+    override fun getExecutorName(callable: Callable<Boolean?>): String {
+        return (callable as CoffeeMainCallableImpl).name
     }
 
-    @Override
-    public String getExecutorName(Callable<Boolean> callable) {
-        return ((CoffeeMainCallableImpl) callable).getName();
+    fun addQueueSize(queueSize: Int, name: String?) {
+        queueCofee!!.setQueueSize(queueSize, name!!)
     }
 
-    public void addQueueSize(int queueSize, String name) {
-        queueCofee.setQueueSize(queueSize, name);
+    fun initExecutors() {
+        queueCofee!!.initExecutors()
     }
 
-    public void initExecutors() {
-        queueCofee.initExecutors();
+    fun stopExectutors() {
+        queueCofee!!.stopExecutors()
     }
 
-    public void stopExectutors() {
-        queueCofee.stopExecutors();
+    abstract override fun waitForAllCalls(queueCallable: QueueCallable)
+    abstract override fun runAllCalls(queueCallable: QueueCallable)
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(CoffeeProcessorImpl::class.java)
     }
-
-    public abstract void waitForAllCalls(QueueCallable queueCallable);
-
-    public abstract void runAllCalls(QueueCallable queueCallable);
 }

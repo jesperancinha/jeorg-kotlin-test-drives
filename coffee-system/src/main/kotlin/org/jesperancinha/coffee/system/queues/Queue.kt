@@ -1,20 +1,18 @@
-package com.jesperancinha.coffee.system.queues;
+package org.jesperancinha.coffee.system.queues
 
-import com.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper;
-import lombok.Getter;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
+import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
+import lombok.Getter
+import java.util.concurrent.Executors
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.function.Consumer
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Getter
-public abstract class Queue {
-    private Map<String, ThreadPoolExecutor> executorServiceMap = new HashMap<>();
-    private Map<String, Integer> numberToCreateMap = new HashMap<>();
+abstract class Queue {
+    private val executorServiceMap: MutableMap<String, ThreadPoolExecutor> = HashMap()
+    private val numberToCreateMap: MutableMap<String, Int> = HashMap()
 
     /**
      * Number of machines of the same name
@@ -22,35 +20,33 @@ public abstract class Queue {
      * @param queueSize
      * @param name
      */
-    public void setQueueSize(int queueSize, String name) {
-        Integer currentSize = numberToCreateMap.get(name);
+    fun setQueueSize(queueSize: Int, name: String) {
+        var currentSize = numberToCreateMap[name]
         if (currentSize == null) {
-            currentSize = 0;
+            currentSize = 0
         }
-        numberToCreateMap.put(name, currentSize + queueSize);
+        numberToCreateMap[name] = currentSize + queueSize
     }
 
-    public ThreadPoolExecutor getExecutor(String name) {
-        return executorServiceMap.get(name);
+    fun getExecutor(name: String): ThreadPoolExecutor? {
+        return executorServiceMap[name]
     }
 
-    public void initExecutors() {
-        numberToCreateMap.keySet().forEach(
-                name -> {
-                    final ThreadPoolExecutor currentExecutor = getExecutor(name);
-                    if (currentExecutor != null) {
-                        ExecutorServiceHelper.shutDownExecutorService(currentExecutor);
-                    }
-                    final ThreadPoolExecutor managedExecutorService = //
-                            (ThreadPoolExecutor) Executors.newFixedThreadPool(numberToCreateMap.get(name));
-                    executorServiceMap.put(name, managedExecutorService);
+    fun initExecutors() {
+        numberToCreateMap.keys.forEach(
+            Consumer { name: String ->
+                val currentExecutor = getExecutor(name)
+                if (currentExecutor != null) {
+                    ExecutorServiceHelper.shutDownExecutorService(currentExecutor)
                 }
-        );
+                val managedExecutorService =  //
+                    Executors.newFixedThreadPool(numberToCreateMap[name]!!) as ThreadPoolExecutor
+                executorServiceMap[name] = managedExecutorService
+            }
+        )
     }
 
-    public void stopExecutors() {
-        executorServiceMap.values().forEach(
-                ExecutorServiceHelper::shutDownExecutorService
-        );
+    fun stopExecutors() {
+        executorServiceMap.values.forEach(Consumer { obj: ThreadPoolExecutor? -> ExecutorServiceHelper.shutDownExecutorService() })
     }
 }

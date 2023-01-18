@@ -1,66 +1,61 @@
-package com.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.concurrency.ActionCallable;
-import com.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
-import org.jesperancinha.coffee.system.input.Employees.Employee;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.queues.Queue;
-import com.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
-import lombok.Getter;
-import lombok.experimental.Accessors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.concurrent.Callable;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.ActionCallable
+import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl
+import com.jesperancinha.coffee.system.queues.*
+import lombok.Getter
+import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.queues.Queue
+import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
+import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+import java.util.concurrent.Callable
+import java.util.function.Consumer
 
 @Accessors(chain = true)
 @Getter
 @Service
-public abstract class PostProcessorImpl extends ProcessorAbstract {
-
-    private static final Logger logger = LoggerFactory.getLogger(PostProcessorImpl.class);
-
+abstract class PostProcessorImpl : ProcessorAbstract() {
     @Autowired
-    private QueuePostActivityImpl queuePostActivity;
-
-    public void callPostActions(
-            Employee employee,
-            final String name,
-            List<PostAction> postActions,
-            final QueueCallable parentCallable
+    private val queuePostActivity: QueuePostActivityImpl? = null
+    fun callPostActions(
+        employee: Employee?,
+        name: String?,
+        postActions: List<PostAction?>,
+        parentCallable: QueueCallable
     ) {
-        PostActionCallableImpl postActionCallable = new PostActionCallableImpl(name);
-        parentCallable.getAllCallables().add(postActionCallable);
-        postActions.forEach(postActionCallable::addPostAction);
+        val postActionCallable = PostActionCallableImpl(name)
+        parentCallable.allCallables.add(postActionCallable)
+        postActions.forEach(Consumer<PostAction> { postAction: PostAction -> postActionCallable.addPostAction(postAction) })
     }
 
-    @Override
-    public Queue getExecutorServiceQueue() {
-        return queuePostActivity;
+    override val executorServiceQueue: Queue?
+        get() = queuePostActivity
+
+    override fun getExecutorName(callable: Callable<Boolean?>): String {
+        return (callable as ActionCallable).name
     }
 
-    @Override
-    public String getExecutorName(Callable<Boolean> callable) {
-        return ((ActionCallable) callable).getName();
+    fun addQueueSize(queueSize: Int, name: String?) {
+        queuePostActivity!!.setQueueSize(queueSize, name!!)
     }
 
-    public void addQueueSize(int queueSize, String name) {
-        queuePostActivity.setQueueSize(queueSize, name);
+    fun initExecutors() {
+        queuePostActivity!!.initExecutors()
     }
 
-    public void initExecutors() {
-        queuePostActivity.initExecutors();
+    fun stopExectutors() {
+        queuePostActivity!!.stopExecutors()
     }
 
-    public void stopExectutors() {
-        queuePostActivity.stopExecutors();
+    abstract override fun waitForAllCalls(queueCallable: QueueCallable)
+    abstract override fun runAllCalls(queueCallable: QueueCallable)
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(PostProcessorImpl::class.java)
     }
-
-    public abstract void waitForAllCalls(QueueCallable queueCallable);
-
-    public abstract void runAllCalls(QueueCallable queueCallable);
 }

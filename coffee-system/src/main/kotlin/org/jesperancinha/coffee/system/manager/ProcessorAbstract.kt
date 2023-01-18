@@ -1,42 +1,38 @@
-package com.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.queues.Queue;
-
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.queues.Queue
+import java.util.concurrent.Callable
+import java.util.concurrent.Future
+import java.util.function.Consumer
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
-public abstract class ProcessorAbstract {
-
-    public static final String SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!";
-
-    public abstract Queue getExecutorServiceQueue();
-
-    public void waitForAllCalls(QueueCallable queueCallable) {
-        queueCallable.waitForCalls();
+abstract class ProcessorAbstract {
+    abstract val executorServiceQueue: Queue?
+    open fun waitForAllCalls(queueCallable: QueueCallable) {
+        queueCallable.waitForCalls()
     }
 
-
-    public abstract String getExecutorName(Callable<Boolean> callable);
-
-    public void runAllCalls(QueueCallable queueCallable) {
-        queueCallable.getAllCallables().forEach(
-                booleanCallable -> {
-                    final Map<String, ThreadPoolExecutor> executorServiceMap = getExecutorServiceQueue().getExecutorServiceMap();
-                    final String executorName = getExecutorName(booleanCallable);
-                    final ThreadPoolExecutor threadPoolExecutor = executorServiceMap.get(executorName);
-                    final Future<Boolean> submitResult = threadPoolExecutor.submit(booleanCallable);
-                    addSubmitResult(submitResult, queueCallable);
-                }
-        );
+    abstract fun getExecutorName(callable: Callable<Boolean?>): String
+    open fun runAllCalls(queueCallable: QueueCallable) {
+        queueCallable.allCallables.forEach(
+            Consumer { booleanCallable: Callable<Boolean?> ->
+                val executorServiceMap = executorServiceQueue.getExecutorServiceMap()
+                val executorName = getExecutorName(booleanCallable)
+                val threadPoolExecutor = executorServiceMap[executorName]
+                val submitResult = threadPoolExecutor!!.submit(booleanCallable)
+                addSubmitResult(submitResult, queueCallable)
+            }
+        )
     }
 
-    private void addSubmitResult(Future<Boolean> submitResult, QueueCallable queueCallable) {
-        queueCallable.addSubmitResult(submitResult);
+    private fun addSubmitResult(submitResult: Future<Boolean?>, queueCallable: QueueCallable) {
+        queueCallable.addSubmitResult(submitResult)
+    }
+
+    companion object {
+        const val SCHEDULED_TASK_FAILED_TO_EXECUTE = "scheduled task faild to execute!"
     }
 }

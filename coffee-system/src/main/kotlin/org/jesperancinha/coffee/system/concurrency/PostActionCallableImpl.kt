@@ -1,16 +1,16 @@
-package com.jesperancinha.coffee.system.concurrency;
+package org.jesperancinha.coffee.system.concurrency
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.manager.MachineProcessorImpl;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.objects.ActionDescriptor;
-import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.text.MessageFormat;
-import java.util.concurrent.TimeUnit;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.objects.ActionDescriptor
+import lombok.Getter
+import lombok.extern.slf4j.Slf4j
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+import java.text.MessageFormat
+import java.util.concurrent.*
+import java.util.function.Consumer
 
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
@@ -18,34 +18,28 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Getter
 @Slf4j
-public class PostActionCallableImpl extends ActionCallable implements QueueCallable {
-
+class PostActionCallableImpl(name: String?) : ActionCallable(name), QueueCallable {
     @Autowired
-    private MachineProcessorImpl machineProcessor;
-
-    public PostActionCallableImpl(String name) {
-        super(name);
-
+    private val machineProcessor: MachineProcessorImpl? = null
+    fun addPostAction(postAction: PostAction) {
+        actionDescriptorList
+            .add(
+                ActionDescriptor.builder().description(postAction.getDescription()).time(postAction.getTime())
+                    .build()
+            )
     }
 
-    public void addPostAction(PostAction postAction) {
-        this.actionDescriptorList
-                .add(ActionDescriptor.builder().description(postAction.getDescription()).time(postAction.getTime())
-                        .build());
-    }
-
-    public Boolean call() {
-        this.actionDescriptorList.forEach(
-                actionDescriptor -> {
-                    log.info(MessageFormat.format("Ending with {0}", actionDescriptor.getDescription()));
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
-                    } catch (InterruptedException e) {
-                        log.error(e.getMessage(), e);
-                    }
+    override fun call(): Boolean {
+        actionDescriptorList.forEach(
+            Consumer { actionDescriptor: ActionDescriptor ->
+                PostActionCallableImpl.log.info(MessageFormat.format("Ending with {0}", actionDescriptor.description))
+                try {
+                    TimeUnit.MILLISECONDS.sleep(actionDescriptor.time.toLong())
+                } catch (e: InterruptedException) {
+                    PostActionCallableImpl.log.error(e.message, e)
                 }
-        );
-        return true;
+            }
+        )
+        return true
     }
-
 }

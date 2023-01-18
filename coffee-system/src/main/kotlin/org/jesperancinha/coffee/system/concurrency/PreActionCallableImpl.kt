@@ -1,74 +1,71 @@
-package com.jesperancinha.coffee.system.concurrency;
+package org.jesperancinha.coffee.system.concurrency
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.manager.CoffeeProcessorImpl;
-import com.jesperancinha.coffee.system.manager.MachineProcessorImpl;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import org.jesperancinha.coffee.system.input.Employees.Employee;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
-import com.jesperancinha.coffee.system.objects.ActionDescriptor;
-import lombok.experimental.Accessors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
-import java.text.MessageFormat;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.objects.ActionDescriptor
+import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.Employees
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.slf4j.LoggerFactory
+import org.springframework.stereotype.Service
+import java.text.MessageFormat
+import java.util.concurrent.*
+import java.util.function.Consumer
 
 @Service
 @Accessors(chain = true)
-public class PreActionCallableImpl extends ActionCallable implements QueueCallable {
-    private final static Logger logger = LoggerFactory.getLogger(PreActionCallableImpl.class);
+class PreActionCallableImpl(
+    employee: Employee,
+    name: String?,
+    coffee: Coffee,
+    payment: Payment,
+    postActions: List<PostAction?>,
+    machineProcessor: MachineProcessorImpl?
+) : ActionCallable(name), QueueCallable {
+    private val machineProcessor: MachineProcessorImpl?
+    private val coffee: Coffee
+    private val payment: Payment
+    private val postActions: List<PostAction?>
+    private val employee: Employee
 
-    private MachineProcessorImpl machineProcessor;
-    private Coffee coffee;
-    private Payment payment;
-    private List<PostAction> postActions;
-    private Employee employee;
-
-    public PreActionCallableImpl(
-            Employee employee,
-            String name,
-            Coffee coffee,
-            Payment payment,
-            List<PostAction> postActions,
-            MachineProcessorImpl machineProcessor
-    ) {
-        super(name);
-        this.employee = employee;
-        this.name = name;
-        this.coffee = coffee;
-        this.payment = payment;
-        this.postActions = postActions;
-        this.machineProcessor = machineProcessor;
+    init {
+        this.employee = employee
+        this.name = name
+        this.coffee = coffee
+        this.payment = payment
+        this.postActions = postActions
+        this.machineProcessor = machineProcessor
     }
 
-    public void addPreAction(PreAction preAction) {
-        this.actionDescriptorList.add(ActionDescriptor.builder().description(preAction.getDescription()).time(preAction.getTime()).build());
+    fun addPreAction(preAction: org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction) {
+        actionDescriptorList.add(
+            ActionDescriptor.builder().description(preAction.getDescription()).time(preAction.getTime()).build()
+        )
     }
 
-    @Override
-    public Boolean call() {
-        logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.getName()));
-        this.actionDescriptorList.forEach(
-                actionDescriptor -> {
-                    logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.getDescription()));
-                    try {
-                        TimeUnit.MILLISECONDS.sleep(actionDescriptor.getTime());
-                    } catch (InterruptedException e) {
-                        logger.error(e.getMessage(), e);
-                    }
+    override fun call(): Boolean {
+        logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.getName()))
+        actionDescriptorList.forEach(
+            Consumer { actionDescriptor: ActionDescriptor ->
+                logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.description))
+                try {
+                    TimeUnit.MILLISECONDS.sleep(actionDescriptor.time.toLong())
+                } catch (e: InterruptedException) {
+                    logger.error(e.message, e)
                 }
-        );
-
-        final CoffeeProcessorImpl coffeeProcessor = machineProcessor.getCoffeeProcessor();
-        machineProcessor.callMakeCoffee(employee, coffee.getName(), coffee, payment, postActions, this);
-        coffeeProcessor.runAllCalls(this);
-        coffeeProcessor.waitForAllCalls(this);
-        return true;
+            }
+        )
+        val coffeeProcessor = machineProcessor.getCoffeeProcessor()
+        machineProcessor!!.callMakeCoffee(employee, coffee.getName(), coffee, payment, postActions, this)
+        coffeeProcessor.runAllCalls(this)
+        coffeeProcessor.waitForAllCalls(this)
+        return true
     }
 
+    companion object {
+        private val logger = LoggerFactory.getLogger(PreActionCallableImpl::class.java)
+    }
 }

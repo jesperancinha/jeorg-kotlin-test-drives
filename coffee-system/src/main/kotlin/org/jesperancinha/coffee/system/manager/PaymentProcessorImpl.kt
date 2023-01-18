@@ -1,21 +1,19 @@
-package com.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import com.jesperancinha.coffee.system.concurrency.PaymentCallableImpl;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import org.jesperancinha.coffee.system.input.Employees;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import com.jesperancinha.coffee.system.queues.Queue;
-import com.jesperancinha.coffee.system.queues.QueuePaymentImpl;
-import lombok.Getter;
-import lombok.experimental.Accessors;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.concurrent.Callable;
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
+import com.jesperancinha.coffee.system.queues.*
+import lombok.Getter
+import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.queues.Queue
+import org.jesperancinha.coffee.system.queues.QueuePaymentImpl
+import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
+import java.util.concurrent.Callable
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
@@ -23,50 +21,50 @@ import java.util.concurrent.Callable;
 @Accessors(chain = true)
 @Getter
 @Service
-public abstract class PaymentProcessorImpl extends ProcessorAbstract {
-
-    private static final Logger logger = LoggerFactory.getLogger(PaymentProcessorImpl.class);
+abstract class PaymentProcessorImpl : ProcessorAbstract() {
+    @Autowired
+    private val queuePayment: QueuePaymentImpl? = null
 
     @Autowired
-    private QueuePaymentImpl queuePayment;
-
-    @Autowired
-    private MachineProcessorImpl machineProcessor;
-
-    public void callPayCoffee(Employees.Employee employee, String name, Payment payment, List<PostAction> postActions, QueueCallable parentCallable) {
-        final PaymentCallableImpl paymentCallable = new PaymentCallableImpl(
-                employee,
-                name,
-                payment,
-                postActions,
-                machineProcessor
-        );
-        parentCallable.getAllCallables().add(paymentCallable);
+    private val machineProcessor: MachineProcessorImpl? = null
+    fun callPayCoffee(
+        employee: Employee?,
+        name: String?,
+        payment: Payment,
+        postActions: List<PostAction?>,
+        parentCallable: QueueCallable
+    ) {
+        val paymentCallable = PaymentCallableImpl(
+            employee,
+            name,
+            payment,
+            postActions,
+            machineProcessor
+        )
+        parentCallable.allCallables.add(paymentCallable)
     }
 
-    @Override
-    public Queue getExecutorServiceQueue() {
-        return queuePayment;
+    override val executorServiceQueue: Queue?
+        get() = queuePayment
+
+    override fun getExecutorName(callable: Callable<Boolean?>): String = (callable as PaymentCallableImpl).name ?: throw RuntimeException("Executor not found!")
+
+    fun addQueueSize(queueSize: Int, name: String?) {
+        queuePayment!!.setQueueSize(queueSize, name!!)
     }
 
-    @Override
-    public String getExecutorName(Callable<Boolean> callable) {
-        return ((PaymentCallableImpl) callable).getName();
+    fun initExecutors() {
+        queuePayment!!.initExecutors()
     }
 
-    public void addQueueSize(int queueSize, String name) {
-        queuePayment.setQueueSize(queueSize, name);
+    fun stopExectutors() {
+        queuePayment!!.stopExecutors()
     }
 
-    public void initExecutors() {
-        queuePayment.initExecutors();
+    abstract override fun waitForAllCalls(queueCallable: QueueCallable)
+    abstract override fun runAllCalls(queueCallable: QueueCallable)
+
+    companion object {
+        private val logger = LoggerFactory.getLogger(PaymentProcessorImpl::class.java)
     }
-
-    public void stopExectutors() {
-        queuePayment.stopExecutors();
-    }
-
-    public abstract void waitForAllCalls(QueueCallable queueCallable);
-
-    public abstract void runAllCalls(QueueCallable queueCallable);
 }

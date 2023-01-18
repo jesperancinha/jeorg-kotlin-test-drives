@@ -1,4 +1,4 @@
-package com.jesperancinha.coffee.system.concurrency;
+package org.jesperancinha.coffee.system.concurrency;
 
 
 import org.junit.Test;

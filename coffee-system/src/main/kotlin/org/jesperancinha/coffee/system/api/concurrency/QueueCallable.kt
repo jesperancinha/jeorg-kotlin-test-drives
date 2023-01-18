@@ -1,16 +1,13 @@
-package com.jesperancinha.coffee.system.api.concurrency;
+package org.jesperancinha.coffee.system.api.concurrency
 
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+import java.util.concurrent.Callable
+import java.util.concurrent.Future
 
 /**
  * Created by joao on 8-5-16.
  */
-public interface QueueCallable extends Callable<Boolean> {
-    void addSubmitResult(Future<Boolean> submitResult);
-
-    void waitForCalls();
-
-    List<Callable<Boolean>> getAllCallables();
+interface QueueCallable : Callable<Boolean> {
+    fun addSubmitResult(submitResult: Future<Boolean>)
+    fun waitForCalls()
+    val allCallables: MutableList<Callable<Boolean>>
 }

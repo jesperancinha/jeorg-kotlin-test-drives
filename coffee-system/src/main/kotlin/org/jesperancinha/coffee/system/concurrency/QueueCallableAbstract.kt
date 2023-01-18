@@ -1,54 +1,40 @@
-package com.jesperancinha.coffee.system.concurrency;
+package org.jesperancinha.coffee.system.concurrency
 
-import com.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import lombok.Getter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
-import static com.jesperancinha.coffee.system.manager.ProcessorAbstract.SCHEDULED_TASK_FAILED_TO_EXECUTE;
+import lombok.Getter
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.manager.ProcessorAbstract
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+import java.util.concurrent.Callable
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.Future
 
 @Getter
-public abstract class QueueCallableAbstract implements QueueCallable {
-    private final static Logger logger = LoggerFactory.getLogger(QueueCallableAbstract.class);
+abstract class QueueCallableAbstract : QueueCallable {
+    private val allResults: MutableList<Future<Boolean>> = ArrayList()
+    override val allCallables: MutableList<Callable<Boolean>> = ArrayList()
+    override fun waitForCalls() {
+        waitForAllFutures(allResults, logger)
+    }
 
-    private final List<Future<Boolean>> allResults = new ArrayList<>();
+    override fun addSubmitResult(submitResult: Future<Boolean>): Unit = let { allResults.add(submitResult) }
 
-    private final List<Callable<Boolean>> allCallables = new ArrayList<>();
-
-    static void waitForAllFutures(List<Future<Boolean>> allResults, Logger logger) {
-        allResults.forEach(
-                booleanFuture -> {
-                    try {
-                        if (booleanFuture.get() != null && !booleanFuture.get()) {
-                            logger.error(SCHEDULED_TASK_FAILED_TO_EXECUTE);
-                        }
-                    } catch (NullPointerException | InterruptedException | ExecutionException e) {
-                        logger.error(e.getMessage(), e);
+    companion object {
+        private val logger = LoggerFactory.getLogger(QueueCallableAbstract::class.java)
+        fun waitForAllFutures(allResults: List<Future<Boolean>>, logger: Logger) {
+            allResults.forEach { booleanFuture: Future<Boolean> ->
+                try {
+                    if (booleanFuture.get() != null && !booleanFuture.get()!!) {
+                        logger.error(ProcessorAbstract.SCHEDULED_TASK_FAILED_TO_EXECUTE)
                     }
+                } catch (e: NullPointerException) {
+                    logger.error(e.message, e)
+                } catch (e: InterruptedException) {
+                    logger.error(e.message, e)
+                } catch (e: ExecutionException) {
+                    logger.error(e.message, e)
                 }
-        );
+            }
+        }
     }
-
-    @Override
-    public void waitForCalls() {
-        waitForAllFutures(allResults, logger);
-    }
-
-    @Override
-    public List<Callable<Boolean>> getAllCallables() {
-        return allCallables;
-    }
-
-    @Override
-    public void addSubmitResult(Future<Boolean> submitResult) {
-        allResults.add(submitResult);
-    }
-
-
 }
