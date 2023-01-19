@@ -1,16 +1,14 @@
 package org.jesperancinha.coffee.system.concurrency
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import lombok.Getter
-import lombok.extern.slf4j.Slf4j
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.text.MessageFormat
 import java.util.concurrent.*
 
-@Getter
 @Service
-@Slf4j
 class CoffeeCallableImpl internal constructor(fillTime: FillTime, name: String?) : QueueCallableAbstract(),
     QueueCallable {
     private val fillTime: FillTime
@@ -22,18 +20,22 @@ class CoffeeCallableImpl internal constructor(fillTime: FillTime, name: String?)
     }
 
     override fun call(): Boolean {
-        CoffeeCallableImpl.log.info(
+        logger.info(
             MessageFormat.format( //
                 "{0} - Starting task {1} to make coffee",  //
-                fillTime.getIndex(),  //
-                fillTime.getDescription() //
+                fillTime.index,  //
+                fillTime.description //
             )
         )
         try {
-            TimeUnit.MILLISECONDS.sleep(fillTime.getValue().toLong())
+            TimeUnit.MILLISECONDS.sleep(fillTime.value.toLong())
         } catch (e: InterruptedException) {
-            CoffeeCallableImpl.log.error(e.message, e)
+            logger.error(e.message, e)
         }
         return true
+    }
+    
+    companion object {
+        val logger: Logger = LoggerFactory.getLogger(CoffeeCallableImpl::class.java)
     }
 }
