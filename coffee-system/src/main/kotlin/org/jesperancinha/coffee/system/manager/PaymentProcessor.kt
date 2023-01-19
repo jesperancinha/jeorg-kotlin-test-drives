@@ -19,7 +19,7 @@ class PaymentProcessor(
     @Autowired
     private val queuePayment: QueuePaymentImpl,
     @Autowired
-    private val machineProcessor: MachineProcessor
+    private val postProcessor: PostProcessor
 
 ) : ProcessorAbstract() {
 
@@ -31,7 +31,7 @@ class PaymentProcessor(
         parentCallable: QueueCallable
     ) {
         val paymentCallable = PaymentCallable(
-            machineProcessor = machineProcessor,
+            postProcessor = postProcessor,
             employee = employee,
             name = name,
             chosenPayment = payment,

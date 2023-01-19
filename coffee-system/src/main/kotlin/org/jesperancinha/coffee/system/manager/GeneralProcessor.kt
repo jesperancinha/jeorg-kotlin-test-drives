@@ -21,7 +21,13 @@ import java.util.*
 @Service
 class GeneralProcessor(
     @Autowired
-    private val machineProcessor: MachineProcessor
+    private val preProcessor: PreProcessor,
+    @Autowired
+    private val postProcessor: PostProcessor,
+    @Autowired
+    private val coffeeProcessor: CoffeeProcessor,
+    @Autowired
+    private val paymentProcessor: PaymentProcessor
 ) {
     var nIterations: Int = 0
     var preRowSize: Int = 0
@@ -81,7 +87,6 @@ class GeneralProcessor(
      * @param employeesFile
      * @throws FileNotFoundException
      * @throws JAXBException
-     * @throws SAXException
      */
     @Throws(JAXBException::class)
     fun initSimulationProcess(coffeesFile: InputStream, employeesFile: InputStream) {
@@ -91,10 +96,8 @@ class GeneralProcessor(
     }
 
     fun start() {
-        val preProcessor = machineProcessor.preProcessor
         preProcessor.addQueueSize(preRowSize, MAIN_QUEUE_PRE)
         preProcessor.initExecutors()
-        val postProcessor = machineProcessor.postProcessor
         postProcessor.addQueueSize(postRowSize, MAIN_QUEUE_POST)
         postProcessor.initExecutors()
         val nMachines: Int = coffeeMachines.coffeeMachine.size
@@ -108,8 +111,6 @@ class GeneralProcessor(
     }
 
     private fun fillEmployeeLayerList(nMachines: Int, employeeLayerList: MutableList<EmployeeLayer>, random: Random) {
-        val coffeeProcessor = machineProcessor.coffeeProcessor
-        val paymentProcessor = machineProcessor.paymentProcessor
         employees.employee?.forEach { employee ->
             val iChosenCoffeeMachine = random.nextInt(nMachines)
             val coffeeMachine = coffeeMachines.coffeeMachine[iChosenCoffeeMachine]
@@ -140,29 +141,30 @@ class GeneralProcessor(
             val coffee: Coffee = employeeLayer.coffee
             val payment: Payment = employeeLayer.payment
             val postActions: List<PostAction> = employee.actions.postAction
-            machineProcessor.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
+            preProcessor.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
+
         }
     }
 
     private fun runaAllProcessors() {
-        machineProcessor.preProcessor.runAllCalls()
-        // machineProcessor.getCoffeeProcessor().runAllCalls();
-        // machineProcessor.getPaymentProcessor().runAllCalls();
-        // machineProcessor.postProcessor.runAllCalls();
+        preProcessor.runAllCalls()
+        // getCoffeeProcessor().runAllCalls();
+        // getPaymentProcessor().runAllCalls();
+        // postProcessor.runAllCalls();
     }
 
     private fun waitForAllProcessors() {
-        machineProcessor.preProcessor.waitForAllCalls()
-        // machineProcessor.getCoffeeProcessor().waitForAllCalls();
-        // machineProcessor.getPaymentProcessor().waitForAllCalls();
-        // machineProcessor.postProcessor.waitForAllCalls();
+        preProcessor.waitForAllCalls()
+        // getCoffeeProcessor().waitForAllCalls();
+        // getPaymentProcessor().waitForAllCalls();
+        // postProcessor.waitForAllCalls();
     }
 
     private fun stopAllProcessors() {
-        machineProcessor.preProcessor.stopExecutors()
-        //  machineProcessor.getCoffeÒØeProcessor().stopExecutors();
-        //  machineProcessor.getPaymentProcessor().stopExecutors();
-        //  machineProcessor.postProcessor.stopExecutors();
+        preProcessor.stopExecutors()
+        //  getCoffeÒØeProcessor().stopExecutors();
+        //  getPaymentProcessor().stopExecutors();
+        //  postProcessor.stopExecutors();
     }
 
     companion object {

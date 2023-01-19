@@ -3,11 +3,9 @@ package org.jesperancinha.coffee.system.manager
 import com.google.common.truth.Truth
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
-
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
-import io.mockk.impl.annotations.SpyK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.verify
@@ -65,10 +63,6 @@ class GeneralProcessorTest {
     @MockK
     lateinit var queuePreActivity: QueuePreActivityImpl
 
-    @SpyK
-    var machineProcessor: MachineProcessor =
-        MachineProcessor(preProcessor, coffeeProcessor, paymentProcessor, postProcessor)
-
     private var future: Future<Boolean> = mockk()
 
     private val employee: Employee = mockk()
@@ -90,8 +84,6 @@ class GeneralProcessorTest {
     fun startSimulationProcess() {
         val testMachinesFile = javaClass.getResourceAsStream("/coffemachine_example_test_1.xml").shouldNotBeNull()
         val testEmployeesFile = javaClass.getResourceAsStream("/employees_example_test_1.xml").shouldNotBeNull()
-        every { machineProcessor.paymentProcessor } returns paymentProcessor
-        every { machineProcessor.coffeeProcessor } returns coffeeProcessor
         generalProcessor.initSimulationProcess(
             testMachinesFile,
             testEmployeesFile
@@ -236,10 +228,6 @@ class GeneralProcessorTest {
         val threadPoolExecutorPayment: ThreadPoolExecutor = mockk()
         val testMachinesFile = javaClass.getResourceAsStream("/coffemachine_example_test_1.xml").shouldNotBeNull()
         val testEmployeesFile = javaClass.getResourceAsStream("/employees_example_test_1.xml").shouldNotBeNull()
-        every { machineProcessor.paymentProcessor } returns paymentProcessor
-        every { machineProcessor.coffeeProcessor } returns coffeeProcessor
-        every { machineProcessor.preProcessor } returns preProcessor
-        every { machineProcessor.postProcessor } returns postProcessor
         val preActions: List<Employee.Actions.PreAction> = ArrayList()
         val postActions: List<PostAction> = ArrayList()
         generalProcessor.initSimulationProcess(

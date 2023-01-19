@@ -17,3 +17,10 @@ fun main(args: Array<String>) {
     val executionResultCode = CommandLine(options).execute(*args)
     exitProcess(executionResultCode)
 }
+
+//fun initAll() {
+//    preProcessor.initExecutors()
+//    coffeeProcessor.initExecutors()
+//    paymentProcessor.initExecutors()
+//    postProcessor.initExecutors()
+//}

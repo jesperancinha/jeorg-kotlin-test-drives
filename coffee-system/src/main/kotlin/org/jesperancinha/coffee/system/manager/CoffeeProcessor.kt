@@ -17,7 +17,7 @@ class CoffeeProcessor(
     @Autowired
     private val queueCofee: QueueCofeeImpl,
     @Autowired
-    private val machineProcessor: MachineProcessor
+    private val paymentProcessor: PaymentProcessor
 ) : ProcessorAbstract() {
 
     fun callMakeCoffee(
@@ -28,7 +28,7 @@ class CoffeeProcessor(
         postActions: List<PostAction>,
         parentCallable: QueueCallable?
     ) {
-        val coffeeMainCallable = CoffeeMainCallable(employee, name, coffee, payment, postActions, machineProcessor)
+        val coffeeMainCallable = CoffeeMainCallable(employee, name, coffee, payment, postActions, paymentProcessor)
         parentCallable?.allCallables?.add(coffeeMainCallable)
     }
 

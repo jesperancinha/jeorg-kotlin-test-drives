@@ -6,7 +6,6 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Paymen
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.manager.CoffeeProcessor
-import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import org.slf4j.LoggerFactory
 import java.text.MessageFormat
@@ -15,7 +14,6 @@ import java.util.function.Consumer
 
 class PreActionCallable(
     private val coffeeProcessor: CoffeeProcessor,
-    private val machineProcessor: MachineProcessor,
     private val coffee: Coffee,
     private val payment: Payment,
     private val postActions: List<PostAction>,
@@ -44,14 +42,7 @@ class PreActionCallable(
                 }
             }
         )
-        machineProcessor.callMakeCoffee(
-            requireNotNull(employee),
-            requireNotNull(coffee?.name),
-            requireNotNull(coffee),
-            requireNotNull(payment),
-            requireNotNull(postActions),
-            this
-        )
+        coffeeProcessor.callMakeCoffee(employee, coffee.name, coffee, payment, postActions, this)
         coffeeProcessor.runAllCalls(this)
         coffeeProcessor.waitForAllCalls(this)
         return true

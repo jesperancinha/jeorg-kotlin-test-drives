@@ -17,8 +17,6 @@ class PreProcessor(
     @Autowired
     val queuePreActivity: QueuePreActivityImpl,
     @Autowired
-    val machineProcessor: MachineProcessor,
-    @Autowired
     val coffeeProcessor: CoffeeProcessor
 ): ProcessorAbstract() {
     private val startupCallable: StartupCallable by lazy { StartupCallable() }
@@ -34,7 +32,6 @@ class PreProcessor(
 
         val preActionCallable = PreActionCallable(
             coffeeProcessor,
-            machineProcessor,
             employee = employee,
             name = name,
             coffee = coffee,

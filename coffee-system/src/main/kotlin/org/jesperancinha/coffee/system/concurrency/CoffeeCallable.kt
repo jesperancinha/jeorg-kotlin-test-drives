@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service
 import java.text.MessageFormat
 import java.util.concurrent.TimeUnit
 
-@Service
 class CoffeeCallable(fillTime: FillTime, name: String?) : QueueCallableAbstract(),
     QueueCallable {
     private val fillTime: FillTime

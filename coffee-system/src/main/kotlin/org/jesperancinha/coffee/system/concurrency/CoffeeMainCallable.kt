@@ -7,35 +7,21 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.manager.MachineProcessor
+import org.jesperancinha.coffee.system.manager.PaymentProcessor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory.getLogger
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
 class CoffeeMainCallable(
-    employee: Employee,
-    name: String,
-    coffee: Coffee,
-    payment: Payment,
-    postActions: List<PostAction>,
-    machineProcessor: MachineProcessor
+    val employee: Employee,
+    val name: String,
+    val coffee: Coffee,
+    val payment: Payment,
+    private val postActions: List<PostAction>,
+    private val paymentProcessor: PaymentProcessor
 ) : QueueCallableAbstract(), QueueCallable {
-    private val employee: Employee
-    val name: String
-    private val coffee: Coffee
-    private val payment: Payment
-    private val postActions: List<PostAction>
-    private val machineProcessor: MachineProcessor
 
-    init {
-        this.employee = employee
-        this.name = name
-        this.coffee = coffee
-        this.payment = payment
-        this.postActions = postActions
-        this.machineProcessor = machineProcessor
-    }
 
     override fun call(): Boolean {
         val tasks: List<FillTime> = coffee.timesToFill.fillTime
@@ -60,8 +46,7 @@ class CoffeeMainCallable(
                 waitForAllFutures(allCoffeeCallables, logger)
                 ExecutorServiceHelper.shutDownExecutorService(executor)
             }
-        val paymentProcessor = machineProcessor.paymentProcessor
-        machineProcessor.callPayCoffee(employee, payment.name, payment, postActions, this)
+        paymentProcessor.callPayCoffee(employee, payment.name, payment, postActions, this)
         paymentProcessor.runAllCalls(this)
         paymentProcessor.waitForAllCalls(this)
         return true

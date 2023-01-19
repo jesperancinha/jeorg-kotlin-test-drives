@@ -5,7 +5,7 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Paymen
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.manager.GeneralProcessor
-import org.jesperancinha.coffee.system.manager.MachineProcessor
+import org.jesperancinha.coffee.system.manager.PostProcessor
 import org.slf4j.Logger
 import java.util.concurrent.*
 
@@ -13,11 +13,11 @@ import java.util.concurrent.*
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
 class PaymentCallable(
-    private val machineProcessor: MachineProcessor,
-    private var chosenPayment: Payment,
-    private var employee: Employee,
-    var name: String,
-    private var postActions: List<PostAction>
+    private val chosenPayment: Payment,
+    private val employee: Employee,
+    val name: String,
+    private val postActions: List<PostAction>,
+    private val postProcessor: PostProcessor
 ) : QueueCallableAbstract(), QueueCallable {
 
     @Throws(Exception::class)
@@ -26,8 +26,9 @@ class PaymentCallable(
         chosenPayment.time?.let {
             time->
             TimeUnit.MILLISECONDS.sleep(time.toLong())
-            val postProcessor = machineProcessor.postProcessor
-            postActions.let { machineProcessor.callPostActions(GeneralProcessor.MAIN_QUEUE_POST, it, this) }
+            postActions.let {
+                postProcessor.callPostActions(GeneralProcessor.MAIN_QUEUE_POST, it, this)
+            }
             postProcessor.runAllCalls(this)
             postProcessor.waitForAllCalls(this)
         }

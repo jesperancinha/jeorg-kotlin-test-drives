@@ -13,5 +13,5 @@ local: no-test
 no-test:
 	mvn clean install -DskipTests
 run-a:
-	java -jar coffee-system/target/coffee-system.jar -it 1 -ud "coffee-system/target/test-classes/employees_example_test_1.xml" -md "tcoffee-system/target/est-classes/coffemachine_example_test_1.xml" -pre 2 -post 3
+	java -jar coffee-system/target/coffee-system.jar -it 1 -ud "coffee-system/target/test-classes/employees_example_test_1.xml" -md "coffee-system/target/test-classes/coffemachine_example_test_1.xml" -pre 2 -post 3
 build-run-a: b run-a
