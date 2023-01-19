@@ -4,8 +4,8 @@ import lombok.Getter
 import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.queues.Queue
@@ -49,14 +49,10 @@ abstract class CoffeeProcessorImpl(
         queueCofee.initExecutors()
     }
 
-    fun stopExectutors() {
+    fun stopExecutors() {
         queueCofee.stopExecutors()
     }
 
     abstract override fun waitForAllCalls(queueCallable: QueueCallable)
     abstract override fun runAllCalls(queueCallable: QueueCallable)
-
-    companion object {
-        private val logger = LoggerFactory.getLogger(CoffeeProcessorImpl::class.java)
-    }
 }

@@ -3,7 +3,7 @@
     <xs:element name="CoffeeMachines">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="CoffeMachine" maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="CoffeeMachine" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="Coffees">

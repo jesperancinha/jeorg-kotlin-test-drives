@@ -1,20 +1,16 @@
 package org.jesperancinha.coffee.system
 
 import jakarta.xml.bind.JAXBException
-import org.kohsuke.args4j.CmdLineException
-import org.kohsuke.args4j.CmdLineParser
+import picocli.CommandLine
 import java.io.FileNotFoundException
+import kotlin.system.exitProcess
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
-object CoffeeParadigmsMain {
-    @Throws(CmdLineException::class, FileNotFoundException::class, JAXBException::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val options = CoffeeParadigmsOptions()
-        val parser = CmdLineParser(options)
-        parser.parseArgument(*args)
-        options.run()
-    }
+@Throws(FileNotFoundException::class, JAXBException::class)
+fun main(args: Array<String>) {
+    val options = CoffeeParadigmsOptions()
+    val executionResultCode = CommandLine(options).execute(*args)
+    exitProcess(executionResultCode)
 }

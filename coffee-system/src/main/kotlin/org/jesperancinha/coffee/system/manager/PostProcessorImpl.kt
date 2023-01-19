@@ -5,7 +5,6 @@ import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.concurrency.ActionCallable
 import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl
-import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.queues.Queue
 import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
@@ -13,7 +12,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
-import java.util.function.Consumer
 
 @Accessors(chain = true)
 @Getter
@@ -24,7 +22,6 @@ abstract class PostProcessorImpl(
 ) : ProcessorAbstract() {
 
     fun callPostActions(
-        employee: Employee,
         name: String,
         postActions: List<PostAction>,
         parentCallable: QueueCallable
@@ -46,7 +43,7 @@ abstract class PostProcessorImpl(
         queuePostActivity.initExecutors()
     }
 
-    fun stopExectutors() {
+    fun stopExecutors() {
         queuePostActivity.stopExecutors()
     }
 

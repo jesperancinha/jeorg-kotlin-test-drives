@@ -1,14 +1,12 @@
 package org.jesperancinha.coffee.system.concurrency
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
 import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
 import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
 import java.text.MessageFormat
 import java.util.concurrent.*
 
@@ -45,8 +43,8 @@ class PaymentCallableImpl(
         postProcessor.waitForAllCalls(this)
         return true
     }
-    
-    companion object{
-        val logger: Logger = LoggerFactory.getLogger(PaymentCallableImpl::class.java)
+
+    companion object {
+        val logger: Logger = org.slf4j.LoggerFactory.getLogger(PaymentCallableImpl::class.java)
     }
 }

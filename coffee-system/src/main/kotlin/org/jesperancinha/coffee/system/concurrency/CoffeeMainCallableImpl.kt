@@ -1,23 +1,19 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
 import lombok.Getter
 import lombok.extern.slf4j.Slf4j
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee.TimesToFill.FillTime
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
 import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import java.util.Comparator.comparing
+import org.slf4j.LoggerFactory.getLogger
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
-import java.util.function.Consumer
-import java.util.function.Function
-import java.util.function.Predicate
 
 @Getter
 @Slf4j
@@ -76,6 +72,6 @@ class CoffeeMainCallableImpl(
     }
 
     companion object{
-        val logger: Logger = LoggerFactory.getLogger(CoffeeMainCallableImpl::class.java)
+        val logger: Logger = getLogger(CoffeeMainCallableImpl::class.java)
     }
 }

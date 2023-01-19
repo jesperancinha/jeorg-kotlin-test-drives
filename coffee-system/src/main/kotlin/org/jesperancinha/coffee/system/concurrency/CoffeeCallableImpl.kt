@@ -1,12 +1,12 @@
 package org.jesperancinha.coffee.system.concurrency
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee.TimesToFill.FillTime
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.text.MessageFormat
-import java.util.concurrent.*
+import java.util.concurrent.TimeUnit
 
 @Service
 class CoffeeCallableImpl internal constructor(fillTime: FillTime, name: String?) : QueueCallableAbstract(),
@@ -34,7 +34,7 @@ class CoffeeCallableImpl internal constructor(fillTime: FillTime, name: String?)
         }
         return true
     }
-    
+
     companion object {
         val logger: Logger = LoggerFactory.getLogger(CoffeeCallableImpl::class.java)
     }

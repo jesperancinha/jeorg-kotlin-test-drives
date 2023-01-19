@@ -3,8 +3,8 @@ package org.jesperancinha.coffee.system.manager
 import lombok.Getter
 import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.springframework.beans.factory.annotation.Autowired
@@ -62,7 +62,7 @@ class MachineProcessorImpl(
         postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
-        postProcessor.callPostActions(employee, name, postActions, parentCallable)
+        postProcessor.callPostActions(name, postActions, parentCallable)
     }
 
     fun initAll() {

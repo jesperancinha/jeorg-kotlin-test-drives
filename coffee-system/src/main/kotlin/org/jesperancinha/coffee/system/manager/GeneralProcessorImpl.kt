@@ -5,9 +5,8 @@ import jakarta.xml.bind.JAXBException
 import lombok.*
 import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.input.CoffeeMachines
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
@@ -27,13 +26,12 @@ class GeneralProcessorImpl(
     @Autowired
     private val machineProcessor: MachineProcessorImpl
 ) {
-
     var nIterations: Int = 0
-    var sourceXmlMachinesFile: String? = null
-    var sourceXmlEmployeesFile: String? = null
     var preRowSize: Int = 0
     var postRowSize: Int = 0
 
+    lateinit var sourceXmlMachinesFile: String
+    lateinit var sourceXmlEmployeesFile: String
     lateinit var coffeeMachines: CoffeeMachines
     lateinit var employees: Employees
 
@@ -102,7 +100,7 @@ class GeneralProcessorImpl(
         val postProcessor = machineProcessor.postProcessor
         postProcessor.addQueueSize(postRowSize, MAIN_QUEUE_POST)
         postProcessor.initExecutors()
-        val nMachines: Int = coffeeMachines.coffeMachine.size
+        val nMachines: Int = coffeeMachines.coffeeMachine.size
         val employeeLayerList: MutableList<EmployeeLayer> = ArrayList()
         val random = Random()
         fillEmployeeLayerList(nMachines, employeeLayerList, random)
@@ -115,15 +113,15 @@ class GeneralProcessorImpl(
     private fun fillEmployeeLayerList(nMachines: Int, employeeLayerList: MutableList<EmployeeLayer>, random: Random) {
         val coffeeProcessor = machineProcessor.coffeeProcessor
         val paymentProcessor = machineProcessor.paymentProcessor
-        employees?.employee?.forEach { employee ->
+        employees.employee?.forEach { employee ->
             val iChosenCoffeeMachine = random.nextInt(nMachines)
-            val coffeMachine: CoffeMachine = coffeeMachines.coffeMachine[iChosenCoffeeMachine]
-            val nCoffees: Int = coffeMachine.coffees.coffee.size
+            val coffeeMachine = coffeeMachines.coffeeMachine[iChosenCoffeeMachine]
+            val nCoffees: Int = coffeeMachine.coffees.coffee.size
             val iCoffee = random.nextInt(nCoffees)
-            val nPayments: Int = coffeMachine.paymentTypes.payment.size
+            val nPayments: Int = coffeeMachine.paymentTypes.payment.size
             val iPayment = random.nextInt(nPayments)
-            val chosenCoffee: Coffee = coffeMachine.coffees.coffee[iCoffee]
-            val chosenPayment: Payment = coffeMachine.paymentTypes.payment[iPayment]
+            val chosenCoffee: Coffee = coffeeMachine.coffees.coffee[iCoffee]
+            val chosenPayment: Payment = coffeeMachine.paymentTypes.payment[iPayment]
             coffeeProcessor.addQueueSize(1, chosenCoffee.name)
             paymentProcessor.addQueueSize(1, chosenPayment.name)
             val employeeLayer = EmployeeLayer(
@@ -165,9 +163,9 @@ class GeneralProcessorImpl(
 
     private fun stopAllProcessors() {
         machineProcessor.preProcessor.stopExecutors()
-        //  machineProcessor.getCoffeÒØeProcessor().stopExectutors();
-        //  machineProcessor.getPaymentProcessor().stopExectutors();
-        //  machineProcessor.postProcessor.stopExectutors();
+        //  machineProcessor.getCoffeÒØeProcessor().stopExecutors();
+        //  machineProcessor.getPaymentProcessor().stopExecutors();
+        //  machineProcessor.postProcessor.stopExecutors();
     }
 
     companion object {

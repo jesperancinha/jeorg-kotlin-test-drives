@@ -19,8 +19,6 @@
         <build.helper.plugin>1.10</build.helper.plugin>
         <kotlin.version>1.8.0</kotlin.version>
 
-        <args4j>2.33</args4j>
-        <junit.version>4.12</junit.version>
         <javax.concurrency.version>1.0</javax.concurrency.version>
         <javax.ejb.version>3.2.2</javax.ejb.version>
         <javax.activation.version>1.2.0</javax.activation.version>
@@ -43,15 +41,17 @@
         <log4j-slf4j-impl.version>2.19.0</log4j-slf4j-impl.version>
         <jaxb-maven-plugin.version>3.0.0</jaxb-maven-plugin.version>
         <log4j-to-slf4j.version>2.19.0</log4j-to-slf4j.version>
-        <asm.version>9.4</asm.version>
         <jakarta.activation-api.version>2.1.1</jakarta.activation-api.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockk-jvm.version>1.13.2</mockk-jvm.version>
+        <kotest-assertions-core-jvm.version>5.5.4</kotest-assertions-core-jvm.version>
+        <picocli.version>4.7.0</picocli.version>
     </properties>
 
     <modules>
         <module>coffee-system</module>
+        <module>coffee-common</module>
     </modules>
 
     <dependencyManagement>
@@ -65,18 +65,23 @@
             </dependency>
             <dependency>
                 <groupId>org.jesperancinha</groupId>
+                <artifactId>coffee-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jesperancinha</groupId>
                 <artifactId>coffee-system-api</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.activation</groupId>
+                <artifactId>jakarta.activation-api</artifactId>
+                <version>${jakarta.activation-api.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.activation</groupId>
                 <artifactId>activation</artifactId>
                 <version>${activation.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>args4j</groupId>
-                <artifactId>args4j</artifactId>
-                <version>${args4j}</version>
             </dependency>
             <dependency>
                 <groupId>com.sun.activation</groupId>
@@ -128,6 +133,11 @@
                 <artifactId>log4j-to-slf4j</artifactId>
                 <version>${log4j-to-slf4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli</artifactId>
+                <version>${picocli.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.mockito</groupId>
@@ -141,22 +151,25 @@
                 <version>${mockk-jvm.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>io.kotest</groupId>
+                <artifactId>kotest-assertions-core-jvm</artifactId>
+                <version>${kotest-assertions-core-jvm.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-test</artifactId>
+                <version>${kotlin.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
 
     <build>
@@ -181,38 +194,9 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-            </plugin>
-            <plugin>
                 <groupId>org.jesperancinha.plugins</groupId>
                 <artifactId>omni-coveragereporter-maven-plugin</artifactId>
                 <version>${omni-coveragereporter-maven-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <jvmTarget>1.8</jvmTarget>
-                </configuration>
             </plugin>
         </plugins>
     </build>
