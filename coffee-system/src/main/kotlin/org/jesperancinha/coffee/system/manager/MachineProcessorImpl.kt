@@ -1,7 +1,5 @@
 package org.jesperancinha.coffee.system.manager
 
-import lombok.Getter
-import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
@@ -10,8 +8,6 @@ import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostActi
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-@Accessors(chain = true)
-@Getter
 @Service
 class MachineProcessorImpl(
     @Autowired
@@ -57,7 +53,6 @@ class MachineProcessorImpl(
     }
 
     fun callPostActions(
-        employee: Employee,
         name: String,
         postActions: List<PostAction>,
         parentCallable: QueueCallable

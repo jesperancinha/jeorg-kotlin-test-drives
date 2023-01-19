@@ -7,6 +7,7 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.SpyK
 import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.verify
@@ -21,6 +22,8 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl.Companion.MAIN_QUEUE_POST
+import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl.Companion.MAIN_QUEUE_PRE
 import org.jesperancinha.coffee.system.queues.QueueCofeeImpl
 import org.jesperancinha.coffee.system.queues.QueuePaymentImpl
 import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
@@ -42,20 +45,13 @@ class GeneralProcessorImplTest {
     @InjectMockKs
     lateinit var generalProcessor: GeneralProcessorImpl
 
-    @MockK(relaxed = true)
-    lateinit var machineProcessor: MachineProcessorImpl
+    private var preProcessor: PreProcessorImpl = mockk()
 
-    @MockK(relaxed = true)
-    lateinit var preProcessor: PreProcessorImpl
+    private var coffeeProcessor: CoffeeProcessorImpl = mockk()
 
-    @MockK(relaxed = true)
-    lateinit var coffeeProcessor: CoffeeProcessorImpl
+    private var paymentProcessor: PaymentProcessorImpl = mockk()
 
-    @MockK(relaxed = true)
-    lateinit var paymentProcessor: PaymentProcessorImpl
-
-    @MockK(relaxed = true)
-    lateinit var postProcessor: PostProcessorImpl
+    private var postProcessor: PostProcessorImpl = mockk()
 
     @MockK(relaxed = true)
     lateinit var queueCoffee: QueueCofeeImpl
@@ -68,6 +64,10 @@ class GeneralProcessorImplTest {
 
     @MockK
     lateinit var queuePreActivity: QueuePreActivityImpl
+
+    @SpyK
+    var machineProcessor: MachineProcessorImpl =
+        MachineProcessorImpl(preProcessor, coffeeProcessor, paymentProcessor, postProcessor)
 
     private var future: Future<Boolean> = mockk()
 
@@ -201,10 +201,10 @@ class GeneralProcessorImplTest {
             Truth.assertThat(coffees).hasSize(2)
             coffees.forEach { coffee ->
                 Truth.assertThat(expectedCoffeeNames.pop()).isEqualTo(coffee.name)
-                coffee.timesToFill.fillTime.forEach{ fillTime: FillTime ->
-                        fillTime.description shouldBe expectedDescriptions.pop()
-                        fillTime.value shouldBe expectedTimesForCoffe.pop()
-                    }
+                coffee.timesToFill.fillTime.forEach { fillTime: FillTime ->
+                    fillTime.description shouldBe expectedDescriptions.pop()
+                    fillTime.value shouldBe expectedTimesForCoffe.pop()
+                }
             }
             paymentTypes.forEach { payment: Payment ->
                 Truth.assertThat(payment.name).isEqualTo(expectedPaymentTypes.pop())
@@ -221,8 +221,8 @@ class GeneralProcessorImplTest {
                 action.time shouldBe expectedPreActionTimes.pop()
             }
             postActions.forEach { postAction: PostAction ->
-               postAction.description shouldBe expectedPostActionDescriptions.pop()
-               postAction.time shouldBe expectedPostActionTimes.pop()
+                postAction.description shouldBe expectedPostActionDescriptions.pop()
+                postAction.time shouldBe expectedPostActionTimes.pop()
             }
         }
     }
@@ -230,10 +230,10 @@ class GeneralProcessorImplTest {
     @Test
     @Throws(Exception::class)
     fun start() {
-        val threadPoolExecutorPreActivity:ThreadPoolExecutor = mockk()
-        val threadPoolExecutorPostActivity:ThreadPoolExecutor = mockk()
-        val threadPoolExecutorCoffee:ThreadPoolExecutor = mockk()
-        val threadPoolExecutorPayment:ThreadPoolExecutor = mockk()
+        val threadPoolExecutorPreActivity: ThreadPoolExecutor = mockk()
+        val threadPoolExecutorPostActivity: ThreadPoolExecutor = mockk()
+        val threadPoolExecutorCoffee: ThreadPoolExecutor = mockk()
+        val threadPoolExecutorPayment: ThreadPoolExecutor = mockk()
         val testMachinesFile = javaClass.getResourceAsStream("/coffemachine_example_test_1.xml").shouldNotBeNull()
         val testEmployeesFile = javaClass.getResourceAsStream("/employees_example_test_1.xml").shouldNotBeNull()
         every { machineProcessor.paymentProcessor } returns paymentProcessor
@@ -251,15 +251,15 @@ class GeneralProcessorImplTest {
         every { queuePayment.getExecutor(any()) } returns threadPoolExecutorPayment
         every { queuePostActivity.getExecutor(any()) } returns threadPoolExecutorPostActivity
         val preActivityExecutorMap = HashMap<String, ThreadPoolExecutor>()
-        preActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_PRE] = threadPoolExecutorPreActivity
-        preActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_POST] = threadPoolExecutorPostActivity
+        preActivityExecutorMap[MAIN_QUEUE_PRE] = threadPoolExecutorPreActivity
+        preActivityExecutorMap[MAIN_QUEUE_POST] = threadPoolExecutorPostActivity
         val coffeExecutorMap = HashMap<String, ThreadPoolExecutor>()
         coffeExecutorMap[TEST] = threadPoolExecutorCoffee
         val paymentExecutorMap = HashMap<String, ThreadPoolExecutor>()
         paymentExecutorMap[TEST] = threadPoolExecutorPayment
         val postActivityExecutorMap = HashMap<String, ThreadPoolExecutor>()
-        postActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_PRE] = threadPoolExecutorPreActivity
-        postActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_POST] = threadPoolExecutorPostActivity
+        postActivityExecutorMap[MAIN_QUEUE_PRE] = threadPoolExecutorPreActivity
+        postActivityExecutorMap[MAIN_QUEUE_POST] = threadPoolExecutorPostActivity
         every { threadPoolExecutorPreActivity.submit(any()) } returns future
         every { threadPoolExecutorCoffee.submit(any()) } returns future
         every { threadPoolExecutorPayment.submit(any()) } returns future
@@ -272,6 +272,22 @@ class GeneralProcessorImplTest {
         every { threadPoolExecutorCoffee.submit(any<CoffeeCallableImpl>()) } returns future
         every { threadPoolExecutorPayment.submit(any<PaymentCallableImpl>()) } returns future
         every { threadPoolExecutorPostActivity.submit(any<PostActionCallableImpl>()) } returns future
+        every { preProcessor.addQueueSize(0, MAIN_QUEUE_PRE) } returns Unit
+        every { postProcessor.addQueueSize(0, MAIN_QUEUE_POST) } returns Unit
+        every { coffeeProcessor.addQueueSize(any(), LATTE_MACHIATTO) } returns Unit
+        every { coffeeProcessor.addQueueSize(any(), LATTE_MACHIATTO_MILD) } returns Unit
+        every { paymentProcessor.addQueueSize(any(), BEFORE_COFFEE_PAYMENT) } returns Unit
+        every { paymentProcessor.addQueueSize(any(), NO_PAYMENT) } returns Unit
+        every { paymentProcessor.addQueueSize(any(), WHILE_COFFEE_POURING_PAYMENT) } returns Unit
+        every { paymentProcessor.addQueueSize(any(), AFTER_COFFEE_PAYMENT) } returns Unit
+        every { preProcessor.initExecutors() } returns Unit
+        every { postProcessor.initExecutors() } returns Unit
+        every { coffeeProcessor.initExecutors() } returns Unit
+        every { paymentProcessor.initExecutors() } returns Unit
+        every { preProcessor.callPreActions(any(), any(), any(), any(), any(), any())} returns Unit
+        every { preProcessor.runAllCalls() } returns Unit
+        every { preProcessor.waitForAllCalls() } returns Unit
+        every { preProcessor.stopExecutors() } returns Unit
         generalProcessor.start()
 //        Mockito.verify(threadPoolExecutorPreActivity, Mockito.times(2)).submit<Any>(
 //            any(
@@ -281,7 +297,16 @@ class GeneralProcessorImplTest {
         //        verify(threadPoolExecutorCoffee, times(10)).submit(any(Callable.class));
         //        verify(threadPoolExecutorPayment, times(2)).submit(any(Callable.class));
         //        verify(threadPoolExecutorPostActivity, times(2)).submit(any(Callable.class));
-//        verify { preProcessor.callPreActions(employee, GeneralProcessorImpl.MAIN_QUEUE_PRE, preActions, coffee, payment, postActions) }
+        verify(exactly = 2) {
+            preProcessor.callPreActions(
+                any(),
+                eq(MAIN_QUEUE_PRE),
+                any(),
+                any(),
+                any(),
+                any()
+            )
+        }
 //        verify { coffeeProcessor.callMakeCoffee(employee, TEST, coffee, payment, postActions, queueCallable) }
 //        verify { paymentProcessor.callPayCoffee(employee, TEST, payment, postActions, queueCallable) }
 //        verify { postProcessor.callPostActions(GeneralProcessorImpl.MAIN_QUEUE_POST, postActions, queueCallable) }

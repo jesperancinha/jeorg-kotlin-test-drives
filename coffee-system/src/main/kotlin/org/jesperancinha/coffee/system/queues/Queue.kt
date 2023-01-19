@@ -1,6 +1,5 @@
 package org.jesperancinha.coffee.system.queues
 
-import lombok.Getter
 import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
 import java.util.concurrent.Executors
 import java.util.concurrent.ThreadPoolExecutor
@@ -9,7 +8,6 @@ import java.util.function.Consumer
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
-@Getter
 abstract class Queue {
     val executorServiceMap: MutableMap<String, ThreadPoolExecutor> = HashMap()
     val numberToCreateMap: MutableMap<String, Int> = HashMap()

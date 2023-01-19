@@ -2,8 +2,6 @@ package org.jesperancinha.coffee.system.manager
 
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
-import lombok.*
-import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.input.CoffeeMachines
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
@@ -20,7 +18,6 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.*
 
-@Accessors(chain = true)
 @Service
 class GeneralProcessorImpl(
     @Autowired

@@ -1,8 +1,5 @@
 package org.jesperancinha.coffee.system.stats
 
-import lombok.Getter
-
-@Getter
 class CoffeeStatsImpl(
     private val coffeSoldCash: Int, private val coffeSoldCard: Int,
     private val coffeExpresso: Int, private val coffeeMachiatto: Int, private val coffeCappuccino: Int,

@@ -1,7 +1,5 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import lombok.Getter
-import lombok.extern.slf4j.Slf4j
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
@@ -15,8 +13,6 @@ import org.slf4j.LoggerFactory.getLogger
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
-@Getter
-@Slf4j
 class CoffeeMainCallableImpl(
     employee: Employee,
     name: String,

@@ -38,7 +38,7 @@ class PaymentCallableImpl(
         val time: Int = chosenPayment.time
         TimeUnit.MILLISECONDS.sleep(time.toLong())
         val postProcessor = machineProcessor.postProcessor
-        machineProcessor.callPostActions(employee, GeneralProcessorImpl.Companion.MAIN_QUEUE_POST, postActions, this)
+        machineProcessor.callPostActions(GeneralProcessorImpl.Companion.MAIN_QUEUE_POST, postActions, this)
         postProcessor.runAllCalls(this)
         postProcessor.waitForAllCalls(this)
         return true

@@ -1,10 +1,13 @@
 package org.jesperancinha.coffee.system
 
 import jakarta.xml.bind.JAXBException
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import picocli.CommandLine
 import java.io.FileNotFoundException
 import kotlin.system.exitProcess
 
+@SpringBootApplication
+open class CoffeeParadigmsMain
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */

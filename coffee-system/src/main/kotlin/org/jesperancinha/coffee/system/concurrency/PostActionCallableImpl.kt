@@ -1,7 +1,5 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import lombok.Getter
-import lombok.extern.slf4j.Slf4j
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
@@ -18,8 +16,6 @@ import java.util.function.Consumer
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Service
-@Getter
-@Slf4j
 class PostActionCallableImpl(name: String) : ActionCallable(name), QueueCallable {
     @Autowired
     private val machineProcessor: MachineProcessorImpl? = null

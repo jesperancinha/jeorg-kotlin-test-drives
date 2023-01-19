@@ -2,6 +2,7 @@ package org.jesperancinha.coffee.system
 
 import jakarta.xml.bind.JAXBException
 import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
+import org.springframework.boot.SpringApplication
 import org.springframework.context.ApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext
 import picocli.CommandLine.Command
@@ -22,39 +23,40 @@ class CoffeeParadigmsOptions : Callable<Int> {
         description = ["Define the number of iterations you want to make"],
         required = true
     )
-    private val nIterations = 1
+    private var nIterations = 1
 
     @Option(
         names = ["-ud", "--userdefinitions"],
         description = ["Defines where the user definition file is"],
         required = true
     )
-    private val userDefinitionFile: String? = null
+    private var userDefinitionFile: String? = null
 
     @Option(
         names = ["-md", "--machinedefinitions"],
         description = ["Defines where the machine definition file is"],
         required = true
     )
-    private val machineDefinitionFile: String? = null
+    private var machineDefinitionFile: String? = null
 
     @Option(
         names = ["-pre", "--pre-actions-size"],
         description = ["Defines how many can stand on the pre-actions queue"],
         required = true
     )
-    private val nPreActions: Int? = null
+    private var nPreActions: Int? = null
 
     @Option(
         names = ["-post", "--post-actions-size"],
         description = ["Defines how many can stand on the post-actions queue"],
         required = true
     )
-    private val nPostActions: Int? = null
+    private var nPostActions: Int? = null
 
     @Throws(FileNotFoundException::class, JAXBException::class)
     fun run() {
-        val context: ApplicationContext = ClassPathXmlApplicationContext("META-INF/config.xml")
+        val context: ApplicationContext =
+            SpringApplication.run(CoffeeParadigmsMain::class.java, *emptyArray())
         val generalProcessor = context.getBean(GeneralProcessorImpl::class.java)
         generalProcessor.nIterations = nIterations
         generalProcessor.sourceXmlEmployeesFile =

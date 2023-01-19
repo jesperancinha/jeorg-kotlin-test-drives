@@ -1,7 +1,5 @@
 package org.jesperancinha.coffee.system.manager
 
-import lombok.Getter
-import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.concurrency.ActionCallable
 import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl
@@ -13,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
 
-@Accessors(chain = true)
-@Getter
 @Service
-abstract class PostProcessorImpl(
+class PostProcessorImpl(
     @Autowired
     private val queuePostActivity: QueuePostActivityImpl
 ) : ProcessorAbstract() {
@@ -46,9 +42,6 @@ abstract class PostProcessorImpl(
     fun stopExecutors() {
         queuePostActivity.stopExecutors()
     }
-
-    abstract override fun waitForAllCalls(queueCallable: QueueCallable)
-    abstract override fun runAllCalls(queueCallable: QueueCallable)
 
     companion object {
         private val logger = LoggerFactory.getLogger(PostProcessorImpl::class.java)

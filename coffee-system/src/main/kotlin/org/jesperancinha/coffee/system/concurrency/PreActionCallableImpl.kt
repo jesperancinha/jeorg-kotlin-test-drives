@@ -1,6 +1,5 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
@@ -15,7 +14,6 @@ import java.util.concurrent.*
 import java.util.function.Consumer
 
 @Service
-@Accessors(chain = true)
 class PreActionCallableImpl(
     employee: Employee,
     name: String,
