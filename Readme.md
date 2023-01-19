@@ -93,7 +93,7 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 To make it easy I made a few [Makefile](./Makefile) scripts:
 
 1. Make the build and run: `make build-run-a`
-2. Make the build and run: `make run-a`
+2. Just run: `make run-a`
 
 ## Input files format
 
