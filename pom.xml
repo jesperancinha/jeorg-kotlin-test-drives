@@ -47,6 +47,7 @@
         <jakarta.activation-api.version>2.1.1</jakarta.activation-api.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
+        <mockk-jvm.version>1.13.2</mockk-jvm.version>
     </properties>
 
     <modules>
@@ -132,6 +133,12 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito-all.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.mockk</groupId>
+                <artifactId>mockk-jvm</artifactId>
+                <version>${mockk-jvm.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

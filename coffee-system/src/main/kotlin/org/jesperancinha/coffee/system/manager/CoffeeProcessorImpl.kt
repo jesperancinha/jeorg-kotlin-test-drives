@@ -18,41 +18,39 @@ import java.util.concurrent.Callable
 @Accessors(chain = true)
 @Getter
 @Service
-abstract class CoffeeProcessorImpl : ProcessorAbstract() {
+abstract class CoffeeProcessorImpl(
     @Autowired
-    private val queueCofee: QueueCofeeImpl? = null
-
+    private val queueCofee: QueueCofeeImpl,
     @Autowired
     private val machineProcessor: MachineProcessorImpl? = null
+) : ProcessorAbstract() {
+
     fun callMakeCoffee(
         employee: Employee?,
-        name: String,
-        coffee: Coffee,
-        payment: Payment,
-        postActions: List<PostAction?>,
-        parentCallable: QueueCallable
+        name: String?,
+        coffee: Coffee?,
+        payment: Payment?,
+        postActions: List<PostAction>?,
+        parentCallable: QueueCallable?
     ) {
         val coffeCallable = CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor)
-        parentCallable.allCallables.add(coffeCallable)
+        parentCallable?.allCallables?.add(coffeCallable)
     }
 
-    override val executorServiceQueue: Queue?
-        get() = queueCofee
+    override val executorServiceQueue: Queue = queueCofee
 
-    override fun getExecutorName(callable: Callable<Boolean?>): String {
-        return (callable as CoffeeMainCallableImpl).name
-    }
+    override fun getExecutorName(callable: Callable<Boolean>): String = (callable as CoffeeMainCallableImpl).name
 
-    fun addQueueSize(queueSize: Int, name: String?) {
-        queueCofee!!.setQueueSize(queueSize, name!!)
+    fun addQueueSize(queueSize: Int, name: String) {
+        queueCofee.setQueueSize(queueSize, name)
     }
 
     fun initExecutors() {
-        queueCofee!!.initExecutors()
+        queueCofee.initExecutors()
     }
 
     fun stopExectutors() {
-        queueCofee!!.stopExecutors()
+        queueCofee.stopExecutors()
     }
 
     abstract override fun waitForAllCalls(queueCallable: QueueCallable)

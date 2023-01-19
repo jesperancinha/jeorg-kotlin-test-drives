@@ -4,7 +4,6 @@ import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
 import lombok.*
 import lombok.experimental.Accessors
-import lombok.extern.slf4j.Slf4j
 import org.jesperancinha.coffee.system.input.CoffeeMachines
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
@@ -21,27 +20,22 @@ import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.*
-import java.util.function.Consumer
 
 @Accessors(chain = true)
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Service
-@Slf4j
-class GeneralProcessorImpl {
-    var nIterations = 0
-    internal var sourceXmlMachinesFile: String? = null
-    var sourceXmlEmployeesFile: String? = null
-    var preRowSize = 0
-    var postRowSize = 0
-    private var coffeeMachines: CoffeeMachines
-    private var employees: Employees? = null
-
+class GeneralProcessorImpl(
     @Autowired
-    private val machineProcessor: MachineProcessorImpl? = null
+    private val machineProcessor: MachineProcessorImpl
+) {
+
+    var nIterations: Int = 0
+    var sourceXmlMachinesFile: String? = null
+    var sourceXmlEmployeesFile: String? = null
+    var preRowSize: Int = 0
+    var postRowSize: Int = 0
+
+    lateinit var coffeeMachines: CoffeeMachines
+    lateinit var employees: Employees
 
     /**
      * Creates the coffee machines from the XML file
@@ -102,10 +96,10 @@ class GeneralProcessorImpl {
     }
 
     fun start() {
-        val preProcessor = machineProcessor.getPreProcessor()
+        val preProcessor = machineProcessor.preProcessor
         preProcessor.addQueueSize(preRowSize, MAIN_QUEUE_PRE)
         preProcessor.initExecutors()
-        val postProcessor = machineProcessor.getPostProcessor()
+        val postProcessor = machineProcessor.postProcessor
         postProcessor.addQueueSize(postRowSize, MAIN_QUEUE_POST)
         postProcessor.initExecutors()
         val nMachines: Int = coffeeMachines.coffeMachine.size
@@ -119,28 +113,26 @@ class GeneralProcessorImpl {
     }
 
     private fun fillEmployeeLayerList(nMachines: Int, employeeLayerList: MutableList<EmployeeLayer>, random: Random) {
-        val coffeeProcessor = machineProcessor.getCoffeeProcessor()
-        val paymentProcessor = machineProcessor.getPaymentProcessor()
-        employees.getEmployee().forEach(
-            Consumer<Employee> { employee: Employee? ->
-                val iChosenCoffeeMachine = random.nextInt(nMachines)
-                val coffeMachine: CoffeMachine = coffeeMachines.coffeMachine[iChosenCoffeeMachine]
-                val nCoffees: Int = coffeMachine.coffees.coffee.size
-                val iCoffee = random.nextInt(nCoffees)
-                val nPayments: Int = coffeMachine.paymentTypes.payment.size
-                val iPayment = random.nextInt(nPayments)
-                val chosenCoffee: Coffee = coffeMachine.coffees.coffee[iCoffee]
-                val chosenPayment: Payment = coffeMachine.paymentTypes.payment[iPayment]
-                coffeeProcessor.addQueueSize(1, chosenCoffee.name)
-                paymentProcessor.addQueueSize(1, chosenPayment.name)
-                val employeeLayer = EmployeeLayer(
-                    employee = employee,
-                    coffee = chosenCoffee,
-                    payment = chosenPayment
-                )
-                employeeLayerList.add(employeeLayer)
-            }
-        )
+        val coffeeProcessor = machineProcessor.coffeeProcessor
+        val paymentProcessor = machineProcessor.paymentProcessor
+        employees?.employee?.forEach { employee ->
+            val iChosenCoffeeMachine = random.nextInt(nMachines)
+            val coffeMachine: CoffeMachine = coffeeMachines.coffeMachine[iChosenCoffeeMachine]
+            val nCoffees: Int = coffeMachine.coffees.coffee.size
+            val iCoffee = random.nextInt(nCoffees)
+            val nPayments: Int = coffeMachine.paymentTypes.payment.size
+            val iPayment = random.nextInt(nPayments)
+            val chosenCoffee: Coffee = coffeMachine.coffees.coffee[iCoffee]
+            val chosenPayment: Payment = coffeMachine.paymentTypes.payment[iPayment]
+            coffeeProcessor.addQueueSize(1, chosenCoffee.name)
+            paymentProcessor.addQueueSize(1, chosenPayment.name)
+            val employeeLayer = EmployeeLayer(
+                employee = employee,
+                coffee = chosenCoffee,
+                payment = chosenPayment
+            )
+            employeeLayerList.add(employeeLayer)
+        }
         coffeeProcessor.initExecutors()
         paymentProcessor.initExecutors()
     }
@@ -150,32 +142,32 @@ class GeneralProcessorImpl {
             val employee = employeeLayer.employee
             val preActions: List<Employee.Actions.PreAction> =
                 employee.actions.preAction
-            val coffee: Coffee? = employeeLayer.coffee
+            val coffee: Coffee = employeeLayer.coffee
             val payment: Payment = employeeLayer.payment
             val postActions: List<PostAction?> = employee.actions.postAction
-            machineProcessor!!.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
+            machineProcessor.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
         }
     }
 
     private fun runaAllProcessors() {
-        machineProcessor.getPreProcessor().runAllCalls()
+        machineProcessor.preProcessor.runAllCalls()
         // machineProcessor.getCoffeeProcessor().runAllCalls();
         // machineProcessor.getPaymentProcessor().runAllCalls();
-        // machineProcessor.getPostProcessor().runAllCalls();
+        // machineProcessor.postProcessor.runAllCalls();
     }
 
     private fun waitForAllProcessors() {
-        machineProcessor.getPreProcessor().waitForAllCalls()
+        machineProcessor.preProcessor.waitForAllCalls()
         // machineProcessor.getCoffeeProcessor().waitForAllCalls();
         // machineProcessor.getPaymentProcessor().waitForAllCalls();
-        // machineProcessor.getPostProcessor().waitForAllCalls();
+        // machineProcessor.postProcessor.waitForAllCalls();
     }
 
     private fun stopAllProcessors() {
-        machineProcessor.getPreProcessor().stopExectutors()
+        machineProcessor.preProcessor.stopExecutors()
         //  machineProcessor.getCoffeÒØeProcessor().stopExectutors();
         //  machineProcessor.getPaymentProcessor().stopExectutors();
-        //  machineProcessor.getPostProcessor().stopExectutors();
+        //  machineProcessor.postProcessor.stopExectutors();
     }
 
     companion object {

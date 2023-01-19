@@ -1,379 +1,431 @@
-package org.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import org.jesperancinha.coffee.system.concurrency.CoffeeCallableImpl;
-import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl;
-import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl;
-import org.jesperancinha.coffee.system.concurrency.PreActionCallableImpl;
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee;
-import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment;
-import org.jesperancinha.coffee.system.input.Employees.Employee;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction;
-import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction;
-import org.jesperancinha.coffee.system.queues.QueueCofeeImpl;
-import org.jesperancinha.coffee.system.queues.QueuePaymentImpl;
-import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
-import org.jesperancinha.coffee.system.queues.QueuePreActivityImpl;
-import org.jesperancinha.coffee.system.queues.QueueCofeeImpl;
-import org.jesperancinha.coffee.system.queues.QueuePaymentImpl;
-import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl;
-import org.jesperancinha.coffee.system.queues.QueuePreActivityImpl;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InOrder;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Stack;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
-
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.google.common.truth.Truth
+import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import io.mockk.mockk
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.CoffeeCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PreActionCallableImpl
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee.TimesToFill.FillTime
+import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
+import org.jesperancinha.coffee.system.input.Employees.Employee
+import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.queues.QueueCofeeImpl
+import org.jesperancinha.coffee.system.queues.QueuePaymentImpl
+import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
+import org.jesperancinha.coffee.system.queues.QueuePreActivityImpl
+import org.junit.Before
+import org.junit.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.runner.RunWith
+import org.mockito.*
+import org.mockito.Mockito.mock
+import org.mockito.invocation.InvocationOnMock
+import org.mockito.runners.MockitoJUnitRunner
+import java.util.*
+import java.util.concurrent.Callable
+import java.util.concurrent.ExecutionException
+import java.util.concurrent.Future
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.function.Consumer
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
-@RunWith(MockitoJUnitRunner.class)
-public class GeneralProcessorImplTest {
+@ExtendWith(MockKExtension::class)
+class GeneralProcessorImplTest {
+    @InjectMockKs
+    lateinit var generalProcessor: GeneralProcessorImpl
 
-    private static final String POURING_COFFEE = "pouring coffee";
-    private static final String SWITCH_TIME = "switch time";
-    private static final String POURING_MILK = "pouring milk";
-    private static final String GRINDING_COFFEE = "grinding coffee";
-    private static final String HEATING = "heating";
-    private static final String LATTE_MACHIATTO_MILD = "latteMachiattoMild";
-    private static final String LATTE_MACHIATTO = "latteMachiatto";
-    private static final String NESSY_EXPRESSO_2 = "nessyExpresso2";
-    private static final String NESSY_EXPRESSO_1 = "nessyExpresso1";
-    private static final String BEFORE_COFFEE_PAYMENT = "beforeCoffeePayment";
-    private static final String AFTER_COFFEE_PAYMENT = "afterCoffeePayment";
-    private static final String WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment";
-    private static final String NO_PAYMENT = "noPayment";
-    private static final String TEST = "TEST";
+    @MockK
+    lateinit var machineProcessor: MachineProcessorImpl
 
-    @InjectMocks
-    private GeneralProcessorImpl generalProcessor = GeneralProcessorImpl.builder().nIterations(1).preRowSize(2)
-            .postRowSize(2).build();
+    @MockK
+    lateinit var preProcessor:PreProcessorImpl
 
-    @Mock
-    private MachineProcessorImpl machineProcessor = new MachineProcessorImpl();
+    @MockK
+    lateinit var coffeeProcessor:CoffeeProcessorImpl
 
-    @InjectMocks
-    private PreProcessorImpl preProcessor = new PreProcessorImpl();
+    @MockK
+    lateinit var paymentProcessor:PaymentProcessorImpl
 
-    @InjectMocks
-    private CoffeeProcessorImpl coffeeProcessor = new CoffeeProcessorImpl();
+    @MockK
+    lateinit var postProcessor:PostProcessorImpl
 
-    @InjectMocks
-    private PaymentProcessorImpl paymentProcessor = new PaymentProcessorImpl();
+    @MockK
+    lateinit var queueCofee: QueueCofeeImpl
 
-    @InjectMocks
-    private PostProcessorImpl postProcessor = new PostProcessorImpl();
+    @MockK
+    lateinit var queuePayment: QueuePaymentImpl
 
-    @Mock
-    private QueueCofeeImpl queueCofee;
+    @MockK
+    lateinit var queuePostActivity: QueuePostActivityImpl
 
-    @Mock
-    private QueuePaymentImpl queuePayment;
+    @MockK
+    lateinit var queuePreActivity: QueuePreActivityImpl
 
-    @Mock
-    private QueuePostActivityImpl queuePostActivity;
-
-    @Mock
-    private QueuePreActivityImpl queuePreActivity;
-
-    private Future<Boolean> future;
-
+    private var future: Future<Boolean> = mockk()
     @Before
-    @SuppressWarnings("unchecked")
-    public void setUp() throws ExecutionException, InterruptedException {
-        MockitoAnnotations.initMocks(this);
-        future = mock(Future.class);
-        when(future.get()).thenReturn(true);
+    @Throws(ExecutionException::class, InterruptedException::class)
+    fun setUp() {
+        every { future.get()} returns true
     }
 
     @Test
-    public void startSimulationProcess() throws Exception {
-        final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
-        final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
-
-        when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
-        when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
-
+    @Throws(Exception::class)
+    fun startSimulationProcess() {
+        val testMachinesFile = javaClass.getResourceAsStream("/coffemachine_example_test_1.xml")
+        val testEmployeesFile = javaClass.getResourceAsStream("/employees_example_test_1.xml")
+        Mockito.`when`(machineProcessor.paymentProcessor).thenReturn(paymentProcessor)
+        Mockito.`when`(machineProcessor.coffeeProcessor).thenReturn(coffeeProcessor)
         generalProcessor.initSimulationProcess(
-                testMachinesFile,
-                testEmployeesFile
-        );
-
-        final List<CoffeMachine> coffeMachines = generalProcessor.getCoffeeMachines().getCoffeMachine();
-        final List<Employee> employees = generalProcessor.getEmployees().getEmployee();
-
-        final Stack<String> expectedDescriptions = new Stack<>();
-        expectedDescriptions.push(POURING_COFFEE);
-        expectedDescriptions.push(SWITCH_TIME);
-        expectedDescriptions.push(POURING_MILK);
-        expectedDescriptions.push(GRINDING_COFFEE);
-        expectedDescriptions.push(HEATING);
-        expectedDescriptions.push(POURING_COFFEE);
-        expectedDescriptions.push(SWITCH_TIME);
-        expectedDescriptions.push(POURING_MILK);
-        expectedDescriptions.push(GRINDING_COFFEE);
-        expectedDescriptions.push(HEATING);
-        expectedDescriptions.push(POURING_COFFEE);
-        expectedDescriptions.push(SWITCH_TIME);
-        expectedDescriptions.push(POURING_MILK);
-        expectedDescriptions.push(GRINDING_COFFEE);
-        expectedDescriptions.push(HEATING);
-        expectedDescriptions.push(POURING_COFFEE);
-        expectedDescriptions.push(SWITCH_TIME);
-        expectedDescriptions.push(POURING_MILK);
-        expectedDescriptions.push(GRINDING_COFFEE);
-        expectedDescriptions.push(HEATING);
-
-        final Stack<String> expectedCoffeeNames = new Stack<>();
-        expectedCoffeeNames.push(LATTE_MACHIATTO_MILD);
-        expectedCoffeeNames.push(LATTE_MACHIATTO);
-        expectedCoffeeNames.push(LATTE_MACHIATTO_MILD);
-        expectedCoffeeNames.push(LATTE_MACHIATTO);
-
-        final Stack<String> expectedCoffeeMachineNames = new Stack<>();
-        expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2);
-        expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1);
-
-        final Stack<Integer> expectedTimesForCoffe = new Stack<>();
-        expectedTimesForCoffe.push(40);
-        expectedTimesForCoffe.push(30);
-        expectedTimesForCoffe.push(20);
-        expectedTimesForCoffe.push(10);
-        expectedTimesForCoffe.push(5);
-        expectedTimesForCoffe.push(40);
-        expectedTimesForCoffe.push(30);
-        expectedTimesForCoffe.push(20);
-        expectedTimesForCoffe.push(10);
-        expectedTimesForCoffe.push(5);
-        expectedTimesForCoffe.push(40);
-        expectedTimesForCoffe.push(30);
-        expectedTimesForCoffe.push(20);
-        expectedTimesForCoffe.push(10);
-        expectedTimesForCoffe.push(5);
-        expectedTimesForCoffe.push(40);
-        expectedTimesForCoffe.push(30);
-        expectedTimesForCoffe.push(20);
-        expectedTimesForCoffe.push(10);
-        expectedTimesForCoffe.push(5);
-
-        final Stack<String> expectedPaymentTypes = new Stack<>();
-        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
-        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
-        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
-        expectedPaymentTypes.push(NO_PAYMENT);
-        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT);
-        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT);
-        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT);
-        expectedPaymentTypes.push(NO_PAYMENT);
-
-        final Stack<Integer> expectedTimes = new Stack<>();
-        expectedTimes.push(20);
-        expectedTimes.push(10);
-        expectedTimes.push(5);
-        expectedTimes.push(null);
-        expectedTimes.push(20);
-        expectedTimes.push(10);
-        expectedTimes.push(5);
-        expectedTimes.push(null);
-
-        final Stack<String> expectedEmployeeNames = new Stack<>();
-        expectedEmployeeNames.push("Marco");
-        expectedEmployeeNames.push("Joao");
-
-        final Stack<String> expectedCupSizes = new Stack<>();
-        expectedCupSizes.push("Small");
-        expectedCupSizes.push("Big");
-
-        final Stack<String> expectedPreActionDescriptions = new Stack<>();
-        expectedPreActionDescriptions.push("put cup in outlet");
-        expectedPreActionDescriptions.push("choose a cup");
-        expectedPreActionDescriptions.push("put cup in outlet");
-        expectedPreActionDescriptions.push("choose a cup");
-
-        final Stack<Integer> expectedPreActionTimes = new Stack<>();
-        expectedPreActionTimes.push(20);
-        expectedPreActionTimes.push(10);
-        expectedPreActionTimes.push(20);
-        expectedPreActionTimes.push(10);
-
-        final Stack<String> expectedPostActionDescriptions = new Stack<>();
-        expectedPostActionDescriptions.push("dummy");
-        expectedPostActionDescriptions.push("take cup and leave");
-        expectedPostActionDescriptions.push("dummy");
-        expectedPostActionDescriptions.push("take cup and leave");
-
-        final Stack<Integer> expectedPostActionTimes = new Stack<>();
-        expectedPostActionTimes.push(55);
-        expectedPostActionTimes.push(5);
-        expectedPostActionTimes.push(55);
-        expectedPostActionTimes.push(5);
-
-        assertThat(coffeMachines).hasSize(2);
-        assertThat(employees).hasSize(2);
+            testMachinesFile,
+            testEmployeesFile
+        )
+        val coffeMachines: List<CoffeMachine?> = generalProcessor.coffeeMachines.coffeMachine
+        val employees: List<Employee?> = generalProcessor.employees.getEmployee()
+        val expectedDescriptions = Stack<String>()
+        expectedDescriptions.push(POURING_COFFEE)
+        expectedDescriptions.push(SWITCH_TIME)
+        expectedDescriptions.push(POURING_MILK)
+        expectedDescriptions.push(GRINDING_COFFEE)
+        expectedDescriptions.push(HEATING)
+        expectedDescriptions.push(POURING_COFFEE)
+        expectedDescriptions.push(SWITCH_TIME)
+        expectedDescriptions.push(POURING_MILK)
+        expectedDescriptions.push(GRINDING_COFFEE)
+        expectedDescriptions.push(HEATING)
+        expectedDescriptions.push(POURING_COFFEE)
+        expectedDescriptions.push(SWITCH_TIME)
+        expectedDescriptions.push(POURING_MILK)
+        expectedDescriptions.push(GRINDING_COFFEE)
+        expectedDescriptions.push(HEATING)
+        expectedDescriptions.push(POURING_COFFEE)
+        expectedDescriptions.push(SWITCH_TIME)
+        expectedDescriptions.push(POURING_MILK)
+        expectedDescriptions.push(GRINDING_COFFEE)
+        expectedDescriptions.push(HEATING)
+        val expectedCoffeeNames = Stack<String>()
+        expectedCoffeeNames.push(LATTE_MACHIATTO_MILD)
+        expectedCoffeeNames.push(LATTE_MACHIATTO)
+        expectedCoffeeNames.push(LATTE_MACHIATTO_MILD)
+        expectedCoffeeNames.push(LATTE_MACHIATTO)
+        val expectedCoffeeMachineNames = Stack<String>()
+        expectedCoffeeMachineNames.push(NESSY_EXPRESSO_2)
+        expectedCoffeeMachineNames.push(NESSY_EXPRESSO_1)
+        val expectedTimesForCoffe = Stack<Int>()
+        expectedTimesForCoffe.push(40)
+        expectedTimesForCoffe.push(30)
+        expectedTimesForCoffe.push(20)
+        expectedTimesForCoffe.push(10)
+        expectedTimesForCoffe.push(5)
+        expectedTimesForCoffe.push(40)
+        expectedTimesForCoffe.push(30)
+        expectedTimesForCoffe.push(20)
+        expectedTimesForCoffe.push(10)
+        expectedTimesForCoffe.push(5)
+        expectedTimesForCoffe.push(40)
+        expectedTimesForCoffe.push(30)
+        expectedTimesForCoffe.push(20)
+        expectedTimesForCoffe.push(10)
+        expectedTimesForCoffe.push(5)
+        expectedTimesForCoffe.push(40)
+        expectedTimesForCoffe.push(30)
+        expectedTimesForCoffe.push(20)
+        expectedTimesForCoffe.push(10)
+        expectedTimesForCoffe.push(5)
+        val expectedPaymentTypes = Stack<String>()
+        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT)
+        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT)
+        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT)
+        expectedPaymentTypes.push(NO_PAYMENT)
+        expectedPaymentTypes.push(BEFORE_COFFEE_PAYMENT)
+        expectedPaymentTypes.push(AFTER_COFFEE_PAYMENT)
+        expectedPaymentTypes.push(WHILE_COFFEE_POURING_PAYMENT)
+        expectedPaymentTypes.push(NO_PAYMENT)
+        val expectedTimes = Stack<Int?>()
+        expectedTimes.push(20)
+        expectedTimes.push(10)
+        expectedTimes.push(5)
+        expectedTimes.push(null)
+        expectedTimes.push(20)
+        expectedTimes.push(10)
+        expectedTimes.push(5)
+        expectedTimes.push(null)
+        val expectedEmployeeNames = Stack<String>()
+        expectedEmployeeNames.push("Marco")
+        expectedEmployeeNames.push("Joao")
+        val expectedCupSizes = Stack<String>()
+        expectedCupSizes.push("Small")
+        expectedCupSizes.push("Big")
+        val expectedPreActionDescriptions = Stack<String>()
+        expectedPreActionDescriptions.push("put cup in outlet")
+        expectedPreActionDescriptions.push("choose a cup")
+        expectedPreActionDescriptions.push("put cup in outlet")
+        expectedPreActionDescriptions.push("choose a cup")
+        val expectedPreActionTimes = Stack<Int>()
+        expectedPreActionTimes.push(20)
+        expectedPreActionTimes.push(10)
+        expectedPreActionTimes.push(20)
+        expectedPreActionTimes.push(10)
+        val expectedPostActionDescriptions = Stack<String>()
+        expectedPostActionDescriptions.push("dummy")
+        expectedPostActionDescriptions.push("take cup and leave")
+        expectedPostActionDescriptions.push("dummy")
+        expectedPostActionDescriptions.push("take cup and leave")
+        val expectedPostActionTimes = Stack<Int>()
+        expectedPostActionTimes.push(55)
+        expectedPostActionTimes.push(5)
+        expectedPostActionTimes.push(55)
+        expectedPostActionTimes.push(5)
+        Truth.assertThat(coffeMachines).hasSize(2)
+        Truth.assertThat(employees).hasSize(2)
         coffeMachines.forEach(
-                coffeeMachine -> {
-                    final List<Coffee> coffees = coffeeMachine.getCoffees().getCoffee();
-                    final List<Payment> paymentTypes = coffeeMachine.getPaymentTypes().getPayment();
-                    assertThat(coffeeMachine.getName()).isEqualTo(expectedCoffeeMachineNames.pop());
-                    assertThat(coffees).hasSize(2);
-                    coffees.stream().forEach(
-                            coffee -> {
-                                assertThat(expectedCoffeeNames.pop()).isEqualTo(coffee.getName());
-                                coffee.getTimesToFill().getFillTime().forEach(
-                                        fillTime -> {
-                                            assertThat(fillTime.getDescription())
-                                                    .isEqualTo(expectedDescriptions.pop());//
-                                            assertThat(fillTime.getValue()).isEqualTo(expectedTimesForCoffe.pop());
-                                        }
-                                );
-                            }
-                    );
-                    paymentTypes.forEach(
-                            payment -> {
-                                assertThat(payment.getName()).isEqualTo(expectedPaymentTypes.pop());
-                                assertThat(payment.getTime()).isEqualTo(expectedTimes.pop());
-                            }
-                    );
+            Consumer { coffeeMachine: CoffeMachine? ->
+                val coffees = coffeeMachine!!.coffees.coffee
+                val paymentTypes = coffeeMachine.paymentTypes.payment
+                Truth.assertThat(coffeeMachine.name).isEqualTo(expectedCoffeeMachineNames.pop())
+                Truth.assertThat(coffees).hasSize(2)
+                coffees.stream().forEach { coffee: Coffee? ->
+                    Truth.assertThat(expectedCoffeeNames.pop()).isEqualTo(coffee!!.name)
+                    coffee.timesToFill.fillTime.forEach(
+                        Consumer { fillTime: FillTime ->
+                            Truth.assertThat(fillTime.description)
+                                .isEqualTo(expectedDescriptions.pop()) //
+                            Truth.assertThat(fillTime.value).isEqualTo(expectedTimesForCoffe.pop())
+                        }
+                    )
                 }
-        );
+                paymentTypes.forEach(
+                    Consumer { payment: Payment ->
+                        Truth.assertThat(payment.name).isEqualTo(expectedPaymentTypes.pop())
+                        Truth.assertThat(payment.time).isEqualTo(expectedTimes.pop())
+                    }
+                )
+            }
+        )
         employees.forEach(
-                employee -> {
-                    final List<PreAction> preActions = employee.getActions().getPreAction();
-                    final List<PostAction> postActions = employee.getActions().getPostAction();
-                    assertThat(employee.getName()).isEqualTo(expectedEmployeeNames.pop());
-                    assertThat(employee.getCup().getSize()).isEqualTo(expectedCupSizes.pop());
-                    preActions.forEach(
-                            action -> {
-                                assertThat(action.getDescription())
-                                        .isEqualTo(expectedPreActionDescriptions.pop());
-                                assertThat(action.getTime()).isEqualTo(expectedPreActionTimes.pop());
-                            }
-                    );
-                    postActions.forEach(
-                            postAction -> {
-                                assertThat(postAction.getDescription()).isEqualTo(expectedPostActionDescriptions.pop());
-                                assertThat(postAction.getTime()).isEqualTo(expectedPostActionTimes.pop());
-                            }
-                    );
-                }
-        );
+            Consumer { employee: Employee? ->
+                val preActions = employee!!.actions.preAction
+                val postActions = employee.actions.postAction
+                Truth.assertThat(employee.name).isEqualTo(expectedEmployeeNames.pop())
+                Truth.assertThat(employee.cup.size).isEqualTo(expectedCupSizes.pop())
+                preActions.forEach(
+                    Consumer { action: Employee.Actions.PreAction ->
+                        Truth.assertThat(action.description)
+                            .isEqualTo(expectedPreActionDescriptions.pop())
+                        Truth.assertThat(action.time).isEqualTo(expectedPreActionTimes.pop())
+                    }
+                )
+                postActions.forEach(
+                    Consumer { postAction: PostAction ->
+                        Truth.assertThat(postAction.description).isEqualTo(expectedPostActionDescriptions.pop())
+                        Truth.assertThat(postAction.time).isEqualTo(expectedPostActionTimes.pop())
+                    }
+                )
+            }
+        )
     }
 
     @Test
-    public void start() throws Exception {
-        final ThreadPoolExecutor threadPoolExecutorPreActivity = mock(ThreadPoolExecutor.class);
-        final ThreadPoolExecutor threadPoolExecutorPostActivity = mock(ThreadPoolExecutor.class);
-        final ThreadPoolExecutor threadPoolExecutorCoffee = mock(ThreadPoolExecutor.class);
-        final ThreadPoolExecutor threadPoolExecutorPayment = mock(ThreadPoolExecutor.class);
-
-        final InputStream testMachinesFile = getClass().getResourceAsStream("/coffemachine_example_test_1.xml");
-        final InputStream testEmployeesFile = getClass().getResourceAsStream("/employees_example_test_1.xml");
-
-        when(machineProcessor.getPaymentProcessor()).thenReturn(paymentProcessor);
-        when(machineProcessor.getCoffeeProcessor()).thenReturn(coffeeProcessor);
-        when(machineProcessor.getPreProcessor()).thenReturn(preProcessor);
-        when(machineProcessor.getPostProcessor()).thenReturn(postProcessor);
-
-        final List<PreAction> preActions = new ArrayList<>();
-        final List<PostAction> postActions = new ArrayList<>();
-
+    @Throws(Exception::class)
+    fun start() {
+        val threadPoolExecutorPreActivity = Mockito.mock(
+            ThreadPoolExecutor::class.java
+        )
+        val threadPoolExecutorPostActivity = Mockito.mock(
+            ThreadPoolExecutor::class.java
+        )
+        val threadPoolExecutorCoffee = Mockito.mock(
+            ThreadPoolExecutor::class.java
+        )
+        val threadPoolExecutorPayment = Mockito.mock(
+            ThreadPoolExecutor::class.java
+        )
+        val testMachinesFile = javaClass.getResourceAsStream("/coffemachine_example_test_1.xml")
+        val testEmployeesFile = javaClass.getResourceAsStream("/employees_example_test_1.xml")
+        Mockito.`when`(machineProcessor.paymentProcessor).thenReturn(paymentProcessor)
+        Mockito.`when`(machineProcessor.coffeeProcessor).thenReturn(coffeeProcessor)
+        Mockito.`when`(machineProcessor.preProcessor).thenReturn(preProcessor)
+        Mockito.`when`(machineProcessor.postProcessor).thenReturn(postProcessor)
+        val preActions: List<Employee.Actions.PreAction> = ArrayList()
+        val postActions: List<PostAction?> = ArrayList()
         generalProcessor.initSimulationProcess(
-                testMachinesFile,
-                testEmployeesFile
-        );
-
-        doAnswer(invocationOnMock -> {
-            preProcessor.callPreActions(null, GeneralProcessorImpl.MAIN_QUEUE_PRE, preActions, null, null, null);
-            return null;
-        }).when(machineProcessor)
-                .callPreActions(any(Employee.class), eq(GeneralProcessorImpl.MAIN_QUEUE_PRE), any(), any(Coffee.class), any(Payment.class),
-                        any());
-        doAnswer(invocationOnMock -> {
-            coffeeProcessor.callMakeCoffee(null, TEST, null, null, null, null);
-            return null;
-        }).when(machineProcessor)
-                .callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), any(),
-                        any(QueueCallable.class));
-        doAnswer(invocationOnMock -> {
-            paymentProcessor.callPayCoffee(null, TEST, null, null, null);
-            return null;
-        }).when(machineProcessor).callPayCoffee(any(Employee.class), any(String.class), any(Payment.class), any(),
-                any(QueueCallable.class));
-        doAnswer(invocationOnMock -> {
-            postProcessor.callPostActions(any(Employee.class), GeneralProcessorImpl.MAIN_QUEUE_POST, postActions, null);
-            return null;
-        }).when(machineProcessor)
-                .callPostActions(any(Employee.class), eq(GeneralProcessorImpl.MAIN_QUEUE_POST), any(), any(QueueCallable.class));
-
-        when(queuePreActivity.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPreActivity);
-        when(queueCofee.getExecutor(any(String.class))).thenReturn(threadPoolExecutorCoffee);
-        when(queuePayment.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPayment);
-        when(queuePostActivity.getExecutor(any(String.class))).thenReturn(threadPoolExecutorPostActivity);
-
-        final HashMap<String, ThreadPoolExecutor> preActivityExecutorMap = new HashMap<>();
-        preActivityExecutorMap.put(GeneralProcessorImpl.MAIN_QUEUE_PRE, threadPoolExecutorPreActivity);
-        preActivityExecutorMap.put(GeneralProcessorImpl.MAIN_QUEUE_POST, threadPoolExecutorPostActivity);
-        final HashMap<String, ThreadPoolExecutor> coffeExecutorMap = new HashMap<>();
-        coffeExecutorMap.put(TEST, threadPoolExecutorCoffee);
-        final HashMap<String, ThreadPoolExecutor> paymentExecutorMap = new HashMap<>();
-        paymentExecutorMap.put(TEST, threadPoolExecutorPayment);
-        final HashMap<String, ThreadPoolExecutor> postActivityExecutorMap = new HashMap<>();
-        postActivityExecutorMap.put(GeneralProcessorImpl.MAIN_QUEUE_PRE, threadPoolExecutorPreActivity);
-        postActivityExecutorMap.put(GeneralProcessorImpl.MAIN_QUEUE_POST, threadPoolExecutorPostActivity);
-
-        when(threadPoolExecutorPreActivity.submit(any(PreActionCallableImpl.class))).thenReturn(future);
-        when(threadPoolExecutorCoffee.submit(any(CoffeeCallableImpl.class))).thenReturn(future);
-        when(threadPoolExecutorPayment.submit(any(PaymentCallableImpl.class))).thenReturn(future);
-        when(threadPoolExecutorPostActivity.submit(any(PostActionCallableImpl.class))).thenReturn(future);
-
-        when(queuePreActivity.getExecutorServiceMap()).thenReturn(preActivityExecutorMap);
-        when(queueCofee.getExecutorServiceMap()).thenReturn(coffeExecutorMap);
-        when(queuePayment.getExecutorServiceMap()).thenReturn(paymentExecutorMap);
-        when(queuePostActivity.getExecutorServiceMap()).thenReturn(postActivityExecutorMap);
-
-        when(threadPoolExecutorPreActivity.submit(any(PreActionCallableImpl.class))).thenReturn(future);
-        when(threadPoolExecutorCoffee.submit(any(CoffeeCallableImpl.class))).thenReturn(future);
-        when(threadPoolExecutorPayment.submit(any(PaymentCallableImpl.class))).thenReturn(future);
-        when(threadPoolExecutorPostActivity.submit(any(PostActionCallableImpl.class))).thenReturn(future);
-
-        final InOrder order = inOrder(machineProcessor);
-
-        generalProcessor.start();
-
-        verify(threadPoolExecutorPreActivity, times(2)).submit(any(Callable.class));
+            testMachinesFile,
+            testEmployeesFile
+        )
+        Mockito.doAnswer {
+            preProcessor.callPreActions(null, GeneralProcessorImpl.MAIN_QUEUE_PRE, preActions, null, null, null)
+            null
+        }.`when`(machineProcessor)
+            .callPreActions(
+                Matchers.any(Employee::class.java),
+                Matchers.eq(GeneralProcessorImpl.MAIN_QUEUE_PRE),
+                Matchers.any(),
+                Matchers.any(
+                    Coffee::class.java
+                ),
+                Matchers.any(Payment::class.java),
+                Matchers.any()
+            )
+        Mockito.doAnswer {
+            coffeeProcessor.callMakeCoffee(null, TEST, null, null, null, null)
+            null
+        }.`when`(machineProcessor)
+            .callMakeCoffee(
+                Matchers.any(Employee::class.java), Matchers.any(
+                    String::class.java
+                ), Matchers.any(Coffee::class.java), Matchers.any(
+                    Payment::class.java
+                ), Matchers.any(),
+                Matchers.any(QueueCallable::class.java)
+            )
+        Mockito.doAnswer {
+            paymentProcessor.callPayCoffee(null, TEST, null, null, null)
+            null
+        }.`when`(machineProcessor).callPayCoffee(
+            Matchers.any(Employee::class.java), Matchers.any(
+                String::class.java
+            ), Matchers.any(Payment::class.java), Matchers.any(),
+            Matchers.any(QueueCallable::class.java)
+        )
+        Mockito.doAnswer { invocationOnMock: InvocationOnMock? ->
+            postProcessor.callPostActions(
+                Matchers.any(
+                    Employee::class.java
+                ), GeneralProcessorImpl.MAIN_QUEUE_POST, postActions, null
+            )
+            null
+        }.`when`(machineProcessor)
+            .callPostActions(
+                Matchers.any(Employee::class.java),
+                Matchers.eq(GeneralProcessorImpl.MAIN_QUEUE_POST),
+                Matchers.any(),
+                Matchers.any(
+                    QueueCallable::class.java
+                )
+            )
+        Mockito.`when`(
+            queuePreActivity!!.getExecutor(
+                Matchers.any(
+                    String::class.java
+                )
+            )
+        ).thenReturn(threadPoolExecutorPreActivity)
+        Mockito.`when`(
+            queueCofee!!.getExecutor(
+                Matchers.any(
+                    String::class.java
+                )
+            )
+        ).thenReturn(threadPoolExecutorCoffee)
+        Mockito.`when`(
+            queuePayment!!.getExecutor(
+                Matchers.any(
+                    String::class.java
+                )
+            )
+        ).thenReturn(threadPoolExecutorPayment)
+        Mockito.`when`(
+            queuePostActivity!!.getExecutor(
+                Matchers.any(
+                    String::class.java
+                )
+            )
+        ).thenReturn(threadPoolExecutorPostActivity)
+        val preActivityExecutorMap = HashMap<String, ThreadPoolExecutor>()
+        preActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_PRE] = threadPoolExecutorPreActivity
+        preActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_POST] = threadPoolExecutorPostActivity
+        val coffeExecutorMap = HashMap<String, ThreadPoolExecutor>()
+        coffeExecutorMap[TEST] = threadPoolExecutorCoffee
+        val paymentExecutorMap = HashMap<String, ThreadPoolExecutor>()
+        paymentExecutorMap[TEST] = threadPoolExecutorPayment
+        val postActivityExecutorMap = HashMap<String, ThreadPoolExecutor>()
+        postActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_PRE] = threadPoolExecutorPreActivity
+        postActivityExecutorMap[GeneralProcessorImpl.MAIN_QUEUE_POST] = threadPoolExecutorPostActivity
+        Mockito.`when`(
+            threadPoolExecutorPreActivity.submit(
+                Matchers.any(
+                    PreActionCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`(
+            threadPoolExecutorCoffee.submit(
+                Matchers.any(
+                    CoffeeCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`(
+            threadPoolExecutorPayment.submit(
+                Matchers.any(
+                    PaymentCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`(
+            threadPoolExecutorPostActivity.submit(
+                Matchers.any(
+                    PostActionCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`<Map<String, ThreadPoolExecutor>>(queuePreActivity.executorServiceMap)
+            .thenReturn(preActivityExecutorMap)
+        Mockito.`when`<Map<String, ThreadPoolExecutor>>(queueCofee.executorServiceMap).thenReturn(coffeExecutorMap)
+        Mockito.`when`<Map<String, ThreadPoolExecutor>>(queuePayment.executorServiceMap).thenReturn(paymentExecutorMap)
+        Mockito.`when`<Map<String, ThreadPoolExecutor>>(queuePostActivity.executorServiceMap)
+            .thenReturn(postActivityExecutorMap)
+        Mockito.`when`(
+            threadPoolExecutorPreActivity.submit(
+                Matchers.any(
+                    PreActionCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`(
+            threadPoolExecutorCoffee.submit(
+                Matchers.any(
+                    CoffeeCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`(
+            threadPoolExecutorPayment.submit(
+                Matchers.any(
+                    PaymentCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        Mockito.`when`(
+            threadPoolExecutorPostActivity.submit(
+                Matchers.any(
+                    PostActionCallableImpl::class.java
+                )
+            )
+        ).thenReturn(future)
+        val order = Mockito.inOrder(machineProcessor)
+        generalProcessor.start()
+        Mockito.verify(threadPoolExecutorPreActivity, Mockito.times(2)).submit<Any>(
+            Matchers.any(
+                Callable::class.java
+            )
+        )
         //        verify(threadPoolExecutorCoffee, times(10)).submit(any(Callable.class));
         //        verify(threadPoolExecutorPayment, times(2)).submit(any(Callable.class));
         //        verify(threadPoolExecutorPostActivity, times(2)).submit(any(Callable.class));
-
-        verify(queuePreActivity, times(1)).initExecutors();
-        verify(queueCofee, times(1)).initExecutors();
-        verify(queuePayment, times(1)).initExecutors();
-        verify(queuePostActivity, times(1)).initExecutors();
+        Mockito.verify(queuePreActivity, Mockito.times(1)).initExecutors()
+        Mockito.verify(queueCofee, Mockito.times(1)).initExecutors()
+        Mockito.verify(queuePayment, Mockito.times(1)).initExecutors()
+        Mockito.verify(queuePostActivity, Mockito.times(1)).initExecutors()
 
         //        order.verify(machineProcessor, times(1)).callPreActions(any(Employee.class), eq(MAIN_QUEUE_PRE), any(), any(Coffee.class), any(Payment.class), any());
         //        order.verify(machineProcessor, times(1)).callMakeCoffee(any(Employee.class), any(String.class), any(Coffee.class), any(Payment.class), postActions, any(QueueCallable.class));
@@ -385,4 +437,20 @@ public class GeneralProcessorImplTest {
         //        order.verify(machineProcessor, times(1)).callPostActions(any(Employee.class), MAIN_QUEUE_POST, postActions, any(QueueCallable.class));
     }
 
+    companion object {
+        private const val POURING_COFFEE = "pouring coffee"
+        private const val SWITCH_TIME = "switch time"
+        private const val POURING_MILK = "pouring milk"
+        private const val GRINDING_COFFEE = "grinding coffee"
+        private const val HEATING = "heating"
+        private const val LATTE_MACHIATTO_MILD = "latteMachiattoMild"
+        private const val LATTE_MACHIATTO = "latteMachiatto"
+        private const val NESSY_EXPRESSO_2 = "nessyExpresso2"
+        private const val NESSY_EXPRESSO_1 = "nessyExpresso1"
+        private const val BEFORE_COFFEE_PAYMENT = "beforeCoffeePayment"
+        private const val AFTER_COFFEE_PAYMENT = "afterCoffeePayment"
+        private const val WHILE_COFFEE_POURING_PAYMENT = "whileCoffeePouringPayment"
+        private const val NO_PAYMENT = "noPayment"
+        private const val TEST = "TEST"
+    }
 }

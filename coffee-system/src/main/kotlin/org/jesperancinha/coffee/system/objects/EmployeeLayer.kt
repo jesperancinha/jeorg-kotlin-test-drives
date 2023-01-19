@@ -9,6 +9,6 @@ import org.jesperancinha.coffee.system.input.Employees.Employee
  */
 data class EmployeeLayer(
     val employee: Employee,
-    private val coffee: Coffee? = null,
-    private val payment: Payment? = null,
+    val coffee: Coffee,
+    val payment: Payment,
 )

@@ -256,6 +256,11 @@
             <groupId>args4j</groupId>
             <artifactId>args4j</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.mockk</groupId>
+            <artifactId>mockk-jvm</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.google.truth</groupId>

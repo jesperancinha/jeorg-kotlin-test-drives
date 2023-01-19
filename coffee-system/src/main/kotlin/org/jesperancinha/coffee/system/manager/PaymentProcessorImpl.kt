@@ -1,6 +1,5 @@
 package org.jesperancinha.coffee.system.manager
 
-import lombok.Getter
 import lombok.experimental.Accessors
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
@@ -18,14 +17,14 @@ import java.util.concurrent.Callable
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
 @Accessors(chain = true)
-@Getter
 @Service
-abstract class PaymentProcessorImpl : ProcessorAbstract() {
+abstract class PaymentProcessorImpl(
     @Autowired
-    private val queuePayment: QueuePaymentImpl? = null
+    private val queuePayment: QueuePaymentImpl,
+    @Autowired
+    private val machineProcessor: MachineProcessorImpl
+) : ProcessorAbstract() {
 
-    @Autowired
-    private val machineProcessor: MachineProcessorImpl? = null
     fun callPayCoffee(
         employee: Employee?,
         name: String?,
@@ -43,21 +42,21 @@ abstract class PaymentProcessorImpl : ProcessorAbstract() {
         parentCallable.allCallables.add(paymentCallable)
     }
 
-    override val executorServiceQueue: Queue?
-        get() = queuePayment
+    override val executorServiceQueue: Queue = queuePayment
 
-    override fun getExecutorName(callable: Callable<Boolean?>): String = (callable as PaymentCallableImpl).name ?: throw RuntimeException("Executor not found!")
+    override fun getExecutorName(callable: Callable<Boolean>): String =
+        (callable as PaymentCallableImpl).name ?: throw RuntimeException("Executor not found!")
 
-    fun addQueueSize(queueSize: Int, name: String?) {
-        queuePayment!!.setQueueSize(queueSize, name!!)
+    fun addQueueSize(queueSize: Int, name: String) {
+        queuePayment.setQueueSize(queueSize, name)
     }
 
     fun initExecutors() {
-        queuePayment!!.initExecutors()
+        queuePayment.initExecutors()
     }
 
     fun stopExectutors() {
-        queuePayment!!.stopExecutors()
+        queuePayment.stopExecutors()
     }
 
     abstract override fun waitForAllCalls(queueCallable: QueueCallable)

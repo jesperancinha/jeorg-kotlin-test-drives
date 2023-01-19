@@ -26,7 +26,7 @@ abstract class ProcessorAbstract {
             }
     }
 
-    private fun addSubmitResult(submitResult: Future<Boolean>, queueCallable: QueueCallable) {
+     private fun addSubmitResult(submitResult: Future<Boolean>, queueCallable: QueueCallable) {
         queueCallable.addSubmitResult(submitResult)
     }
 

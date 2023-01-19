@@ -1,8 +1,6 @@
-package org.jesperancinha.coffee.system.manager;
+package org.jesperancinha.coffee.system.manager
 
 /**
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
-public class CoffeeProcessorImplTest {
-
-}
+class CoffeeProcessorImplTest 

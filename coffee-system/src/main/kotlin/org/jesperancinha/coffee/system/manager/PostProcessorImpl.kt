@@ -18,37 +18,36 @@ import java.util.function.Consumer
 @Accessors(chain = true)
 @Getter
 @Service
-abstract class PostProcessorImpl : ProcessorAbstract() {
+abstract class PostProcessorImpl(
     @Autowired
-    private val queuePostActivity: QueuePostActivityImpl? = null
+    private val queuePostActivity: QueuePostActivityImpl
+) : ProcessorAbstract() {
+
     fun callPostActions(
         employee: Employee?,
         name: String?,
-        postActions: List<PostAction?>,
+        postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
         val postActionCallable = PostActionCallableImpl(name)
         parentCallable.allCallables.add(postActionCallable)
-        postActions.forEach(Consumer<PostAction> { postAction: PostAction -> postActionCallable.addPostAction(postAction) })
+        postActions.forEach{ postAction -> postActionCallable.addPostAction(postAction) }
     }
 
-    override val executorServiceQueue: Queue?
-        get() = queuePostActivity
+    override val executorServiceQueue: Queue =queuePostActivity
 
-    override fun getExecutorName(callable: Callable<Boolean?>): String {
-        return (callable as ActionCallable).name
-    }
+    override fun getExecutorName(callable: Callable<Boolean>) = (callable as ActionCallable).name
 
     fun addQueueSize(queueSize: Int, name: String?) {
-        queuePostActivity!!.setQueueSize(queueSize, name!!)
+        queuePostActivity.setQueueSize(queueSize, name)
     }
 
     fun initExecutors() {
-        queuePostActivity!!.initExecutors()
+        queuePostActivity.initExecutors()
     }
 
     fun stopExectutors() {
-        queuePostActivity!!.stopExecutors()
+        queuePostActivity.stopExecutors()
     }
 
     abstract override fun waitForAllCalls(queueCallable: QueueCallable)

@@ -13,27 +13,26 @@ import org.springframework.stereotype.Service
 @Accessors(chain = true)
 @Getter
 @Service
-class MachineProcessorImpl {
+class MachineProcessorImpl(
     @Autowired
-    val preProcessor: PreProcessorImpl? = null
+    val preProcessor: PreProcessorImpl,
+    @Autowired
+    val coffeeProcessor: CoffeeProcessorImpl,
+    @Autowired
+    val paymentProcessor: PaymentProcessorImpl,
+    @Autowired
+    val postProcessor: PostProcessorImpl
+) {
 
-    @Autowired
-    val coffeeProcessor: CoffeeProcessorImpl? = null
-
-    @Autowired
-    val paymentProcessor: PaymentProcessorImpl? = null
-
-    @Autowired
-    private val postProcessor: PostProcessorImpl? = null
     fun callPreActions(
         employee: Employee,
         name: String?,
-        preActions: List<Employee.Actions.PreAction?>,
+        preActions: List<Employee.Actions.PreAction>,
         coffee: Coffee,
         payment: Payment,
         postActions: List<PostAction?>
     ) {
-        preProcessor!!.callPreActions(employee, name, preActions, coffee, payment, postActions)
+        preProcessor.callPreActions(employee, name, preActions, coffee, payment, postActions)
     }
 
     fun callMakeCoffee(
@@ -44,7 +43,7 @@ class MachineProcessorImpl {
         postActions: List<PostAction?>,
         parentCallable: QueueCallable
     ) {
-        coffeeProcessor!!.callMakeCoffee(employee, name, coffee, payment, postActions, parentCallable)
+        coffeeProcessor.callMakeCoffee(employee, name, coffee, payment, postActions, parentCallable)
     }
 
     fun callPayCoffee(
@@ -54,7 +53,7 @@ class MachineProcessorImpl {
         postActions: List<PostAction?>,
         parentCallable: QueueCallable
     ) {
-        paymentProcessor!!.callPayCoffee(employee, name, payment, postActions, parentCallable)
+        paymentProcessor.callPayCoffee(employee, name, payment, postActions, parentCallable)
     }
 
     fun callPostActions(
@@ -63,13 +62,13 @@ class MachineProcessorImpl {
         postActions: List<PostAction?>,
         parentCallable: QueueCallable
     ) {
-        postProcessor!!.callPostActions(employee, name, postActions, parentCallable)
+        postProcessor.callPostActions(employee, name, postActions, parentCallable)
     }
 
     fun initAll() {
-        preProcessor!!.initExecutors()
-        coffeeProcessor!!.initExecutors()
-        paymentProcessor!!.initExecutors()
-        postProcessor!!.initExecutors()
+        preProcessor.initExecutors()
+        coffeeProcessor.initExecutors()
+        paymentProcessor.initExecutors()
+        postProcessor.initExecutors()
     }
 }

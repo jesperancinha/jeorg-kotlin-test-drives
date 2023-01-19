@@ -1,18 +1,17 @@
-package org.jesperancinha.coffee.system.concurrency;
+package org.jesperancinha.coffee.system.concurrency
 
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import io.mockk.junit5.MockKExtension
+import org.junit.Test
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.runner.RunWith
+import org.mockito.runners.MockitoJUnitRunner
 
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
-@RunWith(MockitoJUnitRunner.class)
-public class EmployeeCallableImplTest {
+@ExtendWith(MockKExtension::class)
+class EmployeeCallableImplTest {
     @Test
-    public void call() {
-
+    fun call() {
     }
-
 }

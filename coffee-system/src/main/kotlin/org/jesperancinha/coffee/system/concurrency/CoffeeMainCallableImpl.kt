@@ -22,8 +22,8 @@ import java.util.function.Predicate
 @Getter
 @Slf4j
 class CoffeeMainCallableImpl(
-    employee: Employee?, name: String, coffee: Coffee, payment: Payment,
-    postActions: List<PostAction?>, machineProcessor: MachineProcessorImpl?
+    employee: Employee?, name: String?, coffee: Coffee?, payment: Payment?,
+    postActions: List<PostAction>?, machineProcessor: MachineProcessorImpl?
 ) : QueueCallableAbstract(), QueueCallable {
     private val employee: Employee?
     val name: String

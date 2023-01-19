@@ -10,12 +10,10 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.queues.Queue
 import org.jesperancinha.coffee.system.queues.QueuePreActivityImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
-import java.util.function.Consumer
 
 @Accessors(chain = true)
 @Getter
@@ -24,17 +22,18 @@ abstract class PreProcessorImpl internal constructor() : ProcessorAbstract() {
     private val startupCallable: StartupCallableImpl by lazy { StartupCallableImpl() }
 
     @Autowired
-    private val queuePreActivity: QueuePreActivityImpl? = null
+    lateinit var queuePreActivity: QueuePreActivityImpl
 
     @Autowired
-    private val machineProcessor: MachineProcessorImpl? = null
+    lateinit var machineProcessor: MachineProcessorImpl
 
     fun callPreActions(
         employee: Employee,
-        name: String?,
+        name: String,
         actions: List<Employee.Actions.PreAction>,
-        coffee: Coffee, payment: Payment,
-        postActions: List<PostAction?>
+        coffee: Coffee,
+        payment: Payment,
+        postActions: List<PostAction>
     ) {
         val preActionCallable = PreActionCallableImpl(
             employee,
@@ -52,32 +51,19 @@ abstract class PreProcessorImpl internal constructor() : ProcessorAbstract() {
         startupCallable.allCallables.add(preActionCallable)
     }
 
-    fun runAllCalls() {
-        runAllCalls(startupCallable)
-    }
+    fun runAllCalls() = runAllCalls(startupCallable)
 
-    fun waitForAllCalls() {
-        waitForAllCalls(startupCallable)
-    }
+    fun waitForAllCalls() = waitForAllCalls(startupCallable)
 
-    override val executorServiceQueue: Queue?
-        get() = queuePreActivity
+    override val executorServiceQueue = queuePreActivity
 
-    override fun getExecutorName(callable: Callable<Boolean?>): String {
-        return (callable as ActionCallable).name
-    }
+    override fun getExecutorName(callable: Callable<Boolean>) = (callable as ActionCallable).name
 
-    fun addQueueSize(queueSize: Int, name: String?) {
-        queuePreActivity!!.setQueueSize(queueSize, name!!)
-    }
+    fun addQueueSize(queueSize: Int, name: String) = queuePreActivity.setQueueSize(queueSize, name)
 
-    fun initExecutors() {
-        queuePreActivity!!.initExecutors()
-    }
+    fun initExecutors() = queuePreActivity.initExecutors()
 
-    fun stopExectutors() {
-        queuePreActivity!!.stopExecutors()
-    }
+    fun stopExecutors() = queuePreActivity.stopExecutors()
 
     abstract override fun waitForAllCalls(queueCallable: QueueCallable)
     abstract override fun runAllCalls(queueCallable: QueueCallable)

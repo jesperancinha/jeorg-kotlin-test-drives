@@ -18,13 +18,13 @@ import java.util.function.Consumer
 @Accessors(chain = true)
 class PreActionCallableImpl(
     employee: Employee,
-    name: String?,
+    name: String,
     coffee: Coffee,
     payment: Payment,
-    postActions: List<PostAction?>,
-    machineProcessor: MachineProcessorImpl?
+    postActions: List<PostAction>,
+    machineProcessor: MachineProcessorImpl
 ) : ActionCallable(name), QueueCallable {
-    private val machineProcessor: MachineProcessorImpl?
+    private val machineProcessor: MachineProcessorImpl
     private val coffee: Coffee
     private val payment: Payment
     private val postActions: List<PostAction?>
@@ -59,7 +59,7 @@ class PreActionCallableImpl(
                 }
             }
         )
-        val coffeeProcessor = machineProcessor.getCoffeeProcessor()
+        val coffeeProcessor = machineProcessor.coffeeProcessor
         machineProcessor!!.callMakeCoffee(employee, coffee.name, coffee, payment, postActions, this)
         coffeeProcessor.runAllCalls(this)
         coffeeProcessor.waitForAllCalls(this)
