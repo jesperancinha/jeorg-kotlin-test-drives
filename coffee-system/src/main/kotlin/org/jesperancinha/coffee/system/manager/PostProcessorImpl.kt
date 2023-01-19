@@ -24,8 +24,8 @@ abstract class PostProcessorImpl(
 ) : ProcessorAbstract() {
 
     fun callPostActions(
-        employee: Employee?,
-        name: String?,
+        employee: Employee,
+        name: String,
         postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
@@ -38,7 +38,7 @@ abstract class PostProcessorImpl(
 
     override fun getExecutorName(callable: Callable<Boolean>) = (callable as ActionCallable).name
 
-    fun addQueueSize(queueSize: Int, name: String?) {
+    fun addQueueSize(queueSize: Int, name: String) {
         queuePostActivity.setQueueSize(queueSize, name)
     }
 

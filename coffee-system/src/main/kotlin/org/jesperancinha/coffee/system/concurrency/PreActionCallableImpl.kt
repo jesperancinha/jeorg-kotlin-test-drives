@@ -27,7 +27,7 @@ class PreActionCallableImpl(
     private val machineProcessor: MachineProcessorImpl
     private val coffee: Coffee
     private val payment: Payment
-    private val postActions: List<PostAction?>
+    private val postActions: List<PostAction>
     private val employee: Employee
 
     init {
@@ -60,7 +60,7 @@ class PreActionCallableImpl(
             }
         )
         val coffeeProcessor = machineProcessor.coffeeProcessor
-        machineProcessor!!.callMakeCoffee(employee, coffee.name, coffee, payment, postActions, this)
+        machineProcessor.callMakeCoffee(employee, coffee.name, coffee, payment, postActions, this)
         coffeeProcessor.runAllCalls(this)
         coffeeProcessor.waitForAllCalls(this)
         return true

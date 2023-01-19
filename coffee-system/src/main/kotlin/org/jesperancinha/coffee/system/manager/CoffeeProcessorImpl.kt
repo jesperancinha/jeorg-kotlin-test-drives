@@ -22,19 +22,19 @@ abstract class CoffeeProcessorImpl(
     @Autowired
     private val queueCofee: QueueCofeeImpl,
     @Autowired
-    private val machineProcessor: MachineProcessorImpl? = null
+    private val machineProcessor: MachineProcessorImpl
 ) : ProcessorAbstract() {
 
     fun callMakeCoffee(
-        employee: Employee?,
-        name: String?,
-        coffee: Coffee?,
-        payment: Payment?,
-        postActions: List<PostAction>?,
+        employee: Employee,
+        name: String,
+        coffee: Coffee,
+        payment: Payment,
+        postActions: List<PostAction>,
         parentCallable: QueueCallable?
     ) {
-        val coffeCallable = CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor)
-        parentCallable?.allCallables?.add(coffeCallable)
+        val coffeeMainCallableImpl = CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor)
+        parentCallable?.allCallables?.add(coffeeMainCallableImpl)
     }
 
     override val executorServiceQueue: Queue = queueCofee

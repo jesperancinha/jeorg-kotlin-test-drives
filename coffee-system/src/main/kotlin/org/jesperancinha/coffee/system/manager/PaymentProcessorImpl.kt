@@ -26,10 +26,10 @@ abstract class PaymentProcessorImpl(
 ) : ProcessorAbstract() {
 
     fun callPayCoffee(
-        employee: Employee?,
-        name: String?,
+        employee: Employee,
+        name: String,
         payment: Payment,
-        postActions: List<PostAction?>,
+        postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
         val paymentCallable = PaymentCallableImpl(

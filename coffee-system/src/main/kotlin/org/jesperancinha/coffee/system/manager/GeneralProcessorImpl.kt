@@ -144,7 +144,7 @@ class GeneralProcessorImpl(
                 employee.actions.preAction
             val coffee: Coffee = employeeLayer.coffee
             val payment: Payment = employeeLayer.payment
-            val postActions: List<PostAction?> = employee.actions.postAction
+            val postActions: List<PostAction> = employee.actions.postAction
             machineProcessor.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
         }
     }

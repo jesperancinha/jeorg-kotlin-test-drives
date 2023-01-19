@@ -26,40 +26,40 @@ class MachineProcessorImpl(
 
     fun callPreActions(
         employee: Employee,
-        name: String?,
+        name: String,
         preActions: List<Employee.Actions.PreAction>,
         coffee: Coffee,
         payment: Payment,
-        postActions: List<PostAction?>
+        postActions: List<PostAction>
     ) {
         preProcessor.callPreActions(employee, name, preActions, coffee, payment, postActions)
     }
 
     fun callMakeCoffee(
-        employee: Employee?,
+        employee: Employee,
         name: String,
         coffee: Coffee,
         payment: Payment,
-        postActions: List<PostAction?>,
+        postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
         coffeeProcessor.callMakeCoffee(employee, name, coffee, payment, postActions, parentCallable)
     }
 
     fun callPayCoffee(
-        employee: Employee?,
-        name: String?,
+        employee: Employee,
+        name: String,
         payment: Payment,
-        postActions: List<PostAction?>,
+        postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
         paymentProcessor.callPayCoffee(employee, name, payment, postActions, parentCallable)
     }
 
     fun callPostActions(
-        employee: Employee?,
-        name: String?,
-        postActions: List<PostAction?>,
+        employee: Employee,
+        name: String,
+        postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
         postProcessor.callPostActions(employee, name, postActions, parentCallable)

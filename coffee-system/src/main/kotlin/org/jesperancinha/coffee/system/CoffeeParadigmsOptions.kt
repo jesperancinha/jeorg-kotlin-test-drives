@@ -12,7 +12,7 @@ import java.io.FileNotFoundException
  * Created by joao on 29-4-16.
  */
 @Component
-class CoffeParadigmsOptions {
+class CoffeeParadigmsOptions {
     @Option(
         name = "-it",
         usage = "Define the number of iterations you want to make",

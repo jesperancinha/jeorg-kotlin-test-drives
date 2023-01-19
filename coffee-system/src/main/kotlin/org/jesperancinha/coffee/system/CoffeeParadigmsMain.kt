@@ -12,7 +12,7 @@ object CoffeeParadigmsMain {
     @Throws(CmdLineException::class, FileNotFoundException::class, JAXBException::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val options = CoffeParadigmsOptions()
+        val options = CoffeeParadigmsOptions()
         val parser = CmdLineParser(options)
         parser.parseArgument(*args)
         options.run()

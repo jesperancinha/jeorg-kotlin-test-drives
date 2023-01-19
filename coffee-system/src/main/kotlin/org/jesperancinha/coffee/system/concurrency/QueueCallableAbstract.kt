@@ -19,7 +19,7 @@ abstract class QueueCallableAbstract : QueueCallable {
 
     companion object {
         private val logger = LoggerFactory.getLogger(QueueCallableAbstract::class.java)
-        fun waitForAllFutures(allResults: List<Future<Boolean>>, logger: Logger) {
+        fun waitForAllFutures(allResults: MutableList<Future<Boolean>>, logger: Logger) {
             allResults.forEach { booleanFuture: Future<Boolean> ->
                 try {
                     if (booleanFuture.get() != null && !booleanFuture.get()!!) {

@@ -22,15 +22,19 @@ import java.util.function.Predicate
 @Getter
 @Slf4j
 class CoffeeMainCallableImpl(
-    employee: Employee?, name: String?, coffee: Coffee?, payment: Payment?,
-    postActions: List<PostAction>?, machineProcessor: MachineProcessorImpl?
+    employee: Employee,
+    name: String,
+    coffee: Coffee,
+    payment: Payment,
+    postActions: List<PostAction>,
+    machineProcessor: MachineProcessorImpl
 ) : QueueCallableAbstract(), QueueCallable {
-    private val employee: Employee?
+    private val employee: Employee
     val name: String
     private val coffee: Coffee
     private val payment: Payment
-    private val postActions: List<PostAction?>
-    private val machineProcessor: MachineProcessorImpl?
+    private val postActions: List<PostAction>
+    private val machineProcessor: MachineProcessorImpl
 
     init {
         this.employee = employee
@@ -47,7 +51,7 @@ class CoffeeMainCallableImpl(
         tasks.sortedBy(FillTime::getIndex)
             .map(FillTime::getIndex).forEach { e: Int -> allIndexes.add(e) }
         allIndexes.forEach{ index: Int ->
-                val allCoffeeCallables: MutableList<Future<Boolean?>> = ArrayList()
+                val allCoffeeCallables: MutableList<Future<Boolean>> = ArrayList()
                 val allTasksForIndex: List<FillTime> = tasks.stream().filter { fillTime: FillTime -> fillTime.index == index }
                     .toList()
                 val executor = Executors.newFixedThreadPool(allTasksForIndex.size)
@@ -64,8 +68,8 @@ class CoffeeMainCallableImpl(
                 waitForAllFutures(allCoffeeCallables, logger)
                 ExecutorServiceHelper.shutDownExecutorService(executor)
             }
-        val paymentProcessor = machineProcessor.getPaymentProcessor()
-        machineProcessor!!.callPayCoffee(employee, payment.name, payment, postActions, this)
+        val paymentProcessor = machineProcessor.paymentProcessor
+        machineProcessor.callPayCoffee(employee, payment.name, payment, postActions, this)
         paymentProcessor.runAllCalls(this)
         paymentProcessor.waitForAllCalls(this)
         return true
