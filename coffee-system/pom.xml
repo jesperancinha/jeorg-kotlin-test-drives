@@ -34,6 +34,7 @@
                         </goals>
                         <configuration>
                             <sourceDirs>src/main/kotlin</sourceDirs>
+                            <sourceDirs>target/generated-sources/jaxb</sourceDirs>
                         </configuration>
                     </execution>
                     <execution>
@@ -47,7 +48,6 @@
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
-                        <plugin>spring</plugin>
                         <plugin>jpa</plugin>
                         <plugin>all-open</plugin>
                         <plugin>no-arg</plugin>
@@ -185,17 +185,6 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>${build-helper-maven-plugin.version}</version>
                 <executions>
-                    <execution>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.basedir}/target/generated/src/main/java</source>
-                            </sources>
-                        </configuration>
-                    </execution>
                     <execution>
                         <phase>generate-sources</phase>
                         <goals>

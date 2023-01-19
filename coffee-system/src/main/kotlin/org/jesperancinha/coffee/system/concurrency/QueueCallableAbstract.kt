@@ -1,6 +1,5 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import lombok.Getter
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.manager.ProcessorAbstract
 import org.slf4j.Logger
@@ -9,7 +8,6 @@ import java.util.concurrent.Callable
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
 
-@Getter
 abstract class QueueCallableAbstract : QueueCallable {
     private val allResults: MutableList<Future<Boolean>> = ArrayList()
     override val allCallables: MutableList<Callable<Boolean>> = ArrayList()
