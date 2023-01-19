@@ -16,7 +16,6 @@ import java.util.concurrent.Callable
 class PreProcessorImpl(
     @Autowired
     val queuePreActivity: QueuePreActivityImpl,
-    @Autowired
     val preActionCallable: PreActionCallable
 ): ProcessorAbstract() {
     private val startupCallable: StartupCallableImpl by lazy { StartupCallableImpl() }

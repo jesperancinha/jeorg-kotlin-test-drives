@@ -21,7 +21,7 @@ import java.util.*
 @Service
 class GeneralProcessorImpl(
     @Autowired
-    private val machineProcessor: MachineProcessorImpl
+    private val machineProcessor: MachineProcessor
 ) {
     var nIterations: Int = 0
     var preRowSize: Int = 0

@@ -66,8 +66,8 @@ class GeneralProcessorImplTest {
     lateinit var queuePreActivity: QueuePreActivityImpl
 
     @SpyK
-    var machineProcessor: MachineProcessorImpl =
-        MachineProcessorImpl(preProcessor, coffeeProcessor, paymentProcessor, postProcessor)
+    var machineProcessor: MachineProcessor =
+        MachineProcessor(preProcessor, coffeeProcessor, paymentProcessor, postProcessor)
 
     private var future: Future<Boolean> = mockk()
 

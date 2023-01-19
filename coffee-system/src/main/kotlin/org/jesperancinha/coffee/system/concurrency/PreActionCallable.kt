@@ -5,7 +5,7 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +17,7 @@ import java.util.function.Consumer
 @Service
 class PreActionCallable(
     @Autowired
-    val machineProcessor: MachineProcessorImpl
+    val machineProcessor: MachineProcessor
 ) : ActionCallable(), QueueCallable {
     private var coffee: Coffee? = null
     private var payment: Payment? = null
@@ -66,7 +66,8 @@ class PreActionCallable(
             requireNotNull(coffee?.name),
             requireNotNull(coffee),
             requireNotNull(payment),
-            requireNotNull(postActions),
+            requireNotNull(postActions)
+            ,
             this
         )
         coffeeProcessor.runAllCalls(this)

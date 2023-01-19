@@ -17,7 +17,7 @@ class CoffeeProcessorImpl(
     @Autowired
     private val queueCofee: QueueCofeeImpl,
     @Autowired
-    private val machineProcessor: MachineProcessorImpl
+    private val machineProcessor: MachineProcessor
 ) : ProcessorAbstract() {
 
     fun callMakeCoffee(

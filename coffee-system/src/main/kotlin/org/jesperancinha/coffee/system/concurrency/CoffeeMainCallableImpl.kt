@@ -7,7 +7,7 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory.getLogger
 import java.util.concurrent.Executors
@@ -19,14 +19,14 @@ class CoffeeMainCallableImpl(
     coffee: Coffee,
     payment: Payment,
     postActions: List<PostAction>,
-    machineProcessor: MachineProcessorImpl
+    machineProcessor: MachineProcessor
 ) : QueueCallableAbstract(), QueueCallable {
     private val employee: Employee
     val name: String
     private val coffee: Coffee
     private val payment: Payment
     private val postActions: List<PostAction>
-    private val machineProcessor: MachineProcessorImpl
+    private val machineProcessor: MachineProcessor
 
     init {
         this.employee = employee

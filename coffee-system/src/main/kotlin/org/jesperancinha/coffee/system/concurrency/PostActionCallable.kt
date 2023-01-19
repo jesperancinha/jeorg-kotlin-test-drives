@@ -2,7 +2,7 @@ package org.jesperancinha.coffee.system.concurrency
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -18,7 +18,7 @@ import java.util.function.Consumer
 @Service
 class PostActionCallable() : ActionCallable(), QueueCallable {
     @Autowired
-    private val machineProcessor: MachineProcessorImpl? = null
+    private val machineProcessor: MachineProcessor? = null
 
     override var name: String? = null
     fun init(name: String) {

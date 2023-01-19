@@ -5,7 +5,7 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Paymen
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -18,7 +18,7 @@ import java.util.concurrent.*
 @Service
 class PaymentCallableImpl(
     @Autowired
-    private val machineProcessor: MachineProcessorImpl
+    private val machineProcessor: MachineProcessor
 ) : QueueCallableAbstract(), QueueCallable {
     private var chosenPayment: Payment?=null
     private var employee: Employee?=null
