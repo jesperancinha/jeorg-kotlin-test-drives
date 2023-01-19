@@ -30,11 +30,11 @@ import java.util.function.Consumer
 @Service
 @Slf4j
 class GeneralProcessorImpl {
-    private val nIterations = 0
-    private val sourceXmlMachinesFile: String? = null
-    private val sourceXmlEmployeesFile: String? = null
-    private val preRowSize = 0
-    private val postRowSize = 0
+    var nIterations = 0
+    internal var sourceXmlMachinesFile: String? = null
+    var sourceXmlEmployeesFile: String? = null
+     var preRowSize = 0
+     var postRowSize = 0
     private var coffeeMachines: CoffeeMachines? = null
     private var employees: Employees? = null
 

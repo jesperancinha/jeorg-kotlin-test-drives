@@ -1,7 +1,7 @@
 package org.jesperancinha.coffee.system.queues
 
-import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
 import lombok.Getter
+import org.jesperancinha.coffee.system.api.utils.ExecutorServiceHelper
 import java.util.concurrent.Executors
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.function.Consumer
@@ -47,6 +47,6 @@ abstract class Queue {
     }
 
     fun stopExecutors() {
-        executorServiceMap.values.forEach(Consumer { obj: ThreadPoolExecutor? -> ExecutorServiceHelper.shutDownExecutorService() })
+        executorServiceMap.values.forEach { ExecutorServiceHelper.shutDownExecutorService(it) }
     }
 }

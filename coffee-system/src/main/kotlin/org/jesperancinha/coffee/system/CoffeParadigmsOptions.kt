@@ -1,7 +1,7 @@
 package org.jesperancinha.coffee.system
 
-import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
 import jakarta.xml.bind.JAXBException
+import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
 import org.kohsuke.args4j.Option
 import org.springframework.context.ApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext
@@ -52,6 +52,7 @@ class CoffeParadigmsOptions {
         required = true
     )
     private val nPostActions: Int? = null
+
     @Throws(FileNotFoundException::class, JAXBException::class)
     fun run() {
         val context: ApplicationContext = ClassPathXmlApplicationContext("META-INF/config.xml")
@@ -59,8 +60,8 @@ class CoffeParadigmsOptions {
         generalProcessor.nIterations = nIterations
         generalProcessor.sourceXmlEmployeesFile = userDefinitionFile
         generalProcessor.sourceXmlMachinesFile = machineDefinitionFile
-        generalProcessor.setPreRowSize(nPreActions)
-        generalProcessor.setPostRowSize(nPostActions)
+        generalProcessor.preRowSize = nPreActions ?: 0
+        generalProcessor.postRowSize = nPostActions ?: 0
         generalProcessor.initSimulationProcess()
         generalProcessor.start()
     }
