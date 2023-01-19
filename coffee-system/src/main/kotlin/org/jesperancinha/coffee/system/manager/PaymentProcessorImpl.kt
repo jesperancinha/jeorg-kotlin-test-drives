@@ -1,10 +1,9 @@
 package org.jesperancinha.coffee.system.manager
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
-import com.jesperancinha.coffee.system.queues.*
 import lombok.Getter
 import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction

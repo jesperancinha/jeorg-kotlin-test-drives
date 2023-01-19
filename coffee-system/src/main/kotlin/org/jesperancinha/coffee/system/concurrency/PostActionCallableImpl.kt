@@ -1,15 +1,17 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
-import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import lombok.Getter
 import lombok.extern.slf4j.Slf4j
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.objects.ActionDescriptor
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.text.MessageFormat
-import java.util.concurrent.*
+import java.util.concurrent.TimeUnit
 import java.util.function.Consumer
 
 /**
@@ -18,28 +20,34 @@ import java.util.function.Consumer
 @Service
 @Getter
 @Slf4j
-class PostActionCallableImpl(name: String?) : ActionCallable(name), QueueCallable {
+class PostActionCallableImpl(name: String) : ActionCallable(name), QueueCallable {
     @Autowired
     private val machineProcessor: MachineProcessorImpl? = null
     fun addPostAction(postAction: PostAction) {
         actionDescriptorList
             .add(
-                ActionDescriptor.builder().description(postAction.getDescription()).time(postAction.getTime())
-                    .build()
+                ActionDescriptor(
+                    description = postAction.description,
+                    time = postAction.time
+                )
             )
     }
 
     override fun call(): Boolean {
         actionDescriptorList.forEach(
             Consumer { actionDescriptor: ActionDescriptor ->
-                PostActionCallableImpl.log.info(MessageFormat.format("Ending with {0}", actionDescriptor.description))
+                logger.info(MessageFormat.format("Ending with {0}", actionDescriptor.description))
                 try {
                     TimeUnit.MILLISECONDS.sleep(actionDescriptor.time.toLong())
                 } catch (e: InterruptedException) {
-                    PostActionCallableImpl.log.error(e.message, e)
+                    logger.error(e.message, e)
                 }
             }
         )
         return true
+    }
+
+    companion object {
+        val logger: Logger = LoggerFactory.getLogger(PostActionCallableImpl::class.java)
     }
 }

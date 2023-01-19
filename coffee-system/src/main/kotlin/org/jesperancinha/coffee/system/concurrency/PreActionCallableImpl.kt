@@ -1,14 +1,13 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
-import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
-import org.jesperancinha.coffee.system.input.Employees
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
+import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.text.MessageFormat
@@ -40,14 +39,16 @@ class PreActionCallableImpl(
         this.machineProcessor = machineProcessor
     }
 
-    fun addPreAction(preAction: org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction) {
+    fun addPreAction(preAction: Employee.Actions.PreAction) {
         actionDescriptorList.add(
-            ActionDescriptor.builder().description(preAction.getDescription()).time(preAction.getTime()).build()
+            ActionDescriptor(
+                description = preAction.description,
+                time = preAction.time)
         )
     }
 
     override fun call(): Boolean {
-        logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.getName()))
+        logger.info(MessageFormat.format("EmployeeCallable {0} is waiting in line", employee.name))
         actionDescriptorList.forEach(
             Consumer { actionDescriptor: ActionDescriptor ->
                 logger.info(MessageFormat.format("Starting with {0}", actionDescriptor.description))
@@ -59,7 +60,7 @@ class PreActionCallableImpl(
             }
         )
         val coffeeProcessor = machineProcessor.getCoffeeProcessor()
-        machineProcessor!!.callMakeCoffee(employee, coffee.getName(), coffee, payment, postActions, this)
+        machineProcessor!!.callMakeCoffee(employee, coffee.name, coffee, payment, postActions, this)
         coffeeProcessor.runAllCalls(this)
         coffeeProcessor.waitForAllCalls(this)
         return true

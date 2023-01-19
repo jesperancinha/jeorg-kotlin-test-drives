@@ -11,8 +11,8 @@ import java.util.function.Consumer
  */
 @Getter
 abstract class Queue {
-    private val executorServiceMap: MutableMap<String, ThreadPoolExecutor> = HashMap()
-    private val numberToCreateMap: MutableMap<String, Int> = HashMap()
+    val executorServiceMap: MutableMap<String, ThreadPoolExecutor> = HashMap()
+    val numberToCreateMap: MutableMap<String, Int> = HashMap()
 
     /**
      * Number of machines of the same name

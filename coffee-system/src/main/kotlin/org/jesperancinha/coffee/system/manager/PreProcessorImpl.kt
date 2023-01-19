@@ -21,7 +21,7 @@ import java.util.function.Consumer
 @Getter
 @Service
 abstract class PreProcessorImpl internal constructor() : ProcessorAbstract() {
-    private val startupCallable: StartupCallableImpl
+    private val startupCallable: StartupCallableImpl by lazy { StartupCallableImpl() }
 
     @Autowired
     private val queuePreActivity: QueuePreActivityImpl? = null
@@ -29,14 +29,10 @@ abstract class PreProcessorImpl internal constructor() : ProcessorAbstract() {
     @Autowired
     private val machineProcessor: MachineProcessorImpl? = null
 
-    init {
-        startupCallable = StartupCallableImpl()
-    }
-
     fun callPreActions(
         employee: Employee,
         name: String?,
-        actions: List<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction?>,
+        actions: List<Employee.Actions.PreAction>,
         coffee: Coffee, payment: Payment,
         postActions: List<PostAction?>
     ) {
@@ -48,11 +44,11 @@ abstract class PreProcessorImpl internal constructor() : ProcessorAbstract() {
             postActions,
             machineProcessor
         )
-        actions.forEach(Consumer<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction> { preAction: org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction ->
+        actions.forEach { preAction ->
             preActionCallable.addPreAction(
                 preAction
             )
-        })
+        }
         startupCallable.allCallables.add(preActionCallable)
     }
 

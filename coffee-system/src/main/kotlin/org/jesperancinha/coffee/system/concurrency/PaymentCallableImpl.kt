@@ -1,13 +1,13 @@
 package org.jesperancinha.coffee.system.concurrency
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
-import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
 import lombok.Getter
 import lombok.extern.slf4j.Slf4j
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
+import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.text.MessageFormat

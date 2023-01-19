@@ -10,25 +10,23 @@ import java.util.function.Consumer
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 abstract class ProcessorAbstract {
-    abstract val executorServiceQueue: Queue?
+    abstract val executorServiceQueue: Queue
     open fun waitForAllCalls(queueCallable: QueueCallable) {
         queueCallable.waitForCalls()
     }
 
-    abstract fun getExecutorName(callable: Callable<Boolean?>): String
+    abstract fun getExecutorName(callable: Callable<Boolean>): String
     open fun runAllCalls(queueCallable: QueueCallable) {
-        queueCallable.allCallables.forEach(
-            Consumer { booleanCallable: Callable<Boolean?> ->
-                val executorServiceMap = executorServiceQueue.getExecutorServiceMap()
+        queueCallable.allCallables.forEach { booleanCallable ->
+                val executorServiceMap = executorServiceQueue.executorServiceMap
                 val executorName = getExecutorName(booleanCallable)
                 val threadPoolExecutor = executorServiceMap[executorName]
                 val submitResult = threadPoolExecutor!!.submit(booleanCallable)
                 addSubmitResult(submitResult, queueCallable)
             }
-        )
     }
 
-    private fun addSubmitResult(submitResult: Future<Boolean?>, queueCallable: QueueCallable) {
+    private fun addSubmitResult(submitResult: Future<Boolean>, queueCallable: QueueCallable) {
         queueCallable.addSubmitResult(submitResult)
     }
 

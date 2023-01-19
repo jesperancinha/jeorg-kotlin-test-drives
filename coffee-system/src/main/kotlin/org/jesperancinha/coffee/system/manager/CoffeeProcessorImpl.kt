@@ -1,10 +1,9 @@
 package org.jesperancinha.coffee.system.manager
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl
-import com.jesperancinha.coffee.system.queues.*
 import lombok.Getter
 import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
+import org.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
@@ -27,7 +26,7 @@ abstract class CoffeeProcessorImpl : ProcessorAbstract() {
     private val machineProcessor: MachineProcessorImpl? = null
     fun callMakeCoffee(
         employee: Employee?,
-        name: String?,
+        name: String,
         coffee: Coffee,
         payment: Payment,
         postActions: List<PostAction?>,

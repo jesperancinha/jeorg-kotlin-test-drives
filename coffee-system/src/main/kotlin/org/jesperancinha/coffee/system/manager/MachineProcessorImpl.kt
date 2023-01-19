@@ -1,11 +1,10 @@
 package org.jesperancinha.coffee.system.manager
 
-import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import lombok.Getter
 import lombok.experimental.Accessors
+import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.PaymentTypes.Payment
-import org.jesperancinha.coffee.system.input.Employees
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,20 +15,20 @@ import org.springframework.stereotype.Service
 @Service
 class MachineProcessorImpl {
     @Autowired
-    private val preProcessor: PreProcessorImpl? = null
+    val preProcessor: PreProcessorImpl? = null
 
     @Autowired
-    private val coffeeProcessor: CoffeeProcessorImpl? = null
+    val coffeeProcessor: CoffeeProcessorImpl? = null
 
     @Autowired
-    private val paymentProcessor: PaymentProcessorImpl? = null
+    val paymentProcessor: PaymentProcessorImpl? = null
 
     @Autowired
     private val postProcessor: PostProcessorImpl? = null
     fun callPreActions(
         employee: Employee,
         name: String?,
-        preActions: List<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction?>,
+        preActions: List<Employee.Actions.PreAction?>,
         coffee: Coffee,
         payment: Payment,
         postActions: List<PostAction?>
@@ -39,7 +38,7 @@ class MachineProcessorImpl {
 
     fun callMakeCoffee(
         employee: Employee?,
-        name: String?,
+        name: String,
         coffee: Coffee,
         payment: Payment,
         postActions: List<PostAction?>,

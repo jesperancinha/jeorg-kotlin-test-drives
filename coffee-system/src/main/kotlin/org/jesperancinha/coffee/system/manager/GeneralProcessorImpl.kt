@@ -1,6 +1,5 @@
 package org.jesperancinha.coffee.system.manager
 
-import org.jesperancinha.coffee.system.objects.EmployeeLayer
 import jakarta.xml.bind.JAXBContext
 import jakarta.xml.bind.JAXBException
 import lombok.*
@@ -13,6 +12,9 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeMachine.Payment
 import org.jesperancinha.coffee.system.input.Employees
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.objects.EmployeeLayer
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.io.FileInputStream
@@ -33,9 +35,9 @@ class GeneralProcessorImpl {
     var nIterations = 0
     internal var sourceXmlMachinesFile: String? = null
     var sourceXmlEmployeesFile: String? = null
-     var preRowSize = 0
-     var postRowSize = 0
-    private var coffeeMachines: CoffeeMachines? = null
+    var preRowSize = 0
+    var postRowSize = 0
+    private var coffeeMachines: CoffeeMachines
     private var employees: Employees? = null
 
     @Autowired
@@ -72,7 +74,7 @@ class GeneralProcessorImpl {
      */
     @Throws(FileNotFoundException::class, JAXBException::class)
     fun initSimulationProcess() {
-        GeneralProcessorImpl.log.info("Starting coffee simulation process...")
+        logger.info("Starting coffee simulation process...")
         initSimulationProcess(
             FileInputStream(
                 sourceXmlMachinesFile
@@ -94,7 +96,7 @@ class GeneralProcessorImpl {
      */
     @Throws(JAXBException::class)
     fun initSimulationProcess(coffeesFile: InputStream, employeesFile: InputStream) {
-        GeneralProcessorImpl.log.info("Starting simulation process...")
+        logger.info("Starting simulation process...")
         coffeeMachines = createCoffeeMachines(coffeesFile)
         employees = createEmployees(employeesFile)
     }
@@ -106,7 +108,7 @@ class GeneralProcessorImpl {
         val postProcessor = machineProcessor.getPostProcessor()
         postProcessor.addQueueSize(postRowSize, MAIN_QUEUE_POST)
         postProcessor.initExecutors()
-        val nMachines: Int = coffeeMachines.getCoffeMachine().size
+        val nMachines: Int = coffeeMachines.coffeMachine.size
         val employeeLayerList: MutableList<EmployeeLayer> = ArrayList()
         val random = Random()
         fillEmployeeLayerList(nMachines, employeeLayerList, random)
@@ -122,21 +124,20 @@ class GeneralProcessorImpl {
         employees.getEmployee().forEach(
             Consumer<Employee> { employee: Employee? ->
                 val iChosenCoffeeMachine = random.nextInt(nMachines)
-                val coffeMachine: CoffeMachine = coffeeMachines.getCoffeMachine()
-                    .get(iChosenCoffeeMachine)
-                val nCoffees: Int = coffeMachine.getCoffees().getCoffee().size
+                val coffeMachine: CoffeMachine = coffeeMachines.coffeMachine[iChosenCoffeeMachine]
+                val nCoffees: Int = coffeMachine.coffees.coffee.size
                 val iCoffee = random.nextInt(nCoffees)
-                val nPayments: Int = coffeMachine.getPaymentTypes().getPayment().size
+                val nPayments: Int = coffeMachine.paymentTypes.payment.size
                 val iPayment = random.nextInt(nPayments)
-                val chosenCoffee: Coffee = coffeMachine.getCoffees().getCoffee().get(iCoffee)
-                val chosenPayment: Payment = coffeMachine.getPaymentTypes().getPayment().get(iPayment)
-                coffeeProcessor.addQueueSize(1, chosenCoffee.getName())
-                paymentProcessor.addQueueSize(1, chosenPayment.getName())
-                val employeeLayer = EmployeeLayer.builder()
-                    .employee(employee)
-                    .coffee(chosenCoffee)
-                    .payment(chosenPayment)
-                    .build()
+                val chosenCoffee: Coffee = coffeMachine.coffees.coffee[iCoffee]
+                val chosenPayment: Payment = coffeMachine.paymentTypes.payment[iPayment]
+                coffeeProcessor.addQueueSize(1, chosenCoffee.name)
+                paymentProcessor.addQueueSize(1, chosenPayment.name)
+                val employeeLayer = EmployeeLayer(
+                    employee = employee,
+                    coffee = chosenCoffee,
+                    payment = chosenPayment
+                )
                 employeeLayerList.add(employeeLayer)
             }
         )
@@ -145,17 +146,15 @@ class GeneralProcessorImpl {
     }
 
     private fun startCoffeeMeeting(employeeLayerList: List<EmployeeLayer>) {
-        employeeLayerList.forEach(
-            Consumer { employeeLayer: EmployeeLayer ->
-                val employee: Employee = employeeLayer.employee
-                val preActions: List<org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PreAction?> =
-                    employee.getActions().getPreAction()
-                val coffee: Coffee = employeeLayer.coffee
-                val payment: Payment = employeeLayer.payment
-                val postActions: List<PostAction?> = employee.getActions().getPostAction()
-                machineProcessor!!.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
-            }
-        )
+        employeeLayerList.forEach { employeeLayer ->
+            val employee = employeeLayer.employee
+            val preActions: List<Employee.Actions.PreAction> =
+                employee.actions.preAction
+            val coffee: Coffee? = employeeLayer.coffee
+            val payment: Payment = employeeLayer.payment
+            val postActions: List<PostAction?> = employee.actions.postAction
+            machineProcessor!!.callPreActions(employee, MAIN_QUEUE_PRE, preActions, coffee, payment, postActions)
+        }
     }
 
     private fun runaAllProcessors() {
@@ -182,5 +181,7 @@ class GeneralProcessorImpl {
     companion object {
         const val MAIN_QUEUE_PRE = "MAIN_QUEUE_PRE"
         const val MAIN_QUEUE_POST = "MAIN_QUEUE_POST"
+
+        val logger: Logger = LoggerFactory.getLogger(GeneralProcessorImpl::class.java)
     }
 }
