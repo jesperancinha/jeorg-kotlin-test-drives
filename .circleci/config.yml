@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: openjdk:19
+      - image: maven:3.8.7-eclipse-temurin-19
 
     working_directory: ~/repo
 
