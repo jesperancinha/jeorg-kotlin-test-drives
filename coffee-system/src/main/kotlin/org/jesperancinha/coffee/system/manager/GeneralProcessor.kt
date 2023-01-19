@@ -19,7 +19,7 @@ import java.io.InputStream
 import java.util.*
 
 @Service
-class GeneralProcessorImpl(
+class GeneralProcessor(
     @Autowired
     private val machineProcessor: MachineProcessor
 ) {
@@ -169,6 +169,6 @@ class GeneralProcessorImpl(
         const val MAIN_QUEUE_PRE = "MAIN_QUEUE_PRE"
         const val MAIN_QUEUE_POST = "MAIN_QUEUE_POST"
 
-        val logger: Logger = LoggerFactory.getLogger(GeneralProcessorImpl::class.java)
+        val logger: Logger = LoggerFactory.getLogger(GeneralProcessor::class.java)
     }
 }

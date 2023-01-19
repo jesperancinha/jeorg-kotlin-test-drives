@@ -2,12 +2,9 @@ package org.jesperancinha.coffee.system.concurrency
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
 import java.text.MessageFormat
 import java.util.concurrent.TimeUnit
 import java.util.function.Consumer
@@ -15,16 +12,7 @@ import java.util.function.Consumer
 /**
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
-@Service
-class PostActionCallable() : ActionCallable(), QueueCallable {
-    @Autowired
-    private val machineProcessor: MachineProcessor? = null
-
-    override var name: String? = null
-    fun init(name: String) {
-        this.name = name
-    }
-
+class PostActionCallable(name: String) : ActionCallable(name), QueueCallable {
     fun addPostAction(postAction: PostAction) {
         actionDescriptorList
             .add(

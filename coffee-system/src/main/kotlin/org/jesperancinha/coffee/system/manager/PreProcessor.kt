@@ -2,7 +2,7 @@ package org.jesperancinha.coffee.system.manager
 
 import org.jesperancinha.coffee.system.concurrency.ActionCallable
 import org.jesperancinha.coffee.system.concurrency.PreActionCallable
-import org.jesperancinha.coffee.system.concurrency.StartupCallableImpl
+import org.jesperancinha.coffee.system.concurrency.StartupCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
@@ -13,12 +13,15 @@ import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
 
 @Service
-class PreProcessorImpl(
+class PreProcessor(
     @Autowired
     val queuePreActivity: QueuePreActivityImpl,
-    val preActionCallable: PreActionCallable
+    @Autowired
+    val machineProcessor: MachineProcessor,
+    @Autowired
+    val coffeeProcessor: CoffeeProcessor
 ): ProcessorAbstract() {
-    private val startupCallable: StartupCallableImpl by lazy { StartupCallableImpl() }
+    private val startupCallable: StartupCallable by lazy { StartupCallable() }
 
     fun callPreActions(
         employee: Employee,
@@ -28,12 +31,15 @@ class PreProcessorImpl(
         payment: Payment,
         postActions: List<PostAction>
     ) {
-        preActionCallable.init(
-            employee,
-            name,
-            coffee,
-            payment,
-            postActions,
+
+        val preActionCallable = PreActionCallable(
+            coffeeProcessor,
+            machineProcessor,
+            employee = employee,
+            name = name,
+            coffee = coffee,
+            payment = payment,
+            postActions = postActions
         )
         actions.forEach { preAction ->
             preActionCallable.addPreAction(

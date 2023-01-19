@@ -1,10 +1,9 @@
 package org.jesperancinha.coffee.system
 
 import jakarta.xml.bind.JAXBException
-import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
+import org.jesperancinha.coffee.system.manager.GeneralProcessor
 import org.springframework.boot.SpringApplication
 import org.springframework.context.ApplicationContext
-import org.springframework.context.support.ClassPathXmlApplicationContext
 import picocli.CommandLine.Command
 import picocli.CommandLine.Option
 import java.io.FileNotFoundException
@@ -57,7 +56,7 @@ class CoffeeParadigmsOptions : Callable<Int> {
     fun run() {
         val context: ApplicationContext =
             SpringApplication.run(CoffeeParadigmsMain::class.java, *emptyArray())
-        val generalProcessor = context.getBean(GeneralProcessorImpl::class.java)
+        val generalProcessor = context.getBean(GeneralProcessor::class.java)
         generalProcessor.nIterations = nIterations
         generalProcessor.sourceXmlEmployeesFile =
             userDefinitionFile ?: throw RuntimeException("Please specify a --userdefinitions <file>")

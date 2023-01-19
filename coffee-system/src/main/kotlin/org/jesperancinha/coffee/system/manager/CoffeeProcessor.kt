@@ -1,7 +1,7 @@
 package org.jesperancinha.coffee.system.manager
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.concurrency.CoffeeMainCallableImpl
+import org.jesperancinha.coffee.system.concurrency.CoffeeMainCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
 
 @Service
-class CoffeeProcessorImpl(
+class CoffeeProcessor(
     @Autowired
     private val queueCofee: QueueCofeeImpl,
     @Autowired
@@ -28,13 +28,13 @@ class CoffeeProcessorImpl(
         postActions: List<PostAction>,
         parentCallable: QueueCallable?
     ) {
-        val coffeeMainCallableImpl = CoffeeMainCallableImpl(employee, name, coffee, payment, postActions, machineProcessor)
-        parentCallable?.allCallables?.add(coffeeMainCallableImpl)
+        val coffeeMainCallable = CoffeeMainCallable(employee, name, coffee, payment, postActions, machineProcessor)
+        parentCallable?.allCallables?.add(coffeeMainCallable)
     }
 
     override val executorServiceQueue: Queue = queueCofee
 
-    override fun getExecutorName(callable: Callable<Boolean>): String = (callable as CoffeeMainCallableImpl).name
+    override fun getExecutorName(callable: Callable<Boolean>): String = (callable as CoffeeMainCallable).name
 
     fun addQueueSize(queueSize: Int, name: String) {
         queueCofee.setQueueSize(queueSize, name)

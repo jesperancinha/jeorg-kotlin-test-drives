@@ -12,11 +12,9 @@ import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
 
 @Service
-class PostProcessorImpl(
+class PostProcessor(
     @Autowired
     private val queuePostActivity: QueuePostActivityImpl,
-    @Autowired
-    private val postActionCallable: PostActionCallable
 ) : ProcessorAbstract() {
 
     fun callPostActions(
@@ -24,7 +22,7 @@ class PostProcessorImpl(
         postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
-        postActionCallable.init(name)
+        val postActionCallable = PostActionCallable(name)
         parentCallable.allCallables.add(postActionCallable)
         postActions.forEach { postAction -> postActionCallable.addPostAction(postAction) }
     }
@@ -46,6 +44,6 @@ class PostProcessorImpl(
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(PostProcessorImpl::class.java)
+        private val logger = LoggerFactory.getLogger(PostProcessor::class.java)
     }
 }

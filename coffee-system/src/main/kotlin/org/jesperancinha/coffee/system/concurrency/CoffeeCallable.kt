@@ -9,7 +9,7 @@ import java.text.MessageFormat
 import java.util.concurrent.TimeUnit
 
 @Service
-class CoffeeCallableImpl internal constructor(fillTime: FillTime, name: String?) : QueueCallableAbstract(),
+class CoffeeCallable(fillTime: FillTime, name: String?) : QueueCallableAbstract(),
     QueueCallable {
     private val fillTime: FillTime
     private val name: String?
@@ -36,6 +36,6 @@ class CoffeeCallableImpl internal constructor(fillTime: FillTime, name: String?)
     }
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(CoffeeCallableImpl::class.java)
+        val logger: Logger = LoggerFactory.getLogger(CoffeeCallable::class.java)
     }
 }

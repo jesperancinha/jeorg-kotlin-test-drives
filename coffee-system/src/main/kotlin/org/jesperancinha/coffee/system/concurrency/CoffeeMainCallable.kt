@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory.getLogger
 import java.util.concurrent.Executors
 import java.util.concurrent.Future
 
-class CoffeeMainCallableImpl(
+class CoffeeMainCallable(
     employee: Employee,
     name: String,
     coffee: Coffee,
@@ -50,7 +50,7 @@ class CoffeeMainCallableImpl(
                 allTasksForIndex.forEach{ fillTime: FillTime ->
                         allCoffeeCallables.add(
                             executor.submit(
-                                CoffeeCallableImpl(
+                                CoffeeCallable(
                                     fillTime,
                                     name
                                 )
@@ -68,6 +68,6 @@ class CoffeeMainCallableImpl(
     }
 
     companion object{
-        val logger: Logger = getLogger(CoffeeMainCallableImpl::class.java)
+        val logger: Logger = getLogger(CoffeeMainCallable::class.java)
     }
 }

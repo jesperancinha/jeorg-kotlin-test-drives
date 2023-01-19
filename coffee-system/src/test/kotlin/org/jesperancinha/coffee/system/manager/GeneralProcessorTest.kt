@@ -12,8 +12,8 @@ import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.verify
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.concurrency.CoffeeCallableImpl
-import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
+import org.jesperancinha.coffee.system.concurrency.CoffeeCallable
+import org.jesperancinha.coffee.system.concurrency.PaymentCallable
 import org.jesperancinha.coffee.system.concurrency.PostActionCallable
 import org.jesperancinha.coffee.system.concurrency.PreActionCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine
@@ -22,8 +22,8 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
-import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl.Companion.MAIN_QUEUE_POST
-import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl.Companion.MAIN_QUEUE_PRE
+import org.jesperancinha.coffee.system.manager.GeneralProcessor.Companion.MAIN_QUEUE_POST
+import org.jesperancinha.coffee.system.manager.GeneralProcessor.Companion.MAIN_QUEUE_PRE
 import org.jesperancinha.coffee.system.queues.QueueCofeeImpl
 import org.jesperancinha.coffee.system.queues.QueuePaymentImpl
 import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
@@ -41,17 +41,17 @@ import java.util.concurrent.ThreadPoolExecutor
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
 @ExtendWith(MockKExtension::class)
-class GeneralProcessorImplTest {
+class GeneralProcessorTest {
     @InjectMockKs
-    lateinit var generalProcessor: GeneralProcessorImpl
+    lateinit var generalProcessor: GeneralProcessor
 
-    private var preProcessor: PreProcessorImpl = mockk()
+    private var preProcessor: PreProcessor = mockk()
 
-    private var coffeeProcessor: CoffeeProcessorImpl = mockk()
+    private var coffeeProcessor: CoffeeProcessor = mockk()
 
-    private var paymentProcessor: PaymentProcessorImpl = mockk()
+    private var paymentProcessor: PaymentProcessor = mockk()
 
-    private var postProcessor: PostProcessorImpl = mockk()
+    private var postProcessor: PostProcessor = mockk()
 
     @MockK(relaxed = true)
     lateinit var queueCoffee: QueueCofeeImpl
@@ -269,8 +269,8 @@ class GeneralProcessorImplTest {
         every { queuePayment.executorServiceMap } returns paymentExecutorMap
         every { queuePostActivity.executorServiceMap } returns postActivityExecutorMap
         every { threadPoolExecutorPreActivity.submit(any<PreActionCallable>()) } returns future
-        every { threadPoolExecutorCoffee.submit(any<CoffeeCallableImpl>()) } returns future
-        every { threadPoolExecutorPayment.submit(any<PaymentCallableImpl>()) } returns future
+        every { threadPoolExecutorCoffee.submit(any<CoffeeCallable>()) } returns future
+        every { threadPoolExecutorPayment.submit(any<PaymentCallable>()) } returns future
         every { threadPoolExecutorPostActivity.submit(any<PostActionCallable>()) } returns future
         every { preProcessor.addQueueSize(0, MAIN_QUEUE_PRE) } returns Unit
         every { postProcessor.addQueueSize(0, MAIN_QUEUE_POST) } returns Unit

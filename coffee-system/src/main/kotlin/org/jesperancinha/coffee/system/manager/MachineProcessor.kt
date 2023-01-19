@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service
 @Service
 class MachineProcessor(
     @Autowired
-    val preProcessor: PreProcessorImpl,
+    val preProcessor: PreProcessor,
     @Autowired
-    val coffeeProcessor: CoffeeProcessorImpl,
+    val coffeeProcessor: CoffeeProcessor,
     @Autowired
-    val paymentProcessor: PaymentProcessorImpl,
+    val paymentProcessor: PaymentProcessor,
     @Autowired
-    val postProcessor: PostProcessorImpl
+    val postProcessor: PostProcessor
 ) {
 
     fun callPreActions(

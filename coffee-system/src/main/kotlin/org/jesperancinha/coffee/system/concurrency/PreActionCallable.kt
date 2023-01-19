@@ -5,39 +5,23 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
+import org.jesperancinha.coffee.system.manager.CoffeeProcessor
 import org.jesperancinha.coffee.system.manager.MachineProcessor
 import org.jesperancinha.coffee.system.objects.ActionDescriptor
 import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
 import java.text.MessageFormat
 import java.util.concurrent.*
 import java.util.function.Consumer
 
-@Service
 class PreActionCallable(
-    @Autowired
-    val machineProcessor: MachineProcessor
-) : ActionCallable(), QueueCallable {
-    private var coffee: Coffee? = null
-    private var payment: Payment? = null
-    private var postActions: List<PostAction>? = null
-    private var employee: Employee? = null
-    override var name: String? = null
-
-    fun init(
-        employee: Employee,
-        name: String,
-        coffee: Coffee,
-        payment: Payment,
-        postActions: List<PostAction>
-    ) {
-        this.employee = employee
-        this.name = name
-        this.coffee = coffee
-        this.payment = payment
-        this.postActions = postActions
-    }
+    private val coffeeProcessor: CoffeeProcessor,
+    private val machineProcessor: MachineProcessor,
+    private val coffee: Coffee,
+    private val payment: Payment,
+    private val postActions: List<PostAction>,
+    private val employee: Employee,
+    name: String
+) : ActionCallable(name), QueueCallable {
 
     fun addPreAction(preAction: Employee.Actions.PreAction) {
         actionDescriptorList.add(
@@ -60,14 +44,12 @@ class PreActionCallable(
                 }
             }
         )
-        val coffeeProcessor = machineProcessor.coffeeProcessor
         machineProcessor.callMakeCoffee(
             requireNotNull(employee),
             requireNotNull(coffee?.name),
             requireNotNull(coffee),
             requireNotNull(payment),
-            requireNotNull(postActions)
-            ,
+            requireNotNull(postActions),
             this
         )
         coffeeProcessor.runAllCalls(this)

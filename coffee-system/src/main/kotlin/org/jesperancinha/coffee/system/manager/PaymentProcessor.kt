@@ -1,7 +1,7 @@
 package org.jesperancinha.coffee.system.manager
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
-import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PaymentCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
@@ -15,11 +15,12 @@ import java.util.concurrent.Callable
  * Created by joaofilipesabinoesperancinha on 30-04-16.
  */
 @Service
-class PaymentProcessorImpl(
+class PaymentProcessor(
     @Autowired
     private val queuePayment: QueuePaymentImpl,
     @Autowired
-    private val paymentCallableImpl: PaymentCallableImpl
+    private val machineProcessor: MachineProcessor
+
 ) : ProcessorAbstract() {
 
     fun callPayCoffee(
@@ -29,19 +30,19 @@ class PaymentProcessorImpl(
         postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
-        paymentCallableImpl.init(
-            employee,
-            name,
-            payment,
-            postActions,
+        val paymentCallable = PaymentCallable(
+            machineProcessor = machineProcessor,
+            employee = employee,
+            name = name,
+            chosenPayment = payment,
+            postActions = postActions
         )
-        parentCallable.allCallables.add(paymentCallableImpl)
+        parentCallable.allCallables.add(paymentCallable)
     }
 
     override val executorServiceQueue: Queue = queuePayment
 
-    override fun getExecutorName(callable: Callable<Boolean>): String =
-        (callable as PaymentCallableImpl).name ?: throw RuntimeException("Executor not found!")
+    override fun getExecutorName(callable: Callable<Boolean>): String = requireNotNull((callable as PaymentCallable).name)
 
     fun addQueueSize(queueSize: Int, name: String) {
         queuePayment.setQueueSize(queueSize, name)
