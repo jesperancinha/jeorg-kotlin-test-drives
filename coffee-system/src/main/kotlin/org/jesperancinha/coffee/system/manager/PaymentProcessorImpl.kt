@@ -19,7 +19,7 @@ class PaymentProcessorImpl(
     @Autowired
     private val queuePayment: QueuePaymentImpl,
     @Autowired
-    private val machineProcessor: MachineProcessorImpl
+    private val paymentCallableImpl: PaymentCallableImpl
 ) : ProcessorAbstract() {
 
     fun callPayCoffee(
@@ -29,14 +29,13 @@ class PaymentProcessorImpl(
         postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
-        val paymentCallable = PaymentCallableImpl(
+        paymentCallableImpl.init(
             employee,
             name,
             payment,
             postActions,
-            machineProcessor
         )
-        parentCallable.allCallables.add(paymentCallable)
+        parentCallable.allCallables.add(paymentCallableImpl)
     }
 
     override val executorServiceQueue: Queue = queuePayment

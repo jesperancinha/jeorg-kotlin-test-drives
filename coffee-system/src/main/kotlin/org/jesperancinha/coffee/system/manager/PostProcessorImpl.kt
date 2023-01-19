@@ -2,7 +2,7 @@ package org.jesperancinha.coffee.system.manager
 
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.concurrency.ActionCallable
-import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PostActionCallable
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.queues.Queue
 import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
@@ -14,7 +14,9 @@ import java.util.concurrent.Callable
 @Service
 class PostProcessorImpl(
     @Autowired
-    private val queuePostActivity: QueuePostActivityImpl
+    private val queuePostActivity: QueuePostActivityImpl,
+    @Autowired
+    private val postActionCallable: PostActionCallable
 ) : ProcessorAbstract() {
 
     fun callPostActions(
@@ -22,14 +24,14 @@ class PostProcessorImpl(
         postActions: List<PostAction>,
         parentCallable: QueueCallable
     ) {
-        val postActionCallable = PostActionCallableImpl(name)
+        postActionCallable.init(name)
         parentCallable.allCallables.add(postActionCallable)
-        postActions.forEach{ postAction -> postActionCallable.addPostAction(postAction) }
+        postActions.forEach { postAction -> postActionCallable.addPostAction(postAction) }
     }
 
-    override val executorServiceQueue: Queue =queuePostActivity
+    override val executorServiceQueue: Queue = queuePostActivity
 
-    override fun getExecutorName(callable: Callable<Boolean>) = (callable as ActionCallable).name
+    override fun getExecutorName(callable: Callable<Boolean>) = requireNotNull((callable as ActionCallable).name)
 
     fun addQueueSize(queueSize: Int, name: String) {
         queuePostActivity.setQueueSize(queueSize, name)

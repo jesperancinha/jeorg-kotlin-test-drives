@@ -14,8 +14,8 @@ import io.mockk.verify
 import org.jesperancinha.coffee.system.api.concurrency.QueueCallable
 import org.jesperancinha.coffee.system.concurrency.CoffeeCallableImpl
 import org.jesperancinha.coffee.system.concurrency.PaymentCallableImpl
-import org.jesperancinha.coffee.system.concurrency.PostActionCallableImpl
-import org.jesperancinha.coffee.system.concurrency.PreActionCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PostActionCallable
+import org.jesperancinha.coffee.system.concurrency.PreActionCallable
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee.TimesToFill.FillTime
@@ -268,10 +268,10 @@ class GeneralProcessorImplTest {
         every { queueCoffee.executorServiceMap } returns coffeExecutorMap
         every { queuePayment.executorServiceMap } returns paymentExecutorMap
         every { queuePostActivity.executorServiceMap } returns postActivityExecutorMap
-        every { threadPoolExecutorPreActivity.submit(any<PreActionCallableImpl>()) } returns future
+        every { threadPoolExecutorPreActivity.submit(any<PreActionCallable>()) } returns future
         every { threadPoolExecutorCoffee.submit(any<CoffeeCallableImpl>()) } returns future
         every { threadPoolExecutorPayment.submit(any<PaymentCallableImpl>()) } returns future
-        every { threadPoolExecutorPostActivity.submit(any<PostActionCallableImpl>()) } returns future
+        every { threadPoolExecutorPostActivity.submit(any<PostActionCallable>()) } returns future
         every { preProcessor.addQueueSize(0, MAIN_QUEUE_PRE) } returns Unit
         every { postProcessor.addQueueSize(0, MAIN_QUEUE_POST) } returns Unit
         every { coffeeProcessor.addQueueSize(any(), LATTE_MACHIATTO) } returns Unit

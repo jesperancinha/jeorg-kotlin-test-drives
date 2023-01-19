@@ -7,40 +7,48 @@ import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostActi
 import org.jesperancinha.coffee.system.manager.GeneralProcessorImpl
 import org.jesperancinha.coffee.system.manager.MachineProcessorImpl
 import org.slf4j.Logger
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 import java.text.MessageFormat
 import java.util.concurrent.*
 
 /**
  * Created by joaofilipesabinoesperancinha on 01-05-16.
  */
+@Service
 class PaymentCallableImpl(
-    employee: Employee,
-    name: String?,
-    payment: Payment,
-    postActions: List<PostAction>,
+    @Autowired
     private val machineProcessor: MachineProcessorImpl
 ) : QueueCallableAbstract(), QueueCallable {
-    private val chosenPayment: Payment
-    private val employee: Employee
-    val name: String?
-    private val postActions: List<PostAction>
+    private var chosenPayment: Payment?=null
+    private var employee: Employee?=null
+    var name: String? = null
+    private var postActions: List<PostAction>? = null
 
-    init {
+    fun init(
+        employee: Employee,
+        name: String?,
+        payment: Payment,
+        postActions: List<PostAction>,
+    ) {
         this.employee = employee
-        chosenPayment = payment
+        this.chosenPayment = payment
         this.name = name
         this.postActions = postActions
     }
 
     @Throws(Exception::class)
     override fun call(): Boolean {
-        logger.info(MessageFormat.format("PaymentCallable with {0}", chosenPayment.name))
-        val time: Int = chosenPayment.time
-        TimeUnit.MILLISECONDS.sleep(time.toLong())
-        val postProcessor = machineProcessor.postProcessor
-        machineProcessor.callPostActions(GeneralProcessorImpl.Companion.MAIN_QUEUE_POST, postActions, this)
-        postProcessor.runAllCalls(this)
-        postProcessor.waitForAllCalls(this)
+        logger.info("PaymentCallable with {}", chosenPayment?.name)
+        chosenPayment?.time?.let {
+            time->
+            TimeUnit.MILLISECONDS.sleep(time.toLong())
+            val postProcessor = machineProcessor.postProcessor
+            postActions?.let { machineProcessor.callPostActions(GeneralProcessorImpl.MAIN_QUEUE_POST, it, this) }
+            postProcessor.runAllCalls(this)
+            postProcessor.waitForAllCalls(this)
+        }
+
         return true
     }
 

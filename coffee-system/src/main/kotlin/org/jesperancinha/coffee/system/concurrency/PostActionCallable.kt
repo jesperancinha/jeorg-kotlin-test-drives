@@ -16,9 +16,15 @@ import java.util.function.Consumer
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Service
-class PostActionCallableImpl(name: String) : ActionCallable(name), QueueCallable {
+class PostActionCallable() : ActionCallable(), QueueCallable {
     @Autowired
     private val machineProcessor: MachineProcessorImpl? = null
+
+    override var name: String? = null
+    fun init(name: String) {
+        this.name = name
+    }
+
     fun addPostAction(postAction: PostAction) {
         actionDescriptorList
             .add(
@@ -44,6 +50,6 @@ class PostActionCallableImpl(name: String) : ActionCallable(name), QueueCallable
     }
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(PostActionCallableImpl::class.java)
+        val logger: Logger = LoggerFactory.getLogger(PostActionCallable::class.java)
     }
 }

@@ -1,7 +1,7 @@
 package org.jesperancinha.coffee.system.manager
 
 import org.jesperancinha.coffee.system.concurrency.ActionCallable
-import org.jesperancinha.coffee.system.concurrency.PreActionCallableImpl
+import org.jesperancinha.coffee.system.concurrency.PreActionCallable
 import org.jesperancinha.coffee.system.concurrency.StartupCallableImpl
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Coffees.Coffee
 import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.PaymentTypes.Payment
@@ -17,7 +17,7 @@ class PreProcessorImpl(
     @Autowired
     val queuePreActivity: QueuePreActivityImpl,
     @Autowired
-    val machineProcessor: MachineProcessorImpl
+    val preActionCallable: PreActionCallable
 ): ProcessorAbstract() {
     private val startupCallable: StartupCallableImpl by lazy { StartupCallableImpl() }
 
@@ -29,13 +29,12 @@ class PreProcessorImpl(
         payment: Payment,
         postActions: List<PostAction>
     ) {
-        val preActionCallable = PreActionCallableImpl(
+        preActionCallable.init(
             employee,
             name,
             coffee,
             payment,
             postActions,
-            machineProcessor
         )
         actions.forEach { preAction ->
             preActionCallable.addPreAction(
@@ -51,7 +50,7 @@ class PreProcessorImpl(
 
     override val executorServiceQueue = queuePreActivity
 
-    override fun getExecutorName(callable: Callable<Boolean>) = (callable as ActionCallable).name
+    override fun getExecutorName(callable: Callable<Boolean>) = requireNotNull((callable as ActionCallable).name)
 
     fun addQueueSize(queueSize: Int, name: String) = queuePreActivity.setQueueSize(queueSize, name)
 
