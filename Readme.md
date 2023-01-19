@@ -77,6 +77,11 @@ For this simulator, socializing times are not considered because they may vary a
 
 Essentially you will get an average, mode and standard deviation for the amount you times you decide to run this specific simulation.
 
+#### Stable releases
+
+-   [0.0.0](https://github.com/jesperancinha/coffee-paradigms/tree/0.0.0) - [84ed2eeffb8c602bf6aef6eab50b86a6b950977a](https://github.com/jesperancinha/coffee-paradigms/tree/0.0.0) - Java / JDK11 / Kohsuke
+-   [1.0.0](https://github.com/jesperancinha/coffee-paradigms/tree/1.0.0) - [26aa1d3882be25671d353507b374bfdf13a7cd06](https://github.com/jesperancinha/coffee-paradigms/tree/1.0.0) - Kotlin 1.8.0 / JDK19 / Picocli
+
 ## Usage
 
 * Go to target in the [coffee-system](./coffee-system) folder and pick the jar generated file. Then try the following example (or with your own files):
