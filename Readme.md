@@ -77,6 +77,7 @@ For this simulator, socializing times are not considered because they may vary a
 
 Essentially you will get an average, mode and standard deviation for the amount you times you decide to run this specific simulation.
 
+>NOTE: Finally, there is quite a lot of usage of Spring annotations in this application. They do not mean anything as it stands. They are a broken development that led to them being kept there but they are still not in use at all and the code still needs a lot of improvements.
 ## Usage
 
 * Go to target in the coffe-system folder and pick the jar generated file. Then try the following example (or with your own files):

@@ -1,0 +1,65 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+    <xs:element name="CoffeeMachines">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="CoffeeMachine" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Coffees">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Coffee" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="TimesToFill">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="FillTime" maxOccurs="unbounded"
+                                                                            minOccurs="0">
+                                                                    <xs:complexType>
+                                                                        <xs:simpleContent>
+                                                                            <xs:extension base="xs:int">
+                                                                                <xs:attribute type="xs:string"
+                                                                                              name="description"
+                                                                                              use="optional"/>
+                                                                                <xs:attribute type="xs:int" name="index"
+                                                                                              use="optional"/>
+                                                                            </xs:extension>
+                                                                        </xs:simpleContent>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute type="xs:string" name="name" use="optional"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="PaymentTypes">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Payment" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute type="xs:string" name="name" use="optional"/>
+                                                        <xs:attribute type="xs:int" name="time" use="optional"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="name" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,5 +1,5 @@
 <CoffeeMachines>
-    <CoffeMachine name="nessyExpresso1">
+    <CoffeeMachine name="nessyExpresso1">
         <Coffees>
             <Coffee name="latteMachiatto">
                 <TimesToFill>
@@ -26,8 +26,8 @@
             <Payment name="afterCoffeePayment" time="10"/>
             <Payment name="beforeCoffeePayment" time="20"/>
         </PaymentTypes>
-    </CoffeMachine>
-    <CoffeMachine name="nessyExpresso2">
+    </CoffeeMachine>
+    <CoffeeMachine name="nessyExpresso2">
         <Coffees>
             <Coffee name="latteMachiatto">
                 <TimesToFill>
@@ -54,5 +54,5 @@
             <Payment name="afterCoffeePayment" time="10"/>
             <Payment name="beforeCoffeePayment" time="20"/>
         </PaymentTypes>
-    </CoffeMachine>
+    </CoffeeMachine>
 </CoffeeMachines>

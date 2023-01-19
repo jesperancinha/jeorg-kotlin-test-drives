@@ -1,12 +1,8 @@
-# Java Gradle CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      - image: maven:3.8.2-openjdk-17
+      - image: maven:3.8.7-eclipse-temurin-19
 
     working_directory: ~/repo
 
