@@ -6,4 +6,4 @@ import org.springframework.stereotype.Service
  * Created by joaofilipesabinoesperancinha on 05-05-16.
  */
 @Service
-class QueueCofeeImpl : Queue()
+class QueueCoffee : Queue()

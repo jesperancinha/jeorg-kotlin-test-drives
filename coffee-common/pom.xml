@@ -3,9 +3,6 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <properties>
-        <maven-failsafe-plugin.version>3.0.0-M8</maven-failsafe-plugin.version>
-    </properties>
 
     <parent>
         <groupId>org.jesperancinha</groupId>
@@ -17,7 +14,8 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>${project.basedir}/target/generated-sources/jaxb</sourceDirectory>
+        <sourceDirectory>target/generated-sources/jaxb</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -114,6 +112,59 @@
                 <groupId>org.jesperancinha.plugins</groupId>
                 <artifactId>omni-coveragereporter-maven-plugin</artifactId>
                 <version>${omni-coveragereporter-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jvmTarget>${java.version}</jvmTarget>
+                    <compilerPlugins>
+                        <plugin>jpa</plugin>
+                        <plugin>all-open</plugin>
+                        <plugin>no-arg</plugin>
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-noarg</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

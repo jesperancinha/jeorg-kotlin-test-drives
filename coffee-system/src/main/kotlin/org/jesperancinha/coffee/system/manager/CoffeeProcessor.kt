@@ -7,7 +7,7 @@ import org.jesperancinha.coffee.system.input.CoffeeMachines.CoffeeMachine.Paymen
 import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.queues.Queue
-import org.jesperancinha.coffee.system.queues.QueueCofeeImpl
+import org.jesperancinha.coffee.system.queues.QueueCoffee
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.concurrent.Callable
@@ -15,7 +15,7 @@ import java.util.concurrent.Callable
 @Service
 class CoffeeProcessor(
     @Autowired
-    private val queueCofee: QueueCofeeImpl,
+    private val queueCoffee: QueueCoffee,
     @Autowired
     private val paymentProcessor: PaymentProcessor
 ) : ProcessorAbstract() {
@@ -32,19 +32,19 @@ class CoffeeProcessor(
         parentCallable?.allCallables?.add(coffeeMainCallable)
     }
 
-    override val executorServiceQueue: Queue = queueCofee
+    override val executorServiceQueue: Queue = queueCoffee
 
     override fun getExecutorName(callable: Callable<Boolean>): String = (callable as CoffeeMainCallable).name
 
     fun addQueueSize(queueSize: Int, name: String) {
-        queueCofee.setQueueSize(queueSize, name)
+        queueCoffee.setQueueSize(queueSize, name)
     }
 
     fun initExecutors() {
-        queueCofee.initExecutors()
+        queueCoffee.initExecutors()
     }
 
     fun stopExecutors() {
-        queueCofee.stopExecutors()
+        queueCoffee.stopExecutors()
     }
 }

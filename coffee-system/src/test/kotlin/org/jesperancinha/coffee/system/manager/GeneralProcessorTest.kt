@@ -22,7 +22,7 @@ import org.jesperancinha.coffee.system.input.Employees.Employee
 import org.jesperancinha.coffee.system.input.Employees.Employee.Actions.PostAction
 import org.jesperancinha.coffee.system.manager.GeneralProcessor.Companion.MAIN_QUEUE_POST
 import org.jesperancinha.coffee.system.manager.GeneralProcessor.Companion.MAIN_QUEUE_PRE
-import org.jesperancinha.coffee.system.queues.QueueCofeeImpl
+import org.jesperancinha.coffee.system.queues.QueueCoffee
 import org.jesperancinha.coffee.system.queues.QueuePaymentImpl
 import org.jesperancinha.coffee.system.queues.QueuePostActivityImpl
 import org.jesperancinha.coffee.system.queues.QueuePreActivityImpl
@@ -52,7 +52,7 @@ class GeneralProcessorTest {
     private var postProcessor: PostProcessor = mockk()
 
     @MockK(relaxed = true)
-    lateinit var queueCoffee: QueueCofeeImpl
+    lateinit var queueCoffee: QueueCoffee
 
     @MockK
     lateinit var queuePayment: QueuePaymentImpl
