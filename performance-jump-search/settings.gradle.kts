@@ -1,1 +1,1 @@
-rootProject.name = 'performance-jump-search'
+rootProject.name = "performance-jump-search"

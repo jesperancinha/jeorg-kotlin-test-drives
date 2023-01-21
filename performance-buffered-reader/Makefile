@@ -12,8 +12,5 @@ debug:
 	./gradlew --stacktrace --debug
 upgrade:
 	gradle wrapper --gradle-version 7.6
-	cd performance-buffered-reader && make upgrade
-	cd performance-input-test-generator && make upgrade
-	cd performance-jump-search && make upgrade
 upgrade-mac-os:
 	brew upgrade gradle

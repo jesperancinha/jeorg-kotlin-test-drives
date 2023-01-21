@@ -1,1 +1,1 @@
-rootProject.name = 'performance-buffered-reader'
+rootProject.name = "performance-buffered-reader"
