@@ -10,7 +10,6 @@
 [![jeorg-kotlin-test-drives](https://github.com/jesperancinha/jeorg-kotlin-test-drives/actions/workflows/jeorg-kotlin-test-drives.yml/badge.svg)](https://github.com/jesperancinha/jeorg-kotlin-test-drives/actions/workflows/jeorg-kotlin-test-drives.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/03eb6acb5bf34d1d8c82c5cf65268e60)](https://www.codacy.com/gh/jesperancinha/jeorg-kotlin-test-drives/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/jeorg-kotlin-test-drives&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/9040da20-f37c-4db3-8932-27c054e7fceb)](https://codebeat.co/projects/github-com-jesperancinha-jeorg-kotlin-test-drives-main)
 [![Known Vulnerabilities](https://snyk.io/test/github/jesperancinha/jeorg-kotlin-test-drives/badge.svg)](https://snyk.io/test/github/jesperancinha/jeorg-kotlin-test-drives)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/03eb6acb5bf34d1d8c82c5cf65268e60)](https://www.codacy.com/gh/jesperancinha/jeorg-kotlin-test-drives/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/jeorg-kotlin-test-drives&utm_campaign=Badge_Coverage)
