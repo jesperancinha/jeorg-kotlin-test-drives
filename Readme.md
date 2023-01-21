@@ -3,6 +3,7 @@
 [![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=%20Checkout%20this%20%40github%20repo%20by%20%40joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB%3A%20https%3A//github.com/jesperancinha/coffee-paradigms)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Coffee%20Paradigms&color=informational)](https://github.com/jesperancinha/coffee-paradigms)
 
+[![CircleCI](https://circleci.com/gh/jesperancinha/coffee-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/coffee-paradigms)
 [![coffee-paradigms](https://github.com/jesperancinha/coffee-paradigms/actions/workflows/coffee-paradigms.yml/badge.svg)](https://github.com/jesperancinha/coffee-paradigms/actions/workflows/coffee-paradigms.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/gh/jesperancinha/coffee-paradigms/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/coffee-paradigms&utm_campaign=Badge_Coverage)
@@ -11,7 +12,6 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4619967a56c24086b00a7e0344aebaa8)](https://www.codacy.com/gh/jesperancinha/coffee-paradigms/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/coffee-paradigms&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/0d45f066-b81a-4cb8-ae72-d3f6daf5b736)](https://codebeat.co/projects/github-com-jesperancinha-coffee-paradigms-master)
-[![CircleCI](https://circleci.com/gh/jesperancinha/coffee-paradigms.svg?style=svg)](https://circleci.com/gh/jesperancinha/coffee-paradigms)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/coffee-paradigms.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/coffee-paradigms.svg)](#)
