@@ -12,7 +12,6 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c43a3f155b9c4ecab4cfd18e4db314be)](https://www.codacy.com/gh/jesperancinha/image-sizer/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/image-sizer&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/21fdbda4-1395-48ee-a828-619d9197b4a9)](https://codebeat.co/projects/github-com-jesperancinha-image-sizer-master)
-[![BCH compliance](https://bettercodehub.com/edge/badge/jesperancinha/image-sizer?branch=master)](https://bettercodehub.com/results/jesperancinha/image-sizer)
 [![Known Vulnerabilities](https://snyk.io/test/github/jesperancinha/image-sizer/badge.svg)](https://snyk.io/test/github/jesperancinha/image-sizer)
 
 [![codecov](https://codecov.io/gh/jesperancinha/image-sizer/branch/master/graph/badge.svg?token=b0HBEAqDMQ)](https://codecov.io/gh/jesperancinha/image-sizer)
