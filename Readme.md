@@ -27,6 +27,10 @@
 1.  [image-sizer-impl](./image-sizer-impl) - Kotlin project
 2.  [jofisaes-image-morpher-js](./jofisaes-image-morpher-js) - NodeJS project with support for HEIC images (under construction)
 
+#### Stable releases
+
+-   [0.0.0](https://github.com/jesperancinha/image-sizer/tree/0.0.0) - [4a0022d003491a25348a708571ae347ac9240e50](https://github.com/jesperancinha/image-sizer/tree/0.0.0) - JDK17 / Kohsuke / Kotlin 1.8
+
 ## References
 
 -   [Marvin](https://github.com/downgoon/marvin)
