@@ -16,8 +16,8 @@ class CrossInline {
         }
 
         @JvmStatic
-        fun main(args: Array<String>) {
-            logger.infoTitle("Crum 9 - Crossinline")
+        fun main(args: Array<String> = emptyArray()) {
+            logger.infoTitle("Crum 10 - Crossinline")
 
             logger.infoGreen("The point of crossinline is to avoid local-returns")
             logger.infoGreen("local returns is just a fancy way to talk about a return statement in the middle of an execution scope")
