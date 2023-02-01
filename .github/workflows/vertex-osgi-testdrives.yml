@@ -3,6 +3,9 @@ name: VX_OSGI vertex-osgi-testdrive
 on:
   push:
     branches: [ master ]
+  pull_request_target:
+    types:
+      - closed
 
 jobs:
   build:
