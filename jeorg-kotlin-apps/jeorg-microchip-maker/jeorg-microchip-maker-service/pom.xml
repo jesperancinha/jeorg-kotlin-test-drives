@@ -12,7 +12,7 @@
     <name>JEOrg :: KTD :: Apps :: Microchip maker :: Service</name>
 
     <properties>
-        <ktor_version>2.2.2</ktor_version>
+        <ktor_version>2.2.3</ktor_version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin_version>1.7.21</kotlin_version>
         <logback_version>1.4.5</logback_version>
