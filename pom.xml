@@ -29,16 +29,16 @@
         <!-- Unit testing -->
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <kotest-runner-junit5-jvm.version>5.5.4</kotest-runner-junit5-jvm.version>
-        <mockk.version>1.13.3</mockk.version>
+        <mockk.version>1.13.4</mockk.version>
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
-        <omni-coveragereporter-maven-plugin.version>0.3.2</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.4.0</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
-        <jackson-databind.version>2.14.1</jackson-databind.version>
-        <jackson-module-kotlin.version>2.14.1</jackson-module-kotlin.version>
-        <jackson-dataformat-xml.version>2.14.1</jackson-dataformat-xml.version>
+        <jackson-databind.version>2.14.2</jackson-databind.version>
+        <jackson-module-kotlin.version>2.14.2</jackson-module-kotlin.version>
+        <jackson-dataformat-xml.version>2.14.2</jackson-dataformat-xml.version>
 
         <!-- Project Arrow Libraries -->
         <arrow.version>1.1.5</arrow.version>
@@ -206,6 +206,9 @@
                     <groupId>org.jesperancinha.plugins</groupId>
                     <artifactId>omni-coveragereporter-maven-plugin</artifactId>
                     <version>${omni-coveragereporter-maven-plugin.version}</version>
+                    <configuration>
+                        <httpRequestParallelization>3</httpRequestParallelization>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
