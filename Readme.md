@@ -45,20 +45,20 @@ keep looking after it from now on and integrate it into future Java versions
 
 ##### Libraries
 
-- [string-paradigm-api](string-paradigm-api)
-- [string-paradigm-expression-api](string-paradigm-expression-api)
+-   [string-paradigm-api](string-paradigm-api)
+-   [string-paradigm-expression-api](string-paradigm-expression-api)
 
 ##### Applications
 
-- [string-paradigm-expression_1](string-paradigm-expression_1)
-- [string-paradigm-expression_2](string-paradigm-expression_2)
-- [string-paradigm-expression-no-wrapper](string-paradigm-expression-no-wrapper)
-- [string-paradigm-expression-original](string-paradigm-expression-original)
-- [string-paradigm-dependency_2](string-paradigm-dependency_2)
-- [string-paradigm-no-wrapper](string-paradigm-no-wrapper)
-- [string-paradigm-test-generator](string-paradigm-test-generator)
-- [string-paradigm_original](string-paradigm_original)
-- [string-paradigm_1](string-paradigm_1)
+-   [string-paradigm-expression_1](string-paradigm-expression_1)
+-   [string-paradigm-expression_2](string-paradigm-expression_2)
+-   [string-paradigm-expression-no-wrapper](string-paradigm-expression-no-wrapper)
+-   [string-paradigm-expression-original](string-paradigm-expression-original)
+-   [string-paradigm-dependency_2](string-paradigm-dependency_2)
+-   [string-paradigm-no-wrapper](string-paradigm-no-wrapper)
+-   [string-paradigm-test-generator](string-paradigm-test-generator)
+-   [string-paradigm_original](string-paradigm_original)
+-   [string-paradigm_1](string-paradigm_1)
 
 ## Running these tests
 
@@ -78,8 +78,8 @@ gradle test
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=Jesperancinha&style=social "GitHub")](https://github.com/jesperancinha)
-[![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social "Twitter")](https://twitter.com/joaofse)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/mastodon-20.png "Mastodon")](https://masto.ai/@jesperancinha)
+[![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social "Twitter")](https://twitter.com/joaofse)
 | [Sessionize](https://sessionize.com/joao-esperancinha/)
 | [Spotify](https://open.spotify.com/user/jlnozkcomrxgsaip7yvffpqqm?si=b54b89eae8894960)
 | [Medium](https://medium.com/@jofisaes)
