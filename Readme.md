@@ -92,8 +92,8 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 
 To make it easy I made a few [Makefile](./Makefile) scripts:
 
-1. Make the build and run: `make build-run-a`
-2. Just run: `make run-a`
+1.  Make the build and run: `make build-run-a`
+2.  Just run: `make run-a`
 
 ## Input files format
 
@@ -114,8 +114,8 @@ To make it easy I made a few [Makefile](./Makefile) scripts:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=Jesperancinha&style=social "GitHub")](https://github.com/jesperancinha)
-[![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social "Twitter")](https://twitter.com/joaofse)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/mastodon-20.png "Mastodon")](https://masto.ai/@jesperancinha)
+[![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social "Twitter")](https://twitter.com/joaofse)
 | [Sessionize](https://sessionize.com/joao-esperancinha/)
 | [Spotify](https://open.spotify.com/user/jlnozkcomrxgsaip7yvffpqqm?si=b54b89eae8894960)
 | [Medium](https://medium.com/@jofisaes)
