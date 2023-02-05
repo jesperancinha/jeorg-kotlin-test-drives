@@ -55,6 +55,7 @@
         <module>jeorg-kotlin-masters</module>
         <module>jeorg-kotlin-apps</module>
         <module>jeorg-kotlin-arrow-crums</module>
+        <module>jeorg-kotlin-crums/jeorg-ksp-plugin-test</module>
     </modules>
 
     <packaging>pom</packaging>
