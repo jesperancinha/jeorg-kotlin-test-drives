@@ -61,6 +61,6 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.6")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.4")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.5")
 }
 
