@@ -21,7 +21,7 @@
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <assertj-core.version>3.24.2</assertj-core.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
-        <kotest-assertions-core-jvm.version>5.5.4</kotest-assertions-core-jvm.version>
+        <kotest-assertions-core-jvm.version>5.5.5</kotest-assertions-core-jvm.version>
         <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
     </properties>
 
