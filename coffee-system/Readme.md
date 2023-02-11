@@ -21,7 +21,7 @@ $ java -jar coffee-system-1.0-SNAPSHOT.jar -it 1 -ud "test-classes/employees_exa
 * http://winterbe.com/posts/2015/04/07/java8-concurrency-tutorial-thread-e-it 1 -ud "/tmp/employees_example_test_1.xml" -md "/tmp/coffemachine_example_test_1.xml" -pre 2 -post 3
 xecutor-examples/
 
-## About me 👨🏽‍💻🚀🏳️‍🌈
+## About me
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=Jesperancinha&style=social "GitHub")](https://github.com/jesperancinha)
