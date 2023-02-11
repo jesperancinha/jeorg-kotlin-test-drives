@@ -36,7 +36,7 @@
 -   [0.0.0](https://github.com/jesperancinha/performance-parsers/tree/0.0.0) - [5d04a7faf3d2b170ddf67bd02cc77725ceaa066d](https://github.com/jesperancinha/performance-parsers/tree/0.0.0) - JDK 17 / Kohsuke Args 4J / tools.jar / Java
 -   [1.0.0](https://github.com/jesperancinha/performance-parsers/tree/1.0.0) - [b14e54424939685274cb8f982db83b0cbdad7b0e](https://github.com/jesperancinha/performance-parsers/tree/1.0.0) - JDK 19 / Picocli / Kotlin 1.8.0
 
-## About me 👨🏽‍💻🚀🏳️‍🌈
+## About me
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=Jesperancinha&style=social "GitHub")](https://github.com/jesperancinha)
@@ -45,6 +45,8 @@
 | [Sessionize](https://sessionize.com/joao-esperancinha/)
 | [Spotify](https://open.spotify.com/user/jlnozkcomrxgsaip7yvffpqqm?si=b54b89eae8894960)
 | [Medium](https://medium.com/@jofisaes)
+| [YouTube](https://www.youtube.com/@joaoesperancinha/featured)
+| [Instagram](https://www.instagram.com/joaofisaes/)
 | [Buy me a coffee](https://www.buymeacoffee.com/jesperancinha)
 | [Credly Badges](https://www.credly.com/users/joao-esperancinha)
 | [Google Apps](https://play.google.com/store/apps/developer?id=Joao+Filipe+Sabino+Esperancinha)
