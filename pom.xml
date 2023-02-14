@@ -21,7 +21,7 @@
         <thumbnailator.version>0.4.19</thumbnailator.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <javafx.version>18-ea+9</javafx.version>
-        <dependency-check-maven.version>8.0.2</dependency-check-maven.version>
+        <dependency-check-maven.version>8.1.0</dependency-check-maven.version>
     </properties>
 
     <dependencyManagement>
