@@ -1,40 +1,84 @@
-# jeorg-kotlin-crums
+# KSP Plugin Test
 
----
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
+## Introduction
 
-## Description
+This module is here specifically to isolate issues related with the KSP plugin
 
-Kotlin Language study project.
+## Technical
 
-### Learning cloud
+First combination that actually worked:
 
-`mapNotNull`, `filter`, `count`, `getOrPut`, `mutableMapOf`, `listOf`, `groupBy`, `mutableLisOf`, `asSequence`, `mapValues`, `groupingBy`, `eachCount`
-`?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`
 
----
+#### Versions
 
-## Contents
+```xml
+<properties>
+    <java.version>17</java.version>
 
--   [Kotlin Crums 1](./jeorg-kotlin-crums-1) - Fast Track Crum modules 1
--   [Kotlin Crums 2](./jeorg-kotlin-crums-2) - Fast Track Crum modules 2
--   [Kotlin Crums 3](./jeorg-kotlin-crums-3) - Fast Track Crum modules 3
--   [Kotlin Crums 4](dev/src/jeorg-kotlin-test-drives/jeorg-kotlin-arrow-optics/jeorg-kotlin-crums-4) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 4 (Gradle project with Source code generation)
--   [Kotlin Arrow Optics Crum 1](./jeorg-kotlin-optics-crums-1) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 1 (Maven project with Source code generation)
+    <kotlin-maven-plugin.version>${kotlin.version}</kotlin-maven-plugin.version>
+    <kotlin.version>1.7.22</kotlin.version>
+    <arrow-optics-ksp-plugin.version>1.1.4-rc.3</arrow-optics-ksp-plugin.version>
+    <kotlin-maven-symbol-processing.version>1.2</kotlin-maven-symbol-processing.version>
+    <arrow.version>1.1.4-alpha.16</arrow.version>
+</properties>
+```
 
-## References
+#### KSP plugin
 
-### Online
+```xml
+
+<plugin>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
+    <version>${kotlin.version}</version>
+    <executions>
+        <execution>
+            <id>test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+                <goal>test-compile</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>compile</id>
+            <phase>compile</phase>
+            <goals>
+                <goal>compile</goal>
+            </goals>
+            <configuration>
+                <sourceDirs>
+                    <source>src/main/kotlin</source>
+                    <source>target/generated-sources/ksp</source>
+                </sourceDirs>
+            </configuration>
+        </execution>
+    </executions>
+    <configuration>
+        <compilerPlugins>
+            <compilerPlugin>ksp</compilerPlugin>
+        </compilerPlugins>
+        <jvmTarget>${java.version}</jvmTarget>
+    </configuration>
+    <dependencies>
+        <dependency>
+            <groupId>com.dyescape</groupId>
+            <artifactId>kotlin-maven-symbol-processing</artifactId>
+            <version>${kotlin-maven-symbol-processing.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.arrow-kt</groupId>
+            <artifactId>arrow-optics-ksp-plugin</artifactId>
+            <version>${arrow-optics-ksp-plugin.version}</version>
+        </dependency>
+    </dependencies>
+</plugin>
+```
+
+# References
 
 -   [kotlin-maven-symbol-processing](https://github.com/Dyescape/kotlin-maven-symbol-processing)
-### Books
 
--   Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
--   Griffiths, D. Griffiths, D. (February 2019). <i>Head First A Brain-Friendly Guide</i>. (First Edition). O'Reilly
--   Skeen, J. Greenhalgh, D. (July 2018). <i>Kotlin Programming - The Big Nerd Ranch Guide</i>. (First Edition). Big Nerd Ranch
--   Jemerov, D. Isakova, S. (2017). <i>Kotlin in Action</i>. (First Edition). Manning Publications
-
-## About me
+## About me 👨🏽‍💻🚀🏳️‍🌈
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=Jesperancinha&style=social "GitHub")](https://github.com/jesperancinha)
@@ -43,8 +87,6 @@ Kotlin Language study project.
 | [Sessionize](https://sessionize.com/joao-esperancinha/)
 | [Spotify](https://open.spotify.com/user/jlnozkcomrxgsaip7yvffpqqm?si=b54b89eae8894960)
 | [Medium](https://medium.com/@jofisaes)
-| [YouTube](https://www.youtube.com/@joaoesperancinha/featured)
-| [Instagram](https://www.instagram.com/joaofisaes/)
 | [Buy me a coffee](https://www.buymeacoffee.com/jesperancinha)
 | [Credly Badges](https://www.credly.com/users/joao-esperancinha)
 | [Google Apps](https://play.google.com/store/apps/developer?id=Joao+Filipe+Sabino+Esperancinha)

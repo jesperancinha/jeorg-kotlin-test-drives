@@ -7,6 +7,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <kotlin.version>1.8.10</kotlin.version>
+    </properties>
+
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jeorg-kotlin-crums</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -14,8 +18,6 @@
         <module>jeorg-kotlin-crums-1</module>
         <module>jeorg-kotlin-crums-2</module>
         <module>jeorg-kotlin-crums-3</module>
-
-        <module>jeorg-kotlin-optics-crums-1</module>
     </modules>
     <packaging>pom</packaging>
 </project>
