@@ -109,11 +109,11 @@
                         <artifactId>kotlin-maven-symbol-processing</artifactId>
                         <version>${kotlin-maven-symbol-processing.version}</version>
                     </dependency>
-<!--                    <dependency>-->
-<!--                        <groupId>io.arrow-kt</groupId>-->
-<!--                        <artifactId>arrow-optics-ksp-plugin</artifactId>-->
-<!--                        <version>${arrow-optics-ksp-plugin.version}</version>-->
-<!--                    </dependency>-->
+                    <dependency>
+                        <groupId>io.arrow-kt</groupId>
+                        <artifactId>arrow-optics-ksp-plugin</artifactId>
+                        <version>${arrow-optics-ksp-plugin.version}</version>
+                    </dependency>
                 </dependencies>
             </plugin>
             <plugin>
