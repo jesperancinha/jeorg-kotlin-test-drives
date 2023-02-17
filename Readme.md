@@ -37,6 +37,8 @@
 
 Kotlin Language study project.
 
+>NOTE: Due to unexpected incompatibilities, all repos can be expected to have different Kotlin versions.
+
 ---
 
 ## Contents
