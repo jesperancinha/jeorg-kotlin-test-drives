@@ -37,6 +37,8 @@
 
 Kotlin Language study project.
 
+>NOTE: Due to unexpected incompatibilities, all repos can be expected to have different Kotlin versions.
+
 ---
 
 ## Contents
@@ -44,28 +46,8 @@ Kotlin Language study project.
 -   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
 -   [Kotlin Utilities](./jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
 -   [Kotlin Masters](./jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
--   [Kotlin Arrow Crums](./jeorg-kotlin-arrow-crums) - Crums Fast track module dedicated exclusively to [Arrow](https://arrow-kt.io/)
+-   [Kotlin Arrow Optics](jeorg-kotlin-arrow-optics) - Crums Fast track modules dedicated exclusively to [Arrow](https://arrow-kt.io/)
 -   [Kotlin Apps](./jeorg-kotlin-apps) - Apps module where web applications are created as a collective gathering of several topics
-
----
-
-## [Arrow](https://arrow-kt.io/)
-
-A lot of concepts of software engineering are explored in [Arrow](https://arrow-kt.io/).
-Because of its importance to the Kotlin community please find below a list of submodules where we can find lots of [Arrow](https://arrow-kt.io/) research modules.
-
-In module [jeorg-kotlin-arrow-crums](./jeorg-kotlin-arrow-crums) we can find exclusively arrow modules fully dedicated to researching [Arrow](https://arrow-kt.io/).
-
-##### [Arrow Core](https://arrow-kt.io/docs/core/)
-
--   [Kotlin Crums 3](./jeorg-kotlin-crums/jeorg-kotlin-crums-3) - Fast Track Crum modules 3 - `Effect`
-
-##### [Arrow Optics](https://arrow-kt.io/docs/optics/)
-
-
--   [Kotlin Crums 3](./jeorg-kotlin-crums/jeorg-kotlin-crums-3) - Fast Track Crum modules 3
--   [Kotlin Crums 4](./jeorg-kotlin-crums/jeorg-kotlin-crums-4) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 4 (Gradle project with Source code generation)
--   [Kotlin Arrow Optics Crum 1](./jeorg-kotlin-crums/jeorg-kotlin-optics-crums-1) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 1 (Maven project with Source code generation)
 
 ---
 

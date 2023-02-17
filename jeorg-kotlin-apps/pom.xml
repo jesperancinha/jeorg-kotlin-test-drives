@@ -9,6 +9,9 @@
     <artifactId>jeorg-kotlin-apps</artifactId>
     <name>JEOrg :: KTD :: Apps</name>
     <packaging>pom</packaging>
+    <properties>
+        <kotlin.version>1.8.10</kotlin.version>
+    </properties>
 
     <modules>
         <module>jeorg-microchip-maker</module>
