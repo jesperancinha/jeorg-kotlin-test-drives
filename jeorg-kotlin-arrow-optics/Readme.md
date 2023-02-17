@@ -1,38 +1,12 @@
-# jeorg-kotlin-crums
+# jeorg-kotlin-arrow-optics
 
----
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
+## Introduction
 
-## Description
+This repo is fully dedicated to arrow and arrow optics.
 
-Kotlin Language study project.
+Due to unexpected incompatibilities, all repos can be expected to have different Kotlin versions.
 
-### Learning cloud
-
-`mapNotNull`, `filter`, `count`, `getOrPut`, `mutableMapOf`, `listOf`, `groupBy`, `mutableLisOf`, `asSequence`, `mapValues`, `groupingBy`, `eachCount`
-`?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`
-
----
-
-## Contents
-
--   [Kotlin Crums 1](./jeorg-kotlin-crums-1) - Fast Track Crum modules 1
--   [Kotlin Crums 2](./jeorg-kotlin-crums-2) - Fast Track Crum modules 2
--   [Kotlin Crums 3](./jeorg-kotlin-crums-3) - Fast Track Crum modules 3
--   [Kotlin Crums 4](dev/src/jeorg-kotlin-test-drives/jeorg-kotlin-arrow-optics/jeorg-kotlin-crums-4) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 4 (Gradle project with Source code generation)
--   [Kotlin Arrow Optics Crum 1](./jeorg-kotlin-optics-crums-1) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 1 (Maven project with Source code generation)
-
-## References
-
-### Online
-
--   [kotlin-maven-symbol-processing](https://github.com/Dyescape/kotlin-maven-symbol-processing)
-### Books
-
--   Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
--   Griffiths, D. Griffiths, D. (February 2019). <i>Head First A Brain-Friendly Guide</i>. (First Edition). O'Reilly
--   Skeen, J. Greenhalgh, D. (July 2018). <i>Kotlin Programming - The Big Nerd Ranch Guide</i>. (First Edition). Big Nerd Ranch
--   Jemerov, D. Isakova, S. (2017). <i>Kotlin in Action</i>. (First Edition). Manning Publications
+This specific repo uses a KSP plugin that is known to not accompany Kotlin updates at the same rate as other plugins.
 
 ## About me
 
