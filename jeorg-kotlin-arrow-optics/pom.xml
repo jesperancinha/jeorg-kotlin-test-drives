@@ -11,7 +11,7 @@
 
     <artifactId>jeorg-kotlin-arrow-optics</artifactId>
     <properties>
-        <kotlin.version>1.7.22</kotlin.version>
+        <kotlin.version>1.8.10</kotlin.version>
     </properties>
     <modules>
         <module>jeorg-kotlin-optics-crums-1</module>
