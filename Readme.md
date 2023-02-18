@@ -41,8 +41,8 @@ Kotlin Language study project.
 
 #### Stable releases
 
--   [0.0.0](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/0.0.0) - [b75ade686c8826d0d76a8da52d5f22983e2deef3](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/0.0.0)
--   [1.0.0](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/1.0.0) - [862540419a4222c2e496f85f0fcb852d29092393](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/1.0.0)
+-   [0.0.0](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/0.0.0) - [b75ade686c8826d0d76a8da52d5f22983e2deef3](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/0.0.0) - JDK17 - Kotlin
+-   [1.0.0](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/1.0.0) - [862540419a4222c2e496f85f0fcb852d29092393](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/1.0.0) - JDK19 - Kotlin
 
 ---
 
