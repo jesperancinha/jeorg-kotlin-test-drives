@@ -46,6 +46,8 @@
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
         <kotest-assertions.version>5.5.5</kotest-assertions.version>
+        <spring-boot-starter-parent.version>3.0.2</spring-boot-starter-parent.version>
+        <springmockk.version>4.0.0</springmockk.version>
     </properties>
 
     <modules>
@@ -60,6 +62,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot-starter-parent.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
@@ -174,6 +183,12 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.ninja-squad</groupId>
+                <artifactId>springmockk</artifactId>
+                <version>${springmockk.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
