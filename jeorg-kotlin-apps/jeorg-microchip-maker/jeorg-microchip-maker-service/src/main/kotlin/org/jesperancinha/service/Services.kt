@@ -2,8 +2,8 @@ package org.jesperancinha.service
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.math.BigDecimal
 import java.math.MathContext.DECIMAL64
-import kotlin.math.sqrt
 
 class Point(
     val x: Long,
@@ -22,7 +22,7 @@ class Rectangle(
     private val p3: Point,
     private val p4: Point,
 ) {
-    constructor(p1: Point, p2: Point, p3: Point) : this(p1, p2, p3, calulateMissingPoint(p1, p2, p3))
+    constructor(p1: Point, p2: Point, p3: Point) : this(p1, p2, p3, calculateMissingPoint(p1, p2, p3))
 
     fun validate() = (
             distances(p1, p2, p3, p4) + distances(p2, p3, p1, p4) +
@@ -51,15 +51,12 @@ class Rectangle(
          * c1 = sqrt(h^2 - c2^2)
          * c2 = sqrt(h^2 - c1^2)
          */
-        fun calulateMissingPoint(p1: Point, p2: Point, p3: Point): Point {
-            val middlePoint: Point = calculateMiddlePoint(p1, p2, p3)
-            return when (middlePoint) {
+        fun calculateMissingPoint(p1: Point, p2: Point, p3: Point): Point = when (calculateMiddlePoint(p1, p2, p3)) {
                 p1 -> p1.makePoint(p2, p3)
                 p2 -> p2.makePoint(p3, p1)
                 p3 -> p3.makePoint(p1, p2)
                 else -> throw RuntimeException("Invalid Point Found! This should not happen")
             }
-        }
 
         private fun calculateMiddlePoint(p1: Point, p2: Point, p3: Point): Point = setOf(p1, p2, p3).minBy {
             when (it) {
@@ -70,7 +67,7 @@ class Rectangle(
             }
         }
 
-        fun distance(pa: Point, pb: Point) =
+        fun distance(pa: Point, pb: Point): BigDecimal =
             (pb.x - pa.x).toBigDecimal().pow(2).add(
                 (pb.y - pa.y).toBigDecimal().pow(2)
             ).sqrt(DECIMAL64)
