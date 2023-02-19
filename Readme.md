@@ -39,6 +39,11 @@ Kotlin Language study project.
 
 >NOTE: Due to unexpected incompatibilities, all repos can be expected to have different Kotlin versions.
 
+#### Stable releases
+
+-   [0.0.0](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/0.0.0) - [b75ade686c8826d0d76a8da52d5f22983e2deef3](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/0.0.0) - JDK17 - Kotlin
+-   [1.0.0](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/1.0.0) - [862540419a4222c2e496f85f0fcb852d29092393](https://github.com/jesperancinha/jeorg-kotlin-test-drives/tree/1.0.0) - JDK19 - Kotlin
+
 ---
 
 ## Contents
@@ -57,17 +62,10 @@ Note that if you want to build this project from the root, you need to use one o
 
 <i>See [Hints&Tricks](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/Hints%26Tricks.md) document for more details</i>
 
-## Install JDK 17 using [SDK-MAN](https://sdkman.io/)
+## Install JDK 19 using [SDK-MAN](https://sdkman.io/)
 
 ```bash
-sdk install java 17-open
-sdk use java 17-open
-```
-
-Or just run:
-
-```bash
-. ./sdk17.sh
+. ./sdk19.sh
 ```
 
 ---
@@ -164,4 +162,4 @@ end
 | [Deep Learning](https://www.credly.com/badges/8d27e38c-869d-4815-8df3-13762c642d64)
 | [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=JEsperancinhaOrg&color=yellow "jesperancinha.org dependencies")](https://github.com/JEsperancinhaOrg)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=All%20Badges&message=Badges&color=red "All badges")](https://joaofilipesabinoesperancinha.nl/badges)
-[![Generic badge](https://img.shields.io/static/v1.svg?label=Status&message=Project%20Status&color=red "Project statuses")](https://github.com/jesperancinha/project-signer/blob/master/project-signer-quality/Build.md)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=Status&message=Project%20Status&color=red "Project statuses")](https://github.com/jesperancinha/jeorg-kotlin-test-drives/blob/master/jeorg-kotlin-test-drives-quality/Build.md)
