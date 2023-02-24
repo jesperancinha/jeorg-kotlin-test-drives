@@ -21,8 +21,8 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.501")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.501")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.10.6-pre.501")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.8.1-pre.501")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.10.6-pre.503")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.8.1-pre.503")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.501")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.500")
 }
