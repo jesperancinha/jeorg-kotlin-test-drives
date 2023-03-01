@@ -48,6 +48,8 @@
         <kotest-assertions.version>5.5.5</kotest-assertions.version>
         <spring-boot-starter-parent.version>3.0.3</spring-boot-starter-parent.version>
         <springmockk.version>4.0.0</springmockk.version>
+        <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
+        <logback-classic.version>1.4.5</logback-classic.version>
     </properties>
 
     <modules>
@@ -148,6 +150,16 @@
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-shared-jvm</artifactId>
                 <version>${kotest-assertions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j-log4j12.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
