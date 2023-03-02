@@ -1,12 +1,10 @@
 package org.jesperancinha.ktd
 
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Default
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Dispatchers.Unconfined
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.apache.commons.lang3.ThreadUtils
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import java.io.File
@@ -36,6 +34,7 @@ object CoroutinesTestLauncher {
         runUnconfinedCoroutinesTest()
         runIOCoroutinesTest()
         runDefaultCoroutinesTest()
+        runMainCoroutinesTest()
 
         logger.info("Starting load tests")
         measureTimeMillis { runDefaultLoadCoroutinesTest() }.also { logger.infoTs("DEFAULT took $it milliseconds") }
@@ -83,6 +82,27 @@ object CoroutinesTestLauncher {
         }
         reportCurrentThreads()
         job.join()
+    }
+
+    private suspend fun runMainCoroutinesTest() {
+        logger.infoTextSeparator("Main means that the coroutine will execute only on one thread and only on the Main thread, whichever that thread might be")
+        logger.infoTextSeparator("This will not work here")
+        logger.infoTextSeparator("Main is only available in these dependencies: kotlinx-coroutines-android, kotlinx-coroutines-javafx or kotlinx-coroutines-swing")
+        try {
+            val job = CoroutineScope(Main).launch {
+                launch {
+                    delay(100)
+                    logger.info("This is cat @ ${LocalDateTime.now()}")
+                }
+                launch {
+                    logger.info("This is mouse @ ${LocalDateTime.now()}")
+                }
+                logger.info("This is master @ ${LocalDateTime.now()}")
+            }
+            reportCurrentThreads()
+            job.join()
+        } catch (_: Exception){
+        }
     }
 
     private suspend fun runUnconfinedCoroutinesTest() {
