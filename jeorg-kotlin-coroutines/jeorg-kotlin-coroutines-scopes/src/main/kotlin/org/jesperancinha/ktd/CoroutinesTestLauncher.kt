@@ -22,6 +22,9 @@ object CoroutinesTestLauncher {
         fun infoTextSeparator(logText: Any?) = ConsolerizerComposer.out().orange(ConsolerizerComposer.title(logText))
         fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
             .cyan(ConsolerizerComposer.title(logText))
+        fun infoSubTitle(logText: String) = ConsolerizerComposer.outSpace()
+            .black()
+            .bgGreen(ConsolerizerComposer.title(logText))
     }
 
     @JvmStatic
@@ -33,10 +36,15 @@ object CoroutinesTestLauncher {
         )
 
         logger.info("Starting simple tests")
+        logger.infoSubTitle("runUnconfinedCoroutinesTest")
         runUnconfinedCoroutinesTest()
+        logger.infoSubTitle("runUnconfinedCoroutinesTestWithContext")
         runUnconfinedCoroutinesTestWithContext()
+        logger.infoSubTitle("runIOCoroutinesTest")
         runIOCoroutinesTest()
+        logger.infoSubTitle("runDefaultCoroutinesTest")
         runDefaultCoroutinesTest()
+        logger.infoSubTitle("runMainCoroutinesTest")
         runMainCoroutinesTest()
 
         logger.info("Starting load tests")
