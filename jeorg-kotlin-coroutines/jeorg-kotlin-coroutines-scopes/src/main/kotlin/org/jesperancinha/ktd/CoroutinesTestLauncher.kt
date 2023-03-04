@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers.Unconfined
 import org.apache.commons.lang3.ThreadUtils
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import java.io.File
+import java.lang.IllegalStateException
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.system.measureTimeMillis
@@ -15,11 +16,15 @@ import kotlin.system.measureTimeMillis
 object CoroutinesTestLauncher {
     private val logger = object {
         fun info(logText: Any?) = ConsolerizerComposer.out().magenta(logText)
+        fun infoThread(logText: Any?) = ConsolerizerComposer.out().yellow(logText)
         fun infoTs(logText: Any?) = ConsolerizerComposer.out().red(logText)
         fun infoText(logText: Any?) = ConsolerizerComposer.out().green(logText)
         fun infoTextSeparator(logText: Any?) = ConsolerizerComposer.out().orange(ConsolerizerComposer.title(logText))
         fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
             .cyan(ConsolerizerComposer.title(logText))
+        fun infoSubTitle(logText: String) = ConsolerizerComposer.outSpace()
+            .black()
+            .bgGreen(ConsolerizerComposer.title(logText))
     }
 
     @JvmStatic
@@ -31,9 +36,15 @@ object CoroutinesTestLauncher {
         )
 
         logger.info("Starting simple tests")
+        logger.infoSubTitle("runUnconfinedCoroutinesTest")
         runUnconfinedCoroutinesTest()
+        logger.infoSubTitle("runUnconfinedCoroutinesTestWithContext")
+        runUnconfinedCoroutinesTestWithContext()
+        logger.infoSubTitle("runIOCoroutinesTest")
         runIOCoroutinesTest()
+        logger.infoSubTitle("runDefaultCoroutinesTest")
         runDefaultCoroutinesTest()
+        logger.infoSubTitle("runMainCoroutinesTest")
         runMainCoroutinesTest()
 
         logger.info("Starting load tests")
@@ -101,24 +112,55 @@ object CoroutinesTestLauncher {
             }
             reportCurrentThreads()
             job.join()
-        } catch (_: Exception){
+        } catch (ex: IllegalStateException){
+            logger.info(ex)
         }
     }
 
     private suspend fun runUnconfinedCoroutinesTest() {
-        logger.infoTextSeparator("Unconfined means that the coroutine will execute immediately on the thread giving it priority over child/sub coroutines")
+        logger.infoTextSeparator("Unconfined means that all coroutines will execute concurrently on the starting thread in the scope of the parent thread")
         val job = CoroutineScope(Unconfined).launch {
             launch {
+                logger.infoThread("Cat Before thread ==> ${Thread.currentThread()}")
                 delay(100)
                 logger.info("This is cat @ ${LocalDateTime.now()}")
+                logger.info(coroutineContext)
+                logger.infoThread("Cat After Resume thread ==> ${Thread.currentThread()}")
             }
             launch {
                 logger.info("This is mouse @ ${LocalDateTime.now()}")
+                logger.info(coroutineContext)
+                logger.infoThread(Thread.currentThread())
             }
             logger.info("This is master @ ${LocalDateTime.now()}")
+            logger.info(coroutineContext)
+            logger.infoThread(Thread.currentThread())
         }
         reportCurrentThreads()
         job.join()
+    }
+    private suspend fun runUnconfinedCoroutinesTestWithContext() {
+        logger.infoTextSeparator("Unconfined means that all coroutines will execute concurrently on the starting thread in the scope of the parent thread")
+        CoroutineScope(Unconfined).launch {
+            withContext(Unconfined) {
+                withContext(Unconfined) {
+                    delay(100)
+                    logger.infoThread("Cat Before thread ==> **** ${Thread.currentThread()} ****")
+                    logger.info("This is cat @ ${LocalDateTime.now()}")
+                    logger.info(coroutineContext)
+                    logger.infoThread("Cat After Resume thread ==> **** ${Thread.currentThread()} ****")
+                }
+                withContext(Unconfined) {
+                    logger.info("This is mouse @ ${LocalDateTime.now()}")
+                    logger.info(coroutineContext)
+                    logger.infoThread(Thread.currentThread())
+                }
+                logger.info("This is master @ ${LocalDateTime.now()}")
+                logger.info(coroutineContext)
+                logger.infoThread(Thread.currentThread())
+            }
+        }
+        reportCurrentThreads()
     }
 
     private suspend fun runDefaultCoroutinesTest() {
@@ -162,8 +204,8 @@ object CoroutinesTestLauncher {
         }
 
     private fun reportCurrentThreads() {
-        logger.infoText(ThreadUtils.getAllThreads().map {
+        logger.infoText("All current threads ${ThreadUtils.getAllThreads().map {
             it
-        }.joinToString("\n") { it.toString() })
+        }.joinToString("\n") { it.toString() }}")
     }
 }
