@@ -2,7 +2,6 @@ package org.jesperancinha.ktd
 
 import kotlinx.coroutines.*
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import kotlin.math.log
 
 object UnconfinedCoroutineLauncher {
     private val logger = object {
@@ -11,10 +10,6 @@ object UnconfinedCoroutineLauncher {
         fun infoAfter(logText: Any?) = ConsolerizerComposer.out().red(logText)
         fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
             .cyan(ConsolerizerComposer.title(logText))
-
-        fun infoSubTitle(logText: String) = ConsolerizerComposer.outSpace()
-            .black()
-            .bgGreen(ConsolerizerComposer.title(logText))
     }
 
     @JvmStatic
