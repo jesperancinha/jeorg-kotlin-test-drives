@@ -7,12 +7,10 @@
         <groupId>org.jesperancinha.ktd</groupId>
         <artifactId>jeorg-kotlin-coroutines</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>jeorg-kotlin-coroutines-scopes</artifactId>
-
-    <name>JEOrg :: KTD :: Coroutines :: Scopes</name>
+    <artifactId>jeorg-kotlin-coroutines-unconfined</artifactId>
+    <name>JEOrg :: KTD :: Coroutines :: Unconfined</name>
 
     <dependencies>
         <dependency>
