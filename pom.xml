@@ -46,7 +46,7 @@
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
         <kotest-assertions.version>5.5.5</kotest-assertions.version>
-        <spring-boot-starter-parent.version>3.0.3</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.0.4</spring-boot-starter-parent.version>
         <springmockk.version>4.0.1</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <logback-classic.version>1.4.5</logback-classic.version>
