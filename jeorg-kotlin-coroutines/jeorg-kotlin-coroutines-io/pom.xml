@@ -9,8 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>jeorg-kotlin-coroutines-unconfined</artifactId>
-    <name>JEOrg :: KTD :: Coroutines :: Unconfined</name>
+    <artifactId>jeorg-kotlin-coroutines-io</artifactId>
+
+    <name>JEOrg :: KTD :: Coroutines :: IO</name>
 
     <dependencies>
         <dependency>
