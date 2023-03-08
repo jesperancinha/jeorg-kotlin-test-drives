@@ -13,7 +13,7 @@ object UnconfinedCoroutineLauncher {
     }
 
     @JvmStatic
-    fun main(args: Array<String>) = runBlocking {
+    fun main(args: Array<String> = emptyArray()) = runBlocking {
         logger.infoTitle(
             "Coroutines scope tests / There are currently ${
                 Runtime.getRuntime().availableProcessors()
