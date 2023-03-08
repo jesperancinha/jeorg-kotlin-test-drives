@@ -22,21 +22,21 @@ object UnconfinedCoroutineLauncher {
         CoroutineScope(Dispatchers.Unconfined).launch {
             launch {
                 logger.info("Running on context $coroutineContext")
-                logger.infoBefore("Siamese Cat is launching on Thread-${Thread.currentThread().threadId()}")
+                logger.infoBefore("Siamese Cat is launching on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
                 delay(1)
-                logger.infoAfter("Siamese Cat just ran on Thread-${Thread.currentThread().threadId()}")
+                logger.infoAfter("Siamese Cat just ran on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
             }
             launch {
                 logger.info("Running on context $coroutineContext")
-                logger.infoBefore("Mouse is launching on Thread-${Thread.currentThread().threadId()}")
+                logger.infoBefore("Mouse is launching on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
                 delay(20)
-                logger.infoAfter("Mouse just ran on Thread-${Thread.currentThread().threadId()}")
+                logger.infoAfter("Mouse just ran on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
             }
             launch {
                 logger.info("Running on context $coroutineContext")
-                logger.infoBefore("Maine Coon is launching on Thread-${Thread.currentThread().threadId()}")
+                logger.infoBefore("Maine Coon is launching on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
                 delay(30)
-                logger.infoAfter("Maine Coon is just ran on Thread-${Thread.currentThread().threadId()}")
+                logger.infoAfter("Maine Coon is just ran on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
             }
         }.join()
     }

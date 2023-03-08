@@ -14,8 +14,8 @@ open class IOCoroutineLauncher {
     companion object {
         private val logger = object {
             fun info(logText: Any?) = ConsolerizerComposer.out().yellow(logText)
-            fun infoBefore(logText: Any?) = kotlin.synchronized(this) { ConsolerizerComposer.out().green(logText) }
-            fun infoAfter(logText: Any?) = kotlin.synchronized(this) { ConsolerizerComposer.out().red(logText) }
+            fun infoBefore(logText: Any?) = kotlin.synchronized(this) { ConsolerizerComposer.out().green("$logText on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}") }
+            fun infoAfter(logText: Any?) = kotlin.synchronized(this) { ConsolerizerComposer.out().red("$logText on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}") }
             fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title(logText))
         }
