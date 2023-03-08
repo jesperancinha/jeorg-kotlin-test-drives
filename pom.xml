@@ -50,6 +50,7 @@
         <springmockk.version>4.0.1</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <logback-classic.version>1.4.5</logback-classic.version>
+        <kotlinx-coroutines-reactor.version>1.5.1</kotlinx-coroutines-reactor.version>
     </properties>
 
     <modules>
@@ -151,6 +152,11 @@
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-shared-jvm</artifactId>
                 <version>${kotest-assertions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-reactor</artifactId>
+                <version>${kotlinx-coroutines-reactor.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
