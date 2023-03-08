@@ -5,10 +5,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.getForEntity
-import java.lang.Thread.sleep
 import java.time.LocalDateTime
 import kotlin.system.exitProcess
 
@@ -36,13 +33,12 @@ open class IOCoroutineLauncher {
                     Runtime.getRuntime().availableProcessors()
                 } CPU's available"
             )
-            runIOParallelismTest()
             runIOCoroutinesWithIOCalls()
             runIOCoroutinesWithoutIOCalls()
         }
 
         @OptIn(ExperimentalCoroutinesApi::class)
-        private suspend fun runIOParallelismTest() {
+        private suspend fun runIOCoroutinesWithIOCalls() {
            runBlocking {
                 logger.infoTitle("Testing maximum parallelism")
                 logger.info("First test how many threads can we create")
@@ -87,10 +83,36 @@ open class IOCoroutineLauncher {
         }
 
         private fun runIOCoroutinesWithoutIOCalls() {
-            CoroutineScope(Dispatchers.IO)
-        }
+            runBlocking {
+                logger.infoTitle("Testing maximum parallelism")
+                logger.info("First test how many threads can we create")
 
-        private fun runIOCoroutinesWithIOCalls() {
-        }
+                val dispatcherOne = Dispatchers.IO.limitedParallelism(5)
+                val dispatcherTwo = Dispatchers.IO.limitedParallelism(10)
+
+                logger.info(Thread.getAllStackTraces().map { it.key.name })
+                logger.info("Testing parallelism 5")
+                withContext(dispatcherOne) {
+                    (0..10).map {
+                        launch {
+                            logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
+                            val restTemplate = RestTemplate()
+                            delay(1000)
+                            logger.infoAfter("Finishing call $it at ${LocalDateTime.now()}")
+                        }
+                    }
+                }
+                logger.info("Testing parallelism 10")
+                withContext(dispatcherTwo) {
+                    (0..10).map {
+                        launch {
+                            logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
+                            delay(1000)
+                            logger.infoAfter("Finishing call $it at ${LocalDateTime.now()}")
+                        }
+                    }
+                }
+            }
+            logger.info(Thread.getAllStackTraces().map { it.key.name })        }
     }
 }
