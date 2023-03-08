@@ -14,8 +14,8 @@ open class IOCoroutineLauncher {
     companion object {
         private val logger = object {
             fun info(logText: Any?) = ConsolerizerComposer.out().yellow(logText)
-            fun infoBefore(logText: Any?) = ConsolerizerComposer.out().green(logText)
-            fun infoAfter(logText: Any?) = ConsolerizerComposer.out().red(logText)
+            fun infoBefore(logText: Any?) = kotlin.synchronized(this) { ConsolerizerComposer.out().green(logText) }
+            fun infoAfter(logText: Any?) = kotlin.synchronized(this) { ConsolerizerComposer.out().red(logText) }
             fun infoTitle(logText: String) = ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title(logText))
         }
@@ -39,7 +39,7 @@ open class IOCoroutineLauncher {
 
         @OptIn(ExperimentalCoroutinesApi::class)
         private suspend fun runIOCoroutinesWithIOCalls() {
-           runBlocking {
+            runBlocking {
                 logger.infoTitle("Testing maximum parallelism")
                 logger.info("First test how many threads can we create")
 
@@ -113,6 +113,7 @@ open class IOCoroutineLauncher {
                     }
                 }
             }
-            logger.info(Thread.getAllStackTraces().map { it.key.name })        }
+            logger.info(Thread.getAllStackTraces().map { it.key.name })
+        }
     }
 }
