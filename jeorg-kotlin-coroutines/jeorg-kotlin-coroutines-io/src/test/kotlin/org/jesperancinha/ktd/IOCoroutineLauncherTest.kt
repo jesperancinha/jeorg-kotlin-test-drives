@@ -1,7 +1,6 @@
 package org.jesperancinha.ktd
 
-import kotlinx.coroutines.*
-import org.junit.jupiter.api.Assertions.*
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
 class IOCoroutineLauncherTest {
