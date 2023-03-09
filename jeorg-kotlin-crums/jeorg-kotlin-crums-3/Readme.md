@@ -11,6 +11,7 @@
 
 ### Online
 
+-   [MutableSharedFlow is kind of complicated](https://itnext.io/mutablesharedflow-is-kind-of-complicated-61af68011eae)
 -   [inline, noinline, crossinline — What do they mean?](https://medium.com/android-news/inline-noinline-crossinline-what-do-they-mean-b13f48e113c2)
 -   [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 -   [Type-safe builders](https://kotlinlang.org/docs/type-safe-builders.html)
