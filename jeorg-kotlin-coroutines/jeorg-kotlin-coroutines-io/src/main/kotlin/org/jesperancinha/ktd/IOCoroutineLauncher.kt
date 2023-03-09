@@ -20,52 +20,60 @@ open class IOCoroutineLauncher {
 
         suspend fun runAllTests() {
             SpringApplication.run(IOCoroutineLauncher::class.java)
-            logger.infoTitle(
+            val infoTitle = logger.infoTitle(
                 "Unconfined Coroutines scope tests / There are currently ${
                     Runtime.getRuntime().availableProcessors()
                 } CPU's available"
             )
-            logger.infoTitleMeasurement("Runtime of runIOCoroutinesWithIOCalls took ${IOCallsTOService.runIOCoroutinesWithIOCalls()} ms")
-            logger.infoTitleMeasurement(
-                "Runtime of runIOCoroutinesWithDelay took ${
-                    NonIOCalls.runIOCoroutinesWithDelay(
-                        parallelismOne = 5,
-                        parallelismTwo = 10,
-                        generateForOne = 10,
-                        generateForTwo = 15
-                    )
-                } ms"
+            val runIOCoroutinesWithIOCalls = IOCallsTOService.runIOCoroutinesWithIOCalls(
+                parallelismOne = 5,
+                parallelismTwo = 10,
+                generateForOne = 10,
+                generateForTwo = 15
             )
-            logger.infoTitleMeasurement(
-                "Runtime of runIOCoroutinesWithThread took ${
-                    NonIOCalls.runIOCoroutinesWithThread(
-                        parallelismOne = 5,
-                        parallelismTwo = 10,
-                        generateForOne = 10,
-                        generateForTwo = 15
-                    )
-                } ms"
+            val runIOCoroutinesWithDelayMs = NonIOCalls.runIOCoroutinesWithDelay(
+                parallelismOne = 5,
+                parallelismTwo = 10,
+                generateForOne = 10,
+                generateForTwo = 15
             )
-            logger.infoTitleMeasurement(
-                "Runtime of BIG runIOCoroutinesWithDelay took ${
-                    NonIOCalls.runIOCoroutinesWithDelay(
-                        parallelismOne = 100,
-                        parallelismTwo = 150,
-                        generateForOne = 150,
-                        generateForTwo = 200
-                    )
-                } ms"
+            val runIOCoroutinesWithThreadMs = NonIOCalls.runIOCoroutinesWithThread(
+                parallelismOne = 5,
+                parallelismTwo = 10,
+                generateForOne = 10,
+                generateForTwo = 15
             )
-            logger.infoTitleMeasurement(
-                "Runtime of BIG runIOCoroutinesWithThread took ${
-                    NonIOCalls.runIOCoroutinesWithThread(
-                        parallelismOne = 100,
-                        parallelismTwo = 150,
-                        generateForOne = 150,
-                        generateForTwo = 200
-                    )
-                } ms"
+            val runIOCoroutinesWithDelayBigMs = NonIOCalls.runIOCoroutinesWithDelay(
+                parallelismOne = 100,
+                parallelismTwo = 150,
+                generateForOne = 150,
+                generateForTwo = 200
             )
+            val runIOCoroutinesWithThreadBigMs = NonIOCalls.runIOCoroutinesWithThread(
+                parallelismOne = 100,
+                parallelismTwo = 150,
+                generateForOne = 150,
+                generateForTwo = 200
+            )
+            val runIOCoroutinesWithDelayMegaMs = NonIOCalls.runIOCoroutinesWithDelay(
+                parallelismOne = 1000,
+                parallelismTwo = 1500,
+                generateForOne = 1500,
+                generateForTwo = 2000
+            )
+            val runIOCoroutinesWithThreadMegaMs = NonIOCalls.runIOCoroutinesWithThread(
+                parallelismOne = 1000,
+                parallelismTwo = 1500,
+                generateForOne = 1500,
+                generateForTwo = 2000
+            )
+            logger.infoTitleMeasurement("Runtime of runIOCoroutinesWithIOCalls took $runIOCoroutinesWithIOCalls ms")
+            logger.infoTitleMeasurement("Runtime of runIOCoroutinesWithDelay took $runIOCoroutinesWithDelayMs ms")
+            logger.infoTitleMeasurement("Runtime of runIOCoroutinesWithThread took $runIOCoroutinesWithThreadMs ms")
+            logger.infoTitleMeasurement("Runtime of BIG runIOCoroutinesWithDelay took $runIOCoroutinesWithDelayBigMs ms")
+            logger.infoTitleMeasurement("Runtime of BIG runIOCoroutinesWithThread took $runIOCoroutinesWithThreadBigMs ms")
+            logger.infoTitleMeasurement("Runtime of MEGA runIOCoroutinesWithDelay took $runIOCoroutinesWithDelayMegaMs ms")
+            logger.infoTitleMeasurement("Runtime of MEGA runIOCoroutinesWithThread took $runIOCoroutinesWithThreadMegaMs ms")
         }
     }
 }

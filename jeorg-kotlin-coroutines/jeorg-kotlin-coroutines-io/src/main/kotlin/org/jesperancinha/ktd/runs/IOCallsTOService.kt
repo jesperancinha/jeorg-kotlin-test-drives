@@ -13,18 +13,23 @@ class IOCallsTOService {
         private val logger = Logger
 
         @OptIn(ExperimentalCoroutinesApi::class)
-        suspend fun runIOCoroutinesWithIOCalls() = measureTimeMillis {
+        suspend fun runIOCoroutinesWithIOCalls(
+            parallelismOne: Int,
+            parallelismTwo: Int,
+            generateForOne: Int,
+            generateForTwo: Int
+        ) = measureTimeMillis {
             runBlocking {
                 logger.infoTitle("Testing maximum parallelism")
                 logger.info("First test how many threads can we create")
 
-                val dispatcherOne = Dispatchers.IO.limitedParallelism(5)
-                val dispatcherTwo = Dispatchers.IO.limitedParallelism(10)
+                val dispatcherOne = Dispatchers.IO.limitedParallelism(parallelismOne)
+                val dispatcherTwo = Dispatchers.IO.limitedParallelism(parallelismTwo)
 
                 logger.info(Thread.getAllStackTraces().map { it.key.name })
                 logger.info("Testing parallelism 5")
                 withContext(dispatcherOne) {
-                    (0..10).map {
+                    (0..generateForOne).map {
                         launch {
                             logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
                             val restTemplate = RestTemplate()
@@ -39,7 +44,7 @@ class IOCallsTOService {
                 }
                 logger.info("Testing parallelism 10")
                 withContext(dispatcherTwo) {
-                    (0..10).map {
+                    (0..generateForTwo).map {
                         launch {
                             logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
                             val restTemplate = RestTemplate()
