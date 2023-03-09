@@ -25,11 +25,11 @@ class MutableFlow {
         }
 
         @JvmStatic
-        fun main(args: Array<String>): Unit = runBlocking {
+        fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
             logger.infoSubTitle("Testing with no replay. For each query, the stream becomes empty")
             CoroutineScope(Dispatchers.IO).launch {
                 sendFishes(mutableFlow)
-                logger.infoTitle("Mutable Flows")
+                logger.infoTitle("Mutable Flows no replay")
                 logger.infoText("We start our flow with unknown elements but we know that there are 2")
                 logger.info("The first fish we get is ${mutableFlow.firstOrNull { it.contains("ardine") }}")
                 sendFishes(mutableFlow)
@@ -39,7 +39,7 @@ class MutableFlow {
             logger.infoSubTitle("Testing with replay. For each query, the stream replays the last replay elements")
             CoroutineScope(Dispatchers.IO).launch {
                 sendFishes(mutableFlowWithReplay)
-                logger.infoTitle("Mutable Flows")
+                logger.infoTitle("Mutable Flows with replay 4")
                 logger.infoText("We start our flow with unknown elements but we know that there are 2")
                 logger.info("The first fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("ardine") }}")
                 logger.info("The second fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("od") }}")
@@ -64,6 +64,7 @@ class MutableFlow {
                 }
             )
         }
+
         private fun CoroutineScope.sendExtraFishes(mutableFlow: MutableSharedFlow<String>) {
             listOf(
                 async {
