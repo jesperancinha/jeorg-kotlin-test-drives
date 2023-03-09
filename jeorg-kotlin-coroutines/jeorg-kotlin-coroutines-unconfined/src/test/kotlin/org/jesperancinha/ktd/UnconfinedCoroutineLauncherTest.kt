@@ -9,5 +9,6 @@ class UnconfinedCoroutineLauncherTest {
 
     @Test
     fun main() {
+        UnconfinedCoroutineLauncher.main()
     }
 }
