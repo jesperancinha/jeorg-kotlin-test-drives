@@ -43,9 +43,12 @@ class MutableFlow {
                 logger.infoText("We start our flow with unknown elements but we know that there are 2")
                 logger.info("The first fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("ardine") }}")
                 logger.info("The second fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("od") }}")
-                sendFishes(mutableFlowWithReplay)
+                sendExtraFishes(mutableFlowWithReplay)
                 logger.info("The first fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("ardine") }}")
                 logger.info("The second fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("od") }}")
+                logger.info("The third fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("una") }}")
+                logger.info("The fourth fish we get is ${mutableFlowWithReplay.firstOrNull { it.contains("alo") }}")
+
             }
             delay(5000)
         }
@@ -58,8 +61,20 @@ class MutableFlow {
                     mutableFlow.emit("Sardine")
                     mutableFlow.emit("Codfish")
                     logger.infoText("Fishes sent!")
-
-                },
+                }
+            )
+        }
+        private fun CoroutineScope.sendExtraFishes(mutableFlow: MutableSharedFlow<String>) {
+            listOf(
+                async {
+                    logger.infoText("Sending extra lux fishes...")
+                    delay(2000)
+                    mutableFlow.emit("Sardine")
+                    mutableFlow.emit("Codfish")
+                    mutableFlow.emit("Tuna")
+                    mutableFlow.emit("Robalo")
+                    logger.infoText("Fishes sent!")
+                }
             )
         }
     }
