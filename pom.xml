@@ -20,7 +20,7 @@
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
         <!-- External libraries -->
-        <kotlin.coroutines.version>1.6.3-native-mt</kotlin.coroutines.version>
+        <kotlin.coroutines.version>1.6.4</kotlin.coroutines.version>
 
         <!-- Loggers -->
         <consolerizer.version>2.1.0</consolerizer.version>
@@ -46,10 +46,11 @@
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
         <kotest-assertions.version>5.5.5</kotest-assertions.version>
-        <spring-boot-starter-parent.version>3.0.3</spring-boot-starter-parent.version>
-        <springmockk.version>4.0.0</springmockk.version>
+        <spring-boot-starter-parent.version>3.0.4</spring-boot-starter-parent.version>
+        <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <logback-classic.version>1.4.5</logback-classic.version>
+        <kotlinx-coroutines-reactor.version>1.6.4</kotlinx-coroutines-reactor.version>
     </properties>
 
     <modules>
@@ -151,6 +152,11 @@
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-shared-jvm</artifactId>
                 <version>${kotest-assertions.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kotlinx-coroutines-reactor</artifactId>
+                <version>${kotlinx-coroutines-reactor.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

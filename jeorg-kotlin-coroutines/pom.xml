@@ -15,6 +15,7 @@
     <modules>
         <module>jeorg-kotlin-coroutines-scopes</module>
         <module>jeorg-kotlin-coroutines-unconfined</module>
+        <module>jeorg-kotlin-coroutines-io</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
