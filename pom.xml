@@ -20,7 +20,7 @@
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
         <!-- External libraries -->
-        <kotlin.coroutines.version>1.6.3-native-mt</kotlin.coroutines.version>
+        <kotlin.coroutines.version>1.6.4</kotlin.coroutines.version>
 
         <!-- Loggers -->
         <consolerizer.version>2.1.0</consolerizer.version>

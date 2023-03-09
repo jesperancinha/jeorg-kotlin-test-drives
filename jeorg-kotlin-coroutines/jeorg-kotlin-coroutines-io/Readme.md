@@ -12,3 +12,4 @@
 - https://www.digitalocean.com/community/tutorials/multithreading-in-java
 - https://www.developer.com/design/an-introduction-to-jvm-threading-implementation/
 - https://www.infoworld.com/article/2074217/java-101--understanding-java-threads--part-1--introducing-threads-and-runnables.html
+- https://stackoverflow.com/questions/481970/how-many-threads-is-too-many
