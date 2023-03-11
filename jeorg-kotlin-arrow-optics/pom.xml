@@ -10,6 +10,9 @@
     </parent>
 
     <artifactId>jeorg-kotlin-arrow-optics</artifactId>
+
+    <name>JEOrg :: KTD :: Project Arrow :: Parent</name>
+
     <properties>
         <kotlin.version>1.8.10</kotlin.version>
         <java.version>19</java.version>
