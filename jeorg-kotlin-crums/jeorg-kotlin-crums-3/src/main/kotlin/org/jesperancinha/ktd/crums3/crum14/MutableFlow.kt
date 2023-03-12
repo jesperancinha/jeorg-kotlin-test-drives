@@ -20,7 +20,7 @@ class MutableFlow {
 
             fun infoSubTitle(logText: String) = synchronized(this) {
                 ConsolerizerComposer.outSpace()
-                    .orange(ConsolerizerComposer.title(logText))
+                    .orange().doubleFrame(logText).toConsoleLn()
             }
         }
 

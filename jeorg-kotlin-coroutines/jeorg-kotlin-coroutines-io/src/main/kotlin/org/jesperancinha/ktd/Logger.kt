@@ -1,10 +1,11 @@
 package org.jesperancinha.ktd
 
+import org.jesperancinha.console.consolerizer.common.Composer
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
 object Logger {
-    fun info(logText: Any?): ConsolerizerComposer = ConsolerizerComposer.out().yellow(logText)
-    fun infoBefore(logText: Any?): ConsolerizerComposer = synchronized(this) {
+    fun info(logText: Any?): Composer = ConsolerizerComposer.out().yellow(logText)
+    fun infoBefore(logText: Any?): Composer = synchronized(this) {
         ConsolerizerComposer.out().green(
             "$logText on Thread-${Thread.currentThread().name} with id ${
                 Thread.currentThread().threadId()
@@ -12,7 +13,7 @@ object Logger {
         )
     }
 
-    fun infoAfter(logText: Any?): ConsolerizerComposer = synchronized(this) {
+    fun infoAfter(logText: Any?): Composer = synchronized(this) {
         ConsolerizerComposer.out().red(
             "$logText on Thread-${Thread.currentThread().name} with id ${
                 Thread.currentThread().threadId()
@@ -20,9 +21,9 @@ object Logger {
         )
     }
 
-    fun infoTitle(logText: String): ConsolerizerComposer = ConsolerizerComposer.outSpace()
+    fun infoTitle(logText: String): Composer = ConsolerizerComposer.outSpace()
         .cyan(ConsolerizerComposer.title(logText))
-    fun infoTitleMeasurement(logText: String): ConsolerizerComposer = ConsolerizerComposer.outSpace()
+    fun infoTitleMeasurement(logText: String): Composer = ConsolerizerComposer.outSpace()
         .black()
         .bgCyan(ConsolerizerComposer.title(logText))
 }

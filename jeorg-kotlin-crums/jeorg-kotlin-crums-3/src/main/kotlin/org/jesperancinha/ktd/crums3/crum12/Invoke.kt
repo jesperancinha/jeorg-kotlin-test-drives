@@ -1,6 +1,7 @@
 package org.jesperancinha.ktd.crums3.crum12
 
 import kotlinx.coroutines.runBlocking
+import org.jesperancinha.console.consolerizer.common.Composer
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import org.jesperancinha.ktd.crums3.crum11.ChunkParallelization
 
@@ -15,8 +16,8 @@ class Invoke {
                 .cyan(ConsolerizerComposer.title(logText))
         }
         operator fun invoke(text: String) = logger.info(text).run { Invoke() }
-        operator fun invoke(index:Int): ConsolerizerComposer = logger.info("No text presented for cats!")
-        operator fun invoke(): ConsolerizerComposer = logger.info("No text presented for cats!")
+        operator fun invoke(index:Int): Composer = logger.info("No text presented for cats at index $index!")
+        operator fun invoke(): Composer = logger.info("No text presented for cats!")
         @JvmStatic
         fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
             logger.infoTitle("Crum 12 - Using invoke")
