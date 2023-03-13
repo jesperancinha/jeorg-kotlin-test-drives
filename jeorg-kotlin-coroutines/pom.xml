@@ -16,6 +16,7 @@
         <module>jeorg-kotlin-coroutines-scopes</module>
         <module>jeorg-kotlin-coroutines-unconfined</module>
         <module>jeorg-kotlin-coroutines-io</module>
+        <module>jeorg-kotlin-coroutines-thread-count</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
