@@ -60,6 +60,7 @@
         <module>jeorg-kotlin-apps</module>
         <module>jeorg-kotlin-arrow-optics</module>
         <module>jeorg-kotlin-coroutines</module>
+        <module>jeorg-kotlin-coroutines/jeorg-kotlin-coroutines-thread-count</module>
     </modules>
 
     <packaging>pom</packaging>
