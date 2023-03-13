@@ -23,12 +23,13 @@ open class IOCoroutineLauncher {
         }
 
 
+        @OptIn(ExperimentalCoroutinesApi::class)
         fun smallTest() = runBlocking {
             logger.infoBefore("Making call at ${LocalDateTime.now()}")
             val atomicInteger = AtomicInteger()
            val duration = measureTimeMillis {
                 withContext(Dispatchers.IO.limitedParallelism(100)) {
-                    (0..100).forEach {
+                    repeat(100) {
                         launch {
                             delay(1000)
                             atomicInteger.addAndGet(1)
