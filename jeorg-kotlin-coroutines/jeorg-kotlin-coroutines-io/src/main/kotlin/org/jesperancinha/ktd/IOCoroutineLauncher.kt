@@ -1,11 +1,14 @@
 package org.jesperancinha.ktd
 
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.jesperancinha.ktd.runs.IOCallsTOService
 import org.jesperancinha.ktd.runs.NonIOCalls
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import java.time.LocalDateTime
+import java.util.concurrent.atomic.AtomicInteger
 import kotlin.system.exitProcess
+import kotlin.system.measureTimeMillis
 
 @SpringBootApplication
 open class IOCoroutineLauncher {
@@ -14,8 +17,28 @@ open class IOCoroutineLauncher {
 
         @JvmStatic
         fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
+            smallTest()
             runAllTests()
             exitProcess(0)
+        }
+
+
+        fun smallTest() = runBlocking {
+            logger.infoBefore("Making call at ${LocalDateTime.now()}")
+            val atomicInteger = AtomicInteger()
+           val duration = measureTimeMillis {
+                withContext(Dispatchers.IO.limitedParallelism(100)) {
+                    (0..100).forEach {
+                        launch {
+                            delay(1000)
+                            atomicInteger.addAndGet(1)
+                        }
+                    }
+                }
+            }
+            logger.infoAfter("Finishing call at ${LocalDateTime.now()}")
+            logger.info("It took $duration milliseconds long")
+            logger.info("Caught $atomicInteger ending coroutines")
         }
 
         suspend fun runAllTests() {
