@@ -16,14 +16,14 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M9</maven-failsafe-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
         <!-- External libraries -->
         <kotlin.coroutines.version>1.6.4</kotlin.coroutines.version>
 
         <!-- Loggers -->
-        <consolerizer.version>2.2.1</consolerizer.version>
+        <consolerizer.version>2.2.2</consolerizer.version>
 
         <!-- Unit testing -->
         <junit-jupiter.version>5.9.2</junit-jupiter.version>

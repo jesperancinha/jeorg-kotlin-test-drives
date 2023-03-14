@@ -15,7 +15,7 @@
 
     <packaging>jar</packaging>
 
-    <name>jeorg-kotlin-crums-3</name>
+    <name>JEOrg :: KTD :: Crums :: Crums 3</name>
 
     <dependencies>
         <dependency>
