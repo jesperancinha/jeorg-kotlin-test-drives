@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>jeorg-sse-coffees</artifactId>
+    <name>JEOrg :: KTD :: Apps :: SSE Coffee emitter</name>
 
     <dependencies>
         <dependency>
