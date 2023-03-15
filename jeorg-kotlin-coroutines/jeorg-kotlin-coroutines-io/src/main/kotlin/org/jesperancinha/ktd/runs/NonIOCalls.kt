@@ -23,7 +23,7 @@ class NonIOCalls {
                 logger.info(Thread.getAllStackTraces().map { it.key.name })
                 logger.info("Testing parallelism 5")
                 withContext(dispatcherOne) {
-                    (0..generateForOne).map {
+                    (0..generateForOne).forEach {
                         launch {
                             logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
                             RestTemplate()
@@ -34,7 +34,7 @@ class NonIOCalls {
                 }
                 logger.info("Testing parallelism 10")
                 withContext(dispatcherTwo) {
-                    (0..generateForTwo).map {
+                    (0..generateForTwo).forEach {
                         launch {
                             logger.infoBefore("Making call $it at ${LocalDateTime.now()}")
                             delay(1000)

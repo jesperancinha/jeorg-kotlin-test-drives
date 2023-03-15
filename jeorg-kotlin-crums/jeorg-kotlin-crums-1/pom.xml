@@ -13,9 +13,9 @@
     <artifactId>jeorg-kotlin-crums-1</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <packaging>jar</packaging>
+    <name>JEOrg :: KTD :: Crums :: Crums 1</name>
 
-    <name>jeorg-kotlin-crums-1</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -35,12 +35,6 @@
         <dependency>
             <groupId>io.mockk</groupId>
             <artifactId>mockk</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -133,6 +127,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
