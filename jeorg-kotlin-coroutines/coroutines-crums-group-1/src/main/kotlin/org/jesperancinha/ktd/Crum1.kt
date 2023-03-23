@@ -104,7 +104,7 @@ fun testAsync() = runBlocking {
     delay(WAIT_FOR_PROCESS)
 }
 
-@OptIn(DelicateCoroutinesApi::class, InternalCoroutinesApi::class)
+@OptIn(DelicateCoroutinesApi::class)
 fun testAsyncAndWait() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO, asynchronous and wait")
     GlobalScope.launch {
