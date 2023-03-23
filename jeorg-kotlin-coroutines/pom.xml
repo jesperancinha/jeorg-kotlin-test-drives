@@ -17,6 +17,7 @@
         <module>jeorg-kotlin-coroutines-unconfined</module>
         <module>jeorg-kotlin-coroutines-io</module>
         <module>jeorg-kotlin-coroutines-thread-count</module>
+        <module>coroutines-crums-group-1</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
