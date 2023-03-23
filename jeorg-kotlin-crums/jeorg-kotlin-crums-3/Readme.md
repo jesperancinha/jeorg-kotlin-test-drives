@@ -20,10 +20,10 @@ Q - https://www.youtube.com/shorts/8eWAaqtFjCY
 A - https://www.youtube.com/shorts/D9TOP4nvo5A
 
 #### Q-JESC-05-A - Dispatchers.IO parallelism
-Q1 - https://www.youtube.com/shorts/6LRUIdKsUo4
-Q2 - https://www.youtube.com/shorts/1LCzZY5SQvM
-A1of2 - https://www.youtube.com/shorts/B-Eq7AuvzVE
-A2of2 - https://www.youtube.com/shorts/dhNiCpQmpm4
+- Q1 - https://www.youtube.com/shorts/6LRUIdKsUo4
+- Q2 - https://www.youtube.com/shorts/1LCzZY5SQvM
+- A1of2 - https://www.youtube.com/shorts/B-Eq7AuvzVE
+- A2of2 - https://www.youtube.com/shorts/dhNiCpQmpm4
 
 > Find the whole list on [a-suitable-nice-guy-in-a-suitable-age-group-forever](https://github.com/jesperancinha/a-suitable-nice-guy-in-a-suitable-age-group-forever/tree/main/you-tube-sessions/quizzes)
 
