@@ -16,9 +16,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/jeorg-kotlin-test-drives/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/jeorg-kotlin-test-drives?branch=main)
 [![codecov](https://codecov.io/gh/jesperancinha/jeorg-kotlin-test-drives/branch/main/graph/badge.svg?token=BQlLANwSUb)](https://codecov.io/gh/jesperancinha/jeorg-kotlin-test-drives)
 
-[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/kotlin-test-drives.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/kotlin-test-drives.svg)](#)
-[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/kotlin-test-drives.svg)](#)
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/kotlin-test-drives.svg)](https://github.com/jesperancinha/kotlin-test-drives)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/kotlin-test-drives.svg)](https://github.com/jesperancinha/kotlin-test-drives)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/kotlin-test-drives.svg)](https://github.com/jesperancinha/kotlin-test-drives)
 
 ---
 
@@ -48,12 +48,12 @@ Kotlin Language study project.
 
 ## Contents
 
--   [Kotlin Crums](./jeorg-kotlin-crums) - Fast Track Crum modules
--   [Kotlin Utilities](./jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
--   [Kotlin Masters](./jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
--   [Kotlin Coroutines](./jeorg-kotlin-coroutines) - Deep dive into the fantastic world of coroutines
+-   [Kotlin Crums](jeorg-kotlin-crums) - Fast Track Crum modules
+-   [Kotlin Utilities](jeorg-kotlin-utilities) - Small modules with applications with the Kotlin language
+-   [Kotlin Masters](jeorg-kotlin-masters) - Developing applications using multiple topics in Kotlin
+-   [Kotlin Coroutines](jeorg-kotlin-coroutines) - Deep dive into the fantastic world of coroutines
 -   [Kotlin Arrow Optics](jeorg-kotlin-arrow-optics) - Crums Fast track modules dedicated exclusively to [Arrow](https://arrow-kt.io/)
--   [Kotlin Apps](./jeorg-kotlin-apps) - Apps module where web applications are created as a collective gathering of several topics
+-   [Kotlin Apps](jeorg-kotlin-apps) - Apps module where web applications are created as a collective gathering of several topics
 
 ---
 
@@ -110,6 +110,7 @@ end
 
 ### Books
 
+-   Moskala, M. (2021 - 2022). <i>Kotlin Coroutines DEEP DIVE</i>. (First Edition). Kt. Academy
 -   Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing
 -   Griffiths, D. Griffiths, D. (February 2019). <i>Head First A Brain-Friendly Guide</i>. (First Edition). O'Reilly
 -   Skeen, J. Greenhalgh, D. (July 2018). <i>Kotlin Programming - The Big Nerd Ranch Guide</i>. (First Edition). Big Nerd Ranch
