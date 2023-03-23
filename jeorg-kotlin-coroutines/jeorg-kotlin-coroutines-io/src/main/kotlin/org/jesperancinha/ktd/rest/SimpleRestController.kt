@@ -11,6 +11,6 @@ class SimpleRestController {
 
     @GetMapping
     suspend fun getTest() {
-        delay(1000)
+        delay(500)
     }
 }
