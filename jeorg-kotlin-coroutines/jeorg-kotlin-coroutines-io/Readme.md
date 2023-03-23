@@ -1,15 +1,16 @@
 # Coroutines IO
 
+## Description
 
-## The code for this module is feature in my YouTube shorts here:
+### This code provides support to the following Q&A on YouTube
 
-1. [Answer to Last Dispatcher.IO Quiz Part 1/2](https://www.youtube.com/watch?v=B-Eq7AuvzVE)
+#### Q-JESC-05 - Dispatchers.IO parallelism
+- Q1 - https://www.youtube.com/shorts/6LRUIdKsUo4
+- Q2 - https://www.youtube.com/shorts/1LCzZY5SQvM
+- A1of2 - https://www.youtube.com/shorts/B-Eq7AuvzVE
+- A2of2 - https://www.youtube.com/shorts/u0P4wrH1_M8
 
-2. [Answer to Last Dispatcher.IO Quiz Part 2/2](https://www.youtube.com/watch?v=dhNiCpQmpm4)
-
-3. [Let’s go coroutines! Dispatchers.IO ongoing quiz! #coroutines #kotlin](https://www.youtube.com/watch?v=1LCzZY5SQvM)
-
-4. [Dispatchers.IO quiz #coroutines #kotlindeveloper](https://www.youtube.com/watch?v=6LRUIdKsUo4)
+> Find the whole list on [a-suitable-nice-guy-in-a-suitable-age-group-forever](https://github.com/jesperancinha/a-suitable-nice-guy-in-a-suitable-age-group-forever/tree/main/you-tube-sessions/quizzes)
 
 ## References
 
