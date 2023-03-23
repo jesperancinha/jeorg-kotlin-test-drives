@@ -10,7 +10,7 @@ private const val WAIT_FOR_REPORT: Long = 3000
 
 private const val WAIT_BETWEEN_TASKS: Long = 1000
 
-private const val WAIT_FOR_PROCESS: Long= 5000
+private const val WAIT_FOR_PROCESS: Long = 5000
 
 enum class Processes {
     MACHINE_START,
@@ -42,9 +42,9 @@ fun testLaunch() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO and join")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
-        try {
+        runCatching {
             CoroutineScope(Dispatchers.IO).launch {
-                logContext(this.coroutineContext,  CHEESE_CURD_MAKING)
+                logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
                 logTimestamp()
                 launch {
@@ -54,8 +54,8 @@ fun testLaunch() = runBlocking {
                     generateException()
                 }
             }.join()
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
@@ -64,6 +64,7 @@ fun testLaunch() = runBlocking {
         }
     }
     delay(WAIT_FOR_PROCESS)
+    completeProcess()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
@@ -71,7 +72,7 @@ fun testRemove() = runBlocking {
     SpecialLogger.info("Tests without changing scope")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
-        try {
+        runCatching {
             launch {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
@@ -83,8 +84,8 @@ fun testRemove() = runBlocking {
                     generateException()
                 }
             }.join()
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
@@ -93,6 +94,7 @@ fun testRemove() = runBlocking {
         }
     }
     delay(WAIT_FOR_PROCESS)
+    completeProcess()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
@@ -100,7 +102,7 @@ fun testAsync() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO, asynchronous")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
-        try {
+        runCatching {
             CoroutineScope(Dispatchers.IO).async {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
@@ -112,8 +114,8 @@ fun testAsync() = runBlocking {
                     generateException()
                 }
             }
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
@@ -122,6 +124,7 @@ fun testAsync() = runBlocking {
         }
     }
     delay(WAIT_FOR_PROCESS)
+    completeProcess()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
@@ -129,7 +132,7 @@ fun testAsyncAndWait() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO, asynchronous and wait")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
-        try {
+        runCatching {
             CoroutineScope(Dispatchers.IO).async {
                 logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
@@ -141,8 +144,8 @@ fun testAsyncAndWait() = runBlocking {
                     generateException()
                 }
             }.await()
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
             logContext(this.coroutineContext, MAKE_REPORT)
@@ -151,13 +154,17 @@ fun testAsyncAndWait() = runBlocking {
         }
     }
     delay(2 * WAIT_FOR_PROCESS)
+    completeProcess()
 }
 
-fun logContext(coroutineScope: CoroutineContext, processes: Processes) = println("Process $processes is running in $coroutineScope")
+fun logContext(coroutineScope: CoroutineContext, processes: Processes) =
+    println("Process $processes is running in $coroutineScope")
 
 fun generateException(): Nothing = throw RuntimeException("An error has been generated!")
 
 fun completeReport() = println("Report has been completed")
+
+fun completeProcess() = println("Process has been completed!")
 
 fun reportException(e: RuntimeException) =
     println("An error has been reported! ${e.stackTraceToString()}")
