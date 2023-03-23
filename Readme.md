@@ -71,41 +71,6 @@ Note that if you want to build this project from the root, you need to use one o
 
 ---
 
-## Sequence Diagram
-
-```mermaid
-
-sequenceDiagram
-    participant USER
-    participant KOTLIN
-    participant Kotlin Professional
-    
-    rect rgb(1,130,25)
-    
-        rect rgb(1,240,100)
-        USER->>KOTLIN: User studies kotlin
-        end
-    
-        rect rgb(1,240,100)
-            KOTLIN->>Kotlin Professional: User becomes
-            
-            loop Keep updated
-                 rect rgb(240,240,100)
-                 Kotlin Professional->>KOTLIN: User studies again
-                 end
-            end
-        end
-    
-        rect rgb(1,240,100)
-        USER->>KOTLIN: User studies again
-    end
-end
-```
-
-<i>Note: You need a Mermaid plugin extension</i> i.e. [mermaid-plugin](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil/related)
-
----
-
 ## References
 
 ### Books
