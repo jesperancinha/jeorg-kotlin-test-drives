@@ -3,6 +3,7 @@ package org.jesperancinha.ktd
 import kotlinx.coroutines.*
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import java.time.LocalDateTime
+import kotlin.system.measureTimeMillis
 
 private const val WAIT_FOR_REPORT: Long = 3000
 
@@ -20,10 +21,10 @@ class CancellationWithException {
     companion object {
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
-            testLaunch()
-            testRemove()
-            testAsync()
-            testAsyncAndWait()
+            measureTimeMillis { testLaunch() }.logDuration("testLaunch")
+            measureTimeMillis { testRemove() }.logDuration("testRemove")
+            measureTimeMillis { testAsync() }.logDuration("testAsync")
+            measureTimeMillis { testAsyncAndWait() }.logDuration("testAsyncAndWait")
         }
     }
 }
@@ -135,6 +136,8 @@ fun completeReport() = println("Report has been completed")
 
 fun reportException(e: RuntimeException) =
     println("An error has been reported! ${e.stackTraceToString()}")
+
+private fun Long.logDuration(process:String) = println("Process $process took $this ms to complete!")
 
 private fun logTimestamp() =
     println("The time is now ${LocalDateTime.now()}")
