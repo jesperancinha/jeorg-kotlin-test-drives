@@ -2,14 +2,23 @@ package org.jesperancinha.ktd
 
 import kotlinx.coroutines.*
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
+import org.jesperancinha.ktd.Processes.*
 import java.time.LocalDateTime
 import kotlin.system.measureTimeMillis
+import kotlin.coroutines.CoroutineContext
 
 private const val WAIT_FOR_REPORT: Long = 3000
 
 private const val WAIT_BETWEEN_TASKS: Long = 1000
 
-private const val WAIT_FOR_PROCESS: Long= 5000
+private const val WAIT_FOR_PROCESS: Long = 5000
+
+enum class Processes {
+    MACHINE_START,
+    CHEESE_CURD_MAKING,
+    LET_IT_SIT,
+    MAKE_REPORT
+}
 
 object SpecialLogger {
     fun info(logText: Any) = ConsolerizerComposer.outSpace()
@@ -30,109 +39,133 @@ class CancellationWithException {
 }
 
 @OptIn(DelicateCoroutinesApi::class)
-fun testRemove() = runBlocking {
-    SpecialLogger.info("Tests without changing scope")
-    GlobalScope.launch {
-        try {
-            launch {
-                delay(WAIT_BETWEEN_TASKS)
-                logTimestamp()
-                launch {
-                    delay(WAIT_BETWEEN_TASKS)
-                    logTimestamp()
-                    generateException()
-                }
-            }.join()
-        } catch (e: RuntimeException) {
-            reportException(e)
-        }
-        launch {
-            delay(WAIT_FOR_REPORT)
-            completeReport()
-        }
-    }
-    delay(WAIT_FOR_PROCESS)
-}
-
-
-@OptIn(DelicateCoroutinesApi::class)
 fun testLaunch() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO and join")
     GlobalScope.launch {
-        try {
+        logContext(this.coroutineContext, MACHINE_START)
+        runCatching {
             CoroutineScope(Dispatchers.IO).launch {
+                logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
                 logTimestamp()
                 launch {
+                    logContext(this.coroutineContext, LET_IT_SIT)
                     delay(WAIT_BETWEEN_TASKS)
                     logTimestamp()
                     generateException()
                 }
             }.join()
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
+            logContext(this.coroutineContext, MAKE_REPORT)
             delay(WAIT_FOR_REPORT)
             completeReport()
         }
     }
     delay(WAIT_FOR_PROCESS)
+    completeProcess()
+}
+
+@OptIn(DelicateCoroutinesApi::class)
+fun testRemove() = runBlocking {
+    SpecialLogger.info("Tests without changing scope")
+    GlobalScope.launch {
+        logContext(this.coroutineContext, MACHINE_START)
+        runCatching {
+            launch {
+                logContext(this.coroutineContext, CHEESE_CURD_MAKING)
+                delay(WAIT_BETWEEN_TASKS)
+                logTimestamp()
+                launch {
+                    logContext(this.coroutineContext, LET_IT_SIT)
+                    delay(WAIT_BETWEEN_TASKS)
+                    logTimestamp()
+                    generateException()
+                }
+            }.join()
+        }.onFailure {
+            reportException(it as RuntimeException)
+        }
+        launch {
+            logContext(this.coroutineContext, MAKE_REPORT)
+            delay(WAIT_FOR_REPORT)
+            completeReport()
+        }
+    }
+    delay(WAIT_FOR_PROCESS)
+    completeProcess()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
 fun testAsync() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO, asynchronous")
     GlobalScope.launch {
-        try {
+        logContext(this.coroutineContext, MACHINE_START)
+        runCatching {
             CoroutineScope(Dispatchers.IO).async {
+                logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
                 logTimestamp()
                 launch {
+                    logContext(this.coroutineContext, LET_IT_SIT)
                     delay(WAIT_BETWEEN_TASKS)
                     logTimestamp()
                     generateException()
                 }
             }
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
+            logContext(this.coroutineContext, MAKE_REPORT)
             delay(WAIT_FOR_REPORT)
             completeReport()
         }
     }
     delay(WAIT_FOR_PROCESS)
+    completeProcess()
 }
 
 @OptIn(DelicateCoroutinesApi::class)
 fun testAsyncAndWait() = runBlocking {
     SpecialLogger.info("Tests with changing to scope IO, asynchronous and wait")
     GlobalScope.launch {
-        try {
+        logContext(this.coroutineContext, MACHINE_START)
+        runCatching {
             CoroutineScope(Dispatchers.IO).async {
+                logContext(this.coroutineContext, CHEESE_CURD_MAKING)
                 delay(WAIT_BETWEEN_TASKS)
                 logTimestamp()
                 launch {
+                    logContext(this.coroutineContext, LET_IT_SIT)
                     delay(WAIT_BETWEEN_TASKS)
                     logTimestamp()
                     generateException()
                 }
             }.await()
-        } catch (e: RuntimeException) {
-            reportException(e)
+        }.onFailure {
+            reportException(it as RuntimeException)
         }
         launch {
+            logContext(this.coroutineContext, MAKE_REPORT)
             delay(WAIT_FOR_REPORT)
             completeReport()
         }
     }
     delay(2 * WAIT_FOR_PROCESS)
+    completeProcess()
 }
+
+fun logContext(coroutineScope: CoroutineContext, processes: Processes) =
+    println("Process $processes is running in $coroutineScope")
 
 fun generateException(): Nothing = throw RuntimeException("An error has been generated!")
 
 fun completeReport() = println("Report has been completed")
+
+fun completeProcess() = println("Process has been completed!")
 
 fun reportException(e: RuntimeException) =
     println("An error has been reported! ${e.stackTraceToString()}")
