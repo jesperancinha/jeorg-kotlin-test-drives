@@ -1,13 +1,11 @@
-# jeorg-kotlin-json-2
+# JEOrg :: KTD :: Coroutines :: Crums Group I
 
-## Introduction
+## Description
 
-Using JSON to generate masked files to use in projects
+### This code provides support to the following Q&A on YouTube
 
-Topics
-
-1.  `io.kotest`
-2.  `map`, `joinToString`
+#### Q-JESC-06 - Cancellation in Kotlin Coroutines
+-   Q1 - https://www.youtube.com/shorts/whGuYl5IgUM
 
 ## About me
 
