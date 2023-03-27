@@ -5,21 +5,21 @@
 ### This code provides support to the following Q&A on YouTube
 
 #### Q-JESC-01 - The Main Kotlin Coroutine Dispatcher
-- Q - https://www.youtube.com/shorts/R1fh4mglA_8
-- A - https://www.youtube.com/shorts/vr8lVaF4EQw
+-   Q - https://www.youtube.com/shorts/R1fh4mglA_8
+-   A - https://www.youtube.com/shorts/vr8lVaF4EQw
 
 #### Q-JESC-02 - Kotlin Coroutines Unconfined Scope
-- Q - https://www.youtube.com/shorts/vrkOqzhYVSw
-- A - https://www.youtube.com/shorts/MGxvkW0t8QM
+-   Q - https://www.youtube.com/shorts/vrkOqzhYVSw
+-   A - https://www.youtube.com/shorts/MGxvkW0t8QM
 
 #### Q-JESC-03 - How does an unconfined coroutine regains control of a thread?
-- Q - https://www.youtube.com/shorts/8eWAaqtFjCY
-- A - https://www.youtube.com/shorts/D9TOP4nvo5A
+-   Q - https://www.youtube.com/shorts/8eWAaqtFjCY
+-   A - https://www.youtube.com/shorts/D9TOP4nvo5A
 
 #### Q-JESC-04 - MutableSharedFlow Quiz. What would the emit do in this case? 
-- Q - https://www.youtube.com/shorts/h2fLc2d5yr4
-- A1 - https://www.youtube.com/shorts/rZCcfAA-xGs
-- A2 - https://www.youtube.com/shorts/PCuRO97ZegM
+-   Q - https://www.youtube.com/shorts/h2fLc2d5yr4
+-   A1 - https://www.youtube.com/shorts/rZCcfAA-xGs
+-   A2 - https://www.youtube.com/shorts/PCuRO97ZegM
 
 > Find the whole list on [a-suitable-nice-guy-in-a-suitable-age-group-forever](https://github.com/jesperancinha/a-suitable-nice-guy-in-a-suitable-age-group-forever/tree/main/you-tube-sessions/quizzes)
 
@@ -33,6 +33,7 @@
 [![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%230077B5.svg?style=for-the-badge&logo=buymeacoffee&color=yellow)](https://www.buymeacoffee.com/jesperancinha)
 [![](https://img.shields.io/badge/Twitter-%230077B5.svg?style=for-the-badge&logo=twitter&color=white)](https://twitter.com/joaofse)
 [![](https://img.shields.io/badge/Mastodon-%230077B5.svg?style=for-the-badge&logo=mastodon&color=afd7f7)](https://masto.ai/@jesperancinha)
+[![](https://img.shields.io/badge/Facebook-%230077B5.svg?style=for-the-badge&logo=facebook&color=3b5998)](https://www.facebook.com/joaofisaes/)
 [![](https://img.shields.io/badge/Sessionize-%230077B5.svg?style=for-the-badge&logo=sessionize&color=cffff6)](https://sessionize.com/joao-esperancinha)
 [![](https://img.shields.io/badge/Instagram-%230077B5.svg?style=for-the-badge&logo=instagram&color=purple)](https://www.instagram.com/joaofisaes)
 [![](https://img.shields.io/badge/Tumblr-%230077B5.svg?style=for-the-badge&logo=tumblr&color=192841)](https://jofisaes.tumblr.com)

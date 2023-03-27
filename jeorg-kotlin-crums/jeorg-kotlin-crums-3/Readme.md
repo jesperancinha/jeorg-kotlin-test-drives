@@ -20,10 +20,10 @@ Q - https://www.youtube.com/shorts/8eWAaqtFjCY
 A - https://www.youtube.com/shorts/D9TOP4nvo5A
 
 #### Q-JESC-05-A - Dispatchers.IO parallelism
-- Q1 - https://www.youtube.com/shorts/6LRUIdKsUo4
-- Q2 - https://www.youtube.com/shorts/1LCzZY5SQvM
-- A1of2 - https://www.youtube.com/shorts/B-Eq7AuvzVE
-- A2of2 - https://www.youtube.com/shorts/dhNiCpQmpm4
+-   Q1 - https://www.youtube.com/shorts/6LRUIdKsUo4
+-   Q2 - https://www.youtube.com/shorts/1LCzZY5SQvM
+-   A1of2 - https://www.youtube.com/shorts/B-Eq7AuvzVE
+-   A2of2 - https://www.youtube.com/shorts/dhNiCpQmpm4
 
 > Find the whole list on [a-suitable-nice-guy-in-a-suitable-age-group-forever](https://github.com/jesperancinha/a-suitable-nice-guy-in-a-suitable-age-group-forever/tree/main/you-tube-sessions/quizzes)
 
@@ -62,6 +62,7 @@ A - https://www.youtube.com/shorts/D9TOP4nvo5A
 [![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%230077B5.svg?style=for-the-badge&logo=buymeacoffee&color=yellow)](https://www.buymeacoffee.com/jesperancinha)
 [![](https://img.shields.io/badge/Twitter-%230077B5.svg?style=for-the-badge&logo=twitter&color=white)](https://twitter.com/joaofse)
 [![](https://img.shields.io/badge/Mastodon-%230077B5.svg?style=for-the-badge&logo=mastodon&color=afd7f7)](https://masto.ai/@jesperancinha)
+[![](https://img.shields.io/badge/Facebook-%230077B5.svg?style=for-the-badge&logo=facebook&color=3b5998)](https://www.facebook.com/joaofisaes/)
 [![](https://img.shields.io/badge/Sessionize-%230077B5.svg?style=for-the-badge&logo=sessionize&color=cffff6)](https://sessionize.com/joao-esperancinha)
 [![](https://img.shields.io/badge/Instagram-%230077B5.svg?style=for-the-badge&logo=instagram&color=purple)](https://www.instagram.com/joaofisaes)
 [![](https://img.shields.io/badge/Tumblr-%230077B5.svg?style=for-the-badge&logo=tumblr&color=192841)](https://jofisaes.tumblr.com)

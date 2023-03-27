@@ -71,41 +71,6 @@ Note that if you want to build this project from the root, you need to use one o
 
 ---
 
-## Sequence Diagram
-
-```mermaid
-
-sequenceDiagram
-    participant USER
-    participant KOTLIN
-    participant Kotlin Professional
-    
-    rect rgb(1,130,25)
-    
-        rect rgb(1,240,100)
-        USER->>KOTLIN: User studies kotlin
-        end
-    
-        rect rgb(1,240,100)
-            KOTLIN->>Kotlin Professional: User becomes
-            
-            loop Keep updated
-                 rect rgb(240,240,100)
-                 Kotlin Professional->>KOTLIN: User studies again
-                 end
-            end
-        end
-    
-        rect rgb(1,240,100)
-        USER->>KOTLIN: User studies again
-    end
-end
-```
-
-<i>Note: You need a Mermaid plugin extension</i> i.e. [mermaid-plugin](https://chrome.google.com/webstore/detail/mermaid-diagrams/phfcghedmopjadpojhmmaffjmfiakfil/related)
-
----
-
 ## References
 
 ### Books
@@ -126,6 +91,7 @@ end
 [![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%230077B5.svg?style=for-the-badge&logo=buymeacoffee&color=yellow)](https://www.buymeacoffee.com/jesperancinha)
 [![](https://img.shields.io/badge/Twitter-%230077B5.svg?style=for-the-badge&logo=twitter&color=white)](https://twitter.com/joaofse)
 [![](https://img.shields.io/badge/Mastodon-%230077B5.svg?style=for-the-badge&logo=mastodon&color=afd7f7)](https://masto.ai/@jesperancinha)
+[![](https://img.shields.io/badge/Facebook-%230077B5.svg?style=for-the-badge&logo=facebook&color=3b5998)](https://www.facebook.com/joaofisaes/)
 [![](https://img.shields.io/badge/Sessionize-%230077B5.svg?style=for-the-badge&logo=sessionize&color=cffff6)](https://sessionize.com/joao-esperancinha)
 [![](https://img.shields.io/badge/Instagram-%230077B5.svg?style=for-the-badge&logo=instagram&color=purple)](https://www.instagram.com/joaofisaes)
 [![](https://img.shields.io/badge/Tumblr-%230077B5.svg?style=for-the-badge&logo=tumblr&color=192841)](https://jofisaes.tumblr.com)
