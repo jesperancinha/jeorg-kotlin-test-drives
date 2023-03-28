@@ -170,7 +170,7 @@ fun completeProcess() = println("Process has been completed!")
 fun reportException(e: RuntimeException) =
     println("An error has been reported! ${e.stackTraceToString()}")
 
-private fun Long.logDuration(process:String) = println("Process $process took $this ms to complete!")
+fun Long.logDuration(process:String) = println("Process $process took $this ms to complete!")
 
 private fun logTimestamp() =
     println("The time is now ${LocalDateTime.now()}")
