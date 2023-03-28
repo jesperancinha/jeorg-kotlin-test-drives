@@ -7,7 +7,7 @@ import kotlin.system.measureTimeMillis
 class SupervisorIntended {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>): Unit = runBlocking {
+        fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
             measureTimeMillis { testSuspendFunction() }.logDuration("-- test suspend function blocking --")
             measureTimeMillis {
                 CoroutineScope(Dispatchers.IO).launch {

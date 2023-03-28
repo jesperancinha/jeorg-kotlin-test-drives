@@ -5,5 +5,6 @@ object Main {
     fun main(args: Array<String>) {
         CancellationWithException.main()
         UniversalLauncher.main()
+        SupervisorIntended.main()
     }
 }
