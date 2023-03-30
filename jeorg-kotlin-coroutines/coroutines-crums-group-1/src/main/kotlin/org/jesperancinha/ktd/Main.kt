@@ -6,5 +6,7 @@ object Main {
         CancellationWithException.main()
         UniversalLauncher.main()
         SupervisorIntended.main()
+        TrainStationManager.main()
+        NeuralNetworksCancelling.main()
     }
 }
