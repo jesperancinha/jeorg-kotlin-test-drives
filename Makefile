@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-
+GRADLE_VERSION := 8.0.2
 b: clean build
 clean:
 	if [[ -f jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock ]]; then rm jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock; fi
@@ -16,9 +16,12 @@ build-chip-maker:
 ksp-dyescape-health-test:
 	cd jeorg-kotlin-arrow-optics/jeorg-ksp-plugin-test && mvn clean install
 upgrade:
-	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle wrapper --gradle-version 8.0.1
-	cd jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1 && gradle wrapper --gradle-version 8.0.1
+	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1 && gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-gradle:
-	sudo apt upgrade gradle
-	sdk install gradle 8.0.1
-	sdk use gradle 8.0.1
+	sudo apt upgrade
+	sudo apt update
+	export SDKMAN_DIR="$(HOME)/.sdkman"
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk update
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk install gradle $(GRADLE_VERSION)
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk use gradle $(GRADLE_VERSION)
