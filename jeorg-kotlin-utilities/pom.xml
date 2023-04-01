@@ -11,7 +11,7 @@
 
     <artifactId>jeorg-kotlin-utilities</artifactId>
     <properties>
-        <kotlin.version>1.8.10</kotlin.version>
+        <kotlin.version>1.8.20</kotlin.version>
     </properties>
 
     <modules>
