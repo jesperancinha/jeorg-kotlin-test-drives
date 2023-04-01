@@ -14,8 +14,8 @@
     <name>JEOrg :: KTD :: Project Arrow :: Parent</name>
 
     <properties>
-        <java.version>19</java.version>
         <kotlin.version>1.8.10</kotlin.version>
+        <java.version>19</java.version>
     </properties>
     <modules>
         <module>jeorg-kotlin-optics-crums-1</module>
