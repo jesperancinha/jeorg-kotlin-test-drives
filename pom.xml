@@ -32,7 +32,7 @@
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <jackson-databind.version>2.14.2</jackson-databind.version>
