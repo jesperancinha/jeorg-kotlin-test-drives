@@ -17,7 +17,7 @@
         <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
 
         <kotlin.version>1.8.20</kotlin.version>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <assertj-core.version>3.24.2</assertj-core.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
