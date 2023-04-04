@@ -18,7 +18,7 @@
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
         <kotlin.version>1.8.20</kotlin.version>
 
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
         <kotest-assertions-core-jvm.version>5.5.5</kotest-assertions-core-jvm.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
