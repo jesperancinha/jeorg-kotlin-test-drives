@@ -2,6 +2,7 @@
 
 ## References
 
+- [Kotlin 1.0 Beta Candidate is Out!](https://blog.jetbrains.com/kotlin/2015/10/kotlin-1-0-beta-candidate-is-out/)
 - [Dave Leeds on Kotlin - Invariance](https://typealias.com/concepts/invariance/)
 
 ## About me

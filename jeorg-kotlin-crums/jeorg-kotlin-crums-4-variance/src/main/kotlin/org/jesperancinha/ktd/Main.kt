@@ -24,7 +24,7 @@ open class Cake(
 
 class PaoDeLo(ingredients: Ingredients) : Cake(ingredients)
 
-@Suppress("UNCHECKED_CAST")
+//@Suppress("UNCHECKED_CAST")
 class CakeShop<out T : Cake, in U : Ingredients, V : Part> {
     fun makeCake(ingredients: U,
                  createCakeFunction: (@UnsafeVariance U) -> @UnsafeVariance T)
