@@ -21,6 +21,8 @@ class Pot<in T : Utensil> {
     init {
         println("A Pot has been created!")
     }
+
+    fun takeABit(utensil: T) = println(utensil)
 }
 
 
@@ -46,14 +48,28 @@ class SoupEating {
             var potC = Pot<Utensil>()
             println(potC::class)
 
+//            Only knife works for Pot A at this point
+//            potA.takeABit(Spoon())
+            potA.takeABit(Knife())
+//            potA.takeABit(object : Utensil {
+//            })
+
+
             potA = potC
             println(potA::class)
             potB = potC
             println(potB::class)
             potB = potA
             println(potB::class)
-            potB = potB
+            potA = potB
             println(potB::class)
+            potC = potA
+            println(potC)
+            potA.takeABit(Spoon())
+            potA.takeABit(Knife())
+            potA.takeABit(object : Utensil {
+            })
+
 
             var aspergerSoupServing = Serving<AspergerSoup>()
             println(aspergerSoupServing::class)
@@ -66,6 +82,7 @@ class SoupEating {
             println(soupServing::class)
             soupServing = tomatoSoupServing
             println(soupServing::class)
+            soupServing = Serving<Soup>()
         }
     }
 }
