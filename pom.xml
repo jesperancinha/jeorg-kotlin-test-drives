@@ -50,6 +50,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <kotlinx-coroutines-reactor.version>1.6.4</kotlinx-coroutines-reactor.version>
+        <kotlin-reflect.version>1.8.20</kotlin-reflect.version>
     </properties>
 
     <modules>
@@ -76,6 +77,11 @@
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
                 <version>${jakarta.validation-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-reflect</artifactId>
+                <version>${kotlin-reflect.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.arrow-kt</groupId>
