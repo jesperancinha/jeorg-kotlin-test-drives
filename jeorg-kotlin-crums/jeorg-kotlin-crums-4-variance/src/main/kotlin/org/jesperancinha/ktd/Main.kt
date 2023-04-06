@@ -40,7 +40,7 @@ class CakeShop<out T : Cake, in U : Ingredients, V : Part> {
     fun repairDoor(door: V): V = logger.info("Door has been repaired!").let { door }
 
     companion object {
-        val logger = LoggerFactory.getLogger(CakeShop::class.java)
+        val logger: Logger = LoggerFactory.getLogger(CakeShop::class.java)
     }
 }
 
