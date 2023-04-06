@@ -6,6 +6,7 @@ class Main {
         fun main(args: Array<String> = emptyArray()) {
             Cakes.main()
             SoupEating.main()
+            ImmutableEatingOut.main()
         }
     }
 }

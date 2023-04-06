@@ -1,8 +1,5 @@
 package org.jesperancinha.ktd
 
-import kotlin.reflect.jvm.jvmName
-import kotlin.reflect.typeOf
-
 
 class Knife : Utensil {
     init {
@@ -48,13 +45,12 @@ class SoupEating {
             var potC = Pot<Utensil>()
             println(potC::class)
 
+//            potA = potB
 //            Only knife works for Pot A at this point
 //            potA.takeABit(Spoon())
             potA.takeABit(Knife())
 //            potA.takeABit(object : Utensil {
 //            })
-
-
             potA = potC
             println(potA::class)
             potB = potC
@@ -82,7 +78,9 @@ class SoupEating {
             println(soupServing::class)
             soupServing = tomatoSoupServing
             println(soupServing::class)
-            soupServing = Serving<Soup>()
+            soupServing = Serving()
+            println(soupServing::class)
+
         }
     }
 }
