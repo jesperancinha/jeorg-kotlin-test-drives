@@ -27,10 +27,14 @@ interface Soup
 class TomatoSoup : Soup
 class AspergerSoup : Soup
 
-class Serving<out T : Soup> {
+class Serving<out T : Soup>(
+    val soup:T
+) {
     init {
         println("A Soup serving has been created!")
     }
+
+    fun serving() = soup
 }
 
 
@@ -67,20 +71,20 @@ class SoupEating {
             })
 
 
-            var aspergerSoupServing = Serving<AspergerSoup>()
+            val aspergerSoupServing = Serving(AspergerSoup())
             println(aspergerSoupServing::class)
-            var tomatoSoupServing = Serving<TomatoSoup>()
+            val tomatoSoupServing = Serving(TomatoSoup())
             println(tomatoSoupServing::class)
-            var soupServing = Serving<Soup>()
+            var soupServing = Serving<Soup>(object : Soup {})
             println(soupServing::class)
 
             soupServing = aspergerSoupServing
             println(soupServing::class)
             soupServing = tomatoSoupServing
             println(soupServing::class)
-            soupServing = Serving()
+            soupServing = Serving(object : Soup {})
             println(soupServing::class)
-
+            soupServing.serving()
         }
     }
 }
