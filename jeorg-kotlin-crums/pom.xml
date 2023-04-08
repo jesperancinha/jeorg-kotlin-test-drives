@@ -20,6 +20,7 @@
         <module>jeorg-kotlin-crums-1</module>
         <module>jeorg-kotlin-crums-2</module>
         <module>jeorg-kotlin-crums-3</module>
+        <module>jeorg-kotlin-crums-4-variance</module>
     </modules>
     <packaging>pom</packaging>
 </project>
