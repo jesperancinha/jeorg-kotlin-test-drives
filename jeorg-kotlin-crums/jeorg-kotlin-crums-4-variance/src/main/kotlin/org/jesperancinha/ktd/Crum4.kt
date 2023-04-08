@@ -2,7 +2,6 @@ package org.jesperancinha.ktd
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import kotlin.math.log
 
 val logger:Logger = LoggerFactory.getLogger(CupManager::class.java)
 
@@ -56,13 +55,16 @@ class CupManager {
 
 
             logger.info(">>> Covariance Examples <<<")
-             val cupOut1 = CupOut<Stick>(object : Stick {
+            var cupOut1 = CupOut<Stick>(object : Stick {
                 override fun stir() =logger.info("Stirring with a generic stick")
 
             })
             cupOut1.makeCoffee()
 
             val cupOut2 = CupOut(SpoonStick())
+            // Does not work with invariant types. Try removing `out` to see 😉
+            cupOut1 = cupOut2
+            cupOut1.makeCoffee()
             cupOut2.makeCoffee().also { println(it.javaClass) }
             val cupOut21: CupOut<Stick> = CupOut(SpoonStick())
             cupOut21.makeCoffee().also {
@@ -70,7 +72,7 @@ class CupManager {
                 println(stick.javaClass)
             }
 
-            val cupOut3 = CupOut(SoupSpoonStick())
+            val cupOut3:CupOut<SpoonStick> = CupOut(SoupSpoonStick())
             cupOut3.makeCoffee().also { println(it.javaClass) }
             val cupOut31: CupOut<SpoonStick> = CupOut(SoupSpoonStick())
             cupOut31.makeCoffee().also {
