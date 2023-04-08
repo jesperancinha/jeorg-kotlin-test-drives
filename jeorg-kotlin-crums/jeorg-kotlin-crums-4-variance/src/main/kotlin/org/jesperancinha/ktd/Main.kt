@@ -7,6 +7,7 @@ class Main {
             Cakes.main()
             SoupEating.main()
             ImmutableEatingOut.main()
+            CupManager.main()
         }
     }
 }
