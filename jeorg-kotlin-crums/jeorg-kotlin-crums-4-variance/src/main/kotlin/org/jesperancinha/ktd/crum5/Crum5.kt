@@ -50,6 +50,16 @@ class Patisserie {
             // but this will
             (inCup3 as InCup<SpoonStick>).stirCoffee(SpoonStick())
             val inCup4: InCup<SpoonStick> = inCup3
+
+            // This is how we typically see contravariance
+            // It makes sense and mostly we don't even think about it
+            // However this is purely what contravariance means in coding.
+            val inCup5: InCup<SpoonStick> = InCup<Stick>()
+
+            // This will never work.
+            // Using a ForkStick in this case is not permitted, which means that a reference to Stick doesn't make sense
+            // This is the reason why the compiler fails in this case
+            // val inCup6: InCup<Stick> = InCup<SpoonStick>()
         }
     }
 }
