@@ -1,5 +1,7 @@
 package org.jesperancinha.ktd
 
+import org.jesperancinha.ktd.crum5.Patisserie
+
 class Main {
     companion object {
         @JvmStatic
@@ -8,6 +10,7 @@ class Main {
             SoupEating.main()
             ImmutableEatingOut.main()
             CupManager.main()
+            Patisserie.main()
         }
     }
 }
