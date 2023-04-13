@@ -11,7 +11,7 @@ class ForkStick : Stick() {
 }
 
 class InvariantCup<T : Stick>(
-    val stick: T,
+    private val stick: T,
 ) {
     fun stirCoffee() = println("Coffee stirred with $stick");
 
