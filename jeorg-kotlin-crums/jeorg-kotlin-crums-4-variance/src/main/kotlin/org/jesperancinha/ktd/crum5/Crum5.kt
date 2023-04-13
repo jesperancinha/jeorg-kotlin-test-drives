@@ -43,9 +43,9 @@ class Patisserie {
         fun main(args: Array<String> = emptyArray()) {
             runInvariantExample()
 
-            runCotravariantExample()
+//            runCotravariantExample()
 
-            runCovariantExample()
+//            runCovariantExample()
         }
 
         private fun runCovariantExample() {
