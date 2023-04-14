@@ -50,6 +50,8 @@ class Patisserie {
 
         private fun runCovariantExample() {
             println("--- runCovariantExample ---")
+            val forTheVideoCoffeeStick: CovariantCup<Stick> = CovariantCup(SpoonStick())
+            forTheVideoCoffeeStick.stirCoffee()
             val covariantCup1 = CovariantCup<Stick>(object : Stick() {})
             covariantCup1.stirCoffee()
 
@@ -65,6 +67,7 @@ class Patisserie {
 
         private fun runInvariantExample() {
             println("--- runInvariantExample ---")
+//            val forTheVideoCoffeeStick: InvariantCup<Stick> = InvariantCup<SpoonStick>(SpoonStick())
             val invariantCupSpoonStick = InvariantCup(SpoonStick())
             invariantCupSpoonStick.stirCoffee()
             invariantCupSpoonStick.stirCoffee(SpoonStick())
