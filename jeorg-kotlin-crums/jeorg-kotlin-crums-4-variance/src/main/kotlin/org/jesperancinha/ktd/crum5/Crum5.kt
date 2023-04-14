@@ -32,7 +32,7 @@ class CovariantCup<out T : Stick>(
     // Otherwise it has to be an in type.
     // var stick:T
 ) {
-    fun stirCoffee() = println("Coffee stirred with $stick");
+    fun stirCoffee() = println("Coffee stirred with $stick").run { stick }
 
 }
 
