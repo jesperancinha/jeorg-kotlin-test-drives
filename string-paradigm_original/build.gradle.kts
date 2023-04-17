@@ -64,5 +64,5 @@ dependencies {
     implementation(project(mapOf("path" to ":string-paradigm-api")))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.5")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.6.0")
 }
