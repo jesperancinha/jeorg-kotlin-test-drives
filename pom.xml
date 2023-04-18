@@ -27,7 +27,7 @@
 
         <!-- Unit testing -->
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
-        <kotest-runner-junit5-jvm.version>5.6.0</kotest-runner-junit5-jvm.version>
+        <kotest-runner-junit5-jvm.version>5.6.1</kotest-runner-junit5-jvm.version>
         <mockk.version>1.13.5</mockk.version>
 
         <!-- Coverage related -->
