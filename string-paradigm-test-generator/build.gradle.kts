@@ -61,7 +61,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.slf4j:slf4j-api:2.0.7")
     implementation(project(mapOf("path" to ":string-paradigm-expression-api")))
-    implementation("info.picocli:picocli:4.7.2")
+    implementation("info.picocli:picocli:4.7.3")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.6.1")
