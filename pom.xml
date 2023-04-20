@@ -27,7 +27,7 @@
 
         <!-- Unit testing -->
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
-        <kotest-runner-junit5-jvm.version>5.5.5</kotest-runner-junit5-jvm.version>
+        <kotest-runner-junit5-jvm.version>5.6.1</kotest-runner-junit5-jvm.version>
         <mockk.version>1.13.5</mockk.version>
 
         <!-- Coverage related -->
@@ -45,7 +45,7 @@
         <kotlin-maven-symbol-processing.version>1.5</kotlin-maven-symbol-processing.version>
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
-        <kotest-assertions.version>5.5.5</kotest-assertions.version>
+        <kotest-assertions.version>5.6.1</kotest-assertions.version>
         <spring-boot-starter-parent.version>3.0.5</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>

@@ -80,6 +80,7 @@ class WarehouseManager {
 
         @Suppress("UNCHECKED_CAST")
         private fun runInvariantTest() {
+            logger.info("Starting runInvariantTest")
             val contravariantWarehouse = InvariantWarehouse(mutableListOf<Brick>())
             contravariantWarehouse.printItemsPretty()
             val contravariantWarehouse2 = InvariantWarehouse(mutableListOf<Book>())
@@ -105,6 +106,7 @@ class WarehouseManager {
 
         @Suppress("UNREACHABLE_CODE", "CAST_NEVER_SUCCEEDS")
         private fun runCovariantTest() {
+            logger.info("Starting runCovariantTest")
             val contravariantWarehouse = CovariantWarehouse(mutableListOf<Brick>())
             contravariantWarehouse.printItemsPretty()
             val contravariantWarehouse2 = CovariantWarehouse(mutableListOf<Book>())
@@ -126,7 +128,10 @@ class WarehouseManager {
 
         @Suppress("UNCHECKED_CAST")
         private fun runContravariantTest() {
-            val contravariantWarehouse = ContravariantWarehouse(mutableListOf<Brick>())
+            logger.info("Starting runContravariantTest")
+            val contravariantWarehouse: ContravariantWarehouse<Item> =
+                ContravariantWarehouse(mutableListOf<Brick>()) as ContravariantWarehouse<Item>
+            contravariantWarehouse.addItem(Item(234.toBigDecimal()))
             contravariantWarehouse.printItemsPretty()
             val contravariantWarehouse2 = ContravariantWarehouse(mutableListOf<Book>())
             contravariantWarehouse2.printItemsPretty()
