@@ -26,7 +26,9 @@ Kotlin Language study project.
 
 ### Online
 
+-   [Generics: in, out, where](https://kotlinlang.org/docs/generics.html)
 -   [kotlin-maven-symbol-processing](https://github.com/Dyescape/kotlin-maven-symbol-processing)
+
 ### Books
 
 -   Vasic, M. (21st May 2018). <i>Building Applications with Spring 5 and Kotlin</i>. (First Edition). Packt Publishing

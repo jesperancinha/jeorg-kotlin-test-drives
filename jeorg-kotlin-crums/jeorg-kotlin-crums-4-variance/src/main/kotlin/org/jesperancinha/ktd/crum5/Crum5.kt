@@ -11,7 +11,7 @@ class ForkStick : Stick() {
 }
 
 class InvariantCup<T : Stick>(
-    val stick: T,
+    private val stick: T,
 ) {
     fun stirCoffee() = println("Coffee stirred with $stick");
 
@@ -32,7 +32,7 @@ class CovariantCup<out T : Stick>(
     // Otherwise it has to be an in type.
     // var stick:T
 ) {
-    fun stirCoffee() = println("Coffee stirred with $stick");
+    fun stirCoffee() = println("Coffee stirred with $stick").run { stick }
 
 }
 
@@ -43,13 +43,15 @@ class Patisserie {
         fun main(args: Array<String> = emptyArray()) {
             runInvariantExample()
 
-            runCotravariantExample()
+//            runCotravariantExample()
 
-            runCovariantExample()
+//            runCovariantExample()
         }
 
         private fun runCovariantExample() {
             println("--- runCovariantExample ---")
+            val forTheVideoCoffeeStick: CovariantCup<Stick> = CovariantCup(SpoonStick())
+            forTheVideoCoffeeStick.stirCoffee()
             val covariantCup1 = CovariantCup<Stick>(object : Stick() {})
             covariantCup1.stirCoffee()
 
@@ -65,6 +67,7 @@ class Patisserie {
 
         private fun runInvariantExample() {
             println("--- runInvariantExample ---")
+//            val forTheVideoCoffeeStick: InvariantCup<Stick> = InvariantCup<SpoonStick>(SpoonStick())
             val invariantCupSpoonStick = InvariantCup(SpoonStick())
             invariantCupSpoonStick.stirCoffee()
             invariantCupSpoonStick.stirCoffee(SpoonStick())
