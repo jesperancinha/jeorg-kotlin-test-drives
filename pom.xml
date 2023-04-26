@@ -32,7 +32,7 @@
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jacoco-maven-plugin.version>0.8.9</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <jackson-databind.version>2.15.0</jackson-databind.version>
@@ -50,7 +50,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <kotlinx-coroutines-reactor.version>1.6.4</kotlinx-coroutines-reactor.version>
-        <kotlin-reflect.version>1.8.20</kotlin-reflect.version>
+        <kotlin-reflect.version>1.8.21</kotlin-reflect.version>
     </properties>
 
     <modules>
