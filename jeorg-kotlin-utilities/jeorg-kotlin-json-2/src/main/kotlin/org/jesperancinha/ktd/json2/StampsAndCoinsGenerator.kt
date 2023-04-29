@@ -15,11 +15,10 @@ internal val jacksonXMLMapper = XmlMapper(JacksonXmlModule().apply {
     .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
 
 internal inline fun <reified T : Any> readValue(path: String): T {
-    val resource = Stamp::class.java.getResource(path)
+    val resource = requireNotNull(Stamp::class.java.getResource(path))
     return jacksonXMLMapper.readValue(resource)
 }
 
-fun main(args: Array<String>) {
-
+fun main() {
 }
 
