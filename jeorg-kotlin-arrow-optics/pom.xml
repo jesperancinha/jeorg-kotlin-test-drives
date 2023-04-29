@@ -14,7 +14,7 @@
     <name>JEOrg :: KTD :: Project Arrow :: Parent</name>
 
     <properties>
-        <kotlin.version>1.8.10</kotlin.version>
+        <kotlin.version>1.8.21</kotlin.version>
         <java.version>19</java.version>
     </properties>
     <modules>
