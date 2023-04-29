@@ -121,9 +121,11 @@ class WarehouseManager {
                     logger.info("We can use annotations to ignore this, but that defeats the whole purpose of using out")
                 }
             }
-            val contravariantWarehouseBook: CovariantWarehouse<Item> =
+            val contravariantWarehouseItem: CovariantWarehouse<Item> =
                 CovariantWarehouse(mutableListOf(Book(999.toBigDecimal())))
-            contravariantWarehouseBook.printItemsPretty()
+            contravariantWarehouseItem.printItemsPretty()
+            val firstItem = contravariantWarehouseItem.findFirstItem()
+            logger.info("This is the first item: $firstItem")
         }
 
         @Suppress("UNCHECKED_CAST")
