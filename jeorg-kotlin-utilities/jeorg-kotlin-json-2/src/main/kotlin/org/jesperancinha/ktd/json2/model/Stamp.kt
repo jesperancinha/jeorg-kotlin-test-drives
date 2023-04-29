@@ -17,5 +17,5 @@ data class Stamp(
     val widthMM: Long? = null,
 
     @JsonProperty("Material")
-    val materials: List<String>? = null,
+    val materials: List<String> = emptyList(),
 )
