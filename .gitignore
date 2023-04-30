@@ -42,3 +42,6 @@ yarn.lock
 
 # Others
 .attach*
+
+# NPM
+(same as "user" config, ignored)
