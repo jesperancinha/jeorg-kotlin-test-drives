@@ -9,6 +9,12 @@ interface Stick {
     fun stir()
 }
 
+open class ForkStick : Stick {
+    override fun stir() {
+        logger.info("Stirring with a Fork Stick")
+    }
+}
+
 open class SpoonStick : Stick {
     override fun stir() = logger.info("Stirring with a Spoon Stick")
 }
@@ -17,6 +23,11 @@ class SoupSpoonStick : SpoonStick(){
     override fun stir() =  logger.info("Stirring with a Soup Spoon Stick")
 }
 
+
+class Cup<T:Stick> {
+    fun makeCoffee(stick : T) = stick.stir()
+
+}
 
 class CupIn<in T:Stick> {
     fun makeCoffee(stick : T) = stick.stir()
@@ -33,6 +44,9 @@ class CupManager {
     companion object {
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
+            logger.info(">>> Invariant Examples <<<")
+            val cupInvariant = Cup<Stick>()
+            cupInvariant.makeCoffee(ForkStick())
             logger.info(">>> Contravariance Examples <<<")
 
             logger.info(">>> Using a stick")
@@ -44,14 +58,27 @@ class CupManager {
             cupIn1.makeCoffee(SpoonStick())
             cupIn1.makeCoffee(SoupSpoonStick())
 
-            logger.info(">>> Using a Spoon Stick")
-            val cupIn2:CupIn<SpoonStick> = cupIn1
+            logger.info(">>> Using a Stick")
+            val cupIn2:CupIn<Stick> = cupIn1
             cupIn2.makeCoffee(SoupSpoonStick())
             cupIn2.makeCoffee(SpoonStick())
+            cupIn2.makeCoffee(ForkStick())
 
             logger.info(">>> Using a Soup Spoon Stick")
             val cupIn3:CupIn<SoupSpoonStick> = cupIn2
             cupIn3.makeCoffee(SoupSpoonStick())
+
+            logger.info(">>> Using a Fork Stick")
+            val cupInSpoonStick:CupIn<SpoonStick> = cupIn1
+            cupInSpoonStick.makeCoffee(SoupSpoonStick())
+            cupInSpoonStick.makeCoffee(SpoonStick())
+            //This won't work
+//            cupInSpoonStick.makeCoffee(ForkStick())
+
+            // This won't work
+            logger.info(">>> Using a Soup Spoon Stick")
+//            val cupInForkStick:CupIn<ForkStick> = cupInSpoonStick
+//            cupIn3.makeCoffee(SoupSpoonStick())
 
 
             logger.info(">>> Covariance Examples <<<")
