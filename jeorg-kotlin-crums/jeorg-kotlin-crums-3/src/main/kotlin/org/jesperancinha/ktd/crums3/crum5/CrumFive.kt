@@ -1,7 +1,6 @@
 package org.jesperancinha.ktd.crums3.crum5
 
-import arrow.optics.optics
-import arrow.optics.*
+import arrow.optics.Lens
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
 data class Account(val balance: Int, val available: Int) {
