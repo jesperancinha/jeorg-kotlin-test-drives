@@ -21,18 +21,19 @@ upgrade:
 upgrade-gradle:
 	sudo apt upgrade
 	sudo apt update
-	export SDKMAN_DIR="$(HOME)/.sdkman"
+	export SDKMAN_DIR="$(HOME)/.sdkman"; \
+	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
 	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
-		sdk update; \
-		gradleOnlineVersion=$(shell curl -s https://services.gradle.org/versions/current | jq .version | xargs -I {} echo {}); \
-		echo $$gradleOnlineVersion; \
-		if [[ -z "$$gradleOnlineVersion" ]]; then \
-			[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk install gradle $(GRADLE_VERSION); \
-			[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk use gradle $(GRADLE_VERSION); \
-		else \
-			[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk install gradle $$gradleOnlineVersion; \
-			[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk use gradle $$gradleOnlineVersion; \
-		fi
+	sdk update; \
+	gradleOnlineVersion=$(shell curl -s https://services.gradle.org/versions/current | jq .version | xargs -I {} echo {}); \
+	echo $$gradleOnlineVersion; \
+	if [[ -z "$$gradleOnlineVersion" ]]; then \
+		sdk install gradle $(GRADLE_VERSION); \
+		sdk use gradle $(GRADLE_VERSION); \
+	else \
+		sdk install gradle $$gradleOnlineVersion; \
+		sdk use gradle $$gradleOnlineVersion; \
+	fi
 install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
