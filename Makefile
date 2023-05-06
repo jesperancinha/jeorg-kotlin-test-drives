@@ -23,7 +23,8 @@ upgrade-gradle:
 	sudo apt update
 	export SDKMAN_DIR="$(HOME)/.sdkman"; \
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
-	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]]; \
+	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
 	sdk update; \
 	gradleOnlineVersion=$(shell curl -s https://services.gradle.org/versions/current | jq .version | xargs -I {} echo {}); \
 	echo $$gradleOnlineVersion; \
