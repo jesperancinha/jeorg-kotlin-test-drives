@@ -26,7 +26,6 @@ upgrade-gradle:
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
 	sdk update; \
 	gradleOnlineVersion=$(shell curl -s https://services.gradle.org/versions/current | jq .version | xargs -I {} echo {}); \
-	echo $$gradleOnlineVersion; \
 	if [[ -z "$$gradleOnlineVersion" ]]; then \
 		sdk install gradle $(GRADLE_VERSION); \
 		sdk use gradle $(GRADLE_VERSION); \
