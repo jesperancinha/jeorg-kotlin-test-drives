@@ -22,7 +22,6 @@ upgrade-gradle:
 	sudo apt upgrade
 	sudo apt update
 	export SDKMAN_DIR="$(HOME)/.sdkman"; \
-	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
 	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]]; \
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
 	sdk update; \
