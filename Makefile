@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-GRADLE_VERSION := 8.1.1
+GRADLE_VERSION ?= 8.1.1
 b: clean build
 clean:
 	if [[ -f jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock ]]; then rm jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock; fi
@@ -32,7 +32,9 @@ upgrade-gradle:
 	else \
 		sdk install gradle $$gradleOnlineVersion; \
 		sdk use gradle $$gradleOnlineVersion; \
-	fi
+	fi; \
+	export GRADLE_VERSION=$$gradleOnlineVersion; \
+	make upgrade
 install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
