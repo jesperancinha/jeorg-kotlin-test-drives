@@ -24,14 +24,15 @@ upgrade-gradle:
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
 	sdk update; \
 	gradleOnlineVersion=$(shell curl -s https://services.gradle.org/versions/current | jq .version | xargs -I {} echo {}); \
-	echo $$gradleOnlineVersion; \
 	if [[ -z "$$gradleOnlineVersion" ]]; then \
 		sdk install gradle $(GRADLE_VERSION); \
 		sdk use gradle $(GRADLE_VERSION); \
 	else \
 		sdk install gradle $$gradleOnlineVersion; \
 		sdk use gradle $$gradleOnlineVersion; \
-	fi
+	fi; \
+	export GRADLE_VERSION=$$gradleOnlineVersion; \
+	make upgrade
 install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
