@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 GRADLE_VERSION ?= 8.1.1
 MODULE_LOCATIONS := jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui \
-					jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1 \
+					jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1
 
 
 b: clean build
