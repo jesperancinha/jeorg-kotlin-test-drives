@@ -1,19 +1,31 @@
 SHELL := /bin/bash
 GRADLE_VERSION := 8.1.1
-
+MODULE_LOCATIONS := string-paradigm-api \
+					string-paradigm-expression-api \
+					string-paradigm-expression-no-wrapper
 b: buildw
 wrapper:
 	gradle wrapper
 buildw:
-	cd string-paradigm-api && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-	cd string-paradigm-expression-api && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-	cd string-paradigm-expression-no-wrapper && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
+	@for location in $(MODULE_LOCATIONS); do \
+  		export CURRENT=$(shell pwd); \
+  		echo "Building $$location..."; \
+		cd $$location; \
+		gradle wrapper; \
+		./gradlew clean build; \
+		gradle assemble test publishToMavenLocal; \
+		cd $$CURRENT; \
+	done
 	gradle clean build test publishToMavenLocal
 upgrade:
+	@for location in $(MODULE_LOCATIONS); do \
+  		export CURRENT=$(shell pwd); \
+  		echo "Upgrading $$location..."; \
+		cd $$location; \
+		gradle wrapper --gradle-version $(GRADLE_VERSION); \
+		cd $$CURRENT; \
+	done
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd string-paradigm-api && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd string-paradigm-expression-api && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd string-paradigm-expression-no-wrapper && gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-mac-os:
 	brew upgrade gradle
 upgrade-gradle:
