@@ -12,13 +12,13 @@ build: build-gradle build-maven
 build-maven:
 	mvn clean install
 build-gradle:
-		@for location in $(MODULE_LOCATIONS); do \
-      		export CURRENT=$(shell pwd); \
-      		echo "Building $$location..."; \
-    		cd $$location; \
-    		make b; \
-    		cd $$CURRENT; \
-    	done
+	@for location in $(MODULE_LOCATIONS); do \
+		export CURRENT=$(shell pwd); \
+		echo "Building $$location..."; \
+		cd $$location; \
+		make b; \
+		cd $$CURRENT; \
+	done
 upgrade:
 	@for location in $(MODULE_LOCATIONS); do \
   		export CURRENT=$(shell pwd); \
