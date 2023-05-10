@@ -43,7 +43,7 @@ upgrade-gradle:
 		sdk install gradle $$gradleOnlineVersion; \
 		sdk use gradle $$gradleOnlineVersion; \
 		export GRADLE_VERSION=$$gradleOnlineVersion; \
-	fi; \
+	fi;
 	make upgrade
 install-linux:
 	sudo apt-get install jq
