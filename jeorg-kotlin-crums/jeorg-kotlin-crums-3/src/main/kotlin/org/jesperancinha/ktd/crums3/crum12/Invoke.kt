@@ -3,7 +3,6 @@ package org.jesperancinha.ktd.crums3.crum12
 import kotlinx.coroutines.runBlocking
 import org.jesperancinha.console.consolerizer.common.Composer
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.ktd.crums3.crum11.ChunkParallelization
 
 class Invoke {
 
