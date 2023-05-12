@@ -14,8 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.1.0</maven-failsafe-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
 
@@ -27,13 +27,13 @@
 
         <!-- Unit testing -->
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
-        <kotest-runner-junit5-jvm.version>5.6.1</kotest-runner-junit5-jvm.version>
+        <kotest-runner-junit5-jvm.version>5.6.2</kotest-runner-junit5-jvm.version>
         <mockk.version>1.13.5</mockk.version>
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
-        <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <jackson.version>2.15.0</jackson.version>
         <jackson-databind.version>${jackson.version}</jackson-databind.version>
@@ -48,7 +48,7 @@
         <kotlin-maven-symbol-processing.version>1.5</kotlin-maven-symbol-processing.version>
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
-        <kotest-assertions.version>5.6.1</kotest-assertions.version>
+        <kotest-assertions.version>5.6.2</kotest-assertions.version>
         <spring-boot-starter-parent.version>3.0.6</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
