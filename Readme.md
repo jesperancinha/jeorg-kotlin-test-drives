@@ -20,12 +20,9 @@
 
 ---
 
-## Tech stack
+## Technologies used
 
----
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/gradle-50.png "Gradle")](https://gradle.org/)
-
----
+Please check the [TechStack.md](TechStack.md) file for details.
 
 ## Description
 
