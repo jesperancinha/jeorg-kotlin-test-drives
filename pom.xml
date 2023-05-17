@@ -36,7 +36,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <jackson.version>2.15.0</jackson.version>
-        <jackson-databind.version>${jackson.version}</jackson-databind.version>
+        <jackson-databind.version>2.15.1</jackson-databind.version>
         <jackson-module-kotlin.version>${jackson.version}</jackson-module-kotlin.version>
         <jackson-dataformat-xml.version>${jackson.version}</jackson-dataformat-xml.version>
         <jackson-core.version>${jackson.version}</jackson-core.version>
