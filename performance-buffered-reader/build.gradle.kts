@@ -48,5 +48,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.3")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
-    testImplementation("com.google.truth:truth:1.1.4")
+    testImplementation("com.google.truth:truth:1.1.5")
 }
