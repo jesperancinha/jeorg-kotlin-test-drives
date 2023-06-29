@@ -18,7 +18,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
-        <thumbnailator.version>0.4.19</thumbnailator.version>
+        <thumbnailator.version>0.4.20</thumbnailator.version>
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
         <javafx.version>18-ea+9</javafx.version>
         <dependency-check-maven.version>8.3.1</dependency-check-maven.version>
