@@ -20,7 +20,4 @@
         <module>coroutines-crums-group-1</module>
     </modules>
     <packaging>pom</packaging>
-    <properties>
-        <kotlin.version>1.8.10</kotlin.version>
-    </properties>
 </project>
