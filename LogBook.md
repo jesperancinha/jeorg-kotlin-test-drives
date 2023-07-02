@@ -2,9 +2,9 @@
 
 ##### 2023-07-02
 
-Given the long term wait for updates and fixes for the Dyescape plugin, it has been decided to use gradle for all arrow optics projects.
+Given the long-term wait for updates and fixes for the Dyescape plugin, it has been decided to use gradle for all arrow optics projects.
 
-The Dyescape plugin is set to be discontinued anytime soon.
+The use of the Dyescape plugin in this project is set to be discontinued anytime soon.
 
 You can find this plugin here:
 
