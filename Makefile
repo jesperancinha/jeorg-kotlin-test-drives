@@ -33,8 +33,6 @@ upgrade:
 build-chip-maker:
 	cd jeorg-kotlin-apps/jeorg-microchip-maker && mvn clean install
 	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle build test
-ksp-dyescape-health-test:
-	cd jeorg-kotlin-arrow-optics/jeorg-ksp-plugin-test && mvn clean install
 upgrade-gradle:
 	sudo apt upgrade
 	sudo apt update
