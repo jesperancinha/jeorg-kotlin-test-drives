@@ -4,9 +4,7 @@
 
 This repo is fully dedicated to arrow and arrow optics.
 
-Due to unexpected incompatibilities, all repos can be expected to have different Kotlin versions.
-
-This specific repo uses a KSP plugin that is known to not accompany Kotlin updates at the same rate as other plugins.
+All projects use gradle.
 
 ## About me
 
