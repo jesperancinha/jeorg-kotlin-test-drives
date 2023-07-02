@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 GRADLE_VERSION ?= 8.2
 MODULE_LOCATIONS := jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui \
-					jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1
+					jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1 \
+					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-1
 
 b: clean build
 clean:
@@ -11,6 +12,7 @@ build: build-gradle build-maven
 build-maven:
 	mvn clean install
 build-gradle:
+	./gradlew build test
 	@for location in $(MODULE_LOCATIONS); do \
 		export CURRENT=$(shell pwd); \
 		echo "Building $$location..."; \
@@ -19,6 +21,7 @@ build-gradle:
 		cd $$CURRENT; \
 	done
 upgrade:
+	gradle wrapper --gradle-version $(GRADLE_VERSION)
 	@for location in $(MODULE_LOCATIONS); do \
   		export CURRENT=$(shell pwd); \
   		echo "Upgrading $$location..."; \

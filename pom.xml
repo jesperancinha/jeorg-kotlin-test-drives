@@ -61,7 +61,6 @@
         <module>jeorg-kotlin-utilities</module>
         <module>jeorg-kotlin-masters</module>
         <module>jeorg-kotlin-apps</module>
-        <module>jeorg-kotlin-arrow-optics</module>
         <module>jeorg-kotlin-coroutines</module>
     </modules>
 
