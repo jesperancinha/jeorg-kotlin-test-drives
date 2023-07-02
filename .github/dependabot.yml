@@ -5,33 +5,13 @@ updates:
     schedule:
       interval: "daily"
 
-  - package-ecosystem: "maven"
-    directory: "/jeorg-kotlin-arrow-optics"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "maven"
-    directory: "/jeorg-kotlin-apps"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "maven"
-    directory: "/jeorg-kotlin-crums"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "maven"
-    directory: "/jeorg-kotlin-masters"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "maven"
-    directory: "/jeorg-kotlin-utilities"
+  - package-ecosystem: "gradle"
+    directory: "/jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "gradle"
-    directory: "/jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1"
+    directory: "/jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-1"
     schedule:
       interval: "daily"
 
