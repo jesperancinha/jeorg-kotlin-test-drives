@@ -8,7 +8,7 @@ buildscript {
 plugins {
     id("jacoco")
     id("java")
-    id( "org.jesperancinha.plugins.omni") version "0.3.0"
+    id( "org.jesperancinha.plugins.omni") version "0.3.1"
 }
 
 tasks.withType<Test> {
