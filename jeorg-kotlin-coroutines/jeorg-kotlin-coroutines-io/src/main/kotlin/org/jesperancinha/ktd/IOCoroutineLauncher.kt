@@ -27,7 +27,7 @@ open class IOCoroutineLauncher {
         fun smallTest() = runBlocking {
             logger.infoBefore("Making call at ${LocalDateTime.now()}")
             val atomicInteger = AtomicInteger()
-           val duration = measureTimeMillis {
+            val duration = measureTimeMillis {
                 withContext(Dispatchers.IO.limitedParallelism(100)) {
                     repeat(100) {
                         launch {
