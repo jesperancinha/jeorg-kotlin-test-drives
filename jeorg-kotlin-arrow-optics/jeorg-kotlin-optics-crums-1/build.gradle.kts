@@ -34,7 +34,7 @@ dependencies {
     implementation("io.kotest:kotest-assertions-core-jvm:5.6.2")
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.9.3")
-    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.9.3")
+    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
 
 }
 
