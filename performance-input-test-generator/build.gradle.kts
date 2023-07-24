@@ -47,7 +47,7 @@ dependencies {
     implementation("info.picocli:picocli:4.7.4")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.9.3")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.3")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.6.2")
 }
