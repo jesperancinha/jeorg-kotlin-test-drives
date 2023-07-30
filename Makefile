@@ -27,8 +27,7 @@ build-microchip-gradle:
 	export CURRENT=$(shell pwd); \
 	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui; \
 	make b; \
-	cd $$CURRENT; \
-	done
+	cd $$CURRENT;
 upgrade:
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
 	@for location in $(MODULE_LOCATIONS); do \
