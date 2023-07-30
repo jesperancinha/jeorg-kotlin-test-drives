@@ -24,10 +24,10 @@ build-microchip-gradle:
 	gradle wrapper
 	./gradlew build test
 	echo "Building Microchip Project..."; \
-		export CURRENT=$(shell pwd); \
-		cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui; \
-		make b; \
-		cd $$CURRENT; \
+	export CURRENT=$(shell pwd); \
+	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui; \
+	make b; \
+	cd $$CURRENT; \
 	done
 upgrade:
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
