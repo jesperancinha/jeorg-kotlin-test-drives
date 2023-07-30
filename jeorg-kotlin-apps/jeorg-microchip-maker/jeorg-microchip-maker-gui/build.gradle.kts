@@ -28,6 +28,7 @@ dependencies {
 }
 
 kotlin {
+    jvmToolchain(19)
     js(IR) {
         binaries.executable()
         browser {
