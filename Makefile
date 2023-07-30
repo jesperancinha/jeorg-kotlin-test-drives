@@ -1,9 +1,8 @@
 SHELL := /bin/bash
-GRADLE_VERSION ?= 8.2
+GRADLE_VERSION ?= 8.2.1
 MODULE_LOCATIONS := jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui \
 					jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1 \
 					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-1
-
 b: clean build
 clean:
 	if [[ -f jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock ]]; then rm jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock; fi
@@ -21,6 +20,14 @@ build-gradle:
 		make b; \
 		cd $$CURRENT; \
 	done
+build-microchip-gradle:
+	gradle wrapper
+	./gradlew build test
+	echo "Building Microchip Project..."; \
+	export CURRENT=$(shell pwd); \
+	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui; \
+	make b; \
+	cd $$CURRENT;
 upgrade:
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
 	@for location in $(MODULE_LOCATIONS); do \
