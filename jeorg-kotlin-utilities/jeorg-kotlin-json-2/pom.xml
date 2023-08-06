@@ -85,7 +85,7 @@
                 <version>${kotlin.version}</version>
                 <configuration>
                     <experimentalCoroutines>enable</experimentalCoroutines>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>${java.version}</jvmTarget>
                 </configuration>
                 <executions>
                     <execution>
