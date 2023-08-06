@@ -27,7 +27,7 @@
         <consolerizer.version>2.2.2</consolerizer.version>
 
         <!-- Unit testing -->
-        <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <kotest-runner-junit5-jvm.version>5.6.2</kotest-runner-junit5-jvm.version>
         <mockk.version>1.13.5</mockk.version>
 
