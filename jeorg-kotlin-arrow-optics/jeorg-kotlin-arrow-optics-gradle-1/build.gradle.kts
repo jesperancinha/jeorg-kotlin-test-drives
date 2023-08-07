@@ -32,7 +32,8 @@ dependencies {
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
-
+    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.0")
 }
 
 kotlin {

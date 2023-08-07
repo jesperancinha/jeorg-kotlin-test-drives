@@ -1,6 +1,6 @@
 package org.jesperancinha.ktd
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 class MainTest {
 

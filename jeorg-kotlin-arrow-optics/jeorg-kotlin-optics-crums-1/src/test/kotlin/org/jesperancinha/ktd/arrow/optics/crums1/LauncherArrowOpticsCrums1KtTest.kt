@@ -1,6 +1,6 @@
 package org.jesperancinha.ktd.arrow.optics.crums1
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 
 class LauncherArrowOpticsCrums1KtTest {

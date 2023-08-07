@@ -27,7 +27,8 @@
         <consolerizer.version>2.2.2</consolerizer.version>
 
         <!-- Unit testing -->
-        <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
+        <junit-platform-engine.version>1.10.0</junit-platform-engine.version>
         <kotest-runner-junit5-jvm.version>5.6.2</kotest-runner-junit5-jvm.version>
         <mockk.version>1.13.5</mockk.version>
 
@@ -187,6 +188,12 @@
                 <groupId>io.mockk</groupId>
                 <artifactId>mockk</artifactId>
                 <version>${mockk.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-engine</artifactId>
+                <version>${junit-platform-engine.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
