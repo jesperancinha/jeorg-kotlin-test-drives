@@ -30,3 +30,8 @@ prune-all:
 	docker system prune --all
 	docker builder prune
 	docker system prune --all --volumes
+#install-tools:
+#	wget https://download.java.net/openjdk/jdk8u41/ri/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -P /tmp
+#	tar xf /tmp/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -C
+#	ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../ | xargs -I {}  mkdir {}/lib
+#	ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../lib | sudo xargs cp ~/java-se-8u41-ri/lib/tools.jar
