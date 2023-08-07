@@ -1,7 +1,7 @@
 package org.jesperancinha.ktd
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 import org.junit.jupiter.api.Assertions.*
 

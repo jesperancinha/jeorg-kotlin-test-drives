@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldBe
 import jakarta.validation.Validation.buildDefaultValidatorFactory
 import jakarta.validation.Validator
 import org.jesperancinha.ktd.java.BookBuilder
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 
 class BookTest {

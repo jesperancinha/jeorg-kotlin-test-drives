@@ -1,6 +1,6 @@
 package org.jesperancinha.ktd.util1.codec
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 
 class Codec16AsciiRunnerKtTest {
 

@@ -1,6 +1,7 @@
 package org.jesperancinha.ktd.crums2
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
+
 
 class MainTest {
     @Test

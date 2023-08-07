@@ -1,7 +1,7 @@
 package org.jesperancinha.ktd.crums3
 
-import io.kotest.common.runBlocking
-import org.junit.jupiter.api.Test
+import kotlinx.coroutines.runBlocking
+import kotlin.test.Test
 
 class MainTest {
 
