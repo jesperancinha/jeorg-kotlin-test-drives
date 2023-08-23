@@ -17,7 +17,7 @@
     "promisify": "^0.0.3"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.0.1",
+    "@testing-library/jest-dom": "^6.1.0",
     "chai": "^4.3.7",
     "jest": "^29.6.3",
     "jest-environment-jsdom": "^29.6.3",
