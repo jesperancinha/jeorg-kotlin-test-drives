@@ -16,7 +16,7 @@
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <maven-shade-plugin.version>3.5.0</maven-shade-plugin.version>
 
-        <kotlin.version>1.9.0</kotlin.version>
+        <kotlin.version>1.9.10</kotlin.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <assertj-core.version>3.24.2</assertj-core.version>
