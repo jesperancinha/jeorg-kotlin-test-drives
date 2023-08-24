@@ -22,7 +22,7 @@ dependencies {
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.619")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.619")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.619")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.15.0-pre.619")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.15.0-pre.620")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.619")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.619")
 }
