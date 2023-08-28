@@ -44,7 +44,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.slf4j:slf4j-api:2.0.7")
     implementation("commons-io:commons-io:2.13.0")
-    implementation("info.picocli:picocli:4.7.4")
+    implementation("info.picocli:picocli:4.7.5")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.0")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
