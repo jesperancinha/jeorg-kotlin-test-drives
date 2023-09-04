@@ -14,7 +14,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
         <kotlin.version>1.9.10</kotlin.version>
         <args4j-maven-plugin.version>2.33</args4j-maven-plugin.version>
-        <kotest.version>5.6.2</kotest.version>
+        <kotest.version>5.7.1</kotest.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
