@@ -49,5 +49,5 @@ dependencies {
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.0")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.1")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
 }
