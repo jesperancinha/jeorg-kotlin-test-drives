@@ -24,7 +24,7 @@
         <kotlin.coroutines.version>1.7.3</kotlin.coroutines.version>
 
         <!-- Loggers -->
-        <consolerizer.version>2.2.2</consolerizer.version>
+        <consolerizer.version>2.2.3</consolerizer.version>
 
         <!-- Unit testing -->
         <junit-jupiter.version>5.10.0</junit-jupiter.version>
