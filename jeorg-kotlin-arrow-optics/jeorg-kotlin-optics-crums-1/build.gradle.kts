@@ -30,7 +30,7 @@ dependencies {
     implementation("io.arrow-kt:arrow-optics")
     implementation("io.arrow-kt:arrow-fx-coroutines")
     implementation("io.arrow-kt:arrow-analysis-types-jvm:2.0.2")
-    implementation("org.jesperancinha.console:consolerizer:2.2.2")
+    implementation("org.jesperancinha.console:consolerizer:2.2.3")
     implementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.0")
