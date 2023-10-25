@@ -11,6 +11,7 @@ class Main {
             ImmutableEatingOut.main()
             CupManager.main()
             Patisserie.main()
+            WarehouseManager.main()
         }
     }
 }
