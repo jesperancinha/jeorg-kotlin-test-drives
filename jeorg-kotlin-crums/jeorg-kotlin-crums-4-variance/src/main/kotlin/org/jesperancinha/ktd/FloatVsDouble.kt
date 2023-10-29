@@ -3,7 +3,7 @@ package org.jesperancinha.ktd
 class FloatVsDouble {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             val floatNumber = 7.3333333333333333333333333333333f
             println(floatNumber)
             println("The number $floatNumber has ${floatNumber.toString().length - 1} digits in precision")

@@ -12,6 +12,8 @@ class Main {
             CupManager.main()
             Patisserie.main()
             WarehouseManager.main()
+            TailRec.main()
+            FloatVsDouble.main()
         }
     }
 }
