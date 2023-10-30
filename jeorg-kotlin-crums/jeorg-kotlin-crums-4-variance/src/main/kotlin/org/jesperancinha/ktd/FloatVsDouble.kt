@@ -18,6 +18,11 @@ class FloatVsDouble {
 
             println("This is the result of a bad idea sum ${badIdeaSum(value1, value2)}")
             println("This is the result of a good idea sum ${goodIdeaSum(value1, value2)}")
+
+            println("This is the first long value $value1")
+            println("This is the second long value $value2")
+            println("This is the first long value in the long maximum scale ${value1 * 1_000_000_000_000_000_000}")
+            println("This is the first long value in the long maximum scale plus 1 ${value1 * 1_000_000_000_000_000_000 + 1}")
         }
 
         /**
@@ -28,7 +33,7 @@ class FloatVsDouble {
          * correctly
          */
         private fun goodIdeaSum(value1: Int, value2: Int): String {
-            return ((value1 + value2).toBigDecimal().multiply(1_000_000_000_000_000_000.toBigDecimal() )).toString()
+            return ((value1 + value2).toBigDecimal().multiply(1_000_000_000_000_000_000.toBigDecimal())).toString()
         }
 
         /**
@@ -42,7 +47,7 @@ class FloatVsDouble {
          * You probably wouldn't want to work in a place with these criteria any way.
          */
         private fun badIdeaSum(value1: Int, value2: Int): String {
-           return ((value1 + value2) * 1_000_000_000_000_000_000).toString()
+            return ((value1 + value2) * 1_000_000_000_000_000_000).toString()
         }
     }
 }
