@@ -54,5 +54,5 @@ dependencies {
     implementation("org.jesperancinha:string-paradigm-expression-api:0.0.0-SNAPSHOT")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.1")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
 }
