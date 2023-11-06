@@ -50,7 +50,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.9")
     implementation("org.jesperancinha:string-paradigm-api:0.0.0-SNAPSHOT")
     implementation(project(mapOf("path" to ":string-paradigm-api")))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
 }
