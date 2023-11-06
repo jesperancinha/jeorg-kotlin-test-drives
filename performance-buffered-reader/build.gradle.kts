@@ -46,7 +46,7 @@ dependencies {
     implementation("commons-io:commons-io:2.15.0")
     implementation("org.slf4j:slf4j-api:2.0.9")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.1")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.0")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.1")
     testImplementation("com.google.truth:truth:1.1.5")
 }
