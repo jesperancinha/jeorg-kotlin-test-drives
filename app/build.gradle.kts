@@ -27,7 +27,7 @@ dependencies {
     implementation("com.opencsv:opencsv:5.8")
     implementation("org.apache.commons:commons-io:1.3.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.1")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
 }
 
 tasks.test {
