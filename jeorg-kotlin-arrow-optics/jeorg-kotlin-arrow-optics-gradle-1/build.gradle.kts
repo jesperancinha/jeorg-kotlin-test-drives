@@ -31,8 +31,8 @@ dependencies {
     implementation("org.jesperancinha.console:consolerizer:2.2.3")
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.1")
-    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
-    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.1")
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.20")
 }
 
