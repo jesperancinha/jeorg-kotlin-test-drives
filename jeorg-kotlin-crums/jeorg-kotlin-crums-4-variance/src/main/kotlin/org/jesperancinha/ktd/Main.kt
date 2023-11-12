@@ -1,6 +1,7 @@
 package org.jesperancinha.ktd
 
 import org.jesperancinha.ktd.crum5.Patisserie
+import org.jesperancinha.ktd.delegates.Account
 
 class Main {
     companion object {
@@ -14,6 +15,8 @@ class Main {
             WarehouseManager.main()
             TailRec.main()
             FloatVsDouble.main()
+            Delegates.main()
+            Account.main(emptyArray())
         }
     }
 }
