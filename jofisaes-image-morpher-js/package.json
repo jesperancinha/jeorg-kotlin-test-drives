@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
-    "heic-convert": "^1.2.4",
+    "heic-convert": "^2.0.0",
     "promisify": "^0.0.3"
   },
   "devDependencies": {
