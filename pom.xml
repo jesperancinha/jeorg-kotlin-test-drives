@@ -19,7 +19,7 @@
         <maven-failsafe-plugin.version>3.2.2</maven-failsafe-plugin.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <build.helper.plugin>1.10</build.helper.plugin>
-        <kotlin.version>1.9.20</kotlin.version>
+        <kotlin.version>1.9.21</kotlin.version>
 
         <javax.concurrency.version>1.0</javax.concurrency.version>
         <javax.ejb.version>3.2.2</javax.ejb.version>
