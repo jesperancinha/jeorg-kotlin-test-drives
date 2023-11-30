@@ -59,7 +59,7 @@ Note that if you want to build this project from the root, you need to use one o
 ## Install JDK 19 using [SDK-MAN](https://sdkman.io/)
 
 ```bash
-. ./sdk19.sh
+. ./sdk21.sh
 ```
 
 ---
