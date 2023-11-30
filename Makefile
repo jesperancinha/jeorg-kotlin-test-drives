@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-GRADLE_VERSION ?= 8.2.1
+GRADLE_VERSION ?= 8.5
 MODULE_LOCATIONS := jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui \
 					jeorg-kotlin-arrow-optics/jeorg-kotlin-arrow-optics-gradle-1 \
 					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-1
@@ -40,9 +40,10 @@ upgrade:
 build-chip-maker:
 	cd jeorg-kotlin-apps/jeorg-microchip-maker && mvn clean install
 	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle build test
-upgrade-gradle:
+upgrade-system:
 	sudo apt upgrade
 	sudo apt update
+upgrade-sdk-man:
 	export SDKMAN_DIR="$(HOME)/.sdkman"; \
 	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]]; \
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
@@ -56,7 +57,7 @@ upgrade-gradle:
 		sdk use gradle $$gradleOnlineVersion; \
 		export GRADLE_VERSION=$$gradleOnlineVersion; \
 	fi;
-	make upgrade
+upgrade-gradle: upgrade-system upgrade
 install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
