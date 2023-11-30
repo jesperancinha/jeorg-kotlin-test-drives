@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-and-test:
     docker:
-      - image: cimg/openjdk:19.0.1
+      - image: cimg/openjdk:21
     steps:
       - checkout
       - run: mvn clean install jacoco:prepare-agent package jacoco:report
