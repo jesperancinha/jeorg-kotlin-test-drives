@@ -5,7 +5,7 @@ allprojects {
 }
 
 plugins {
-    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    id("com.google.devtools.ksp") version "1.9.21-1.0.15"
 //    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
     kotlin("jvm") version "1.9.21"
     application
@@ -58,5 +58,5 @@ tasks.withType<Test> {
 }
 
 kotlin {
-    jvmToolchain(19)
+    jvmToolchain(21)
 }
