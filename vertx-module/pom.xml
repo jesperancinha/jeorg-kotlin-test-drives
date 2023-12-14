@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <properties>
-        <vertx-core.version>4.5.0</vertx-core.version>
+        <vertx-core.version>4.5.1</vertx-core.version>
         <junit.version>4.13.2</junit.version>
         <vertx-unit.version>4.3.7</vertx-unit.version>
     </properties>
