@@ -55,7 +55,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <kotlinx-coroutines-reactor.version>1.7.3</kotlinx-coroutines-reactor.version>
-        <kotlin-reflect.version>1.9.21</kotlin-reflect.version>
+        <kotlin-reflect.version>1.9.22</kotlin-reflect.version>
     </properties>
 
     <modules>
