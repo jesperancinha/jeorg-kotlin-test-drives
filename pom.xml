@@ -51,7 +51,7 @@
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
         <kotest-assertions.version>5.8.0</kotest-assertions.version>
-        <spring-boot-starter-parent.version>3.2.0</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.2.1</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <kotlinx-coroutines-reactor.version>1.7.3</kotlinx-coroutines-reactor.version>
