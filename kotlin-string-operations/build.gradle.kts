@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    implementation("io.kotest:kotest-assertions-core-jvm:5.8.0")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
