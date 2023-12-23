@@ -4,7 +4,6 @@ import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.string.shouldStartWith
 import org.jesperancinha.main
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class MainKtTest {
 
