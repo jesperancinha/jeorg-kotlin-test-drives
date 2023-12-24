@@ -16,9 +16,14 @@ class MainKtTest {
     @Test
     fun `should fail using empty identations`() {
         shouldThrow<IllegalArgumentException> {
-            val testString = "   I want to start at the beginning with dashes"
+            val testString =
+                "   The wolf, the fish,"
+                    .plus("and the print shop")
             val resultString = testString
-                .replaceIndentByMargin(" ---", "   ")
+                .replaceIndentByMargin(
+                    " ---",
+                    "   "
+                )
             println(
                 resultString
             )
