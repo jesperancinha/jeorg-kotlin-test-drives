@@ -13,14 +13,12 @@ class Others {
             }
             .joinToString("")
 
-
         val result2 = testString
             .reduce { acc, c ->
                 c
                     .takeIf { c > acc } ?: acc
             }
-
-        result shouldBe "Thhttttttttttttttttttttttttttt"
+        result shouldBe "Thh".plus("t".repeat(27))
         result.length shouldBe testString.length
         result2 shouldBe 't'
     }
