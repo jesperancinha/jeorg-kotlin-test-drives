@@ -17,6 +17,7 @@ class Main {
             FloatVsDouble.main()
             Delegates.main()
             Account.main(emptyArray())
+            IndexSolutionForRIDHashes.main()
         }
     }
 }
