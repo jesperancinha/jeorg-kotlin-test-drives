@@ -5,7 +5,7 @@ allprojects {
 }
 
 plugins {
-    kotlin("js") version "1.9.21"
+    kotlin("js") version "1.9.22"
     id("jacoco")
     id("org.jesperancinha.plugins.omni") version "0.3.1"
 }
@@ -19,12 +19,12 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.653")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.653")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.653")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.20.0-pre.653")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.651")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.653")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.680")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.680")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.680")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.20.1-pre.680")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.680")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.680")
 }
 
 kotlin {

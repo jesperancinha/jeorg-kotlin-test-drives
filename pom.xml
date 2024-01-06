@@ -14,11 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
-        <maven-failsafe-plugin.version>3.2.2</maven-failsafe-plugin.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.2.3</maven-failsafe-plugin.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
-        <kotlin.version>1.9.21</kotlin.version>
+        <kotlin.version>1.9.22</kotlin.version>
 
         <!-- External libraries -->
         <kotlin.coroutines.version>1.7.3</kotlin.coroutines.version>
@@ -39,10 +39,10 @@
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
         <jackson.version>2.15.0</jackson.version>
         <jackson-databind.version>2.16.0</jackson-databind.version>
-        <jackson-module-kotlin.version>2.16.0</jackson-module-kotlin.version>
+        <jackson-module-kotlin.version>2.16.1</jackson-module-kotlin.version>
         <jackson-dataformat-xml.version>2.16.0</jackson-dataformat-xml.version>
-        <jackson-core.version>2.16.0</jackson-core.version>
-        <jackson-annotations.version>2.16.0</jackson-annotations.version>
+        <jackson-core.version>2.16.1</jackson-core.version>
+        <jackson-annotations.version>2.16.1</jackson-annotations.version>
 
         <!-- Project Arrow Libraries -->
         <arrow.version>1.2.1</arrow.version>
@@ -51,11 +51,11 @@
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>4.0.7</kotest.version>
         <kotest-assertions.version>5.8.0</kotest-assertions.version>
-        <spring-boot-starter-parent.version>3.2.0</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.2.1</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
         <kotlinx-coroutines-reactor.version>1.7.3</kotlinx-coroutines-reactor.version>
-        <kotlin-reflect.version>1.9.20</kotlin-reflect.version>
+        <kotlin-reflect.version>1.9.22</kotlin-reflect.version>
     </properties>
 
     <modules>

@@ -6,6 +6,7 @@
 -   [Kotlin 1.0 Beta Candidate is Out!](https://blog.jetbrains.com/kotlin/2015/10/kotlin-1-0-beta-candidate-is-out/)
 -   [Dave Leeds on Kotlin - Invariance](https://typealias.com/concepts/invariance/)
 -   [Rij van Fibonacci](https://nl.wikipedia.org/wiki/Rij_van_Fibonacci)
+-   [Nullability and Platform types](https://kotlinlang.org/docs/java-to-kotlin-nullability-guide.html#platform-types)
 
 ## About me
 

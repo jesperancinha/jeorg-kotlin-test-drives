@@ -5,9 +5,9 @@ allprojects {
 }
 
 plugins {
-    id("com.google.devtools.ksp") version "1.9.21-1.0.15"
+    id("com.google.devtools.ksp") version "1.9.22-1.0.16"
 //    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
-    kotlin("jvm") version "1.9.21"
+    kotlin("jvm") version "1.9.22"
     application
     idea
     id("jacoco")
@@ -35,7 +35,7 @@ dependencies {
     ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.1")
     testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.1")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.21")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.22")
 }
 
 kotlin {
