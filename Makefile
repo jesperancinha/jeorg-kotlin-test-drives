@@ -11,7 +11,9 @@ test: test-maven
 test-maven:
 	mvn test
 test-npm:
-	cd jofisaes-image-morpher-js && npm test
+	cd jofisaes-image-morpher-js; \
+	yarn add sharp --ignore-engines; \
+ 	npm test
 coverage-npm:
 	cd jofisaes-image-morpher-js && npm run coverage
 security-npm:
