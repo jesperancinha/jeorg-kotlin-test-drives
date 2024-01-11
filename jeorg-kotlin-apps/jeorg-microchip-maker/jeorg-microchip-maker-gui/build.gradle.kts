@@ -24,7 +24,7 @@ dependencies {
     implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.682")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.20.1-pre.683")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.683")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.682")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.683")
 }
 
 kotlin {
