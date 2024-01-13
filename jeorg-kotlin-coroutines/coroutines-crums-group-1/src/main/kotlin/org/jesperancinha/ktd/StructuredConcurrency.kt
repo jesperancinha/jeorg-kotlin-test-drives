@@ -39,7 +39,7 @@ class StructuredConcurrency {
 
                     println("This coroutine scope is launched here! ${this.coroutineContext}")
                 }
-            }.let { println(it) }
+            }.let { println("As expected, this run took only $it milliseconds to complete.") }
 
             println("When the coroutineScope is finished, I can finally finish the program")
         }
