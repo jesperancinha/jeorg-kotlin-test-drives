@@ -14,10 +14,10 @@ class StructuredConcurrency {
 
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
-//            testBLockingLaunchBlockEvenLoop()
-//            testBlockingLaunchDispatchersIO()
-//            testCancelBlockingLaunchBlockEvenLoop()
-//            testCancel2LevelBlockingLaunchBlockEvenLoop()
+            testBLockingLaunchBlockEvenLoop()
+            testBlockingLaunchDispatchersIO()
+            testCancelBlockingLaunchBlockEvenLoop()
+            testCancel2LevelBlockingLaunchBlockEvenLoop()
             testCancelBlockingLaunchDispatchersIO()
         }
 
