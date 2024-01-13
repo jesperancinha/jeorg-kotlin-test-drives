@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jeorg-kotlin-utilities</artifactId>
-
+    <name>JEOrg :: KTD :: Utilities</name>
     <modules>
         <module>jeorg-kotlin-codec-1</module>
         <module>jeorg-kotlin-codec-2</module>

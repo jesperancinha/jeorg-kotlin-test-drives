@@ -10,6 +10,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jeorg-kotlin-masters</artifactId>
+    <name>JEOrg :: KTD :: Masters</name>
 
     <modules>
         <module>jeorg-kotlin-masters-1</module>
