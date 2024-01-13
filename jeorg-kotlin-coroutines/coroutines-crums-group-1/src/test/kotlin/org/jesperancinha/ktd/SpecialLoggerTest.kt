@@ -2,10 +2,10 @@ package org.jesperancinha.ktd
 
 import kotlin.test.Test
 
-class Crum1KtTest {
+class SpecialLoggerTest {
 
     @Test
-    fun `should run Crum1 without errors`() {
+    fun `should run SpecialLogger without errors`() {
         CancellationWithException.main()
     }
 }

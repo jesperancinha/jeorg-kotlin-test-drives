@@ -2,8 +2,13 @@ package org.jesperancinha.ktd
 
 import kotlinx.coroutines.*
 
-object NeuronCancellationException : CancellationException()
-object NetworkCancellationException : Exception()
+object NeuronCancellationException : CancellationException() {
+    private fun readResolve(): Any = NeuronCancellationException
+}
+
+object NetworkCancellationException : Exception() {
+    private fun readResolve(): Any = NetworkCancellationException
+}
 
 
 class NeuralNetworksCancelling {

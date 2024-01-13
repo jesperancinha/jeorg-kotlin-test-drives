@@ -2,9 +2,9 @@ package org.jesperancinha.ktd
 
 import kotlin.test.Test
 
-class Crum5KtTest {
+class NeuralNetworksCancellingTest {
     @Test
-    fun `should run Crum5 without errors`() {
+    fun `should run NeuralNetworksCancelling without errors`() {
         NeuralNetworksCancelling.main()
     }
 }

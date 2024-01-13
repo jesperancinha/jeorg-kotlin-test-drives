@@ -2,9 +2,9 @@ package org.jesperancinha.ktd
 
 import kotlin.test.Test
 
-class Crum4KtTest {
+class TrainStationManagerTest {
     @Test
-    fun `should run Crum4 without errors`() {
+    fun `should run TrainStationManager without errors`() {
         TrainStationManager.main()
     }
 }

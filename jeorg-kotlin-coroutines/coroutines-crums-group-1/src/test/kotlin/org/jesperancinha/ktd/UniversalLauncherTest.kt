@@ -2,9 +2,9 @@ package org.jesperancinha.ktd
 
 import kotlin.test.Test
 
-class Crum2KtTest {
+class UniversalLauncherTest {
     @Test
-    fun `should run Crum2 without errors`() {
+    fun `should run UniversalLauncher without errors`() {
         UniversalLauncher.main()
     }
 }
