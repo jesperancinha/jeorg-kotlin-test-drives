@@ -8,5 +8,6 @@ object Main {
         SupervisorIntended.main()
         TrainStationManager.main()
         NeuralNetworksCancelling.main()
+        StructuredConcurrency.main()
     }
 }
