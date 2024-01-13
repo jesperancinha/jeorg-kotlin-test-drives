@@ -3,6 +3,7 @@ package org.jesperancinha.ktd
 import kotlinx.coroutines.*
 import org.jesperancinha.ktd.CancellationStructuredConcurrency.Companion.testCancel2LevelBlockingLaunchBlockEvenLoop
 import org.jesperancinha.ktd.CancellationStructuredConcurrency.Companion.testCancelBlockingLaunchBlockEvenLoop
+import org.jesperancinha.ktd.CancellationStructuredConcurrency.Companion.testCancelBlockingLaunchDispatchersIO
 import org.jesperancinha.ktd.StandardStructuredConcurrency.Companion.testBLockingLaunchBlockEvenLoop
 import org.jesperancinha.ktd.StandardStructuredConcurrency.Companion.testBlockingLaunchDispatchersIO
 import java.time.LocalDateTime
@@ -13,10 +14,11 @@ class StructuredConcurrency {
 
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
-            testBLockingLaunchBlockEvenLoop()
-            testBlockingLaunchDispatchersIO()
-            testCancelBlockingLaunchBlockEvenLoop()
-            testCancel2LevelBlockingLaunchBlockEvenLoop()
+//            testBLockingLaunchBlockEvenLoop()
+//            testBlockingLaunchDispatchersIO()
+//            testCancelBlockingLaunchBlockEvenLoop()
+//            testCancel2LevelBlockingLaunchBlockEvenLoop()
+            testCancelBlockingLaunchDispatchersIO()
         }
 
     }
@@ -99,6 +101,58 @@ class CancellationStructuredConcurrency {
 
                 }
             }.let { println("As expected, this run took only $it milliseconds to complete.") }
+
+            println("When the coroutineScope is finished, I can finally finish the program")
+        }
+
+
+        fun testCancelBlockingLaunchDispatchersIO() = runBlocking {
+            measureTimeMillis {
+                kotlin.runCatching {
+                    coroutineScope {
+                        val job = launch(Dispatchers.IO) {
+                            launch {
+                                println("I'm coroutine 1 on thread ${Thread.currentThread()}")
+                                delay(1000)
+                                println(
+                                    "I'm coroutine 1 on thread ${
+                                        Thread.currentThread()
+                                    } and I am finishing on ${LocalDateTime.now()}"
+                                )
+                                println(this.toString())
+                                println(this.coroutineContext.job.key.toString())
+                            }
+
+                            launch {
+                                println("I'm coroutine 2 on thread ${Thread.currentThread()}")
+                                delay(1000)
+                                println(
+                                    "I'm coroutine 2 on thread ${
+                                        Thread.currentThread()
+                                    } and I am finishing on ${LocalDateTime.now()}"
+                                )
+                                println(this.toString())
+                                println(this.coroutineContext.job.key.toString())
+                            }
+
+                            launch {
+                                delay(500)
+                                throw RuntimeException("Nothing runs now!")
+                            }
+
+                            println(this.toString())
+                            println(this.coroutineContext.job.key.toString())
+
+                        }
+                        println("--------")
+                        println(job.key.toString())
+                        println(this.toString())
+                        println(this.coroutineContext.job.key.toString())
+
+                        println("This coroutine scope is launched here! ${this.coroutineContext}")
+                    }
+                }
+            }.let { println(it) }
 
             println("When the coroutineScope is finished, I can finally finish the program")
         }
