@@ -31,5 +31,6 @@ fun main(args: Array<String>) = runBlocking {
     Invoke.main()
     InAndOuts.main()
     MutableFlow.main()
+    SleepingTimerTask.main()
 }
 

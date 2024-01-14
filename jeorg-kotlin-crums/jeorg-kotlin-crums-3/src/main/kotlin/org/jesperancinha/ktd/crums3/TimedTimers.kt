@@ -32,7 +32,7 @@ class SleepingTimerTask : TimerTask() {
          * Each task will run for 1 second and will start every 2 seconds
          */
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             val timerTask = SleepingTimerTask()
             val timer = Timer(true)
             timer.scheduleAtFixedRate(timerTask, 0, 2_000)
