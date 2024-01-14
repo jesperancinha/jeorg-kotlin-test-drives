@@ -18,6 +18,7 @@ class Main {
             Delegates.main()
             Account.main(emptyArray())
             IndexSolutionForRIDHashes.main()
+            Timeouts.main()
         }
     }
 }
