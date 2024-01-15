@@ -13,8 +13,8 @@ class YieldingTest {
     @Test
     fun `should timeout after 10 seconds`() {
         measureTime {
-            runTest {
-                kotlin.runCatching {
+            runCatching {
+                runTest {
                     println(backgroundScope)
                     val job = backgroundScope.launch {
                         while (isActive) {
