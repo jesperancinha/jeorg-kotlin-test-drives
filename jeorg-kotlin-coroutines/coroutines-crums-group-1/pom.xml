@@ -35,6 +35,10 @@
             <artifactId>kotlinx-coroutines-core-jvm</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-test</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jesperancinha.console</groupId>
             <artifactId>consolerizer</artifactId>
         </dependency>
