@@ -6,11 +6,11 @@ class CollectingCollections {
     companion object {
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
-            val mHullList = listOf(SquareFromZeroPoint(4, 2), SquareFromZeroPoint(2, 2))
-            sort(mHullList) { lhs, rhs ->
-                lhs.area().compareTo(rhs.area())
+            val squareZeros = listOf(SquareFromZeroPoint(4, 2), SquareFromZeroPoint(2, 2))
+            sort(squareZeros) { leftSquare, rightSquare ->
+                leftSquare.area().compareTo(rightSquare.area())
             }
-            println(mHullList)
+            println(squareZeros)
         }
     }
 }
