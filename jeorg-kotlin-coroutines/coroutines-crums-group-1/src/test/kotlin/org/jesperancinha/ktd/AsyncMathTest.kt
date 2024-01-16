@@ -23,21 +23,22 @@ class AsyncMathTest {
     }
 
     @Test
-    fun `should find coordinates asynchronously because of non-blocking with explicit Dispatchers_IO`(): Unit = runBlocking {
-        withContext(Dispatchers.Default) {
-            val x = async {
-                findX()
+    fun `should find coordinates asynchronously because of non-blocking with explicit Dispatchers_IO`(): Unit =
+        runBlocking {
+            withContext(Dispatchers.Default) {
+                val x = async {
+                    findX()
+                }
+                val y = async {
+                    findY()
+                }
+                val z = async {
+                    findZ()
+                }
+                showCoordinates(x, y, z)
+                println(coroutineContext)
             }
-            val y = async {
-                findY()
-            }
-            val z = async {
-                findZ()
-            }
-            showCoordinates(x, y, z)
-            println(coroutineContext)
         }
-    }
 
     @Test
     fun `should find coordinates asynchronously because of non-blocking  with coroutineScope`(): Unit = runBlocking {
@@ -58,6 +59,22 @@ class AsyncMathTest {
         }
 
     }
+
+    @Test
+    fun `should find coordinates asynchronously respecting structured concurrency`(): Unit =
+        runBlocking(Dispatchers.Default) {
+            val x = async {
+                findX()
+            }
+            val y = async {
+                findY()
+            }
+            val z = async {
+                findZ()
+            }
+            showCoordinates(x, y, z)
+            println(coroutineContext)
+        }
 
     private fun findZ(): Long {
         println("z")
