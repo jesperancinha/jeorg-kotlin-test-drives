@@ -11,6 +11,10 @@ class CollectingCollections {
                 leftSquare.area().compareTo(rightSquare.area())
             }
             println(squareZeros)
+            println(squareZeros.sortedBy { it.area() })
+            val newList = squareZeros.toMutableList()
+            newList.sortBy { it.area() }
+            println(newList)
         }
     }
 }
