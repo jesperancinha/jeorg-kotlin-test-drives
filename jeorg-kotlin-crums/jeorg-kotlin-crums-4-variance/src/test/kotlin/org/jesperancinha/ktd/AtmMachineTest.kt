@@ -3,7 +3,7 @@ package org.jesperancinha.ktd
 import kotlin.test.Test
 
 class AtmMachineTest {
-    val oldAtmMachine by lazy { OldAtmMachine() }
+    private val oldAtmMachine by lazy { OldAtmMachine() }
 
     @Test
     fun `should show compatibilities`() {

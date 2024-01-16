@@ -19,6 +19,7 @@ class Main {
             Account.main(emptyArray())
             IndexSolutionForRIDHashes.main()
             Timeouts.main()
+            CollectingCollections.main()
         }
     }
 }
