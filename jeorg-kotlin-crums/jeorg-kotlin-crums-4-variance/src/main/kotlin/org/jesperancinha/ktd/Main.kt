@@ -20,6 +20,7 @@ class Main {
             IndexSolutionForRIDHashes.main()
             Timeouts.main()
             CollectingCollections.main()
+            Exceptionally.main()
         }
     }
 }
