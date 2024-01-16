@@ -21,6 +21,7 @@ class Main {
             Timeouts.main()
             CollectingCollections.main()
             Exceptionally.main()
+            org.jesperancinha.ktd.unique.main()
         }
     }
 }
