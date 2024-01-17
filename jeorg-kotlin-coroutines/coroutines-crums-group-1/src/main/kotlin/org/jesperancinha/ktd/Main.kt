@@ -9,5 +9,8 @@ object Main {
         TrainStationManager.main()
         NeuralNetworksCancelling.main()
         StructuredConcurrency.main()
+        ValidationUsersEmail.main()
+        ContractsExtension.main()
+        org.jesperancinha.ktd.java.ValidationUsersEmail.main(emptyArray())
     }
 }
