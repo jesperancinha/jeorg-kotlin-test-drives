@@ -19,12 +19,12 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.686")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.686")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.686")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.20.1-pre.686")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:18.2.0-pre.687")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:18.2.0-pre.687")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.11.1-pre.687")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.20.1-pre.687")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.685")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.686")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.687")
 }
 
 kotlin {
