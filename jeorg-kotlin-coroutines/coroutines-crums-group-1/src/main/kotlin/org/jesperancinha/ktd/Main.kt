@@ -1,8 +1,11 @@
 package org.jesperancinha.ktd
 
+import org.jesperancinha.ktd.exceptions.HandlingExceptions
+
 object Main {
     @JvmStatic
     fun main(args: Array<String>) {
+        HandlingExceptions.main()
         CancellationWithException.main()
         UniversalLauncher.main()
         SupervisorIntended.main()
