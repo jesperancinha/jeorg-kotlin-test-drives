@@ -1,8 +1,8 @@
-package org.jesperancinha.ktd.crums1.crum1
+package org.jesperancinha.ktd.crums1
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-class CrumOne {
+class PrintToTheConsole {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {

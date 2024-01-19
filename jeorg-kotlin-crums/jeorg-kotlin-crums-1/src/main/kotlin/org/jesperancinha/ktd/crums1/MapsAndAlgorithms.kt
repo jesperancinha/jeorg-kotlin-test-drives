@@ -1,9 +1,13 @@
-package org.jesperancinha.ktd.crums1.crum2
+package org.jesperancinha.ktd.crums1
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer.title
 
-class CrumTwo {
+enum class RoomClass {
+    HIGH_CLASS,
+    LOW_CLASS
+}
+
+class HotelRoomAlgorithm {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
@@ -30,7 +34,7 @@ class CrumTwo {
                 "empathetic_language" to 20,
             )
             ConsolerizerComposer.outSpace()
-                .cyan(title("Crum 2 - Hashmaps in Kotlin"))
+                .cyan(ConsolerizerComposer.title("Crum 2 - Hashmaps in Kotlin"))
                 .magenta("Case: PukingDotCom is a company that exports bags and bins to travellers who run the risk of feeling sick while travelling")
                 .magenta("However, the reach of this company is not the same in all regions and cities across the world.")
                 .magenta("Therefore, PukingDotCom, provides an index of availability to travellers who want to feel safe when suffering from these symptoms")
@@ -103,4 +107,16 @@ class CrumTwo {
             return auditResult
         }
     }
+}
+
+enum class ComplianceType {
+    Puke,
+    Sympathy
+}
+
+data class AuditResult(
+    val roomClass: RoomClass,
+    val complianceType: ComplianceType,
+    val score: Long,
+) {
 }
