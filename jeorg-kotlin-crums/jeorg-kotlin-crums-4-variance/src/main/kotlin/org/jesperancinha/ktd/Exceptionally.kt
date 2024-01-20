@@ -12,7 +12,7 @@ class Another {
 class Exceptionally {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>  = emptyArray()) {
+        fun main(args: Array<String> = emptyArray()) {
             runCatching { throw OneWay.NotEnoughSaldoException() }
                 .onFailure<OneWay.NotEnoughSaldoException> {
                     (it as OneWay.NotEnoughSaldoException).message
