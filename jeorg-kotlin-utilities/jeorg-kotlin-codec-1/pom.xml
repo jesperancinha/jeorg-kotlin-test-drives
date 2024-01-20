@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jeorg-kotlin-codec-1</artifactId>
-
+    <name>JEOrg :: KTD :: Utilities :: Codec 1</name>
     <dependencies>
         <dependency>
             <groupId>org.jesperancinha.console</groupId>

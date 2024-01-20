@@ -18,6 +18,7 @@
         <module>jeorg-kotlin-json-1</module>
         <module>jeorg-kotlin-json-2</module>
         <module>jeorg-kotlin-execs</module>
+        <module>jeorg-kotlin-parser-combinators</module>
     </modules>
 
     <packaging>pom</packaging>

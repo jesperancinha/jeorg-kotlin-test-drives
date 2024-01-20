@@ -9,6 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kotlin.code.style>official</kotlin.code.style>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+
         <!-- Build -->
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -53,10 +57,11 @@
         <kotest-assertions.version>5.8.0</kotest-assertions.version>
         <spring-boot-starter-parent.version>3.2.1</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
-        <slf4j-log4j12.version>2.0.5</slf4j-log4j12.version>
+        <slf4j.version>2.0.5</slf4j.version>
         <kotlinx-coroutines-reactor.version>1.7.3</kotlinx-coroutines-reactor.version>
         <kotlin-reflect.version>1.9.22</kotlin-reflect.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <commons-logging.version>1.2</commons-logging.version>
     </properties>
 
     <modules>
@@ -176,7 +181,22 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j-log4j12.version}</version>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-nop</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
