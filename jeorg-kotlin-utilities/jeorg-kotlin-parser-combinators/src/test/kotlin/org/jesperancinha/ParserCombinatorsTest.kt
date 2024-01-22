@@ -1,6 +1,7 @@
 package org.jesperancinha
 
 import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
@@ -61,6 +62,27 @@ class ParserTest {
         result.count shouldBe 2
         result.remainder.shouldBeEmpty()
         result.expected shouldBe (" Cats Woodlands United" to (('W' to 'C') to 'M'))
+        println(result)
+    }
+    @Test
+    fun `should run combined parsers on or`() {
+        val woodCompanyInitialsParser = charCountParser('W')
+            .or(charCountOnStartParser('C'))
+            .or  (charCountOnStartParser('M'))
+        val woodCompanyDescriptionTextParser: TextParser<String> = stringCountParser(" Cats Woodlands United")
+        val woodCompanyCombinedParser = woodCompanyDescriptionTextParser
+            .or(woodCompanyInitialsParser)
+        val input = """
+        The WCM Cats Woodlands United association loves cats. 
+        As a Wood Company Masters, they create beautiful scratch poles for cats.
+        If you have Cats you'll find that they particularly love these poles.
+        Maine Coon Cats Woodlands United helps cats around the world achieve their best version of themselves.
+        Come to WCM Cats Woodlands United 
+        """.trimIndent()
+        val result = woodCompanyCombinedParser(input)
+        result.count shouldBe 9
+        result.remainder shouldContain "The WCM"
+        result.expected shouldBe mapOf(" Cats Woodlands United" to mapOf((mapOf('W' to 'C')) to 'M'))
         println(result)
     }
 }
