@@ -1,11 +1,9 @@
 # JEOrg :: KTD :: Coroutines :: Crums Group I
 
-## Description
+## Introduction
 
-### This code provides support to the following Q&A on YouTube
+About coroutines
 
-#### Q-JESC-06 - Cancellation in Kotlin Coroutines
--   Q1 - https://www.youtube.com/shorts/whGuYl5IgUM
 
 ## About me
 
