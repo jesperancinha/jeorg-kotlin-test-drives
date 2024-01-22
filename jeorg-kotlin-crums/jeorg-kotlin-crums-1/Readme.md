@@ -12,7 +12,7 @@ Kotlin Language study project.
 `mapNotNull`, `filter`, `count`, `getOrPut`, `mutableMapOf`, `listOf`, `groupBy`, `mutableLisOf`, `asSequence`, `mapValues`, `groupingBy`, `eachCount`
 `?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`
 
-## References
+## Resources
 
 ### Online
 

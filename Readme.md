@@ -64,7 +64,7 @@ Note that if you want to build this project from the root, you need to use one o
 
 ---
 
-## References
+## Resources
 
 ### Books
 

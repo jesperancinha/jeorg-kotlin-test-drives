@@ -16,13 +16,12 @@ Kotlin Language study project.
 
 ## Contents
 
--   [Kotlin Crums 1](./jeorg-kotlin-crums-1) - Fast Track Crum modules 1
--   [Kotlin Crums 2](./jeorg-kotlin-crums-2) - Fast Track Crum modules 2
--   [Kotlin Crums 3](./jeorg-kotlin-crums-3) - Fast Track Crum modules 3
--   [Kotlin Crums 4](dev/src/jeorg-kotlin-test-drives/jeorg-kotlin-arrow-optics/jeorg-kotlin-crums-4) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 4 (Gradle project with Source code generation)
--   [Kotlin Arrow Optics Crum 1](./jeorg-kotlin-optics-crums-1) - Fast Track [Arrow Optics](https://arrow-kt.io/docs/optics/) Crum modules 1 (Maven project with Source code generation)
+-   [Kotlin Crums 1](./jeorg-kotlin-crums-1) - Fast Track Crums modules 1
+-   [Kotlin Crums 2](./jeorg-kotlin-crums-2) - Fast Track Crums modules 2
+-   [Kotlin Crums 3](./jeorg-kotlin-crums-3) - Fast Track Crums modules 3
+-   [Kotlin Crums 4 - Variance](./jeorg-kotlin-crums-4-variance) - Fast Track Variance modules
 
-## References
+## Resources
 
 ### Online
 

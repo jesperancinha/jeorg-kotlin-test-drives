@@ -1,6 +1,6 @@
 # JEOrg :: KTD :: Coroutines :: Parent
 
-## References
+## Resources
 
 ### Books
 

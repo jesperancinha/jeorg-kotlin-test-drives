@@ -8,7 +8,7 @@ Topics
 
 1.  `jackson`
 
-## References
+## Resources
 
 -   [How to Actually Parse XML in Java/Kotlin](https://medium.com/@foxjstephen/how-to-actually-parse-xml-in-java-kotlin-221a9309e6e8)
 

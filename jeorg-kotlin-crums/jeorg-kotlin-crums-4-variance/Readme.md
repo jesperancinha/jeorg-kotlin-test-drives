@@ -1,6 +1,6 @@
 # JEOrg :: KTD :: Crums :: Crum4 - Variance
 
-## References
+## Resources
 
 -   [Generics: in, out, where](https://kotlinlang.org/docs/generics.html)
 -   [Kotlin 1.0 Beta Candidate is Out!](https://blog.jetbrains.com/kotlin/2015/10/kotlin-1-0-beta-candidate-is-out/)

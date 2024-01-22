@@ -12,7 +12,7 @@
 
 > Find the whole list on [a-suitable-nice-guy-in-a-suitable-age-group-forever](https://github.com/jesperancinha/a-suitable-nice-guy-in-a-suitable-age-group-forever/tree/main/you-tube-sessions/quizzes)
 
-## References
+## Resources
 
 #### About `Dispatchers.IO`
 -   https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-dispatchers/-i-o.html

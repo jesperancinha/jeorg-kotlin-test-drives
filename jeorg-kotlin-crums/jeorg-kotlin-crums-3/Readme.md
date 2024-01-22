@@ -29,7 +29,7 @@ A - https://www.youtube.com/shorts/D9TOP4nvo5A
 
 ## Learning Cloud
 
-## References
+## Resources
 
 ### Online
 

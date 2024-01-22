@@ -13,7 +13,7 @@ Kotlin Language study project.
 `?:`, `?.`, `@NonNull by default`, `hashSetOf`, `hashMapOf`, `suspendCoroutine`, `continuation`, `apply`, `let`, `run`, `with`, `also`, `takeIf`, `takeUnless`
 `xor`, `and`, `toBinaryString`
 
-## References
+## Resources
 
 ### Online
 
