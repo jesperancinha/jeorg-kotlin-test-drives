@@ -64,14 +64,14 @@ class ParserTest {
         result.expected shouldBe (" Cats Woodlands United" to (('W' to 'C') to 'M'))
         println(result)
     }
+
     @Test
     fun `should run combined parsers on or`() {
         val woodCompanyInitialsParser = charCountParser('W')
             .or(charCountParser('C'))
-            .or  (charCountParser('M'))
+            .or(charCountParser('M'))
         val woodCompanyDescriptionTextParser: TextParser<String> = stringCountParser(" Cats Woodlands United")
-        val woodCompanyCombinedParser
-        = woodCompanyDescriptionTextParser or (woodCompanyInitialsParser)
+        val woodCompanyCombinedParser = woodCompanyDescriptionTextParser or (woodCompanyInitialsParser)
         val input = """
         The WCM Cats Woodlands United association loves cats. 
         As a Wood Company Masters, they create beautiful scratch poles for cats.
