@@ -6,4 +6,5 @@ In this module we make a variation of that theory and implement the whole idea i
 
 ## Resources
 
---- [Parser combinator](https://en.wikipedia.org/wiki/Parser_combinator)
+-   [Parser combinator](https://en.wikipedia.org/wiki/Parser_combinator)
+-   [Monadic Parser Combinators - University of Nottingham](https://www.cs.nott.ac.uk/%7Epszgmh/monparsing.pdf)
