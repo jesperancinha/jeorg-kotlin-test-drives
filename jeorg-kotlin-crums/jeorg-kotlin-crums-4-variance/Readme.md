@@ -2,11 +2,11 @@
 
 ## Resources
 
--   [Generics: in, out, where](https://kotlinlang.org/docs/generics.html)
--   [Kotlin 1.0 Beta Candidate is Out!](https://blog.jetbrains.com/kotlin/2015/10/kotlin-1-0-beta-candidate-is-out/)
+-   [Generics: in, out, where @ Kotlinlang](https://kotlinlang.org/docs/generics.html)
+-   [Kotlin 1.0 Beta Candidate is Out! @ JetBrains](https://blog.jetbrains.com/kotlin/2015/10/kotlin-1-0-beta-candidate-is-out/)
 -   [Dave Leeds on Kotlin - Invariance](https://typealias.com/concepts/invariance/)
--   [Rij van Fibonacci](https://nl.wikipedia.org/wiki/Rij_van_Fibonacci)
--   [Nullability and Platform types](https://kotlinlang.org/docs/java-to-kotlin-nullability-guide.html#platform-types)
+-   [Fibonacci Numbers and the Golden Section, Dr. Ron Knott, Unversity of Surrey](https://r-knott.surrey.ac.uk/Fibonacci/fib.html)  
+-   [Nullability and Platform types @ Kotlinlang](https://kotlinlang.org/docs/java-to-kotlin-nullability-guide.html#platform-types)
 
 ## About me
 
