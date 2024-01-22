@@ -36,8 +36,9 @@ class StructuredConcurrency {
 }
 
 fun launchTest(id: Long, testName: String, f: () -> Unit) {
+    println("********************************************************************************************");
     println("\nStarting test ($id): \"$testName\" at ${LocalDateTime.now()}")
-    f()
+    println("The whole test ($id) took ${measureTimeMillis { f() }} milliseconds to complete!")
     println("\nTest ($id) \"$testName finished at ${LocalDateTime.now()}")
     println("********************************************************************************************");
 }
@@ -74,11 +75,15 @@ class CancellationStructuredConcurrency {
                     coroutineScope {
 
                         launch {
-                            logCoroutinesWithADelayOf(1,1000)
+                            logCoroutinesWithADelayOf(1, 1000)
                         }
 
                         launch {
-                            logCoroutinesWithADelayOf(2,1000)
+                            launch {
+                                delay(500)
+                                throw RuntimeException("Nothing runs now!")
+                            }
+                            logCoroutinesWithADelayOf(2, 1000)
                         }
                         println("This coroutine scope is launched here! ${this.coroutineContext}")
                     }
@@ -94,11 +99,11 @@ class CancellationStructuredConcurrency {
                 runCatching {
                     coroutineScope {
                         launch {
-                            logCoroutinesWithADelayOf(1,1000)
+                            logCoroutinesWithADelayOf(1, 1000)
                         }
 
                         launch {
-                            logCoroutinesWithADelayOf(2,1000)
+                            logCoroutinesWithADelayOf(2, 1000)
                         }
                         launch {
                             delay(500)
