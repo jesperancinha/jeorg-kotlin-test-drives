@@ -2,15 +2,7 @@
 
 ## Description
 
-### This code provides support to the following Q&A on YouTube
-
-#### Q-JESC-05 - Dispatchers.IO parallelism
--   Q1 - https://www.youtube.com/shorts/6LRUIdKsUo4
--   Q2 - https://www.youtube.com/shorts/1LCzZY5SQvM
--   A1of2 - https://www.youtube.com/shorts/B-Eq7AuvzVE
--   A2of2 - https://www.youtube.com/shorts/u0P4wrH1_M8
-
-> Find the whole list on [a-suitable-nice-guy-in-a-suitable-age-group-forever](https://github.com/jesperancinha/a-suitable-nice-guy-in-a-suitable-age-group-forever/tree/main/you-tube-sessions/quizzes)
+A lot about Coroutines IO
 
 ## Resources
 
