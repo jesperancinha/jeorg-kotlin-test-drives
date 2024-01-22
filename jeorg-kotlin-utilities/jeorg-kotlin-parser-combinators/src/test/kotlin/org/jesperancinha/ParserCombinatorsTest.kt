@@ -67,11 +67,11 @@ class ParserTest {
     @Test
     fun `should run combined parsers on or`() {
         val woodCompanyInitialsParser = charCountParser('W')
-            .or(charCountOnStartParser('C'))
-            .or  (charCountOnStartParser('M'))
+            .or(charCountParser('C'))
+            .or  (charCountParser('M'))
         val woodCompanyDescriptionTextParser: TextParser<String> = stringCountParser(" Cats Woodlands United")
-        val woodCompanyCombinedParser = woodCompanyDescriptionTextParser
-            .or(woodCompanyInitialsParser)
+        val woodCompanyCombinedParser
+        = woodCompanyDescriptionTextParser or (woodCompanyInitialsParser)
         val input = """
         The WCM Cats Woodlands United association loves cats. 
         As a Wood Company Masters, they create beautiful scratch poles for cats.
@@ -80,7 +80,7 @@ class ParserTest {
         Come to WCM Cats Woodlands United 
         """.trimIndent()
         val result = woodCompanyCombinedParser(input)
-        result.count shouldBe 9
+        result.count shouldBe 22
         result.remainder shouldContain "The WCM"
         result.expected shouldBe mapOf(" Cats Woodlands United" to mapOf((mapOf('W' to 'C')) to 'M'))
         println(result)
