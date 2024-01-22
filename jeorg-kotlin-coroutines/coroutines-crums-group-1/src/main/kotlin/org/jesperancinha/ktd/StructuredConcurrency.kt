@@ -12,7 +12,6 @@ import kotlin.system.measureTimeMillis
 
 class StructuredConcurrency {
     companion object {
-
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
             launchTest(1, "should show blocking event loop") { testBLockingLaunchBlockEvenLoop() }
@@ -30,17 +29,15 @@ class StructuredConcurrency {
                 "should cancel the whole scope when failing a Dispatchers.IO context"
             ) { testCancelBlockingLaunchDispatchersIO() }
         }
-
     }
-
 }
 
 fun launchTest(id: Long, testName: String, f: () -> Unit) {
-    println("********************************************************************************************");
+    println("********************************************************************************************")
     println("\nStarting test ($id): \"$testName\" at ${LocalDateTime.now()}")
     println("The whole test ($id) took ${measureTimeMillis { f() }} milliseconds to complete!")
     println("\nTest ($id) \"$testName finished at ${LocalDateTime.now()}")
-    println("********************************************************************************************");
+    println("********************************************************************************************")
 }
 
 class CancellationStructuredConcurrency {
@@ -73,11 +70,9 @@ class CancellationStructuredConcurrency {
             measureTimeMillis {
                 runCatching {
                     coroutineScope {
-
                         launch {
                             logCoroutinesWithADelayOf(1, 1000)
                         }
-
                         launch {
                             launch {
                                 delay(500)
@@ -87,7 +82,6 @@ class CancellationStructuredConcurrency {
                         }
                         println("This coroutine scope is launched here! ${this.coroutineContext}")
                     }
-
                 }
             }.let { println("As expected, this run took only $it milliseconds to complete.") }
             println("When the coroutineScope is finished, I can finally finish the program")
@@ -101,7 +95,6 @@ class CancellationStructuredConcurrency {
                         launch {
                             logCoroutinesWithADelayOf(1, 1000)
                         }
-
                         launch {
                             logCoroutinesWithADelayOf(2, 1000)
                         }
@@ -109,7 +102,6 @@ class CancellationStructuredConcurrency {
                             delay(500)
                             throw RuntimeException("Nothing runs now!")
                         }
-
                         println("--------")
                         println(this.toString())
                         println(this.coroutineContext.job.key.toString())
@@ -129,7 +121,6 @@ class CancellationStructuredConcurrency {
 }
 
 class StandardStructuredConcurrency {
-
     companion object {
         fun testBLockingLaunchBlockEvenLoop() = runBlocking {
             measureTimeMillis {
