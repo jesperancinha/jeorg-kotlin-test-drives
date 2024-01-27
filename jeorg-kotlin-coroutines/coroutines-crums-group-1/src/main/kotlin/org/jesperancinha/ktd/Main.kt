@@ -15,5 +15,6 @@ object Main {
         ValidationUsersEmail.main()
         ContractsExtension.main()
         org.jesperancinha.ktd.java.ValidationUsersEmail.main(emptyArray())
+        CancellingCounterCoroutines.main()
     }
 }
