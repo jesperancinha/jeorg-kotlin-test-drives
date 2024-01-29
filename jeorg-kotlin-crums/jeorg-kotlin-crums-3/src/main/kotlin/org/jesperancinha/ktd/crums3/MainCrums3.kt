@@ -15,6 +15,7 @@ import org.jesperancinha.ktd.crums3.crum6.CrumSix
 import org.jesperancinha.ktd.crums3.crum7.CrumSeven
 import org.jesperancinha.ktd.crums3.crum8.ClassCatcher
 import org.jesperancinha.ktd.crums3.crum9.InstanceScope
+import org.jesperancinha.ktd.crums3.multiple.MultipleSameTypeCats
 
 fun main(args: Array<String>) = runBlocking {
     CrumOne.main(args)
@@ -32,5 +33,6 @@ fun main(args: Array<String>) = runBlocking {
     InAndOuts.main()
     MutableFlow.main()
     SleepingTimerTask.main()
+    MultipleSameTypeCats.main()
 }
 
