@@ -34,7 +34,7 @@ class TicketCollectors {
 
         private suspend fun processTemperature(value: Int) {
             println("Processing-> $value")
-            delay(Random.nextLong(1, 3))
+            delay(Random.nextLong(1, 5))
             println("Processed!-> $value")
 
         }
