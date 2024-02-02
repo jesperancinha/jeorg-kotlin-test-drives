@@ -17,5 +17,6 @@ object Main {
         org.jesperancinha.ktd.java.ValidationUsersEmail.main(emptyArray())
         CancellingCounterCoroutines.main()
         RunningFold.main()
+        TicketCollectors.main()
     }
 }
