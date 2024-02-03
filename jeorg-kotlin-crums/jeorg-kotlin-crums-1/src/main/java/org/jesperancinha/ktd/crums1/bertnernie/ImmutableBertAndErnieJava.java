@@ -7,4 +7,8 @@ public class ImmutableBertAndErnieJava {
         final String helloErnie = "and I'm Ernie";
         return helloBert.concat(" ").concat(helloErnie);
     }
+
+    public String helloBertClean(){
+        return "Hello! I'm Bert and I'm Ernie";
+    }
 }

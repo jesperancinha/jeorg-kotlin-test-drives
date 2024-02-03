@@ -6,4 +6,6 @@ class ImmutableBertAndErnie {
         val hello = "Hello! I'm Bert"
         return "$hello and I'm Ernie"
     }
+
+    fun helloBertClean() = "Hello! I'm Bert and I'm Ernie"
 }
