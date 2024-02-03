@@ -1,5 +1,6 @@
 package org.jesperancinha.ktd.crums1
 
+import org.jesperancinha.ktd.crums1.bertnernie.BertAndErnieLauncher
 import org.jesperancinha.ktd.crums1.crum10.CrumTen
 import org.jesperancinha.ktd.crums1.crum11.CrumEleven
 import org.jesperancinha.ktd.crums1.crum12.CrumTwelve
@@ -18,6 +19,7 @@ import org.jesperancinha.ktd.crums1.crum6.CrumSix
 import org.jesperancinha.ktd.crums1.crum7.CrumSeven
 import org.jesperancinha.ktd.crums1.crum8.CrumEight
 import org.jesperancinha.ktd.crums1.crum9.CrumNine
+import org.jesperancinha.ktd.crums1.records.VinylLauncher
 
 fun main(args: Array<String>) {
     PrintToTheConsole()
@@ -62,5 +64,7 @@ fun main(args: Array<String>) {
     CrumTwenty.main(args)
 
     NumbersConversion.main()
+    BertAndErnieLauncher.main()
+    VinylLauncher.main()
 }
 
