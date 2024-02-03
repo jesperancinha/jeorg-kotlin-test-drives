@@ -4,10 +4,10 @@ class BertAndErnieLauncher {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            println(ImmutableBertAndErnieJava().helloBert())
-            println(ImmutableBertAndErnieJava().helloBertClean())
-            println(ImmutableBertAndErnie().helloBert())
-            println(ImmutableBertAndErnie().helloBertClean())
+            println(ImmutableBertAndErnieJava().helloBertAndErnie())
+            println(ImmutableBertAndErnieJava().helloBertAndErnieClean())
+            println(ImmutableBertAndErnie().helloBertAndErnie())
+            println(ImmutableBertAndErnie().helloBertAndErnieClean())
         }
     }
 }
