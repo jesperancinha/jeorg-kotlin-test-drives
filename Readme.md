@@ -66,6 +66,11 @@ Note that if you want to build this project from the root, you need to use one o
 
 ## Resources
 
+### Online
+
+-   [KotlinLang](https://kotlinlang.org/)
+-   [Develop Android apps with Kotlin](https://developer.android.com/kotlin)
+
 ### Books
 
 -   Moskala, M. (2021 - 2022). <i>Kotlin Coroutines DEEP DIVE</i>. (First Edition). Kt. Academy
