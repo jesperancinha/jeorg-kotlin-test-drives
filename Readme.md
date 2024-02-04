@@ -56,7 +56,7 @@ Note that if you want to build this project from the root, you need to use one o
 
 <i>See [Hints&Tricks](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/Hints%26Tricks.md) document for more details</i>
 
-## Install JDK 19 using [SDK-MAN](https://sdkman.io/)
+## Install JDK 21 using [SDK-MAN](https://sdkman.io/)
 
 ```bash
 . ./sdk21.sh
