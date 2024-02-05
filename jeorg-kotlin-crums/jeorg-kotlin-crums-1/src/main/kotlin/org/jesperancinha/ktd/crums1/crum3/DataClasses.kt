@@ -2,9 +2,9 @@ package org.jesperancinha.ktd.crums1.crum3
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-class CrumThree {
+class DataClasses {
     companion object {
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
 
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 3 - Data Classes, equals, hash code and toString"))

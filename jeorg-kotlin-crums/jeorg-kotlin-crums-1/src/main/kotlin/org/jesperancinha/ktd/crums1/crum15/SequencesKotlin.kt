@@ -2,13 +2,10 @@ package org.jesperancinha.ktd.crums1.crum15
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 03/07/2021
- */
-class CrumFifteen {
+class SequencesKotlin {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 15 - Sequences in Kotlin"))
                 .magenta("Sequences in kotlin are a mechanism that allow us to create and indefinite amount of elements in a list according to some rules")

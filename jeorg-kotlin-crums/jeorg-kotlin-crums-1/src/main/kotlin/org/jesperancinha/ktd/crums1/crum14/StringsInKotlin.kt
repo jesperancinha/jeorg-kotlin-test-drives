@@ -5,10 +5,10 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 /**
  * Created by jofisaes on 03/07/2021
  */
-class CrumFourteen {
+class StringsInKotlin {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 14 - Strings in Kotlin"))
                 .yellow("Lyrics from Zeca - Afonso - Venham mais cinco")

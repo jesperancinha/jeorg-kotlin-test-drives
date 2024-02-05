@@ -2,16 +2,13 @@ package org.jesperancinha.ktd.crums1.crum9
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 15/06/2021
- */
-class CrumNine {
+class InconstantVariable {
     companion object {
         private val magicDice: Int
             get() = (6 * Math.random()).toInt()
 
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 9 - Inconstant variable"))
                 .green(magicDice)

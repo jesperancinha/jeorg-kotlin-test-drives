@@ -2,13 +2,10 @@ package org.jesperancinha.ktd.crums1.crum17
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 04/07/2021
- */
-class CrumSeventeen {
+class NumberConversions {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 17 - Number conversions"))
                 .none()

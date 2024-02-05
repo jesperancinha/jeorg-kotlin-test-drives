@@ -5,10 +5,10 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 /**
  * Created by jofisaes on 15/06/2021
  */
-class CrumEight {
+class KotlinBasicTypesWithJavaClass {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 8 - Kotlin basic types using javaClass"))
                 .reset()
