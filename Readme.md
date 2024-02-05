@@ -71,6 +71,8 @@ Note that if you want to build this project from the root, you need to use one o
 -   [KotlinLang](https://kotlinlang.org/)
 -   [Develop Android apps with Kotlin](https://developer.android.com/kotlin)
 -   [Object expressions and declarations](https://kotlinlang.org/docs/object-declarations.html)
+-   [Android KTX](https://developer.android.com/kotlin/ktx)
+-   [Introduction to Test Doubles and Dependency Injection](https://developer.android.com/codelabs/advanced-android-kotlin-training-testing-test-doubles#0)
 
 ### Books
 
