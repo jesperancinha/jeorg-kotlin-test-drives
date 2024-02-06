@@ -6,7 +6,7 @@ class MainTest {
 
     @Test
     fun testAll() {
-        main(arrayOf())
+        main()
     }
 
 }

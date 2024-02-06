@@ -2,14 +2,11 @@ package org.jesperancinha.ktd.crums1.crum10
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 19/06/2021
- */
-class CrumTen {
+class InfixFunctions {
     companion object {
 
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 10 - Infix Functions"))
                 .green("a" eq "a")

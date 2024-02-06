@@ -4,13 +4,10 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-/**
- * Created by jofisaes on 05/07/2021
- */
-class CrumNineteen {
+class ReadWritePropertyInterface {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 19 - ReadWriteProperty interface"))
             val lifestyle = Lifestyle("Vida loca")

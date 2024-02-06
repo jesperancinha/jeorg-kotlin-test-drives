@@ -10,7 +10,7 @@ enum class RoomClass {
 class HotelRoomAlgorithm {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             val pukeIndexCheck = mapOf<String, Long>(
                 "toilet" to 10,
                 "pdc_bag" to 20,

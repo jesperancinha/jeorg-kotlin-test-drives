@@ -2,13 +2,10 @@ package org.jesperancinha.ktd.crums1.crum16
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 03/07/2021
- */
-class CrumSixteen {
+class NumbersInKotlin {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 16 - Numbers in Kotlin"))
                 .none()

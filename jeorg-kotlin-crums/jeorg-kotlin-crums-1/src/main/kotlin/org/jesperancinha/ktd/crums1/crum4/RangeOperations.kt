@@ -2,7 +2,7 @@ package org.jesperancinha.ktd.crums1.crum4
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-class CrumFour {
+class RangeOperations {
     companion object {
         private fun isValidArtifactId(s: String): Boolean {
             ConsolerizerComposer.outSpace()
@@ -20,7 +20,7 @@ class CrumFour {
             return false
         }
 
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 4 - Basic String comparison and range operations"))
                 .blue("We check the artifactId's")

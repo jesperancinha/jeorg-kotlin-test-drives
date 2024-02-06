@@ -2,13 +2,10 @@ package org.jesperancinha.ktd.crums1.crum5
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 14/06/2021
- */
-class CrumFive {
+class StringExtensionFunctions {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 5 - String Extension Function"))
                 .reset()

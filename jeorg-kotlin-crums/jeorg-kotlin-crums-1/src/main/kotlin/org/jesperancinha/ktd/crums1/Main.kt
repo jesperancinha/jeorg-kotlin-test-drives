@@ -1,68 +1,47 @@
 package org.jesperancinha.ktd.crums1
 
 import org.jesperancinha.ktd.crums1.bertnernie.BertAndErnieLauncher
-import org.jesperancinha.ktd.crums1.crum10.CrumTen
-import org.jesperancinha.ktd.crums1.crum11.CrumEleven
-import org.jesperancinha.ktd.crums1.crum12.CrumTwelve
-import org.jesperancinha.ktd.crums1.crum13.CrumThirteen
-import org.jesperancinha.ktd.crums1.crum14.CrumFourteen
-import org.jesperancinha.ktd.crums1.crum15.CrumFifteen
-import org.jesperancinha.ktd.crums1.crum16.CrumSixteen
-import org.jesperancinha.ktd.crums1.crum17.CrumSeventeen
-import org.jesperancinha.ktd.crums1.crum18.CrumEighteen
-import org.jesperancinha.ktd.crums1.crum19.CrumNineteen
-import org.jesperancinha.ktd.crums1.crum20.CrumTwenty
-import org.jesperancinha.ktd.crums1.crum3.CrumThree
-import org.jesperancinha.ktd.crums1.crum4.CrumFour
-import org.jesperancinha.ktd.crums1.crum5.CrumFive
-import org.jesperancinha.ktd.crums1.crum6.CrumSix
-import org.jesperancinha.ktd.crums1.crum7.CrumSeven
-import org.jesperancinha.ktd.crums1.crum8.CrumEight
-import org.jesperancinha.ktd.crums1.crum9.CrumNine
+import org.jesperancinha.ktd.crums1.crum10.InfixFunctions
+import org.jesperancinha.ktd.crums1.crum11.HigherOrderFunctions
+import org.jesperancinha.ktd.crums1.crum12.NullCoalescingOperatorAndVararg
+import org.jesperancinha.ktd.crums1.crum13.PreconditionFunctions
+import org.jesperancinha.ktd.crums1.crum14.StringsInKotlin
+import org.jesperancinha.ktd.crums1.crum15.SequencesKotlin
+import org.jesperancinha.ktd.crums1.crum16.NumbersInKotlin
+import org.jesperancinha.ktd.crums1.crum17.NumberConversions
+import org.jesperancinha.ktd.crums1.crum18.KotlinScopesInFunctions
+import org.jesperancinha.ktd.crums1.crum19.ReadWritePropertyInterface
+import org.jesperancinha.ktd.crums1.crum20.NumberFormattingAndRounding
+import org.jesperancinha.ktd.crums1.crum3.DataClasses
+import org.jesperancinha.ktd.crums1.crum4.RangeOperations
+import org.jesperancinha.ktd.crums1.crum5.StringExtensionFunctions
+import org.jesperancinha.ktd.crums1.crum6.ExtensionFunctions
+import org.jesperancinha.ktd.crums1.crum7.ZipFunction
+import org.jesperancinha.ktd.crums1.crum8.KotlinBasicTypesWithJavaClass
+import org.jesperancinha.ktd.crums1.crum9.InconstantVariable
 import org.jesperancinha.ktd.crums1.records.VinylLauncher
 
-fun main(args: Array<String>) {
-    PrintToTheConsole()
-    HotelRoomAlgorithm()
-    CrumThree()
-    CrumFour()
-    CrumFive()
-    CrumSix()
-    CrumSeven()
-    CrumEight()
-    CrumNine()
-    CrumTen()
-    CrumEleven()
-    CrumTwelve()
-    CrumFourteen()
-    CrumFifteen()
-    CrumSixteen()
-    CrumSeventeen()
-    CrumEighteen()
-    CrumNineteen()
-    CrumTwenty()
-
-    PrintToTheConsole.main(args)
-    HotelRoomAlgorithm.main(args)
-    CrumThree.main(args)
-    CrumFour.main(args)
-    CrumFive.main(args)
-    CrumSix.main(args)
-    CrumSeven.main(args)
-    CrumEight.main(args)
-    CrumNine.main(args)
-    CrumTen.main(args)
-    CrumEleven.main(args)
-    CrumTwelve.main(args)
-    CrumThirteen.main(args)
-    CrumFourteen.main(args)
-    CrumFifteen.main(args)
-    CrumSixteen.main(args)
-    CrumSeventeen.main(args)
-    CrumEighteen.main(args)
-    CrumNineteen.main(args)
-    CrumTwenty.main(args)
-
+fun main() {
+    PrintToTheConsole.main()
+    HotelRoomAlgorithm.main()
+    DataClasses.main()
+    RangeOperations.main()
+    StringExtensionFunctions.main()
+    ExtensionFunctions.main()
+    ZipFunction.main()
+    KotlinBasicTypesWithJavaClass.main()
+    InconstantVariable.main()
+    InfixFunctions.main()
+    HigherOrderFunctions.main()
+    NullCoalescingOperatorAndVararg.main()
+    PreconditionFunctions.main()
+    StringsInKotlin.main()
+    SequencesKotlin.main()
+    NumbersInKotlin.main()
+    NumberConversions.main()
+    KotlinScopesInFunctions.main()
+    ReadWritePropertyInterface.main()
+    NumberFormattingAndRounding.main()
     NumbersConversion.main()
     BertAndErnieLauncher.main()
     VinylLauncher.main()

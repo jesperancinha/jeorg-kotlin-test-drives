@@ -2,13 +2,10 @@ package org.jesperancinha.ktd.crums1.crum12
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 02/07/2021
- */
-class CrumTwelve {
+class NullCoalescingOperatorAndVararg {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
 
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 12 - null coalescing operator and vararg"))

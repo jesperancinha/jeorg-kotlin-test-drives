@@ -5,7 +5,7 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 class PrintToTheConsole {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 1 - Kotlin just started!"))
             println("I love to go to the beach")

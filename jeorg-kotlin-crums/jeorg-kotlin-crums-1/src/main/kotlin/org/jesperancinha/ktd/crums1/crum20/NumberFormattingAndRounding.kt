@@ -4,13 +4,10 @@ import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
-/**
- * Created by jofisaes on 05/07/2021
- */
-class CrumTwenty {
+class NumberFormattingAndRounding {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 20 - Number format and rounding up"))
                 .none()

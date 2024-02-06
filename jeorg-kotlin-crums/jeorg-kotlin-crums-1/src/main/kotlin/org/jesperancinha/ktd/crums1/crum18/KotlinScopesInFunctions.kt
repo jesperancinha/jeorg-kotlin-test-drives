@@ -2,13 +2,10 @@ package org.jesperancinha.ktd.crums1.crum18
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-/**
- * Created by jofisaes on 04/07/2021
- */
-class CrumEighteen {
+class KotlinScopesInFunctions {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 18 - Kotlin Scope Functions"))
                 .magenta("There are 5 main scope functions: let, run, with, apply, also")
