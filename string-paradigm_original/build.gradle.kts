@@ -59,7 +59,7 @@ tasks.jacocoTestReport {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("org.slf4j:slf4j-api:2.0.11")
+    implementation("org.slf4j:slf4j-api:2.0.12")
     implementation("org.jesperancinha:string-paradigm-api:0.0.0-SNAPSHOT")
     implementation(project(mapOf("path" to ":string-paradigm-api")))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
