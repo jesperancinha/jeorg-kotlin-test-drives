@@ -2,10 +2,10 @@ package org.jesperancinha.ktd.crums3.crum1
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
-class CrumOne {
+class ConsolerizerPrint {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             ConsolerizerComposer.outSpace()
                 .cyan(ConsolerizerComposer.title("Crum 1 - A new beach season has started! 🏖"))
         }
