@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.crums3.crum6
+package org.jesperancinha.ktd.crums3.arrowprisms
 
 import arrow.core.compose
 import arrow.core.left
@@ -6,7 +6,7 @@ import arrow.core.right
 import arrow.core.toOption
 import arrow.optics.Prism
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
-import org.jesperancinha.ktd.crums3.crum6.ComputationResult.Success
+import org.jesperancinha.ktd.crums3.arrowprisms.ComputationResult.Success
 
 private const val FIRST_MESSAGE = "Welcome the free access files!"
 private const val SECOND_MESSAGE = "Welcome to the secret files!"
@@ -21,7 +21,7 @@ val networkResult: Success = Success(FIRST_MESSAGE)
 val networkResultInt: Success = Success(COMPUTATION_ITERATIONS)
 
 
-class CrumSix {
+class ArrowPrisms {
     companion object {
         private val logger = object {
             fun info(logText: Any) = ConsolerizerComposer.out().red(logText)

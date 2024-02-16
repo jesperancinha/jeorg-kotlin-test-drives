@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.crums3.crum3
+package org.jesperancinha.ktd.crums3.multicatch
 
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
@@ -7,7 +7,7 @@ class NumberTwoException : Exception()
 class NumberThreeException : Exception()
 class NumberFourException : Exception()
 
-class CrumThree {
+class Multicatch {
 
     companion object {
         private val logger = object {

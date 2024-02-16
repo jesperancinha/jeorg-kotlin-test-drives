@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.crums3.crum4
+package org.jesperancinha.ktd.crums3.arrowbasics
 
 import arrow.core.continuations.nullable
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
@@ -10,7 +10,7 @@ data class Record(
 )
 
 
-class CrumFour {
+class ArrowRecord {
 
     companion object {
         private val logger = object {

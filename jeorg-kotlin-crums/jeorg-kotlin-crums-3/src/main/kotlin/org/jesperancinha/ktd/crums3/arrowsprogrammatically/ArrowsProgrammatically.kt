@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.crums3.crum5
+ package org.jesperancinha.ktd.crums3.arrowsprogrammatically
 
 import arrow.optics.Lens
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
@@ -14,7 +14,7 @@ val accountLens: Lens<Account, Int> = Lens(
 
 val account = Account(70, 60)
 
-class CrumFive {
+class ArrowsProgrammatically {
 
     companion object {
         private val logger = object {

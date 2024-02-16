@@ -1,31 +1,31 @@
 package org.jesperancinha.ktd.crums3
 
 import kotlinx.coroutines.runBlocking
-import org.jesperancinha.ktd.crums3.crum1.ConsolerizerPrint
+import org.jesperancinha.ktd.crums3.arrowbasics.ArrowRecord
+import org.jesperancinha.ktd.crums3.arroweffects.ArrowFileEffects
+import org.jesperancinha.ktd.crums3.arrowprisms.ArrowPrisms
+import org.jesperancinha.ktd.crums3.arrowsprogrammatically.ArrowsProgrammatically
+import org.jesperancinha.ktd.crums3.classcasting.ClassCatcher
+import org.jesperancinha.ktd.crums3.consoleprint.ConsolerizerPrint
 import org.jesperancinha.ktd.crums3.crum10.CrossInline
 import org.jesperancinha.ktd.crums3.crum11.ChunkParallelization
 import org.jesperancinha.ktd.crums3.crum12.Invoke
 import org.jesperancinha.ktd.crums3.crum13.InAndOuts
 import org.jesperancinha.ktd.crums3.crum14.MutableFlow
-import org.jesperancinha.ktd.crums3.crum2.OpenEndRanges
-import org.jesperancinha.ktd.crums3.crum3.CrumThree
-import org.jesperancinha.ktd.crums3.crum4.CrumFour
-import org.jesperancinha.ktd.crums3.crum5.CrumFive
-import org.jesperancinha.ktd.crums3.crum6.CrumSix
-import org.jesperancinha.ktd.crums3.crum7.CrumSeven
-import org.jesperancinha.ktd.crums3.crum8.ClassCatcher
 import org.jesperancinha.ktd.crums3.crum9.InstanceScope
+import org.jesperancinha.ktd.crums3.multicatch.Multicatch
 import org.jesperancinha.ktd.crums3.multiple.MultipleSameTypeCats
+import org.jesperancinha.ktd.crums3.open.OpenEndRanges
 import org.jesperancinha.ktd.crums3.visibility.NewspaperLauncherVisibility
 
 fun main(args: Array<String>) = runBlocking {
     ConsolerizerPrint.main(args)
     OpenEndRanges.main()
-    CrumThree.main(args)
-    CrumFour.main(args)
-    CrumFive.main(args)
-    CrumSix.main(args)
-    CrumSeven.main(args)
+    Multicatch.main(args)
+    ArrowRecord.main(args)
+    ArrowsProgrammatically.main(args)
+    ArrowPrisms.main(args)
+    ArrowFileEffects.main(args)
     ClassCatcher.main()
     InstanceScope.main()
     CrossInline.main()

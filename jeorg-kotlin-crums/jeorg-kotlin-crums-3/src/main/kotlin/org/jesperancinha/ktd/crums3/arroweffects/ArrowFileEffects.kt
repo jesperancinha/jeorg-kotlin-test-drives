@@ -1,4 +1,4 @@
-package org.jesperancinha.ktd.crums3.crum7
+package org.jesperancinha.ktd.crums3.arroweffects
 
 import arrow.core.None
 import arrow.core.continuations.Effect
@@ -42,7 +42,7 @@ object EmptyPath : FileError {
     override fun toString() = "EmptyPath"
 }
 
-class CrumSeven {
+class ArrowFileEffects {
     companion object {
 
         private val logger = object {
