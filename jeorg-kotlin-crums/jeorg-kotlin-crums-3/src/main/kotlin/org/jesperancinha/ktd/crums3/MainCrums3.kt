@@ -13,6 +13,7 @@ import org.jesperancinha.ktd.crums3.crum12.Invoke
 import org.jesperancinha.ktd.crums3.crum13.InAndOuts
 import org.jesperancinha.ktd.crums3.crum14.MutableFlow
 import org.jesperancinha.ktd.crums3.crum9.InstanceScope
+import org.jesperancinha.ktd.crums3.goldengirls.GoldenGirlsLauncher
 import org.jesperancinha.ktd.crums3.multicatch.Multicatch
 import org.jesperancinha.ktd.crums3.multiple.MultipleSameTypeCats
 import org.jesperancinha.ktd.crums3.open.OpenEndRanges
@@ -36,5 +37,6 @@ fun main(args: Array<String>) = runBlocking {
     SleepingTimerTask.main()
     MultipleSameTypeCats.main()
     NewspaperLauncherVisibility.main()
+    GoldenGirlsLauncher.main()
 }
 
