@@ -2,7 +2,7 @@ package org.jesperancinha.ktd.crums3.goldengirls.javaversion;
 
 public class GoldenGirlsJava {
 
-    private final String goldenGirl1;
+    String goldenGirl1;
 
     private final String goldenGirl2;
 
@@ -19,7 +19,12 @@ public class GoldenGirlsJava {
 
     }
 
-    public GoldenGirlsJava(String goldenGirl1, String goldenGirl2, String goldenGirl3, String goldenGirl4) {
+    public GoldenGirlsJava(
+            String goldenGirl1,
+            String goldenGirl2,
+            String goldenGirl3,
+            String goldenGirl4
+    ) {
         this.goldenGirl1 = goldenGirl1;
         this.goldenGirl2 = goldenGirl2;
         this.goldenGirl3 = goldenGirl3;
@@ -28,6 +33,10 @@ public class GoldenGirlsJava {
 
     public String getGoldenGirl1() {
         return goldenGirl1;
+    }
+
+    public void setGoldenGirl1(String goldenGirl1) {
+        this.goldenGirl1 = goldenGirl1;
     }
 
     public String getGoldenGirl2() {
