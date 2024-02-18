@@ -10,13 +10,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class GoldenGirlsLombok {
-
     public String goldenGirl1;
-
     private final String goldenGirl2;
-
     private final String goldenGirl3;
-
     private final String goldenGirl4;
 
     public GoldenGirlsLombok() {
