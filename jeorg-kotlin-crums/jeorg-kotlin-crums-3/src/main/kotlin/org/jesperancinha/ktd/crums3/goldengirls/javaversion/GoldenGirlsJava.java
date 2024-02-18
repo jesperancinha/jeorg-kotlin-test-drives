@@ -2,7 +2,7 @@ package org.jesperancinha.ktd.crums3.goldengirls.javaversion;
 
 public class GoldenGirlsJava {
 
-    String goldenGirl1;
+    public String goldenGirl1;
 
     private final String goldenGirl2;
 

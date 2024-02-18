@@ -1,6 +1,7 @@
 package org.jesperancinha.ktd.crums3.goldengirls
 
 import org.jesperancinha.ktd.crums3.goldengirls.javaversion.GoldenGirlsJava
+import org.jesperancinha.ktd.crums3.goldengirls.javaversion.GoldenGirlsJavaRunner
 import org.jesperancinha.ktd.crums3.goldengirls.javaversion.GoldenGirlsLombok
 import org.jesperancinha.ktd.crums3.goldengirls.javaversion.GoldenGirlsRecord
 
@@ -28,6 +29,8 @@ class GoldenGirlsLauncher {
             println(goldenGirlsJava.goldenGirl1)
             println(goldenGirlsLombok.goldenGirl1)
             println(goldenGirlsRecord.goldenGirl1)
+
+            GoldenGirlsJavaRunner.main(emptyArray())
         }
     }
 }
