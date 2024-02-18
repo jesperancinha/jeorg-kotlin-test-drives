@@ -11,6 +11,7 @@ public class GoldenGirlsJavaRunner {
                 "Sophia Petrillo"
         );
         System.out.println(golderGirlsJava);
+        alternative();
     }
 
     public static void alternative(){
