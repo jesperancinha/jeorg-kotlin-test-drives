@@ -22,5 +22,7 @@ public class GoldenGirlsJavaRunner {
                 "Sophia Petrillo"
         );
         System.out.println(golderGirlsJava);
+        golderGirlsJava.setGoldenGirl1("Blanche Devereaux");
+        System.out.println(golderGirlsJava);
     }
 }

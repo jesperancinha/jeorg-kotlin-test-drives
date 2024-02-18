@@ -2,14 +2,16 @@ package org.jesperancinha.ktd.crums3.goldengirls.javaversion;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @ToString
 public class GoldenGirlsLombok {
 
-    private final String goldenGirl1;
+    public String goldenGirl1;
 
     private final String goldenGirl2;
 
