@@ -22,7 +22,7 @@ idea {
             generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
     }
 }
-val arrowVersion = "1.2.2"
+val arrowVersion = "1.2.3"
 
 dependencies {
     implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
