@@ -40,8 +40,10 @@ Currently supporting Java 17.
 
 ## Upgrade
 
+Find the latest tested `GRADLE_VERSION` in the [Makefile.mk](Makefile.mk) file.
+
 ```shell
-gradle wrapper --gradle-version 7.6
+gradle wrapper --gradle-version $GRADLE_VERSION
 ```
 
 ## Contents
@@ -52,15 +54,16 @@ gradle wrapper --gradle-version 7.6
 
 ### Java Migration
 
-* Please Install SDK Man:
+##### Please Install SDK Man for a faster installation
 
 https://sdkman.io/install
 
-* Select Java 11
+##### Install Java and Gradle on their latest versions
 
 ```bash
 
-sdk use java 11.0.1-open
+sdk install java
+sdk install gradle
 
 ```
 

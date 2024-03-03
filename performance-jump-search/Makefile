@@ -1,3 +1,5 @@
+include ../Makefile.mk
+
 b: buildw
 clean:
 	./gradlew --stop
@@ -11,6 +13,6 @@ debug:
 	./gradlew clean build test jacocoTestReport -i --stacktrace --debug
 	./gradlew --stacktrace --debug
 upgrade:
-	gradle wrapper --gradle-version 7.6
+	gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-mac-os:
 	brew upgrade gradle
