@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: gradle:7.6.0-jdk17
+    - image: gradle:8.6.0-jdk17
 
     working_directory: ~/repo
 
