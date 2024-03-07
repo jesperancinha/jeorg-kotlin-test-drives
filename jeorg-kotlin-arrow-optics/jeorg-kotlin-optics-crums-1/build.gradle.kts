@@ -7,7 +7,7 @@ allprojects {
 plugins {
     id("com.google.devtools.ksp") version "1.9.22-1.0.18"
 //    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "1.9.23"
     application
     idea
     id("jacoco")
