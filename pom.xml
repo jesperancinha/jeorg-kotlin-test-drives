@@ -46,7 +46,7 @@
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockk-jvm.version>1.13.10</mockk-jvm.version>
-        <kotest-assertions-core-jvm.version>5.8.0</kotest-assertions-core-jvm.version>
+        <kotest-assertions-core-jvm.version>5.8.1</kotest-assertions-core-jvm.version>
         <picocli.version>4.7.5</picocli.version>
     </properties>
 
