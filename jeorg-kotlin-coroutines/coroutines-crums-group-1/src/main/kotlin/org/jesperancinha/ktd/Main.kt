@@ -19,5 +19,6 @@ object Main {
         RunningFold.main()
         TicketCollectors.main()
         SimpleConcurrency.main()
+        GlobalScopeCoroutine.main()
     }
 }
