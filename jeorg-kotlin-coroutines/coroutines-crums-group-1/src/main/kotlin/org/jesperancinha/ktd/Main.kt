@@ -18,5 +18,6 @@ object Main {
         CancellingCounterCoroutines.main()
         RunningFold.main()
         TicketCollectors.main()
+        SimpleConcurrency.main()
     }
 }
