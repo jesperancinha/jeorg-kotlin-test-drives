@@ -48,6 +48,7 @@ class GoldenGirlsLauncher {
 
             GoldenGirlsJavaRunner.main(emptyArray())
             GoldenGirlsLombokRunner.main(emptyArray())
+            GoldenGirlsRecordRunner.main(emptyArray())
         }
     }
 }
