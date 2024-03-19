@@ -4,6 +4,13 @@
 
 About coroutines
 
+## Checkout and use
+
+```shell
+git clone https://github.com/jesperancinha/jeorg-kotlin-test-drives.git
+cd jeorg-kotlin-coroutines/coroutines-crums-group-1
+make b
+```
 
 ## Resources
 
