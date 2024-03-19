@@ -4,25 +4,27 @@ import lombok.val;
 
 public class GoldenGirlsJavaRunner {
     public static void main(String[] args) {
-        var golderGirlsJava = new GoldenGirlsJava(
+        var goldenGirlsJava = new GoldenGirlsJava(
                 "Dorothy Zbornak",
                 "Rose Nylund",
                 "Blanche Devereaux",
                 "Sophia Petrillo"
         );
-        System.out.println(golderGirlsJava);
+        System.out.println(goldenGirlsJava);
         alternative();
     }
 
     public static void alternative(){
-        val golderGirlsJava = new GoldenGirlsJava(
+        val goldenGirlsJava = new GoldenGirlsJava(
                 "Dorothy Zbornak",
                 "Rose Nylund",
                 "Blanche Devereaux",
                 "Sophia Petrillo"
         );
-        System.out.println(golderGirlsJava);
-        golderGirlsJava.setGoldenGirl1("Blanche Devereaux");
-        System.out.println(golderGirlsJava);
+        val goldenGirlsJavaSimple = new GoldenGirlsJava();
+        System.out.println(goldenGirlsJava);
+        goldenGirlsJava.setGoldenGirl1("Blanche Devereaux");
+        System.out.println(goldenGirlsJava);
+        System.out.println(goldenGirlsJavaSimple);
     }
 }

@@ -3,11 +3,8 @@ package org.jesperancinha.ktd.crums3.goldengirls.javaversion;
 public class GoldenGirlsJava {
 
     public String goldenGirl1;
-
     private final String goldenGirl2;
-
     private final String goldenGirl3;
-
     private final String goldenGirl4;
 
 
