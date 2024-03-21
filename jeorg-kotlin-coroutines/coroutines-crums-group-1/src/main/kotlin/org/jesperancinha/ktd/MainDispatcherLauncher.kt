@@ -5,10 +5,10 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.time.LocalDateTime
 
-class MainScopeLauncher {
+class MainDispatcherLauncher {
 
     companion object {
-        val logger: Logger = LoggerFactory.getLogger(MainScopeLauncher::class.java)
+        val logger: Logger = LoggerFactory.getLogger(MainDispatcherLauncher::class.java)
 
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) = runBlocking {
