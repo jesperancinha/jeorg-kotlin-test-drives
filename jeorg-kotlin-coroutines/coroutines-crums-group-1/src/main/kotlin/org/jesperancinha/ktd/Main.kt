@@ -20,5 +20,6 @@ object Main {
         TicketCollectors.main()
         SimpleConcurrency.main()
         GlobalScopeCoroutine.main()
+        MainDispatcherLauncher.main()
     }
 }
