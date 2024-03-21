@@ -21,5 +21,6 @@ object Main {
         SimpleConcurrency.main()
         GlobalScopeCoroutine.main()
         UnconfinedCats.main()
+        MainDispatcherLauncher.main()
     }
 }
