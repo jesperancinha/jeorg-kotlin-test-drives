@@ -25,7 +25,7 @@
         <javax.ejb.version>3.2.2</javax.ejb.version>
         <javax.activation.version>1.2.0</javax.activation.version>
         <mockito.version>1.10.19</mockito.version>
-        <maven.shade.version>3.5.2</maven.shade.version>
+        <maven.shade.version>3.5.3</maven.shade.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <cxf-xjc-plugin.version>3.3.1</cxf-xjc-plugin.version>
         <build-helper-maven-plugin.version>3.5.0</build-helper-maven-plugin.version>
