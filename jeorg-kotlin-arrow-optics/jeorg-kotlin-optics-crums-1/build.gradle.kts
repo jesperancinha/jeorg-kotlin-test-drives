@@ -5,13 +5,13 @@ allprojects {
 }
 
 plugins {
-    id("com.google.devtools.ksp") version "1.9.23-1.0.20"
+    alias(libs.plugins.google.ksp)
 //    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
-    kotlin("jvm") version "1.9.23"
+    alias(libs.plugins.kotlin.jvm)
     application
     idea
-    id("jacoco")
-    id("org.jesperancinha.plugins.omni") version "0.3.1"
+    jacoco
+    alias(libs.plugins.jesperancinha.omni)
 }
 
 idea {
