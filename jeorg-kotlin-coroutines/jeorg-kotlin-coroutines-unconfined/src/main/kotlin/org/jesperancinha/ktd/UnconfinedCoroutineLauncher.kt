@@ -23,7 +23,7 @@ object UnconfinedCoroutineLauncher {
             launch {
                 logger.info("Running on context $coroutineContext")
                 logger.infoBefore("Siamese Cat is launching on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
-                delay(1)
+                delay(2)
                 logger.infoAfter("Siamese Cat just ran on Thread-${Thread.currentThread().name} with id ${Thread.currentThread().threadId()}")
             }
             launch {
