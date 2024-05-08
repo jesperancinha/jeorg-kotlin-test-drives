@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 GRADLE_VERSION ?= 8.7
 
-b: buildw
+b?: buildw
 
 buildw:
 	./gradlew build
