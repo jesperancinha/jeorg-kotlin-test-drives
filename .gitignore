@@ -4,7 +4,7 @@ bin
 
 # gradle files
 .gradle
-gradle
+gradle/wrapper
 gradlew
 gradlew.bat
 out

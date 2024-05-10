@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
+    alias(libs.plugins.kotlin.jvm)
     idea
     java
     jacoco
@@ -50,9 +50,9 @@ tasks.jacocoTestReport {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("org.slf4j:slf4j-api:2.0.13")
+    api(libs.slf4j.api)
     implementation("org.jesperancinha:string-paradigm-expression-api:0.0.0-SNAPSHOT")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.0")
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.kotest.assertions.core)
 }

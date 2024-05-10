@@ -7,12 +7,14 @@ b: buildw
 wrapper:
 	gradle wrapper
 buildw:
+	if [ -d build ]; then rm -r build; fi; \
+	gradle wrapper; \
+	./gradlew
 	@for location in $(MODULE_LOCATIONS); do \
   		export CURRENT=$(shell pwd); \
   		echo "Building $$location..."; \
 		cd $$location; \
-		gradle wrapper; \
-		./gradlew clean build; \
+		gradlew clean build; \
 		gradle assemble test publishToMavenLocal; \
 		cd $$CURRENT; \
 	done

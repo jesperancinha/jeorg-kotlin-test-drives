@@ -33,9 +33,9 @@ jobs:
 
       - run: gradle -v
 
-      - run: cd string-paradigm-api && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-      - run: cd string-paradigm-expression-api && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
-      - run: cd string-paradigm-expression-no-wrapper && gradle wrapper && ./gradlew clean build && gradle assemble test publishToMavenLocal
+      - run: cd string-paradigm-api && gradle clean build &&gradle assemble test publishToMavenLocal
+      - run: cd string-paradigm-expression-api && gradle clean build &&gradle assemble test publishToMavenLocal
+      - run: cd string-paradigm-expression-no-wrapper && gradle clean build &&gradle assemble test publishToMavenLocal
       - run: gradle clean build test publishToMavenLocal
       - run: gradle dependencies
 
