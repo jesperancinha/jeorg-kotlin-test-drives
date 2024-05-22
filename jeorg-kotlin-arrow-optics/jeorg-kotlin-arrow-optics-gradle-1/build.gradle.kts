@@ -33,7 +33,7 @@ dependencies {
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.2")
     testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.2")
     testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.2")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.24")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:2.0.0")
 }
 
 kotlin {
