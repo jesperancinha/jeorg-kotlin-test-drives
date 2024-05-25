@@ -6,8 +6,8 @@ allprojects {
 
 plugins {
     kotlin("js") version "2.0.0"
-    id("jacoco")
-    id("org.jesperancinha.plugins.omni") version "0.3.1"
+    jacoco
+    alias(libs.plugins.jesperancinha.omni)
 }
 
 group = "org.jesperancinha.ktd"
