@@ -6,8 +6,8 @@ buildscript {
 }
 
 plugins {
-    id("jacoco")
-    id("java")
+    jacoco
+    java
     id( "org.jesperancinha.plugins.omni") version "0.3.1"
 }
 
