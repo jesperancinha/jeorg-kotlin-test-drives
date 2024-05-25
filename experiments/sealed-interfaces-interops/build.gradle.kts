@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "2.0.0"
     id("jacoco")
     id("org.jesperancinha.plugins.omni") version "0.3.1"
 }
