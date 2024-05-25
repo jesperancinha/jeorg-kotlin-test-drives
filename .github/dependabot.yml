@@ -13,6 +13,7 @@ updates:
       kotlin:
         patterns:
           - "org.jetbrains.kotlin.*"
+          - "com.google.devtools.ksp"
 
   - package-ecosystem: "gradle"
     directory: "/jeorg-kotlin-arrow-optics"
