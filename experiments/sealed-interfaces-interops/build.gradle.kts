@@ -1,8 +1,8 @@
 plugins {
-    id("java")
-    kotlin("jvm") version "2.0.0"
-    id("jacoco")
-    id("org.jesperancinha.plugins.omni") version "0.3.1"
+    java
+    jacoco
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.jesperancinha.omni)
 }
 
 group = "org.jesperancinha.ktd"

@@ -9,7 +9,7 @@ group = "org.jesperancinha.ktd"
 version = "0.0.0"
 
 plugins {
-    id("jacoco")
+    jacoco
     id( "org.jesperancinha.plugins.omni") version "0.3.1"
 }
 
