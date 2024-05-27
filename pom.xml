@@ -19,7 +19,7 @@
         <kotlin.version>2.0.0</kotlin.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
-        <assertj-core.version>3.25.3</assertj-core.version>
+        <assertj-core.version>3.26.0</assertj-core.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <kotest-assertions-core-jvm.version>5.9.0</kotest-assertions-core-jvm.version>
         <junit-jupiter-engine.version>5.10.2</junit-jupiter-engine.version>
