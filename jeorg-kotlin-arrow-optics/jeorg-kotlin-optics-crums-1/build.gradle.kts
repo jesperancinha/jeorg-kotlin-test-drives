@@ -6,7 +6,6 @@ allprojects {
 
 plugins {
     alias(libs.plugins.google.ksp)
-//    id("io.arrow-kt.analysis.kotlin") version "2.0.2"
     alias(libs.plugins.kotlin.jvm)
     application
     idea
