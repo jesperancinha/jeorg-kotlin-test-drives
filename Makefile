@@ -11,7 +11,8 @@ build: build-gradle build-maven
 build-maven:
 	mvn clean install
 build-gradle:
-	gradle wrapper
+	export GRADLE_VERSION=$(GRADLE_VERSION); \
+	gradle wrapper --gradle-version $(GRADLE_VERSION) ; \
 	./gradlew build test
 	@for location in $(MODULE_LOCATIONS); do \
 		export CURRENT=$(shell pwd); \
