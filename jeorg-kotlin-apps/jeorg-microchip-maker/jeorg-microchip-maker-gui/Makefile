@@ -1,7 +1,10 @@
+include ../../../Makefile.mk
+
 b: build-gradle
 build-gradle:
-	gradle wrapper
-	gradle kotlinUpgradeYarnLock
+	export GRADLE_VERSION=$(GRADLE_VERSION); \
+	gradle wrapper --gradle-version=$(GRADLE_VERSION) ; \
+	gradle kotlinUpgradeYarnLock ; \
 	./gradlew build test
 build-gradle-report:
 	gradle wrapper
