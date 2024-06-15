@@ -5,9 +5,15 @@ updates:
     schedule:
       interval: "daily"
     groups:
+      postgresql:
+        patterns:
+          - "*postgresql*"
       maven:
         patterns:
           - "*maven*"
+      kotlin:
+        patterns:
+          - "*kotlin*"
 
   - package-ecosystem: "gradle"
     directory: "/"
@@ -20,16 +26,11 @@ updates:
           - "com.google.devtools.ksp"
 
   - package-ecosystem: "gradle"
-    directory: "/jeorg-kotlin-arrow-optics"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "gradle"
     directory: "/experiments"
     schedule:
       interval: "daily"
-
-  - package-ecosystem: "gradle"
-    directory: "/jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui"
-    schedule:
-      interval: "daily"
+    groups:
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin.*"
+          - "com.google.devtools.ksp"
