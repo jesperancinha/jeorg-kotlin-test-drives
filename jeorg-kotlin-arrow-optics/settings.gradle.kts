@@ -8,5 +8,5 @@ pluginManagement {
     }
 }
 
-include("jeorg-kotlin-arrow-optics-gradle-1")
 include("jeorg-kotlin-optics-crums-1")
+include("jeorg-kotlin-optics-crums-2")
