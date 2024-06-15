@@ -39,6 +39,7 @@ tmlog*.log
 .gradle
 build
 yarn.lock
+kotlin-compiler-*.salive
 
 # Others
 .attach*
