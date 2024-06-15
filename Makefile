@@ -17,7 +17,7 @@ build-gradle:
 		export CURRENT=$(shell pwd); \
 		echo "Building $$location..."; \
 		cd $$location; \
-		make b; \
+		make; \
 		cd $$CURRENT; \
 	done
 build-microchip-gradle:
