@@ -38,3 +38,9 @@ kotlin {
         }
     }
 }
+
+val gradleSysVersion = System.getenv("GRADLE_VERSION")
+
+tasks.register<Wrapper>("wrapper") {
+    gradleVersion = gradleSysVersion
+}
