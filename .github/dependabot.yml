@@ -24,6 +24,8 @@ updates:
         patterns:
           - "org.jetbrains.kotlin.*"
           - "com.google.devtools.ksp"
+          - "kotlin*
+          - "*kotlin*"
 
   - package-ecosystem: "gradle"
     directory: "/experiments"
@@ -34,3 +36,5 @@ updates:
         patterns:
           - "org.jetbrains.kotlin.*"
           - "com.google.devtools.ksp"
+          - "kotlin*
+          - "*kotlin*"
