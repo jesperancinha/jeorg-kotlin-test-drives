@@ -36,5 +36,5 @@ updates:
         patterns:
           - "org.jetbrains.kotlin.*"
           - "com.google.devtools.ksp"
-          - "kotlin*
+          - "kotlin*"
           - "*kotlin*"
