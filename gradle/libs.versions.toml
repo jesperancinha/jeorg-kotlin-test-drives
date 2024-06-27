@@ -6,5 +6,5 @@ jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.3.1" 
 google-ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.22" }
 
 [libraries]
-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version = "5.10.2" }
-junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.10.2" }
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version = "5.10.3" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.10.3" }
