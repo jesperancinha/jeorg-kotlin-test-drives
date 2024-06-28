@@ -27,7 +27,7 @@ group = "org.jesperancinha"
 version = "0.0.0-SNAPSHOT"
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 
