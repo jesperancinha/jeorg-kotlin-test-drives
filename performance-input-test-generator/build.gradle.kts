@@ -46,7 +46,7 @@ dependencies {
     implementation("commons-io:commons-io:2.16.1")
     implementation("info.picocli:picocli:4.7.6")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.3")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.2")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.3")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.3")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.3")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
