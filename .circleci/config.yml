@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: eclipse-temurin:21-alpine
+    - image: gradle:jdk21
 
     working_directory: ~/repo
 
