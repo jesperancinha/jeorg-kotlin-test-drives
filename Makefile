@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-GRADLE_VERSION := 8.1.1
+GRADLE_VERSION ?= 8.8
 MODULE_LOCATIONS := string-paradigm-api \
 					string-paradigm-expression-api \
 					string-paradigm-expression-no-wrapper
@@ -51,3 +51,10 @@ install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
 	curl https://services.gradle.org/versions/current
+deps-plugins-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash
+deps-java-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/javaUpdatesOne.sh | bash
+deps-gradle-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/gradleUpdatesOne.sh | bash
+deps-quick-update: deps-plugins-update deps-java-update deps-gradle-update
