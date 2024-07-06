@@ -14,6 +14,10 @@ updates:
       kotlin:
         patterns:
           - "*kotlin*"
+      jackson:
+        patterns:
+          - "jackson*"
+          - "*jackson*"
 
   - package-ecosystem: "gradle"
     directory: "/"
@@ -26,7 +30,11 @@ updates:
           - "com.google.devtools.ksp"
           - "kotlin*"
           - "*kotlin*"
-
+      jackson:
+        patterns:
+          - "jackson*"
+          - "*jackson*"
+ 
   - package-ecosystem: "gradle"
     directory: "/experiments"
     schedule:
@@ -38,3 +46,7 @@ updates:
           - "com.google.devtools.ksp"
           - "kotlin*"
           - "*kotlin*"
+      jackson:
+        patterns:
+          - "jackson*"
+          - "*jackson*"
