@@ -22,13 +22,13 @@ class GoldenGirlsLauncher {
             )
             val goldenGirlsJava = GoldenGirlsJava()
             val goldenGirlsLombok = GoldenGirlsLombok()
-            val goldenGirlsLombok2 = GoldenGirlsLombok(
-                /* goldenGirl1 = */
-                "Dorothy Zbornak",
-                /* goldenGirl2 = */ "Rose Nylund",
-                /* goldenGirl3 = */ "Blanche Devereaux",
-                /* goldenGirl4 = */ "Sophia Petrillo"
-            )
+//            val goldenGirlsLombok2 = GoldenGirlsLombok(
+//                /* goldenGirl1 = */
+//                "Dorothy Zbornak",
+//                /* goldenGirl2 = */ "Rose Nylund",
+//                /* goldenGirl3 = */ "Blanche Devereaux",
+//                /* goldenGirl4 = */ "Sophia Petrillo"
+//            )
             val goldenGirlsRecord = GoldenGirlsRecord()
             val goldenGirlsRecord2 = GoldenGirlsRecord(                "Dorothy Zbornak",
                 "Rose Nylund",
@@ -38,7 +38,7 @@ class GoldenGirlsLauncher {
             println(goldenGirls2)
             println(goldenGirlsJava)
             println(goldenGirlsLombok)
-            println(goldenGirlsLombok2)
+//            println(goldenGirlsLombok2)
             println(goldenGirlsRecord)
             println(goldenGirlsRecord2)
 
