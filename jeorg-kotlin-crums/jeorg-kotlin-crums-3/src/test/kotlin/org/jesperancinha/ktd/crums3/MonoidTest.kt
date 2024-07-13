@@ -29,10 +29,10 @@ class MonoidTest {
 
     @Test
     fun `should test Monoid List to have an associativity property`() {
-        val a = listOf(Tree(leaves = 1.toLeaves()), Tree(leaves = 2.toLeaves()))
-        val b = listOf(Tree(leaves = 1.toLeaves()), Tree(leaves = 2.toLeaves()))
-        val c = listOf(Tree(leaves = 1.toLeaves()), Tree(leaves = 2.toLeaves()))
-        ((a + b) + c) shouldBe (a + (b + c))
+        val treeCollectionA = listOf(Tree(leaves = 1.toLeaves()), Tree(leaves = 2.toLeaves()))
+        val treeCollectionB = listOf(Tree(leaves = 1.toLeaves()), Tree(leaves = 2.toLeaves()))
+        val treeCollectionC = listOf(Tree(leaves = 1.toLeaves()), Tree(leaves = 2.toLeaves()))
+        ((treeCollectionA + treeCollectionB) + treeCollectionC) shouldBe (treeCollectionA + (treeCollectionB + treeCollectionC))
     }
 
     companion object {
