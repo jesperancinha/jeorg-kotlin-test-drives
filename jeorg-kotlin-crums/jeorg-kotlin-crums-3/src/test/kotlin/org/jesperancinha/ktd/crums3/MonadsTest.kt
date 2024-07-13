@@ -19,8 +19,15 @@ val treeCollection = (1..10)
 class MonadsTest {
 
     @Test
-    fun `should test the identity just function`(){
+    fun `should test the identity just function of the monad`() {
         val trees = listOf(Tree())
         trees.shouldHaveSize(1)
+    }
+
+
+    @Test
+    fun `should test the bind function of the monad`() {
+        val leaves = treeCollection.flatMap { it.leaves }
+        leaves.shouldHaveSize(100)
     }
 }
