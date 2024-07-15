@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-GRADLE_VERSION ?= 8.8
+GRADLE_VERSION ?= 8.9
 
 first:
 	make b
