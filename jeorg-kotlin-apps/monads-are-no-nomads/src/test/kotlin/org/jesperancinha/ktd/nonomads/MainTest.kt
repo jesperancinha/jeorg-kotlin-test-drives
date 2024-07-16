@@ -7,6 +7,6 @@ class MainTest {
 
     @Test
     fun testAll() = runBlocking {
-        main(arrayOf())
+        main()
     }
 }
