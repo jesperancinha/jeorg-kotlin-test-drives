@@ -21,18 +21,19 @@ idea {
             generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
     }
 }
-val arrowVersion = "1.2.4"
 
 dependencies {
-    implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
+    implementation(platform(libs.arrow.stack))
     implementation("io.arrow-kt:arrow-core")
     implementation("io.arrow-kt:arrow-optics")
-    implementation("org.jesperancinha.console:consolerizer:2.2.3")
-    ksp("io.arrow-kt:arrow-optics-ksp-plugin:$arrowVersion")
-    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.10.3")
-    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.3")
-    testImplementation ("org.junit.jupiter:junit-jupiter-engine:5.10.3")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:2.0.0")
+    implementation("io.arrow-kt:arrow-fx-coroutines")
+    implementation(libs.arrow.analysis.types.jvm)
+    implementation(libs.consolerizer)
+    implementation(libs.kotest.assertions.core.jvm)
+    ksp(libs.arrow.optics.ksp.plugin)
+    testImplementation (libs.junit.jupiter.api)
+    testImplementation (libs.junit.jupiter.engine)
+    testImplementation(libs.kotlin.test)
 }
 
 kotlin {
