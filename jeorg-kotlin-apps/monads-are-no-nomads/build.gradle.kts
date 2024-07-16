@@ -15,19 +15,18 @@ repositories {
 }
 
 dependencies {
-    dependencies {
-        implementation(platform(libs.arrow.stack))
-        implementation("io.arrow-kt:arrow-core")
-        implementation("io.arrow-kt:arrow-optics")
-        implementation("io.arrow-kt:arrow-fx-coroutines")
-        implementation(libs.arrow.analysis.types.jvm)
-        implementation(libs.consolerizer)
-        implementation(libs.kotest.assertions.core.jvm)
-        ksp(libs.arrow.optics.ksp.plugin)
-        testImplementation (libs.junit.jupiter.api)
-        testImplementation (libs.junit.jupiter.engine)
-        testImplementation(libs.kotlin.test)
-    }
+    implementation(platform(libs.arrow.stack))
+    implementation("io.arrow-kt:arrow-core")
+    implementation("io.arrow-kt:arrow-core-jvm")
+    implementation("io.arrow-kt:arrow-optics")
+    implementation("io.arrow-kt:arrow-fx-coroutines")
+    implementation(libs.arrow.analysis.types.jvm)
+    implementation(libs.consolerizer)
+    implementation(libs.kotest.assertions.core.jvm)
+    ksp(libs.arrow.optics.ksp.plugin)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.kotlin.test)
 }
 
 tasks.test {
