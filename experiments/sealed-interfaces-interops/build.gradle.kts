@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.jesperancinha.ktd"
-version = "unspecified"
+version = "0.0.0"
 
 repositories {
     mavenCentral()

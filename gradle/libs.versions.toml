@@ -1,3 +1,7 @@
+[versions]
+arrowVersion = "1.2.4"
+jupiterVersion = "5.10.3"
+
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.0.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.0.0" }
@@ -6,5 +10,14 @@ jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.3.1" 
 google-ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.23" }
 
 [libraries]
-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version = "5.10.3" }
-junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version = "5.10.3" }
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "jupiterVersion" }
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "jupiterVersion" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "jupiterVersion" }
+arrow-stack = { group = "io.arrow-kt", name = "arrow-stack", version.ref = "arrowVersion" }
+arrow-core = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrowVersion" }
+arrow-fx-coroutines = { group = "io.arrow-kt", name = "arrow-fx-coroutines", version.ref = "arrowVersion" }
+arrow-analysis-types-jvm = { group = "io.arrow-kt", name = "arrow-analysis-types-jvm", version = "2.0.2" }
+arrow-optics-ksp-plugin = { group = "io.arrow-kt", name = "arrow-optics-ksp-plugin", version.ref = "arrowVersion" }
+consolerizer = { group = "org.jesperancinha.console", name = "consolerizer", version = "2.2.3" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version = "2.0.0" }
+kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
