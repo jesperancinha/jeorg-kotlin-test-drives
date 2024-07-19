@@ -65,7 +65,7 @@ class FunctorTest {
     }
 
     @Test
-    fun `should test functor transformation with Eitheri map`() {
+    fun `should test functor transformation with Either map`() {
         val createNewEmptyTree = either<TreeError, Tree> {
             Tree(20).copy(leaves = emptyList())
         }
