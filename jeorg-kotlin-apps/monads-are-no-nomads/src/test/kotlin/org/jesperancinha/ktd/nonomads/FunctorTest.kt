@@ -39,7 +39,8 @@ class FunctorTest {
                     Leaf(color = Color.PINK, length = 100)
                 )
             )
-        }.shouldHaveSize(10).forEach { tree ->
+        }.shouldHaveSize(10)
+             .forAll{ tree ->
                 tree.should {
                     it.leaves.shouldHaveSize(1).first().shouldNotBeNull().should { leaf ->
                             leaf.length shouldBe 100
@@ -53,9 +54,13 @@ class FunctorTest {
     @Test
     fun `should test functor transformation with Some map`() {
         val makeTreeEmpty: Option<(Tree) -> Tree> = Some { tree -> tree.copy(leaves = emptyList()) }
-        val resultTree = makeTreeEmpty.map { it(Tree(20)) }.fold(ifSome = {
+
+        val resultTree = makeTreeEmpty.map { it(Tree(20)) }.fold(
+            ifSome = {
                 it
-            }, ifEmpty = { Tree(leaves = (1..20).map { Leaf() }) })
+            },
+            ifEmpty = { Tree(leaves = (1..20).map { Leaf() }) }
+        )
         resultTree.leaves.shouldBeEmpty()
     }
 
