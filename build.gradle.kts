@@ -6,7 +6,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "2.0.0"
+    kotlin("jvm") version "2.0.10"
     id("java-gradle-plugin")
     id("maven-publish")
     jacoco

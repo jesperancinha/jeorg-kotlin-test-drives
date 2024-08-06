@@ -10,7 +10,7 @@ buildscript {
 group = "org.jesperancinha"
 
 plugins {
-    kotlin("jvm") version "2.0.0"
+    kotlin("jvm") version "2.0.10"
     id("java-gradle-plugin")
     id("maven-publish")
     id("org.jesperancinha.plugins.omni") version "0.3.1"
