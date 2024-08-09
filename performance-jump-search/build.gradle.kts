@@ -42,7 +42,7 @@ tasks.jacocoTestReport {
 }
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("org.slf4j:slf4j-api:2.0.14")
+    implementation("org.slf4j:slf4j-api:2.0.15")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.3")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.10.3")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.3")
