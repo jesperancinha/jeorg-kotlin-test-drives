@@ -1,6 +1,6 @@
 [versions]
 arrowVersion = "1.2.4"
-jupiterVersion = "5.10.3"
+jupiterVersion = "5.11.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.0.10" }
