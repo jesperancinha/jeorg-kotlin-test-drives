@@ -16,5 +16,9 @@ updates:
           - "*spring*"
       junit-jupiter:
         patterns:
-          - "junit-jupiter*"
-          - "*junit-jupiter*"
+          - "junit*"
+          - "*junit*"
+          - "*junit*"
+          - "*jupiter"
+          - "jupiter*"
+          - "*jupiter*"
