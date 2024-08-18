@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-GRADLE_VERSION ?= 8.9
+GRADLE_VERSION ?= 8.10
 MODULE_LOCATIONS := string-paradigm-api \
 					string-paradigm-expression-api \
 					string-paradigm-expression-no-wrapper
