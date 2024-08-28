@@ -17,7 +17,7 @@
         <kotest.version>5.9.1</kotest.version>
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
-        <maven-surefire-plugin.version>3.4.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.5.0</maven-surefire-plugin.version>
         <thumbnailator.version>0.4.20</thumbnailator.version>
         <junit-jupiter.version>5.11.0</junit-jupiter.version>
         <javafx.version>18-ea+9</javafx.version>
