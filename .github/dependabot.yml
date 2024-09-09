@@ -14,3 +14,8 @@ updates:
       kotlin:
         patterns:
           - "*kotlin*"
+      logs:
+        patterns:
+          - "*log*"
+          - "log*"
+          - "*log"
