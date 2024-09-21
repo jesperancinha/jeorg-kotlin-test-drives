@@ -44,3 +44,9 @@ val gradleSysVersion = System.getenv("GRADLE_VERSION")
 tasks.register<Wrapper>("wrapper") {
     gradleVersion = gradleSysVersion
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile> {
+    kotlinOptions {
+        incremental = false
+    }
+}
