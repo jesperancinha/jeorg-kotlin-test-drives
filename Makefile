@@ -17,6 +17,7 @@ build-gradle:
 	@for location in $(MODULE_LOCATIONS); do \
 		export CURRENT=$(shell pwd); \
 		echo "Building $$location..."; \
+		./gradlew --stop; \
 		cd $$location; \
 		make; \
 		cd $$CURRENT; \
