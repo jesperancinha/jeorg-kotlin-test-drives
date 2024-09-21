@@ -40,6 +40,7 @@ tmlog*.log
 build
 yarn.lock
 kotlin-compiler-*.salive
+kotlin-js-store
 
 # Others
 .attach*

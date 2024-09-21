@@ -33,7 +33,7 @@ kotlin {
         binaries.executable()
         browser {
             commonWebpackConfig {
-                cssSupport {  }
+                cssSupport { }
             }
         }
     }
