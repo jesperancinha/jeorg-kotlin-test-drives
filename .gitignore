@@ -41,6 +41,7 @@ build
 yarn.lock
 kotlin-compiler-*.salive
 kotlin-js-store
+.kotlin
 
 # Others
 .attach*
