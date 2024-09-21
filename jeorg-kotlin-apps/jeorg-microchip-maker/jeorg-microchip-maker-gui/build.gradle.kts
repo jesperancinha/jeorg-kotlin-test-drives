@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.cli.common.incrementalCompilationIsEnabled
+
 allprojects {
     repositories {
         mavenCentral()
@@ -43,10 +45,4 @@ val gradleSysVersion = System.getenv("GRADLE_VERSION")
 
 tasks.register<Wrapper>("wrapper") {
     gradleVersion = gradleSysVersion
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    compilerOptions {
-        freeCompilerArgs.add("-Xno-incremental")
-    }
 }
