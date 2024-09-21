@@ -14,15 +14,8 @@ build-maven:
 build-gradle:
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace; \
-	./gradlew build test
-	@for location in $(MODULE_LOCATIONS); do \
-		export CURRENT=$(shell pwd); \
-		echo "Building $$location..."; \
-		./gradlew --stop; \
-		cd $$location; \
-		make; \
-		cd $$CURRENT; \
-	done
+	./gradlew --stop
+	./gradlew clean build test
 build-microchip-gradle:
 	gradle wrapper
 	./gradlew build test
@@ -32,15 +25,11 @@ build-microchip-gradle:
 	make b; \
 	cd $$CURRENT;
 upgrade:
-	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace; \
 	for location in $(MODULE_LOCATIONS); do \
-  		export CURRENT=$(shell pwd); \
   		echo "Upgrading $$location..."; \
-		cd $$location; \
-		gradle wrapper --gradle-version $(GRADLE_VERSION); \
-		cd $$CURRENT; \
 	done
+	export GRADLE_VERSION=$(GRADLE_VERSION); \
+	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace;
 build-chip-maker:
 	cd jeorg-kotlin-apps/jeorg-microchip-maker && mvn clean install
 	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle build test
