@@ -56,9 +56,9 @@ class MonoidTest {
     fun `should test Custom Monoid Option to have closure property`() {
         val optionTreeColorBlack: Option<Tree> = Some(Tree(leaves = listOf(Leaf(color = Color.BLACK))))
         val optionTreeColorOrange: Option<Tree> = Some(Tree(leaves = listOf(Leaf(color = Color.ORANGE))))
-        (optionTreeColorBlack.shouldBeTypeOf<Option<Tree>>() +
-                optionTreeColorOrange.shouldBeTypeOf<Option<Tree>>())
-            .shouldBeTypeOf<Option<Tree>>()
+        (optionTreeColorBlack.shouldBeTypeOf<Some<Tree>>() +
+                optionTreeColorOrange.shouldBeTypeOf<Some<Tree>>())
+            .shouldBeTypeOf<Some<Tree>>()
     }
 
 
