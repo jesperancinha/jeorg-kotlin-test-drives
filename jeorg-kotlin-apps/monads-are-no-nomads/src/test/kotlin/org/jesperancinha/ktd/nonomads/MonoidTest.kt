@@ -14,14 +14,18 @@ class MonoidTest {
         val emptyList = listOf<Tree>()
         emptyList.shouldBeEmpty()
         (treeCollection + emptyList) shouldBe (emptyList + treeCollection)
+        (emptyList + treeCollection) shouldBe treeCollection
     }
 
     @Test
     fun `should test Monoid List to have a closure property`() {
-        val treeCollection1 = listOf(
+        val preTreeCollection1 = listOf(
             Tree(leaves = listOf(Leaf())),
             Tree(leaves = listOf(Leaf(), Leaf()))
-        ).map { it }
+        )
+        val treeCollection1 = preTreeCollection1.toList()
+        println(preTreeCollection1.javaClass)
+        println(treeCollection1.javaClass)
         (treeCollection1.shouldBeTypeOf<ArrayList<Tree>>() +
                 treeCollection.shouldBeTypeOf<ArrayList<Tree>>())
             .shouldBeTypeOf<ArrayList<Tree>>() shouldHaveSize 12

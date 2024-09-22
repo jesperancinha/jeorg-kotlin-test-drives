@@ -12,8 +12,8 @@ public class FunctorTestJava {
     public void test_whenMapOfMaps_seeDecompiler() {
         var newTree = DomainKt.getTreeCollection()
                 .stream()
-                .map(tree -> tree.getLeaves())
-                .map(leaves -> new Tree(leaves))
+                .map(Tree::getLeaves)
+                .map(Tree::new)
                         .collect(Collectors.toList());
        assertThat(newTree).hasSize(10);
     }
