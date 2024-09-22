@@ -61,7 +61,6 @@ class MonoidTest {
             .shouldBeTypeOf<Some<Tree>>()
     }
 
-
     @Test
     fun `should test Custom Monoid Option to have an associativity property`() {
         val optionTreeColorBlack: Option<Tree> = Some(Tree(leaves = listOf(Leaf(color = Color.BLACK))))
