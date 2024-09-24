@@ -26,6 +26,7 @@ class MutableSharedFlowCheck {
             repeat(5) {
                 delay(100)
                 stateFlow.value = it + 1
+                stateFlow.value = it + 1
             }
 
             val sharedFlow = MutableSharedFlow<Int>(replay = 4)
