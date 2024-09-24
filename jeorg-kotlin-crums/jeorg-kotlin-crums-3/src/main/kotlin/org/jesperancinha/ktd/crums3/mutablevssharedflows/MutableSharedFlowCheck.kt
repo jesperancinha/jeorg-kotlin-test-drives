@@ -17,9 +17,14 @@ class MutableSharedFlowCheck {
             val stateFlow = MutableStateFlow(0)
             stateFlow.value = 1
 
-            val stateFlowJob = launch {
+            val stateFlowJob1 = launch {
                 stateFlow.collect { value ->
-                    println("MutableStateFlow Collected value: $value  at ${LocalDateTime.now()}")
+                    println("MutableStateFlow1 Collected value: $value  at ${LocalDateTime.now()}")
+                }
+            }
+            val stateFlowJob2 = launch {
+                stateFlow.collect { value ->
+                    println("MutableStateFlow2 Collected value: $value  at ${LocalDateTime.now()}")
                 }
             }
 
@@ -32,9 +37,9 @@ class MutableSharedFlowCheck {
             val sharedFlow = MutableSharedFlow<Int>(replay = 4)
             sharedFlow.emit(1)
 
-            val sharedFlowJob = launch {
+            val sharedFlowJob1 = launch {
                 sharedFlow.collect { value ->
-                    println("MutableSharedFlow Collected value: $value  at ${LocalDateTime.now()}")
+                    println("MutableSharedFlow1 Collected value: $value  at ${LocalDateTime.now()}")
                 }
             }
 
@@ -50,9 +55,10 @@ class MutableSharedFlowCheck {
             }
 
             delay(1000)
-            sharedFlowJob.cancel()
+            sharedFlowJob1.cancel()
             sharedFlowJob2.cancel()
-            stateFlowJob.cancel()
+            stateFlowJob1.cancel()
+            stateFlowJob2.cancel()
             cancel()
         }
     }
