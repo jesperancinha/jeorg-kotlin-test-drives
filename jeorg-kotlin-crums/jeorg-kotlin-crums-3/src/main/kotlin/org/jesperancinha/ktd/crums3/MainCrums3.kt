@@ -11,11 +11,12 @@ import org.jesperancinha.ktd.crums3.crum10.CrossInline
 import org.jesperancinha.ktd.crums3.crum11.ChunkParallelization
 import org.jesperancinha.ktd.crums3.crum12.Invoke
 import org.jesperancinha.ktd.crums3.crum13.InAndOuts
-import org.jesperancinha.ktd.crums3.crum14.MutableFlow
+import org.jesperancinha.ktd.crums3.mutableflow.MutableFlow
 import org.jesperancinha.ktd.crums3.crum9.InstanceScope
 import org.jesperancinha.ktd.crums3.goldengirls.GoldenGirlsLauncher
 import org.jesperancinha.ktd.crums3.multicatch.Multicatch
 import org.jesperancinha.ktd.crums3.multiple.MultipleSameTypeCats
+import org.jesperancinha.ktd.crums3.mutablevssharedflows.MutableSharedFlowCheck
 import org.jesperancinha.ktd.crums3.open.OpenEndRanges
 import org.jesperancinha.ktd.crums3.vector.VectorRunner
 import org.jesperancinha.ktd.crums3.visibility.NewspaperLauncherVisibility
@@ -40,5 +41,6 @@ fun main(args: Array<String>) = runBlocking {
     NewspaperLauncherVisibility.main()
     GoldenGirlsLauncher.main()
     VectorRunner.main(args)
+    MutableSharedFlowCheck.main(args)
 }
 
