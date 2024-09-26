@@ -18,6 +18,10 @@ updates:
         patterns:
           - "jackson*"
           - "*jackson*"
+      junit:
+        patterns:
+          - "*junit*"
+          - "*jupiter*"
 
   - package-ecosystem: "gradle"
     directory: "/"
