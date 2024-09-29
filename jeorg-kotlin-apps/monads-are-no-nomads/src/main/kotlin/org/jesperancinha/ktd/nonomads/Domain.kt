@@ -5,7 +5,7 @@ import java.awt.Color
 data class TreeError(
     val tree: Tree,
     val exception: Exception,
-    val message:String
+    val message: String
 )
 data class Tree(
     val leaves: List<Leaf> = emptyList()
