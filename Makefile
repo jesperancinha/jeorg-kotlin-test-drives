@@ -3,7 +3,11 @@ include Makefile.mk
 MODULE_LOCATIONS := jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui \
 					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-1 \
 					jeorg-kotlin-arrow-optics/jeorg-kotlin-optics-crums-2
+first:
+	make b
+
 b: clean build
+
 clean:
 	if [[ -f jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock ]]; then rm jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/kotlin-js-store/yarn.lock; fi
 	if [[ -d jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/build ]]; then rm -r jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui/build; fi

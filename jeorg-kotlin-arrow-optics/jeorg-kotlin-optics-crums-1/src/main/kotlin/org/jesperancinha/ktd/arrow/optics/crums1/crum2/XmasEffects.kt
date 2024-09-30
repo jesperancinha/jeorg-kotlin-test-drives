@@ -1,7 +1,8 @@
 package org.jesperancinha.ktd.arrow.optics.crums1.crum2
 
-import arrow.core.continuations.Effect
-import arrow.core.continuations.effect
+import arrow.core.raise.Effect
+import arrow.core.raise.getOrNull
+import arrow.core.raise.toEither
 import arrow.optics.optics
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import org.jesperancinha.ktd.arrow.optics.crums1.crum2.Color.*
@@ -166,7 +167,7 @@ value class TooMuchLevelsError(val levels: Int) : XmasError
  * 1. one floor does not have enough balls, then the tree gets unbalanced and we through InvalidTreeException
  * 2. No tree should be made of expensive materials at this stage. An attempt to do so should throw ForbiddenMaterialsException
  */
-fun createTree(balls: List<Ball>, garlands: List<Garland> = emptyList()): Effect<XmasError, XmasTree> = effect {
+fun createTree(balls: List<Ball>, garlands: List<Garland> = emptyList()): Effect<XmasError, XmasTree> = arrow.core.raise.effect {
     try {
         balls.firstOrNull { ball: Ball -> ball.color.isExpensive() }?.takeIf { it.color.isExpensive() }
             ?.let { throw ForbiddenMaterialsException(it.color) }
@@ -180,11 +181,11 @@ fun createTree(balls: List<Ball>, garlands: List<Garland> = emptyList()): Effect
         if (levels > 10) throw TooMuchLevelsException(levels)
         XmasTree.EasyTree(balls, garlands)
     } catch (ex: ForbiddenMaterialsException) {
-        shift(ForbiddenMaterialsError(ex.color))
+        raise(ForbiddenMaterialsError(ex.color))
     } catch (ex: InvalidTreeException) {
-        shift(InvalidTreeError(ex.size))
+        raise(InvalidTreeError(ex.size))
     } catch (ex: TooMuchLevelsException) {
-        shift(TooMuchLevelsError(ex.levels))
+        raise(TooMuchLevelsError(ex.levels))
     }
 }
 
@@ -204,11 +205,11 @@ class XmasEffects {
             tree.logLevel(1)
 
             logger.info2("Creating a one average Ball Tree")
-            createTree(listOf(Ball.AverageBall())).orNull()?.logLevel(1)
+            createTree(listOf(Ball.AverageBall())).getOrNull()?.logLevel(1)
 
             logger.info2("Creating a one expensive Ball Tree")
             val xmasErrorXmasTreeEffect = createTree(listOf(Ball.ExpensiveSilverBall()))
-            xmasErrorXmasTreeEffect.orNull()?.logLevel(1)
+            xmasErrorXmasTreeEffect.getOrNull()?.logLevel(1)
             logger.info(xmasErrorXmasTreeEffect)
             logger.info(xmasErrorXmasTreeEffect.toEither())
 

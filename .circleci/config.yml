@@ -5,9 +5,9 @@ jobs:
     docker:
       - image: eclipse-temurin:21-alpine
     steps:
-      - run: apk add maven
+      - run: apk add maven make
       - checkout
-      - run: mvn clean install jacoco:prepare-agent package jacoco:report
+      - run: make build-maven
 
 workflows:
   sample:

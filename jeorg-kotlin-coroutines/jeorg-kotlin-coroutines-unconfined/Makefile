@@ -1,3 +1,1 @@
-b: build
-build:
-	mvn clean install
+include ../../Makefile.mk
