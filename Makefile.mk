@@ -2,12 +2,15 @@ SHELL := /bin/bash
 GRADLE_VERSION ?= 8.10.1
 
 first:
-	make b
+	make buildw build-maven
 
-b?: buildw
+b?: buildw build-maven
+
+build-maven:
+	if [ -f pom.xml  ]; then mvn clean install;fi
 
 buildw:
-	./gradlew build
+	if [ -f build.gradle.kts  ] | [ -f build.gradle ]; then ./gradlew build; fi
 
 build:
 	gradle build
