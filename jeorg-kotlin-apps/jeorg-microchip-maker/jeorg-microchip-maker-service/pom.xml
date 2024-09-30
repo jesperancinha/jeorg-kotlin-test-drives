@@ -51,7 +51,6 @@
         <dependency>
             <groupId>io.ktor</groupId>
             <artifactId>ktor-server-tests-jvm</artifactId>
-            <version>${ktor_version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -67,10 +66,12 @@
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-framework-api-jvm</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.kotest</groupId>
             <artifactId>kotest-assertions-core-jvm</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
