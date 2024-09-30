@@ -6,6 +6,7 @@ jobs:
       - image: eclipse-temurin:21-alpine
     steps:
       - run: apk add maven make
+      - run: apk update && apk upgrade
       - checkout
       - run: make build-maven
 
