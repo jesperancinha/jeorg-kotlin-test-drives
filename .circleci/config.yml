@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: apk add maven make
       - checkout
-      - run: make
+      - run: make build-maven
 
 workflows:
   sample:
