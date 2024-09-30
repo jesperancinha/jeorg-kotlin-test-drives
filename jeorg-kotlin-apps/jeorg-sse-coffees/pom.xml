@@ -31,19 +31,17 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.ninja-squad</groupId>
-            <artifactId>springmockk</artifactId>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.kotest</groupId>
-            <artifactId>kotest-assertions-core-jvm</artifactId>
-            <scope>test</scope>
+            <artifactId>kotest-framework-api-jvm</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test-junit</artifactId>
-            <scope>test</scope>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-assertions-core-jvm</artifactId>
         </dependency>
     </dependencies>
 
