@@ -1,6 +1,8 @@
 include Makefile.mk
 
-b: build-gradle
+clean:
+	if [ -d ../../../kotlin-js-store ]; then rm -r .../../../kotlin-js-store; fi
+b: clean build-gradle
 build-gradle:
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace; \

@@ -1,8 +1,10 @@
 package org.jesperancinha.aktd.crums1.crum2
 
-import arrow.core.continuations.effect
+import arrow.core.raise.effect
 import arrow.core.left
 import arrow.core.leftIor
+import arrow.core.raise.mapError
+import arrow.core.raise.toEither
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
 data class PostCode(
@@ -15,7 +17,7 @@ fun createPostCode(code: String) = effect {
         code.take(4).toInt()
         PostCode(1234,"AA")
     } catch (e: Exception) {
-        shift(NumberError(e.message))
+        raise(NumberError(e.message))
     }
 
 }
@@ -43,7 +45,7 @@ class Effects {
             logger.info(postCodeCreationResult.toEither())
             logger.info2("Create invalid postcode")
             val postCodeCreationResult2 = createPostCode("BBBBAA")
-                .handleError {
+                .mapError {
                     logger.error(it.errorMessage).let { PostCode(1234,"AA") }
                 }
             logger.info(postCodeCreationResult2)
