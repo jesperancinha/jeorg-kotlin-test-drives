@@ -1,5 +1,6 @@
 package org.jesperancinha.ktd.nonomads
 
+import arrow.core.None
 import arrow.core.Option
 import arrow.core.Some
 import io.kotest.matchers.collections.shouldBeEmpty
@@ -14,7 +15,7 @@ class MonoidTest {
 
     @Test
     fun `should test Monoid List to have an identity`() {
-        val emptyList = listOf<Tree>()
+        val emptyList = emptyList<Tree>()
         emptyList.shouldBeEmpty()
         (treeCollection + emptyList) shouldBe (emptyList + treeCollection)
         (emptyList + treeCollection) shouldBe treeCollection
@@ -46,10 +47,9 @@ class MonoidTest {
 
     @Test
     fun `should test Custom Monoid Option to have an identity`() {
-        val optionTreeEmpty: Option<Tree> = Some(Tree(leaves = emptyList()))
         val optionTreeOneLeaf: Option<Tree> = Some(Tree(leaves = listOf(Leaf())))
-        (optionTreeEmpty + optionTreeOneLeaf) shouldBe (optionTreeOneLeaf + optionTreeEmpty)
-        (optionTreeOneLeaf + optionTreeEmpty) shouldBe (optionTreeOneLeaf)
+        (emptyOptionTree() + optionTreeOneLeaf) shouldBe (optionTreeOneLeaf + emptyOptionTree())
+        (optionTreeOneLeaf + emptyOptionTree()) shouldBe (optionTreeOneLeaf)
     }
 
     @Test
@@ -73,9 +73,13 @@ class MonoidTest {
     companion object {
         fun Int.toLeaves() = (1..this).map { Leaf() }
 
+        fun emptyOptionTree() = None
+
         private operator fun Option<Tree>.plus(optionTreeOneLeaf: Option<Tree>): Option<Tree> =
-            this.map { it.copy(leaves = it.leaves + optionTreeOneLeaf.fold({ emptyList() }) { opt -> opt.leaves }) }
+            this.takeIf { it == None }?.run { optionTreeOneLeaf }
+                ?: this.map { it.copy(leaves = it.leaves + optionTreeOneLeaf.fold({ emptyList() }) { opt -> opt.leaves }) }
 
     }
 }
+
 
