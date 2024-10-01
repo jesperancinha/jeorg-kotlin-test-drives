@@ -10,7 +10,7 @@ build-maven:
 	if [ -f pom.xml  ]; then mvn clean install;fi
 
 buildw:
-	if [ -f build.gradle.kts  ] | [ -f build.gradle ]; then ./gradlew build; fi
+	if [ -f "build.gradle.kts"  ] || [ -f build.gradle ]; then gradle build; fi
 
 build:
 	gradle build
