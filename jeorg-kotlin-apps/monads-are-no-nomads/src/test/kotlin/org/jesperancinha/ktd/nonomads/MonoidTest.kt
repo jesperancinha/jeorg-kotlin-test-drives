@@ -7,8 +7,10 @@ import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeTypeOf
+import org.jesperancinha.ktd.nonomads.MonoidTest.Companion.plus
 import java.awt.Color
 import java.util.ArrayList
+import kotlin.fold
 import kotlin.test.Test
 
 class MonoidTest {
@@ -75,9 +77,11 @@ class MonoidTest {
 
         fun emptyOptionTree() = None
 
-        private operator fun Option<Tree>.plus(optionTreeOneLeaf: Option<Tree>): Option<Tree> =
-            this.takeIf { it == None }?.run { optionTreeOneLeaf }
-                ?: this.map { it.copy(leaves = it.leaves + optionTreeOneLeaf.fold({ emptyList() }) { opt -> opt.leaves }) }
+        private operator fun Option<Tree>.plus(optionTreeOneLeaf: Option<Tree>): Option<Tree> = when {
+            this == None -> optionTreeOneLeaf
+            optionTreeOneLeaf == None -> this
+            else -> this.map { it.copy(leaves = it.leaves + optionTreeOneLeaf.fold({ emptyList() }) { opt -> opt.leaves }) }
+        }
 
     }
 }
