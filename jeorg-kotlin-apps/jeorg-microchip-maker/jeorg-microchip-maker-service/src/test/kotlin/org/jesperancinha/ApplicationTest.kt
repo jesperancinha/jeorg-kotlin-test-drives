@@ -29,11 +29,11 @@ class ApplicationTest {
      */
     @Test
     fun `should test LocalDatetime`() {
-        var ldt = LocalDateTime.now()
+        val ldt = LocalDateTime.now()
         println(ldt)
         val zoned = ldt.atZone(ZoneId.systemDefault())
         val instant = zoned.toInstant()
-        ldt = instant.atZone(ZoneId.of("Asia/Kolkata")).toLocalDateTime()
-        println(ldt)
+        val ldt2 = instant.atZone(ZoneId.of("Asia/Kolkata")).toLocalDateTime()
+        println(ldt2)
     }
 }
