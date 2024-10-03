@@ -20,6 +20,8 @@ import io.ktor.client.statement.*
 import kotlin.test.*
 import io.ktor.server.testing.*
 import org.jesperancinha.plugins.*
+import java.time.LocalDateTime
+import java.time.ZoneId
 
 class ApplicationTest {
     @Test
@@ -31,5 +33,20 @@ class ApplicationTest {
             assertEquals(HttpStatusCode.OK, status)
             assertEquals("Hello World!", bodyAsText())
         }
+    }
+
+
+    /**
+     * Should test local datetime
+     * Test created to show that LocalDatetime can be used with only a timestamp.
+     */
+    @Test
+    fun `should test LocalDatetime`() {
+        var ldt = LocalDateTime.now()
+        println(ldt)
+        val zoned = ldt.atZone(ZoneId.systemDefault())
+        val instant = zoned.toInstant()
+        ldt = instant.atZone(ZoneId.of("Asia/Kolkata")).toLocalDateTime()
+        println(ldt)
     }
 }
