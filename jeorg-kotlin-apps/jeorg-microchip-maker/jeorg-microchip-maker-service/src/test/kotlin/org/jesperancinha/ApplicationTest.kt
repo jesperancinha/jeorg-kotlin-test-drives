@@ -7,6 +7,7 @@ import io.ktor.server.testing.*
 import org.jesperancinha.plugins.configureRouting
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZoneOffset
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -35,5 +36,7 @@ class ApplicationTest {
         val instant = zoned.toInstant()
         val ldt2 = instant.atZone(ZoneId.of("Asia/Kolkata")).toLocalDateTime()
         println(ldt2)
+        println(ldt.toInstant(ZoneOffset.UTC))
+        println(ldt2.toInstant(ZoneOffset.UTC))
     }
 }
