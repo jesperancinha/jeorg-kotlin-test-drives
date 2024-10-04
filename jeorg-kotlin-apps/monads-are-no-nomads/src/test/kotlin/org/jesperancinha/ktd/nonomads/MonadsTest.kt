@@ -10,7 +10,9 @@ class MonadsTest {
     @Test
     fun `should test the identity just function of the monad`() {
         val trees = listOf(Tree())
-        trees.shouldHaveSize(1)
+       (trees.shouldHaveSize(1) + emptyList<Tree>()
+           .shouldHaveSize(0) shouldBe emptyList<Tree>() + trees)
+           .shouldBe(trees)
     }
 
 
@@ -21,14 +23,14 @@ class MonadsTest {
     }
 
     @Test
-    fun `should test left identity of the Monad`() {
+    fun `should test left identity law of the Monad`() {
         val tree1 = Tree()
-        val f: (Tree) -> List<Tree> = { x -> listOf(Tree()) }
+        val f: (Tree) -> List<Tree> = { listOf(it) }
         listOf(tree1).flatMap(f) shouldBe f(tree1)
     }
 
     @Test
-    fun `should test right identity of the Monad`() {
+    fun `should test right identity law of the Monad`() {
         val tree1 = Tree()
         val trees: List<Tree> = listOf(tree1)
         trees.flatMap { listOf(it) } shouldBe trees
