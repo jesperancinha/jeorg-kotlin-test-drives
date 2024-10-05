@@ -22,5 +22,6 @@ object Main {
         GlobalScopeCoroutine.main()
         MainDispatcherLauncher.main()
         UnconfinedCats.main()
+        CoroutineJob.main()
     }
 }
