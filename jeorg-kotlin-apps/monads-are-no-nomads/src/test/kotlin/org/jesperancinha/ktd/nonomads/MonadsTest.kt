@@ -2,7 +2,6 @@ package org.jesperancinha.ktd.nonomads
 
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
-import java.awt.Color
 import kotlin.test.Test
 
 class MonadsTest {
@@ -25,7 +24,8 @@ class MonadsTest {
     @Test
     fun `should test left identity law of the Monad`() {
         val tree1 = Tree()
-        val f: (Tree) -> List<Tree> = { listOf(it) }
+        val f: (Tree) -> List<Tree> =
+            { listOf(it.copy(leaves = (1..10).map { Leaf() })) }
         listOf(tree1).flatMap(f) shouldBe f(tree1)
     }
 
