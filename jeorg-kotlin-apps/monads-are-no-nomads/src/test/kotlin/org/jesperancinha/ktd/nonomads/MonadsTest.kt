@@ -7,7 +7,7 @@ import kotlin.test.Test
 class MonadsTest {
 
     @Test
-    fun `should test the identity just function of the monad`() {
+    fun `should test the identity just function of the monoid`() {
         val trees = listOf(Tree())
        (trees.shouldHaveSize(1) + emptyList<Tree>()
            .shouldHaveSize(0) shouldBe emptyList<Tree>() + trees)
