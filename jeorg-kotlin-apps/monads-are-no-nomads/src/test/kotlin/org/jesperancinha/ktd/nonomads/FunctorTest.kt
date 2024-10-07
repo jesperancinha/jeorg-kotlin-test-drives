@@ -26,7 +26,7 @@ class FunctorTest {
     }
 
     @Test
-    fun `should test functor transformation with map of map`() {
+    fun `should test composition and mapping function of a List`() {
         val newTree = treeCollection.map { it.leaves }.map { Tree(leaves = it) }
         newTree.shouldNotBeNull().shouldHaveSize(10)
         val f: (Tree) -> Tree = { Tree(leaves = (1..5).map { Leaf(color = Color.BLUE) }) }
@@ -35,7 +35,10 @@ class FunctorTest {
         treeCollection.map(f).map(g).shouldForAll {
             it.leaves.shouldForAll { it.color shouldBe Color.BLACK }
         }
-
+    }
+    @Test
+    fun `should test identity function of a List`() {
+        treeCollection.map { it } shouldBe treeCollection
     }
 
     @Test
