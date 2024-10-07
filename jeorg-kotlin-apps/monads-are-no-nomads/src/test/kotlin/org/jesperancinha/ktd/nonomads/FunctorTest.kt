@@ -6,6 +6,7 @@ import arrow.core.andThen
 import arrow.core.compose
 import arrow.core.raise.either
 import io.kotest.inspectors.forAll
+import io.kotest.inspectors.shouldForAll
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
@@ -19,16 +20,22 @@ class FunctorTest {
     @Test
     fun `should not be a functor let`() {
         val newTree = treeCollection.let { it.map { tree: Tree -> tree.copy(leaves = listOf(Leaf())) } }
-
         newTree.shouldNotBeNull().shouldHaveSize(10).forAll {
-                it.leaves.shouldHaveSize(1)
-            }
+            it.leaves.shouldHaveSize(1)
+        }
     }
 
     @Test
     fun `should test functor transformation with map of map`() {
         val newTree = treeCollection.map { it.leaves }.map { Tree(leaves = it) }
         newTree.shouldNotBeNull().shouldHaveSize(10)
+        val f: (Tree) -> Tree = { Tree(leaves = (1..5).map { Leaf(color = Color.BLUE) }) }
+        val g: (Tree) -> Tree = { Tree(leaves = (1..6).map { Leaf(color = Color.BLACK) }) }
+        treeCollection.map(g.compose(f)) shouldBe treeCollection.map(f).map(g)
+        treeCollection.map(f).map(g).shouldForAll {
+            it.leaves.shouldForAll { it.color shouldBe Color.BLACK }
+        }
+
     }
 
     @Test
@@ -40,12 +47,12 @@ class FunctorTest {
                 )
             )
         }.shouldHaveSize(10)
-             .forAll{ tree ->
+            .forAll { tree ->
                 tree.should {
                     it.leaves.shouldHaveSize(1).first().shouldNotBeNull().should { leaf ->
-                            leaf.length shouldBe 100
-                            leaf.color shouldBe Color.PINK
-                        }
+                        leaf.length shouldBe 100
+                        leaf.color shouldBe Color.PINK
+                    }
                 }
             }
     }
@@ -54,7 +61,6 @@ class FunctorTest {
     @Test
     fun `should test functor transformation with Some map`() {
         val makeTreeEmpty: Option<(Tree) -> Tree> = Some { tree -> tree.copy(leaves = emptyList()) }
-
         val resultTree = makeTreeEmpty.map { it(Tree(20)) }.fold(
             ifSome = {
                 it
