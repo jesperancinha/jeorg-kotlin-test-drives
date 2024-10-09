@@ -33,7 +33,7 @@
         <!-- Unit testing -->
         <junit-jupiter.version>5.11.2</junit-jupiter.version>
         <kotest-runner-junit5.version>5.9.1</kotest-runner-junit5.version>
-        <mockk.version>1.13.12</mockk.version>
+        <mockk.version>1.13.13</mockk.version>
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
