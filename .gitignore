@@ -11,3 +11,4 @@ target
 *.iml
 out
 !gradle/wrapper/gradle-wrapper.jar
+kotlin-compiler*.salive
