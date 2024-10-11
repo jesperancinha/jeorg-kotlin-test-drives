@@ -16,6 +16,14 @@ import kotlin.test.Test
 class MonoidTest {
 
     @Test
+    fun `should test the identity just function of the monoid`() {
+        val trees = listOf(Tree())
+        (trees.shouldHaveSize(1) + emptyList<Tree>()
+            .shouldHaveSize(0) shouldBe emptyList<Tree>() + trees)
+            .shouldBe(trees)
+    }
+
+    @Test
     fun `should test Monoid List to have an identity`() {
         val emptyList = emptyList<Tree>()
         emptyList.shouldBeEmpty()
