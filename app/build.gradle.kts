@@ -51,5 +51,5 @@ java {
 }
 
 kotlin {
-    jvmToolchain(18)
+    jvmToolchain(21)
 }
