@@ -13,7 +13,9 @@ object Main {
         supervisorScope {
             val job1 = launch {
                 delay(1000)
+//                cancel(CancellationException("Job is closed"))
                 throw RuntimeException("Failure in job 1")
+//                println("Job 1 completed successfully")
             }
 
             val job2 = launch {
