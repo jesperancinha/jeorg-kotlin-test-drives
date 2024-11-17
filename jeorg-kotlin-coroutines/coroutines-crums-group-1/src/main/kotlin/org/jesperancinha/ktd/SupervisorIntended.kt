@@ -31,10 +31,11 @@ class SupervisorIntended {
             println("**** Starting test suspend function at ${LocalDateTime.now()}")
             supervisorScope {
                 println(this.coroutineContext)
-                launch {
+                val launch = launch {
                     delay(1000)
                     throw RuntimeException("I have an error and this is it!")
                 }
+                println("The type is ${launch.job::class.java}")
                 launch {
                     delay(2000)
                     println("Nothing wrong here")

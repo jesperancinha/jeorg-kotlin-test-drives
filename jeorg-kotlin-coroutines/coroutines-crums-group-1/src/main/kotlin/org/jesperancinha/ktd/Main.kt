@@ -23,5 +23,6 @@ object Main {
         MainDispatcherLauncher.main()
         UnconfinedCats.main()
         CoroutineJob.main()
+        SupervisorJobTest()
     }
 }
