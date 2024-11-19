@@ -10,7 +10,7 @@ object Main {
     @JvmStatic
     fun main(args: Array<String>) = runBlocking {
         println("Hello world!")
-        supervisorScope {
+        val test = supervisorScope {
             val job1 = launch {
                 delay(1000)
 //                cancel(CancellationException("Job is closed"))
@@ -23,6 +23,8 @@ object Main {
                 println("Job 2 completed successfully")
             }
             joinAll(job1, job2)
+            123
         }
+        println(test)
     }
 }
