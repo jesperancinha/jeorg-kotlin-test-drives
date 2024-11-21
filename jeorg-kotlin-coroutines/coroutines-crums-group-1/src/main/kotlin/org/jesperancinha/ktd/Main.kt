@@ -1,5 +1,6 @@
 package org.jesperancinha.ktd
 
+import NoInlineRun
 import org.jesperancinha.ktd.exceptions.HandlingExceptions
 
 object Main {
@@ -23,6 +24,8 @@ object Main {
         MainDispatcherLauncher.main()
         UnconfinedCats.main()
         CoroutineJob.main()
-        SupervisorJobTest()
+        SupervisorJobTest.main()
+        NoInlineRun.main()
+        SupervisorHandlingExceptions.main()
     }
 }
