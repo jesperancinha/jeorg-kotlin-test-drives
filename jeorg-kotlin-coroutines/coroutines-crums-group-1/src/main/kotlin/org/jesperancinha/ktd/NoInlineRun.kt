@@ -1,11 +1,19 @@
 import kotlinx.coroutines.runBlocking
 
-inline fun runSpringCoroutine(
+inline fun runSpringNoCoroutine(
     crossinline before: () -> Unit,
-    noinline action: () -> Unit
+    action: () -> Unit
 ) {
     before()
     action()
+}
+
+inline fun runSpringCoroutine(
+    crossinline before: () -> Unit,
+    noinline action: suspend () -> Unit
+) {
+    before()
+    runBlocking { action() }
 }
 
 class NoInlineRun {
@@ -13,6 +21,10 @@ class NoInlineRun {
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
             runSpringCoroutine(
+                before = { println("Before!") },
+                action = { println("Running Coroutine!") }
+            )
+            runSpringNoCoroutine(
                 before = { println("Before!") },
                 action = { println("Running Coroutine!") }
             )
