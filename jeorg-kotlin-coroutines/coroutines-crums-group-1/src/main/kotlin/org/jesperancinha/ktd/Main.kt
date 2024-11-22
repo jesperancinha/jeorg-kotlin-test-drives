@@ -27,5 +27,6 @@ object Main {
         SupervisorJobTest.main()
         NoInlineRun.main()
         SupervisorHandlingExceptions.main()
+        SuspendCoroutine.main()
     }
 }
