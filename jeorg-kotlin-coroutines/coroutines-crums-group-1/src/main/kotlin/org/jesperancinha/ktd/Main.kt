@@ -28,5 +28,6 @@ object Main {
         NoInlineRun.main()
         SupervisorHandlingExceptions.main()
         SuspendCoroutine.main()
+        CoroutinesBuffer.main()
     }
 }
