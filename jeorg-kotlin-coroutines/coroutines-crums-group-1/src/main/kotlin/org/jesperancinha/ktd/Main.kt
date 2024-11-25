@@ -29,5 +29,6 @@ object Main {
         SupervisorHandlingExceptions.main()
         SuspendCoroutine.main()
         CoroutinesBuffer.main()
+        FlowExceptions.main()
     }
 }
