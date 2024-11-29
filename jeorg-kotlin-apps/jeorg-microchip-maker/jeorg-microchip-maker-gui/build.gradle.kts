@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.cli.common.incrementalCompilationIsEnabled
-
 allprojects {
     repositories {
         mavenCentral()
