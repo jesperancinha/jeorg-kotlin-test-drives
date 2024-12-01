@@ -30,5 +30,6 @@ object Main {
         SuspendCoroutine.main()
         CoroutinesBuffer.main()
         FlowExceptions.main()
+        YieldCoroutines.main()
     }
 }
