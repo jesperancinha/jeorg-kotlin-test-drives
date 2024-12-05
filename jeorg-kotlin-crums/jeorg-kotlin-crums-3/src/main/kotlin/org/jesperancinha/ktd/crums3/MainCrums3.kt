@@ -44,5 +44,6 @@ fun main(args: Array<String>) = runBlocking {
     VectorRunner.main(args)
     MutableSharedFlowCheck.main(args)
     LiteralReceiver.main(args)
+    ListNotNull.main()
 }
 
