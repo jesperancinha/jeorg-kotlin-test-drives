@@ -31,5 +31,6 @@ object Main {
         CoroutinesBuffer.main()
         FlowExceptions.main()
         YieldCoroutines.main()
+        LambdasWithCoroutines.main()
     }
 }
