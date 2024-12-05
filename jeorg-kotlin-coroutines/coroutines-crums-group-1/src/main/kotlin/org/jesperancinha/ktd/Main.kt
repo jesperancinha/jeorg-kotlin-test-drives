@@ -32,5 +32,6 @@ object Main {
         FlowExceptions.main()
         YieldCoroutines.main()
         LambdasWithCoroutines.main()
+        DaemonThread.main()
     }
 }
