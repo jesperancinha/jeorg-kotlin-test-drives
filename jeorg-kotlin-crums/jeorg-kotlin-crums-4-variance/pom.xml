@@ -103,7 +103,6 @@
                 <configuration>
                     <experimentalCoroutines>enable</experimentalCoroutines>
                     <jvmTarget>${java.version}</jvmTarget>
-                    <languageVersion>1.9</languageVersion>
                 </configuration>
                 <executions>
                     <execution>

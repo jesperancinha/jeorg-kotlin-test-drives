@@ -45,5 +45,7 @@ fun main() {
     NumbersConversion.main()
     BertAndErnieLauncher.main()
     VinylLauncher.main()
+    ContextRunning.main()
+    Operators.main()
 }
 
