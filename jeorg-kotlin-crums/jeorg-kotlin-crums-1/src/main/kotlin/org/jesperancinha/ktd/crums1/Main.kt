@@ -57,5 +57,7 @@ fun main() {
     ContextRunning.main()
     Operators.main()
     Festival.main()
+    DSLMarkers.main()
+    ImmutableList.main()
 }
 
