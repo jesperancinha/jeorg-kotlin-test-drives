@@ -1,5 +1,6 @@
 package org.jesperancinha.ktd.crums1
 
+import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 import org.jesperancinha.ktd.crums1.bertnernie.BertAndErnieLauncher
 import org.jesperancinha.ktd.crums1.crum10.InfixFunctions
 import org.jesperancinha.ktd.crums1.crum11.HigherOrderFunctions
@@ -20,6 +21,13 @@ import org.jesperancinha.ktd.crums1.crum7.ZipFunction
 import org.jesperancinha.ktd.crums1.crum8.KotlinBasicTypesWithJavaClass
 import org.jesperancinha.ktd.crums1.crum9.InconstantVariable
 import org.jesperancinha.ktd.crums1.records.VinylLauncher
+
+object Festival {
+    @JvmStatic
+    fun main(args: Array<String> = emptyArray()) {
+        ConsolerizerComposer.outSpace().magenta("This is the festival!")
+    }
+}
 
 fun main() {
     PrintToTheConsole.main()
@@ -48,5 +56,6 @@ fun main() {
     SuperInterfaces.main()
     ContextRunning.main()
     Operators.main()
+    Festival.main()
 }
 
