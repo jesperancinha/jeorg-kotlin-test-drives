@@ -46,5 +46,7 @@ fun main() {
     BertAndErnieLauncher.main()
     VinylLauncher.main()
     SuperInterfaces.main()
+    ContextRunning.main()
+    Operators.main()
 }
 
