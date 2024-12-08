@@ -9,7 +9,7 @@ class FunctionNames {
 
         @JvmStatic
         fun main(args: Array<String> = emptyArray()) {
-            ConsolerizerComposer.outSpace().green(::doNothing)
+            ConsolerizerComposer.outSpace().green(::doNothing.name)
         }
     }
 }
