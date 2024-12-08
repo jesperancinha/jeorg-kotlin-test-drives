@@ -13,3 +13,7 @@ include("jeorg-kotlin-utilities:kotlin-string-operations")
 findProject(":experiments:sealed-interfaces-interops")?.name = "sealed-interfaces-interops"
 include("jeorg-kotlin-apps:monads-are-no-nomads")
 findProject(":jeorg-kotlin-apps:monads-are-no-nomads")?.name = "monads-are-no-nomads"
+include("jeorg-kotlin-crums:module-common")
+findProject(":jeorg-kotlin-crums:module-common")?.name = "module-common"
+include("jeorg-kotlin-crums:module-use")
+findProject(":jeorg-kotlin-crums:module-use")?.name = "module-use"
