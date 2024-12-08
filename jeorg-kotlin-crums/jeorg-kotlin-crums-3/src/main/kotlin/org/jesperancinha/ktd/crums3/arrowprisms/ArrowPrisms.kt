@@ -19,7 +19,17 @@ val networkResult: Success = Success(FIRST_MESSAGE)
 
 val networkResultInt: Success = Success(COMPUTATION_ITERATIONS)
 
-
+/**
+ * The Arrow Project has had its ups and downs and massive changes are constantly happening
+ * If you are not finding a particular code that you expected to find here, it is important to mention a few changes
+ *
+ * From Arrow 2.0.0 onwards, these packages do not exist anymore:
+ *
+ * import arrow.core.andThen
+ * import arrow.core.compose
+ *
+ * This compromises some example code that used to be here, especially code related to functors, monoids and monads
+ */
 class ArrowPrisms {
     companion object {
         private val logger = object {
