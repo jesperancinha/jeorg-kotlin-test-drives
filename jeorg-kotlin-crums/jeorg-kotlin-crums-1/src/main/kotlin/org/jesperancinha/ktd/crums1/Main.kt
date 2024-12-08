@@ -60,5 +60,6 @@ fun main() {
     DSLMarkers.main()
     ImmutableList.main()
     ShapeLauncher.main()
+    FunctionNames.main()
 }
 
