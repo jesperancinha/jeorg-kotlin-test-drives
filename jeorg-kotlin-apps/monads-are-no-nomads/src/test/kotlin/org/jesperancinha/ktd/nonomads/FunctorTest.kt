@@ -18,7 +18,7 @@ import java.awt.Color
  * The Arrow Project has had its ups and downs and massive changes are constantly happening
  * If you are not finding a particular code that you expected to find here, it is important to mention a few changes
  *
- * From Arrow 2.0.0 onwards, these packages do not exist anymore:
+ * From Arrow 2.0.0 onwards, these extension functions do not exist anymore:
  *
  * import arrow.core.andThen
  * import arrow.core.compose
