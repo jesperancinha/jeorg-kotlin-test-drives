@@ -1,6 +1,5 @@
 package org.jesperancinha.ktd.crums3.arrowprisms
 
-import arrow.core.compose
 import arrow.core.left
 import arrow.core.right
 import arrow.core.toOption
@@ -57,7 +56,7 @@ class ArrowPrisms {
                 getOption = { success ->
                     success.content.toIntOrNull().toOption()
                 },
-                reverseGet = ComputationResult::Success compose Int::toString
+                reverseGet = { number -> Success("Success: $number") }
             )
             val composedPrism: Prism<ComputationResult, Int> = stringBasedPrism compose intBasedPrism
 

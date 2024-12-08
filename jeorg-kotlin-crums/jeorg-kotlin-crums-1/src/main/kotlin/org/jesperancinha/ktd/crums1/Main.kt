@@ -23,6 +23,7 @@ import org.jesperancinha.ktd.crums1.crum9.InconstantVariable
 import org.jesperancinha.ktd.crums1.interop.Archiver
 import org.jesperancinha.ktd.crums1.records.VinylLauncher
 import org.jesperancinha.ktd.crums1.sealed.ShapeLauncher
+import org.jesperancinha.ktd.crums1.synthetic.SyntheticKotlin
 
 object Festival {
     @JvmStatic
@@ -64,5 +65,6 @@ fun main() {
     ShapeLauncher.main()
     FunctionNames.main()
     Archiver.main()
+    SyntheticKotlin.main()
 }
 
