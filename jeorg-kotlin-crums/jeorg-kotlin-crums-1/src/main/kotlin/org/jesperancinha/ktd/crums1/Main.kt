@@ -20,6 +20,7 @@ import org.jesperancinha.ktd.crums1.crum6.ExtensionFunctions
 import org.jesperancinha.ktd.crums1.crum7.ZipFunction
 import org.jesperancinha.ktd.crums1.crum8.KotlinBasicTypesWithJavaClass
 import org.jesperancinha.ktd.crums1.crum9.InconstantVariable
+import org.jesperancinha.ktd.crums1.interop.Archiver
 import org.jesperancinha.ktd.crums1.records.VinylLauncher
 import org.jesperancinha.ktd.crums1.sealed.ShapeLauncher
 
@@ -61,5 +62,6 @@ fun main() {
     ImmutableList.main()
     ShapeLauncher.main()
     FunctionNames.main()
+    Archiver.main()
 }
 
