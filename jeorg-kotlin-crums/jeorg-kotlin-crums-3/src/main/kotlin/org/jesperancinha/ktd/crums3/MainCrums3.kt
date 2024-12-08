@@ -45,5 +45,6 @@ fun main(args: Array<String>) = runBlocking {
     MutableSharedFlowCheck.main(args)
     LiteralReceiver.main(args)
     ListNotNull.main()
+    Whenever.main()
 }
 
