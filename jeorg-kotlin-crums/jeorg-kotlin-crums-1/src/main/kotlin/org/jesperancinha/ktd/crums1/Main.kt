@@ -56,6 +56,7 @@ fun main() {
     NumbersConversion.main()
     BertAndErnieLauncher.main()
     VinylLauncher.main()
+    SuperInterfaces.main()
     ContextRunning.main()
     Operators.main()
     Festival.main()

@@ -3,6 +3,18 @@ package org.jesperancinha.ktd.crums3.crum3
 import arrow.optics.optics
 import org.jesperancinha.console.consolerizer.console.ConsolerizerComposer
 
+/**
+ * The Arrow Project has had its ups and downs and massive changes are constantly happening
+ * If you are not finding a particular code that you expected to find here, it is important to mention a few changes
+ *
+ * From Arrow 2.0.0 onwards, these extension functions do not exist anymore:
+ *
+ * import arrow.core.andThen
+ * import arrow.core.compose
+ *
+ * This compromises some example code that used to be here, especially code related to functors, monoids and monads
+ */
+
 data class DoorInformation(val n:Int){
     companion object
 }
@@ -73,13 +85,13 @@ class CrumThree {
             logger.info2(liftApartment)
 
             logger.comment("Compose works as an and and so everything is null")
-            val composeGroundHouses = hutPrism compose villaPrism
-            val orNullComposed1 = composeGroundHouses.getOrNull(hut1)
-            val orNullComposed2 = composeGroundHouses.getOrNull(villa1)
-            val orNullComposed3 = composeGroundHouses.getOrNull(apartment1)
-            logger.info(orNullComposed1)
-            logger.info(orNullComposed2)
-            logger.info(orNullComposed3)
+//            val composeGroundHouses = hutPrism compose villaPrism
+//            val orNullComposed1 = composeGroundHouses.getOrNull(hut1)
+//            val orNullComposed2 = composeGroundHouses.getOrNull(villa1)
+//            val orNullComposed3 = composeGroundHouses.getOrNull(apartment1)
+//            logger.info(orNullComposed1)
+//            logger.info(orNullComposed2)
+//            logger.info(orNullComposed3)
 
             logger.comment("This is how optics unfolds and changes our perspective for better code")
             val doorInformation = House.hut.doorInformation

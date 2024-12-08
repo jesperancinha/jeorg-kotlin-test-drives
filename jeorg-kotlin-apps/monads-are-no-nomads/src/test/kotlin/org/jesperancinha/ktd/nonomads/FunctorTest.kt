@@ -2,8 +2,6 @@ package org.jesperancinha.ktd.nonomads
 
 import arrow.core.Option
 import arrow.core.Some
-import arrow.core.andThen
-import arrow.core.compose
 import arrow.core.raise.either
 import io.kotest.inspectors.forAll
 import io.kotest.inspectors.shouldForAll
@@ -16,6 +14,17 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import java.awt.Color
 
+/**
+ * The Arrow Project has had its ups and downs and massive changes are constantly happening
+ * If you are not finding a particular code that you expected to find here, it is important to mention a few changes
+ *
+ * From Arrow 2.0.0 onwards, these extension functions do not exist anymore:
+ *
+ * import arrow.core.andThen
+ * import arrow.core.compose
+ *
+ * This compromises some example code that used to be here, especially code related to functors, monoids and monads
+ */
 class FunctorTest {
     @Test
     fun `should not be a functor let`() {
@@ -25,17 +34,6 @@ class FunctorTest {
         }
     }
 
-    @Test
-    fun `should test composition and mapping function of a List`() {
-        val newTree = treeCollection.map { it.leaves }.map { Tree(leaves = it) }
-        newTree.shouldNotBeNull().shouldHaveSize(10)
-        val f: (Tree) -> Tree = { Tree(leaves = (1..5).map { Leaf(color = Color.BLUE) }) }
-        val g: (Tree) -> Tree = { Tree(leaves = (1..6).map { Leaf(color = Color.BLACK) }) }
-        treeCollection.map(g.compose(f)) shouldBe treeCollection.map(f).map(g)
-        treeCollection.map(f).map(g).shouldForAll {
-            it.leaves.shouldForAll { it.color shouldBe Color.BLACK }
-        }
-    }
     @Test
     fun `should test composition with function calls and mapping function of a List`() {
         val newTree = treeCollection.map { it.leaves }.map { Tree(leaves = it) }
@@ -101,19 +99,4 @@ class FunctorTest {
             it.shouldBeEmpty()
         })
     }
-
-    @Test
-    fun `should test functor relation with andThen`() {
-        val add5Leaves: (Tree) -> Tree = { it.copy(leaves = it.leaves + (1..5).map { Leaf() }) }
-        val divideLeavesBy2: (Tree) -> Tree =
-            { tree -> tree.copy(leaves = tree.leaves.subList(tree.leaves.size / 2, tree.leaves.size)) }
-        val add5AndThenDivideBy2 = add5Leaves.andThen(divideLeavesBy2)
-        val result = add5AndThenDivideBy2(Tree())
-        result.leaves.shouldHaveSize(3)
-
-        val divideBy2AndThenAdd5 = add5Leaves.compose(divideLeavesBy2)
-        val result2 = divideBy2AndThenAdd5(Tree())
-        result2.leaves.shouldHaveSize(5)
-    }
-
 }

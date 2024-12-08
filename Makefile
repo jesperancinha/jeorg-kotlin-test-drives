@@ -15,7 +15,7 @@ clean:
 build: build-gradle build-maven
 build-maven:
 	mvn clean install
-build-gradle:
+build-gradle: clean
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace; \
 	./gradlew --stop
