@@ -69,6 +69,7 @@ fun main(args: Array<String>) {
     CrumTwenty.main(args)
 
     AnnotationRead.main(args)
+    PrimitiveWrapping.main(args)
     TheInvoker()
 }
 
