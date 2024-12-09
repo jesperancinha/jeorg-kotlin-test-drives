@@ -68,6 +68,7 @@ fun main(args: Array<String>) {
     CrumNineteen.main(args)
     CrumTwenty.main(args)
 
+    AnnotationRead.main(args)
     TheInvoker()
 }
 
