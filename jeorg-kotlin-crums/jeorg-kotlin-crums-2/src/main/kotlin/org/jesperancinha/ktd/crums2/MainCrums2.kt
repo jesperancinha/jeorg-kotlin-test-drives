@@ -72,6 +72,7 @@ fun main(args: Array<String>) {
     AnnotationRead.main(args)
     JvmFields.main(args)
     PrimitiveWrapping.main(args)
+    BuildStringRun.main(args)
     TheInvoker()
 }
 
