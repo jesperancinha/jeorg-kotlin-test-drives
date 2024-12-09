@@ -21,6 +21,7 @@ import org.jesperancinha.ktd.crums2.crum6.CrumSix
 import org.jesperancinha.ktd.crums2.crum7.CrumSeven
 import org.jesperancinha.ktd.crums2.crum8.CrumEight
 import org.jesperancinha.ktd.crums2.crum9.CrumNine
+import org.jesperancinha.ktd.crums2.fields.JvmFields
 import org.jesperancinha.ktd.crums2.invoking.TheInvoker
 
 fun main(args: Array<String>) {
@@ -69,6 +70,7 @@ fun main(args: Array<String>) {
     CrumTwenty.main(args)
 
     AnnotationRead.main(args)
+    JvmFields.main(args)
     PrimitiveWrapping.main(args)
     TheInvoker()
 }
