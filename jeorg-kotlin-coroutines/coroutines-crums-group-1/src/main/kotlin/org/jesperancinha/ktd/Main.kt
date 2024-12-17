@@ -33,5 +33,7 @@ object Main {
         YieldCoroutines.main()
         LambdasWithCoroutines.main()
         DaemonThread.main()
+        FlowsCombined.main()
+        UncollectedFlows.main()
     }
 }
