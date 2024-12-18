@@ -35,5 +35,6 @@ object Main {
         DaemonThread.main()
         FlowsCombined.main()
         UncollectedFlows.main()
+        FlowOperations.main()
     }
 }
