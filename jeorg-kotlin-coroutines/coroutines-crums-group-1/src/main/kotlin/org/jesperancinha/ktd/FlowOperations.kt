@@ -35,7 +35,7 @@ class FlowOperations {
                     .filter { it.contains("A") }
                     .map { "value: $it" }
                     .transform {
-                        if(it.contains("1"))
+                        if (it.contains("1"))
                             emit("A")
                         else
                             emit("B")

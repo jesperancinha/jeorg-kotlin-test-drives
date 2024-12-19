@@ -4,6 +4,8 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import java.util.*
 import java.util.concurrent.LinkedBlockingQueue
+import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.seconds
 
 
 private suspend fun fetchItem() = withContext(Dispatchers.Default) { "ITEM-${UUID.randomUUID()}" }
@@ -39,27 +41,65 @@ class ElementsSendReceiveBlockingChannel {
 
 class ElementsSendReceiveChannel {
 
-    private val channel by lazy { Channel<String>(2) }
+    private val channel by lazy { Channel<String>(5) }
 
     private suspend fun produceItems() {
-        val item = fetchItem()
-        delay(PRODUCTION_COST_MS)
-        channel.send(item)
-        delay(PRODUCTION_COST_MS)
-        channel.send(item)
+        repeat(5) {
+            val item = fetchItem()
+            delay(PRODUCTION_COST_MS)
+            channel.send(item)
+        }
     }
 
 
     private suspend fun receiveItems() {
-        repeat(2) {
+        repeat(5) {
             val item = channel.receive()
+            delay(PRODUCTION_COST_MS)
             println("Channel received item $item!")
         }
     }
 
     suspend fun doMain() = coroutineScope {
-        launch { produceItems() }
-        launch { receiveItems() }
+        measureTimeMillis {
+            launch { produceItems() }.join()
+            launch { receiveItems() }.join()
+        }.run { println("It too $this ms to complete!") }
+    }
+}
+
+class ElementsSendReceiveRendezVousChannel {
+
+    private val channel by lazy { Channel<String>() }
+
+    private suspend fun produceItems() {
+        repeat(5) {
+            val item = fetchItem()
+            delay(PRODUCTION_COST_MS)
+            channel.send(item)
+        }
+    }
+
+
+    private suspend fun receiveItems() {
+        repeat(5) {
+            val item = channel.receive()
+            delay(PRODUCTION_COST_MS)
+            println("Channel received item $item!")
+        }
+    }
+
+    suspend fun doMain() = coroutineScope {
+        runCatching {
+            withTimeout(5.seconds) {
+                measureTimeMillis {
+                    launch { produceItems() }.join()
+                    launch { receiveItems() }.join()
+                }.run { println("It too $this ms to complete!") }
+            }
+        }.onFailure {
+            println("Rendez-vous channels, or channels without a buffer, will fail in this case because they will suspend on send if there is still an element to be received by the other coroutine.")
+        }
     }
 }
 
@@ -69,6 +109,7 @@ class ElementsSendReceiveRunner {
         fun main(args: Array<String>): Unit = runBlocking {
             ElementsSendReceiveBlockingChannel().doMain()
             ElementsSendReceiveChannel().doMain()
+            ElementsSendReceiveRendezVousChannel().doMain()
         }
     }
 }
