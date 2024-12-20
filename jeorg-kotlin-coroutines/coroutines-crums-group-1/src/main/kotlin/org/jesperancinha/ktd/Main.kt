@@ -38,5 +38,6 @@ object Main {
         FlowOperations.main()
         ConflatedChannel.main()
         BufferedFlows.main()
+        FlowOnEach.main()
     }
 }
