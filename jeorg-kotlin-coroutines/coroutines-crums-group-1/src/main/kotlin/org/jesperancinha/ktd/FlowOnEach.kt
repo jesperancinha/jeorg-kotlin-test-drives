@@ -2,6 +2,7 @@ package org.jesperancinha.ktd
 
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 
 class FlowOnEach {
@@ -14,9 +15,10 @@ class FlowOnEach {
                 emit(3)
             }
 
-            flow
+            val toList = flow
                 .onEach { value -> println("Received value: $value") }
-                .collect { value -> println("Received collected value: $value") }
+                .toList()
+            println(toList)
         }
     }
 }
