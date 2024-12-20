@@ -36,5 +36,6 @@ object Main {
         FlowsCombined.main()
         UncollectedFlows.main()
         FlowOperations.main()
+        ConflatedChannel.main()
     }
 }
