@@ -39,5 +39,6 @@ object Main {
         ConflatedChannel.main()
         BufferedFlows.main()
         FlowOnEach.main()
+        TryEmitTrySend.main()
     }
 }
