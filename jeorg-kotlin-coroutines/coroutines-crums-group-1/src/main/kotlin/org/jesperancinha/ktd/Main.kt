@@ -40,5 +40,6 @@ object Main {
         BufferedFlows.main()
         FlowOnEach.main()
         TryEmitTrySend.main()
+        SendFlows.main()
     }
 }

@@ -2,6 +2,7 @@ package org.jesperancinha.ktd
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -44,6 +45,8 @@ class TryEmitTrySend {
                     }.join()
                     scope.cancel()
                 }
+            }.onFailure {
+                if (it !is TimeoutCancellationException) throw it
             }
         }
     }
