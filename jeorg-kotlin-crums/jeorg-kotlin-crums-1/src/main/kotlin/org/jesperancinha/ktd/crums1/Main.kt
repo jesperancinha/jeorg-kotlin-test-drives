@@ -66,5 +66,6 @@ fun main() {
     FunctionNames.main()
     Archiver.main()
     SyntheticKotlin.main()
+    DefaultInInterface.main()
 }
 

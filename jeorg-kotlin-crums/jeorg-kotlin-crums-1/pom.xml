@@ -83,6 +83,13 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
+                            <args>
+                                <arg>-Xjvm-default=all</arg>
+                                <arg>-Xcontext-receivers</arg>
+                                <arg>-opt-in=kotlin.RequiresOptIn</arg>
+                                <arg>-opt-in=kotlin.Experimental</arg>
+                                <arg>-opt-in=kotlin.ExperimentalTypeInference</arg>
+                            </args>
                             <sourceDirs>
                                 <source>src/main/kotlin</source>
                                 <source>src/main/java</source>
