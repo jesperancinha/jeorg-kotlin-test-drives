@@ -74,5 +74,6 @@ fun main(args: Array<String>) {
     PrimitiveWrapping.main(args)
     BuildStringRun.main(args)
     TheInvoker()
+    TheNothingReturns.main()
 }
 
