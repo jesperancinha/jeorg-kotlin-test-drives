@@ -2,6 +2,8 @@ package org.jesperancinha.ktd
 
 import NoInlineRun
 import org.jesperancinha.ktd.exceptions.HandlingExceptions
+import org.jesperancinha.ktd.interpolist.Passed
+import org.jesperancinha.ktd.overloads.GreetJava
 
 object Main {
     @JvmStatic
@@ -41,5 +43,7 @@ object Main {
         FlowOnEach.main()
         TryEmitTrySend.main()
         SendFlows.main()
+        GreetJava.main(args)
+        Passed.main()
     }
 }
