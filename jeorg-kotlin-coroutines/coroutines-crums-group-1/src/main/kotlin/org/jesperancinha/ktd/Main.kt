@@ -47,5 +47,6 @@ object Main {
         CollectLatestCoroutines.main()
         ClosedChannel.main()
         ActorsAndProducers.main()
+        FlowWithRetries.main()
     }
 }
