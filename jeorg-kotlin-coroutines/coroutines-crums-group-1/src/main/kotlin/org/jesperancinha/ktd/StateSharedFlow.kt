@@ -12,7 +12,7 @@ class StateSharedFlow {
 
     companion object {
         @JvmStatic
-        fun main(args: Array<String>) {
+        fun main(args: Array<String> = emptyArray()) {
             runCatching {
                 stateFlowExample()
             }

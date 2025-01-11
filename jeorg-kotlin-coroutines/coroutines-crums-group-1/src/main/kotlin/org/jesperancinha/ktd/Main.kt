@@ -43,6 +43,7 @@ object Main {
         SendFlows.main()
         CoroutinesChannelFlowBuffer.main()
         Debouncing.main()
-        StateSharedFlow()
+        StateSharedFlow.main()
+        CollectLatestCoroutines.main()
     }
 }
