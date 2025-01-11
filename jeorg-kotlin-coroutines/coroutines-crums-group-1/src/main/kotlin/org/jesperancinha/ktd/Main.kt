@@ -41,5 +41,6 @@ object Main {
         FlowOnEach.main()
         TryEmitTrySend.main()
         SendFlows.main()
+        CoroutinesChannelFlowBuffer.main()
     }
 }
