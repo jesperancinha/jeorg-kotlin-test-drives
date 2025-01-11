@@ -42,5 +42,7 @@ object Main {
         TryEmitTrySend.main()
         SendFlows.main()
         CoroutinesChannelFlowBuffer.main()
+        Debouncing.main()
+        StateSharedFlow()
     }
 }
