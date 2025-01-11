@@ -46,5 +46,6 @@ object Main {
         StateSharedFlow.main()
         CollectLatestCoroutines.main()
         ClosedChannel.main()
+        ActorsAndProducers.main()
     }
 }
