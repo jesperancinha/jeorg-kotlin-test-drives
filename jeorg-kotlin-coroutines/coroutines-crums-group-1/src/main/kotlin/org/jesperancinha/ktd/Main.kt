@@ -45,5 +45,6 @@ object Main {
         Debouncing.main()
         StateSharedFlow.main()
         CollectLatestCoroutines.main()
+        ClosedChannel.main()
     }
 }
