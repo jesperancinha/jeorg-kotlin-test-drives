@@ -48,5 +48,6 @@ object Main {
         ClosedChannel.main()
         ActorsAndProducers.main()
         FlowWithRetries.main()
+        MergeFlows.main()
     }
 }

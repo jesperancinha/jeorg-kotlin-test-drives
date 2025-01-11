@@ -3,9 +3,16 @@ package org.jesperancinha.ktd
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 
-class SimulAndroidCancellation {
+class SimulAndroidCancellation(
+    val a: Int = 1
+) {
+
+    init {
+        println(a)
+    }
     companion object {
         private val viewModelScope by lazy { CoroutineScope(Dispatchers.Unconfined) }
+
         init {
             viewModelScope.launch {
                 connect()
@@ -30,6 +37,7 @@ class SimulAndroidCancellation {
 
         @JvmStatic
         fun main(args: Array<String>) = runBlocking {
+            SimulAndroidCancellation()
             measureTimeMillis {
                 onCleared()
             }.let { println("Process took $it milliseconds") }
