@@ -54,5 +54,6 @@ object Main {
         FlowWithRetries.main()
         MergeFlows.main()
         ZipVsCombine.main()
+        ConflatedFlow.main()
     }
 }
