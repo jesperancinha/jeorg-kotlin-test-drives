@@ -56,5 +56,7 @@ object Main {
         ZipVsCombine.main()
         ConflatedFlow.main()
         FlatMapConcat.main()
+        SampleFlows.main()
+        BroadcastChannel.main()
     }
 }
