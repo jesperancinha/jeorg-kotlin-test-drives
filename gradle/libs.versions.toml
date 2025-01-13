@@ -21,4 +21,4 @@ arrow-optics-ksp-plugin = { group = "io.arrow-kt", name = "arrow-optics-ksp-plug
 consolerizer = { group = "org.jesperancinha.console", name = "consolerizer", version = "2.2.3" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version = "2.1.0" }
 kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
-assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.1" }
+assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.2" }

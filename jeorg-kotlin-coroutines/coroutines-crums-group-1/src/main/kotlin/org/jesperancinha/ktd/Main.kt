@@ -45,5 +45,14 @@ object Main {
         SendFlows.main()
         GreetJava.main(args)
         Passed.main()
+        CoroutinesChannelFlowBuffer.main()
+        Debouncing.main()
+        StateSharedFlow.main()
+        CollectLatestCoroutines.main()
+        ClosedChannel.main()
+        ActorsAndProducers.main()
+        FlowWithRetries.main()
+        MergeFlows.main()
+        ZipVsCombine.main()
     }
 }
