@@ -55,5 +55,6 @@ object Main {
         MergeFlows.main()
         ZipVsCombine.main()
         ConflatedFlow.main()
+        FlatMapConcat.main()
     }
 }
