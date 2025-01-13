@@ -12,7 +12,7 @@ import kotlin.time.Duration.Companion.seconds
 class ZipVsCombine {
     companion object {
         @JvmStatic
-        fun main(args: Array<String> = emptyArray()): kotlin.Unit = runBlocking {
+        fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
             combineExample()
             println("**************")
             zipExample()

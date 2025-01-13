@@ -16,7 +16,7 @@ class FlowWithRetries {
                 delay(100)
                 throw Exception("An error occurred")
             }.retry(3) {
-                println("Error occurred, retrying...")
+                println("Error occurred ($it), retrying...")
                 true
             }
 
