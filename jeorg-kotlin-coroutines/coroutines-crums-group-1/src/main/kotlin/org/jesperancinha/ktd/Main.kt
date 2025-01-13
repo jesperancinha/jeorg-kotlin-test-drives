@@ -49,5 +49,6 @@ object Main {
         ActorsAndProducers.main()
         FlowWithRetries.main()
         MergeFlows.main()
+        ZipVsCombine.main()
     }
 }
