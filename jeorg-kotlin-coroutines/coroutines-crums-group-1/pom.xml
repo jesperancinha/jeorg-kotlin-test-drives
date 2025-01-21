@@ -69,6 +69,8 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -104,14 +106,13 @@
                     </execution>
                     <execution>
                         <id>compile</id>
-                        <phase>compile</phase>
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
                         <configuration>
                             <sourceDirs>
                                 <source>src/main/kotlin</source>
-                                <source>src/main/java</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
