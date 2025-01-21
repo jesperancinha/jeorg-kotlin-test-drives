@@ -69,8 +69,6 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
