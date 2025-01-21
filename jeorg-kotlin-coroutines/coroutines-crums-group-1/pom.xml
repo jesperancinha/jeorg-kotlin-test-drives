@@ -69,7 +69,7 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
@@ -113,6 +113,7 @@
                         <configuration>
                             <sourceDirs>
                                 <source>src/main/kotlin</source>
+                                <source>src/main/java</source>
                             </sourceDirs>
                         </configuration>
                     </execution>
