@@ -43,7 +43,8 @@ object Main {
         FlowOnEach.main()
         TryEmitTrySend.main()
         SendFlows.main()
-        GreetJava.main(args)
+        // TODO This is commented because it doesn't seem to run during maven build
+        // GreetJava.main(args)
         Passed.main()
         CoroutinesChannelFlowBuffer.main()
         Debouncing.main()
