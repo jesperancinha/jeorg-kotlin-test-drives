@@ -48,7 +48,7 @@
         <jackson-annotations.version>2.18.2</jackson-annotations.version>
 
         <!-- Project Arrow Libraries -->
-        <arrow.version>2.0.0</arrow.version>
+        <arrow.version>2.0.1</arrow.version>
         <arrow-optics-ksp-plugin.version>1.1.5</arrow-optics-ksp-plugin.version>
         <kotlin-maven-symbol-processing.version>1.5</kotlin-maven-symbol-processing.version>
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
