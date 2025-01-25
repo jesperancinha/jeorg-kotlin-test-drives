@@ -1,5 +1,6 @@
 package org.jesperancinha.ktd
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.lang.Thread.sleep
@@ -15,12 +16,12 @@ class CoroutineJob {
                         runBlocking {
                             launch {
                                 println("Starting coroutine job 1")
-                                sleep(2000)
+                                delay(2000)
                                 println("Finished coroutine job 1")
                             }
                             launch {
                                 println("Started coroutine job 2")
-                                sleep(4000)
+                                delay(4000)
                                 println("Finished coroutine job 2")
                             }
                         }
