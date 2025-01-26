@@ -57,5 +57,6 @@ object Main {
         FlatMapConcat.main()
         SampleFlows.main()
         BroadcastChannel.main()
+        Yielding.main()
     }
 }
