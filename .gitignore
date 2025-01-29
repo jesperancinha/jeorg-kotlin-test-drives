@@ -49,3 +49,6 @@ kotlin-js-store
 # NPM
 (same as "user" config, ignored)
 
+# Test files
+file1.txt
+file2.txt

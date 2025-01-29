@@ -6,13 +6,13 @@ import kotlinx.coroutines.runBlocking
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 import kotlin.system.measureTimeMillis
+import kotlin.time.Duration.Companion.seconds
 
 class SuspendCoroutineJob {
     companion object {
 
         suspend fun myCustomSuspendFunction(n: Int) = suspendCoroutine<Unit> { continuation ->
             println("Before suspension $n => ${Thread.currentThread()} with ${continuation.context}")
-
             Thread {
                 println("Doing something $n => ${Thread.currentThread()} with ${continuation.context}")
                 Thread.sleep(1000)
@@ -31,8 +31,9 @@ class SuspendCoroutineJob {
                 runBlocking(Dispatchers.Default) {
                     println("Start => ${Thread.currentThread()} with ${currentCoroutineContext()}")
                     myCustomSuspendFunction(1)
-                    myCustomSuspendFunction(2)
+                    myCustomSuspendFunction(2)  
                     println("End => ${Thread.currentThread()} with ${currentCoroutineContext()}")
+                    Thread.sleep(2000)
                 }
             }} ms to run")
         }

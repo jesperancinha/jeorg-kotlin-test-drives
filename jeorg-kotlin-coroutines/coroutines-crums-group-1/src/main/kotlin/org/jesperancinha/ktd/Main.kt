@@ -60,5 +60,6 @@ object Main {
         Yielding.main()
         SuspendCoroutineJob.main()
         DispatchersDefaultJob.main()
+        IODispatchersJob.main()
     }
 }
