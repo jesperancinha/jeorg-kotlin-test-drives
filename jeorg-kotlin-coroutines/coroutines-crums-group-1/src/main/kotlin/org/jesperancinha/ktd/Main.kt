@@ -58,7 +58,7 @@ object Main {
         SampleFlows.main()
         BroadcastChannel.main()
         Yielding.main()
-        MySuspendFunctionJob.main()
+        SuspendCoroutineJob.main()
         DispatchersDefaultJob.main()
     }
 }
