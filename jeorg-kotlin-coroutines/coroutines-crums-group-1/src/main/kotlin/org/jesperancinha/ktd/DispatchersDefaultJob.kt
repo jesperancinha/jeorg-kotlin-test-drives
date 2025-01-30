@@ -17,10 +17,12 @@ class DispatchersDefaultJob {
             }
         }
 
-        fun isPrime(n: Int): Boolean {
-            if (n < 2) return false
-            for (i in 2..n / 2) {
-                if (n % i == 0) return false
+        fun isPrime(number: Int): Boolean {
+            if (number <= 1) return false
+            for (i in 2 until number) {
+                if (number % i == 0) {
+                    return false
+                }
             }
             return true
         }
