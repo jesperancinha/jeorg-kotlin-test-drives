@@ -5,6 +5,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
+import kotlin.coroutines.coroutineContext
 import kotlin.system.measureTimeMillis
 
 class DispatchersDefaultJob {
@@ -13,6 +14,7 @@ class DispatchersDefaultJob {
         suspend fun findPrimesInRange(range: IntRange): List<Int> {
             return range.filter { n ->
                 yield()
+                println("Current Thread ${Thread.currentThread()} in context ${coroutineContext}")
                 isPrime(n)
             }
         }

@@ -32,7 +32,7 @@ class IODispatchersJob {
                 File(fileName).writeText(part1)
                 println("Wrote first part to $fileName, yielding execution...")
                 yield()
-
+                println("Current Thread ${Thread.currentThread()} in context ${kotlin.coroutines.coroutineContext}")
                 File(fileName).appendText("\n$part2")
                 println("Wrote second part to $fileName.")
             }
