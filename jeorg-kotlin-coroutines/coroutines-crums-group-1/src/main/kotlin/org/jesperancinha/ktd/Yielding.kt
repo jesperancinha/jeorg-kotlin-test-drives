@@ -1,9 +1,6 @@
 package org.jesperancinha.ktd
 
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.yield
+import kotlinx.coroutines.*
 
 class Yielding {
     companion object {
@@ -37,10 +34,14 @@ class Yielding {
                 }
             }
         }
+        @OptIn(DelicateCoroutinesApi::class)
         @JvmStatic
-        fun main(args: Array<String> = emptyArray()) = runBlocking {
+        fun main(args: Array<String> = emptyArray()): Unit = runBlocking {
             noYieldIterations().join()
             yieldIterations().join()
+            GlobalScope.launch {
+                println("GlobalScope.launch thread: ${Thread.currentThread().name}")
+            }
         }
     }
 }
