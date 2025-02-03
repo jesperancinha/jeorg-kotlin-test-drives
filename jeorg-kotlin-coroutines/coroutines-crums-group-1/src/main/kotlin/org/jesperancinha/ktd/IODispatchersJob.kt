@@ -31,8 +31,9 @@ class IODispatchersJob {
             withContext(Dispatchers.IO) {
                 File(fileName).writeText(part1)
                 println("Wrote first part to $fileName, yielding execution...")
+                println("Before current Thread ${Thread.currentThread()} in context ${kotlin.coroutines.coroutineContext}")
                 yield()
-                println("Current Thread ${Thread.currentThread()} in context ${kotlin.coroutines.coroutineContext}")
+                println("After current Thread ${Thread.currentThread()} in context ${kotlin.coroutines.coroutineContext}")
                 File(fileName).appendText("\n$part2")
                 println("Wrote second part to $fileName.")
             }

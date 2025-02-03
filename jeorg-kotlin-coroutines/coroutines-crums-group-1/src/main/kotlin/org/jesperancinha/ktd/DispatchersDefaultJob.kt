@@ -29,19 +29,21 @@ class DispatchersDefaultJob {
             return true
         }
         @JvmStatic
-        fun main(args: Array<String> = emptyArray()) = runBlocking(Dispatchers.Default) {
+        fun main(args: Array<String> = emptyArray()) = runBlocking(Dispatchers.IO) {
             val range1 = 1_000_000..1_000_050
             val range2 = 1_000_051..1_000_100
 
-            val time = measureTimeMillis {
-                val deferred1 = async { findPrimesInRange(range1) }
-                val deferred2 = async { findPrimesInRange(range2) }
+            withContext(Dispatchers.Default) {
+                val time = measureTimeMillis {
+                    val deferred1 = async { findPrimesInRange(range1) }
+                    val deferred2 = async { findPrimesInRange(range2) }
 
-                val primes = deferred1.await() + deferred2.await()
-                println("Found ${primes.size} prime numbers")
+                    val primes = deferred1.await() + deferred2.await()
+                    println("Found ${primes.size} prime numbers")
+                }
+                println("Execution time: $time ms")
             }
 
-            println("Execution time: $time ms")
         }
 
     }

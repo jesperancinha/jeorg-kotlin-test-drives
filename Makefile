@@ -58,6 +58,7 @@ upgrade-gradle: upgrade-system upgrade
 install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
+	sudo apt-get install visualvm
 	curl https://services.gradle.org/versions/current
 deps-plugins-update:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash -s -- $(PARAMS)
