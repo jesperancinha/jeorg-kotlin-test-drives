@@ -72,6 +72,7 @@
         <module>jeorg-kotlin-masters</module>
         <module>jeorg-kotlin-apps</module>
         <module>jeorg-kotlin-coroutines</module>
+        <module>jeorg-kotlin-coroutines/coroutines-cancellation-examples</module>
     </modules>
 
     <packaging>pom</packaging>
