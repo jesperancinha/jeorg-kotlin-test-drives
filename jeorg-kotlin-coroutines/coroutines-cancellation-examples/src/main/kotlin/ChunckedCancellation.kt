@@ -4,7 +4,6 @@ import kotlinx.coroutines.NonCancellable.isActive
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.jesperancinha.ktd.CancellationExample1Outside.simulateBlockingIOMethod
 import java.io.File
 import kotlin.coroutines.cancellation.CancellationException
 
