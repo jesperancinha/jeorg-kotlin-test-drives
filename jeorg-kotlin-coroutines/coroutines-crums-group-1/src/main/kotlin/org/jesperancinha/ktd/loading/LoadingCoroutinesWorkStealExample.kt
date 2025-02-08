@@ -17,7 +17,7 @@ object LoadingCoroutinesWorkStealExample {
                     val threadName = Thread.currentThread().name
                     val duration = if (index % 2 == 0) 1000L else 500L // Some tasks take longer
                     println("Coroutine $index running on $threadName for $duration ms")
-                    sleep(duration)
+                    delay(duration)
                     println("Coroutine $index finished on $threadName")
                 }
             }
