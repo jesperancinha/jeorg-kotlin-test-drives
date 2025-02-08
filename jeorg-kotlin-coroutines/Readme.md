@@ -1,6 +1,12 @@
 # JEOrg :: KTD :: Coroutines :: Parent
 
+# Dispatchers summary
 
+| Dispatcher              | 	Best for          | 	Threading Behavior	                           | Expands Threads?	 | Work-Stealing? |
+|-------------------------|--------------------|------------------------------------------------|-------------------|----------------|
+| Dispatchers.Default	    | CPU-bound work	    | Uses CPU core pool                             | 	❌ No             | 	✅ Yes         |
+| Dispatchers.IO	         | I/O-bound work	    | Starts with a few threads but expands          | 	✅ Yes	           | ❌ No           |
+| Dispatchers.Unconfined	 | Lightweight tasks	 | Starts in the caller thread, resumes wherever	 | ❌ No              | 	❌ No          |
 
 # Dispatchers - Default vs IO
 | Feature                | 	Dispatchers.Default	           | Dispatchers.IO                    |
