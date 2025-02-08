@@ -11,7 +11,6 @@ object CoroutinesRunInterruptible {
     fun main(args: Array<String>) = runBlocking {
         val filePath = Paths.get("largefile.txt")
 
-        // ✅ Step 1: Generate a large file if it doesn't exist
         if (!Files.exists(filePath)) {
             println("Generating large file...")
             Files.newBufferedWriter(filePath, StandardOpenOption.CREATE).use { writer ->
@@ -20,7 +19,6 @@ object CoroutinesRunInterruptible {
             println("Large file created")
         }
 
-        // ✅ Step 2: Launch a coroutine that reads the file using an interruptible method
         val job = launch(Dispatchers.IO) {
             runInterruptible {
                 try {
@@ -28,10 +26,10 @@ object CoroutinesRunInterruptible {
                     Files.newInputStream(filePath).use { inputStream ->
                         val buffer = ByteArray(1024)
                         while (true) {
-                            val bytesRead = inputStream.read(buffer) // ⚠️ This is interruptible!
+                            val bytesRead = inputStream.read(buffer)
                             if (bytesRead == -1) break
                             println("Read $bytesRead bytes")
-                            Thread.sleep(1000) // Simulate processing
+                            Thread.sleep(1000)
                         }
                     }
                     println("File read complete")
@@ -42,12 +40,10 @@ object CoroutinesRunInterruptible {
             }
         }
 
-        // ✅ Step 3: Let the coroutine start reading
-        delay(2.seconds) // Allow some reading to happen
+        delay(2.seconds)
 
-        // ✅ Step 4: Cancel the job
         println("Cancelling the job...")
-        job.cancelAndJoin() // Cancels and interrupts the operation
+        job.cancelAndJoin()
         println("Job cancelled")
     }
 
