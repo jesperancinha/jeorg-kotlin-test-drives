@@ -1,5 +1,16 @@
 # JEOrg :: KTD :: Coroutines :: Parent
 
+
+
+# Dispatchers - Default vs IO
+| Feature                | 	Dispatchers.Default	           | Dispatchers.IO                    |
+|------------------------|---------------------------------|-----------------------------------|
+| Optimized for	         | CPU-bound tasks	                | I/O-bound tasks                   |
+| Thread pool size	      | Fixed to CPU cores (max 64)	    | Starts small, grows as needed     |
+| Handles blocking?      | 	❌ Not optimized for blocking	  | ✅ Expands for blocking I/O        |
+| Work-stealing?	        | ✅ Yes, improves CPU efficiency	 | ❌ Not needed, threads mostly wait |
+| Extra thread creation? | 	❌ No (prevents overhead)       | 	✅ Yes (prevents I/O bottlenecks) |
+
 ## Resources
 
 ### Books
