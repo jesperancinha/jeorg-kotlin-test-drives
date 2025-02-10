@@ -22,12 +22,10 @@ fun main() {
             CoroutineScope(Dispatchers.Main).launch {
                 label.text = "Running task..."
 
-                // Simulate a heavy computation or IO operation
                 withContext(Dispatchers.IO) {
                     Thread.sleep(3000) // Simulate delay
                 }
 
-                // Back to Main thread
                 label.text = "Task Completed!"
             }
         }

@@ -10,6 +10,7 @@ object LoadingCoroutinesUnconfined {
 
     @JvmStatic
     fun main(args: Array<String>): Unit = runBlocking {
+        println("Starting coroutine unconfined - ${Thread.currentThread().name} with coroutine context ${currentCoroutineContext()}")
         launch(Dispatchers.Unconfined) {
             println("1 - Start in thread: ${Thread.currentThread().name} with coroutine context ${currentCoroutineContext()}")
             delay(1000)
