@@ -14,11 +14,10 @@ object LoadingCoroutinesWorkStealExample {
         val time = measureTimeMillis {
             repeat(numCores * 2) { index ->
                 jobs += launch(Dispatchers.Default) {
-                    val threadName = Thread.currentThread().name
                     val duration = if (index % 2 == 0) 1000L else 500L // Some tasks take longer
-                    println("Coroutine $index running on $threadName for $duration ms")
+                    println("Coroutine $index running on ${Thread.currentThread().name} for $duration ms")
                     delay(duration)
-                    println("Coroutine $index finished on $threadName")
+                    println("Coroutine $index finished on ${Thread.currentThread().name}")
                 }
             }
             jobs.joinAll()

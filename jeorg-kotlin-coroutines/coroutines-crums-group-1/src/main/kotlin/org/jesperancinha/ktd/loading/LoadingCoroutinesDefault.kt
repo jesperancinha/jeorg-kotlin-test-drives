@@ -20,6 +20,5 @@ object LoadingCoroutinesDefault {
                 }
             }
         }
-        delay(10.seconds)
     }
 }
