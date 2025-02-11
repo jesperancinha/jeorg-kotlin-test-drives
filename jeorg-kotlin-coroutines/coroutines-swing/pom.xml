@@ -89,10 +89,6 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>kotlinx-coroutines-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-swing</artifactId>
         </dependency>
         <dependency>

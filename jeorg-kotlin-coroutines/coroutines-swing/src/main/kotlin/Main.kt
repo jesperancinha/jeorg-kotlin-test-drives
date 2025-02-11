@@ -3,6 +3,7 @@ package org.jesperancinha.ktd
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.awt.BorderLayout
@@ -21,11 +22,7 @@ fun main() {
         button.addActionListener {
             CoroutineScope(Dispatchers.Main).launch {
                 label.text = "Running task..."
-
-                withContext(Dispatchers.IO) {
-                    Thread.sleep(3000) // Simulate delay
-                }
-
+                delay(3000)
                 label.text = "Task Completed!"
             }
         }
