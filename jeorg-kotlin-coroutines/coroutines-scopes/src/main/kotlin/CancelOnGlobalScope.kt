@@ -24,7 +24,7 @@ object CancelOnGlobalScope {
     }
 }
 
-object CancleOnRunBlocking {
+object CancelOnRunBlocking {
     @JvmStatic
     fun main(args: Array<String> = emptyArray())  {
         runBlocking(Dispatchers.IO) {
@@ -52,7 +52,7 @@ object CancelOnExample {
     fun main(args: Array<String> = emptyArray()) {
         CancelOnGlobalScope.main()
         runCatching {
-            CancleOnRunBlocking.main()
+            CancelOnRunBlocking.main()
         }.onFailure {
             it.printStackTrace()
         }
