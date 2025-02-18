@@ -40,7 +40,7 @@ class CancellationWithException {
 
 @OptIn(DelicateCoroutinesApi::class)
 fun testLaunch() = runBlocking {
-    SpecialLogger.info("Tests with changing to scope IO and join")
+    SpecialLogger.info("Tests with changing to context IO and join")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
         runCatching {
@@ -100,7 +100,7 @@ fun testRemove() = runBlocking {
 
 @OptIn(DelicateCoroutinesApi::class)
 fun testAsync() = runBlocking {
-    SpecialLogger.info("Tests with changing to scope IO, asynchronous")
+    SpecialLogger.info("Tests with changing to context IO, asynchronous")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
         runCatching {
@@ -130,7 +130,7 @@ fun testAsync() = runBlocking {
 
 @OptIn(DelicateCoroutinesApi::class)
 fun testAsyncAndWait() = runBlocking {
-    SpecialLogger.info("Tests with changing to scope IO, asynchronous and wait")
+    SpecialLogger.info("Tests with changing to context IO, asynchronous and wait")
     GlobalScope.launch {
         logContext(this.coroutineContext, MACHINE_START)
         runCatching {
