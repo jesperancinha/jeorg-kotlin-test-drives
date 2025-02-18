@@ -18,6 +18,7 @@
         <module>jeorg-kotlin-coroutines-io</module>
         <module>jeorg-kotlin-coroutines-thread-count</module>
         <module>coroutines-crums-group-1</module>
+        <module>coroutines-scopes</module>
     </modules>
     <packaging>pom</packaging>
 </project>
