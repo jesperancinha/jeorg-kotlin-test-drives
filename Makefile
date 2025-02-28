@@ -49,3 +49,9 @@ update:
 #	tar xf /tmp/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -C
 #	ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../ | xargs -I {}  mkdir {}/lib
 #	ls -d /opt/hostedtoolcache/Java_Adopt_jdk/17.0*/x64/../lib | sudo xargs cp ~/java-se-8u41-ri/lib/tools.jar
+update-repo-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/update-all-repo-prs.sh | bash
+accept-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
+deps-plugins-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash -s -- $(PARAMS)
