@@ -51,7 +51,7 @@ tasks.test {
 }
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
-    reports{
+    reports {
         xml.required.set(true)
     }
 }
@@ -59,8 +59,9 @@ tasks.jacocoTestReport {
 dependencies {
     implementation(kotlin("stdlib"))
     api(libs.slf4j.api)
-    testImplementation(libs.junit.jupiter)
-    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(platform(libs.junit.bom))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation(libs.kotest.assertions.core)
 }
 

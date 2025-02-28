@@ -43,7 +43,7 @@ tasks.test {
 }
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
-    reports{
+    reports {
         xml.required.set(true)
     }
 }
@@ -52,7 +52,8 @@ dependencies {
     implementation(kotlin("stdlib"))
     api(libs.slf4j.api)
     implementation("org.jesperancinha:string-paradigm-expression-api:0.0.0-SNAPSHOT")
-    testImplementation(libs.junit.jupiter)
-    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(platform(libs.junit.bom))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine")
     testImplementation(libs.kotest.assertions.core)
 }
