@@ -57,6 +57,9 @@ dependencies {
     implementation(kotlin("stdlib"))
     api(libs.slf4j.api)
     testImplementation(platform(libs.junit.bom))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.junit.platform:junit-platform-engine")
     testImplementation(libs.kotest.assertions.core)
 }

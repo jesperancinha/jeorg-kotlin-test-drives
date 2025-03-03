@@ -63,8 +63,10 @@ dependencies {
     implementation(project(mapOf("path" to ":string-paradigm-expression-api")))
     implementation("info.picocli:picocli:4.7.6")
     testImplementation(platform(libs.junit.bom))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.junit.platform:junit-platform-engine")
     testImplementation(libs.kotest.assertions.core)
 }
 
