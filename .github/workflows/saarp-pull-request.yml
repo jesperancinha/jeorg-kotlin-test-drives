@@ -27,7 +27,7 @@ jobs:
       run: cd string-paradigm-expression-api && gradle clean build --stacktrace && gradle assemble test publishToMavenLocal --stacktrace
 
     - name: Build and Expression No Wrapper API
-      run: cd string-paradigm-expression-no-wrapper --stacktrace && gradle clean build && gradle assemble test publishToMavenLocal --stacktrace
+      run: cd string-paradigm-expression-no-wrapper && gradle clean build --stacktrace && gradle assemble test publishToMavenLocal --stacktrace
 
     - name: Build Complete
       run: gradle clean build test publishToMavenLocal --stacktrace && gradle dependencies
