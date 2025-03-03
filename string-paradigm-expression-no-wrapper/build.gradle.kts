@@ -53,7 +53,9 @@ dependencies {
     api(libs.slf4j.api)
     implementation("org.jesperancinha:string-paradigm-expression-api:0.0.0-SNAPSHOT")
     testImplementation(platform(libs.junit.bom))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.junit.platform:junit-platform-engine")
     testImplementation(libs.kotest.assertions.core)
 }

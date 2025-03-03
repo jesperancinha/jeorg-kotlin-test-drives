@@ -51,8 +51,10 @@ dependencies {
     implementation("org.jesperancinha:string-paradigm-api:0.0.0-SNAPSHOT")
     implementation(project(mapOf("path" to ":string-paradigm-api")))
     testImplementation(platform(libs.junit.bom))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.junit.platform:junit-platform-engine")
     testImplementation(libs.kotest.assertions.core)
 }
 

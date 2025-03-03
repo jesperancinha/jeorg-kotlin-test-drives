@@ -8,6 +8,7 @@ gradle/wrapper
 gradlew
 gradlew.bat
 out
+.kotlin
 
 # intellij
 .idea
