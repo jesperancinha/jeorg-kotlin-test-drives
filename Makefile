@@ -20,13 +20,6 @@ buildw:
 	done
 	gradle clean build test publishToMavenLocal
 upgrade:
-	@for location in $(MODULE_LOCATIONS); do \
-  		export CURRENT=$(shell pwd); \
-  		echo "Upgrading $$location..."; \
-		cd $$location; \
-		gradle wrapper --gradle-version $(GRADLE_VERSION); \
-		cd $$CURRENT; \
-	done
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-mac-os:
 	brew upgrade gradle
