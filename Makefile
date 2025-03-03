@@ -10,15 +10,7 @@ buildw:
 	if [ -d build ]; then rm -r build; fi; \
 	gradle wrapper; \
 	./gradlew
-	@for location in $(MODULE_LOCATIONS); do \
-  		export CURRENT=$(shell pwd); \
-  		echo "Building $$location..."; \
-		cd $$location; \
-		gradlew clean build; \
-		gradle assemble test publishToMavenLocal; \
-		cd $$CURRENT; \
-	done
-	gradle clean build test publishToMavenLocal
+	gradle clean build test publishToMavenLocal --stacktrace
 upgrade:
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-mac-os:
