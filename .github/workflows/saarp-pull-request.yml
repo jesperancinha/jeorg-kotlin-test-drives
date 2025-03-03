@@ -21,13 +21,13 @@ jobs:
       uses: gradle/gradle-build-action@v3
 
     - name: Build and Test API
-      run: cd string-paradigm-api && gradle clean build &&gradle assemble test publishToMavenLocal
+      run: cd string-paradigm-api && gradle clean build --stacktrace && gradle assemble test publishToMavenLocal --stacktrace
 
     - name: Build and Expression API
-      run: cd string-paradigm-expression-api && gradle clean build &&gradle assemble test publishToMavenLocal
+      run: cd string-paradigm-expression-api && gradle clean build --stacktrace && gradle assemble test publishToMavenLocal --stacktrace
 
     - name: Build and Expression No Wrapper API
-      run: cd string-paradigm-expression-no-wrapper && gradle clean build &&gradle assemble test publishToMavenLocal
+      run: cd string-paradigm-expression-no-wrapper --stacktrace && gradle clean build && gradle assemble test publishToMavenLocal --stacktrace
 
     - name: Build Complete
-      run: gradle clean build test publishToMavenLocal && gradle dependencies
+      run: gradle clean build test publishToMavenLocal --stacktrace && gradle dependencies
