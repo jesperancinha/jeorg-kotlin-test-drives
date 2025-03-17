@@ -3,6 +3,6 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.10" }
 jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.3.1" }
 
 [libraries]
-junit-bom = { group = "org.junit", name = "junit-bom", version = "5.12.0" }
+junit-bom = { group = "org.junit", name = "junit-bom", version = "5.12.1" }
 kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version = "2.0.17" }
