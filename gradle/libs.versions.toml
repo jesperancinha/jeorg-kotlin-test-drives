@@ -3,9 +3,9 @@ arrowVersion = "2.0.1"
 jupiterVersion = "5.12.1"
 
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.10" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.1.10" }
-kotlin-js = { id = "org.jetbrains.kotlin.js", version = "2.1.10" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.20" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.1.20" }
+kotlin-js = { id = "org.jetbrains.kotlin.js", version = "2.1.20" }
 jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.3.1" }
 google-ksp = { id = "com.google.devtools.ksp", version = "2.1.10-1.0.31" }
 
@@ -19,6 +19,6 @@ arrow-fx-coroutines = { group = "io.arrow-kt", name = "arrow-fx-coroutines", ver
 arrow-analysis-types-jvm = { group = "io.arrow-kt", name = "arrow-analysis-types-jvm", version = "2.0.2" }
 arrow-optics-ksp-plugin = { group = "io.arrow-kt", name = "arrow-optics-ksp-plugin", version.ref = "arrowVersion" }
 consolerizer = { group = "org.jesperancinha.console", name = "consolerizer", version = "2.2.3" }
-kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version = "2.1.10" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version = "2.1.20" }
 kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
 assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.3" }
