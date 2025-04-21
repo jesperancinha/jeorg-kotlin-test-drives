@@ -47,7 +47,7 @@
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockk-jvm.version>1.14.0</mockk-jvm.version>
         <kotest-assertions-core-jvm.version>5.9.1</kotest-assertions-core-jvm.version>
-        <picocli.version>4.7.6</picocli.version>
+        <picocli.version>4.7.7</picocli.version>
     </properties>
 
     <modules>
