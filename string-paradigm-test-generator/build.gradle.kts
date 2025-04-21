@@ -61,7 +61,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     api(libs.slf4j.api)
     implementation(project(mapOf("path" to ":string-paradigm-expression-api")))
-    implementation("info.picocli:picocli:4.7.6")
+    implementation("info.picocli:picocli:4.7.7")
     testImplementation(platform(libs.junit.bom))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.jupiter:junit-jupiter-engine")
