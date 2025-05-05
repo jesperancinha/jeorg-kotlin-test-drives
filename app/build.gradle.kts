@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.opencsv:opencsv:5.10")
+    implementation("com.opencsv:opencsv:5.11")
     implementation("org.apache.commons:commons-io:1.3.2")
     testImplementation(platform("org.junit:junit-bom:5.12.2"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
