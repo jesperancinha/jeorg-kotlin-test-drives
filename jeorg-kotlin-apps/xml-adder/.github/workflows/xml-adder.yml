@@ -1,0 +1,38 @@
+name: XMLA Build and Report
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'adopt'
+        cache: gradle
+
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Creates properties
+      run: touch local.properties
+
+    - name: Build Report
+      run: make build-report
+
+    - name: Send Reports
+      run: make send-report
+      env:
+         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
