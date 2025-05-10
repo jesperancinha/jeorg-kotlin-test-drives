@@ -17,3 +17,5 @@ include("jeorg-kotlin-crums:module-common")
 findProject(":jeorg-kotlin-crums:module-common")?.name = "module-common"
 include("jeorg-kotlin-crums:module-use")
 findProject(":jeorg-kotlin-crums:module-use")?.name = "module-use"
+include("jeorg-kotlin-apps:json-to-builder-pattern")
+findProject(":jeorg-kotlin-apps:json-to-builder-pattern")?.name = "json-to-builder-pattern"

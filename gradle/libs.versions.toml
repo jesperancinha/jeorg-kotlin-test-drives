@@ -22,3 +22,8 @@ consolerizer = { group = "org.jesperancinha.console", name = "consolerizer", ver
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version = "2.1.20" }
 kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
 assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.3" }
+kotest-runner-junit5-jvm = { group = "io.kotest", name = "kotest-runner-junit5-jvm", version = "5.9.1" }
+kotest-framework-engine-jvm = { group = "io.kotest", name = "kotest-framework-engine-jvm", version = "5.9.1" }
+kotest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version = "5.9.1" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "2.1.20" }
+google-gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
