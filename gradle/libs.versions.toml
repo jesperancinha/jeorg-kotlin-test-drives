@@ -6,7 +6,7 @@ jupiterVersion = "5.12.2"
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.20" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.1.20" }
 kotlin-js = { id = "org.jetbrains.kotlin.js", version = "2.1.20" }
-jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.3.1" }
+jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.4.5" }
 google-ksp = { id = "com.google.devtools.ksp", version = "2.1.20-2.0.1" }
 
 [libraries]
