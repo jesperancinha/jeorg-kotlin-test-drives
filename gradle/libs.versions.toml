@@ -1,6 +1,6 @@
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.1.20" }
-jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.3.1" }
+jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.4.5" }
 
 [libraries]
 junit-bom = { group = "org.junit", name = "junit-bom", version = "5.12.2" }
