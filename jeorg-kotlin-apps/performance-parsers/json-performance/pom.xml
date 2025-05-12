@@ -1,0 +1,19 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jesperancinha.performance</groupId>
+        <artifactId>performance-parsers</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <packaging>pom</packaging>
+    <name>JEOrg :: KTD :: Apps :: Perf. Parsers :: JSON Parent</name>
+
+    <artifactId>json-performance</artifactId>
+
+    <modules>
+        <module>perfomance-json-parser</module>
+        <module>performance-object-parser</module>
+    </modules>
+</project>

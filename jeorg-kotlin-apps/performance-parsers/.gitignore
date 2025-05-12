@@ -1,0 +1,18 @@
+**/build
+**/build-by-eclipse
+**/bin
+**/lib
+ivy-cache
+repository
+
+# JetBrains
+.idea
+*.iml
+target
+build
+bin
+dist
+.DS_Store
+
+# Maven
+dependency-reduced-pom.xml
