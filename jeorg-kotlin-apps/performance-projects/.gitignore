@@ -1,0 +1,37 @@
+### Intellij
+*.iml
+*.ipr
+*.iws
+.idea
+
+### Eclipse
+.classpath
+.settings
+.project
+**/build/
+**/bin/
+**/build-by-eclipse/
+
+### Gradle
+.gradle
+out
+
+### IDE
+target
+
+# Coverage
+coverage
+*.zip
+index.html
+doc
+test
+jacoco
+*.jar
+
+## Automation
+cypressUpdateOne.sh
+docker-composetmp.yml
+packagetmp.json
+pluginUpdatesOne.sh
+javaUpdatesOne.sh
+nodeUpdatesOne.sh
