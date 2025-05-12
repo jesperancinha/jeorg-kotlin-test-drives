@@ -3,7 +3,7 @@ plugins {
     idea
     java
     jacoco
-    id("org.jesperancinha.plugins.omni") version "0.3.1"
+    id("org.jesperancinha.plugins.omni") version "0.4.5"
 }
 group = "jesperancinha"
 version = "0.0.0-SNAPSHOT"
