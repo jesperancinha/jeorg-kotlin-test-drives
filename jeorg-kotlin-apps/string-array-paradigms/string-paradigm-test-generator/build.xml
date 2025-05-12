@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     10 de oct. de 2015 20:33:26                                                        
+
+     project    
+     description
+                   
+     JOAO                                                                
+     ====================================================================== -->
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="project" default="default">
+	<property name="one-jar.dist.dir" value="/one-jar-ant" />
+	<import file="${one-jar.dist.dir}/one-jar-ant-task.xml" optional="true" />
+	<description>
+            description
+    </description>
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="resolve" description="--> retrieve dependencies with ivy">
+		<delete dir="build" />
+		<ivy:resolve file="ivy.xml" conf="default" />
+		<ivy:retrieve pattern="build/[conf]/[artifact]-[type]-[revision].[ext]" conf="runtime" />
+		<ivy:cachepath pathid="ivy.build.path" conf="default" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="default" depends="resolve" description="description">
+		<mkdir dir="build" />
+		<!-- Build classes for main.jar -->
+		<javac destdir="build" includeantruntime="true" classpathref="ivy.build.path">
+			<src path="src/main/java" />
+		</javac>
+		<!-- Construct the One-JAR file -->
+		<one-jar destfile="build/one-string-paradigm-input-test-generator.jar">
+			<lib>
+				<fileset dir="build/runtime" id="ivy.build.path" excludes="html">
+					<exclude name="*.html" />
+				</fileset>
+			</lib>
+			<main>
+				<!-- Construct main.jar from classes and source code -->
+				<fileset dir="build" />
+			</main>
+			<manifest>
+				<attribute name="One-Jar-Main-Class" value="com.jesperancinha.string.paradigm.inputgenerator.InputGenerator" />
+			</manifest>
+		</one-jar>
+	</target>
+
+</project>

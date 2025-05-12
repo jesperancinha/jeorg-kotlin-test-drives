@@ -27,3 +27,6 @@ kotest-framework-engine-jvm = { group = "io.kotest", name = "kotest-framework-en
 kotest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version = "5.9.1" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "2.1.20" }
 google-gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
+junit-bom = { group = "org.junit", name = "junit-bom", version = "5.12.2" }
+kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version = "2.0.17" }

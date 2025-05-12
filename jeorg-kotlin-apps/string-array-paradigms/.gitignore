@@ -1,0 +1,25 @@
+build
+build-by-eclipse
+bin
+
+# gradle files
+.gradle
+gradle/wrapper
+gradlew
+gradlew.bat
+out
+.kotlin
+
+# intellij
+.idea
+*.iml
+*.iws
+*.ipr
+
+## Automation
+cypressUpdateOne.sh
+docker-composetmp.yml
+packagetmp.json
+pluginUpdatesOne.sh
+javaUpdatesOne.sh
+nodeUpdatesOne.sh
