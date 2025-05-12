@@ -21,3 +21,6 @@ include("jeorg-kotlin-apps:json-to-builder-pattern")
 findProject(":jeorg-kotlin-apps:json-to-builder-pattern")?.name = "json-to-builder-pattern"
 include("jeorg-kotlin-apps:xml-adder")
 findProject(":jeorg-kotlin-apps:xml-adder")?.name = "xml-adder"
+include("jeorg-kotlin-apps:performance-projects:performance-input-test-generator")
+include("jeorg-kotlin-apps:performance-projects:performance-buffered-reader")
+include("jeorg-kotlin-apps:performance-projects:performance-jump-search")
