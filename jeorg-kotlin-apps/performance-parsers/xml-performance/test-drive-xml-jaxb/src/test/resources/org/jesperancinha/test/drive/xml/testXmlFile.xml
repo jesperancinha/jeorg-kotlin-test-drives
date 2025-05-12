@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books xmlns:bs="http://www.joaofilipesabinoesperancinha.nl">
+    <bs:book name="The Hobbit 0">
+        <bs:pages>123</bs:pages>
+        <bs:genre>Action</bs:genre>
+        <bs:author>J.R.R. Tolkien 1</bs:author>
+    </bs:book>
+    <bs:book name="The Hobbit 1">
+        <bs:pages>456</bs:pages>
+        <bs:genre>Comedy</bs:genre>
+        <bs:author>J.R.R. Tolkien 2</bs:author>
+    </bs:book>
+    <bs:book name="The Hobbit 2">
+        <bs:pages>789</bs:pages>
+        <bs:genre>War</bs:genre>
+        <bs:author>J.R.R. Tolkien 3</bs:author>
+    </bs:book>
+    <bs:book name="The Hobbit 3">
+        <bs:pages>101112</bs:pages>
+        <bs:genre>Drama</bs:genre>
+        <bs:author>J.R.R. Tolkien 4</bs:author>
+    </bs:book>
+</books>

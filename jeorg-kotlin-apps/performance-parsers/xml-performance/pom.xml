@@ -1,0 +1,24 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jesperancinha.performance</groupId>
+        <artifactId>performance-parsers</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>xml-performance</artifactId>
+    <name>JEOrg :: KTD :: Apps :: Perf. Parsers :: XML Parent</name>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>test-drive-xml-api</module>
+        <module>test-drive-xml-dom</module>
+        <module>test-drive-xml-dom-xpath</module>
+        <module>test-drive-xml-jaxb</module>
+        <module>test-drive-xml-main-runner</module>
+        <module>test-drive-xml-sax</module>
+    </modules>
+
+</project>
