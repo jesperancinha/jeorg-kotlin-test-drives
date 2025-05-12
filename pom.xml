@@ -15,7 +15,7 @@
         <kotlin.version>2.1.20</kotlin.version>
         <args4j-maven-plugin.version>2.37</args4j-maven-plugin.version>
         <kotest.version>5.9.1</kotest.version>
-        <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
+        <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.13</jacoco-maven-plugin.version>
         <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <thumbnailator.version>0.4.20</thumbnailator.version>
