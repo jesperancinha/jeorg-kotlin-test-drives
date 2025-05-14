@@ -1,0 +1,14 @@
+# Intellij
+.idea/**
+*.iml
+
+# Maven
+**/target
+dependency-reduced-pom.xml
+
+# Eclipse settings
+.metadata/
+RemoteSystemsTempFiles/
+**/build
+**/build-by-eclipse
+**/bin

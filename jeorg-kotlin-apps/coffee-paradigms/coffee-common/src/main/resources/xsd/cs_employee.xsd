@@ -1,0 +1,56 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+    <xs:element name="Employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Employee" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Name"/>
+                            <xs:element name="Cup">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute type="xs:string" name="size" use="optional"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Actions">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="PreAction" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute type="xs:string" name="description"
+                                                                      use="optional"/>
+                                                        <xs:attribute type="xs:int" name="time" use="optional"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="PostAction" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute type="xs:string" name="description"
+                                                                      use="optional"/>
+                                                        <xs:attribute type="xs:int" name="time" use="optional"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:int" name="findCupTime" use="optional"/>
+                        <xs:attribute type="xs:int" name="putUnderOutletTime" use="optional"/>
+                        <xs:attribute type="xs:int" name="takeCupAndLeaveTime" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
