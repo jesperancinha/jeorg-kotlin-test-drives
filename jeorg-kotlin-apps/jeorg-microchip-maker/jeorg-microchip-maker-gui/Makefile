@@ -1,4 +1,5 @@
 include Makefile.mk
+include ../../../Makefile.mk
 
 clean:
 	if [ -d ../../../kotlin-js-store ]; then rm -r .../../../kotlin-js-store; fi
