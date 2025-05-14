@@ -22,12 +22,27 @@
         <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
         <kotlin.version>2.1.21</kotlin.version>
 
         <!-- External libraries -->
         <kotlinx.coroutines.version>1.10.2</kotlinx.coroutines.version>
+        <truth.version>1.4.4</truth.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <slf4j-api.version>2.0.17</slf4j-api.version>
+        <slf4j-simple.version>2.0.17</slf4j-simple.version>
+        <log4j2.version>2.24.3</log4j2.version>
+        <log4j-slf4j-impl.version>2.24.3</log4j-slf4j-impl.version>
+        <jaxb-maven-plugin.version>3.0.0</jaxb-maven-plugin.version>
+        <log4j-to-slf4j.version>2.24.3</log4j-to-slf4j.version>
+        <jakarta.activation-api.version>2.1.3</jakarta.activation-api.version>
+        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
+        <mockk-jvm.version>1.14.2</mockk-jvm.version>
+        <kotest-assertions-core-jvm.version>5.9.1</kotest-assertions-core-jvm.version>
+        <picocli.version>4.7.7</picocli.version>
 
         <!-- Loggers -->
         <consolerizer.version>2.2.3</consolerizer.version>

@@ -14,5 +14,6 @@
         <module>jeorg-microchip-maker</module>
         <module>jeorg-sse-coffees</module>
         <module>performance-parsers</module>
+        <module>coffee-paradigms</module>
     </modules>
 </project>

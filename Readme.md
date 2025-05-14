@@ -64,6 +64,21 @@ Note that if you want to build this project from the root, you need to use one o
 
 ---
 
+## Moved projects
+
+Repos under handler [jesperancinha](https://github.com/jesperancinha) can be difficult to manage, especially if they are very small. Therefore, in order to be able to handle small projects better, some of them have been moved to here:
+
+* [coffee-paradigms](jeorg-kotlin-apps/coffee-paradigms)
+* [json-to-builder-pattern](jeorg-kotlin-apps/json-to-builder-pattern)
+* [performance-parsers](jeorg-kotlin-apps/performance-parsers)
+* [performance-projects](jeorg-kotlin-apps/performance-projects)
+* [string-array-paradigms](jeorg-kotlin-apps/string-array-paradigms)
+* [xml-adder](jeorg-kotlin-apps/xml-adder)
+
+All of these projects used to be in separated repos, but eventually managing them became too costly for what they are and represent.
+
+---
+
 ## Resources
 
 ### Online

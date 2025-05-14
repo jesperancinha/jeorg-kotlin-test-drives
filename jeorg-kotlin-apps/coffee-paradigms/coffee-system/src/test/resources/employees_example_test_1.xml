@@ -1,0 +1,22 @@
+<Employees>
+    <Employee findCupTime="1">
+        <Name>Joao</Name>
+        <Cup size="Big"/>
+        <Actions>
+            <PreAction description="choose a cup" time="10"/>
+            <PreAction description="put cup in outlet" time="20"/>
+            <PostAction description="take cup and leave" time="5"/>
+            <PostAction description="dummy" time="55"/>
+        </Actions>
+    </Employee>
+    <Employee findCupTime="1">
+        <Name>Marco</Name>
+        <Cup size="Small"/>
+        <Actions>
+            <PreAction description="choose a cup" time="10"/>
+            <PreAction description="put cup in outlet" time="20"/>
+            <PostAction description="take cup and leave" time="5"/>
+            <PostAction description="dummy" time="55"/>
+        </Actions>
+    </Employee>
+</Employees>
