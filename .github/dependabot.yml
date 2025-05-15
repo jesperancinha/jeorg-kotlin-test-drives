@@ -4,3 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      postgresql:
+        patterns:
+          - "*vertx*"
+          - "vertx*"
+          - "*vertx"
