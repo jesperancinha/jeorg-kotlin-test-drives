@@ -3,16 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <properties>
-        <vertx-core.version>5.0.0</vertx-core.version>
-        <junit.version>4.13.2</junit.version>
-        <vertx-unit.version>4.3.7</vertx-unit.version>
-    </properties>
-
     <parent>
-        <artifactId>jeorg-vertex-osgi-testdrives</artifactId>
-        <groupId>org.jesperancinha.votd</groupId>
-        <version>0.0.0-SNAPSHOT</version>
+        <artifactId>vertex-osgi</artifactId>
+        <groupId>org.jesperancinha.ktd</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>vertx-module</artifactId>
@@ -21,12 +15,10 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
-            <version>${vertx-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-junit5</artifactId>
-            <version>5.0.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -46,15 +38,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.12.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
@@ -77,12 +66,14 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
+                        <configuration>
+                            <sourceDirs>src/test/kotlin</sourceDirs>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
                     <jvmTarget>${java.version}</jvmTarget>
                     <compilerPlugins>
-                        <plugin>spring</plugin>
                         <plugin>jpa</plugin>
                         <plugin>all-open</plugin>
                         <plugin>no-arg</plugin>

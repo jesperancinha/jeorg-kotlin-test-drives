@@ -82,6 +82,8 @@
         <ktor.version>2.3.13</ktor.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <json-simple.version>1.1.1</json-simple.version>
+        <junit-bom.version>5.10.0</junit-bom.version>
+        <vertx-stack-depchain.version>4.5.9</vertx-stack-depchain.version>
     </properties>
 
     <modules>
@@ -102,6 +104,20 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
                 <version>${spring-boot-starter-parent.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.vertx</groupId>
+                <artifactId>vertx-stack-depchain</artifactId>
+                <version>${vertx-stack-depchain.version}</version> <!-- Match your Vert.x version -->
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
