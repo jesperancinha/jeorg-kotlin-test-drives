@@ -13,7 +13,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     id("java-gradle-plugin")
     id("maven-publish")
-    id("org.jesperancinha.plugins.omni") version "0.3.1"
+    alias(libs.plugins.jesperancinha.omni)
     jacoco
 }
 
