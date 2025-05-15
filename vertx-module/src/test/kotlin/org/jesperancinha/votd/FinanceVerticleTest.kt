@@ -17,10 +17,6 @@ class FinanceVerticleTest constructor(
     context: VertxTestContext
 ) {
 
-    init {
-        context.completeNow()
-    }
-
     private val vertx: Vertx by lazy {
         Vertx.vertx().also {
             it.deployVerticle(FinanceVerticle(), DeploymentOptions())
