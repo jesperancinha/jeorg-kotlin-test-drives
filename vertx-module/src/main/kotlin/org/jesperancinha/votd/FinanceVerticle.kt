@@ -1,9 +1,7 @@
 package org.jesperancinha.votd
 
 import io.vertx.core.AbstractVerticle
-import io.vertx.core.AsyncResult
 import io.vertx.core.Promise
-import io.vertx.core.http.HttpServer
 import io.vertx.core.http.HttpServerRequest
 
 /**
@@ -11,15 +9,17 @@ import io.vertx.core.http.HttpServerRequest
  */
 class FinanceVerticle : AbstractVerticle() {
     @Throws(Exception::class)
-    override fun start(startFuture: Promise<Void>) {
-        vertx.createHttpServer().requestHandler { r: HttpServerRequest ->
-            r.response().end("<p>This is only the begining of cashing in</p>")
-        }
-            .listen(8080) { result: AsyncResult<HttpServer?> ->
+    override fun start(startPromise: Promise<Void>) {
+        vertx.createHttpServer()
+            .requestHandler { request: HttpServerRequest ->
+                request.response().end("<p>This is only the beginning of cashing in</p>")
+            }
+            .listen(8080)
+            .onComplete { result ->
                 if (result.succeeded()) {
-                    startFuture.complete()
+                    startPromise.complete()
                 } else {
-                    startFuture.fail(result.cause())
+                    startPromise.fail(result.cause())
                 }
             }
     }

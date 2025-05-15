@@ -1,5 +1,6 @@
 package org.jesperancinha.votd
 
+import io.vertx.core.DeploymentOptions
 import io.vertx.core.Vertx
 import io.vertx.core.http.HttpMethod
 import io.vertx.junit5.VertxExtension
@@ -12,31 +13,47 @@ import org.junit.jupiter.api.extension.ExtendWith
  * Created by joao on 21-2-16.
  */
 @ExtendWith(VertxExtension::class)
-class FinanceVerticalTest constructor(
-    context: VertxTestContext
+class FinanceVerticalTest(
+    val context: VertxTestContext
 ) {
 
-    private val vertx: Vertx by lazy {
-        Vertx.vertx().also {
-            it.deployVerticle(FinanceVerticle::class.java.name, context.succeedingThenComplete())
-        }
+    init {
+        context.completeNow()
     }
 
     @AfterEach
-    fun tearDown(context: VertxTestContext) {
+    fun tearDown() {
         context.completeNow()
-        vertx.close()
     }
 
     @Test
-    fun testMyApplication(context: VertxTestContext) {
-        vertx.createHttpClient().request(
-            HttpMethod.GET, 8080, "localhost", "/"
-        ) { it.map {
-//                context.assertTrue(body.toString().contains("This is only the begining of cashing in"));
-                context.completeNow()
-                null
-            }
+    fun testMyApplication() {
+        val vertx = Vertx.vertx()
+        vertx.also {
+            it.deployVerticle(FinanceVerticle(), DeploymentOptions())
+                .onComplete { result ->
+                    if (result.succeeded()) {
+                        println("Deployed: ${result.result()}")
+                        vertx.createHttpClient().request(HttpMethod.GET, 8080, "localhost", "/")
+                            .compose { request -> request.send() }
+                            .onSuccess { response ->
+                                response.body()
+                                    .onSuccess { body ->
+                                        println("Received: ${body.toString("UTF-8")}")
+                                        vertx.close()
+                                        context.completeNow()
+                                    }
+                                    .onFailure { err ->
+                                        context.failNow(err)
+                                    }
+                            }
+                            .onFailure { err ->
+                                context.failNow(err)
+                            }
+                    } else {
+                        println("Failed: ${result.cause()}")
+                    }
+                }
         }
     }
 }
