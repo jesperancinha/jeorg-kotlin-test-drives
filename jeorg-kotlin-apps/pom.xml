@@ -15,5 +15,6 @@
         <module>jeorg-sse-coffees</module>
         <module>performance-parsers</module>
         <module>coffee-paradigms</module>
+        <module>vertex-osgi</module>
     </modules>
 </project>
