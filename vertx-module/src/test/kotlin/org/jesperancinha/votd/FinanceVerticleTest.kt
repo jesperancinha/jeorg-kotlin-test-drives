@@ -1,5 +1,6 @@
 package org.jesperancinha.votd
 
+import io.vertx.core.DeploymentOptions
 import io.vertx.core.Vertx
 import io.vertx.core.http.HttpMethod
 import io.vertx.junit5.VertxExtension
@@ -19,9 +20,17 @@ class FinanceVerticleTest constructor(
     init {
         context.completeNow()
     }
+
     private val vertx: Vertx by lazy {
         Vertx.vertx().also {
-            it.deployVerticle(FinanceVerticle::class.java.name, context.succeedingThenComplete())
+            it.deployVerticle(FinanceVerticle(), DeploymentOptions())
+                .onComplete { result ->
+                    if (result.succeeded()) {
+                        println("Deployed: ${result.result()}")
+                    } else {
+                        println("Failed: ${result.cause()}")
+                    }
+                }
         }
     }
 
@@ -33,13 +42,20 @@ class FinanceVerticleTest constructor(
 
     @Test
     fun testMyApplication(context: VertxTestContext) {
-        vertx.createHttpClient().request(
-            HttpMethod.GET, 8080, "localhost", "/"
-        ) { it.map {
-//                context.assertTrue(body.toString().contains("This is only the begining of cashing in"));
-                context.completeNow()
-                null
+        vertx.createHttpClient().request(HttpMethod.GET, 8080, "localhost", "/")
+            .compose { request -> request.send() }
+            .onSuccess { response ->
+                response.body()
+                    .onSuccess { body ->
+                        println("Received: ${body.toString("UTF-8")}")
+                        context.completeNow()
+                    }
+                    .onFailure { err ->
+                        context.failNow(err)
+                    }
             }
-        }
+            .onFailure { err ->
+                context.failNow(err)
+            }
     }
 }
