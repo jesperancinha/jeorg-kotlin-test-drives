@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith
  * Created by joao on 21-2-16.
  */
 @ExtendWith(VertxExtension::class)
-class FinanceVerticleTest constructor(
+class FinanceVerticalTest constructor(
     context: VertxTestContext
 ) {
 
@@ -25,6 +25,7 @@ class FinanceVerticleTest constructor(
     @AfterEach
     fun tearDown(context: VertxTestContext) {
         context.completeNow()
+        vertx.close()
     }
 
     @Test
