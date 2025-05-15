@@ -6,9 +6,10 @@
     </properties>
 
     <parent>
-        <artifactId>jeorg-vertex-osgi-testdrives</artifactId>
-        <groupId>org.jesperancinha.votd</groupId>
-        <version>0.0.0-SNAPSHOT</version>
+        <artifactId>vertex-osgi</artifactId>
+        <groupId>org.jesperancinha.ktd</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>osgi-module</artifactId>
@@ -43,7 +44,6 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
@@ -53,13 +53,10 @@
                 <executions>
                     <execution>
                         <id>compile</id>
-                        <phase>process-sources</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirs>src/main/kotlin</sourceDirs>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>test-compile</id>

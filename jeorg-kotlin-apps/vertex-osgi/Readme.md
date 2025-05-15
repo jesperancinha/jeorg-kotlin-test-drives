@@ -1,4 +1,4 @@
-# jeorg-vertex-osgi-testdrives
+# vertex-osgi
 
 ---
 
