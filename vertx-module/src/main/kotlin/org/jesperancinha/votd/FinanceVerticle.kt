@@ -1,9 +1,7 @@
 package org.jesperancinha.votd
 
 import io.vertx.core.AbstractVerticle
-import io.vertx.core.AsyncResult
 import io.vertx.core.Promise
-import io.vertx.core.http.HttpServer
 import io.vertx.core.http.HttpServerRequest
 
 /**
