@@ -27,8 +27,8 @@ class FinanceVerticleTest constructor(
 
     @AfterEach
     fun tearDown(context: VertxTestContext) {
-        vertx.close()
         context.completeNow()
+        vertx.close()
     }
 
     @Test
