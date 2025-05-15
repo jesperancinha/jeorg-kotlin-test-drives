@@ -13,13 +13,9 @@ import org.junit.jupiter.api.extension.ExtendWith
  * Created by joao on 21-2-16.
  */
 @ExtendWith(VertxExtension::class)
-class FinanceVerticleTest constructor(
+class FinanceVerticalTest constructor(
     context: VertxTestContext
 ) {
-
-    init {
-        context.completeNow()
-    }
 
     private val vertx: Vertx by lazy {
         Vertx.vertx().also {
@@ -36,8 +32,8 @@ class FinanceVerticleTest constructor(
 
     @AfterEach
     fun tearDown(context: VertxTestContext) {
-        vertx.close()
         context.completeNow()
+        vertx.close()
     }
 
     @Test
