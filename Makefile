@@ -17,8 +17,9 @@ build-maven:
 	mvn clean install
 build-gradle: clean
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --version $(GRADLE_VERSION) --stacktrace; \
-	cd jeorg-kotlin-apps/string-array-paradigms && make publish;
+	gradle wrapper --gradle-version $(GRADLE_VERSION); \
+	cd jeorg-kotlin-apps/string-array-paradigms; \
+		make publish
 	./gradlew --stop
 	./gradlew clean build test
 build-microchip-gradle:
