@@ -6,7 +6,7 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "2.1.20"
+    alias(libs.plugins.kotlin.jvm)
     id("java-gradle-plugin")
     id("maven-publish")
     jacoco
