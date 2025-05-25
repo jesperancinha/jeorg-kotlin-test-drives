@@ -69,7 +69,7 @@
         <kotlin-maven-symbol-processing.version>1.5</kotlin-maven-symbol-processing.version>
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <kotest.version>5.9.1</kotest.version>
-        <spring-boot-starter-parent.version>3.4.5</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.5.0</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j.version>2.0.17</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
