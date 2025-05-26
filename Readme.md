@@ -75,6 +75,7 @@ Repos under handler [jesperancinha](https://github.com/jesperancinha) can be dif
 * [string-array-paradigms](jeorg-kotlin-apps/string-array-paradigms)
 * [xml-adder](jeorg-kotlin-apps/xml-adder)
 * [vertex-osgi](jeorg-kotlin-apps/vertex-osgi)
+* [image-sizer-impl](jeorg-kotlin-apps/image-sizer/image-sizer-impl)
 
 All of these projects used to be in separated repos, but eventually managing them became too costly for what they are and represent.
 

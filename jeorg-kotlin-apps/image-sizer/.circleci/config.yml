@@ -1,0 +1,45 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:17-buster
+
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+
+      - run:
+         name: Prepare environment
+         command: wget https://download.java.net/openjdk/jdk8u41/ri/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -P /tmp &&
+            tar xf /tmp/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz -C ~/
+
+      - run:
+         name: Preparing tools.jar
+         command: sudo cp ~/java-se-8u41-ri/lib/tools.jar /usr/local/openjdk-17/../lib/
+
+      - run:
+         name: Build and Test
+         command: mvn clean install jacoco:prepare-agent package jacoco:report
+
+      - run:
+         name: Coverage reports
+         command: mvn omni-coveragereporter:report
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+
+      - run:
+         name: Integration tests
+         command: mvn integration-test
