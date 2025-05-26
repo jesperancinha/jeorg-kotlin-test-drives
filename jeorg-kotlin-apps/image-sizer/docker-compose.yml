@@ -1,0 +1,9 @@
+services:
+  image_sizer:
+    hostname: image_sizer
+    container_name: image_sizer
+    build:
+      context: .
+    volumes:
+          - .:/root/image-sizer
+          - ~/.m2:/root/.m2
