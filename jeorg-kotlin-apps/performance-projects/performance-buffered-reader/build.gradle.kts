@@ -45,8 +45,8 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("commons-io:commons-io:2.19.0")
     implementation("org.slf4j:slf4j-api:2.0.17")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.12.2")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.12.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.12.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.0")
+    testImplementation("org.junit.platform:junit-platform-suite-engine:1.13.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.0")
     testImplementation("com.google.truth:truth:1.4.4")
 }
