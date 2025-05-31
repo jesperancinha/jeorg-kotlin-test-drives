@@ -82,7 +82,7 @@
         <ktor.version>2.3.13</ktor.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <json-simple.version>1.1.1</json-simple.version>
-        <junit-bom.version>5.12.2</junit-bom.version>
+        <junit-bom.version>5.13.0</junit-bom.version>
         <vertx-stack-depchain.version>4.5.9</vertx-stack-depchain.version>
         <netty-bom.version>4.2.1.Final</netty-bom.version>
     </properties>
