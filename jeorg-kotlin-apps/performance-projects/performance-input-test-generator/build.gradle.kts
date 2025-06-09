@@ -45,9 +45,9 @@ dependencies {
     implementation("org.slf4j:slf4j-api:2.0.17")
     implementation("commons-io:commons-io:2.19.0")
     implementation("info.picocli:picocli:4.7.7")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.1")
     testImplementation("org.junit.platform:junit-platform-suite-engine:1.13.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.1")
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
 }
