@@ -25,7 +25,7 @@
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
-        <kotlin.version>2.1.21</kotlin.version>
+        <kotlin.version>2.2.0</kotlin.version>
 
         <!-- External libraries -->
         <kotlinx.coroutines.version>1.10.2</kotlinx.coroutines.version>
@@ -40,7 +40,7 @@
         <jakarta.activation-api.version>2.1.3</jakarta.activation-api.version>
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
-        <mockk-jvm.version>1.14.2</mockk-jvm.version>
+        <mockk-jvm.version>1.14.4</mockk-jvm.version>
         <kotest-assertions-core-jvm.version>5.9.1</kotest-assertions-core-jvm.version>
         <picocli.version>4.7.7</picocli.version>
 
@@ -74,7 +74,7 @@
         <slf4j.version>2.0.17</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <kotlinx-coroutines-reactor.version>1.10.2</kotlinx-coroutines-reactor.version>
-        <kotlin-reflect.version>2.1.21</kotlin-reflect.version>
+        <kotlin-reflect.version>2.2.0</kotlin-reflect.version>
         <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <commons-logging.version>1.3.5</commons-logging.version>
         <lombok.version>1.18.38</lombok.version>
