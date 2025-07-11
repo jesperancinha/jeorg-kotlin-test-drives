@@ -33,7 +33,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j-api.version>2.0.17</slf4j-api.version>
         <slf4j-simple.version>2.0.17</slf4j-simple.version>
-        <log4j2.version>2.25.0</log4j2.version>
+        <log4j2.version>2.25.1</log4j2.version>
         <log4j-slf4j-impl.version>2.25.1</log4j-slf4j-impl.version>
         <jaxb-maven-plugin.version>3.0.0</jaxb-maven-plugin.version>
         <log4j-to-slf4j.version>2.25.1</log4j-to-slf4j.version>
