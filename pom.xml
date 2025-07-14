@@ -84,7 +84,7 @@
         <json-simple.version>1.1.1</json-simple.version>
         <junit-bom.version>5.13.3</junit-bom.version>
         <vertx-stack-depchain.version>4.5.9</vertx-stack-depchain.version>
-        <netty-bom.version>4.2.2.Final</netty-bom.version>
+        <netty-bom.version>4.2.3.Final</netty-bom.version>
     </properties>
 
     <modules>
