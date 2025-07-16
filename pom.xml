@@ -49,7 +49,7 @@
 
         <!-- Unit testing -->
         <kotest-runner-junit5.version>5.9.1</kotest-runner-junit5.version>
-        <mockk.version>1.14.4</mockk.version>
+        <mockk.version>1.14.5</mockk.version>
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
