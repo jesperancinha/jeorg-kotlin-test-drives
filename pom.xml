@@ -85,6 +85,9 @@
         <junit-bom.version>5.13.3</junit-bom.version>
         <vertx-stack-depchain.version>4.5.9</vertx-stack-depchain.version>
         <netty-bom.version>4.2.3.Final</netty-bom.version>
+        <koin-bom.version>4.1.0</koin-bom.version>
+        <koin-annotations-jvm.version>1.4.0</koin-annotations-jvm.version>
+        <ksp-maven-plugin.version>1.9.10-1.0.13</ksp-maven-plugin.version>
     </properties>
 
     <modules>
@@ -128,6 +131,18 @@
                 <version>${netty-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.insert-koin</groupId>
+                <artifactId>koin-bom</artifactId>
+                <version>${koin-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.insert-koin</groupId>
+                <artifactId>koin-annotations-jvm</artifactId>
+                <version>${koin-annotations-jvm.version}</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.validation</groupId>

@@ -17,5 +17,6 @@
         <module>coffee-paradigms</module>
         <module>vertex-osgi</module>
         <module>image-sizer</module>
+        <module>coin-archiver</module>
     </modules>
 </project>
