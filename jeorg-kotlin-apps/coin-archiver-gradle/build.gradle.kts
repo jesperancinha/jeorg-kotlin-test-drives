@@ -12,7 +12,7 @@ application {
     mainClass.set("org.jesperancinha.ktd.AppKt")
 }
 
-val koinCoreVersion = "3.5.3"
+val koinCoreVersion = "4.1.0"
 val koinAnnotationsVersion = "1.3.0"
 
 tasks.register("wrapper") {
