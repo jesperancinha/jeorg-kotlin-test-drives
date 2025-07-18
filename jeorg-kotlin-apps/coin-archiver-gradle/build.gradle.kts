@@ -13,7 +13,7 @@ application {
 }
 
 val koinCoreVersion = "3.5.3"
-val koinAnnotationsVersion = "1.3.0"
+val koinAnnotationsVersion = "2.1.0"
 
 tasks.register("wrapper") {
     group = "build setup"
