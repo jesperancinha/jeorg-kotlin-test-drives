@@ -21,7 +21,7 @@ build-gradle: clean
 	cd jeorg-kotlin-apps/string-array-paradigms; \
 		make publish
 	gradle --stop
-	./gradlew clean build test
+	gradle clean build test
 build-microchip-gradle:
 	gradle wrapper
 	./gradlew build test

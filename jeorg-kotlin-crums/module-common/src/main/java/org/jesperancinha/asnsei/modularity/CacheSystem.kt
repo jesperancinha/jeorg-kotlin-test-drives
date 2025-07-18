@@ -18,7 +18,7 @@ class CacheSystem {
      * Using it will mean also inlining cacheData but that is normally not possible for internal members
      * Using @PublishedApi, we are able to incline the rest the code.
      */
-    inline fun debugCache() {
+    fun debugCache() {
         println("Cache State: $cacheData")
     }
 }
