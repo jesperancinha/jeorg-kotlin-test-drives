@@ -2,7 +2,7 @@ b: buildw
 wrapper:
 	gradle wrapper
 buildw:
-	./gradlew --stop
+	gradle --stop
 	./gradlew clean build test publishToMavenLocal
 test-gradle: buildw
 build-report:
