@@ -2,7 +2,7 @@ include ../Makefile.mk
 
 b: buildw
 clean:
-	./gradlew --stop
+	gradle --stop
 	./gradlew clean
 upgrade-build: clean upgrade b
 wrapper:

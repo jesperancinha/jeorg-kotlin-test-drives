@@ -20,7 +20,7 @@ build-gradle: clean
 	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	cd jeorg-kotlin-apps/string-array-paradigms; \
 		make publish
-	./gradlew --stop
+	gradle --stop
 	./gradlew clean build test
 build-microchip-gradle:
 	gradle wrapper
