@@ -13,14 +13,10 @@ plugins {
     alias(libs.plugins.jesperancinha.omni)
 }
 
-idea {
-    module {
-        sourceDirs = sourceDirs + file("build/generated/ksp/main/kotlin")
-        testSourceDirs = testSourceDirs + file("build/generated/ksp/test/kotlin")
-        generatedSourceDirs =
-            generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
-    }
-}
+
+kotlin.sourceSets["main"].kotlin.srcDir("build/generated/ksp/main/kotlin")
+kotlin.sourceSets["test"].kotlin.srcDir("build/generated/ksp/test/kotlin")
+
 dependencies {
     implementation(platform(libs.arrow.stack))
     implementation("io.arrow-kt:arrow-core")
