@@ -30,13 +30,17 @@ class ApplicationTest {
      */
     @Test
     fun `should test LocalDatetime`() {
-        val ldt = LocalDateTime.now()
-        println(ldt)
-        val zoned = ldt.atZone(ZoneId.systemDefault())
-        val instant = zoned.toInstant()
-        val ldt2 = instant.atZone(ZoneId.of("Asia/Kolkata")).toLocalDateTime()
-        println(ldt2)
-        println(ldt.toInstant(ZoneOffset.UTC))
-        println(ldt2.toInstant(ZoneOffset.UTC))
+        val ldt = LocalDateTime.now().also { println(it) }
+        
+        val ldt2 = ldt.atZone(ZoneId.systemDefault())
+            .toInstant()
+            .atZone(ZoneId.of("Asia/Kolkata"))
+            .toLocalDateTime()
+            .also { println(it) }
+            
+        with(ZoneOffset.UTC) {
+            println(ldt.toInstant(this))
+            println(ldt2.toInstant(this))
+        }
     }
 }
