@@ -7,20 +7,18 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val coinModule = module {
+    // Repositories and services
     single { CoinRepository() }
-    factory {
-        CoinService(repo = get())
-    }
-    single(
-        qualifier = named(name = "country")
-    ) { "Portugal" }
+    factory { CoinService(repo = get()) }
+    
+    // Constants
+    single(qualifier = named("country")) { "Portugal" }
+    
+    // Coin factories
     factory { (year: Int) ->
         Coin(
             year = year,
-            country = get(
-                qualifier =
-                    named("country")
-            ),
+            country = get(qualifier = named("country")),
             denomination = "1 Euro"
         )
     }
