@@ -21,14 +21,16 @@ class ReadWritePropertyInterface {
     }
 }
 
-class Lifestyle() {
+class Lifestyle {
     var lifestyle: String by LifestyleDelegate()
 
     var lifestyleKeeper: String = ""
 
-    constructor(lifestyle: String) : this() {
+    constructor(lifestyle: String) {
         this.lifestyle = lifestyle
     }
+    
+    constructor()
 }
 
 class LifestyleDelegate : ReadWriteProperty<Lifestyle, String> {

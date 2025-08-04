@@ -25,10 +25,10 @@ fun main() {
         printLogger(Level.INFO)
     }
     val koin = KoinPlatformTools.defaultContext().get()
-    val service: CoinService = koin.get()
+    val service = koin.get<CoinService>()
 
-    val coin2024: Coin = koin.get(parameters = { parametersOf(2024) })
-    val coin1990: Coin = koin.get(parameters = { parametersOf(1990) })
+    val coin2024 = koin.get<Coin> { parametersOf(2024) }
+    val coin1990 = koin.get<Coin> { parametersOf(1990) }
     service.register(coin2024)
     service.register(coin1990)
 
@@ -38,7 +38,7 @@ fun main() {
     service.listAll().forEach(::println)
     println("Rare coin: $rareCoin")
 
-    val service2: CoinService = koin.get()
+    val service2 = koin.get<CoinService>()
     println("Service1: $service")
     println("Service2: $service2")
 

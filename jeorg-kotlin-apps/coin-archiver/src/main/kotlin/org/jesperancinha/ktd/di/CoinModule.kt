@@ -8,21 +8,20 @@ import org.koin.dsl.module
 
 val coinModule = module {
     single { CoinRepository() }
-    factory {
-        CoinService(repo = get())
-    }
-    single(
-        qualifier = named(name = "country")
-    ) { "Portugal" }
+    factory { CoinService(repo = get()) }
+    single(qualifier = named("country")) { "Portugal" }
     factory { (year: Int) ->
         Coin(
             year = year,
-            country = get(
-                qualifier =
-                    named("country")
-            ),
+            country = get(qualifier = named("country")),
             denomination = "1 Euro"
         )
     }
-    factory(named("rare")) { (year: Int) -> Coin(year, "Greece", "Olympic Coin") }
+    factory(named("rare")) { (year: Int) -> 
+        Coin(
+            year = year, 
+            country = "Greece", 
+            denomination = "Olympic Coin"
+        ) 
+    }
 }

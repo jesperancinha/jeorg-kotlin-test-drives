@@ -20,7 +20,7 @@ class KotlinBasicTypesWithJavaClass {
                 .newLine()
                 .green("The minimum value of %s", typeInt.javaClass).blue("is %s", Int.MIN_VALUE)
                 .newLine()
-                .green("And the maximum value is %s", typeInt.javaClass).blue("is %s", Int.MAX_VALUE)
+                .green("And the maximum value of %s", typeInt.javaClass).blue("is %s", Int.MAX_VALUE)
                 .newLine()
                 .reset()
         }
