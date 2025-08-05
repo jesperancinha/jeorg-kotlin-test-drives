@@ -24,27 +24,33 @@ fun main() {
     initKoin {
         printLogger(Level.INFO)
     }
-    val koin = KoinPlatformTools.defaultContext().get()
-    val service = koin.get<CoinService>()
-
-    val coin2024 = koin.get<Coin> { parametersOf(2024) }
-    val coin1990 = koin.get<Coin> { parametersOf(1990) }
-    service.register(coin2024)
-    service.register(coin1990)
-
-    val rareCoin = koin.get<Coin>(named("rare")) { parametersOf(2004) }
-
-    println("All coins:")
-    service.listAll().forEach(::println)
-    println("Rare coin: $rareCoin")
-
-    val service2 = koin.get<CoinService>()
-    println("Service1: $service")
-    println("Service2: $service2")
-
-//    val service3: CoinServiceInjected = koin.get()
-//    println("All coins via service3 (Injected): $service3:")
-//    service3.listAll().forEach(::println)
-//    println("Rare coin: $rareCoin")
-
+    
+    KoinPlatformTools.defaultContext().get().let { koin ->
+        val service: CoinService = koin.get()
+        
+        // Register coins
+        listOf(
+            koin.get<Coin> { parametersOf(2024) },
+            koin.get<Coin> { parametersOf(1990) }
+        ).forEach(service::register)
+        
+        // Get rare coin
+        val rareCoin = koin.get<Coin>(named("rare")) { parametersOf(2004) }
+        
+        // Print results
+        println("All coins:")
+        service.listAll().forEach(::println)
+        println("Rare coin: $rareCoin")
+        
+        // Compare services
+        val service2: CoinService = koin.get()
+        println("Service1: $service")
+        println("Service2: $service2")
+        
+        // Commented code preserved
+        //    val service3: CoinServiceInjected = koin.get()
+        //    println("All coins via service3 (Injected): $service3:")
+        //    service3.listAll().forEach(::println)
+        //    println("Rare coin: $rareCoin")
+    }
 }
