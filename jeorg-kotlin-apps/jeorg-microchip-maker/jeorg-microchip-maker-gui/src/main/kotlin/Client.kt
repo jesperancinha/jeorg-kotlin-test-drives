@@ -9,5 +9,5 @@ fun main() {
     val welcome = Welcome.create {
         name = "Kotlin/JS"
     }
-//    createRoot(container).render(welcome)
+    createRoot(container).render(welcome)
 }
