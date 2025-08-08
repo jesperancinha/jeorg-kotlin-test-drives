@@ -1,32 +1,74 @@
 [versions]
-arrowVersion = "2.1.2"
-jupiterVersion = "5.13.1"
+arrow = "2.1.2"
+jupiter = "5.13.3"
+koin = "3.5.3"
+koin-annotations = "1.3.0"
+kotlin-wrappers = "19.0.0-pre.860"
+kotest = "5.9.1"
+kotlin = "2.0.0"
+commons-io = "2.19.0"
+slf4j = "2.0.17"
+junit-platform = "1.13.3"
+truth = "1.4.4"
+picocli = "4.7.7"
+opencsv = "5.11"
 
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.0.0" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.0.0" }
-kotlin-js = { id = "org.jetbrains.kotlin.js", version = "2.0.0" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-js = { id = "org.jetbrains.kotlin.js", version.ref = "kotlin" }
 jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.4.5" }
 google-ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.24" }
 
 [libraries]
-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "jupiterVersion" }
-junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "jupiterVersion" }
-junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "jupiterVersion" }
-arrow-stack = { group = "io.arrow-kt", name = "arrow-stack", version.ref = "arrowVersion" }
-arrow-core = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrowVersion" }
-arrow-fx-coroutines = { group = "io.arrow-kt", name = "arrow-fx-coroutines", version.ref = "arrowVersion" }
+# JUnit
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "jupiter" }
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "jupiter" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "jupiter" }
+junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "jupiter" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junit-platform" }
+junit-platform-engine = { group = "org.junit.platform", name = "junit-platform-engine", version.ref = "junit-platform" }
+junit-platform-suite-engine = { group = "org.junit.platform", name = "junit-platform-suite-engine", version.ref = "junit-platform" }
+
+# Arrow
+arrow-stack = { group = "io.arrow-kt", name = "arrow-stack", version.ref = "arrow" }
+arrow-core = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrow" }
+arrow-core-jvm = { group = "io.arrow-kt", name = "arrow-core-jvm", version.ref = "arrow" }
+arrow-optics = { group = "io.arrow-kt", name = "arrow-optics", version.ref = "arrow" }
+arrow-fx-coroutines = { group = "io.arrow-kt", name = "arrow-fx-coroutines", version.ref = "arrow" }
 arrow-analysis-types-jvm = { group = "io.arrow-kt", name = "arrow-analysis-types-jvm", version = "2.0.2" }
-arrow-optics-ksp-plugin = { group = "io.arrow-kt", name = "arrow-optics-ksp-plugin", version.ref = "arrowVersion" }
+arrow-optics-ksp-plugin = { group = "io.arrow-kt", name = "arrow-optics-ksp-plugin", version.ref = "arrow" }
+
+# Koin
+koin-core-jvm = { group = "io.insert-koin", name = "koin-core-jvm", version.ref = "koin" }
+koin-annotations = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koin-annotations" }
+koin-ksp-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koin-annotations" }
+
+# Kotlin Wrappers
+kotlin-react = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-react", version.ref = "kotlin-wrappers" }
+kotlin-react-dom = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-react-dom", version.ref = "kotlin-wrappers" }
+kotlin-emotion = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-emotion", version = "11.14.0-pre.860" }
+kotlin-react-router-dom = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-react-router-dom", version = "6.28.0-pre.860" }
+kotlin-redux = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-redux", version = "4.1.2-pre.785" }
+kotlin-react-redux = { group = "org.jetbrains.kotlin-wrappers", name = "kotlin-react-redux", version = "7.2.6-pre.785" }
+
+# Kotest
+kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version.ref = "kotest" }
+kotest-runner-junit5-jvm = { group = "io.kotest", name = "kotest-runner-junit5-jvm", version.ref = "kotest" }
+kotest-framework-engine-jvm = { group = "io.kotest", name = "kotest-framework-engine-jvm", version.ref = "kotest" }
+kotest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
+kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core-jvm", version.ref = "kotest" }
+
+# Kotlin
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+
+# Other
 consolerizer = { group = "org.jesperancinha.console", name = "consolerizer", version = "2.2.3" }
-kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version = "2.0.0" }
-kotest-assertions-core-jvm = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
 assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.3" }
-kotest-runner-junit5-jvm = { group = "io.kotest", name = "kotest-runner-junit5-jvm", version = "5.9.1" }
-kotest-framework-engine-jvm = { group = "io.kotest", name = "kotest-framework-engine-jvm", version = "5.9.1" }
-kotest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version = "5.9.1" }
-kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "2.0.0" }
 google-gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
-junit-bom = { group = "org.junit", name = "junit-bom", version = "5.13.4" }
-kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core-jvm", version = "5.9.1" }
-slf4j-api = { group = "org.slf4j", name = "slf4j-api", version = "2.0.17" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
+commons-io = { group = "commons-io", name = "commons-io", version.ref = "commons-io" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+picocli = { group = "info.picocli", name = "picocli", version.ref = "picocli" }
+opencsv = { group = "com.opencsv", name = "opencsv", version.ref = "opencsv" }
