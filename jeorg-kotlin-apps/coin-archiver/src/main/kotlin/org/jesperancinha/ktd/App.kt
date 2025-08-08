@@ -47,10 +47,10 @@ fun main() {
         println("Service1: $service")
         println("Service2: $service2")
         
-        // Commented code preserved
-        //    val service3: CoinServiceInjected = koin.get()
-        //    println("All coins via service3 (Injected): $service3:")
-        //    service3.listAll().forEach(::println)
-        //    println("Rare coin: $rareCoin")
+        // Using annotation-based injected service
+        val service3: CoinServiceInjected = koin.get()
+        println("All coins via service3 (Injected): $service3:")
+        service3.listAll().forEach(::println)
+        println("Rare coin: $rareCoin")
     }
 }
