@@ -24,14 +24,14 @@ repositories {
 }
 
 dependencies {
-    implementation("com.opencsv:opencsv:5.11")
-    implementation("org.apache.commons:commons-io:1.3.2")
-    testImplementation(platform("org.junit:junit-bom:5.12.2"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.junit.platform:junit-platform-engine")
-    testImplementation("org.junit.platform:junit-platform-launcher")
-    testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.1")
+    implementation(libs.opencsv)
+    implementation(libs.commons.io)
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.platform.engine)
+    testImplementation(libs.junit.platform.launcher)
+    testImplementation(libs.kotest.assertions.core.jvm)
 }
 
 tasks.test {
