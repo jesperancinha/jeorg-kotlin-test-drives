@@ -38,7 +38,7 @@ upgrade:
 	gradle wrapper --gradle-version $(GRADLE_VERSION) --stacktrace;
 build-chip-maker:
 	cd jeorg-kotlin-apps/jeorg-microchip-maker && mvn clean install
-	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle build test
+	cd jeorg-kotlin-apps/jeorg-microchip-maker/jeorg-microchip-maker-gui && gradle build jsTest
 upgrade-system:
 	sudo apt upgrade
 	sudo apt update

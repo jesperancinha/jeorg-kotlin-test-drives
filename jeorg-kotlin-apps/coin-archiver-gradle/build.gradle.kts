@@ -12,9 +12,6 @@ application {
     mainClass.set("org.jesperancinha.ktd.AppKt")
 }
 
-val koinCoreVersion = "3.5.3"
-val koinAnnotationsVersion = "2.1.0"
-
 tasks.register("wrapper") {
     group = "build setup"
     description = "Fake wrapper task to avoid missing-task errors"
@@ -31,15 +28,20 @@ tasks.register("prepareKotlinBuildScriptModel") {
     }
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+    failOnNoDiscoveredTests = false
+}
+
 dependencies {
-    implementation("io.insert-koin:koin-core-jvm:$koinCoreVersion")
-    implementation("io.insert-koin:koin-annotations:$koinAnnotationsVersion")
-    ksp("io.insert-koin:koin-ksp-compiler:$koinAnnotationsVersion")
+    implementation(libs.koin.core.jvm)
+    implementation(libs.koin.annotations)
+    ksp(libs.koin.ksp.compiler)
     testImplementation(platform(libs.junit.bom))
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.junit.platform:junit-platform-launcher")
-    testImplementation("org.junit.platform:junit-platform-engine")
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.platform.launcher)
+    testImplementation(libs.junit.platform.engine)
 }
 
 java {

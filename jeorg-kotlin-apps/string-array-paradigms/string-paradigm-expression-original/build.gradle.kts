@@ -58,14 +58,14 @@ tasks.jacocoTestReport {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    implementation(libs.kotlin.stdlib)
     api(libs.slf4j.api)
     implementation(project(mapOf("path" to ":jeorg-kotlin-apps:string-array-paradigms::string-paradigm-expression-api")))
     testImplementation(platform(libs.junit.bom))
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.junit.platform:junit-platform-launcher")
-    testImplementation("org.junit.platform:junit-platform-engine")
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.platform.launcher)
+    testImplementation(libs.junit.platform.engine)
     testImplementation(libs.kotest.assertions.core)
 }
 
