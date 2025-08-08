@@ -51,14 +51,14 @@ class HotelRoomAlgorithm {
                 .magenta("If the compliance result is lower or equal to  75 we rate it as low-class")
                 .green("This is the static check table for that")
                 .green(sympathyIndexCheck)
-                .reset();
-
+                .reset()
 
             val room1 = listOf("toilet", "bidet", "grocery_bag", "paper_bin")
-            val auditResult1: AuditResult = auditResult(room1, pukeIndexCheck, sympathyIndexCheck)
+            val auditResult1 = auditResult(room1, pukeIndexCheck, sympathyIndexCheck)
 
 
-            val room2 = listOf("pdc_bag",
+            val room2 = listOf(
+                "pdc_bag",
                 "pdc_bin",
                 "grocery_bag",
                 "paper_bin",
@@ -66,8 +66,9 @@ class HotelRoomAlgorithm {
                 "appointment_efficiency",
                 "schedule_automation",
                 "empathetic_language",
-                "reception")
-            val auditResult2: AuditResult = auditResult(room2, pukeIndexCheck, sympathyIndexCheck)
+                "reception"
+            )
+            val auditResult2 = auditResult(room2, pukeIndexCheck, sympathyIndexCheck)
 
             ConsolerizerComposer.outSpace()
                 .cyan("The result for room1 is")
@@ -92,19 +93,19 @@ class HotelRoomAlgorithm {
                 sympathyIndexCheck.getOrDefault(it, 0)
             }.sumOf { it }
 
-            val auditResult: AuditResult;
-            if (pukeIndex > sympathyIndex) {
-                auditResult = AuditResult(
-                    if (pukeIndex > 75) RoomClass.HIGH_CLASS else RoomClass.LOW_CLASS, ComplianceType.Puke,
+            return if (pukeIndex > sympathyIndex) {
+                AuditResult(
+                    if (pukeIndex > 75) RoomClass.HIGH_CLASS else RoomClass.LOW_CLASS,
+                    ComplianceType.Puke,
                     pukeIndex
                 )
             } else {
-                auditResult = AuditResult(
-                    if (sympathyIndex > 75) RoomClass.HIGH_CLASS else RoomClass.LOW_CLASS, ComplianceType.Sympathy,
+                AuditResult(
+                    if (sympathyIndex > 75) RoomClass.HIGH_CLASS else RoomClass.LOW_CLASS,
+                    ComplianceType.Sympathy,
                     sympathyIndex
                 )
             }
-            return auditResult
         }
     }
 }
@@ -117,6 +118,5 @@ enum class ComplianceType {
 data class AuditResult(
     val roomClass: RoomClass,
     val complianceType: ComplianceType,
-    val score: Long,
-) {
-}
+    val score: Long
+)
