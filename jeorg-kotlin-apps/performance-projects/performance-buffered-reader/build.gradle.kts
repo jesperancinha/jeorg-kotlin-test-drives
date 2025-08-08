@@ -42,11 +42,11 @@ tasks.jacocoTestReport {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-    implementation("commons-io:commons-io:2.19.0")
-    implementation("org.slf4j:slf4j-api:2.0.17")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.13.1")
-    testImplementation("org.junit.platform:junit-platform-suite-engine:1.13.3")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.1")
-    testImplementation("com.google.truth:truth:1.4.4")
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.commons.io)
+    implementation(libs.slf4j.api)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.platform.suite.engine)
+    testImplementation(libs.junit.jupiter.engine)
+    testImplementation(libs.truth)
 }
