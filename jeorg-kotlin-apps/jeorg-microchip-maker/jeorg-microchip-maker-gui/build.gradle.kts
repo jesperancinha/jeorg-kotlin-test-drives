@@ -7,7 +7,7 @@ allprojects {
 plugins {
     jacoco
     alias(libs.plugins.jesperancinha.omni)
-    alias(libs.plugins.kotlin.js)
+    alias(libs.plugins.kotlin.multiplatform)
 }
 
 group = "org.jesperancinha.ktd"
@@ -17,15 +17,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react:19.0.0-pre.860")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:19.0.0-pre.860")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-emotion:11.14.0-pre.860")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-router-dom:6.28.0-pre.860")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-redux:4.1.2-pre.785")
-    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-redux:7.2.6-pre.785")
-}
 
 kotlin {
     jvmToolchain(21)
@@ -37,10 +28,21 @@ kotlin {
             }
         }
     }
-}
-
-val gradleSysVersion = System.getenv("GRADLE_VERSION")
-
-tasks.register<Wrapper>("wrapper") {
-    gradleVersion = gradleSysVersion
+    sourceSets {
+        val jsMain by getting {
+            dependencies {
+                implementation(libs.kotlin.react)
+                implementation(libs.kotlin.react.dom)
+                implementation(libs.kotlin.emotion)
+                implementation(libs.kotlin.react.router.dom)
+                implementation(libs.kotlin.redux)
+                implementation(libs.kotlin.react.redux)
+            }
+        }
+        val jsTest by getting {
+            dependencies {
+                implementation(libs.kotlin.test)
+            }
+        }
+    }
 }
