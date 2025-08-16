@@ -30,7 +30,6 @@ tasks.register("prepareKotlinBuildScriptModel") {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-    failOnNoDiscoveredTests = false
 }
 
 dependencies {
