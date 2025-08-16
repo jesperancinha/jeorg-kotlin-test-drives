@@ -25,7 +25,7 @@
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 
         <build-helper-maven-plugin.version>3.6.1</build-helper-maven-plugin.version>
-        <kotlin.version>2.2.0</kotlin.version>
+        <kotlin.version>2.2.10</kotlin.version>
 
         <!-- External libraries -->
         <kotlinx.coroutines.version>1.10.2</kotlinx.coroutines.version>
@@ -57,11 +57,11 @@
         <omni-coveragereporter-maven-plugin.version>0.4.5</omni-coveragereporter-maven-plugin.version>
         <jakarta.validation-api.version>3.1.1</jakarta.validation-api.version>
         <jackson.version>2.15.0</jackson.version>
-        <jackson-databind.version>2.19.1</jackson-databind.version>
-        <jackson-module-kotlin.version>2.19.1</jackson-module-kotlin.version>
-        <jackson-dataformat-xml.version>2.19.1</jackson-dataformat-xml.version>
-        <jackson-core.version>2.19.1</jackson-core.version>
-        <jackson-annotations.version>2.19.1</jackson-annotations.version>
+        <jackson-databind.version>2.19.2</jackson-databind.version>
+        <jackson-module-kotlin.version>2.19.2</jackson-module-kotlin.version>
+        <jackson-dataformat-xml.version>2.19.2</jackson-dataformat-xml.version>
+        <jackson-core.version>2.19.2</jackson-core.version>
+        <jackson-annotations.version>2.19.2</jackson-annotations.version>
 
         <!-- Project Arrow Libraries -->
         <arrow.version>2.1.2</arrow.version>
@@ -82,7 +82,7 @@
         <ktor.version>2.3.13</ktor.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <json-simple.version>1.1.1</json-simple.version>
-        <junit-bom.version>5.13.3</junit-bom.version>
+        <junit-bom.version>5.13.4</junit-bom.version>
         <vertx-stack-depchain.version>4.5.9</vertx-stack-depchain.version>
         <netty-bom.version>4.2.3.Final</netty-bom.version>
         <koin-bom.version>4.1.0</koin-bom.version>
