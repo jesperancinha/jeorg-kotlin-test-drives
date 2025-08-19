@@ -11,7 +11,7 @@ slf4j = "2.0.17"
 junit-platform = "1.13.3"
 truth = "1.4.4"
 picocli = "4.7.7"
-opencsv = "5.11"
+opencsv = "5.12.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
