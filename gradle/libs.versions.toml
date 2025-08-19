@@ -65,7 +65,7 @@ kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", versio
 
 # Other
 consolerizer = { group = "org.jesperancinha.console", name = "consolerizer", version = "2.2.3" }
-assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.3" }
+assertj-core = { group = "org.assertj", name = "assertj-core", version = "3.27.4" }
 google-gson = { group = "com.google.code.gson", name = "gson", version = "2.13.1" }
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j" }
 commons-io = { group = "commons-io", name = "commons-io", version.ref = "commons-io" }
