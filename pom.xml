@@ -86,6 +86,8 @@
         <koin-annotations-jvm.version>2.1.0</koin-annotations-jvm.version>
         <ksp-maven-plugin.version>1.9.10-1.0.13</ksp-maven-plugin.version>
         <kotest-bom.version>6.0.1</kotest-bom.version>
+        <args4j-maven-plugin.version>2.37</args4j-maven-plugin.version>
+        <thumbnailator.version>0.4.20</thumbnailator.version>
     </properties>
 
     <modules>
@@ -136,6 +138,16 @@
                 <version>${koin-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.kohsuke.args4j</groupId>
+                <artifactId>args4j-maven-plugin</artifactId>
+                <version>${args4j-maven-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.insert-koin</groupId>
