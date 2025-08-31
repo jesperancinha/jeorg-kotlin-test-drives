@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.fbuild.sourceEncoding>UTF-8</project.fbuild.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
         <exec-maven-plugin.version>3.5.1</exec-maven-plugin.version>
 
@@ -41,14 +41,12 @@
         <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockk-jvm.version>1.14.5</mockk-jvm.version>
-        <kotest-assertions-core-jvm.version>5.9.1</kotest-assertions-core-jvm.version>
         <picocli.version>4.7.7</picocli.version>
 
         <!-- Loggers -->
         <consolerizer.version>2.2.3</consolerizer.version>
 
         <!-- Unit testing -->
-        <kotest-runner-junit5.version>5.9.1</kotest-runner-junit5.version>
         <mockk.version>1.14.5</mockk.version>
 
         <!-- Coverage related -->
@@ -68,7 +66,6 @@
         <arrow-optics-ksp-plugin.version>1.1.5</arrow-optics-ksp-plugin.version>
         <kotlin-maven-symbol-processing.version>1.5</kotlin-maven-symbol-processing.version>
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
-        <kotest.version>5.9.1</kotest.version>
         <spring-boot-starter-parent.version>3.5.5</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
         <slf4j.version>2.0.17</slf4j.version>
@@ -88,6 +85,9 @@
         <koin-bom.version>4.1.0</koin-bom.version>
         <koin-annotations-jvm.version>2.1.0</koin-annotations-jvm.version>
         <ksp-maven-plugin.version>1.9.10-1.0.13</ksp-maven-plugin.version>
+        <kotest-bom.version>6.0.1</kotest-bom.version>
+        <args4j-maven-plugin.version>2.37</args4j-maven-plugin.version>
+        <thumbnailator.version>0.4.20</thumbnailator.version>
     </properties>
 
     <modules>
@@ -138,6 +138,16 @@
                 <version>${koin-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.kohsuke.args4j</groupId>
+                <artifactId>args4j-maven-plugin</artifactId>
+                <version>${args4j-maven-plugin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.insert-koin</groupId>
@@ -226,28 +236,10 @@
             </dependency>
             <dependency>
                 <groupId>io.kotest</groupId>
-                <artifactId>kotest-assertions</artifactId>
-                <version>${kotest.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-assertions-api-jvm</artifactId>
-                <version>${kotest.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-assertions-core-jvm</artifactId>
-                <version>${kotest.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-assertions-shared-jvm</artifactId>
-                <version>${kotest.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-framework-api-jvm</artifactId>
-                <version>${kotest.version}</version>
+                <artifactId>kotest-bom</artifactId>
+                <version>${kotest-bom.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.jetbrains.kotlinx</groupId>
@@ -324,18 +316,6 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-test-junit</artifactId>
                 <version>${kotlin.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-runner-junit5-jvm</artifactId>
-                <version>${kotest-runner-junit5.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.kotest</groupId>
-                <artifactId>kotest-runner-junit5</artifactId>
-                <version>${kotest-runner-junit5.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

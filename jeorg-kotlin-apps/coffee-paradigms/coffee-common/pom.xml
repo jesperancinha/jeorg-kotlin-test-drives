@@ -171,6 +171,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-framework-engine-jvm</artifactId>
+        </dependency>
+        <dependency>
             <groupId>jakarta.activation</groupId>
             <artifactId>jakarta.activation-api</artifactId>
         </dependency>
