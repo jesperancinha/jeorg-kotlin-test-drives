@@ -1,7 +1,7 @@
 package org.jesperancinha.ktd
 
-import io.kotest.common.runBlocking
 import io.kotest.matchers.string.shouldContain
+import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 
 class StreamsStringsTest {
@@ -14,6 +14,5 @@ class StreamsStringsTest {
         val executeCommand = streamsStrings.executeCommand(listOf("java", "-version"))
         println(executeCommand)
         executeCommand.errorMessage shouldContain "JDK"
-
     }
 }

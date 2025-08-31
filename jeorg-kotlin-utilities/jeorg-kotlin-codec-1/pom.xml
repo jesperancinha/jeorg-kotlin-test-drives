@@ -34,6 +34,10 @@
             <groupId>io.kotest</groupId>
             <artifactId>kotest-assertions-core-jvm</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-framework-engine-jvm</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
