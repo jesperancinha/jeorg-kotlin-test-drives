@@ -81,7 +81,7 @@
         <json-simple.version>1.1.1</json-simple.version>
         <junit-bom.version>5.13.4</junit-bom.version>
         <vertx-stack-depchain.version>5.0.0</vertx-stack-depchain.version>
-        <netty-bom.version>4.2.4.Final</netty-bom.version>
+        <netty-bom.version>4.2.5.Final</netty-bom.version>
         <koin-bom.version>4.1.0</koin-bom.version>
         <koin-annotations-jvm.version>2.1.0</koin-annotations-jvm.version>
         <ksp-maven-plugin.version>1.9.10-1.0.13</ksp-maven-plugin.version>
