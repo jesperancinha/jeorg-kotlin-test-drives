@@ -32,6 +32,7 @@ dependencies {
     testImplementation(libs.junit.platform.engine)
     testImplementation(libs.junit.platform.launcher)
     testImplementation(libs.kotest.assertions.core.jvm)
+    testImplementation(libs.kotest.runner.junit5.jvm)
 }
 
 tasks.test {
