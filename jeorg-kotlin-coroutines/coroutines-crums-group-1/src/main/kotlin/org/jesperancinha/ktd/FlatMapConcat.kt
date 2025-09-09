@@ -1,14 +1,15 @@
 package org.jesperancinha.ktd
 
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.merge
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
 
 class FlatMapConcat {
     companion object {
+        @OptIn(ExperimentalCoroutinesApi::class)
         @JvmStatic
         fun main(args: Array<String> = emptyArray()): kotlin.Unit = runBlocking {
             val flow1 = flow {
