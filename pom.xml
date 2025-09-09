@@ -80,7 +80,7 @@
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <json-simple.version>1.1.1</json-simple.version>
         <junit-bom.version>5.13.4</junit-bom.version>
-        <vertx-stack-depchain.version>4.5.9</vertx-stack-depchain.version>
+        <vertx-stack-depchain.version>5.0.0</vertx-stack-depchain.version>
         <netty-bom.version>4.2.6.Final</netty-bom.version>
         <koin-bom.version>4.1.1</koin-bom.version>
         <koin-annotations-jvm.version>2.1.0</koin-annotations-jvm.version>
