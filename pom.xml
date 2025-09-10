@@ -29,7 +29,7 @@
 
         <!-- External libraries -->
         <kotlinx.coroutines.version>1.10.2</kotlinx.coroutines.version>
-        <truth.version>1.4.4</truth.version>
+        <truth.version>1.4.5</truth.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <slf4j-api.version>2.0.17</slf4j-api.version>
         <slf4j-simple.version>2.0.17</slf4j-simple.version>
