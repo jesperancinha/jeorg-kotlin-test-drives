@@ -38,7 +38,7 @@
         <jaxb-maven-plugin.version>3.0.0</jaxb-maven-plugin.version>
         <log4j-to-slf4j.version>2.25.1</log4j-to-slf4j.version>
         <jakarta.activation-api.version>2.1.4</jakarta.activation-api.version>
-        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
+        <jakarta.xml.bind-api.version>4.0.4</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
         <mockk-jvm.version>1.14.5</mockk-jvm.version>
         <picocli.version>4.7.7</picocli.version>
