@@ -24,7 +24,7 @@ java {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 }
 
 group = "org.jesperancinha"
