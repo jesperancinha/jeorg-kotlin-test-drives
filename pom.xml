@@ -68,7 +68,6 @@
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
         <spring-boot-starter-parent.version>3.5.6</spring-boot-starter-parent.version>
         <springmockk.version>4.0.2</springmockk.version>
-        <slf4j.version>2.0.17</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <kotlinx-coroutines-reactor.version>1.10.2</kotlinx-coroutines-reactor.version>
         <kotlin-reflect.version>2.2.20</kotlin-reflect.version>
@@ -245,21 +244,6 @@
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kotlinx-coroutines-reactor</artifactId>
                 <version>${kotlinx-coroutines-reactor.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-log4j12</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-nop</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
