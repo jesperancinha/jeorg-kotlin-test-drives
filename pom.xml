@@ -11,7 +11,7 @@
     <properties>
         <project.fbuild.sourceEncoding>UTF-8</project.fbuild.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
-        <exec-maven-plugin.version>3.5.1</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.6.0</exec-maven-plugin.version>
 
         <!-- Build -->
         <java.version>25</java.version>
@@ -78,7 +78,7 @@
         <ktor.version>2.3.13</ktor.version>
         <xercesImpl.version>2.11.0.1</xercesImpl.version>
         <json-simple.version>1.1.1</json-simple.version>
-        <junit-bom.version>5.13.4</junit-bom.version>
+        <junit-bom.version>6.0.0</junit-bom.version>
         <vertx-stack-depchain.version>5.0.4</vertx-stack-depchain.version>
         <netty-bom.version>4.2.6.Final</netty-bom.version>
         <koin-bom.version>4.1.1</koin-bom.version>
