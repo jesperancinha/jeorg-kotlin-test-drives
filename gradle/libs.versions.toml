@@ -1,6 +1,6 @@
 [versions]
 arrow = "2.1.2"
-jupiter = "5.13.4"
+jupiter = "6.0.0"
 koin = "4.1.1"
 koin-annotations = "2.1.0"
 kotlin-wrappers = "19.0.0-pre.860"
