@@ -40,14 +40,14 @@
         <jakarta.activation-api.version>2.1.4</jakarta.activation-api.version>
         <jakarta.xml.bind-api.version>4.0.4</jakarta.xml.bind-api.version>
         <mockito-all.version>1.10.19</mockito-all.version>
-        <mockk-jvm.version>1.14.5</mockk-jvm.version>
+        <mockk-jvm.version>1.14.6</mockk-jvm.version>
         <picocli.version>4.7.7</picocli.version>
 
         <!-- Loggers -->
         <consolerizer.version>2.2.3</consolerizer.version>
 
         <!-- Unit testing -->
-        <mockk.version>1.14.5</mockk.version>
+        <mockk.version>1.14.6</mockk.version>
 
         <!-- Coverage related -->
         <jaxb-api.version>2.3.1</jaxb-api.version>
