@@ -86,7 +86,7 @@
         <ksp-maven-plugin.version>1.9.10-1.0.13</ksp-maven-plugin.version>
         <kotest-bom.version>6.0.3</kotest-bom.version>
         <args4j-maven-plugin.version>2.37</args4j-maven-plugin.version>
-        <thumbnailator.version>0.4.20</thumbnailator.version>
+        <thumbnailator.version>0.4.21</thumbnailator.version>
     </properties>
 
     <modules>
