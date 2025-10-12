@@ -2,7 +2,7 @@
 arrow = "2.1.2"
 jupiter = "6.0.0"
 koin = "4.1.1"
-koin-annotations = "2.1.0"
+koin-annotations = "2.2.0"
 kotlin-wrappers = "19.0.0-pre.860"
 kotest = "6.0.3"
 kotlin = "2.2.20"
@@ -18,7 +18,7 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-js = { id = "org.jetbrains.kotlin.js", version.ref = "kotlin" }
 jesperancinha-omni = { id = "org.jesperancinha.plugins.omni", version = "0.4.5" }
-google-ksp = { id = "com.google.devtools.ksp", version = "2.2.20-2.0.3" }
+google-ksp = { id = "com.google.devtools.ksp", version = "2.2.20-2.0.4" }
 
 [libraries]
 # JUnit

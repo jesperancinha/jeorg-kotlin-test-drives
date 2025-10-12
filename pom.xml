@@ -11,7 +11,7 @@
     <properties>
         <project.fbuild.sourceEncoding>UTF-8</project.fbuild.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
-        <exec-maven-plugin.version>3.6.0</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.6.1</exec-maven-plugin.version>
 
         <!-- Build -->
         <java.version>25</java.version>
@@ -82,7 +82,7 @@
         <vertx-stack-depchain.version>5.0.4</vertx-stack-depchain.version>
         <netty-bom.version>4.2.6.Final</netty-bom.version>
         <koin-bom.version>4.1.1</koin-bom.version>
-        <koin-annotations-jvm.version>2.1.0</koin-annotations-jvm.version>
+        <koin-annotations-jvm.version>2.2.0</koin-annotations-jvm.version>
         <ksp-maven-plugin.version>1.9.10-1.0.13</ksp-maven-plugin.version>
         <kotest-bom.version>6.0.3</kotest-bom.version>
         <args4j-maven-plugin.version>2.37</args4j-maven-plugin.version>
