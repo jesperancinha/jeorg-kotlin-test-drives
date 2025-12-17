@@ -1,5 +1,5 @@
 [versions]
-arrow = "2.2.0"
+arrow = "2.2.1.1"
 jupiter = "6.0.1"
 koin = "4.1.1"
 koin-annotations = "2.3.1"
