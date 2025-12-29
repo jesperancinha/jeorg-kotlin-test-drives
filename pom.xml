@@ -11,7 +11,7 @@
     <properties>
         <project.fbuild.sourceEncoding>UTF-8</project.fbuild.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
-        <exec-maven-plugin.version>3.6.2</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
 
         <!-- Build -->
         <java.version>25</java.version>
@@ -66,7 +66,7 @@
         <arrow-optics-ksp-plugin.version>1.1.5</arrow-optics-ksp-plugin.version>
         <kotlin-maven-symbol-processing.version>1.5</kotlin-maven-symbol-processing.version>
         <arrow-analysis-types-jvm.version>2.0.3-alpha.2</arrow-analysis-types-jvm.version>
-        <spring-boot-starter-parent.version>4.0.0</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>4.0.1</spring-boot-starter-parent.version>
         <springmockk.version>5.0.1</springmockk.version>
         <log4j.version>1.2.17</log4j.version>
         <kotlinx-coroutines-reactor.version>1.10.2</kotlinx-coroutines-reactor.version>
