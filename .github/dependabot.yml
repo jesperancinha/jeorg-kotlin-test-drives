@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "yearly"
     groups:
       postgresql:
         patterns:
@@ -26,7 +26,7 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "yearly"
     groups:
       kotlin:
         patterns:
@@ -42,7 +42,7 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/experiments"
     schedule:
-      interval: "daily"
+      interval: "yearly"
     groups:
       kotlin:
         patterns:
